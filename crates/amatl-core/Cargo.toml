@@ -58,6 +58,7 @@ url.workspace = true
 unicode-normalization.workspace = true
 fs2.workspace = true
 tokio-util.workspace = true
+zeroize.workspace = true
 
 # STEP 4D — real Candle backend, OPTIONAL, only pulled in by
 # `experimental-local-embeddings`. Pure Rust: no C++ runtime, no `-sys` crates,

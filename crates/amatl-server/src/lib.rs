@@ -1140,9 +1140,32 @@ async fn provider_toggle(
 }
 
 /// Body of `POST /providers/{name}/credential`: the operator-supplied key.
-#[derive(Debug, Deserialize)]
+///
+/// The key is wrapped so its heap allocation is wiped when the deserialized
+/// body is dropped, instead of lingering for the allocator to reuse.
+#[derive(Deserialize)]
 struct ProviderCredentialParams {
-    key: String,
+    key: SecretKey,
+}
+
+/// A secret string that zeroizes its buffer on drop.
+#[derive(Deserialize)]
+#[serde(transparent)]
+struct SecretKey(String);
+
+impl std::ops::Deref for SecretKey {
+    type Target = str;
+
+    fn deref(&self) -> &str {
+        &self.0
+    }
+}
+
+impl Drop for SecretKey {
+    fn drop(&mut self) {
+        use zeroize::Zeroize;
+        self.0.zeroize();
+    }
 }
 
 /// Response shape for a provider-credential write. Never echoes the secret:
@@ -1168,6 +1191,8 @@ struct ProviderCredentialReport {
 /// picked up by the next search.
 async fn provider_credential_put(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    Extension(identity): Extension<ClientIdentity>,
     Path(name): Path<String>,
     params: Result<Json<ProviderCredentialParams>, JsonRejection>,
 ) -> Response {
@@ -1184,11 +1209,32 @@ async fn provider_credential_put(
         Err(error) => return service_error(error),
     };
     if !valid {
+        audit_credential_action(
+            &state,
+            "provider_credential_rejected",
+            &request_id.0,
+            &identity.id,
+            &name,
+        );
         return api_error(ErrorCode::InvalidRequest);
     }
     if service.set_provider_credential(&name, &params.key).is_err() {
+        audit_credential_action(
+            &state,
+            "provider_credential_rejected",
+            &request_id.0,
+            &identity.id,
+            &name,
+        );
         return api_error(ErrorCode::InvalidRequest);
     }
+    audit_credential_action(
+        &state,
+        "provider_credential_inserted",
+        &request_id.0,
+        &identity.id,
+        &name,
+    );
     let available = service.ephemeral_credential_present(&name);
     Json(ProviderCredentialReport {
         schema_version: SCHEMA_VERSION.into(),
@@ -1218,10 +1264,19 @@ async fn validate_provider_credential(
 /// without it (failing closed on `credential_missing` if it is required).
 async fn provider_credential_delete(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    Extension(identity): Extension<ClientIdentity>,
     Path(name): Path<String>,
 ) -> Response {
     let service = state.service();
     service.clear_provider_credential(&name);
+    audit_credential_action(
+        &state,
+        "provider_credential_liquidated",
+        &request_id.0,
+        &identity.id,
+        &name,
+    );
     Json(ProviderCredentialReport {
         schema_version: SCHEMA_VERSION.into(),
         name,
@@ -2850,6 +2905,38 @@ fn audit_security_event_context(
             client_id,
             path: Some(path.to_owned()),
             client_ip: Some(client_ip.to_string()),
+        });
+}
+
+/// Record an operator action on a provider credential — insertion,
+/// liquidation or rejection — in the security audit trail. Only the action,
+/// the provider and the authenticated identity are stored; the key itself never
+/// reaches the log line or the audit row.
+fn audit_credential_action(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    client_id: &str,
+    provider: &str,
+) {
+    let path = format!("/providers/{provider}/credential");
+    tracing::warn!(
+        target: "amatl::security",
+        security_event = event,
+        request_id,
+        path = %path,
+        client_id,
+        "operator provider-credential action"
+    );
+    state
+        .service()
+        .audit()
+        .record(amatl_core::SecurityEventInput {
+            event: event.to_owned(),
+            request_id: Some(request_id.to_owned()),
+            client_id: Some(client_id.to_owned()),
+            path: Some(path),
+            client_ip: None,
         });
 }
 

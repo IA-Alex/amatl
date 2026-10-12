@@ -75,7 +75,7 @@ async fn brave_fixture_crosses_provider_and_global_pipeline() {
         br#"{"web":{"results":[{"title":"Rust","url":"https://example.com/?utm_source=brave","description":"Guide"}]}}"#,
     ));
     let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
-        Some("fixture-token".into()),
+        Some("fixture-token".to_owned().into()),
         true,
         true,
         transport.clone(),
@@ -95,7 +95,7 @@ async fn brave_fixture_crosses_provider_and_global_pipeline() {
 async fn real_adapter_rate_limit_uses_bounded_retry_policy() {
     let transport = Arc::new(FixtureTransport::new(429, BTreeMap::new(), b"private body"));
     let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
-        Some("fixture-token".into()),
+        Some("fixture-token".to_owned().into()),
         true,
         true,
         transport.clone(),

@@ -9,11 +9,12 @@ use async_trait::async_trait;
 use serde::Deserialize;
 use std::sync::Arc;
 use url::Url;
+use zeroize::Zeroizing;
 
 const ENDPOINT: &str = "https://api.search.brave.com/res/v1/web/search";
 
 pub struct BraveProvider {
-    token: Option<String>,
+    token: Option<Zeroizing<String>>,
     enabled: bool,
     approved: bool,
     transport: Arc<dyn HttpTransport>,
@@ -21,7 +22,7 @@ pub struct BraveProvider {
 
 impl BraveProvider {
     pub fn new(
-        token: Option<String>,
+        token: Option<Zeroizing<String>>,
         enabled: bool,
         approved: bool,
         transport: Arc<dyn HttpTransport>,
@@ -73,7 +74,7 @@ impl BraveProvider {
                 vec![
                     ("accept".into(), "application/json".into()),
                     ("cache-control".into(), "no-cache".into()),
-                    ("x-subscription-token".into(), token.clone()),
+                    ("x-subscription-token".into(), token.to_string()),
                 ],
                 timeout_ms,
             ),
@@ -117,7 +118,7 @@ impl Provider for BraveProvider {
                 code: "provider_not_approved".into(),
                 message: "Brave governance approval is required".into(),
             }
-        } else if self.token.as_deref().is_none_or(str::is_empty) {
+        } else if self.token.as_deref().is_none_or(|value| value.is_empty()) {
             ProviderAvailability::Unavailable {
                 code: "provider_credential_missing".into(),
                 message: "Brave credential is unavailable".into(),
@@ -325,7 +326,7 @@ mod tests {
     #[test]
     fn maps_structured_filters_without_exposing_token() {
         let provider = BraveProvider::new(
-            Some("top-secret".into()),
+            Some(Zeroizing::new("top-secret".to_owned())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),

@@ -12,11 +12,12 @@ use std::sync::Arc;
 use time::format_description::well_known::Rfc3339;
 use time::OffsetDateTime;
 use url::Url;
+use zeroize::Zeroizing;
 
 const ENDPOINT: &str = "https://www.mojeek.com/search";
 
 pub struct MojeekProvider {
-    api_key: Option<String>,
+    api_key: Option<Zeroizing<String>>,
     enabled: bool,
     approved: bool,
     supported_filters: BTreeSet<String>,
@@ -25,7 +26,7 @@ pub struct MojeekProvider {
 
 impl MojeekProvider {
     pub fn new(
-        api_key: Option<String>,
+        api_key: Option<Zeroizing<String>>,
         enabled: bool,
         approved: bool,
         supported_filters: Vec<String>,
@@ -74,7 +75,7 @@ impl MojeekProvider {
                 search.push_str(&format!(" \"{term}\""));
             }
             pairs
-                .append_pair("api_key", key)
+                .append_pair("api_key", key.as_str())
                 .append_pair("q", search.trim())
                 .append_pair("fmt", "json")
                 .append_pair("t", "10");
@@ -192,7 +193,7 @@ impl Provider for MojeekProvider {
                 code: "provider_not_approved".into(),
                 message: "Mojeek governance approval is required".into(),
             }
-        } else if self.api_key.as_deref().is_none_or(str::is_empty) {
+        } else if self.api_key.as_deref().is_none_or(|value| value.is_empty()) {
             ProviderAvailability::Unavailable {
                 code: "provider_credential_missing".into(),
                 message: "Mojeek credential is unavailable".into(),
@@ -362,7 +363,7 @@ mod tests {
     #[test]
     fn maps_supported_and_approximated_filters() {
         let provider = MojeekProvider::new(
-            Some("top-secret".into()),
+            Some(Zeroizing::new("top-secret".to_owned())),
             true,
             true,
             vec![
@@ -390,7 +391,7 @@ mod tests {
     #[test]
     fn does_not_simulate_filters_missing_from_the_contracted_plan() {
         let provider = MojeekProvider::new(
-            Some("top-secret".into()),
+            Some(Zeroizing::new("top-secret".to_owned())),
             true,
             true,
             vec![],

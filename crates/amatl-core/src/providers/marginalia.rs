@@ -34,11 +34,12 @@ use async_trait::async_trait;
 use serde::Deserialize;
 use std::sync::Arc;
 use url::Url;
+use zeroize::Zeroizing;
 
 const ENDPOINT: &str = "https://api2.marginalia-search.com/search";
 
 pub struct MarginaliaProvider {
-    api_key: Option<String>,
+    api_key: Option<Zeroizing<String>>,
     enabled: bool,
     approved: bool,
     transport: Arc<dyn HttpTransport>,
@@ -46,7 +47,7 @@ pub struct MarginaliaProvider {
 
 impl MarginaliaProvider {
     pub fn new(
-        api_key: Option<String>,
+        api_key: Option<Zeroizing<String>>,
         enabled: bool,
         approved: bool,
         transport: Arc<dyn HttpTransport>,
@@ -91,7 +92,7 @@ impl MarginaliaProvider {
                 vec![
                     ("accept".into(), "application/json".into()),
                     ("cache-control".into(), "no-cache".into()),
-                    ("api-key".into(), key.clone()),
+                    ("api-key".into(), key.to_string()),
                 ],
                 timeout_ms,
             ),
@@ -135,7 +136,7 @@ impl Provider for MarginaliaProvider {
                 code: "provider_not_approved".into(),
                 message: "Marginalia governance record is incomplete or expired".into(),
             }
-        } else if self.api_key.as_deref().is_none_or(str::is_empty) {
+        } else if self.api_key.as_deref().is_none_or(|value| value.is_empty()) {
             ProviderAvailability::Unavailable {
                 code: "provider_credential_missing".into(),
                 message: "Marginalia credential is unavailable".into(),
@@ -368,7 +369,7 @@ mod tests {
     #[test]
     fn empty_credential_is_treated_as_missing() {
         let provider = MarginaliaProvider::new(
-            Some(String::new()),
+            Some(Zeroizing::new(String::new())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -384,7 +385,7 @@ mod tests {
     #[test]
     fn with_key_enabled_and_approved_reports_available() {
         let provider = MarginaliaProvider::new(
-            Some("test-key".into()),
+            Some(Zeroizing::new("test-key".to_owned())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -398,7 +399,7 @@ mod tests {
     #[test]
     fn disabled_provider_reports_provider_disabled() {
         let provider = MarginaliaProvider::new(
-            Some("test-key".into()),
+            Some(Zeroizing::new("test-key".to_owned())),
             false,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -414,7 +415,7 @@ mod tests {
     #[test]
     fn not_approved_reports_provider_not_approved() {
         let provider = MarginaliaProvider::new(
-            Some("test-key".into()),
+            Some(Zeroizing::new("test-key".to_owned())),
             true,
             false,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -432,7 +433,7 @@ mod tests {
     #[test]
     fn maps_site_filter_and_ignores_unsupported() {
         let provider = MarginaliaProvider::new(
-            Some("test-key".into()),
+            Some(Zeroizing::new("test-key".to_owned())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -458,7 +459,7 @@ mod tests {
     #[test]
     fn uses_the_current_api2_endpoint_query_param_and_header() {
         let provider = MarginaliaProvider::new(
-            Some("test-key".into()),
+            Some(Zeroizing::new("test-key".to_owned())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
@@ -482,7 +483,7 @@ mod tests {
     #[test]
     fn credential_is_not_leaked_in_url() {
         let provider = MarginaliaProvider::new(
-            Some("top-secret".into()),
+            Some(Zeroizing::new("top-secret".to_owned())),
             true,
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),

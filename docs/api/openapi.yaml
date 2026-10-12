@@ -1278,13 +1278,15 @@ components:
     ProviderSummary:
       type: object
       additionalProperties: false
-      required: [schema_version, name, status, code, capabilities]
+      required: [schema_version, name, status, code, capabilities, enabled, credential_source]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         name: { type: string }
         status: { $ref: '#/components/schemas/ProviderSurfaceStatus' }
         code: { type: [string, 'null'] }
         capabilities: { $ref: '#/components/schemas/ProviderCapabilities' }
+        enabled: { type: boolean }
+        credential_source: { $ref: '#/components/schemas/CredentialSource' }
     ProviderResponse:
       type: object
       additionalProperties: false
@@ -1298,10 +1300,14 @@ components:
       type: string
       description: Persistent breaker state for one source.
       enum: [closed, open, half_open]
+    CredentialSource:
+      type: string
+      description: Provenance of the credential in force for a source; never its value. `ephemeral` is an operator key held only in memory and liquidable at runtime; `environment` came from the variable named by `credential_env`.
+      enum: [none, ephemeral, environment]
     SourceStatus:
       type: object
       additionalProperties: false
-      required: [name, status, code, circuit, success_rate, average_latency_ms, observations]
+      required: [name, status, code, circuit, success_rate, average_latency_ms, observations, credential_source]
       properties:
         name: { type: string }
         status: { $ref: '#/components/schemas/ProviderSurfaceStatus' }
@@ -1310,6 +1316,7 @@ components:
         success_rate: { type: [number, 'null'], minimum: 0, maximum: 1 }
         average_latency_ms: { type: [number, 'null'], minimum: 0 }
         observations: { type: integer, minimum: 0 }
+        credential_source: { $ref: '#/components/schemas/CredentialSource' }
     StorageStatus:
       type: object
       additionalProperties: false

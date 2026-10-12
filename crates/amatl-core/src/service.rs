@@ -19,6 +19,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 use std::sync::{Arc, RwLock};
 use thiserror::Error;
+use zeroize::Zeroizing;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ServiceSurface {
@@ -166,6 +167,24 @@ pub enum ProviderSurfaceStatus {
     Unavailable,
 }
 
+/// Where a source's credential comes from, if any.
+///
+/// Exposed so an operator surface can tell an in-memory key (liquidable from
+/// the UI, never persisted) apart from one supplied by the environment variable
+/// named in `credential_env` (which the UI cannot erase). It never carries the
+/// value itself, only its provenance.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum CredentialSource {
+    /// No credential is available for this source.
+    None,
+    /// An operator injected the key in memory; it is liquidable at runtime and
+    /// dies with the process.
+    Ephemeral,
+    /// The key was read from the environment variable named by `credential_env`.
+    Environment,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct ProviderSummary {
     pub schema_version: String,
@@ -179,6 +198,9 @@ pub struct ProviderSummary {
     /// `Unavailable` regardless of how complete its ficha is. Surfaces
     /// exist to flip this without also claiming they approved anything.
     pub enabled: bool,
+    /// Provenance of the credential in force, never its value. Lets a settings
+    /// screen enable "liquidate" only for a key it can actually erase.
+    pub credential_source: CredentialSource,
 }
 
 /// Domain failures a surface can receive from the service.
@@ -357,6 +379,8 @@ pub struct SourceStatus {
     pub success_rate: Option<f64>,
     pub average_latency_ms: Option<f64>,
     pub observations: u64,
+    /// Provenance of the credential in force for this source, never its value.
+    pub credential_source: CredentialSource,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -448,8 +472,10 @@ pub struct AmatlService {
     /// can insert/liquidate a source's key at runtime (e.g. Marginalia) without
     /// touching the environment or restarting. Killed with the process.
     /// `Arc<RwLock>` so changes take effect for subsequent requests without a
-    /// service rebuild, and survive `reloaded()` by being shared in.
-    ephemeral_credentials: Arc<RwLock<BTreeMap<String, String>>>,
+    /// service rebuild, and survive `reloaded()` by being shared in. Values are
+    /// `Zeroizing` so replacing or liquidating a key wipes its bytes from the
+    /// heap instead of leaving them for the allocator to reuse.
+    ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>,
     /// Stops the background maintenance task when the service is dropped.
     ///
     /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
@@ -1432,6 +1458,7 @@ impl AmatlService {
                         .filter(|snapshot| snapshot.sample > 0)
                         .map(|snapshot| snapshot.average_latency_ms),
                     observations: snapshot.map(|snapshot| snapshot.sample).unwrap_or(0),
+                    credential_source: summary.credential_source,
                 }
             })
             .collect::<Vec<_>>();
@@ -1547,25 +1574,35 @@ impl AmatlService {
     /// Availability of every declared provider that has an implementation.
     pub fn provider_summaries(&self) -> Result<Vec<ProviderSummary>, ServiceError> {
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
-        let providers = self
+        let entries = self
             .config
             .providers
             .declared()
             .filter_map(|(name, runtime)| {
                 let factory = self.registry.get(name)?;
-                Some(factory.build(&ProviderBuildContext {
-                    name,
-                    runtime,
-                    enabled: self.config.providers.enabled.contains(name),
-                    approved: runtime.approved(),
-                    credential: self.resolved_credential(name, runtime),
-                    transport: transport.clone(),
-                }))
+                let credential_source = if self.ephemeral_credential_present(name) {
+                    CredentialSource::Ephemeral
+                } else if credential(runtime).is_some() {
+                    CredentialSource::Environment
+                } else {
+                    CredentialSource::None
+                };
+                Some((
+                    factory.build(&ProviderBuildContext {
+                        name,
+                        runtime,
+                        enabled: self.config.providers.enabled.contains(name),
+                        approved: runtime.approved(),
+                        credential: self.resolved_credential(name, runtime),
+                        transport: transport.clone(),
+                    }),
+                    credential_source,
+                ))
             })
-            .collect::<Vec<Arc<dyn Provider>>>();
-        Ok(providers
+            .collect::<Vec<(Arc<dyn Provider>, CredentialSource)>>();
+        Ok(entries
             .into_iter()
-            .map(|provider| {
+            .map(|(provider, credential_source)| {
                 let (status, code) = if !self.config.data_policy.allows_network_egress() {
                     (
                         ProviderSurfaceStatus::Unavailable,
@@ -1591,6 +1628,7 @@ impl AmatlService {
                         .enabled
                         .iter()
                         .any(|name| name == provider.name()),
+                    credential_source,
                 }
             })
             .collect())
@@ -1598,8 +1636,14 @@ impl AmatlService {
 
     /// Resolve a provider's credential: an operator-supplied ephemeral
     /// (RAM-only) value takes precedence; otherwise fall back to the
-    /// `credential_env` environment variable. Never logs the secret.
-    fn resolved_credential(&self, name: &str, runtime: &ProviderRuntimeConfig) -> Option<String> {
+    /// `credential_env` environment variable. Never logs the secret. The value
+    /// is `Zeroizing`, so the per-build copy handed to a provider is wiped from
+    /// the heap when that provider is dropped.
+    fn resolved_credential(
+        &self,
+        name: &str,
+        runtime: &ProviderRuntimeConfig,
+    ) -> Option<Zeroizing<String>> {
         if let Ok(guard) = self.ephemeral_credentials.read() {
             if let Some(value) = guard.get(name) {
                 if !value.is_empty() {
@@ -1611,13 +1655,13 @@ impl AmatlService {
     }
 
     /// Whether an operator has injected an in-memory credential for `name`.
-    /// Read-only; never exposes the secret, only its presence.
+    /// Read-only; never exposes the secret, only its presence — and it checks
+    /// presence without cloning the key.
     pub fn ephemeral_credential_present(&self, name: &str) -> bool {
         self.ephemeral_credentials
             .read()
-            .ok()
-            .and_then(|guard| guard.get(name).cloned())
-            .is_some_and(|value| !value.is_empty())
+            .map(|guard| guard.get(name).is_some_and(|value| !value.is_empty()))
+            .unwrap_or(false)
     }
 
     /// Set an operator-supplied provider credential in memory only.
@@ -1635,14 +1679,18 @@ impl AmatlService {
         self.ephemeral_credentials
             .write()
             .map_err(|_| ServiceError::ProviderNotRegistered(name.into()))?
-            .insert(name.to_string(), value.to_string());
+            .insert(name.to_string(), Zeroizing::new(value.to_owned()));
         Ok(())
     }
 
     /// Remove an operator-supplied provider credential from memory. Idempotent.
+    ///
+    /// `remove` drops the `Zeroizing` value, which wipes its bytes before the
+    /// allocation is released, so the liquidated key does not linger in the
+    /// heap for a later allocation (or a core dump) to expose.
     pub fn clear_provider_credential(&self, name: &str) {
         if let Ok(mut guard) = self.ephemeral_credentials.write() {
-            guard.remove(name);
+            drop(guard.remove(name));
         }
     }
 
@@ -1666,7 +1714,7 @@ impl AmatlService {
         isolated_config.providers.enabled = vec![name.to_string()];
         let registry = (*self.registry).clone();
         let name = name.to_string();
-        let value = value.to_string();
+        let value = Zeroizing::new(value.to_owned());
         let query = query.to_string();
         // Opening SQLite runs migrations through sqlx, whose executor bound is
         // not provably `Send`; build the isolated service on a blocking thread
@@ -1859,12 +1907,13 @@ fn bounded(value: &str, maximum: usize) -> String {
     value.chars().take(maximum).collect()
 }
 
-fn credential(config: &ProviderRuntimeConfig) -> Option<String> {
+fn credential(config: &ProviderRuntimeConfig) -> Option<Zeroizing<String>> {
     config
         .credential_env
         .as_deref()
         .and_then(|name| std::env::var(name).ok())
         .filter(|value| !value.is_empty())
+        .map(Zeroizing::new)
 }
 
 /// Build the router's [`RoleAssignment`] from `[expansion]` config.
@@ -2178,7 +2227,7 @@ mod tests {
 
     struct CredentialGatedProvider {
         name: String,
-        credential: Option<String>,
+        credential: Option<Zeroizing<String>>,
     }
 
     #[async_trait]
@@ -2351,6 +2400,147 @@ mod tests {
         assert_eq!(
             validate_provider_canary(service.config(), "brave"),
             Err(ProviderCanaryError::EgressDenied)
+        );
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_lives_in_memory_until_liquidated() {
+        let service = AmatlService::new(Config::default(), false).await;
+        assert!(!service.ephemeral_credential_present("marginalia"));
+
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        assert!(service.ephemeral_credential_present("marginalia"));
+
+        service.clear_provider_credential("marginalia");
+        assert!(!service.ephemeral_credential_present("marginalia"));
+
+        // Idempotent: liquidating an absent key is not an error.
+        service.clear_provider_credential("marginalia");
+        assert!(!service.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_is_never_serialized_into_the_config() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        // The key must never reach a serialized form of the configuration — the
+        // same shape a config file or a `/config` view would carry.
+        let serialized = serde_json::to_string(service.config()).unwrap();
+        assert!(!serialized.contains("marginalia-secret-key"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_rejects_unregistered_empty_and_oversized_values() {
+        let service = AmatlService::new(Config::default(), false).await;
+        assert!(service
+            .set_provider_credential("not_registered", "k")
+            .is_err());
+        assert!(service.set_provider_credential("marginalia", "").is_err());
+        assert!(service
+            .set_provider_credential("marginalia", &"x".repeat(513))
+            .is_err());
+        // None of the rejected values were committed.
+        assert!(!service.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_survives_reload_without_a_restart() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        let reloaded = service.reloaded(Config::default()).await.unwrap();
+        assert!(reloaded.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn credential_source_reports_none_then_ephemeral() {
+        let mut config = Config::default();
+        // Point marginalia at a variable that is not set, so the baseline is
+        // `none` regardless of the host environment (an operator shell may have
+        // MARGINALIA_API_KEY exported).
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        config.providers.entry("marginalia").credential_env =
+            Some(format!("AMATL_TEST_UNSET_{nonce}"));
+        let service = AmatlService::new(config, false).await;
+        let source = |service: &AmatlService| {
+            service
+                .provider_summaries()
+                .unwrap()
+                .into_iter()
+                .find(|summary| summary.name == "marginalia")
+                .unwrap()
+                .credential_source
+        };
+        assert_eq!(source(&service), CredentialSource::None);
+
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        assert_eq!(source(&service), CredentialSource::Ephemeral);
+    }
+
+    #[tokio::test]
+    async fn credential_source_reports_environment_when_only_the_variable_is_set() {
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let var = format!("AMATL_TEST_MARGINALIA_KEY_{nonce}");
+        std::env::set_var(&var, "environment-supplied-key");
+
+        let mut config = Config::default();
+        config.providers.entry("marginalia").credential_env = Some(var.clone());
+        let service = AmatlService::new(config, false).await;
+        let summary = service
+            .provider_summaries()
+            .unwrap()
+            .into_iter()
+            .find(|summary| summary.name == "marginalia")
+            .unwrap();
+        assert_eq!(summary.credential_source, CredentialSource::Environment);
+
+        std::env::remove_var(&var);
+    }
+
+    #[tokio::test]
+    async fn status_sources_expose_credential_provenance_but_not_the_value() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        let status = service.status().await.unwrap();
+        let marginalia = status
+            .sources
+            .iter()
+            .find(|source| source.name == "marginalia")
+            .unwrap();
+        assert_eq!(marginalia.credential_source, CredentialSource::Ephemeral);
+        // The operator view names the provenance, never the key.
+        let serialized = serde_json::to_string(&status).unwrap();
+        assert!(!serialized.contains("marginalia-secret-key"));
+    }
+
+    #[test]
+    fn credential_source_serializes_to_the_contracted_wire_values() {
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::None).unwrap(),
+            "\"none\""
+        );
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::Ephemeral).unwrap(),
+            "\"ephemeral\""
+        );
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::Environment).unwrap(),
+            "\"environment\""
         );
     }
 

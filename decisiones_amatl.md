@@ -455,3 +455,55 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `docs/api/openapi.yaml` (`DeepInput`, `DeepTarget`);
   `crates/amatl-core/tests/deep_phase5.rs`;
   `crates/amatl-server/src/tests.rs`.
+
+## ADR-014 — Credencial efímera de provider en memoria, liquidable y zeroizada
+
+- **Fecha:** 2026-10-12
+- **Estado:** Aceptada
+- **Contexto:** El operador necesitaba insertar la API key de Marginalia desde
+  la UI sin reiniciar el proceso ni editar `amatl.toml`, y poder erradicarla
+  por completo al terminar. El canal `POST /providers/{name}/credential`
+  (admin-scoped, RAM-only) ya existía, pero (a) contradecía `docs/security/
+  secrets.md`, que declaraba «los secretos sólo entran mediante variables de
+  entorno»; (b) `clear_provider_credential` sólo sacaba la entrada del mapa,
+  dejando los bytes de la key en el heap; (c) si el operador también exportaba
+  `credential_env`, «Liquidar» no erradicaba la credencial en uso y la UI lo
+  ocultaba; (d) no había evento de auditoría ni pruebas del control.
+- **Decisión:** Reconocer el canal admin-scoped, no persistente y validado por
+  canario como una fuente de credencial legítima, y cerrar sus huecos:
+  - La key vive en `BTreeMap<String, Zeroizing<String>>` en RAM; `Zeroizing`
+    borra el buffer al reemplazar, liquidar o caer el proceso. `resolved_credential`
+    y `ProviderBuildContext.credential` propagan `Zeroizing`, y los adapters
+    (Brave/Mojeek/Marginalia) guardan `Option<Zeroizing<String>>`, de modo que
+    la copia que retiene cada provider se borra al caer. El cuerpo HTTP se
+    deserializa en un `SecretKey` que se zeroiza en `Drop`.
+  - `ProviderSummary`/`SourceStatus` exponen `credential_source`
+    (`none`/`ephemeral`/`environment`) — nunca el valor — para que la UI habilite
+    «Liquidar» sólo cuando puede erradicar algo y explique cuándo la key viene
+    del entorno.
+  - `POST`/`DELETE /providers/{name}/credential` emiten eventos de auditoría
+    (`provider_credential_inserted`/`liquidated`/`rejected`) con identidad y
+    proveedor, sin el secreto.
+  - La inserción sigue validándose con un canario live antes de comprometer, y
+    falla cerrado (`false`) bajo egress denegado.
+- **Superficie:** `crates/amatl-core/src/service.rs` (`CredentialSource`,
+  `ProviderSummary.credential_source`, `SourceStatus.credential_source`,
+  `ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>`);
+  `providers/{registry,brave,mojeek,marginalia}.rs`; `amatl-server/src/lib.rs`
+  (`SecretKey`, `audit_credential_action`); `docs/api/openapi.yaml`
+  (`CredentialSource`); `amatl-ui/assets/{app.js,i18n.js}`.
+- **Consecuencias:** «Liquidar» erradica la key en memoria de forma efectiva
+  (no queda en el heap tras el `Drop`) y la UI distingue el origen real de la
+  credencial. `credential_source` es aditivo al contrato `schema_version = "1"`.
+  Riesgo residual documentado: la RAM puede ir a swap y no hay `mlock`; el
+  `String` transitorio del header de una request en vuelo no se zeroiza. La
+  key sigue sin persistirse: muere con el proceso; sobrevive a `POST /reload`
+  en-proceso, que es lo deseado.
+- **Alternativas descartadas:** prohibir el canal y exigir siempre variable de
+  entorno (perdería el caso de uso del operador sin ganar una barrera real,
+  porque el entorno del proceso también es legible); no zeroizar y confiar en
+  el `Drop` normal de `String` (deja la key en el heap); exponer la key o su
+  hash en `/status` (filtra material sensible sin necesidad).
+- **Trazabilidad:** `docs/security/secrets.md`; `amatl-server/src/tests.rs`
+  (autorización admin, fail-closed en `isolated`, DELETE idempotente);
+  `service.rs` (semántica set/clear/present, no persistencia en config).

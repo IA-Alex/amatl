@@ -66,6 +66,7 @@ dependencies = [
  "tracing",
  "unicode-normalization",
  "url",
+ "zeroize",
 ]
 
 [[package]]
@@ -94,6 +95,7 @@ dependencies = [
  "tracing",
  "tracing-subscriber",
  "url",
+ "zeroize",
 ]
 
 [[package]]

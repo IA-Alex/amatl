@@ -2,10 +2,18 @@
 
 ## Fuentes permitidas
 
-Los secretos sólo entran mediante variables de entorno. `BRAVE_API_KEY` y
-`MOJEEK_API_KEY` son los defaults de los adapters; el servidor lee la variable
-nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El archivo
-`amatl.toml` sólo puede contener el **nombre** de la variable, nunca su valor.
+Los secretos entran por dos vías sancionadas, y ninguna otra:
+
+1. **Variables de entorno** (vía por defecto). `BRAVE_API_KEY` y
+   `MOJEEK_API_KEY` son los defaults de los adapters; el servidor lee la variable
+   nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El
+   archivo `amatl.toml` sólo puede contener el **nombre** de la variable, nunca
+   su valor.
+2. **Inyección efímera en memoria** (vía admin explícita). Un operador con
+   scope `admin` puede insertar la key de un provider desde la UI
+   (`POST /providers/{name}/credential`). La key vive sólo en la RAM del
+   proceso, se valida con un canario live antes de aceptarse y se erradica con
+   `DELETE` o al morir el proceso. Ver «Credenciales efímeras de provider».
 
 Queda prohibido incluir tokens, claves, passwords, cookies o cabeceras de
 autorización en código, commits, configuración TOML, fixtures, logs, telemetría,
@@ -28,6 +36,34 @@ portal del provider si se sospecha exposición. Para una prueba real, el
 cuota o QPM y no certifica autenticación. Estas reglas siguen los principios de
 ciclo de vida, control de acceso y minimización de exposición de la [OWASP
 Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
+
+## Credenciales efímeras de provider
+
+Para una fuente como Marginalia, el operador puede insertar la API key desde la
+UI en vez de exportarla. El diseño es deliberadamente acotado:
+
+- **Entrada:** `POST /providers/{name}/credential` exige scope `admin` y recibe
+  la key en el cuerpo JSON (nunca en la URL). `amatl.toml` no cambia.
+- **Validación previa:** la key se prueba con un canario live antes de
+  comprometerla; una key inválida, vencida o mal emitida se rechaza sin
+  guardarse. Bajo `data_policy` que niega egress, el canario falla cerrado y no
+  se almacena nada.
+- **Almacenamiento:** sólo en RAM del proceso, en un mapa `Zeroizing` que borra
+  el buffer de la key al reemplazarla, al liquidarla o al morir el proceso. No
+  se escribe en disco, TOML, entorno, logs ni auditoría; `/status` y
+  `/providers` exponen únicamente la procedencia (`credential_source`:
+  `none`/`ephemeral`/`environment`), nunca el valor.
+- **Erradicación:** `DELETE /providers/{name}/credential` (idempotente, scope
+  `admin`) la elimina de la memoria y el siguiente Search la ve ausente. La
+  UI sólo habilita «Liquidar» cuando `credential_source = "ephemeral"`: si la
+  key viene de la variable de entorno declarada en `credential_env`, la UI lo
+  indica y no ofrece borrarla, porque no está bajo su control.
+- **Auditoría:** cada inserción, liquidación o rechazo emite un evento
+  (`provider_credential_inserted`/`liquidated`/`rejected`) con la identidad y
+  el provider, nunca la key.
+- **Riesgo residual:** la RAM puede ir a swap y no se usa `mlock`; el `String`
+  transitorio del header de una request en vuelo no se zeroiza. Para
+  aislamiento verificable del entorno, añade sandbox/swap cifrado del host.
 
 ## Token del servidor
 

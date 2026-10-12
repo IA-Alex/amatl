@@ -11,6 +11,7 @@ use super::{
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
+use zeroize::Zeroizing;
 
 /// Everything a factory may use to build one provider instance.
 pub struct ProviderBuildContext<'a> {
@@ -22,8 +23,10 @@ pub struct ProviderBuildContext<'a> {
     pub enabled: bool,
     /// Whether the governance record is complete and unexpired.
     pub approved: bool,
-    /// Credential resolved from `credential_env`, when present and non-empty.
-    pub credential: Option<String>,
+    /// Credential resolved from an operator-injected in-memory value or from
+    /// `credential_env`, when present and non-empty. `Zeroizing` so the copy a
+    /// provider keeps is wiped from the heap when the provider is dropped.
+    pub credential: Option<Zeroizing<String>>,
     /// Shared outbound transport, already subject to the data policy.
     pub transport: Arc<dyn HttpTransport>,
 }
@@ -157,7 +160,7 @@ impl ProviderFactory for SearXngFactory {
         let url = context
             .credential
             .as_deref()
-            .and_then(|url| url::Url::parse(url).ok())
+            .and_then(|url| url::Url::parse(url.as_str()).ok())
             .unwrap_or_else(|| {
                 url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid")
             });

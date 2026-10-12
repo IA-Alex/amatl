@@ -46,6 +46,7 @@ tower-http = { version = "0.7.0", features = ["cors", "limit", "timeout"] }
 url = { version = "2", features = ["serde"] }
 unicode-normalization = "0.1"
 fs2 = "0.4"
+zeroize = "1"
 
 [workspace.metadata.release]
 primary-target = "x86_64-unknown-linux-musl"

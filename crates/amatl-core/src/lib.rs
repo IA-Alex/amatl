@@ -153,9 +153,10 @@ pub use router::{
 };
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
-    AnswerStatus, CacheStatus, DataPolicyStatus, DeepTarget, ExecutionLimits, ProviderCanaryError,
-    ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError,
-    ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
+    AnswerStatus, CacheStatus, CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits,
+    ProviderCanaryError, ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput,
+    SearchExecution, ServiceError, ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus,
+    StorageStatus,
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,

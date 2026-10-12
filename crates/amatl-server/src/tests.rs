@@ -2629,6 +2629,90 @@ async fn an_expired_credential_stops_being_accepted() {
 }
 
 #[tokio::test]
+async fn provider_credential_requires_admin_scope() {
+    let app = scoped_app().await;
+    for method in [Method::POST, Method::DELETE] {
+        let body = if method == Method::POST {
+            Body::from(r#"{"key":"candidate-key"}"#)
+        } else {
+            Body::empty()
+        };
+        let response = app
+            .clone()
+            .oneshot(
+                as_client("/providers/marginalia/credential", SEARCH_ONLY_TOKEN)
+                    .method(method)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(body)
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::FORBIDDEN);
+        assert_eq!(json_body(response).await["error"]["code"], "scope_denied");
+    }
+}
+
+#[tokio::test]
+async fn provider_credential_put_is_fail_closed_under_isolated() {
+    let app = isolated_app().await;
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/providers/marginalia/credential")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"key":"candidate-key"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    // Egress is denied, so the live canary fails closed and nothing is stored.
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "invalid_request"
+    );
+
+    let status = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(status.status(), StatusCode::OK);
+    let body = json_body(status).await;
+    let marginalia = body["sources"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|source| source["name"] == "marginalia")
+        .expect("marginalia source is reported");
+    // Never "ephemeral": the rejected key was not committed.
+    assert_ne!(marginalia["credential_source"], "ephemeral");
+}
+
+#[tokio::test]
+async fn provider_credential_delete_is_idempotent_and_reports_absent() {
+    let app = app().await;
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/providers/marginalia/credential")
+                    .method(Method::DELETE)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        let body = json_body(response).await;
+        assert_eq!(body["name"], "marginalia");
+        assert_eq!(body["set"], false);
+        assert_eq!(body["available"], false);
+    }
+}
+
+#[tokio::test]
 async fn mcp_tools_are_authorized_per_client() {
     let app = scoped_app().await;
     let call = |tool: &str| {
