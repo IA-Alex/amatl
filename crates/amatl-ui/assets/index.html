@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
     <title>AMATL — Búsqueda y evidencia</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
@@ -61,6 +61,24 @@
             </label>
             <p id="strategist-toggle-status" class="field-help" hidden></p>
           </div>
+          <fieldset class="provider-selector" id="provider-selector" hidden>
+            <legend id="provider-selector-label">Fuente de búsqueda</legend>
+            <div class="provider-selector-options" id="provider-selector-options" role="radiogroup">
+              <label class="provider-selector-option">
+                <input type="radio" name="provider-source" value="marginalia">
+                <span>Marginalia</span>
+              </label>
+              <label class="provider-selector-option">
+                <input type="radio" name="provider-source" value="searxng">
+                <span>SearXNG</span>
+              </label>
+              <label class="provider-selector-option">
+                <input type="radio" name="provider-source" value="both">
+                <span>Ambos</span>
+              </label>
+            </div>
+            <p id="provider-selector-status" class="field-help" role="status" hidden></p>
+          </fieldset>
           <div class="deep-options">
             <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
             <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">

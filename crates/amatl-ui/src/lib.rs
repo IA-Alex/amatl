@@ -5,6 +5,13 @@
 //! Phase 9 without copying product logic into the UI.
 
 pub const CONTENT_SECURITY_POLICY: &str = "default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'";
+/// The same policy as [`CONTENT_SECURITY_POLICY`] minus `frame-ancestors`.
+///
+/// `frame-ancestors` is ignored (and warned about in the console) when
+/// delivered through a `<meta>` element; only the response header can enforce
+/// it. The header keeps the full policy, so frame-embedding stays blocked,
+/// while the `<meta>` mirrors only the directives it can actually apply.
+pub const META_CONTENT_SECURITY_POLICY: &str = "default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'";
 pub const REFERRER_POLICY: &str = "no-referrer";
 pub const PERMISSIONS_POLICY: &str = "camera=(), microphone=(), geolocation=()";
 
@@ -112,6 +119,10 @@ mod tests {
         assert!(!CONTENT_SECURITY_POLICY.contains("unsafe-inline"));
         assert!(!CONTENT_SECURITY_POLICY.contains("unsafe-eval"));
         assert!(!CONTENT_SECURITY_POLICY.contains('*'));
+        // The `<meta>` copy drops `frame-ancestors` (ignored there, warned
+        // about); the header is the one that still carries it.
+        assert!(!META_CONTENT_SECURITY_POLICY.contains("frame-ancestors"));
+        assert!(!META_CONTENT_SECURITY_POLICY.contains("unsafe-inline"));
         assert!(security_headers(false)
             .iter()
             .all(|(name, _)| *name != "Strict-Transport-Security"));
@@ -129,7 +140,7 @@ mod tests {
         assert!(html.contains("aria-live=\"polite\""));
         assert!(html.contains("<label"));
         assert!(html.contains("class=\"skip-link\""));
-        assert!(html.contains(&format!("content=\"{CONTENT_SECURITY_POLICY}\"")));
+        assert!(html.contains(&format!("content=\"{META_CONTENT_SECURITY_POLICY}\"")));
     }
 
     #[test]
@@ -350,5 +361,84 @@ mod tests {
                 .collect::<std::collections::BTreeSet<_>>()
         };
         assert_eq!(keys(english), keys(spanish));
+    }
+
+    #[test]
+    fn marginalia_surface_copy_is_catalog_driven() {
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // The provider-credential button and its whole dialog must resolve
+        // their copy through the catalog like every other surface, so a
+        // non-Spanish locale never shows a half-translated window (this is the
+        // one place an operator types a secret).
+        for key in [
+            "marginaliaKeyButton",
+            "marginaliaClearButton",
+            "marginaliaDialogHeading",
+            "marginaliaDialogHelp",
+            "marginaliaKeyPlaceholder",
+            "marginaliaSave",
+            "marginaliaCancel",
+        ] {
+            assert!(catalog.contains(key), "missing catalog key: {key}");
+            assert!(
+                javascript.contains(&format!("t(\"{key}\")")),
+                "app.js does not resolve {key} through the catalog"
+            );
+        }
+    }
+
+    #[test]
+    fn strategist_toggle_reports_an_enabled_but_unavailable_state() {
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // A configured strategist that is switched on without a usable
+        // credential must say so, mirroring the AI-summary `answerHint`.
+        assert!(catalog.contains("strategistHintMissingCredential"));
+        assert!(javascript.contains("t(\"strategistHintMissingCredential\")"));
+        assert!(javascript.contains("strategistToggleStatus.hidden"));
+        assert!(javascript.contains("strategistStatus.configured && strategistStatus.enabled"));
+    }
+
+    #[test]
+    fn storage_backed_panels_are_gated_on_storage_availability() {
+        let javascript = text("/app.js");
+        // `/history` and `/saved` answer 503 when persistence is off; the panel
+        // refresh must not request them unless `/status` reports storage as on
+        // and healthy, and must hide the panels otherwise.
+        assert!(javascript.contains("async function refreshPanels"));
+        assert!(javascript.contains("const status = await fetchServiceState()"));
+        assert!(javascript.contains("if (storage.enabled && storage.available)"));
+        assert!(javascript.contains("historyPanel.hidden = true"));
+        assert!(javascript.contains("savedPanel.hidden = true"));
+    }
+
+    #[test]
+    fn source_selector_maps_three_choices_onto_provider_enabled() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // A single-choice segmented control (Marginalia / SearXNG / Ambos)
+        // must exist in the search panel and resolve its copy through the
+        // catalog, not half-hardcoded.
+        assert!(html.contains("id=\"provider-selector\""));
+        assert!(html.contains("name=\"provider-source\""));
+        assert!(html.contains("value=\"marginalia\""));
+        assert!(html.contains("value=\"searxng\""));
+        assert!(html.contains("value=\"both\""));
+        assert!(catalog.contains("providerSelectorLabel"));
+        assert!(catalog.contains("providerSourceBoth"));
+        assert!(javascript.contains("t(\"providerSelectorLabel\")"));
+        // The three choices reduce to exactly the two per-provider toggles the
+        // backend speaks (`POST /providers/{name}/enabled`), keeping both the
+        // selector and the detailed panel on the same `providers.enabled` list.
+        assert!(javascript.contains("providerSelectorOptions.addEventListener(\"change\""));
+        assert!(javascript.contains("applyProviderSource"));
+        assert!(javascript.contains("PROVIDER_SOURCE_TARGET"));
+        assert!(javascript.contains("marginalia: [\"marginalia\"]"));
+        assert!(javascript.contains("searxng: [\"searxng\"]"));
+        assert!(javascript.contains("both: [\"marginalia\", \"searxng\"]"));
+        assert!(javascript.contains("syncProviderSelector"));
+        assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
     }
 }

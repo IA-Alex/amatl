@@ -613,6 +613,88 @@ const providerStatus = document.querySelector(".provider-status");
 const providerList = document.querySelector("#provider-list");
 const providerStatusText = document.querySelector("#provider-status-text");
 
+// ── Source selector (Marginalia / SearXNG / Ambos) ──────────────
+// A search-level control that drives the same `providers.enabled` list the
+// detailed source panel reflects. The radio selection is *derived* from
+// `providers.enabled` (single source of truth, `/providers`), so the two
+// surfaces can never drift; picking an option issues the ordered per-provider
+// toggles needed to reach exactly that membership.
+const providerSelector = document.querySelector("#provider-selector");
+const providerSelectorOptions = document.querySelector("#provider-selector-options");
+const providerSelectorStatus = document.querySelector("#provider-selector-status");
+const PROVIDER_SOURCE_NAME = ["marginalia", "searxng"];
+
+// Map a `providers.enabled` list to a radio value: "both" when both of the
+// selector's providers are on, otherwise the single on one, or null if neither.
+function providerSourceValue(enabledList) {
+  const list = Array.isArray(enabledList) ? enabledList : [];
+  const on = PROVIDER_SOURCE_NAME.filter((name) => list.includes(name));
+  if (on.length === 2) return "both";
+  if (on.length === 1) return on[0];
+  return null;
+}
+
+function syncProviderSelector(enabledList) {
+  const value = providerSourceValue(enabledList);
+  for (const input of providerSelectorOptions.querySelectorAll('input[type="radio"]')) {
+    input.checked = input.value === value;
+    // Only the two provider sources + "both" are selectable drives; if neither
+    // is enabled the group goes unchecked rather than inventing a state.
+  }
+}
+
+// Desired `providers.enabled` for each radio value.
+const PROVIDER_SOURCE_TARGET = {
+  marginalia: ["marginalia"],
+  searxng: ["searxng"],
+  both: ["marginalia", "searxng"],
+};
+
+async function applyProviderSource(value) {
+  const target = PROVIDER_SOURCE_TARGET[value];
+  if (!target) return;
+  // Reaching the target may need more than one per-provider toggle (e.g.
+  // "SearXNG" from "Ambos" must also switch Marginalia off). Disable the whole
+  // group while any write is in flight; on failure we re-sync from the server's
+  // authoritative list instead of trusting a remembered selection.
+  providerSelectorOptions
+    .querySelectorAll('input[type="radio"]')
+    .forEach((input) => (input.disabled = true));
+  providerSelectorStatus.hidden = false;
+  providerSelectorStatus.textContent = t("providerSelectorBusy");
+  try {
+    for (const enabled of PROVIDER_SOURCE_NAME) {
+      // Reaching the target may toggle a provider on or off independently;
+      // POST each one to its boolean under `providers.enabled`. Any error
+      // below aborts and the whole selector re-syncs from the server.
+      const desired = target.includes(enabled);
+      await globalThis.api.post(`/providers/${encodeURIComponent(enabled)}/enabled`, {
+        enabled: desired,
+      });
+    }
+    await fetchProviderStatus();
+    providerSelectorStatus.textContent = t("providerSelectorSynced");
+    providerSelectorStatus.dataset.state = "success";
+  } catch (error) {
+    providerSelectorStatus.textContent = error.message.includes("401")
+      ? t("unauthorized")
+      : t("providerSelectorFailed");
+    providerSelectorStatus.dataset.state = "error";
+    // Revert to the authoritative server state.
+    await fetchProviderStatus();
+  } finally {
+    providerSelectorOptions
+      .querySelectorAll('input[type="radio"]')
+      .forEach((input) => (input.disabled = false));
+  }
+}
+
+providerSelectorOptions.addEventListener("change", (event) => {
+  if (event.target.matches('input[type="radio"]') && event.target.checked) {
+    applyProviderSource(event.target.value);
+  }
+});
+
 const PROVIDER_REASON_KEYS = {
   provider_not_approved: "providerReasonNotApproved",
   provider_disabled: "providerReasonDisabled",
@@ -661,6 +743,7 @@ async function fetchProviderStatus() {
     if (!payload || !Array.isArray(payload.providers)) return;
     providerList.replaceChildren();
     let unavailable = 0;
+    const enabledList = [];
     for (const provider of payload.providers) {
       const item = document.createElement("li");
       item.className = "provider-item";
@@ -697,8 +780,17 @@ async function fetchProviderStatus() {
         toggleProvider(provider.name, checkbox.checked, checkbox, reason),
       );
       providerList.append(item);
+      if (provider.enabled) enabledList.push(provider.name);
     }
     providerStatus.hidden = false;
+    // The source selector is valid only when the two providers it drives are
+    // actually declared; otherwise keep it hidden rather than showing controls
+    // with nothing to control.
+    providerSelector.hidden = !(
+      payload.providers.some((p) => p.name === "marginalia") &&
+      payload.providers.some((p) => p.name === "searxng")
+    );
+    if (!providerSelector.hidden) syncProviderSelector(enabledList);
     if (unavailable === 0) {
       providerStatusText.textContent = t("allAvailable");
       providerStatusText.dataset.state = "success";
@@ -709,7 +801,9 @@ async function fetchProviderStatus() {
       providerStatusText.textContent = t("noneAvailable");
       providerStatusText.dataset.state = "error";
     }
-  } catch (_) {}
+  } catch (_) {
+    providerSelector.hidden = true;
+  }
 }
 
 // ── Service state ───────────────────────────────────────────────
@@ -824,6 +918,14 @@ async function fetchServiceState() {
       strategistEnabledToggle.disabled = true;
       strategistToggleLabel.textContent = t("strategistUnconfigured");
     }
+    // Configured and switched on, but no usable credential: the toggle flips a
+    // real flag, yet the model will not actually run. Say so instead of leaving
+    // an operator to assume search is being refined — the same fail-loudly
+    // pattern `answerHint` uses for the AI summary button.
+    strategistToggleStatus.hidden = !(
+      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available
+    );
+    strategistToggleStatus.textContent = t("strategistHintMissingCredential");
     const degraded = payload.status !== "ok";
     serviceSummary.textContent = degraded ? t("serviceDegraded") : t("serviceOk");
     serviceSummary.dataset.state = degraded ? "partial" : "success";
@@ -1307,11 +1409,23 @@ async function rotateServerClient(id, button) {
 
 clientCreateForm.addEventListener("submit", createServerClient);
 
-function refreshPanels() {
+// The storage-backed panels are only meaningful when persistence is on and
+// healthy: with storage disabled (or unreachable) `/history` and `/saved`
+// answer `503`, so requesting them on every refresh is pure noise. `/status`
+// already reports the authoritative `storage` block, so gate the two panels on
+// it and hide them otherwise — the same fail-closed convention the fetch
+// functions themselves use.
+async function refreshPanels() {
   fetchProviderStatus();
-  fetchServiceState();
-  fetchHistory();
-  fetchSavedDocuments();
+  const status = await fetchServiceState();
+  const storage = status && status.storage ? status.storage : {};
+  if (storage.enabled && storage.available) {
+    fetchHistory();
+    fetchSavedDocuments();
+  } else {
+    historyPanel.hidden = true;
+    savedPanel.hidden = true;
+  }
   fetchServerClients();
 }
 
@@ -1363,5 +1477,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#client-token-heading").textContent = t("clientTokenHeading");
   document.querySelector("#client-token-warning").textContent = t("clientTokenWarning");
   document.querySelector("#client-token-close").textContent = t("clientTokenClose");
+  // The Marginalia provider-credential surface: button labels and the whole
+  // dialog resolve through the catalog too, so a non-Spanish locale never shows
+  // a half-translated window (the dialog is the one place a secret is typed).
+  document.querySelector("#marginalia-key-button").textContent = t("marginaliaKeyButton");
+  document.querySelector("#marginalia-clear-button").textContent = t("marginaliaClearButton");
+  document.querySelector("#marginalia-dialog-heading").textContent = t("marginaliaDialogHeading");
+  document.querySelector("#marginalia-dialog-help").textContent = t("marginaliaDialogHelp");
+  marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
+  document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
+  document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");
+  // Source selector: legend and the "Ambos/Both" option are translatable; the
+  // provider names stay as proper nouns.
+  document.querySelector("#provider-selector-label").textContent = t("providerSelectorLabel");
+  const sourceBothOption = document.querySelector(
+    '.provider-selector-option input[value="both"]',
+  ).closest("label");
+  sourceBothOption.querySelector("span").textContent = t("providerSourceBoth");
   updateThemeToggle();
 });

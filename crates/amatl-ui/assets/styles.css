@@ -447,6 +447,64 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .model-options .field-help { margin: 0; }
 .provenance a { color: var(--accent); }
 
+/* Source selector (Marginalia / SearXNG / Ambos) — a search-level control in
+   the same secondary row as the model toggle, using a segmented radio group so
+   the operator picks exactly one source scope instead of juggling two switches.
+   Styling shared with the model/answer toggles for a single visual language. */
+.provider-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  padding: 0;
+  border: none;
+  align-items: flex-start;
+}
+.provider-selector legend {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  margin-bottom: 0.25rem;
+}
+.provider-selector-options {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.provider-selector-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.provider-selector-option:has(input:checked) {
+  border-color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent-strong) 12%, transparent);
+}
+.provider-selector-option:has(input:disabled) {
+  opacity: 0.55;
+  cursor: wait;
+}
+.provider-selector-option:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.provider-selector-option input[type="radio"] {
+  accent-color: var(--accent-strong);
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  cursor: pointer;
+}
+.provider-selector .field-help { margin: 0; }
+.provider-selector:has(input:disabled) .provider-selector-option { cursor: wait; }
+
 .loading { display: flex; gap: 0.35rem; margin: 2rem 0; }
 .loading[hidden] { display: none; }
 .loading span { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--accent); animation: pulse 1s ease-in-out infinite alternate; }
