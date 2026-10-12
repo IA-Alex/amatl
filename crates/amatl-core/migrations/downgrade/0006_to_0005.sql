@@ -3,5 +3,6 @@
 -- costs the current cooldown windows.
 DROP INDEX IF EXISTS provider_circuit_open;
 DROP TABLE IF EXISTS provider_circuit;
+DELETE FROM amatl_schema_migrations WHERE version = 6;
 
 PRAGMA user_version = 5;
