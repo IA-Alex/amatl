@@ -94,6 +94,11 @@ struct CircuitRecord {
     consecutive_failures: u32,
     opened_at: Option<i64>,
     open_until: Option<i64>,
+    /// When the single half-open probe was claimed, so concurrent callers
+    /// cannot all stampede a source that just came out of cooldown. A claim
+    /// older than the cooldown is treated as stale and reclaimed, so an
+    /// admitted-but-never-recorded probe cannot wedge the breaker forever.
+    probe_started_at: Option<i64>,
 }
 
 /// Circuit breaker shared by every surface of one service instance.
@@ -135,6 +140,7 @@ impl ProviderCircuit {
                                 consecutive_failures: row.consecutive_failures,
                                 opened_at: row.opened_at,
                                 open_until: row.open_until,
+                                probe_started_at: None,
                             },
                         )
                     })
@@ -167,8 +173,31 @@ impl ProviderCircuit {
     }
 
     /// Whether a call to `provider` may be attempted now.
+    ///
+    /// In `HalfOpen` this *claims* the single probe: the first caller after the
+    /// cooldown gets `true`, every concurrent caller gets `false` until the
+    /// probe completes (`record`), so the breaker admits one probe rather than
+    /// a stampede.
     pub fn allows_call(&self, provider: &str, now: i64) -> bool {
-        self.state(provider, now).allows_call()
+        match self.state(provider, now) {
+            CircuitState::Closed => true,
+            CircuitState::Open => false,
+            CircuitState::HalfOpen => {
+                let Ok(mut records) = self.records.lock() else {
+                    return false;
+                };
+                let record = records.entry(provider.to_owned()).or_default();
+                let active = record.probe_started_at.is_some_and(|started| {
+                    now.saturating_sub(started) < self.policy.open_seconds as i64
+                });
+                if active {
+                    false
+                } else {
+                    record.probe_started_at = Some(now);
+                    true
+                }
+            }
+        }
     }
 
     /// Record one call outcome, opening or closing the circuit as needed.
@@ -181,6 +210,8 @@ impl ProviderCircuit {
                 return;
             };
             let record = records.entry(provider.to_owned()).or_default();
+            // The probe (if any) is complete; release the half-open claim.
+            record.probe_started_at = None;
             if success {
                 *record = CircuitRecord::default();
             } else {
@@ -281,6 +312,35 @@ mod tests {
         assert_eq!(breaker.state("mojeek", 41), CircuitState::HalfOpen);
         breaker.record("mojeek", false, 41).await;
         assert_eq!(breaker.state("mojeek", 42), CircuitState::Open);
+    }
+
+    #[tokio::test]
+    async fn only_one_half_open_probe_is_admitted_at_a_time() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("brave", false, 10).await;
+        breaker.record("brave", false, 11).await;
+        assert_eq!(breaker.state("brave", 41), CircuitState::HalfOpen);
+        // The first caller claims the probe; a concurrent caller is refused.
+        assert!(breaker.allows_call("brave", 41));
+        assert!(!breaker.allows_call("brave", 41));
+        // Completing the probe releases the claim and reopens the circuit.
+        breaker.record("brave", false, 41).await;
+        assert_eq!(breaker.state("brave", 42), CircuitState::Open);
+        // After the next cooldown a fresh probe is admitted.
+        assert_eq!(breaker.state("brave", 72), CircuitState::HalfOpen);
+        assert!(breaker.allows_call("brave", 72));
+    }
+
+    #[tokio::test]
+    async fn a_stale_probe_claim_is_reclaimed() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("brave", false, 10).await;
+        breaker.record("brave", false, 11).await;
+        // Claim at 41, then never record: the claim must not wedge forever.
+        assert!(breaker.allows_call("brave", 41));
+        assert!(!breaker.allows_call("brave", 50));
+        // Past the cooldown the claim is stale and can be reclaimed.
+        assert!(breaker.allows_call("brave", 41 + 30));
     }
 
     #[tokio::test]
