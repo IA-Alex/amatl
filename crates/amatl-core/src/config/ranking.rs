@@ -109,7 +109,7 @@ impl Config {
         if let Some(value) = &patch.path {
             table.insert("path", toml_edit::value(value.as_str()));
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 

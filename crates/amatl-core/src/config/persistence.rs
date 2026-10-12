@@ -11,7 +11,13 @@ pub struct PersistenceConfig {
     /// `enabled`; history never leaves the machine.
     pub history_enabled: bool,
     /// Upper bound on the payload a surface may persist as a saved document.
+    /// The transport must be able to carry it: `server.max_body_bytes` (default
+    /// 64 KiB) must be at least this value plus JSON overhead, or `POST /saved`
+    /// returns `413 body_too_large` before the service ever sees the payload.
     pub saved_document_max_bytes: u64,
+    /// Days saved documents are kept (0 = unlimited). Requires `enabled`.
+    /// Defaults to unlimited because saved documents are explicit user data.
+    pub saved_documents_retention_days: u32,
     /// Days a persisted security event is kept. Requires `enabled`.
     pub audit_retention_days: u32,
     /// Days search history entries are kept (0 = unlimited). Requires `enabled`.
@@ -68,8 +74,12 @@ pub struct DocumentCacheConfig {
     pub max_entries: u64,
     pub max_bytes: u64,
     pub store_content: bool,
-    /// When non-zero, stale entries within this window are served while
-    /// a background revalidation is triggered.
+    /// Reserved: when non-zero, stale entries within this window would be
+    /// served while a background revalidation is triggered. No production read
+    /// path calls the stale-while-revalidate accessor today — Deep revalidates
+    /// with conditional headers (`If-None-Match` / `If-Modified-Since`) — so
+    /// this value currently has no effect. Kept so existing configurations
+    /// remain valid.
     pub stale_while_revalidate_seconds: u64,
 }
 
@@ -80,6 +90,7 @@ impl Default for PersistenceConfig {
             path: "amatl.sqlite3".into(),
             history_enabled: true,
             saved_document_max_bytes: 1_048_576,
+            saved_documents_retention_days: 0,
             audit_retention_days: crate::audit::AUDIT_DEFAULT_RETENTION_DAYS,
             history_retention_days: 90,
             cache_retention_days: 7,
@@ -112,6 +123,7 @@ impl Default for PersistenceConfig {
 pub struct PersistenceConfigPatch {
     pub history_enabled: Option<bool>,
     pub saved_document_max_bytes: Option<u64>,
+    pub saved_documents_retention_days: Option<u32>,
     pub audit_retention_days: Option<u32>,
     pub history_retention_days: Option<u32>,
     pub cache_retention_days: Option<u32>,
@@ -133,6 +145,9 @@ impl PersistenceConfigPatch {
         }
         if let Some(value) = self.saved_document_max_bytes {
             config.saved_document_max_bytes = value;
+        }
+        if let Some(value) = self.saved_documents_retention_days {
+            config.saved_documents_retention_days = value;
         }
         if let Some(value) = self.audit_retention_days {
             config.audit_retention_days = value;
@@ -227,6 +242,15 @@ impl Config {
                 )?),
             );
         }
+        if let Some(value) = patch.saved_documents_retention_days {
+            table.insert(
+                "saved_documents_retention_days",
+                toml_edit::value(signed_integer(
+                    value,
+                    "persistence.saved_documents_retention_days",
+                )?),
+            );
+        }
         if let Some(value) = patch.audit_retention_days {
             table.insert(
                 "audit_retention_days",
@@ -279,7 +303,7 @@ impl Config {
             );
         }
         set_clearable_string(table, "backup_directory", patch.backup_directory.as_deref());
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
     /// Retention windows and backup limits for the SQLite persistence layer.

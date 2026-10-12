@@ -65,7 +65,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "telemetry.retention_days")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 

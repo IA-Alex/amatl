@@ -185,7 +185,7 @@ impl Config {
         if let Some(inference) = patch.inference {
             table.insert("inference", toml_edit::value(inference.as_str()));
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 }

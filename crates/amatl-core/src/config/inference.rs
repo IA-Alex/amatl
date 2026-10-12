@@ -407,7 +407,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "inference.remote_max_batch")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -452,7 +452,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "answer.max_answer_tokens")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
     /// Replace `[expansion]` wholesale. The caller must have validated a

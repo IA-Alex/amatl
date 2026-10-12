@@ -281,7 +281,7 @@ impl Config {
             name,
             toml_edit::Item::Table(provider_record_to_table(record)),
         );
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 }

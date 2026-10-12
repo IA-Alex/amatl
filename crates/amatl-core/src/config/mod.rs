@@ -212,6 +212,25 @@ impl Default for Config {
     }
 }
 
+/// Render and write a configuration document atomically.
+///
+/// Writes to a sibling temp file, fsyncs, then renames over the target. A
+/// reader — including a concurrent `POST /reload` — therefore never observes a
+/// truncated file, and a crash mid-write cannot corrupt the only copy the way a
+/// truncating `std::fs::write` can.
+pub(crate) fn write_config_document(
+    path: &Path,
+    document: &toml_edit::DocumentMut,
+) -> Result<(), ConfigError> {
+    use std::io::Write;
+    let temp = path.with_extension(format!("tmp.{}", std::process::id()));
+    let mut file = std::fs::File::create(&temp)?;
+    file.write_all(document.to_string().as_bytes())?;
+    file.sync_all()?;
+    std::fs::rename(&temp, path)?;
+    Ok(())
+}
+
 impl Config {
     pub fn from_toml(input: &str) -> Result<Self, toml::de::Error> {
         toml::from_str(input)
@@ -257,7 +276,7 @@ impl Config {
             document[section] = toml_edit::Item::Table(toml_edit::Table::new());
         }
         document[section][key] = toml_edit::value(value);
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -302,7 +321,7 @@ impl Config {
                 .expect("already_present implies a match");
             array.remove(index);
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -376,7 +395,7 @@ impl Config {
             *table.decor_mut() = existing.decor().clone();
         }
         current.insert(leaf, toml_edit::Item::Table(table));
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -2193,6 +2212,7 @@ mod tests {
         let patch = PersistenceConfigPatch {
             history_enabled: Some(false),
             saved_document_max_bytes: Some(2_097_152),
+            saved_documents_retention_days: Some(365),
             audit_retention_days: Some(30),
             history_retention_days: Some(14),
             cache_retention_days: Some(14),
@@ -2208,6 +2228,7 @@ mod tests {
         let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
         assert!(!reloaded.persistence.history_enabled);
         assert_eq!(reloaded.persistence.saved_document_max_bytes, 2_097_152);
+        assert_eq!(reloaded.persistence.saved_documents_retention_days, 365);
         assert_eq!(reloaded.persistence.audit_retention_days, 30);
         assert_eq!(reloaded.persistence.history_retention_days, 14);
         assert_eq!(reloaded.persistence.cache_retention_days, 14);

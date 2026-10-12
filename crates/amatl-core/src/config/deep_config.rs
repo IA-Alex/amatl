@@ -314,7 +314,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.timeout_ms")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -347,7 +347,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.extractor.max_output_bytes")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -406,7 +406,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.renderer.max_dom_bytes")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
