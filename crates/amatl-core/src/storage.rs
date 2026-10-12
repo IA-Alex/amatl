@@ -6,7 +6,7 @@ use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 
-pub const MIGRATION_VERSION: i64 = 7;
+pub const MIGRATION_VERSION: i64 = 8;
 const POOL_SIZE: u32 = 4;
 
 #[derive(Clone)]
@@ -360,6 +360,10 @@ const AUTO_BACKUP_INFIX: &str = "-auto-";
 const MIGRATION_BACKUP_INFIX: &str = ".backup-";
 /// Filename infix of the safety copy taken before restoring a backup.
 const PRE_RESTORE_BACKUP_INFIX: &str = ".pre-restore-";
+/// How many migration and pre-restore recovery backups to keep (newest first).
+/// Deliberately generous, but bounded so a downgrade/restore cadence cannot
+/// accumulate full-size copies without limit.
+const RECOVERY_BACKUP_KEEP: usize = 5;
 
 /// Why a backup file exists, which decides whether rotation may delete it.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -575,10 +579,17 @@ impl SqliteStorage {
             backup = %backup_path.display(),
             "database backup created before migration"
         );
+        // Bound migration recovery points even when automatic backups are off.
+        Self::rotate_backups(
+            &backup_directory(&self.path, None),
+            &database_stem(&self.path),
+            u32::MAX,
+        );
 
         let _write_guard = self.write_lock.lock().await;
         for version in (target_version + 1..=current).rev() {
             let script = match version {
+                8 => include_str!("../migrations/downgrade/0008_to_0007.sql"),
                 7 => include_str!("../migrations/downgrade/0007_to_0006.sql"),
                 6 => include_str!("../migrations/downgrade/0006_to_0005.sql"),
                 5 => include_str!("../migrations/downgrade/0005_to_0004.sql"),
@@ -630,11 +641,29 @@ impl SqliteStorage {
                     .duration_since(UNIX_EPOCH)
                     .map_or(0, |d| d.as_secs())
             ));
+            // Copy the WAL sibling too: in WAL mode the newest commits live in
+            // `<db>-wal`, so a main-file-only copy can silently miss them and
+            // leave the operator without the writes they were protecting.
             std::fs::copy(path, &safety_path).map_err(|_| StorageError::Operation)?;
+            let wal = PathBuf::from(format!("{}-wal", path.display()));
+            if wal.exists() {
+                let safety_wal = PathBuf::from(format!("{}-wal", safety_path.display()));
+                let _ = std::fs::copy(&wal, &safety_wal);
+            }
+            // Bound the recovery points like every other backup kind.
+            Self::rotate_backups(
+                &backup_directory(path, None),
+                &database_stem(path),
+                u32::MAX,
+            );
         }
 
-        // Replace the database file with the backup.
+        // Replace the database file with the backup, then drop any stale WAL
+        // siblings so the reopened database cannot attempt recovery against the
+        // freshly copied main file.
         std::fs::copy(backup_path, path).map_err(|_| StorageError::Operation)?;
+        let _ = std::fs::remove_file(PathBuf::from(format!("{}-wal", path.display())));
+        let _ = std::fs::remove_file(PathBuf::from(format!("{}-shm", path.display())));
 
         // Open with the restored file, preserving the configured locking mode.
         Self::open(path, locking_mode).await
@@ -662,6 +691,7 @@ impl SqliteStorage {
         let cancel_clone = cancel.clone();
         let storage = Arc::clone(self);
         let history_retention = config.history_retention_days;
+        let saved_retention = config.saved_documents_retention_days;
         let cache_retention = config.cache_retention_days;
         let doc_cache_retention = config.document_cache_retention_days;
         let audit_retention = config.audit_retention_days;
@@ -750,6 +780,15 @@ impl SqliteStorage {
                             match storage.search_history_prune(cutoff).await {
                                 Ok(n) => total_removed += n,
                                 Err(e) => tracing::warn!(target: "amatl::maintenance", error = %e, "history prune failed"),
+                            }
+                        }
+
+                        // ── Purge saved documents ────────────────────
+                        if saved_retention > 0 {
+                            let cutoff = now.saturating_sub(i64::from(saved_retention).saturating_mul(86_400));
+                            match storage.saved_documents_prune(cutoff).await {
+                                Ok(n) => total_removed += n,
+                                Err(e) => tracing::warn!(target: "amatl::maintenance", error = %e, "saved documents prune failed"),
                             }
                         }
 
@@ -939,20 +978,34 @@ impl SqliteStorage {
         matches!(result.as_deref(), Ok("ok"))
     }
 
-    /// Rotate automatic backups, keeping only the most recent `max_count`.
-    ///
-    /// Only [`BackupKind::Auto`] entries are eligible: migration and
-    /// pre-restore backups mark deliberate recovery points and are never
-    /// rotated away by the background task.
+    /// Rotate backups: keep the newest `max_count` automatic backups and the
+    /// newest [`RECOVERY_BACKUP_KEEP`] of each deliberate recovery kind
+    /// (migration and pre-restore), so recovery points are bounded rather than
+    /// kept forever.
     fn rotate_backups(dir: &Path, stem: &str, max_count: u32) {
         let backups = scan_backups(dir, stem);
-        for entry in backups
-            .iter()
-            .filter(|entry| entry.kind == BackupKind::Auto)
-            .skip(max_count as usize)
-        {
-            let _ = std::fs::remove_file(&entry.path);
-            tracing::debug!(target: "amatl::maintenance", path = %entry.path.display(), "rotated old backup");
+        let mut auto = 0usize;
+        let mut migration = 0usize;
+        let mut pre_restore = 0usize;
+        for entry in &backups {
+            let over = match entry.kind {
+                BackupKind::Auto => {
+                    auto += 1;
+                    auto > max_count as usize
+                }
+                BackupKind::Migration => {
+                    migration += 1;
+                    migration > RECOVERY_BACKUP_KEEP
+                }
+                BackupKind::PreRestore => {
+                    pre_restore += 1;
+                    pre_restore > RECOVERY_BACKUP_KEEP
+                }
+            };
+            if over {
+                let _ = std::fs::remove_file(&entry.path);
+                tracing::debug!(target: "amatl::maintenance", path = %entry.path.display(), "rotated old backup");
+            }
         }
     }
 
@@ -1011,8 +1064,9 @@ impl SqliteStorage {
         now: i64,
         ttl_seconds: u64,
     ) -> Result<Option<String>, StorageError> {
-        let _write_guard = self.write_lock.lock().await;
-        let mut transaction = self.pool.begin().await.map_err(operation)?;
+        // Read path: deliberately does not take `write_lock`. The SELECT and the
+        // best-effort `last_accessed` touch are each atomic statements, so a
+        // cache hit no longer queues behind every write in the process.
         let payload = sqlx::query_scalar::<_, String>(
             "SELECT payload FROM provider_search_cache
              WHERE provider = ? AND adapter_version = ? AND normalized_query = ?
@@ -1023,11 +1077,11 @@ impl SqliteStorage {
         .bind(normalized_query)
         .bind(structured_filters)
         .bind(now.saturating_sub(ttl_seconds as i64))
-        .fetch_optional(transaction.as_mut())
+        .fetch_optional(&self.pool)
         .await
         .map_err(operation)?;
         if payload.is_some() {
-            sqlx::query(
+            let _ = sqlx::query(
                 "UPDATE provider_search_cache SET last_accessed = ?
                  WHERE provider = ? AND adapter_version = ? AND normalized_query = ?
                    AND structured_filters = ?",
@@ -1037,11 +1091,9 @@ impl SqliteStorage {
             .bind(adapter_version)
             .bind(normalized_query)
             .bind(structured_filters)
-            .execute(transaction.as_mut())
-            .await
-            .map_err(operation)?;
+            .execute(&self.pool)
+            .await;
         }
-        transaction.commit().await.map_err(operation)?;
         Ok(payload)
     }
 
@@ -1172,8 +1224,7 @@ impl SqliteStorage {
         now: i64,
         ttl_seconds: u64,
     ) -> Result<Option<String>, StorageError> {
-        let _write_guard = self.write_lock.lock().await;
-        let mut transaction = self.pool.begin().await.map_err(operation)?;
+        // Read path: no `write_lock` (see `cache_get`).
         let payload = sqlx::query_scalar::<_, String>(
             "SELECT payload FROM document_cache
              WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?
@@ -1183,11 +1234,11 @@ impl SqliteStorage {
         .bind(content_hash)
         .bind(extractor_version)
         .bind(now.saturating_sub(ttl_seconds as i64))
-        .fetch_optional(transaction.as_mut())
+        .fetch_optional(&self.pool)
         .await
         .map_err(operation)?;
         if payload.is_some() {
-            sqlx::query(
+            let _ = sqlx::query(
                 "UPDATE document_cache SET last_accessed = ?
                  WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?",
             )
@@ -1195,11 +1246,9 @@ impl SqliteStorage {
             .bind(canonical_url)
             .bind(content_hash)
             .bind(extractor_version)
-            .execute(transaction.as_mut())
-            .await
-            .map_err(operation)?;
+            .execute(&self.pool)
+            .await;
         }
-        transaction.commit().await.map_err(operation)?;
         Ok(payload)
     }
 
@@ -1210,7 +1259,7 @@ impl SqliteStorage {
         now: i64,
         ttl_seconds: u64,
     ) -> Result<Option<String>, StorageError> {
-        let _write_guard = self.write_lock.lock().await;
+        // Read path: no `write_lock` (see `cache_get`).
         let payload = sqlx::query_scalar::<_, String>(
             "SELECT payload FROM document_cache
              WHERE canonical_url = ? AND extractor_version = ? AND created_at >= ?
@@ -1223,7 +1272,7 @@ impl SqliteStorage {
         .await
         .map_err(operation)?;
         if payload.is_some() {
-            sqlx::query(
+            let _ = sqlx::query(
                 "UPDATE document_cache SET last_accessed = ?
                  WHERE rowid = (SELECT rowid FROM document_cache
                    WHERE canonical_url = ? AND extractor_version = ? AND created_at >= ?
@@ -1234,8 +1283,7 @@ impl SqliteStorage {
             .bind(extractor_version)
             .bind(now.saturating_sub(ttl_seconds as i64))
             .execute(&self.pool)
-            .await
-            .map_err(operation)?;
+            .await;
         }
         Ok(payload)
     }
@@ -1253,7 +1301,7 @@ impl SqliteStorage {
         ttl_seconds: u64,
         stale_while_revalidate_seconds: u64,
     ) -> Result<Option<CachedDocument>, StorageError> {
-        let _write_guard = self.write_lock.lock().await;
+        // Read path: no `write_lock` (see `cache_get`).
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         let fresh_cutoff = now.saturating_sub(ttl_seconds as i64);
         let stale_cutoff =
@@ -1570,15 +1618,23 @@ impl SqliteStorage {
         normalized_query_prefix: &str,
         limit: i64,
     ) -> Result<Vec<SearchHistoryEntry>, StorageError> {
+        // Escape LIKE metacharacters and bind a literal pattern (rather than
+        // `? || '%'`) so `%`/`_` in the query cannot act as wildcards and the
+        // statement can use the `normalized_query` index instead of scanning.
+        let escaped = normalized_query_prefix
+            .replace('\\', "\\\\")
+            .replace('%', "\\%")
+            .replace('_', "\\_");
+        let pattern = format!("{escaped}%");
         let rows = sqlx::query(
             "SELECT id, normalized_query, raw_query, category, provider_count,
                     total_results, deep_fetches, created_at, surface
              FROM search_history
-             WHERE normalized_query LIKE ? || '%'
+             WHERE normalized_query LIKE ? ESCAPE '\\'
              ORDER BY created_at DESC, id DESC
              LIMIT ?",
         )
-        .bind(normalized_query_prefix)
+        .bind(&pattern)
         .bind(limit)
         .fetch_all(&self.pool)
         .await
@@ -1660,7 +1716,7 @@ impl SqliteStorage {
         let _write_guard = self.write_lock.lock().await;
         let now = now_unix();
         let size_bytes = payload.len() as i64;
-        let id = sqlx::query(
+        sqlx::query(
             "INSERT INTO saved_documents
                (canonical_url, title, snippet, content_hash, extractor_version,
                 payload, size_bytes, saved_at, source_query, tags)
@@ -1683,8 +1739,21 @@ impl SqliteStorage {
         .bind(tags)
         .execute(&self.pool)
         .await
-        .map_err(operation)?
-        .last_insert_rowid();
+        .map_err(operation)?;
+        // Resolve the row id by its conflict key rather than
+        // `last_insert_rowid()`: on the UPDATE branch that function keeps the
+        // connection's previous insert rowid, so the caller would receive the
+        // wrong id (and a later delete would hit the wrong document).
+        let id: i64 = sqlx::query_scalar(
+            "SELECT id FROM saved_documents
+              WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?",
+        )
+        .bind(canonical_url)
+        .bind(content_hash)
+        .bind(extractor_version)
+        .fetch_one(&self.pool)
+        .await
+        .map_err(operation)?;
         Ok(id)
     }
 
@@ -1768,6 +1837,19 @@ impl SqliteStorage {
             .map_err(operation)?
             .rows_affected();
         Ok(rows > 0)
+    }
+
+    /// Delete saved documents older than `before` (Unix seconds). Returns the
+    /// number of rows removed. Indexed by `saved_at`, so it stays cheap as the
+    /// table grows.
+    pub async fn saved_documents_prune(&self, before: i64) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        Ok(sqlx::query("DELETE FROM saved_documents WHERE saved_at < ?")
+            .bind(before)
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?
+            .rows_affected())
     }
 
     // ── Security audit trail ────────────────────────────────────────────
@@ -1998,6 +2080,11 @@ async fn run_migrations(pool: SqlitePool, db_path: PathBuf) -> Result<(), Storag
             "security_events",
             include_str!("../migrations/0007_security_events.sql"),
         ),
+        (
+            8_i64,
+            "cache_created_index",
+            include_str!("../migrations/0008_cache_created_index.sql"),
+        ),
     ]
     .into_iter()
     .filter(|(version, _, _)| *version > db_version)
@@ -2030,10 +2117,20 @@ async fn run_migrations(pool: SqlitePool, db_path: PathBuf) -> Result<(), Storag
         .await
         .map_err(operation)?;
         if applied.is_none() {
-            sqlx::raw_sql(migration)
-                .execute(transaction.as_mut())
-                .await
-                .map_err(operation)?;
+            if let Err(error) = sqlx::raw_sql(migration).execute(transaction.as_mut()).await {
+                // A non-idempotent `ALTER TABLE ... ADD COLUMN` whose column
+                // already exists (a restored or hand-edited database) is
+                // treated as already applied rather than disabling storage.
+                if error.to_string().contains("duplicate column name") {
+                    tracing::warn!(
+                        target: "amatl::storage",
+                        version,
+                        "migration column already present; treating migration as applied"
+                    );
+                } else {
+                    return Err(operation(error));
+                }
+            }
             sqlx::query(
                 "INSERT INTO amatl_schema_migrations(version, name, applied_at) VALUES (?, ?, ?)",
             )
@@ -2271,7 +2368,8 @@ mod tests {
         let dir = path.parent().unwrap().to_path_buf();
         let stem = database_stem(&path);
 
-        // Three automatic backups plus one of each protected kind.
+        // Three automatic backups plus more than the recovery cap of each
+        // protected kind.
         for offset in 1..=3 {
             std::fs::copy(
                 &path,
@@ -2279,16 +2377,18 @@ mod tests {
             )
             .unwrap();
         }
-        std::fs::copy(
-            &path,
-            dir.join(format!("{stem}{MIGRATION_BACKUP_INFIX}1.sqlite3")),
-        )
-        .unwrap();
-        std::fs::copy(
-            &path,
-            dir.join(format!("{stem}{PRE_RESTORE_BACKUP_INFIX}1.sqlite3")),
-        )
-        .unwrap();
+        for offset in 1..=(RECOVERY_BACKUP_KEEP as i64 + 2) {
+            std::fs::copy(
+                &path,
+                dir.join(format!("{stem}{MIGRATION_BACKUP_INFIX}{offset}.sqlite3")),
+            )
+            .unwrap();
+            std::fs::copy(
+                &path,
+                dir.join(format!("{stem}{PRE_RESTORE_BACKUP_INFIX}{offset}.sqlite3")),
+            )
+            .unwrap();
+        }
 
         SqliteStorage::rotate_backups(&dir, &stem, 2);
 
@@ -2299,18 +2399,29 @@ mod tests {
             .map(|entry| entry.created_at)
             .collect();
         assert_eq!(auto, vec![3, 2], "rotation must keep the newest two");
-        assert!(
-            remaining
-                .iter()
-                .any(|entry| entry.kind == BackupKind::Migration),
-            "migration backups are never rotated"
+        let migration: Vec<i64> = remaining
+            .iter()
+            .filter(|entry| entry.kind == BackupKind::Migration)
+            .map(|entry| entry.created_at)
+            .collect();
+        let pre_restore: Vec<i64> = remaining
+            .iter()
+            .filter(|entry| entry.kind == BackupKind::PreRestore)
+            .map(|entry| entry.created_at)
+            .collect();
+        assert_eq!(
+            migration.len(),
+            RECOVERY_BACKUP_KEEP,
+            "migration recovery backups are capped, not kept forever"
         );
-        assert!(
-            remaining
-                .iter()
-                .any(|entry| entry.kind == BackupKind::PreRestore),
-            "pre-restore backups are never rotated"
+        assert_eq!(
+            pre_restore.len(),
+            RECOVERY_BACKUP_KEEP,
+            "pre-restore recovery backups are capped, not kept forever"
         );
+        // The newest recovery points survive the cap; the oldest are dropped.
+        assert!(migration.contains(&(RECOVERY_BACKUP_KEEP as i64 + 2)));
+        assert!(!migration.contains(&1), "oldest migration backup must be rotated");
 
         // Automatic backups must also be visible to the operator listing.
         let listed = SqliteStorage::list_backups(&path, None).unwrap();
