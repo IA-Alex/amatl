@@ -228,6 +228,8 @@ struct MarginaliaResponse {
 #[derive(Deserialize)]
 struct MarginaliaResult {
     title: Option<String>,
+    /// Optional so one malformed item does not fail the whole envelope.
+    #[serde(default)]
     url: String,
     description: Option<String>,
     #[serde(default)]
@@ -251,6 +253,7 @@ fn parse_response(
     let results = envelope
         .results
         .into_iter()
+        .filter(|item| !item.url.is_empty())
         .enumerate()
         .map(|(index, item)| ProviderItem {
             title: item.title,

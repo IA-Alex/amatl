@@ -239,6 +239,8 @@ struct Body {
 }
 #[derive(Deserialize)]
 struct Item {
+    /// Optional so one malformed item does not fail the whole envelope.
+    #[serde(default)]
     url: String,
     title: Option<String>,
     desc: Option<String>,
@@ -280,6 +282,7 @@ fn parse_response(
         .response
         .results
         .into_iter()
+        .filter(|item| !item.url.is_empty())
         .enumerate()
         .map(|(index, item)| ProviderItem {
             title: item.title,

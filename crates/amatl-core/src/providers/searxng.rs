@@ -235,7 +235,7 @@ struct SearXngResult {
     title: Option<String>,
     url: Option<String>,
     content: Option<String>,
-    #[serde(default)]
+    #[serde(default, rename = "publishedDate", alias = "published_date")]
     published_date: Option<String>,
 }
 
@@ -295,7 +295,7 @@ fn parse_response(
             ProviderItem {
                 title: answer.answer.clone(),
                 url: answer.url.unwrap_or_default(),
-                provider_rank: Rank::new((index + 1) as u32).ok(),
+                provider_rank: None,
                 snippet: answer.answer,
                 result_type: None,
                 published_at: None,
@@ -306,6 +306,11 @@ fn parse_response(
                 metadata: Default::default(),
             },
         );
+    }
+    // Renumber over the final vector so ranks stay a unique ordinal (answers
+    // and results previously both started at 1).
+    for (index, item) in results.iter_mut().enumerate() {
+        item.provider_rank = Rank::new((index + 1) as u32).ok();
     }
 
     let status = if searxng.unresponsive_engines.is_empty() {

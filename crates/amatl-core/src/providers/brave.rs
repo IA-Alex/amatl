@@ -216,6 +216,8 @@ struct BraveWeb {
 #[derive(Deserialize)]
 struct BraveItem {
     title: Option<String>,
+    /// Optional so one malformed item does not fail the whole envelope.
+    #[serde(default)]
     url: String,
     description: Option<String>,
 }
@@ -237,6 +239,7 @@ fn parse_response(
     let items = envelope.web.map_or_else(Vec::new, |web| web.results);
     let results = items
         .into_iter()
+        .filter(|item| !item.url.is_empty())
         .enumerate()
         .map(|(index, item)| ProviderItem {
             title: item.title,
