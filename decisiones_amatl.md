@@ -507,3 +507,86 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
 - **Trazabilidad:** `docs/security/secrets.md`; `amatl-server/src/tests.rs`
   (autorización admin, fail-closed en `isolated`, DELETE idempotente);
   `service.rs` (semántica set/clear/present, no persistencia en config).
+
+## ADR-015 — Búsqueda con modelo (*strategist*) opcional y apagada por defecto
+
+- **Fecha:** 2026-10-12
+- **Estado:** Aceptada
+- **Contexto:** La invariante «no introducir LLM obligatorio… sin decisión
+  explícita» (`CONTINUIDAD.md`) y ADR-001 (decisión dedicada cuando cambia una
+  API pública) exigen documentar la capacidad que wirea un LLM en el camino de
+  búsqueda. La funcionalidad se implementó y llegó a `main` sin su ADR; esta
+  entrada cierra ese hueco. El strategist nace de la necesidad de mejorar una
+  consulta vaga sin volver obligatorio un modelo: es una segunda ronda
+  *opcional* que propone una query refinada, no una respuesta generada.
+- **Decisión:** `[strategist]` es una sección de configuración independiente
+  (`enabled` —por defecto `false`—, `endpoint`, `model`, `credential_env`,
+  `timeout_ms` —por defecto `800`—). Con ella apagada, `search`/`deep` corren
+  100 % deterministas y el modelo no interviene en absoluto. Con ella
+  encendida y completa:
+  - tras la primera búsqueda, el strategist recibe la consulta original y, si
+    está dentro de `timeout_ms`, devuelve una query refinada;
+  - AMATL la re-parsea y, sólo si normaliza a algo distinto de la consulta ya
+    enviada, ejecuta una segunda ronda con los **mismos providers** sobre un
+    orquestador nuevo (presupuesto propio) y registra el cortacircuito de los
+    providers que usó;
+  - la fusión es **complementaria**: se conserva el conjunto primario tal como
+    quedó rankeado y sólo se anexan resultados nuevos, deduplicando por URL
+    canónica (contra el primario y dentro del refinado). El modelo nunca
+    inventa ni reordena resultados.
+  - **Fail-closed:** `enabled = true` exige egress de red (perfil `standard` +
+    `egress = "governed"`), `endpoint` validado como el de inferencia remota,
+    `model` no vacío y `credential_env` no vacío. Bajo `isolated` (egress
+    denegado) no puede encenderse.
+  - **Interruptor admin:** `POST /strategist/enabled` (`scope admin`) valida un
+    candidato con el flag ya volteado *antes* de escribir, escribe sólo
+    `strategist.enabled` con `toml_edit` (preserva comentarios) y aplica el
+    cambio con el mismo `reload()` atómico, sin reiniciar. La UI lo expone como
+    el toggle «Búsqueda con modelo», visible pero deshabilitado si
+    `endpoint`/`model` no están configurados.
+  - **Privacidad:** el prompt del LLM embebe únicamente el texto de la
+    consulta. `generate_strategy` recibe `&SearchResponse` pero **no usa los
+    resultados** (`_current_results`); no se envían fragmentos ni contenido
+    recuperado — a diferencia de `answer`.
+  - **Gobierno:** la credencial se lee de la variable nombrada en
+    `credential_env` en el momento de la llamada; `/status` reporta
+    `strategist.available` (presencia) sin exponer el valor.
+- **Superficie:** `config/strategist.rs` (`StrategistConfig`,
+  `validate_strategist`); `strategist.rs` (trait `SearchStrategist`,
+  `NoOpStrategist`); `strategist/llm.rs` (`LlmStrategist`); `service.rs`
+  (`search_inner`, `append_complementary`, `StrategistStatus`); `config/mod.rs`
+  (`strategist` field, `set_strategist_enabled`); `amatl-server/src/lib.rs`
+  (`strategist_toggle`, `required_scope`); `amatl-server/src/routes.rs`;
+  `docs/api/openapi.yaml` (`/strategist/enabled`, `StrategistStatus`);
+  `amatl-ui` (toggle); `docs/operacion.md`; `amatl.example.toml`.
+- **Consecuencias:** el comportamiento por defecto no cambia; el LLM sigue
+  siendo opcional y la capacidad determinista de AMATL no depende de él. Coste:
+  con el strategist encendido, una búsqueda puede gastar hasta dos rondas de
+  presupuesto de provider (cada orquestador tiene su propio `Budget`) y añade
+  hasta `timeout_ms` de latencia. El proveedor del modelo es un tercero que
+  recibe el texto de la consulta por diseño — se divulga, no se mitiga; no hay
+  consentimiento por-request más allá del interruptor admin. Riesgo residual:
+  la RAM/proceso del operador y el proveedor externo quedan fuera del control
+  de AMATL.
+- **Punto de revisión (trade-off explícito):** a diferencia de `answer`, el
+  strategist **no** exige `data_policy.inference = "remote_explicit"`: se
+  gobierna por egress + el flag `enabled`. La justificación es que sólo envía
+  la consulta (no contenido recuperado) y que `isolated` ya lo bloquea. Un
+  revisor puede preferir alinear ambos canales bajo `remote_explicit`; se deja
+  registrado como decisión consciente, no como omisión.
+- **Alternativas descartadas:** exigir `remote_explicit` (más fricción para un
+  canal que no envía contenido; queda como punto de revisión); enviar los
+  resultados de la primera ronda al modelo (filtraría contenido recuperado y
+  ampliaría la superficie sin mejorar la propuesta de query); reordenar o
+  reemplazar el conjunto primario con el refinado (rompería el contrato de
+  ranking determinista y la reproducibilidad); usar embeddings locales para
+  «refinar» sin red (no produce operadores de query ni mejora observable, y
+  añadiría un backend pesado que hoy no existe).
+- **Trazabilidad:** `crates/amatl-core/src/strategist.rs`;
+  `crates/amatl-core/src/strategist/llm.rs`;
+  `crates/amatl-core/src/config/strategist.rs`;
+  `crates/amatl-server/src/tests.rs`
+  (`strategist_toggle_flips_the_flag_and_applies_without_restart`,
+  `strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing`);
+  `docs/operacion.md`; `docs/security/threat-model.md`
+  (`Core → inference (strategist)`).

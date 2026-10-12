@@ -95,6 +95,22 @@ reranker_prior_weight = 0.5
 # max_source_chars = 1200
 # max_answer_tokens = 700
 
+# ── Búsqueda con modelo (strategist) ─────────────────────────────
+# Optional. With it enabled, after the first search the LLM proposes a refined
+# query that AMATL runs as a second round against the same providers and merges
+# (by canonical URL, never re-ordering and never inventing results) with the
+# first set. Off by default: search/deep stay fully deterministic and the model
+# does not participate at all. Unlike [answer], it does not require
+# data_policy.inference = "remote_explicit": it only sends the query text (never
+# retrieved content), so it is gated by network egress plus this flag. Enabling
+# it requires a real endpoint, model and credential_env, or it fails closed.
+# [strategist]
+# enabled = false
+# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+# model = "deepseek-ai/DeepSeek-V3"
+# credential_env = "DEEPINFRA_API_KEY"
+# timeout_ms = 800
+
 [timeouts]
 provider_ms = 3000
 global_ms = 8000

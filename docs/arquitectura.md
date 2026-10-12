@@ -139,8 +139,10 @@ Antes de construir capacidades de red, `data_policy` resuelve el perfil
 efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza
 egress gobernado, inferencia remota, providers, renderer o bind no-loopback.
 Esto mantiene el control en core para todas las superficies. Las extensiones de
-inferencia siguen siendo opcionales y deberán consultar el permiso central; no
-existe un backend LLM en el workspace actual.
+inferencia siguen siendo opcionales y deberán consultar el permiso central; el
+único backend LLM del workspace es el *strategist* opcional de búsqueda
+(`[strategist]`, apagado por defecto; ver ADR-015), que sólo envía el texto de
+la consulta y respeta `data_policy` vía el permiso de egress.
 
 ## Persistencia y Degradación
 
