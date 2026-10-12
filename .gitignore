@@ -19,6 +19,7 @@
 **/*.cdx.xml
 /.env
 /.claude/
+/.opencode/
 *.pem
 *.key
 *~
