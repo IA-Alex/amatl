@@ -28,16 +28,38 @@ macro_rules! define_public_routes {
         /// Returns the route inventory generated from the router declarations.
         #[cfg(test)]
         pub fn all_routes() -> Vec<Route> {
-            vec![$(Route {
+            let mut routes = vec![$(Route {
                 path: $path,
                 methods: &[$(define_public_routes!(@method $method)),+],
-            }),+]
+            }),+];
+            // Probe routes are registered separately (see `register_probe_routes`)
+            // but stay in the inventory so the OpenAPI coverage guard still
+            // sees them.
+            routes.push(Route {
+                path: "/health",
+                methods: &[Method::GET],
+            });
+            routes.push(Route {
+                path: "/ready",
+                methods: &[Method::GET],
+            });
+            routes
         }
     };
     (@method get) => { Method::GET };
     (@method post) => { Method::POST };
     (@method patch) => { Method::PATCH };
     (@method delete) => { Method::DELETE };
+}
+
+/// Liveness/readiness probes are registered on their own router so the request
+/// concurrency limit cannot make them queue behind saturated work. A liveness
+/// probe that blocks on the same semaphore as long in-flight requests can time
+/// out and make a supervisor restart a perfectly healthy process.
+pub(super) fn register_probe_routes(router: Router<AppState>) -> Router<AppState> {
+    router
+        .route("/health", axum::routing::get(health))
+        .route("/ready", axum::routing::get(ready))
 }
 
 define_public_routes! {
@@ -75,8 +97,6 @@ define_public_routes! {
     "/deep/extractor" => [patch(update_deep_extractor)],
     "/deep/renderer" => [patch(update_deep_renderer)],
     "/security-events" => [get(security_events)],
-    "/health" => [get(health)],
-    "/ready" => [get(ready)],
     "/metrics" => [get(metrics)],
 }
 

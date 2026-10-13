@@ -78,18 +78,23 @@ impl DeepBudget {
         self
     }
 
-    pub fn reserve_fetch(&mut self) -> Result<u64, BudgetExhaustionCause> {
+    /// Reserve one fetch. `crawl` is `true` for a discovered link (which also
+    /// spends the crawl-URL budget) and `false` for a direct fetch of a
+    /// user-requested URL, which must not be capped by `max_crawl_urls`.
+    pub fn reserve_fetch(&mut self, crawl: bool) -> Result<u64, BudgetExhaustionCause> {
         if self.snapshot.remaining_fetches == 0 {
             return Err(BudgetExhaustionCause::FetchLimit);
         }
-        if self.snapshot.remaining_crawl_urls == 0 {
+        if crawl && self.snapshot.remaining_crawl_urls == 0 {
             return Err(BudgetExhaustionCause::CrawlLimit);
         }
         if self.snapshot.remaining_bytes == 0 {
             return Err(BudgetExhaustionCause::ByteLimit);
         }
         self.snapshot.remaining_fetches -= 1;
-        self.snapshot.remaining_crawl_urls -= 1;
+        if crawl {
+            self.snapshot.remaining_crawl_urls -= 1;
+        }
         Ok(self.snapshot.remaining_bytes)
     }
 
@@ -117,17 +122,19 @@ impl DeepBudget {
         Ok(())
     }
 
-    pub fn release_fetch(&mut self) {
+    pub fn release_fetch(&mut self, crawl: bool) {
         self.snapshot.remaining_fetches = self
             .snapshot
             .remaining_fetches
             .saturating_add(1)
             .min(self.max_fetches);
-        self.snapshot.remaining_crawl_urls = self
-            .snapshot
-            .remaining_crawl_urls
-            .saturating_add(1)
-            .min(self.max_crawl_urls);
+        if crawl {
+            self.snapshot.remaining_crawl_urls = self
+                .snapshot
+                .remaining_crawl_urls
+                .saturating_add(1)
+                .min(self.max_crawl_urls);
+        }
     }
 
     pub fn release_browser(&mut self) {
@@ -219,11 +226,31 @@ mod tests {
     #[test]
     fn deep_budget_accounts_each_resource_without_expansion() {
         let mut budget = DeepBudget::new(1, 10, 2, 1, 1, 100);
-        assert_eq!(budget.reserve_fetch(), Ok(10));
-        assert!(budget.reserve_fetch().is_err());
+        assert_eq!(budget.reserve_fetch(false), Ok(10));
+        assert!(budget.reserve_fetch(false).is_err());
         assert!(budget.consume_fetch(7, 1).is_ok());
         assert_eq!(budget.snapshot().remaining_bytes, 3);
         assert!(budget.consume_fetch(4, 0).is_err());
+    }
+
+    #[test]
+    fn direct_fetch_does_not_spend_the_crawl_budget() {
+        // Two direct fetches allowed even though only one crawl URL is budgeted.
+        let mut budget = DeepBudget::new(10, 10_000, 2, 1, 1, 100);
+        assert!(budget.reserve_fetch(false).is_ok());
+        assert_eq!(budget.snapshot().remaining_crawl_urls, 1);
+        assert!(budget.reserve_fetch(false).is_ok());
+        assert_eq!(budget.snapshot().remaining_crawl_urls, 1);
+        // A discovered link spends it.
+        assert!(budget.reserve_fetch(true).is_ok());
+        assert_eq!(budget.snapshot().remaining_crawl_urls, 0);
+        assert_eq!(
+            budget.reserve_fetch(true),
+            Err(BudgetExhaustionCause::CrawlLimit)
+        );
+        // Releasing a crawl restores exactly one crawl URL.
+        budget.release_fetch(true);
+        assert_eq!(budget.snapshot().remaining_crawl_urls, 1);
     }
 
     #[test]

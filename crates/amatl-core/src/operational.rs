@@ -322,6 +322,15 @@ fn provider_item(url: &str) -> ProviderItem {
 }
 
 fn percentiles(mut values: Vec<Duration>) -> LatencyPercentiles {
+    if values.is_empty() {
+        return LatencyPercentiles {
+            samples: 0,
+            p50_ms: 0.0,
+            p95_ms: 0.0,
+            p99_ms: 0.0,
+            max_ms: 0.0,
+        };
+    }
     values.sort_unstable();
     let at = |quantile: f64| {
         let index = ((values.len().saturating_sub(1)) as f64 * quantile).ceil() as usize;

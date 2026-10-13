@@ -236,7 +236,12 @@ impl<R: DnsResolver> SafeFetcher<R> {
             })?;
         let mut clients = self.lock_clients();
         if clients.len() >= 64 {
-            clients.clear();
+            // Evict one entry instead of dropping every pinned client: a
+            // wide-host workload must not force a rebuild of all 64 on the
+            // next fetch.
+            if let Some(oldest) = clients.keys().next().cloned() {
+                clients.remove(&oldest);
+            }
         }
         clients.insert(key, client.clone());
         Ok(client)

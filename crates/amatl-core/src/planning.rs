@@ -22,13 +22,17 @@ pub fn build_search_plan(
         .into_iter()
         .filter(|provider| provider_budgets.contains_key(provider))
         .collect::<Vec<_>>();
+    // Drop budget requests for providers the global budget excluded, so the
+    // plan never names a provider that will not be called.
+    let mut provider_budget_requests = recommendation.provider_budget_requests;
+    provider_budget_requests.retain(|name, _| provider_budgets.contains_key(name));
     SearchPlan {
         schema_version: SCHEMA_VERSION.into(),
         query,
         classification,
         provider_priority: selected_providers.clone(),
         selected_providers,
-        provider_budget_requests: recommendation.provider_budget_requests,
+        provider_budget_requests,
         provider_budgets,
         global_budget: budget.global_snapshot(),
         ranking_reference_time: OffsetDateTime::now_utc()
@@ -65,5 +69,10 @@ mod tests {
         let plan = build_search_plan(query, classification, recommendation, &mut budget);
         assert_eq!(plan.selected_providers, ["a"]);
         assert_eq!(plan.provider_budgets.len(), 1);
+        assert_eq!(
+            plan.provider_budget_requests.keys().collect::<Vec<_>>(),
+            ["a"],
+            "a budget-dropped provider must not appear in provider_budget_requests"
+        );
     }
 }

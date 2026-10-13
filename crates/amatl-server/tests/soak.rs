@@ -111,6 +111,41 @@ async fn spawn_server() -> u16 {
     panic!("server did not start on port {port}");
 }
 
+/// Same as [`spawn_server`], but with persistence, provider/document caches and
+/// telemetry persistence enabled on a scratch database, so the soak exercises
+/// the storage write path (cache put, history insert, maintenance purge) under
+/// concurrency rather than only the in-memory routes.
+async fn spawn_server_with_persistence() -> u16 {
+    let reservation = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let port = reservation.local_addr().unwrap().port();
+    drop(reservation);
+
+    let dir = std::env::temp_dir().join(format!("amatl-soak-persist-{}", std::process::id()));
+    std::fs::create_dir_all(&dir).unwrap();
+
+    let mut config = amatl_core::Config::default();
+    config.server.port = port;
+    config.server.no_auth = true;
+    config.server.rate_limit_per_minute = 1_000_000;
+    config.persistence.enabled = true;
+    config.persistence.path = dir.join("soak.sqlite3").display().to_string();
+    config.persistence.purge_interval_seconds = 1;
+    config.cache.provider_search.enabled = true;
+    config.cache.document.enabled = true;
+
+    let service = AmatlService::new(config, true).await;
+    tokio::spawn(serve(service));
+
+    for _ in 0..100 {
+        let result: Result<_, std::io::Error> = TcpStream::connect(("127.0.0.1", port)).await;
+        match result {
+            Ok(_) => return port,
+            Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,
+        }
+    }
+    panic!("server did not start on port {port}");
+}
+
 async fn http_get(port: u16, path: &str) -> (bool, u64) {
     let start = Instant::now();
     let result: Result<bool, std::io::Error> = async {
@@ -254,5 +289,69 @@ async fn sustained_concurrent_mcp_and_http_traffic() {
         stats.throughput(elapsed) > 10.0,
         "throughput too low: {:.2} req/s",
         stats.throughput(elapsed)
+    );
+}
+
+/// Persistence-enabled variant: the same concurrent load, but every request
+/// that is not a liveness probe is a real `GET /search` against the mock
+/// providers, so the cache write path, history insert and maintenance purge run
+/// under concurrency. Regression guard for the storage-layer findings fixed in
+/// this audit (cache `created_at` indexes, read-path write-lock contention).
+#[tokio::test(flavor = "multi_thread", worker_threads = 4)]
+#[ignore = "soak test: run with --ignored"]
+async fn sustained_concurrent_traffic_with_persistence() {
+    let port = spawn_server_with_persistence().await;
+
+    let warmup_deadline = Instant::now() + Duration::from_secs(WARMUP_SECS);
+    while Instant::now() < warmup_deadline {
+        let _ = http_get(port, "/health").await;
+        let _ = http_get(port, "/search?q=rust%20async").await;
+    }
+
+    let stats = Arc::new(tokio::sync::Mutex::new(Stats::default()));
+    let deadline = Instant::now() + Duration::from_secs(DURATION_SECS);
+
+    let mut handles = Vec::new();
+    for _ in 0..CONCURRENCY {
+        let stats = stats.clone();
+        let handle = tokio::spawn(async move {
+            let mut counter = 0u64;
+            while Instant::now() < deadline {
+                let (ok, latency) = if counter.is_multiple_of(4) {
+                    http_get(port, "/health").await
+                } else {
+                    http_get(port, "/search?q=rust%20async").await
+                };
+                stats.lock().await.record(ok, latency);
+                counter += 1;
+                tokio::task::yield_now().await;
+            }
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.await.unwrap();
+    }
+
+    let stats = stats.lock().await;
+
+    eprintln!("── persistence soak results ──────────────────");
+    eprintln!("total requests: {}", stats.total);
+    eprintln!("errors:         {}", stats.errors);
+    eprintln!("error rate:     {:.4}", stats.error_rate());
+    eprintln!("p95 latency:    {} µs", stats.p95());
+    eprintln!("──────────────────────────────────────────────");
+
+    assert!(stats.total > 100, "too few requests: {}", stats.total);
+    assert!(
+        stats.error_rate() < 0.05,
+        "error rate too high under persistence: {:.4}",
+        stats.error_rate()
+    );
+    assert!(
+        stats.p95() < 100_000,
+        "p95 latency too high under persistence: {} µs",
+        stats.p95()
     );
 }

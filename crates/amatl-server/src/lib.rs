@@ -123,6 +123,15 @@ impl AppState {
         let current = self.service();
         let config = match &self.config_path {
             Some(path) => {
+                if !path.exists() {
+                    tracing::warn!(
+                        target: "amatl::http",
+                        event = "reload_missing_config",
+                        config_file = %path.display(),
+                        "configuration file is missing; refusing to reload so the running service is unchanged"
+                    );
+                    return Err(ServiceError::Configuration);
+                }
                 amatl_core::Config::load_optional(path).map_err(|_| ServiceError::Configuration)?
             }
             None => current.config().clone(),
@@ -611,11 +620,14 @@ pub async fn build_router_with_reload(
         .with_stateless_protocol_metadata_required(true);
     // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
     let handle: ServiceHandle = Arc::new(RwLock::new(service));
+    // Shared metrics so `/metrics` reports MCP tool traffic too.
+    let metrics = Arc::new(RequestMetrics::default());
     let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
         StreamableHttpService::new(
             {
                 let handle = handle.clone();
-                move || Ok(mcp::McpSurface::new(handle.clone()))
+                let metrics = metrics.clone();
+                move || Ok(mcp::McpSurface::new(handle.clone(), metrics.clone()))
             },
             Default::default(),
             mcp_config,
@@ -630,7 +642,7 @@ pub async fn build_router_with_reload(
         })),
         explicit_token,
         config_write_lock: Arc::new(AsyncMutex::new(())),
-        metrics: Arc::new(RequestMetrics::default()),
+        metrics,
     };
     let cors = cors_layer(&allowed_origins)?;
     let reload_handle = ReloadHandle {
@@ -638,9 +650,13 @@ pub async fn build_router_with_reload(
     };
     let router = routes::register_public_routes(Router::new())
         .nest_service("/mcp", mcp_service)
+        // Apply the request concurrency limit to the work-bearing routes only,
+        // then merge the probes so they stay reachable while the limit is
+        // saturated (see `register_probe_routes`).
+        .layer(ConcurrencyLimitLayer::new(server.max_connections))
+        .merge(routes::register_probe_routes(Router::new()))
         .fallback(static_asset)
         .with_state(state.clone())
-        .layer(ConcurrencyLimitLayer::new(server.max_connections))
         .layer(DefaultBodyLimit::max(server.max_body_bytes))
         .layer(cors)
         .layer(middleware::from_fn_with_state(state, security_middleware));
@@ -789,11 +805,11 @@ async fn search(
         .metrics
         .search_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones, so
+    // errors / total is a real error rate.
+    state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
-            Json(value.response).into_response()
-        }
+        Ok(value) => Json(value.response).into_response(),
         Err(error) => {
             state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -821,11 +837,10 @@ async fn deep(
         .metrics
         .deep_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones.
+    state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
+        Ok(value) => Json(value).into_response(),
         Err(error) => {
             state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -861,11 +876,11 @@ async fn search_post(
         .metrics
         .search_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones, so
+    // errors / total is a real error rate.
+    state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
-            Json(value.response).into_response()
-        }
+        Ok(value) => Json(value.response).into_response(),
         Err(error) => {
             state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -906,11 +921,10 @@ async fn deep_post(
         .metrics
         .deep_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones.
+    state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
+        Ok(value) => Json(value).into_response(),
         Err(error) => {
             state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -946,11 +960,10 @@ async fn answer_post(
         .metrics
         .answer_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones.
+    state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
+        Ok(value) => Json(value).into_response(),
         Err(error) => {
             state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -1029,7 +1042,7 @@ async fn answer_toggle(
     let mut candidate = state.service().config().clone();
     candidate.answer.enabled = params.enabled;
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1077,7 +1090,7 @@ async fn strategist_toggle(
     let mut candidate = state.service().config().clone();
     candidate.strategist.enabled = params.enabled;
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_strategist_enabled(&path, params.enabled).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1128,7 +1141,7 @@ async fn provider_toggle(
         enabled.retain(|existing| existing != &name);
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_provider_enabled(&path, &name, params.enabled).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1405,7 +1418,7 @@ async fn update_provider_record(
     let updated = apply_provider_record_params(existing, &params);
     candidate.providers.declare(name.clone(), updated.clone());
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_provider_record(&path, &name, &updated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1540,12 +1553,16 @@ async fn create_server_client(
     let mut candidate = state.service().config().clone();
     candidate.server.clients.push(client.clone());
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &client).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     if let Err(error) = state.clone().reload().await {
+        // The entry is already persisted, but the credential never reached the
+        // caller. Roll the file back so a later reload cannot activate an
+        // orphan token nobody possesses.
+        let _ = amatl_core::Config::remove_server_client(&path, &client.id);
         return service_error(error);
     }
     Json(CreatedServerClient {
@@ -1610,7 +1627,7 @@ async fn update_server_client(
         }
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &updated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1678,7 +1695,7 @@ async fn rotate_server_client_token(
     let rotated = amatl_core::ServerClient {
         token_env: None,
         token_sha256: Some(digest_to_hex(token_digest(&token))),
-        ..existing
+        ..existing.clone()
     };
     let mut candidate = state.service().config().clone();
     for client in &mut candidate.server.clients {
@@ -1687,12 +1704,15 @@ async fn rotate_server_client_token(
         }
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &rotated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     if let Err(error) = state.clone().reload().await {
+        // Restore the previous credential so the file never keeps a digest for
+        // a token that was not revealed to anyone.
+        let _ = amatl_core::Config::upsert_server_client(&path, &existing);
         return service_error(error);
     }
     Json(CreatedServerClient {
@@ -1767,7 +1787,7 @@ async fn data_policy_update(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.data_policy);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_data_policy_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1799,7 +1819,7 @@ async fn update_inference(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.inference);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1830,7 +1850,7 @@ async fn update_answer_fields(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.answer);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1891,7 +1911,7 @@ async fn update_policy(
             };
             candidate.ranking_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_ranking_policy(&path, &policy)
         }
@@ -1901,7 +1921,7 @@ async fn update_policy(
             };
             candidate.diversity_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_diversity_policy(&path, &policy)
         }
@@ -1911,7 +1931,7 @@ async fn update_policy(
             };
             candidate.search_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_search_policy(&path, &policy)
         }
@@ -1921,7 +1941,7 @@ async fn update_policy(
             };
             candidate.deep.ranking_v2.policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_ranking_v2_policy(&path, &policy)
         }
@@ -1931,7 +1951,7 @@ async fn update_policy(
             };
             candidate.deep.gaps.policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_gap_policy(&path, &policy)
         }
@@ -1978,7 +1998,7 @@ async fn update_persistence(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.persistence);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_persistence_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2011,13 +2031,19 @@ async fn list_backups(State(state): State<AppState>) -> Response {
 /// Identical in every way to what that task writes; see
 /// [`amatl_core::AmatlService::trigger_backup`].
 async fn create_backup(State(state): State<AppState>) -> Response {
-    match state.service().trigger_backup().await {
-        Ok(path) => Json(json!({
+    // Run the backup on its own task: if the request deadline fires, the task
+    // keeps running to completion instead of being dropped mid-`VACUUM INTO`
+    // and leaving a partial file next to the live database.
+    let service = state.service();
+    let handle = tokio::spawn(async move { service.trigger_backup().await });
+    match handle.await {
+        Ok(Ok(path)) => Json(json!({
             "schema_version": SCHEMA_VERSION,
             "path": path.display().to_string(),
         }))
         .into_response(),
-        Err(error) => service_error(error),
+        Ok(Err(error)) => service_error(error),
+        Err(_) => api_error(ErrorCode::InternalError),
     }
 }
 
@@ -2073,7 +2099,7 @@ async fn update_telemetry(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.telemetry);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_telemetry_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2116,7 +2142,7 @@ async fn update_deep(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2145,7 +2171,7 @@ async fn update_deep_extractor(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep.extractor);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_extractor_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2178,7 +2204,7 @@ async fn update_deep_renderer(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep.renderer);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_renderer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2193,7 +2219,16 @@ async fn update_deep_renderer(
 /// `/server/clients*`) — read scoped. `token_env` names an environment
 /// variable, `tls` paths name files; neither is a secret value itself.
 async fn server_pending_config(State(state): State<AppState>) -> Response {
-    let server = state.service().config().server.clone();
+    // Read the file the PATCH writes to, not the running config: after a
+    // `PATCH /server/pending-config` (which deliberately does not reload) the
+    // two differ, and the caller needs to read back what was written.
+    let server = match &state.config_path {
+        Some(path) if path.exists() => match amatl_core::Config::load_optional(path) {
+            Ok(config) => config.server,
+            Err(_) => state.service().config().server.clone(),
+        },
+        _ => state.service().config().server.clone(),
+    };
     Json(json!({
         "schema_version": SCHEMA_VERSION,
         "server": {
@@ -2273,7 +2308,7 @@ async fn update_server_pending_config(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.server);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_server_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2606,7 +2641,13 @@ fn source_metrics(service: &AmatlService) -> String {
 /// Cache effectiveness and persistence gauges.
 async fn cache_metrics(service: &AmatlService) -> String {
     let cache = service.cache_effectiveness();
-    let storage_available = u8::from(service.storage().is_some());
+    // "Available" means enabled-and-usable, not merely that a handle exists: a
+    // handle pointing at a broken DB must not report 1. Same source `/ready`
+    // uses, so the two cannot disagree.
+    let storage_available = match service.status().await {
+        Ok(status) => u8::from(!status.storage.enabled || status.storage.available),
+        Err(_) => 0,
+    };
     let audit_dropped = service.audit().dropped();
     let telemetry = service.telemetry_status();
     format!(
@@ -2703,7 +2744,7 @@ async fn security_middleware(
             &request_id,
         );
     }
-    if !valid_host(request.headers(), &security.allowed_hosts) {
+    if !valid_host(request.headers(), request.uri(), &security.allowed_hosts) {
         audit_security_event(&state, "invalid_host", &request_id, &request);
         return secured(
             api_error(ErrorCode::InvalidHost),
@@ -2949,6 +2990,13 @@ pub(crate) fn next_request_id() -> String {
     format!("{epoch_nanos:032x}-{sequence:016x}")
 }
 
+/// Best-effort peer address used for rate limiting.
+///
+/// Deliberately ignores `X-Forwarded-For`: honoring it without a trusted-proxy
+/// allowlist would let any client spoof its identity and bypass the per-client
+/// budget. The trade-off is that behind a reverse proxy every external client
+/// collapses onto the proxy's address and shares one window, so either raise
+/// `server.rate_limit_per_minute` or terminate rate limiting at the proxy.
 fn request_client_ip(request: &Request) -> IpAddr {
     request
         .extensions()
@@ -2959,18 +3007,15 @@ fn request_client_ip(request: &Request) -> IpAddr {
 
 fn secured(mut response: Response, https: bool, request_id: &str) -> Response {
     for (name, value) in security_headers(https) {
-        response.headers_mut().insert(
-            HeaderName::from_static(match name {
-                "Content-Security-Policy" => "content-security-policy",
-                "X-Content-Type-Options" => "x-content-type-options",
-                "Referrer-Policy" => "referrer-policy",
-                "Permissions-Policy" => "permissions-policy",
-                "X-Frame-Options" => "x-frame-options",
-                "Strict-Transport-Security" => "strict-transport-security",
-                _ => continue,
-            }),
-            HeaderValue::from_static(value),
-        );
+        // Derive the header name from the shared table instead of a hardcoded
+        // match, so a header added to `amatl_ui::security_headers` cannot be
+        // silently dropped here.
+        let Ok(name) = HeaderName::from_bytes(name.as_bytes()) else {
+            continue;
+        };
+        response
+            .headers_mut()
+            .insert(name, HeaderValue::from_static(value));
     }
     if !response.headers().contains_key(CACHE_CONTROL) {
         response
@@ -3081,8 +3126,15 @@ fn constant_time_eq(left: &[u8], right: &[u8]) -> bool {
     difference == 0
 }
 
-fn valid_host(headers: &HeaderMap, allowed: &[String]) -> bool {
-    let Some(authority) = headers.get(HOST).and_then(|value| value.to_str().ok()) else {
+fn valid_host(headers: &HeaderMap, uri: &Uri, allowed: &[String]) -> bool {
+    // HTTP/1.1 carries the authority in the `Host` header; HTTP/2 carries it in
+    // the request URI (`:authority`) and may omit `Host` entirely, so fall back
+    // to the URI authority before failing closed.
+    let authority = headers
+        .get(HOST)
+        .and_then(|value| value.to_str().ok())
+        .or_else(|| uri.authority().map(|authority| authority.as_str()));
+    let Some(authority) = authority else {
         return false;
     };
     let Ok(parsed) = authority.parse::<axum::http::uri::Authority>() else {
@@ -3161,7 +3213,13 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
         .collect::<Result<Vec<_>, _>>()?;
     Ok(CorsLayer::new()
         .allow_origin(origins)
-        .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
+        .allow_methods([
+            Method::GET,
+            Method::POST,
+            Method::PATCH,
+            Method::DELETE,
+            Method::OPTIONS,
+        ])
         .allow_headers([AUTHORIZATION, CONTENT_TYPE, axum::http::header::ACCEPT])
         .expose_headers([HeaderName::from_static(REQUEST_ID_HEADER)]))
 }

@@ -10,6 +10,10 @@ use reqwest::{
 use serde::{Deserialize, Serialize};
 use std::time::Duration;
 
+/// Hard cap on the strategist response body, mirroring the shared transport's
+/// limit, so a misbehaving endpoint cannot buffer unbounded memory.
+const MAX_STRATEGIST_RESPONSE_BYTES: usize = 2 * 1024 * 1024;
+
 pub struct LlmStrategist {
     client: Client,
     config: StrategistConfig,
@@ -56,7 +60,7 @@ impl SearchStrategist for LlmStrategist {
     async fn generate_strategy(
         &self,
         original_query: &str,
-        _current_results: &SearchResponse,
+        current_results: &SearchResponse,
     ) -> Result<Option<String>> {
         let endpoint = self
             .config
@@ -77,9 +81,25 @@ impl SearchStrategist for LlmStrategist {
         let api_key = std::env::var(api_key_env)
             .map_err(|_| anyhow!("API key not found in environment variable {api_key_env}"))?;
 
+        let current_summary = current_results
+            .results
+            .iter()
+            .take(5)
+            .map(|result| {
+                let title = result
+                    .title
+                    .as_deref()
+                    .unwrap_or_else(|| result.canonical_url.0.as_str());
+                format!("- {title}")
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
         let prompt = format!(
-            "Analiza la consulta original: '{}' y sugiere una query mejorada (usando operadores avanzados como site:, filetype:, inurl:) para encontrar información técnica específica. Devuelve SOLO la query mejorada sin explicaciones.", 
-            original_query
+            "Analiza la consulta original: '{}' y estos resultados actuales:\n{}\n\
+             Sugiere una query mejorada (usando operadores avanzados como site:, filetype:, \
+             inurl:) para encontrar información técnica específica. Devuelve SOLO la query \
+             mejorada sin explicaciones.",
+            original_query, current_summary
         );
 
         let request = CompletionRequest {
@@ -90,18 +110,32 @@ impl SearchStrategist for LlmStrategist {
             }],
         };
 
-        let response: CompletionResponse = self
+        let mut response = self
             .client
             .post(endpoint)
             .header(AUTHORIZATION, format!("Bearer {}", api_key))
             .header(CONTENT_TYPE, "application/json")
             .json(&request)
             .send()
-            .await?
-            .json()
             .await?;
+        if !response.status().is_success() {
+            return Err(anyhow!(
+                "strategist endpoint returned status {}",
+                response.status()
+            ));
+        }
+        let mut body = Vec::new();
+        while let Some(chunk) = response.chunk().await? {
+            if body.len() + chunk.len() > MAX_STRATEGIST_RESPONSE_BYTES {
+                return Err(anyhow!(
+                    "strategist response exceeded the {MAX_STRATEGIST_RESPONSE_BYTES}-byte limit"
+                ));
+            }
+            body.extend_from_slice(&chunk);
+        }
+        let parsed: CompletionResponse = serde_json::from_slice(&body)?;
 
-        Ok(response
+        Ok(parsed
             .choices
             .first()
             .map(|c| c.message.content.trim().to_string()))

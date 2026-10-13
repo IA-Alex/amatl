@@ -817,8 +817,10 @@ impl AmatlService {
                         // ranked and append only results the original search did
                         // not already return, deduplicating by canonical URL
                         // (both against the original set and within the refined
-                        // set itself).
-                        Self::append_complementary(&mut response.results, refined_response.results);
+                        // set itself). The refined round's provenance is merged
+                        // too, so a refined round that recovered from a primary
+                        // failure is not reported as `Failure`.
+                        Self::merge_refined_response(&mut response, refined_response);
                     }
                 }
             }
@@ -837,7 +839,18 @@ impl AmatlService {
                 response.status = crate::SearchStatus::PartialSuccess;
             }
         }
-        // Apply server-side pagination when requested.
+        // Apply server-side pagination when requested. A lone `page` defaults
+        // `page_size` to the surface maximum, and a lone `page_size` defaults
+        // `page` to the first page: otherwise a client that sent one bound
+        // would silently receive the full result set with no pagination
+        // metadata.
+        let (page, page_size) = match (page, page_size) {
+            (None, None) => (None, None),
+            (page, page_size) => (
+                Some(page.unwrap_or(0)),
+                Some(page_size.unwrap_or(limits.max_page_size)),
+            ),
+        };
         if let (Some(p), Some(ps)) = (page, page_size) {
             let ps = ps.clamp(1, limits.max_page_size);
             let total = response.results.len() as u64;
@@ -881,6 +894,58 @@ impl AmatlService {
                 .into_iter()
                 .filter(|result| seen.insert(result.canonical_url.clone())),
         );
+    }
+
+    /// Fold a refined (strategist) response into `primary`: append its
+    /// complementary results, merge its provenance, and recompute `status`
+    /// from the combined set. Without this a refined round that recovered from
+    /// a primary failure would leave `status: failure` alongside real results,
+    /// and consumers keying off `status` would discard them.
+    fn merge_refined_response(primary: &mut SearchResponse, refined: SearchResponse) {
+        let SearchResponse {
+            providers_used,
+            providers_failed,
+            providers_partial,
+            errors,
+            degradations,
+            results,
+            ..
+        } = refined;
+        Self::append_complementary(&mut primary.results, results);
+        for provider in providers_used {
+            if !primary.providers_used.contains(&provider) {
+                primary.providers_used.push(provider);
+            }
+        }
+        for provider in providers_failed {
+            if !primary.providers_failed.contains(&provider) {
+                primary.providers_failed.push(provider);
+            }
+        }
+        for provider in providers_partial {
+            if !primary.providers_partial.contains(&provider) {
+                primary.providers_partial.push(provider);
+            }
+        }
+        primary.errors.extend(errors);
+        primary.degradations.extend(degradations);
+        // Recompute status from the combined result set, mirroring the rule the
+        // orchestrator applies before the strategist runs.
+        if primary.results.is_empty() {
+            primary.status = crate::SearchStatus::Failure;
+        } else {
+            // A `no_usable_results` error from a primary round that the refined
+            // round recovered from is now stale.
+            primary.errors.retain(|error| error.code != "no_usable_results");
+            primary.status = if primary.degradations.is_empty()
+                && primary.providers_failed.is_empty()
+                && primary.providers_partial.is_empty()
+            {
+                crate::SearchStatus::Success
+            } else {
+                crate::SearchStatus::PartialSuccess
+            };
+        }
     }
 
     /// Run a search and synthesize a grounded, cited answer from its results.
@@ -1432,36 +1497,81 @@ impl AmatlService {
 
     /// Operator status: source availability, persistence and cache state.
     pub async fn status(&self) -> Result<ServiceStatus, ServiceError> {
-        let summaries = self.provider_summaries()?;
         let snapshots = self.source_snapshots();
         let circuits = self.circuit_snapshots();
-        let sources = summaries
-            .into_iter()
-            .map(|summary| {
-                let snapshot = snapshots
-                    .iter()
-                    .find(|snapshot| snapshot.provider == summary.name);
-                let circuit = circuits
-                    .iter()
-                    .find(|snapshot| snapshot.provider == summary.name)
-                    .map(|snapshot| snapshot.state)
-                    .unwrap_or(crate::circuit::CircuitState::Closed);
-                SourceStatus {
-                    name: summary.name,
-                    status: summary.status,
-                    code: summary.code,
-                    circuit,
-                    success_rate: snapshot
-                        .filter(|snapshot| snapshot.sample > 0)
-                        .map(|snapshot| snapshot.success_rate),
-                    average_latency_ms: snapshot
-                        .filter(|snapshot| snapshot.sample > 0)
-                        .map(|snapshot| snapshot.average_latency_ms),
-                    observations: snapshot.map(|snapshot| snapshot.sample).unwrap_or(0),
-                    credential_source: summary.credential_source,
-                }
-            })
-            .collect::<Vec<_>>();
+        let (sources, summaries_unavailable) = match self.provider_summaries() {
+            Ok(summaries) => {
+                let sources = summaries
+                    .into_iter()
+                    .map(|summary| {
+                        let snapshot = snapshots
+                            .iter()
+                            .find(|snapshot| snapshot.provider == summary.name);
+                        let circuit = circuits
+                            .iter()
+                            .find(|snapshot| snapshot.provider == summary.name)
+                            .map(|snapshot| snapshot.state)
+                            .unwrap_or(crate::circuit::CircuitState::Closed);
+                        SourceStatus {
+                            name: summary.name,
+                            status: summary.status,
+                            code: summary.code,
+                            circuit,
+                            success_rate: snapshot
+                                .filter(|snapshot| snapshot.sample > 0)
+                                .map(|snapshot| snapshot.success_rate),
+                            average_latency_ms: snapshot
+                                .filter(|snapshot| snapshot.sample > 0)
+                                .map(|snapshot| snapshot.average_latency_ms),
+                            observations: snapshot.map(|snapshot| snapshot.sample).unwrap_or(0),
+                            credential_source: summary.credential_source,
+                        }
+                    })
+                    .collect::<Vec<_>>();
+                (sources, false)
+            }
+            Err(error) => {
+                // Diagnostics must survive the failure they are meant to
+                // diagnose: when the HTTP transport failed to initialize,
+                // report every declared source as unavailable instead of
+                // failing the whole status call.
+                tracing::warn!(
+                    target: "amatl::service",
+                    error = %error,
+                    "provider summaries unavailable; reporting declared sources as unavailable"
+                );
+                let sources = self
+                    .config
+                    .providers
+                    .declared()
+                    .map(|(name, runtime)| {
+                        let circuit = circuits
+                            .iter()
+                            .find(|snapshot| snapshot.provider == *name)
+                            .map(|snapshot| snapshot.state)
+                            .unwrap_or(crate::circuit::CircuitState::Closed);
+                        let credential_source = if self.ephemeral_credential_present(name) {
+                            CredentialSource::Ephemeral
+                        } else if credential(runtime).is_some() {
+                            CredentialSource::Environment
+                        } else {
+                            CredentialSource::None
+                        };
+                        SourceStatus {
+                            name: name.to_owned(),
+                            status: ProviderSurfaceStatus::Unavailable,
+                            code: Some("transport_unavailable".into()),
+                            circuit,
+                            success_rate: None,
+                            average_latency_ms: None,
+                            observations: 0,
+                            credential_source,
+                        }
+                    })
+                    .collect::<Vec<_>>();
+                (sources, true)
+            }
+        };
         let storage = self.storage_status().await;
         let (provider_search_stats, document_stats) = self.cache_stats().await;
         let cache = CacheStatus {
@@ -1473,7 +1583,8 @@ impl AmatlService {
             document_bytes: document_stats.size_bytes,
             effectiveness: self.cache_effectiveness(),
         };
-        let degraded = storage.enabled && !storage.available
+        let degraded = summaries_unavailable
+            || storage.enabled && !storage.available
             || sources.iter().any(|source| {
                 source.status != ProviderSurfaceStatus::Available
                     || source.circuit != crate::circuit::CircuitState::Closed
@@ -1763,7 +1874,15 @@ impl AmatlService {
             });
         }
         if !self.config.data_policy.allows_network_egress() {
-            return Ok(ProviderSelection::default());
+            return Ok(ProviderSelection {
+                providers: vec![],
+                degradations: vec![crate::Degradation {
+                    code: ErrorCode::EgressDenied.as_str().into(),
+                    component: "data_policy".into(),
+                    message: "outbound network access is denied by data policy; no source was called"
+                        .into(),
+                }],
+            });
         }
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
         let now = now_unix();
@@ -1794,8 +1913,9 @@ impl AmatlService {
                 );
                 continue;
             }
-            let circuit = self.circuit.state(name, now);
-            if !circuit.allows_call() {
+            // Claims the single half-open probe if the cooldown has expired, so
+            // concurrent searches admit one probe, not a stampede.
+            if !self.circuit.allows_call(name, now) {
                 selection.degradations.push(crate::Degradation {
                     code: "provider_circuit_open".into(),
                     component: name.clone(),
@@ -1847,6 +1967,16 @@ impl AmatlService {
             self.circuit.record(provider, true, now).await;
         }
         for provider in &response.providers_failed {
+            // A provider that was never called because the local concurrency
+            // deadline expired is not a provider failure: recording it would
+            // open the breaker on a healthy source after a few busy searches.
+            let locally_skipped = response.errors.iter().any(|error| {
+                error.message == crate::execution::CONCURRENCY_DEADLINE_MESSAGE
+                    && error.providers.iter().any(|name| name == provider)
+            });
+            if locally_skipped {
+                continue;
+            }
             self.circuit.record(provider, false, now).await;
         }
     }

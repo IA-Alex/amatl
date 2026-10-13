@@ -344,9 +344,15 @@ impl Extractor for FallbackExtractor {
     async fn extract(&self, html: &[u8]) -> Result<ExtractionResult, ExtractError> {
         match self.primary.extract(html).await {
             Ok(result) => Ok(result),
-            Err(ExtractError::Unavailable | ExtractError::Failed | ExtractError::Timeout) => {
-                self.native.extract(html).await
-            }
+            // `InvalidOutput` (the primary ran but produced empty/unusable text)
+            // is exactly the case the fallback exists for: try the in-process
+            // extractor rather than degrading the document to superficial.
+            Err(
+                ExtractError::Unavailable
+                | ExtractError::Failed
+                | ExtractError::Timeout
+                | ExtractError::InvalidOutput,
+            ) => self.native.extract(html).await,
             Err(error) => Err(error),
         }
     }

@@ -2332,10 +2332,10 @@ async fn answer_toggle_refuses_to_enable_an_incomplete_config_without_writing() 
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     // Fails closed before ever writing: the file on disk is untouched.
     let on_disk = std::fs::read_to_string(&path).unwrap();
@@ -2400,10 +2400,10 @@ async fn strategist_toggle_refuses_to_enable_an_incomplete_config_without_writin
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     // Fails closed before ever writing: the file on disk is untouched.
     let on_disk = std::fs::read_to_string(&path).unwrap();
@@ -3024,10 +3024,10 @@ async fn create_server_client_refuses_a_scopeless_client_without_writing() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("dashboard"));
@@ -3366,10 +3366,10 @@ async fn data_policy_update_refuses_a_contradictory_combination_without_writing(
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(on_disk.contains("profile = \"standard\""));
@@ -3395,10 +3395,10 @@ async fn patch_endpoint_rejects_a_value_that_cannot_be_stored() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
 
     // The file is byte-for-byte untouched; in particular it never gains a
@@ -3633,7 +3633,7 @@ async fn update_inference_refuses_clearing_the_endpoint_out_from_under_remote_ex
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(on_disk.contains("https://old.example/embeddings"));
     let _ = std::fs::remove_file(path);
@@ -3848,7 +3848,7 @@ async fn update_policy_diversity_alone_can_fail_the_search_policy_cross_check() 
     // `diversity_policy.max_visible_per_domain` now disagrees with
     // `search_policy.maximum_results_per_domain` — Config::validate refuses
     // the pair, so the write never happens.
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let _ = std::fs::remove_file(path);
 }
 
@@ -4225,7 +4225,7 @@ async fn update_deep_renderer_refuses_enabling_under_the_isolated_profile() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("[deep.renderer]"));
     let _ = std::fs::remove_file(path);
@@ -4427,7 +4427,7 @@ async fn update_server_pending_config_refuses_an_invalid_candidate_without_writi
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("0.0.0.0"));
     let _ = std::fs::remove_file(path);

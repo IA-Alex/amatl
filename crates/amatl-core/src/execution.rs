@@ -33,6 +33,11 @@ use tracing::Instrument;
 
 static JITTER_COUNTER: AtomicU64 = AtomicU64::new(0);
 
+/// Message on the synthetic error produced when a provider was never called
+/// because the local concurrency deadline expired. The breaker must not treat
+/// this as a provider failure (see `AmatlService::record_circuit_outcomes`).
+pub(crate) const CONCURRENCY_DEADLINE_MESSAGE: &str = "provider concurrency deadline exceeded";
+
 #[derive(Clone, Debug)]
 pub struct ParallelSearchOutput {
     pub provider_results: Vec<ProviderResult>,
@@ -562,7 +567,7 @@ impl SearchOrchestrator {
                                     schema_version: SCHEMA_VERSION.into(),
                                     provider: name,
                                     kind: ProviderErrorKind::Timeout,
-                                    message: "provider concurrency deadline exceeded".into(),
+                                    message: CONCURRENCY_DEADLINE_MESSAGE.into(),
                                     retry_after_ms: None,
                                 }),
                                 provider_started.elapsed().as_millis() as u64,

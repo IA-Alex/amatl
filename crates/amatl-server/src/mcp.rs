@@ -19,7 +19,7 @@
 //! `deep_search` is the long operation: it honors client cancellation and
 //! reports progress when the caller supplied a progress token.
 
-use crate::{next_request_id, ClientIdentity, ServiceHandle};
+use crate::{next_request_id, ClientIdentity, RequestMetrics, ServiceHandle};
 use amatl_core::{
     AmatlService, ErrorCode, FetchError, FetchRequest, ServiceSurface, SCHEMA_VERSION,
 };
@@ -37,11 +37,14 @@ use serde::Deserialize;
 use serde_json::json;
 use std::borrow::Cow;
 use std::collections::BTreeMap;
+use std::sync::{atomic::Ordering, Arc};
 use url::Url;
 
 #[derive(Clone)]
 pub struct McpSurface {
     service: ServiceHandle,
+    /// Shared with the HTTP surface so `/metrics` reports MCP traffic too.
+    metrics: Arc<RequestMetrics>,
 }
 
 #[derive(Debug, Deserialize, schemars::JsonSchema)]
@@ -69,8 +72,8 @@ struct FetchInput {
 }
 
 impl McpSurface {
-    pub fn new(service: ServiceHandle) -> Self {
-        Self { service }
+    pub fn new(service: ServiceHandle, metrics: Arc<RequestMetrics>) -> Self {
+        Self { service, metrics }
     }
 
     /// Identity attached by the HTTP security middleware.
@@ -135,12 +138,16 @@ impl McpSurface {
             .page_size
             .map(|value| value.clamp(1, limits.max_page_size));
         let page = input.page.or(page_size.map(|_| 0));
+        self.metrics.search_total.fetch_add(1, Ordering::Relaxed);
         match service
             .search_paginated(input.query, surface, page, page_size)
             .await
         {
             Ok(value) => structured(value.response),
-            Err(error) => tool_error(error.code()),
+            Err(error) => {
+                self.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
+                tool_error(error.code())
+            }
         }
     }
 
@@ -168,9 +175,13 @@ impl McpSurface {
             return tool_error(ErrorCode::RequestCancelled);
         };
         report_progress(&context.peer, progress.as_ref(), 1.0, "complete").await;
+        self.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
         match outcome {
             Ok(value) => structured(value),
-            Err(error) => tool_error(error.code()),
+            Err(error) => {
+                self.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
+                tool_error(error.code())
+            }
         }
     }
 
@@ -196,9 +207,13 @@ impl McpSurface {
         let Some(outcome) = run_cancellable(&context.ct, work).await else {
             return tool_error(ErrorCode::RequestCancelled);
         };
+        self.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
         match outcome {
             Ok(value) => structured(value),
-            Err(error) => tool_error(error.code()),
+            Err(error) => {
+                self.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
+                tool_error(error.code())
+            }
         }
     }
 
