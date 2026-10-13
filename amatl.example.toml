@@ -49,6 +49,28 @@ enabled = []
 # storage_rights = false
 # data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
 # operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
+#
+# Ejemplo: activar Brave (opcional, de pago). Aprobado por decisión explícita del
+# operador en amatl.toml: para activarlo aquí, descomenta "brave" en enabled y
+# la ficha, exporta BRAVE_API_KEY (o inserta la key efímera en la UI con "Insertar
+# key Brave"). El adapter consulta https://api.search.brave.com/res/v1/web/search
+# con el header x-subscription-token. Sin key no responde (provider_credential_missing).
+# enabled = ["brave"]
+# [providers.brave]
+# approval_status = "approved"
+# adapter_version = "brave-v1"
+# reviewed_at = "2026-10-12"
+# reviewer = "identidad verificable"
+# terms_url = "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
+# terms_version_or_date = "2026-02-11"
+# allowed_access_method = "official_api"
+# plan_or_contract = "Paid; card required at signup"
+# rate_limit = "per plan"
+# cost_model = "Paid since 2026-02 (~5 USD/mo credit)"
+# credential_env = "BRAVE_API_KEY"
+# storage_rights = false
+# data_handling_notes = "Proveedor de pago; índice oficial de Brave, requiere key del operador."
+# operational_risk = "Coste por uso y dependencia de la API externa; revisar cuota en el panel de Brave."
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
 # Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".
