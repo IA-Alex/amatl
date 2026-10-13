@@ -64,6 +64,7 @@ pub(super) fn register_probe_routes(router: Router<AppState>) -> Router<AppState
 
 define_public_routes! {
     "/search" => [get(search), post(search_post)],
+    "/search/batch" => [get(search_batch)],
     "/deep" => [get(deep), post(deep_post)],
     "/answer" => [post(answer_post), patch(update_answer_fields)],
     "/providers" => [get(providers)],

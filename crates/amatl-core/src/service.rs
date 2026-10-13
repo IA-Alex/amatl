@@ -137,6 +137,21 @@ pub struct SearchExecution {
     pub response: SearchResponse,
 }
 
+/// One query's outcome in a `search_batch` call.
+///
+/// Items are independent: a query that fails validation or execution yields an
+/// `error` while the rest of the batch still completes, so an orchestrator can
+/// consume the usable rows and treat the failed one separately instead of the
+/// whole batch collapsing. `response` and `error` are mutually exclusive.
+#[derive(Clone, Debug, Serialize)]
+pub struct SearchBatchItem {
+    pub query: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub response: Option<SearchResponse>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub error: Option<ErrorCode>,
+}
+
 /// One Search result explicitly selected by a Deep caller.
 ///
 /// This deliberately accepts only identity and provenance already exposed by
@@ -734,6 +749,44 @@ impl AmatlService {
         surface: ServiceSurface,
     ) -> Result<SearchExecution, ServiceError> {
         self.search_paginated(raw_query, surface, None, None).await
+    }
+
+    /// Run several independent searches in order and return one outcome per
+    /// query.
+    ///
+    /// Each query executes exactly like a `/search` call (its own fresh
+    /// orchestrator and budget, with circuit outcomes and history recorded per
+    /// query against [`ServiceSurface::api`] semantics), but a failure in one
+    /// query never aborts the rest: the batch is only as unavailable as its
+    /// usable rows, and the fault is isolated to the failing item. The caller
+    /// is responsible for bounding the batch size up front; per-query cost is
+    /// already bounded by [`ExecutionLimits`], so `n` queries cost at most
+    /// `n × budget`.
+    pub async fn search_batch(
+        &self,
+        raw_queries: Vec<String>,
+        surface: ServiceSurface,
+    ) -> Vec<SearchBatchItem> {
+        let mut items = Vec::with_capacity(raw_queries.len());
+        for raw in raw_queries {
+            let item = match self
+                .search_paginated(raw.clone(), surface.clone(), None, None)
+                .await
+            {
+                Ok(execution) => SearchBatchItem {
+                    query: raw,
+                    response: Some(execution.response),
+                    error: None,
+                },
+                Err(error) => SearchBatchItem {
+                    query: raw,
+                    response: None,
+                    error: Some(error.code()),
+                },
+            };
+            items.push(item);
+        }
+        items
     }
 
     /// Search with optional server-side pagination.

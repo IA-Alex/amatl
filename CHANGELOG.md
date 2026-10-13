@@ -16,6 +16,15 @@ adapter/extractor versions are independent axes as well.
 
 ### Added
 
+- `GET /search/batch` (HTTP) executes `1..=5` independent searches in one
+  request and returns one outcome per query in caller order —
+  `AmatlService::search_batch`. Items are independent: a query that fails
+  validation or execution yields that item's catalog `error` while the rest of
+  the batch still completes, and each item carries either a full `SearchResponse`
+  or an `error` (mutually exclusive). Envelope validation rejects an empty batch
+  or more than five queries with `invalid_request`; each query runs sequentially
+  with its own budget, recording circuit outcomes and history like a `/search`
+  call. Reuses the `Search` scope and stays on `schema_version` `"1"`.
 - Provider registry (`ProviderRegistry`, `ProviderFactory`) and an open
   `[providers.<name>]` configuration map, so a search source is added by
   declaring a governance record and registering a factory —

@@ -12,7 +12,7 @@ use axum::{
     body::Body,
     extract::{
         rejection::{JsonRejection, QueryRejection},
-        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, Request, State,
+        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, RawQuery, Request, State,
     },
     http::{
         header::{
@@ -51,6 +51,10 @@ use tracing::Instrument;
 const REQUEST_ID_HEADER: &str = "x-request-id";
 /// Shortest bearer token accepted from configuration or the environment.
 const MINIMUM_TOKEN_BYTES: usize = 32;
+/// Upper bound on one `GET /search/batch` request. It bounds the total work
+/// a single call can request (each query runs its own full search), so the
+/// surface cannot be used to fan out an unbounded number of provider calls.
+const MAX_BATCH_QUERIES: usize = 5;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 /// Wrapper so handlers can extract the request-id injected by the security
@@ -423,6 +427,7 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
     }
     match path {
         "/search" => Some(Scope::Search),
+        "/search/batch" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
         // `PATCH /answer` edits the endpoint/model/limits — a config write,
         // admin scoped like every other one. `POST /answer` (below) is the
@@ -886,6 +891,46 @@ async fn search_post(
             service_error(error)
         }
     }
+}
+
+/// Runs several independent searches in a single request and returns each
+/// query's outcome separately, without pagination.
+///
+/// Unlike `/search` (a single query that fails closed), this is a batch: the
+/// envelope is validated first (at least one `q`, at most [`MAX_BATCH_QUERIES`]),
+/// then every query runs independently and a failure in one is reported as
+/// that item's `error` while the usable rows still return. Items preserve the
+/// caller's order. Reads the `search` results a caller could obtain one
+/// call at a time, so it reuses the `Search` scope.
+async fn search_batch(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    RawQuery(raw): RawQuery,
+) -> Response {
+    // Repeated `q` parameters are parsed straight from the raw query string:
+    // serde_urlencoded (used by axum's `Query`) cannot deserialize repeated
+    // keys into a `Vec` field, so this avoids that limitation and is explicit
+    // about which values belong to `q`.
+    let queries = raw
+        .as_deref()
+        .map(|raw| {
+            url::form_urlencoded::parse(raw.as_bytes())
+                .filter_map(|(key, value)| (key == "q").then(|| value.into_owned()))
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_default();
+    let count = queries.len();
+    if count == 0 || count > MAX_BATCH_QUERIES {
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    let surface = ServiceSurface::api(Some(request_id.into_inner()));
+    let items = state.service().search_batch(queries, surface).await;
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "count": items.len(),
+        "batches": items,
+    }))
+    .into_response()
 }
 
 async fn deep_post(

@@ -216,6 +216,104 @@ async fn protected_api_requires_bearer_and_preserves_search_contract() {
 }
 
 #[tokio::test]
+async fn search_batch_runs_queries_independently_with_a_bounded_envelope() {
+    // Auth required, like every protected domain surface.
+    let unauthorized = app()
+        .await
+        .oneshot(request("/search/batch?q=rust").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(unauthorized.status(), StatusCode::UNAUTHORIZED);
+
+    // Envelope validation: at least one query.
+    let empty = app()
+        .await
+        .oneshot(authorized("/search/batch").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(empty.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(json_body(empty).await["error"]["code"], "invalid_request");
+
+    // Envelope validation: at most MAX_BATCH_QUERIES.
+    let too_many = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=a&q=b&q=c&q=d&q=e&q=f")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(too_many.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(too_many).await["error"]["code"],
+        "invalid_request"
+    );
+
+    // A valid batch returns one outcome per query, in order, each with its
+    // own full SearchResponse.
+    let response = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=rust&q=async")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let status = response.status();
+    let body = json_body(response).await;
+    assert_eq!(
+        status,
+        StatusCode::OK,
+        "valid batch should be 200; body={body}"
+    );
+    assert_eq!(body["schema_version"], "1");
+    assert_eq!(body["count"], 2);
+    let batches = body["batches"].as_array().unwrap();
+    assert_eq!(batches.len(), 2);
+    assert_eq!(batches[0]["query"], "rust");
+    assert_eq!(batches[0]["response"]["status"], "success");
+    assert_eq!(
+        batches[0]["response"]["results"][0]["canonical_url"],
+        "https://example.com/rust"
+    );
+    assert_eq!(batches[1]["query"], "async");
+    // Mutual exclusivity: successful items carry a response and no error.
+    assert!(batches[0].get("error").is_none());
+    assert!(batches[0]["response"].is_object());
+}
+
+#[tokio::test]
+async fn search_batch_isolates_a_failed_query_without_dropping_the_rest() {
+    // Empty query text is invalid; that item reports an error while the
+    // neighbouring valid query still returns its response.
+    let response = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=rust&q=&q=async")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(
+        response.status(),
+        StatusCode::OK,
+        "batch envelope stays 200"
+    );
+    let body = json_body(response).await;
+    assert_eq!(body["count"], 3);
+    let batch = &body["batches"][1];
+    assert_eq!(batch["query"], "");
+    assert_eq!(batch["error"], "invalid_query");
+    assert!(batch.get("response").is_none());
+    // The other two succeeded independently.
+    assert_eq!(body["batches"][0]["response"]["status"], "success");
+    assert_eq!(body["batches"][2]["response"]["status"], "success");
+}
+
+#[tokio::test]
 async fn deep_post_exposes_evidence_contract_without_a_local_file_route() {
     let application = isolated_app().await;
     let unauthorized = application

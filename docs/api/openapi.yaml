@@ -64,6 +64,42 @@ paths:
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /search/batch:
+    get:
+      operationId: searchBatchGet
+      summary: Run several independent searches in one request
+      description: >-
+        Executes each repeated `q` parameter as an independent search (its own
+        budget and orchestrator) and returns one outcome per query in caller
+        order. The envelope requires at least one `q` and at most five. Query
+        execution is independent: one failing query is reported as that item's
+        `error` while the usable rows still return.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: A search query. Repeat for multiple queries (1..=5).
+          schema:
+            type: array
+            items: { type: string }
+            minItems: 1
+            maxItems: 5
+      responses:
+        '200':
+          description: One outcome per submitted query, in order
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchBatchResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /deep:
     get:
       operationId: deepGet
@@ -851,6 +887,31 @@ components:
           type: integer
           minimum: 1
           maximum: 100
+    SearchBatchResponse:
+      type: object
+      required: [schema_version, count, batches]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        count:
+          type: integer
+          description: Number of batch items, matching the number of submitted queries.
+        batches:
+          type: array
+          description: One outcome per submitted query, in caller order.
+          items: { $ref: '#/components/schemas/SearchBatchItem' }
+    SearchBatchItem:
+      type: object
+      required: [query]
+      properties:
+        query:
+          type: string
+          description: The submitted query this item reports on.
+        response:
+          allOf: [{ $ref: '#/components/schemas/SearchResponse' }]
+          description: Present when the query executed; mutually exclusive with `error`.
+        error:
+          type: string
+          description: Catalog error code (e.g. `invalid_query`) when the query failed; mutually exclusive with `response`.
     DeepInput:
       type: object
       additionalProperties: false

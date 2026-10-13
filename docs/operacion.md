@@ -176,7 +176,7 @@ de un solo operador. Declarar clientes con nombre reparte capacidad:
 
 | Scope | Rutas |
 |---|---|
-| `search` | `POST/GET /search` |
+| `search` | `POST/GET /search`, `GET /search/batch` |
 | `deep` | `POST/GET /deep` |
 | `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
 | `write` | escritura y borrado en `/history` y `/saved` |
