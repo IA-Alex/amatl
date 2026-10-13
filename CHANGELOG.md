@@ -163,7 +163,25 @@ adapter/extractor versions are independent axes as well.
   each public route's path and methods and generates both the Axum
   registration and the inventory used by the OpenAPI coverage guard, so adding
   a route requires declaring it in one place.
-
+- Search-source selector in the web UI: a single-choice control that derives
+  from the authoritative `providers.enabled` list and exposes
+  Marginalia / SearXNG / Brave / All. Picking one issues the ordered per-provider
+  `POST /providers/{name}/enabled` toggles to reach exactly that membership, so
+  the operator chooses which sources (and therefore what the strategist LLM
+  refines over) run per search.
+- Brave as a first-class (paid, opt-in) source with an in-memory key surface
+  mirroring Marginalia: `POST`/`DELETE /providers/brave/credential`, a live
+  canary before acceptance, and a liquidate affordance gated on the reported
+  `credential_source`. Brave's governance record is approved in the local
+  `amatl.toml`; `amatl.example.toml` carries the commented template.
+- Retained-documents expiry (`saved_documents_retention_days`): saved
+  documents older than the configured window are pruned on the maintenance
+  pass, bounding table growth while keeping the unlimited (0) default.
+- Cache retention indexes (migration 0008): `created_at` indexes on both cache
+  tables so the eviction/filter path is index-backed instead of a linear scan.
+- Atomic configuration writes (`config::write_config_document`): every config
+  setter writes to a process-temp file, fsyncs and renames over the target, so
+  a crash mid-write cannot leave `amatl.toml` truncated.
 
 ### Changed
 
@@ -210,6 +228,10 @@ adapter/extractor versions are independent axes as well.
   subtitle ("Búsqueda multifuente y evidencia verificable") was removed
   entirely — it read as marketing copy, not product state, and the header now
   only carries the brand and the theme toggle.
+- The circuit breaker admits a single half-open probe per cooldown: the first
+  caller after cooldown claims the probe and concurrent callers are refused
+  until it completes, so a recovering source is not stampeded. A claim older
+  than the cooldown is reclaimed.
 
 ### Removed
 
@@ -289,6 +311,13 @@ adapter/extractor versions are independent axes as well.
   (`providers/searxng.rs`, `CODE_OF_CONDUCT.md`, `SECURITY.md`).
 - Repository-hygiene remediations from the validation audit (`config.rs`,
   `errors.rs`, `lib.rs`, `i18n.js`, `bench.rs`, `benchmark_plan_runner.py`).
+- Migration downgrades 0006/0007 now remove their version row from
+  `amatl_schema_migrations`, keeping the ledger consistent with the actual
+  schema after a downgrade.
+- Provider parsers (brave, marginalia, mojeek, searxng) tolerate malformed
+  envelope items: optional fields default instead of failing the whole parse,
+  empty-URL items are dropped, and provider ranks are renumbered over the final
+  vector so SearXNG answers and results keep a unique ordinal.
 
 ### Changed
 
