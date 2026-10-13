@@ -414,22 +414,23 @@ mod tests {
     }
 
     #[test]
-    fn source_selector_maps_three_choices_onto_provider_enabled() {
+    fn source_selector_maps_four_choices_onto_provider_enabled() {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // A single-choice segmented control (Marginalia / SearXNG / Ambos)
-        // must exist in the search panel and resolve its copy through the
+        // A single-choice segmented control (Marginalia / SearXNG / Brave /
+        // All) must exist in the search panel and resolve its copy through the
         // catalog, not half-hardcoded.
         assert!(html.contains("id=\"provider-selector\""));
         assert!(html.contains("name=\"provider-source\""));
         assert!(html.contains("value=\"marginalia\""));
         assert!(html.contains("value=\"searxng\""));
-        assert!(html.contains("value=\"both\""));
+        assert!(html.contains("value=\"brave\""));
+        assert!(html.contains("value=\"all\""));
         assert!(catalog.contains("providerSelectorLabel"));
-        assert!(catalog.contains("providerSourceBoth"));
+        assert!(catalog.contains("providerSourceAll"));
         assert!(javascript.contains("t(\"providerSelectorLabel\")"));
-        // The three choices reduce to exactly the two per-provider toggles the
+        // The four choices reduce to exactly the per-provider toggles the
         // backend speaks (`POST /providers/{name}/enabled`), keeping both the
         // selector and the detailed panel on the same `providers.enabled` list.
         assert!(javascript.contains("providerSelectorOptions.addEventListener(\"change\""));
@@ -437,8 +438,48 @@ mod tests {
         assert!(javascript.contains("PROVIDER_SOURCE_TARGET"));
         assert!(javascript.contains("marginalia: [\"marginalia\"]"));
         assert!(javascript.contains("searxng: [\"searxng\"]"));
-        assert!(javascript.contains("both: [\"marginalia\", \"searxng\"]"));
+        assert!(javascript.contains("brave: [\"brave\"]"));
+        assert!(javascript.contains("all: [\"marginalia\", \"searxng\", \"brave\"]"));
         assert!(javascript.contains("syncProviderSelector"));
         assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
+    }
+
+    #[test]
+    fn brave_credential_ui_follows_the_marginalia_pattern() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // Brave is opt-in (paid) but must be insertable/selectable like
+        // Marginalia: an in-memory key dialog, liquidate affordance, and i18n
+        // through the catalog, routing to /providers/brave/credential.
+        for id in [
+            "brave-key-button",
+            "brave-clear-button",
+            "brave-dialog",
+            "brave-key",
+            "brave-save",
+            "brave-cancel",
+        ] {
+            assert!(
+                html.contains(&format!("id=\"{id}\"")),
+                "missing brave element: {id}"
+            );
+        }
+        for key in [
+            "braveKeyButton",
+            "braveClearButton",
+            "braveDialogHeading",
+            "braveDialogHelp",
+            "braveKeyPlaceholder",
+            "braveSave",
+            "braveCancel",
+            "braveStatusEnvironment",
+        ] {
+            assert!(catalog.contains(key), "missing catalog key: {key}");
+        }
+        assert!(javascript.contains("/providers/brave/credential"));
+        assert!(javascript.contains("braveCredentialSource"));
+        assert!(javascript.contains("syncBraveFromStatus"));
+        assert!(javascript.contains("braveClearButton.disabled = source !== \"ephemeral\""));
     }
 }

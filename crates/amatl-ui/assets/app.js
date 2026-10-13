@@ -613,7 +613,7 @@ const providerStatus = document.querySelector(".provider-status");
 const providerList = document.querySelector("#provider-list");
 const providerStatusText = document.querySelector("#provider-status-text");
 
-// ── Source selector (Marginalia / SearXNG / Ambos) ──────────────
+// ── Source selector (Marginalia / SearXNG / Brave / All) ────────
 // A search-level control that drives the same `providers.enabled` list the
 // detailed source panel reflects. The radio selection is *derived* from
 // `providers.enabled` (single source of truth, `/providers`), so the two
@@ -622,14 +622,15 @@ const providerStatusText = document.querySelector("#provider-status-text");
 const providerSelector = document.querySelector("#provider-selector");
 const providerSelectorOptions = document.querySelector("#provider-selector-options");
 const providerSelectorStatus = document.querySelector("#provider-selector-status");
-const PROVIDER_SOURCE_NAME = ["marginalia", "searxng"];
+const PROVIDER_SOURCE_NAME = ["marginalia", "searxng", "brave"];
 
-// Map a `providers.enabled` list to a radio value: "both" when both of the
-// selector's providers are on, otherwise the single on one, or null if neither.
+// Map a `providers.enabled` list to a radio value: "all" when every selector
+// provider is on, otherwise the single on one, or null if zero (or a pair the
+// single-choice control cannot express, e.g. marginalia+searxng without brave).
 function providerSourceValue(enabledList) {
   const list = Array.isArray(enabledList) ? enabledList : [];
   const on = PROVIDER_SOURCE_NAME.filter((name) => list.includes(name));
-  if (on.length === 2) return "both";
+  if (on.length === PROVIDER_SOURCE_NAME.length) return "all";
   if (on.length === 1) return on[0];
   return null;
 }
@@ -638,8 +639,8 @@ function syncProviderSelector(enabledList) {
   const value = providerSourceValue(enabledList);
   for (const input of providerSelectorOptions.querySelectorAll('input[type="radio"]')) {
     input.checked = input.value === value;
-    // Only the two provider sources + "both" are selectable drives; if neither
-    // is enabled the group goes unchecked rather than inventing a state.
+    // A state the single-choice control cannot express (none, or a partial
+    // pair) leaves the group unchecked rather than inventing a selection.
   }
 }
 
@@ -647,7 +648,8 @@ function syncProviderSelector(enabledList) {
 const PROVIDER_SOURCE_TARGET = {
   marginalia: ["marginalia"],
   searxng: ["searxng"],
-  both: ["marginalia", "searxng"],
+  brave: ["brave"],
+  all: ["marginalia", "searxng", "brave"],
 };
 
 async function applyProviderSource(value) {
@@ -783,12 +785,12 @@ async function fetchProviderStatus() {
       if (provider.enabled) enabledList.push(provider.name);
     }
     providerStatus.hidden = false;
-    // The source selector is valid only when the two providers it drives are
+    // The source selector is valid only when the providers it drives are
     // actually declared; otherwise keep it hidden rather than showing controls
     // with nothing to control.
+    const hasSource = (name) => payload.providers.some((p) => p.name === name);
     providerSelector.hidden = !(
-      payload.providers.some((p) => p.name === "marginalia") &&
-      payload.providers.some((p) => p.name === "searxng")
+      hasSource("marginalia") && hasSource("searxng") && hasSource("brave")
     );
     if (!providerSelector.hidden) syncProviderSelector(enabledList);
     if (unavailable === 0) {
@@ -931,6 +933,7 @@ async function fetchServiceState() {
     serviceSummary.dataset.state = degraded ? "partial" : "success";
     servicePanel.hidden = false;
     syncMarginaliaFromStatus(payload);
+    syncBraveFromStatus(payload);
     return payload;
   } catch (_) {
     servicePanel.hidden = true;
@@ -1065,6 +1068,106 @@ marginaliaClearButton.addEventListener("click", async () => {
     fetchServiceState();
   } catch (_) {
     setStatus(t("marginaliaClearedFailed"), "error");
+  }
+});
+
+// ── Brave API key (option) ──────────────────────────────────────
+// Same operator credential pattern as Marginalia: an in-memory key, validated
+// by a live canary before it is accepted, and liquidable on demand. Brave is a
+// paid provider, so it stays as an explicit opt-in surface — the key is never
+// written to disk, config, or logs.
+const braveKeyButton = document.querySelector("#brave-key-button");
+const braveClearButton = document.querySelector("#brave-clear-button");
+const braveStatus = document.querySelector("#brave-status");
+const braveDialog = document.querySelector("#brave-dialog");
+const braveKeyInput = document.querySelector("#brave-key");
+const braveKeyError = document.querySelector("#brave-key-error");
+const braveSave = document.querySelector("#brave-save");
+const braveCancel = document.querySelector("#brave-cancel");
+
+function braveCredentialSource(sources) {
+  const entry = (Array.isArray(sources) ? sources : []).find(
+    (source) => source && source.name === "brave",
+  );
+  return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
+}
+
+function updateBraveUi(source) {
+  // Only an in-memory key can be liquidated from here: a key read from the
+  // environment variable (BRAVE_API_KEY) is out of this surface's reach, so
+  // "liquidate" stays disabled and the status says where the key comes from.
+  braveClearButton.disabled = source !== "ephemeral";
+  braveStatus.hidden = false;
+  if (source === "ephemeral") {
+    braveStatus.dataset.state = "success";
+    braveStatus.textContent = t("braveStatusPresent");
+  } else if (source === "environment") {
+    braveStatus.dataset.state = "partial";
+    braveStatus.textContent = t("braveStatusEnvironment");
+  } else {
+    braveStatus.dataset.state = "partial";
+    braveStatus.textContent = t("braveStatusAbsent");
+  }
+}
+
+// Keep the two buttons in sync with the last `/status` payload.
+function syncBraveFromStatus(payload) {
+  if (!payload) return;
+  updateBraveUi(braveCredentialSource(payload.sources));
+}
+
+function openBraveDialog() {
+  braveKeyInput.value = "";
+  braveKeyError.hidden = true;
+  braveDialog.showModal();
+  braveKeyInput.focus();
+}
+
+braveKeyButton.addEventListener("click", openBraveDialog);
+braveCancel.addEventListener("click", () => braveDialog.close());
+// Clicking the backdrop (outside the dialog box) closes it, like a native modal.
+braveDialog.addEventListener("click", (event) => {
+  if (event.target === braveDialog) braveDialog.close();
+});
+
+braveSave.addEventListener("click", async () => {
+  const key = braveKeyInput.value.trim();
+  if (!key) {
+    braveKeyError.hidden = false;
+    braveKeyError.textContent = t("braveEmpty");
+    return;
+  }
+  braveSave.disabled = true;
+  braveKeyError.hidden = true;
+  try {
+    const report = await globalThis.api.post("/providers/brave/credential", { key });
+    braveDialog.close();
+    braveKeyInput.value = "";
+    updateBraveUi(report && report.available ? "ephemeral" : "none");
+    setStatus(t("braveSaved"), "success");
+    fetchServiceState();
+  } catch (error) {
+    // 401/403 means the operator token lacks admin scope; anything else means
+    // the key itself did not pass the live canary (or the source was
+    // unreachable) and nothing was stored.
+    const match = /API Error: (\d+)/.exec(String(error && error.message));
+    const status = match ? Number(match[1]) : 0;
+    braveKeyError.hidden = false;
+    braveKeyError.textContent =
+      status === 401 || status === 403 ? t("braveFailed") : t("braveInvalid");
+  } finally {
+    braveSave.disabled = false;
+  }
+});
+
+braveClearButton.addEventListener("click", async () => {
+  try {
+    await globalThis.api.delete("/providers/brave/credential");
+    updateBraveUi("none");
+    setStatus(t("braveCleared"), "success");
+    fetchServiceState();
+  } catch (_) {
+    setStatus(t("braveClearedFailed"), "error");
   }
 });
 
@@ -1487,12 +1590,21 @@ document.addEventListener("DOMContentLoaded", () => {
   marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
   document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
   document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");
-  // Source selector: legend and the "Ambos/Both" option are translatable; the
+  // Source selector: legend and the "Todas/All" option are translatable; the
   // provider names stay as proper nouns.
   document.querySelector("#provider-selector-label").textContent = t("providerSelectorLabel");
-  const sourceBothOption = document.querySelector(
-    '.provider-selector-option input[value="both"]',
+  const sourceAllOption = document.querySelector(
+    '.provider-selector-option input[value="all"]',
   ).closest("label");
-  sourceBothOption.querySelector("span").textContent = t("providerSourceBoth");
+  sourceAllOption.querySelector("span").textContent = t("providerSourceAll");
+  // Brave provider-credential surface: button labels and the whole dialog
+  // resolve through the catalog, mirroring the Marginalia surface.
+  document.querySelector("#brave-key-button").textContent = t("braveKeyButton");
+  document.querySelector("#brave-clear-button").textContent = t("braveClearButton");
+  document.querySelector("#brave-dialog-heading").textContent = t("braveDialogHeading");
+  document.querySelector("#brave-dialog-help").textContent = t("braveDialogHelp");
+  braveKeyInput.placeholder = t("braveKeyPlaceholder");
+  document.querySelector("#brave-save").textContent = t("braveSave");
+  document.querySelector("#brave-cancel").textContent = t("braveCancel");
   updateThemeToggle();
 });
