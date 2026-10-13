@@ -1,5 +1,23 @@
 # Continuidad de desarrollo — AMATL
 
+> **Nota de consolidación (estado vigente de fuentes en el frontend).** Este
+> documento es un historial *append-only*; las secciones anteriores a esta nota
+> describen estados intermedios. Para evitar confusiones, la verdad vigente es:
+>
+> - **Marginalia y SearXNG** son las fuentes de búsqueda activables en la UI.
+>   Marginalia está **aprobada** (`reviewed_at = "2026-09-08"`); **SearXNG
+>   sigue pendiente de aprobación real** del operador.
+> - **Brave es opcional/opt-in**: la UI lo expone como opción seleccionable
+>   (selector `value="brave"`, botón "Insertar key Brave", endpoints
+>   `/providers/brave/credential` y `/providers/brave/enabled`), pero el core lo
+>   mantiene `approval_status = "rejected"` por defecto (provider de pago). Sólo
+>   se vuelve usable si el operador overridea la política en su `amatl.toml`.
+>   **Mojeek** no aparece como opción en la UI y queda descartado por la misma
+>   política.
+> - Referencias canónicas: «Disponibilidad real y límites», «Pendientes #3»,
+>   y la sección final «Marginalia — key privada operativa, ficha de aprobación
+>   completada».
+
 ## Snapshot verificable
 
 Estado revisado el **2026-08-16** sobre la rama `consolidacion-ui-observabilidad`:
@@ -40,7 +58,7 @@ Estado de los documentos rectores:
 |---|---|---|
 | `plan_amatl.md` | `0fdd6761cb8c568145d6e00dfa0d37d56d68b02239bac8a92c061d4fb4b9ae11` | **Modificado** en `56c5ec1` |
 | `fase_a_contratos.md` | `03034b7abfbcfaba3da7ada7b43267ed38936ff09453326cd9db40b2cede4744` | Intacto |
-| `decisiones_amatl.md` | `3b260a0f34c934b61e103f71303b3c4effbebf3a0e231e2ff5574e41d0a36ee5` | **Modificado** (append-only): ADR-010 añadida, 2026-08-15 |
+| `decisiones_amatl.md` | `3b260a0f34c934b61e103f71303b3c4effbebf3a0e231e2ff5574e41d0a36ee5` | **Modificado** (append-only): ADR-010 añadida, 2026-08-14 |
 
 `plan_amatl.md` declaraba `Evidence` y `Gap` como «stub post-MVP» cuando
 `evidence.rs` (527 líneas) y `gaps.rs` (513) llevaban implementados desde la
@@ -52,7 +70,7 @@ se conserva como registro.
 ADR-010 documenta el retiro de `duckduckgo_html` y la implementación real de
 Marginalia sin reescribir ADR-005.
 
-**Actualización 2026-08-15 (comiteada como `f46ad90`):** cierre de la Etapa 1 de la brecha
+**Actualización 2026-08-14 (comiteada como `f46ad90`):** cierre de la Etapa 1 de la brecha
 de proveedores — `providers/marginalia.rs` deja de ser scaffold (adapter real
 contra `api2.marginalia-search.com`, header `API-Key`), `router.rs` penaliza
 por `estimated_cost`, y `duckduckgo_html` se retiró del código, del registro y
@@ -233,12 +251,20 @@ Invariantes no negociables:
   política del operador** (`approval_status = "rejected"` por defecto, no
   `draft`): ambos son de pago y no se contratan providers de pago. No es un
   papeleo de gobernanza pendiente — reactivarlos exige revertir esa decisión
-  explícitamente. Ver «Estado actual verificable» en
+  explícitamente. **Matiz de superficie:** el frontend expone **Brave como
+  fuente opcional/opt-in** (selector `value="brave"`, botón "Insertar key
+  Brave", `/providers/brave/credential`, `/providers/brave/enabled`); Brave
+  aparece en `GET /providers` como declarado (`enabled=false`,
+  `status=Unavailable`), pero sólo se vuelve usable si el operador overridea
+  la política en su `amatl.toml`. Ver «Estado actual verificable» en
   `docs/gobernanza-providers.md`.
-- SearXNG y Marginalia tienen adapter real y completo (ficha aprobable); ninguno
-  está activo por defecto — falta `reviewer`/`reviewed_at`/`approval_status`
-  con identidad real, decisión del propietario, no del código. Son los dos
-  candidatos gratuitos.
+- SearXNG y Marginalia tienen adapter real y completo. **Marginalia está
+  aprobada** en el `amatl.toml` real del operador (`reviewed_at = "2026-09-08"`;
+  aprobación intermedia 2026-08-15 con clave pública compartida). **SearXNG
+  queda pendiente de aprobación real** — falta `reviewer`/`reviewed_at`/
+  `approval_status` con identidad real, decisión del propietario, no del
+  código. Ambos son los candidatos gratuitos activables; ningún example
+  versionado lleva identidad de gobernanza inventada.
 - `duckduckgo_html` se retiró: DuckDuckGo no ofrece API de búsqueda web, sólo
   Instant Answer (no devuelve resultados web). No queda como adapter apagado.
 - Trafilatura es opcional; su ausencia degrada Deep a documento superficial.
@@ -374,17 +400,16 @@ No son defectos del core y no deben resolverse inventando datos:
    SLA y URL canónica ya están definidos; mantenerlos vigentes.
 2. Marcar `contract-gate` como required check cuando GitHub habilite protección
    para este repositorio privado (requiere plan superior o hacerlo público).
-3. Aprobar la ficha de una fuente gratuita ya implementada (SearXNG o
-   Marginalia): ambos `ProviderFactory` existen y sólo falta
-   `reviewer`/`reviewed_at`/`approval_status` con identidad real — no es
-   trabajo de código, es papeleo de gobernanza. Marginalia ya se aprobó en un
-   `amatl.toml` de operador real (2026-08-15, gitignored, no forma parte del
-   repositorio) usando la clave pública compartida de Marginalia mientras se
-   espera una clave propia por correo; el `amatl.example.toml` que sí se
-   versiona sigue con la ficha en `draft` a propósito, porque
-   `reviewer`/`reviewed_at` son específicos de cada operador y no deben
-   inventarse en un ejemplo. SearXNG sigue sin aprobar en ningún lado; exige
-   además que el operador levante su propia instancia. Brave y Mojeek
+3. Gobernanza de fuentes gratuitas — **Marginalia ya está aprobada**: ficha
+   `approval_status = "approved"` en el `amatl.toml` real del operador
+   (gitignored, fuera del repositorio), con `reviewer = "Alexis Hernandez"` y
+   `reviewed_at = "2026-09-08"` (aprobación intermedia 2026-08-15 con la clave
+   pública compartida; definitiva 2026-09-08 con la clave privada propia). El
+   `amatl.example.toml` versionado sigue con la ficha en `draft` a propósito,
+   porque `reviewer`/`reviewed_at` son específicos de cada operador y no deben
+   inventarse en un ejemplo. **SearXNG sigue sin aprobar en ningún lado**;
+   exige además que el operador levante su propia instancia y complete la
+   identidad de gobernanza. Brave y Mojeek
    **quedan descartados, no pendientes**: ambos exigen plan de pago —Brave
    eliminó su tier gratuito en 2026-02—, y `config.rs` ya los fija en
    `approval_status = "rejected"` por decisión de política, con el motivo en
@@ -467,7 +492,7 @@ pendiente en este bloque.
    documentación de gobernanza, porque DuckDuckGo no tiene API de búsqueda web
    (sólo Instant Answer). ADR-005 queda como registro histórico; ADR-010
    documenta el cierre.
-5. **Brave y Mojeek quedan descartados, decisión cerrada (2026-08-15): no se
+5. **Brave y Mojeek quedan descartados, decisión cerrada (2026-08-14): no se
    contratan providers de pago.** Su adapter está completo (Brave: 366 líneas,
    endpoint y parseo correctos), pero `builtin_provider_records()`
    (`config.rs`) fija ambos en `approval_status = "rejected"` por defecto, con
@@ -475,6 +500,14 @@ pendiente en este bloque.
    (`paid_providers_are_rejected_by_default_not_merely_draft`) impide que esto
    regrese silenciosamente a `draft`. No queda abierto a "segunda ronda con
    datos de uso": reactivarlos exige revertir la política, no juntar métricas.
+   **Matiz de superficie:** el frontend sí está construido para seleccionar
+   **Brave como fuente opcional/opt-in** (selector con `value="brave"`,
+   botón "Insertar key Brave", endpoints `/providers/brave/credential` y
+   `/providers/brave/enabled`), y Brave aparece en `GET /providers` como
+   declarado (aunque `enabled=false`, `status=Unavailable` por el `rejected`
+   por defecto). Es decir, **Marginalia y SearXNG son las fuentes activables y
+   Brave queda como opcional**: la UI lo expone, pero sólo se vuelve usable si
+   el operador overridea la política en su `amatl.toml`.
 
 Compuerta completa verificada, comiteado como `f46ad90`.
 
@@ -482,9 +515,13 @@ Compuerta completa verificada, comiteado como `f46ad90`.
 `amatl.toml` real del operador, no en el `amatl.example.toml` versionado (que
 sigue en `draft` a propósito — `reviewer`/`reviewed_at` son específicos de
 cada operador y no deben inventarse en un ejemplo público). SearXNG y
-Marginalia están `approval_status = "approved"`, `reviewer = "Alexis
-Hernandez"`, `reviewed_at = "2026-08-15"` en la configuración real, y desde
-`e9b0c9e` el binario corre con ambas fuentes activas contra tráfico real,
+Marginalia están `approval_status = "approved"` en la configuración real. Nota
+de fechas: hubo una aprobación intermedia el 2026-08-15 (con la clave pública
+compartida de Marginalia) y la **aprobación definitiva con la clave privada
+propia se completó el 2026-09-08** (ver la sección «Marginalia — key privada
+operativa, ficha de aprobación completada» al final de este documento), con
+`reviewer = "Alexis Hernandez"` y `reviewed_at = "2026-09-08"`. Desde `e9b0c9e`
+el binario corre con ambas fuentes activas contra tráfico real,
 más "Resumen con IA" grounded sobre esos resultados (ver la actualización
 2026-08-16 más arriba y ADR-011). Motores upstream de SearXNG curados a nivel
 de operación (Docker, fuera de este repositorio) tras detectar bloqueo por
