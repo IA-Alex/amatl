@@ -712,7 +712,19 @@ impl SearchOrchestrator {
                     output.providers_failed.push(name);
                     output.errors.push(error);
                 }
-                Err(_) => {}
+                Err(join_err) => {
+                    // A task panicked (or was cancelled) rather than returning its
+                    // tuple. The provider's name is unrecoverable from a JoinError,
+                    // but the `missing` fill below still marks it as failed; surface
+                    // the panic here instead of dropping it silently so an operator
+                    // can tell such an in-task crash apart from a normal timeout or
+                    // provider error.
+                    tracing::error!(
+                        target: "amatl::orchestration",
+                        request_id = self.request_id.as_deref().unwrap_or("-"),
+                        "provider task panicked or was cancelled while parallel search joined: {join_err}"
+                    );
+                }
             }
         }
         for missing in selected.difference(

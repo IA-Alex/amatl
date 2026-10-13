@@ -901,7 +901,11 @@ impl InferenceRuntime {
                         // The LRU does an O(n) scan per access, so cap the
                         // derived capacity tightly: a multi-million-entry cache
                         // would turn every embed lookup into seconds of CPU.
-                        config.local_cache_capacity.max(1).saturating_mul(64).min(65_536),
+                        config
+                            .local_cache_capacity
+                            .max(1)
+                            .saturating_mul(64)
+                            .min(65_536),
                     ),
                 )) as Arc<dyn EmbeddingBackend>
             }

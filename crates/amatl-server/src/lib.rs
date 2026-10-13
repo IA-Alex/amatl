@@ -992,6 +992,12 @@ struct PageParams {
 }
 
 impl PageParams {
+    /// Window for the local panels (`/history`, `/saved`): bounded to 200/off.
+    ///
+    /// Note: this is deliberately a *different* limit from `/search`'s
+    /// `max_page_size` (100, or 25 under MCP). These are local read surfaces,
+    /// not the retrieval hot path, so a more generous cap is acceptable — the
+    /// two contracts are not intended to match.
     fn window(&self) -> (u32, u32) {
         (
             self.limit.unwrap_or(50).clamp(1, 200),

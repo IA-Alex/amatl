@@ -1844,12 +1844,14 @@ impl SqliteStorage {
     /// table grows.
     pub async fn saved_documents_prune(&self, before: i64) -> Result<u64, StorageError> {
         let _write_guard = self.write_lock.lock().await;
-        Ok(sqlx::query("DELETE FROM saved_documents WHERE saved_at < ?")
-            .bind(before)
-            .execute(&self.pool)
-            .await
-            .map_err(operation)?
-            .rows_affected())
+        Ok(
+            sqlx::query("DELETE FROM saved_documents WHERE saved_at < ?")
+                .bind(before)
+                .execute(&self.pool)
+                .await
+                .map_err(operation)?
+                .rows_affected(),
+        )
     }
 
     // ── Security audit trail ────────────────────────────────────────────
@@ -2421,7 +2423,10 @@ mod tests {
         );
         // The newest recovery points survive the cap; the oldest are dropped.
         assert!(migration.contains(&(RECOVERY_BACKUP_KEEP as i64 + 2)));
-        assert!(!migration.contains(&1), "oldest migration backup must be rotated");
+        assert!(
+            !migration.contains(&1),
+            "oldest migration backup must be rotated"
+        );
 
         // Automatic backups must also be visible to the operator listing.
         let listed = SqliteStorage::list_backups(&path, None).unwrap();

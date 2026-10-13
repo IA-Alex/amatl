@@ -936,7 +936,9 @@ impl AmatlService {
         } else {
             // A `no_usable_results` error from a primary round that the refined
             // round recovered from is now stale.
-            primary.errors.retain(|error| error.code != "no_usable_results");
+            primary
+                .errors
+                .retain(|error| error.code != "no_usable_results");
             primary.status = if primary.degradations.is_empty()
                 && primary.providers_failed.is_empty()
                 && primary.providers_partial.is_empty()
@@ -1879,8 +1881,9 @@ impl AmatlService {
                 degradations: vec![crate::Degradation {
                     code: ErrorCode::EgressDenied.as_str().into(),
                     component: "data_policy".into(),
-                    message: "outbound network access is denied by data policy; no source was called"
-                        .into(),
+                    message:
+                        "outbound network access is denied by data policy; no source was called"
+                            .into(),
                 }],
             });
         }
