@@ -194,7 +194,11 @@ function renderSearchResult(result, citationIndex) {
       let selected = store.get().selectedTargets;
       selected = selected.filter((value) => value.url !== target.url);
       if (checkbox.checked) selected.push(target);
-      store.update({ selectedTargets: selected });
+      // Transient UI state: update without notifying subscribers so toggling a
+      // target neither rebuilds the whole result list nor drops keyboard focus
+      // (the store's `render` would `replaceChildren()` the list). The value
+      // stays readable via `store.get()` for `run()` (deep targets).
+      store.updateSilent({ selectedTargets: selected });
     });
   } else {
     selection.remove();

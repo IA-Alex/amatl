@@ -1,6 +1,14 @@
 "use strict";
 
 // Simple reactive store for UI state.
+//
+// The store is intentionally coarse-grained: `update` fans out to every
+// subscriber and the app-level subscriber re-renders the whole result list.
+// `updateSilent` exists for *transient UI* state that must not pay that full
+// render (e.g. the Deep target checkboxes below the results): it keeps the
+// value in `get()` so `run()` can still read it, but makes no notification, so
+// toggling a checkbox neither rebuilds the list nor drops keyboard focus.
+// Only use it for ephemeral state that drives no rendering by itself.
 const createStore = (initialState) => {
   let state = { ...initialState };
   const listeners = [];
@@ -10,6 +18,10 @@ const createStore = (initialState) => {
     update: (partial) => {
       state = { ...state, ...partial };
       listeners.forEach((l) => l(state));
+    },
+    // Mutates state without notifying subscribers (transient UI state only).
+    updateSilent: (partial) => {
+      state = { ...state, ...partial };
     },
     subscribe: (listener) => {
       listeners.push(listener);
