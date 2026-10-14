@@ -25,8 +25,16 @@ fi
 # obligatorio para arrancar.
 token_var="AMATL_SERVER_TOKEN"
 if [ -f "$CONFIG_FILE" ]; then
-  found="$(grep -oE '^\s*token_env\s*=\s*"[^"]+"' "$CONFIG_FILE" \
-    | head -n1 | sed -E 's/.*"(.+)"/\1/')"
+  # Extrae server.token_env SOLO de la tabla [server]. Un grep plano se
+  # llevaría el primer token_env del archivo, y [[server.clients]] también
+  # declara token_env por cliente: si un cliente aparece antes que [server],
+  # apuntaría a la credencial equivocada y el token global quedaría sin
+  # generar (server.auth no tendría ningún cliente autorizado).
+  found="$(awk '
+    /^\[server\]/ { infile=1; next }
+    /^\[/ { infile=0 }
+    infile && /token_env/ { print; exit }
+  ' "$CONFIG_FILE" | sed -E 's/.*"(.+)"/\1/')"
   [ -n "$found" ] && token_var="$found"
 fi
 
