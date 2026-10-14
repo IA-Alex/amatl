@@ -88,12 +88,16 @@
             <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
           </div>
           <div class="credential-actions">
-            <button id="marginalia-key-button" class="secondary-action" type="button">🔑 Insertar key Marginalia</button>
-            <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
-            <p id="marginalia-status" class="field-help" hidden></p>
-            <button id="brave-key-button" class="secondary-action" type="button">🔑 Insertar key Brave</button>
-            <button id="brave-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
-            <p id="brave-status" class="field-help" hidden></p>
+            <div class="credential-group">
+              <button id="marginalia-key-button" class="secondary-action" type="button">🔑 Insertar key Marginalia</button>
+              <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
+              <p id="marginalia-status" class="field-help" hidden></p>
+            </div>
+            <div class="credential-group">
+              <button id="brave-key-button" class="secondary-action" type="button">🔑 Insertar key Brave</button>
+              <button id="brave-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
+              <p id="brave-status" class="field-help" hidden></p>
+            </div>
           </div>
           <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">

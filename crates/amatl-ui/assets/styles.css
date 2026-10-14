@@ -255,6 +255,15 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
   color: var(--secondary);
 }
 .credential-actions .field-help { margin: 0; font-size: 0.75rem; }
+/* Each provider's credential controls form one group so insert/liquidate/
+   status stay visually tied together when the row wraps, instead of one
+   provider's buttons drifting away from its status line. */
+.credential-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
 .danger-action { border-color: var(--error); color: var(--error); }
 .danger-action:hover { filter: brightness(1.08); }
 .filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
@@ -535,6 +544,10 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .search-row { grid-template-columns: minmax(0, 1fr); }
   .search-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .search-actions button { padding-inline: 0.6rem; }
+  /* Three actions over two columns: give the primary search action the full
+     row so the two secondary actions pair cleanly underneath instead of
+     leaving a lone half-width button and an empty grid cell. */
+  .search-actions #search-button { grid-column: 1 / -1; }
   .filter-grid { grid-template-columns: minmax(0, 1fr); }
   .result-header { display: block; }
   .status { margin-top: 0.4rem; text-align: left; }
