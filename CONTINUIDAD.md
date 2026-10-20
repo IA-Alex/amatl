@@ -1054,3 +1054,136 @@ Con esto, de los 4 pendientes originales de la sesión (Marginalia, Chromium,
 WebDriver persistente, decisión de merge), sólo quedan Chromium (decisión de
 operador, sin urgencia) y la decisión de merge de la PR #1 — que ya no tiene
 bloqueos técnicos: todos los checks de CI están en verde.
+
+## BA-01 — rustls 0.23.43 → 0.23.46 en el lockfile (2026-10-19)
+
+Hallazgo BA-01 (severidad media, condicionada a TLS, `CONFIRMED` por análisis
+estático). Reproducido antes de tocar nada: `cargo tree -i rustls` mostraba un
+único `rustls 0.23.43` compartido por TLS entrante (`axum-server`) y saliente
+(`reqwest` → `hyper-rustls`/`tokio-rustls`), con features `ring,std,tls12`, y
+`cargo deny check advisories` fallaba con **RUSTSEC-2026-0285**,
+**RUSTSEC-2026-0346** y **RUSTSEC-2026-0349**.
+
+Remediación: `cargo update -p rustls` → **0.23.46**, la versión compatible más
+nueva dentro de `0.23` y la primera que cierra las tres (0285 desde 0.23.45;
+0346 y 0349 desde 0.23.46). El diff del lockfile es **un solo paquete**
+(versión + checksum); `Cargo.toml` no cambió. **RUSTSEC-2026-0348** (Brotli:
+descompresión de certificado con hasta 1 GiB antes de autenticar) no era
+alcanzable: la advisory exige la feature no-default `brotli` y este grafo
+compila `ring,std,tls12`.
+
+Regresión añadida: `crates/amatl-core/tests/supply_chain_contract.rs` fija un
+**piso** de versión por crate (no un pin) leyendo el `Cargo.lock` del workspace,
+con los IDs de advisory anotados junto al número para que el valor se
+re-derive y no se confíe. Es hermético: no necesita base RustSec ni red, corre
+en `cargo test --workspace` y por eso también cubre los jobs de macOS/Windows,
+que nunca ejecutan `cargo audit`. Se verificó que el test falla de verdad
+—subiendo el piso a 0.23.99 el test falló nombrando el advisory y la versión
+bloqueada— y se revirtió a 0.23.46.
+
+Higiene de CI (hallazgo del mismo informe): `clippy::single_element_loop` en
+`config/mod.rs` (el `for name in ["mojeek"]` del test de política de providers)
+ya no rompe `cargo clippy --workspace --all-targets --all-features -- -D
+warnings`. El bucle de un elemento pasó a ser un helper de aserción con nombre,
+reutilizable si mañana se añade otro provider de pago, en vez de un `#[allow]`
+que habría silenciado el lint.
+
+Advertencia de dependencias sin cambio, por decisión: `chacha20 0.10.1` (vía
+`rand 0.10.2` → `rmcp 3.1.2`) está *yanked* (`yank_message: null`; la versión
+0.10.2 se publicó el mismo día, 2026-08-27) y `cargo deny` lo reporta como
+**warning**, no como vulnerabilidad: no hay advisory de RustSec y CI instala con
+`--locked`, así que el build es reproducible. La política del repo
+(`docs/security/supply-chain.md`) clasifica los yanked como juicio del revisor;
+la corrección disponible es de una línea (`cargo update -p chacha20` → 0.10.2)
+y queda para el operador. No se tocó.
+
+Controles positivos del informe revisados y mantenidos sin cambios: scope
+fail-closed para rutas no declaradas (`amatl-server/src/lib.rs`), validación
+previa de Host/Origin/cabeceras/tamaño/rate limit/Bearer, bind remoto que exige
+TLS y autenticación (`amatl-core/src/config/server.rs`), y protección SSRF con
+validación DNS, bloqueo de IP privadas y pinning (`amatl-core/src/fetch.rs`).
+`/metrics`, `/health`, `/ready` y los assets siguen públicos por decisión
+explícita y documentada; la restricción en proxy/red es una tarea de despliegue,
+no un cambio de código.
+
+
+## Auditoría de dependencias tras BA-01 — `quinn-proto` cerrado y `zip` abierto y bloqueante (2026-10-19)
+
+El paso de verificación de BA-01 («volver a ejecutar auditoría de dependencias y
+la suite completa») se ejecutó de verdad, y la auditoría no estaba limpia. El
+pase reportó **8 vulnerabilidades** en `Cargo.lock`: `rustls` ya no aparecía (el
+bump a 0.23.46 lo cerró), pero `cargo audit` seguía fallando por
+`quinn-proto 0.11.16` (5 advisories) y `zip 7.2.0` (3). El informe de BA-01 no
+las mencionaba porque su paso de auditoría fue `cargo deny check advisories`, y
+esa orden resuelve el grafo con **features por defecto**: lo que sólo entra por
+la feature opcional `experimental-local-embeddings` no está en su grafo.
+`cargo audit`, en cambio, escanea **todo** el lockfile. Verificado con las dos
+órdenes sobre el mismo árbol: `cargo deny check advisories` en verde y
+`cargo deny --all-features check advisories` en rojo por los mismos advisories
+de `zip` (y por `paste`, que en ese grafo escala de warning a error). Las dos
+herramientas no coincidían, y la que CI ejecuta
+(`.github/workflows/ci.yml`: `cargo audit` y luego `cargo deny check`) es la
+estricta.
+
+`quinn-proto 0.11.16 → 0.11.19` (`cargo update -p quinn-proto`). Cierra
+RUSTSEC-2026-0339, 0341 y 0342 (arregladas en 0.11.17) y RUSTSEC-2026-0338 y
+0340 (0.11.18). Es dependencia **opcional** de `reqwest 0.12.28` para HTTP/3 y
+este workspace nunca la habilita: `cargo tree -i quinn-proto` no imprime nada,
+ni con features por defecto ni con `--all-features`, así que el cambio no puede
+alterar ningún camino compilado. El diff del lockfile es un paquete (versión,
+checksum y el borde `getrandom` que la versión nueva usa). Su piso (0.11.18)
+entró en el guard hermético, que ahora cubre `rustls` y `quinn-proto`.
+
+`zip 7.2.0` queda **abierto y bloqueante**, sin remediación compatible
+disponible:
+
+- Cadena: `amatl-core` → `candle-core 0.9.2` → `zip`, y `zip` es dependencia
+  **obligatoria** (no opcional) de `candle-core`: no existe feature que la
+  apague.
+- Sólo se alcanza con la feature `experimental-local-embeddings`, apagada por
+  defecto: el build y la suite por defecto no la compilan.
+- Advisories: RUSTSEC-2026-0367 (7.3 high), RUSTSEC-2026-0368 (sin rating) y
+  RUSTSEC-2026-0369 (9.1 critical), las tres parcheadas **sólo** en
+  `zip >= 9.0.0` (verificado en la fuente del advisory:
+  `patched = [">= 9.0.0"]`).
+- No hay upgrade compatible: `candle-core 0.11.0` (máxima estable hoy) exige
+  `zip ^8.6.0`, por debajo del arreglo, y 0.10.x sigue en `^7.2.0`. Es decir,
+  toda la línea de candle está expuesta y no hay bump de lockfile que cierre el
+  hallazgo.
+- Alcance real: los tres advisories son de **extracción** a disco
+  (`ZipArchive::extract`, `ZipStreamReader::extract`: destinos de symlinks,
+  permisos Unix, bits SUID/SGID). `candle-core` sólo usa `ZipArchive::new`,
+  `by_index`, `by_name` y `ZipWriter` (`src/npy.rs`), nunca `extract()`, y su
+  única entrada es un paquete de modelo local provisto por el operador. Eso
+  acota el impacto, pero no cierra el hallazgo: la política del repo exige ADR
+  escrito para cualquier excepción.
+
+Decisión solicitada a `@IA-Alex` (la política dice explícitamente que ninguna
+excepción está pre-aprobada, así que no se aplicó ninguna):
+
+1. **ADR de excepción** con los campos que exige `docs/security/supply-chain.md`
+   —advisory, ruta afectada, explotabilidad, controles compensatorios,
+   responsable, fecha de expiración y plan de retirada— más la entrada de ignore
+   correspondiente. El SLA de `SECURITY.md` pediría remediación en 14 días para
+   el crítico y 30 para el alto.
+2. **Sacar el stack experimental del lockfile del workspace**, como ya se hizo
+   con `experiments/embedding-relevance` (excluido del workspace, lockfile
+   propio): `zip`, `paste`, `gemm*`, `pulp` y `tokenizers` salen de la
+   superficie auditada de producción y de su SBOM. Es un cambio arquitectónico,
+   no un arreglo de una línea.
+3. Independiente de lo anterior: `cargo update -p chacha20` → 0.10.2 (yanked,
+   vía `rand 0.10.2` → `rmcp 3.1.2`) sigue pendiente como decisión de una línea.
+
+Lo que **no** se hizo, a propósito: no se añadió ningún `ignore` a `deny.toml`
+(la política lo prohíbe sin ADR aprobado); no se tocó
+`.github/workflows/ci.yml`, que tiene cambios en vuelo de otro alcance, y
+endurecerlo a `cargo deny --all-features check` —con `paste` escalando de
+warning a error— es una decisión de política, no de este arreglo; y no se añadió
+`zip` al guard hermético, porque el guard afirma pisos que el lockfile
+**cumple** y afirmar 9.0.0 hoy pondría rojo `cargo test --workspace` en todos
+los hosts sin remediar nada. Estado real de los gates con este conjunto de
+cambios: `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets
+--all-features -- -D warnings`, `cargo test --workspace --locked` y
+`cargo deny check` en verde; `cargo audit` en rojo **sólo** por los tres
+hallazgos abiertos de `zip`.
+

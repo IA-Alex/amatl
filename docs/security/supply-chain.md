@@ -21,6 +21,16 @@ Clippy with warnings denied, `cargo audit`, `cargo deny check`, and CycloneDX SB
 generation (`.github/workflows/ci.yml`). An advisory reported by `cargo audit`
 fails the job; it is not silently allowlisted in repository configuration.
 
+Independently of the network-dependent audit, `cargo test --workspace` asserts a
+floor for every crate whose locked version carries a RustSec advisory
+(`crates/amatl-core/tests/supply_chain_contract.rs`). The test reads the
+workspace `Cargo.lock`, the same file CI installs with `--locked`, so it fails
+offline on every host — including the macOS/Windows jobs that never run `cargo
+audit`. Each entry records the advisory IDs and their fixed releases next to the
+version, so the number is re-derived from the advisory text instead of trusted;
+removing a crate from the graph requires deleting its entry deliberately. The
+floor is a minimum, never a pin: a newer compatible release passes.
+
 The accountable security role is repository owner `@IA-Alex`. The response SLA
 in `SECURITY.md` requires acknowledgement in 1/2/5/10 business days and targets
 remediation in 14/30/60/90 calendar days for critical/high/medium/low findings,
@@ -30,6 +40,41 @@ must record its compensating control and revised date in a private advisory.
 An exception requires a written ADR with advisory, affected path, exploitability,
 compensating controls, owner, expiration date, and removal plan. `@IA-Alex` must
 approve it explicitly; no exception is pre-approved.
+
+## Open findings
+
+`cargo audit` scans every package in `Cargo.lock`; `cargo deny check` resolves
+the default-feature graph. Dependencies that only the optional
+`experimental-local-embeddings` feature pulls in are visible to the audit and
+invisible to `cargo deny`, and the audit is the stricter of the two. As of
+2026-10-19 the workspace audit reports three open vulnerabilities in
+`zip 7.2.0`, reached only through that feature (`amatl-core` →
+`candle-core 0.9.2` → `zip`):
+
+| Advisory | Severity | Fixed release |
+|---|---|---|
+| RUSTSEC-2026-0367 | 7.3 high | `zip >= 9.0.0` |
+| RUSTSEC-2026-0368 | not rated | `zip >= 9.0.0` |
+| RUSTSEC-2026-0369 | 9.1 critical | `zip >= 9.0.0` |
+
+No compatible upgrade closes them. `zip` is a mandatory, non-optional dependency
+of `candle-core` (`^7.2.0` in the locked 0.9.2, `^8.6.0` in the latest stable
+0.11.0) and the advisories are patched only from `9.0.0`, so the whole candle
+line is exposed. The affected code is the extraction helpers that apply symlink
+targets, Unix permissions and SUID/SGID bits (`ZipArchive::extract`,
+`ZipStreamReader::extract`); `candle-core` calls only `ZipArchive::new`,
+`by_index`, `by_name` and `ZipWriter` (`src/npy.rs`), the feature is off by
+default, and its only input is a local, operator-provided model package. That
+bounds the impact but does not close the finding.
+
+This is an open finding, not a waiver: no ignore entry exists in `deny.toml`,
+and the workspace audit stays red until `@IA-Alex` decides between a written ADR
+exception (with the fields listed above) and removing the experimental stack
+from the workspace lockfile, the way `experiments/embedding-relevance` is
+excluded from the workspace and keeps its own lockfile. Warnings are separate:
+`paste 1.0.15` (unmaintained, same optional stack) and `chacha20 0.10.1`
+(yanked, via `rand 0.10.2` → `rmcp 3.1.2`) are reviewer judgement under the
+policy above, not failures.
 
 ## SBOM
 

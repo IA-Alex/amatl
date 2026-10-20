@@ -327,6 +327,38 @@ adapter/extractor versions are independent axes as well.
   envelope items: optional fields default instead of failing the whole parse,
   empty-URL items are dropped, and provider ranks are renumbered over the final
   vector so SearXNG answers and results keep a unique ordinal.
+- BA-01: `rustls` moves from 0.23.43 to 0.23.46 in `Cargo.lock`, the first
+  release that closes every advisory the locked graph was exposed to —
+  RUSTSEC-2026-0285 (TLS 1.3 handshake messages accepted across encryption
+  level boundaries, fixed in 0.23.45), RUSTSEC-2026-0346 (`Debug` on client
+  session values exposes TLS secrets) and RUSTSEC-2026-0349 (key-exchange
+  downgrade recorded before the server is authenticated), both fixed in
+  0.23.46. RUSTSEC-2026-0348 (Brotli certificate decompression can allocate up
+  to 1 GiB before authentication) requires the non-default `brotli` feature,
+  which this graph never enabled: the locked feature set is `ring,std,tls12`.
+  The bump is a one-package lockfile change. `cargo deny check` is clean again
+  and `cargo audit` no longer reports `rustls`; the findings that remain in that
+  audit belong to the optional `experimental-local-embeddings` stack and are
+  recorded as open in `docs/security/supply-chain.md`.
+- Five `quinn-proto` advisories leave the lockfile in the same pass: 0.11.16
+  moves to 0.11.19, at or above the 0.11.17 fixes for RUSTSEC-2026-0339/0341/
+  0342 and the 0.11.18 fixes for RUSTSEC-2026-0338/0340. The crate is an
+  optional HTTP/3 dependency of `reqwest` that this graph never enables
+  (`cargo tree -i quinn-proto` prints nothing with default or with all workspace
+  features), so the change cannot alter a compiled path; it is recorded because
+  `cargo audit` scans every locked package, not only the resolved build graph.
+- A hermetic advisory-floor guard (`amatl-core/tests/supply_chain_contract.rs`)
+  fails `cargo test --workspace` offline, on every host, when a locked version
+  falls below an advisory's fixed release. It reads the same `Cargo.lock` CI
+  installs with `--locked`, so the boundary is enforced by the test suite and
+  not only by the network-dependent audit in the Linux job. It asserts the
+  remediated `rustls` and `quinn-proto` floors; an advisory that no compatible
+  release can reach is recorded as open in `docs/security/supply-chain.md`
+  instead of as a floor the locked graph cannot meet.
+- `clippy::single_element_loop` in `config/mod.rs` no longer fails
+  `cargo clippy --workspace --all-targets --all-features -- -D warnings`: the
+  one-element `for` over the paid providers became a named, reusable assertion
+  helper.
 
 ### Changed
 
