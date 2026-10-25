@@ -2936,20 +2936,42 @@ async fn provider_credential_put_is_fail_closed_under_isolated() {
         "invalid_request"
     );
 
+    // The credential provenance of the *declared* providers belongs to
+    // `/providers`; in mock mode `/status` names the mock sources that
+    // `/search` actually answers with, so `marginalia` is asserted there.
+    let providers = app
+        .clone()
+        .oneshot(authorized("/providers").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(providers.status(), StatusCode::OK);
+    let body = json_body(providers).await;
+    let marginalia = body["providers"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|provider| provider["name"] == "marginalia")
+        .expect("marginalia source is reported");
+    // Never "ephemeral": the rejected key was not committed.
+    assert_ne!(marginalia["credential_source"], "ephemeral");
+
+    // Whichever sources `/status` reports, none of them may claim a credential
+    // that the canary rejected.
     let status = app
         .oneshot(authorized("/status").body(Body::empty()).unwrap())
         .await
         .unwrap();
     assert_eq!(status.status(), StatusCode::OK);
     let body = json_body(status).await;
-    let marginalia = body["sources"]
-        .as_array()
-        .unwrap()
-        .iter()
-        .find(|source| source["name"] == "marginalia")
-        .expect("marginalia source is reported");
-    // Never "ephemeral": the rejected key was not committed.
-    assert_ne!(marginalia["credential_source"], "ephemeral");
+    assert!(
+        body["sources"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|source| source["credential_source"] != "ephemeral"),
+        "no source may report a credential the canary rejected: {}",
+        body["sources"]
+    );
 }
 
 #[tokio::test]

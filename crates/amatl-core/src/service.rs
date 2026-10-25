@@ -1657,7 +1657,19 @@ impl AmatlService {
     pub async fn status(&self) -> Result<ServiceStatus, ServiceError> {
         let snapshots = self.source_snapshots();
         let circuits = self.circuit_snapshots();
-        let (sources, summaries_unavailable) = match self.provider_summaries() {
+        // Mock mode answers `/search` from `mock_providers()` (see
+        // `select_providers`), so the operator view must report those same
+        // sources. Reporting the declared — but disabled — real providers here
+        // made the two halves of the service contradict each other: `/search`
+        // kept succeeding while `/status` announced that no source could be
+        // called, and every fail-closed consumer — the UI's availability gate
+        // above all — concluded the service was unusable.
+        let summaries = if self.mock {
+            Ok(mock_provider_summaries())
+        } else {
+            self.provider_summaries()
+        };
+        let (sources, summaries_unavailable) = match summaries {
             Ok(summaries) => {
                 let sources = summaries
                     .into_iter()
@@ -2435,6 +2447,27 @@ fn mock_providers() -> Vec<Arc<dyn Provider>> {
     ]
 }
 
+/// Operator-view summaries for the sources mock mode actually searches with.
+///
+/// `/search` answers from `mock_providers()`, so `/status` must report exactly
+/// those names as available; otherwise the two halves of the same service
+/// disagree and every fail-closed consumer — the UI search gate above all —
+/// locks up in mock mode.
+fn mock_provider_summaries() -> Vec<ProviderSummary> {
+    mock_providers()
+        .iter()
+        .map(|provider| ProviderSummary {
+            schema_version: SCHEMA_VERSION.into(),
+            name: provider.name().into(),
+            status: ProviderSurfaceStatus::Available,
+            code: None,
+            capabilities: provider.capabilities(),
+            enabled: true,
+            credential_source: CredentialSource::None,
+        })
+        .collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -2935,6 +2968,39 @@ mod tests {
         // The operator view names the provenance, never the key.
         let serialized = serde_json::to_string(&status).unwrap();
         assert!(!serialized.contains("marginalia-secret-key"));
+    }
+
+    #[tokio::test]
+    async fn status_reports_the_mock_sources_search_actually_uses() {
+        let service = AmatlService::new(Config::default(), true).await;
+        let status = service.status().await.unwrap();
+        let available = status
+            .sources
+            .iter()
+            .filter(|source| source.status == ProviderSurfaceStatus::Available)
+            .count();
+        let expected = mock_providers()
+            .iter()
+            .map(|provider| provider.name().to_string())
+            .collect::<Vec<_>>();
+        // The UI gates its search button on this exact predicate
+        // (`availableSources > 0` in `assets/app.js`). A zero here means the
+        // UI can never submit a search that `/search` would happily answer.
+        assert!(
+            available > 0,
+            "mock mode must expose at least one available source, got {:?}",
+            status.sources
+        );
+        assert_eq!(available, expected.len());
+        assert_eq!(
+            status
+                .sources
+                .iter()
+                .map(|source| source.name.clone())
+                .collect::<Vec<_>>(),
+            expected,
+            "the operator view must name the sources mock search uses"
+        );
     }
 
     #[test]
