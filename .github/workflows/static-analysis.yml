@@ -1,0 +1,123 @@
+name: static-analysis
+
+# Advisory by design. This workflow reports what the analysers installed for
+# local agent work (ruff, semgrep) find in the Python tooling and the Rust
+# crates; it does not gate the merge.
+#
+# Why advisory: `tools/` has no ruff configuration and a measured baseline of
+# 355 findings (313 of them E701/E702, the deliberate one-liner style of those
+# evaluation scripts) plus 52 files `ruff format` would rewrite. Making this
+# blocking would fail every PR on pre-existing debt instead of on the change
+# under review. Every step is `continue-on-error: true`, runs with `--exit-zero`
+# and publishes a summary; flipping one to blocking is a one-line change once a
+# threshold is agreed and a ruff config exists.
+#
+# ast-grep is deliberately absent: without a project ruleset it can only produce
+# the same style noise ruff already reports. It stays a local/agent tool until
+# someone writes rules for this codebase.
+on:
+  push:
+    paths:
+      - "tools/**"
+      - "crates/**"
+      - ".github/workflows/static-analysis.yml"
+  pull_request:
+    paths:
+      - "tools/**"
+      - "crates/**"
+      - ".github/workflows/static-analysis.yml"
+  schedule:
+    # Weekly drift check: findings can change without a push to those paths.
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: static-analysis-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-tools:
+    name: Python tools (advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      # Pinned to the version the baseline above was measured with, so the
+      # numbers in the summary are comparable between runs.
+      - name: Install Ruff
+        run: python3 -m pip install --disable-pip-version-check ruff==0.15.22
+      - name: Ruff lint (informative)
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          {
+            echo '### Ruff lint (tools/)'
+            echo
+            echo 'Advisory only: no ruff config exists for these scripts yet.'
+            echo
+            echo '```'
+            ruff check tools/ --statistics --exit-zero
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          ruff check tools/ --exit-zero --output-format=github
+      - name: Ruff format check (informative)
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          {
+            echo '### Ruff format (tools/)'
+            echo
+            echo '```'
+            ruff format --check tools/ || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  semgrep:
+    name: Semgrep (advisory)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Install Semgrep
+        run: python3 -m pip install --disable-pip-version-check semgrep==1.182.1
+      - name: Python tooling
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          semgrep scan --config=p/python --metrics=off --quiet tools/ \
+            > semgrep-python.txt 2>&1 || true
+          {
+            echo '### Semgrep (tools/, p/python)'
+            echo
+            echo '```'
+            tail -n 60 semgrep-python.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Rust crates
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          semgrep scan --config=p/rust --metrics=off --quiet crates/ \
+            > semgrep-rust.txt 2>&1 || true
+          {
+            echo '### Semgrep (crates/, p/rust)'
+            echo
+            echo '```'
+            tail -n 60 semgrep-rust.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: semgrep-reports
+          retention-days: 7
+          path: semgrep-*.txt
+          if-no-files-found: ignore
