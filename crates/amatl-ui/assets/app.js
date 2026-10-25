@@ -295,6 +295,7 @@ function renderEvidenceFragment(fragment, sourceBytes, list) {
   const item = fragmentTemplate.content.cloneNode(true);
   item.querySelector("blockquote").textContent = fragment.text;
   const signals = item.querySelector(".fragment-signals");
+  signals.setAttribute("aria-label", t("observedSignals"));
   const observed = Array.isArray(fragment.signals) ? fragment.signals.slice(0, 8) : [];
   for (const signal of observed) {
     const label = signalLabel(signal);
@@ -304,9 +305,11 @@ function renderEvidenceFragment(fragment, sourceBytes, list) {
     signals.append(chip);
   }
   if (!signals.childElementCount) signals.hidden = true;
+  item.querySelector(".fragment-hash span").textContent = t("sha256");
   const hash = item.querySelector(".fragment-hash code");
   hash.textContent = validHash(fragment.fragment_hash) ? fragment.fragment_hash : t("unavailable");
   const verification = item.querySelector(".fragment-verification");
+  verification.textContent = t("verifying");
   list.append(item);
   verifyFragment(fragment, sourceBytes)
     .then((result) => {
@@ -347,6 +350,24 @@ function renderDeepDocument(item) {
   status.textContent = documentStatus(documentValue.status);
   status.dataset.state = documentValue.status === "enriched" ? "success" : "partial";
   fragment.querySelector(".document-meta").textContent = deepDocumentMetadata(documentValue);
+  fragment.querySelector(".evidence-panel").setAttribute("aria-label", t("evidenceFragmentsHeading"));
+  fragment.querySelector(".evidence-heading h4").textContent = t("evidenceFragmentsHeading");
+  fragment.querySelector(".provenance summary").textContent = t("provenanceHeading");
+  const provenanceLabels = {
+    ".provenance-original": "originalUrl",
+    ".provenance-canonical": "canonicalUrl",
+    ".provenance-final": "finalUrl",
+    ".provenance-method": "acquisition",
+    ".provenance-extractor": "extractor",
+    ".provenance-retrieved": "retrieved",
+    ".provenance-source-hash": "sourceHash",
+    ".provenance-content-hash": "extractedTextHash",
+  };
+  for (const [selector, key] of Object.entries(provenanceLabels)) {
+    const value = fragment.querySelector(selector);
+    const label = value?.closest("div")?.querySelector("dt");
+    if (label) label.textContent = t(key);
+  }
 
   const list = fragment.querySelector(".evidence-fragments");
   const empty = fragment.querySelector(".empty-evidence");
@@ -617,7 +638,7 @@ const providerStatus = document.querySelector(".provider-status");
 const providerList = document.querySelector("#provider-list");
 const providerStatusText = document.querySelector("#provider-status-text");
 
-// ── Source selector (Marginalia / SearXNG / Brave / All) ────────
+// ── Source selector (Marginalia / SearXNG / All) ────────────────
 // A search-level control that drives the same `providers.enabled` list the
 // detailed source panel reflects. The radio selection is *derived* from
 // `providers.enabled` (single source of truth, `/providers`), so the two
@@ -626,7 +647,7 @@ const providerStatusText = document.querySelector("#provider-status-text");
 const providerSelector = document.querySelector("#provider-selector");
 const providerSelectorOptions = document.querySelector("#provider-selector-options");
 const providerSelectorStatus = document.querySelector("#provider-selector-status");
-const PROVIDER_SOURCE_NAME = ["marginalia", "searxng", "brave"];
+const PROVIDER_SOURCE_NAME = ["marginalia", "searxng"];
 
 // Map a `providers.enabled` list to a radio value: "all" when every selector
 // provider is on, otherwise the single on one, or null if zero (or a pair the
@@ -652,8 +673,7 @@ function syncProviderSelector(enabledList) {
 const PROVIDER_SOURCE_TARGET = {
   marginalia: ["marginalia"],
   searxng: ["searxng"],
-  brave: ["brave"],
-  all: ["marginalia", "searxng", "brave"],
+  all: ["marginalia", "searxng"],
 };
 
 async function applyProviderSource(value) {
@@ -793,10 +813,12 @@ async function fetchProviderStatus() {
     // actually declared; otherwise keep it hidden rather than showing controls
     // with nothing to control.
     const hasSource = (name) => payload.providers.some((p) => p.name === name);
-    providerSelector.hidden = !(
-      hasSource("marginalia") && hasSource("searxng") && hasSource("brave")
-    );
+    providerSelector.hidden = !(hasSource("marginalia") && hasSource("searxng"));
     if (!providerSelector.hidden) syncProviderSelector(enabledList);
+    // The credential row follows `providers.enabled` regardless of whether the
+    // source selector is shown, so selecting Marginalia (or All) reveals its
+    // key controls and running searxng alone hides them.
+    syncCredentialActions(enabledList);
     if (unavailable === 0) {
       providerStatusText.textContent = t("allAvailable");
       providerStatusText.dataset.state = "success";
@@ -809,6 +831,10 @@ async function fetchProviderStatus() {
     }
   } catch (_) {
     providerSelector.hidden = true;
+    // Without provider state (e.g. no token yet) the credential row must not
+    // claim any source is ready to take a key: hide it until we have an
+    // authoritative answer from `/providers`.
+    syncCredentialActions([]);
   }
 }
 
@@ -937,10 +963,17 @@ async function fetchServiceState() {
     serviceSummary.dataset.state = degraded ? "partial" : "success";
     servicePanel.hidden = false;
     syncMarginaliaFromStatus(payload);
-    syncBraveFromStatus(payload);
     return payload;
   } catch (_) {
     servicePanel.hidden = true;
+    // No usable service state (e.g. the admin token is not loaded yet): the
+    // model toggle must stay off, but it must not be silently greyed out with
+    // no reason — explain the missing authentication so the operator knows the
+    // toggle is gated on the admin token, not broken.
+    strategistEnabledToggle.checked = false;
+    strategistEnabledToggle.disabled = true;
+    strategistToggleStatus.hidden = false;
+    strategistToggleStatus.textContent = t("unauthorized");
     return null;
   }
 }
@@ -988,6 +1021,22 @@ const marginaliaKeyInput = document.querySelector("#marginalia-key");
 const marginaliaKeyError = document.querySelector("#marginalia-key-error");
 const marginaliaSave = document.querySelector("#marginalia-save");
 const marginaliaCancel = document.querySelector("#marginalia-cancel");
+const credentialActions = document.querySelector("#credential-actions");
+const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
+
+// Show the Marginalia credential controls only while Marginalia is one of the
+// selected sources. With only searxng enabled (the free default) no credential
+// surface is needed, so the row stays hidden; picking Marginalia (or All)
+// reveals its insert/liquidate row. The visibility follows `providers.enabled`
+// — the same single source of truth the source selector drives — so the key
+// area can never drift from the active selection. (Brave was removed from the
+// product, so Marginalia is the only credential-gated source.)
+function syncCredentialActions(enabledList) {
+  const list = Array.isArray(enabledList) ? enabledList : [];
+  const marginaliaOn = list.includes("marginalia");
+  if (marginaliaCredentialGroup) marginaliaCredentialGroup.hidden = !marginaliaOn;
+  if (credentialActions) credentialActions.hidden = !marginaliaOn;
+}
 
 function marginaliaCredentialSource(sources) {
   const entry = (Array.isArray(sources) ? sources : []).find(
@@ -1057,8 +1106,14 @@ marginaliaSave.addEventListener("click", async () => {
     const match = /API Error: (\d+)/.exec(String(error && error.message));
     const status = match ? Number(match[1]) : 0;
     marginaliaKeyError.hidden = false;
+    // 401 = no valid token was sent (nothing to do with the key); 403 = the
+    // token lacks admin scope; anything else = the key failed the live canary.
     marginaliaKeyError.textContent =
-      status === 401 || status === 403 ? t("marginaliaFailed") : t("marginaliaInvalid");
+      status === 401
+        ? t("unauthorized")
+        : status === 403
+          ? t("marginaliaFailed")
+          : t("marginaliaInvalid");
   } finally {
     marginaliaSave.disabled = false;
   }
@@ -1072,106 +1127,6 @@ marginaliaClearButton.addEventListener("click", async () => {
     fetchServiceState();
   } catch (_) {
     setStatus(t("marginaliaClearedFailed"), "error");
-  }
-});
-
-// ── Brave API key (option) ──────────────────────────────────────
-// Same operator credential pattern as Marginalia: an in-memory key, validated
-// by a live canary before it is accepted, and liquidable on demand. Brave is a
-// paid provider, so it stays as an explicit opt-in surface — the key is never
-// written to disk, config, or logs.
-const braveKeyButton = document.querySelector("#brave-key-button");
-const braveClearButton = document.querySelector("#brave-clear-button");
-const braveStatus = document.querySelector("#brave-status");
-const braveDialog = document.querySelector("#brave-dialog");
-const braveKeyInput = document.querySelector("#brave-key");
-const braveKeyError = document.querySelector("#brave-key-error");
-const braveSave = document.querySelector("#brave-save");
-const braveCancel = document.querySelector("#brave-cancel");
-
-function braveCredentialSource(sources) {
-  const entry = (Array.isArray(sources) ? sources : []).find(
-    (source) => source && source.name === "brave",
-  );
-  return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
-}
-
-function updateBraveUi(source) {
-  // Only an in-memory key can be liquidated from here: a key read from the
-  // environment variable (BRAVE_API_KEY) is out of this surface's reach, so
-  // "liquidate" stays disabled and the status says where the key comes from.
-  braveClearButton.disabled = source !== "ephemeral";
-  braveStatus.hidden = false;
-  if (source === "ephemeral") {
-    braveStatus.dataset.state = "success";
-    braveStatus.textContent = t("braveStatusPresent");
-  } else if (source === "environment") {
-    braveStatus.dataset.state = "partial";
-    braveStatus.textContent = t("braveStatusEnvironment");
-  } else {
-    braveStatus.dataset.state = "partial";
-    braveStatus.textContent = t("braveStatusAbsent");
-  }
-}
-
-// Keep the two buttons in sync with the last `/status` payload.
-function syncBraveFromStatus(payload) {
-  if (!payload) return;
-  updateBraveUi(braveCredentialSource(payload.sources));
-}
-
-function openBraveDialog() {
-  braveKeyInput.value = "";
-  braveKeyError.hidden = true;
-  braveDialog.showModal();
-  braveKeyInput.focus();
-}
-
-braveKeyButton.addEventListener("click", openBraveDialog);
-braveCancel.addEventListener("click", () => braveDialog.close());
-// Clicking the backdrop (outside the dialog box) closes it, like a native modal.
-braveDialog.addEventListener("click", (event) => {
-  if (event.target === braveDialog) braveDialog.close();
-});
-
-braveSave.addEventListener("click", async () => {
-  const key = braveKeyInput.value.trim();
-  if (!key) {
-    braveKeyError.hidden = false;
-    braveKeyError.textContent = t("braveEmpty");
-    return;
-  }
-  braveSave.disabled = true;
-  braveKeyError.hidden = true;
-  try {
-    const report = await globalThis.api.post("/providers/brave/credential", { key });
-    braveDialog.close();
-    braveKeyInput.value = "";
-    updateBraveUi(report && report.available ? "ephemeral" : "none");
-    setStatus(t("braveSaved"), "success");
-    fetchServiceState();
-  } catch (error) {
-    // 401/403 means the operator token lacks admin scope; anything else means
-    // the key itself did not pass the live canary (or the source was
-    // unreachable) and nothing was stored.
-    const match = /API Error: (\d+)/.exec(String(error && error.message));
-    const status = match ? Number(match[1]) : 0;
-    braveKeyError.hidden = false;
-    braveKeyError.textContent =
-      status === 401 || status === 403 ? t("braveFailed") : t("braveInvalid");
-  } finally {
-    braveSave.disabled = false;
-  }
-});
-
-braveClearButton.addEventListener("click", async () => {
-  try {
-    await globalThis.api.delete("/providers/brave/credential");
-    updateBraveUi("none");
-    setStatus(t("braveCleared"), "success");
-    fetchServiceState();
-  } catch (_) {
-    setStatus(t("braveClearedFailed"), "error");
   }
 });
 
@@ -1542,6 +1497,8 @@ refreshPanels();
 
 // Apply i18n to static HTML content on load.
 document.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.lang = LANG;
+  document.title = t("pageTitle");
   setStatus(t("initialStatus"), "");
   document.querySelector("#search-heading").textContent = t("searchHeading");
   document.querySelector("#search-button").textContent = t("searchButton");
@@ -1591,6 +1548,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#marginalia-clear-button").textContent = t("marginaliaClearButton");
   document.querySelector("#marginalia-dialog-heading").textContent = t("marginaliaDialogHeading");
   document.querySelector("#marginalia-dialog-help").textContent = t("marginaliaDialogHelp");
+  document.querySelector("label[for='marginalia-key']").textContent = t("marginaliaApiKeyLabel");
   marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
   document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
   document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");
@@ -1601,14 +1559,5 @@ document.addEventListener("DOMContentLoaded", () => {
     '.provider-selector-option input[value="all"]',
   ).closest("label");
   sourceAllOption.querySelector("span").textContent = t("providerSourceAll");
-  // Brave provider-credential surface: button labels and the whole dialog
-  // resolve through the catalog, mirroring the Marginalia surface.
-  document.querySelector("#brave-key-button").textContent = t("braveKeyButton");
-  document.querySelector("#brave-clear-button").textContent = t("braveClearButton");
-  document.querySelector("#brave-dialog-heading").textContent = t("braveDialogHeading");
-  document.querySelector("#brave-dialog-help").textContent = t("braveDialogHelp");
-  braveKeyInput.placeholder = t("braveKeyPlaceholder");
-  document.querySelector("#brave-save").textContent = t("braveSave");
-  document.querySelector("#brave-cancel").textContent = t("braveCancel");
   updateThemeToggle();
 });

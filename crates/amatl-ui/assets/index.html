@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light dark">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
     <title>AMATL — Búsqueda y evidencia</title>
@@ -61,47 +61,38 @@
             </label>
             <p id="strategist-toggle-status" class="field-help" hidden></p>
           </div>
-          <fieldset class="provider-selector" id="provider-selector" hidden>
-            <legend id="provider-selector-label">Fuente de búsqueda</legend>
-            <div class="provider-selector-options" id="provider-selector-options" role="radiogroup">
-              <label class="provider-selector-option">
-                <input type="radio" name="provider-source" value="marginalia">
-                <span>Marginalia</span>
-              </label>
-              <label class="provider-selector-option">
-                <input type="radio" name="provider-source" value="searxng">
-                <span>SearXNG</span>
-              </label>
-              <label class="provider-selector-option">
-                <input type="radio" name="provider-source" value="brave">
-                <span>Brave</span>
-              </label>
-              <label class="provider-selector-option">
-                <input type="radio" name="provider-source" value="all">
-                <span>Todas</span>
-              </label>
-            </div>
-            <p id="provider-selector-status" class="field-help" role="status" hidden></p>
-          </fieldset>
-          <div class="deep-options">
-            <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
-            <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
-          </div>
-          <div class="credential-actions">
-            <div class="credential-group">
-              <button id="marginalia-key-button" class="secondary-action" type="button">🔑 Insertar key Marginalia</button>
-              <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
-              <p id="marginalia-status" class="field-help" hidden></p>
-            </div>
-            <div class="credential-group">
-              <button id="brave-key-button" class="secondary-action" type="button">🔑 Insertar key Brave</button>
-              <button id="brave-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
-              <p id="brave-status" class="field-help" hidden></p>
-            </div>
-          </div>
-          <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
-            <summary id="filters-summary">Filtros y acceso</summary>
+            <summary id="filters-summary">Opciones y filtros</summary>
+            <fieldset class="provider-selector" id="provider-selector" hidden>
+              <legend id="provider-selector-label">Fuente de búsqueda</legend>
+              <div class="provider-selector-options" id="provider-selector-options" role="radiogroup">
+                <label class="provider-selector-option">
+                  <input type="radio" name="provider-source" value="marginalia">
+                  <span>Marginalia</span>
+                </label>
+                <label class="provider-selector-option">
+                  <input type="radio" name="provider-source" value="searxng">
+                  <span>SearXNG</span>
+                </label>
+                <label class="provider-selector-option">
+                  <input type="radio" name="provider-source" value="all">
+                  <span>Todas</span>
+                </label>
+              </div>
+              <p id="provider-selector-status" class="field-help" role="status" hidden></p>
+            </fieldset>
+            <div class="deep-options">
+              <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
+              <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
+            </div>
+            <div class="credential-actions" id="credential-actions">
+              <div class="credential-group" id="marginalia-credential-group">
+              <button id="marginalia-key-button" class="secondary-action" type="button">Insertar clave Marginalia</button>
+              <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>Eliminar clave</button>
+                <p id="marginalia-status" class="field-help" hidden></p>
+              </div>
+            </div>
+            <p id="answer-hint" class="field-help" hidden></p>
             <div class="filter-grid">
               <div>
                 <label for="language">Idioma</label>
@@ -245,7 +236,7 @@
           <span class="document-status"></span>
         </div>
         <p class="document-meta"></p>
-        <section class="evidence-panel" aria-label="Fragmentos de evidencia">
+          <section class="evidence-panel" aria-label="Fragmentos de evidencia">
           <div class="evidence-heading">
             <h4>Fragmentos de evidencia</h4>
             <span class="fragment-count"></span>
@@ -300,7 +291,7 @@
         <blockquote></blockquote>
         <div class="fragment-footer">
           <div class="fragment-signals" aria-label="Señales observadas"></div>
-          <span class="fragment-verification" data-state="pending">Verificando…</span>
+      <span class="fragment-verification" data-state="pending">Verificando…</span>
         </div>
         <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
@@ -323,16 +314,6 @@
       <p id="marginalia-key-error" class="field-help" hidden></p>
       <button type="button" id="marginalia-save">Guardar y verificar</button>
       <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
-    </dialog>
-
-    <dialog id="brave-dialog" class="token-dialog" aria-labelledby="brave-dialog-heading">
-      <h2 id="brave-dialog-heading">Key de Brave</h2>
-      <p id="brave-dialog-help" class="field-help">Pega la API key privada de Brave. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
-      <label class="sr-only" for="brave-key">API key de Brave</label>
-      <input id="brave-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="brave-…">
-      <p id="brave-key-error" class="field-help" hidden></p>
-      <button type="button" id="brave-save">Guardar y verificar</button>
-      <button type="button" id="brave-cancel" class="secondary-action">Cancelar</button>
     </dialog>
   </body>
 </html>

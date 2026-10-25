@@ -31,7 +31,7 @@ pub fn asset(path: &str) -> Option<UiAsset> {
         }),
         "/styles.css" => Some(UiAsset {
             content_type: "text/css; charset=utf-8",
-            cache_control: "public, max-age=3600",
+            cache_control: "no-cache",
             body: include_bytes!("../assets/styles.css"),
         }),
         "/client.js" => Some(UiAsset {
@@ -46,12 +46,12 @@ pub fn asset(path: &str) -> Option<UiAsset> {
         }),
         "/app.js" => Some(UiAsset {
             content_type: "text/javascript; charset=utf-8",
-            cache_control: "public, max-age=3600",
+            cache_control: "no-cache",
             body: include_bytes!("../assets/app.js"),
         }),
         "/i18n.js" => Some(UiAsset {
             content_type: "text/javascript; charset=utf-8",
-            cache_control: "public, max-age=3600",
+            cache_control: "no-cache",
             body: include_bytes!("../assets/i18n.js"),
         }),
         "/brand-icon.png" => Some(UiAsset {
@@ -192,6 +192,71 @@ mod tests {
             "JetBrains Mono",
         ] {
             assert!(css.contains(token), "missing visual token: {token}");
+        }
+    }
+
+    #[test]
+    fn control_geometry_uses_the_shared_sizing_scale() {
+        // Regression guard for the drift this fixed: buttons and inputs used to
+        // pick their own radius/height (radii 8/6/4px; heights 46/44/40/38px),
+        // so controls doing the same job did not line up. Geometry must now
+        // come from the tokens, not magic numbers.
+        let css = text("/styles.css");
+        for token in [
+            "--radius-sm:",
+            "--radius-md:",
+            "--radius-pill:",
+            "--control-h:",
+            "--control-h-sm:",
+        ] {
+            assert!(css.contains(token), "missing sizing token: {token}");
+        }
+        // The base controls resolve to the scale, not to bare values.
+        assert!(css.contains("min-height: var(--control-h);"));
+        assert!(css.contains("border-radius: var(--radius-md);"));
+        // No stray literal radii survive outside the token declarations — the
+        // only allowed literal is the loading dot's circle.
+        let stray_radii = css
+            .lines()
+            .filter(|line| {
+                line.contains("border-radius:")
+                    && !line.contains("var(--radius")
+                    && !line.contains("--radius-")
+                    && !line.contains("50%")
+            })
+            .count();
+        assert_eq!(stray_radii, 0, "a literal border-radius escaped the scale");
+        // Ghost/compact buttons declare their own (smaller) tier explicitly,
+        // instead of inheriting the base height and looking padded by accident.
+        assert!(css.contains(".ghost-action {"));
+        assert!(css.contains("min-height: var(--control-h-sm);"));
+    }
+
+    #[test]
+    fn hidden_attribute_is_authoritative_over_component_layout() {
+        // Regression guard: the JS shows/hides panels by flipping the `hidden`
+        // attribute, but a component that sets its own `display:` (e.g.
+        // `.provider-selector { display: flex }`) would beat the UA
+        // `[hidden] { display: none }` and stay visible while logically hidden.
+        // The stylesheet must carry a global author rule that makes `hidden`
+        // win, and the display-carrying components the JS toggles must be
+        // exactly the ones it covers.
+        let css = text("/styles.css");
+        assert!(
+            css.contains("[hidden] { display: none !important; }"),
+            "the global [hidden] override is missing from styles.css"
+        );
+        for component in [
+            ".provider-selector {",
+            ".credential-actions {",
+            ".credential-group {",
+            ".fragment-signals {",
+            ".result-index {",
+        ] {
+            assert!(
+                css.contains(component),
+                "component expected to rely on [hidden] is gone: {component}"
+            );
         }
     }
 
@@ -414,44 +479,42 @@ mod tests {
     }
 
     #[test]
-    fn source_selector_maps_four_choices_onto_provider_enabled() {
+    fn source_selector_maps_three_choices_onto_provider_enabled() {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // A single-choice segmented control (Marginalia / SearXNG / Brave /
-        // All) must exist in the search panel and resolve its copy through the
-        // catalog, not half-hardcoded.
+        // A single-choice segmented control (Marginalia / SearXNG / All) must
+        // exist in the search panel and resolve its copy through the catalog,
+        // not half-hardcoded. Brave is no longer a shipped source.
         assert!(html.contains("id=\"provider-selector\""));
         assert!(html.contains("name=\"provider-source\""));
         assert!(html.contains("value=\"marginalia\""));
         assert!(html.contains("value=\"searxng\""));
-        assert!(html.contains("value=\"brave\""));
+        assert!(!html.contains("value=\"brave\""));
         assert!(html.contains("value=\"all\""));
         assert!(catalog.contains("providerSelectorLabel"));
         assert!(catalog.contains("providerSourceAll"));
         assert!(javascript.contains("t(\"providerSelectorLabel\")"));
-        // The four choices reduce to exactly the per-provider toggles the
-        // backend speaks (`POST /providers/{name}/enabled`), keeping both the
-        // selector and the detailed panel on the same `providers.enabled` list.
+        // The choices reduce to exactly the per-provider toggles the backend
+        // speaks (`POST /providers/{name}/enabled`), keeping both the selector
+        // and the detailed panel on the same `providers.enabled` list.
         assert!(javascript.contains("providerSelectorOptions.addEventListener(\"change\""));
         assert!(javascript.contains("applyProviderSource"));
         assert!(javascript.contains("PROVIDER_SOURCE_TARGET"));
         assert!(javascript.contains("marginalia: [\"marginalia\"]"));
         assert!(javascript.contains("searxng: [\"searxng\"]"));
-        assert!(javascript.contains("brave: [\"brave\"]"));
-        assert!(javascript.contains("all: [\"marginalia\", \"searxng\", \"brave\"]"));
+        assert!(!javascript.contains("brave: [\"brave\"]"));
+        assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
         assert!(javascript.contains("syncProviderSelector"));
         assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
     }
 
     #[test]
-    fn brave_credential_ui_follows_the_marginalia_pattern() {
+    fn brave_is_not_shipped_in_the_ui() {
         let html = text("/index.html");
-        let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // Brave is opt-in (paid) but must be insertable/selectable like
-        // Marginalia: an in-memory key dialog, liquidate affordance, and i18n
-        // through the catalog, routing to /providers/brave/credential.
+        // Brave was removed from the product (policy drop): no Brave control,
+        // no Brave key surface, and no Brave catalog keys remain in the UI.
         for id in [
             "brave-key-button",
             "brave-clear-button",
@@ -461,8 +524,8 @@ mod tests {
             "brave-cancel",
         ] {
             assert!(
-                html.contains(&format!("id=\"{id}\"")),
-                "missing brave element: {id}"
+                !html.contains(&format!("id=\"{id}\"")),
+                "brave element must be gone from the UI: {id}"
             );
         }
         for key in [
@@ -475,11 +538,10 @@ mod tests {
             "braveCancel",
             "braveStatusEnvironment",
         ] {
-            assert!(catalog.contains(key), "missing catalog key: {key}");
+            assert!(
+                !catalog.contains(key),
+                "brave catalog key must be gone: {key}"
+            );
         }
-        assert!(javascript.contains("/providers/brave/credential"));
-        assert!(javascript.contains("braveCredentialSource"));
-        assert!(javascript.contains("syncBraveFromStatus"));
-        assert!(javascript.contains("braveClearButton.disabled = source !== \"ephemeral\""));
     }
 }
