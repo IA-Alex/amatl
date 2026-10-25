@@ -50,10 +50,21 @@ adapter/extractor versions are independent axes as well.
   `Guardar` action on each Deep document. The panels appear only when the
   corresponding surface answers.
 - `/metrics` now publishes p50/p95/p99 latency over the last 1024 requests per
-  surface, per-source availability and observed value
-  (`amatl_source_available`, `amatl_source_success_rate`,
-  `amatl_source_latency_ms`), cache hit/miss counters and hit rates, and
-  `amatl_storage_available`.
+  surface, cache hit/miss counters and hit rates, `amatl_storage_available`, and
+  *aggregate* source health (`amatl_sources_declared`, `amatl_sources_available`,
+  `amatl_sources_circuit_open`, `amatl_sources_success_rate_min`,
+  `amatl_sources_latency_ms_max`). Source names are deliberately absent from the
+  exposition: the endpoint is public, so per-source identity stays behind
+  `/status`, which requires the `read` scope.
+- Two new blocking static-analysis gates. `tools/codeql/` is a CodeQL pack with
+  AMATL's own invariant queries — "no code outside `amatl-core`'s config module
+  validates a server configuration against the declared `bind`", and "the two
+  places that accept a configuration into a running process still anchor that
+  validation to the effective listener" — and CI fails when either reports a
+  violation. `tools/check_doc_refs.py` fails when a `file:line` citation in
+  `docs/` names a file that does not exist or a line past the end of that file;
+  that check is how the `config.rs` citations left behind by the config module
+  split were found.
 - `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
   configuration keys.
 - `contract-gate` runs the workspace test suite on macOS and Windows in addition
@@ -249,6 +260,43 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- A configuration is now validated against the address the process is actually
+  listening on, not the `bind` the document declares. `--bind`/`--port` override
+  the file at startup and are never written back to it, so a file declaring
+  `127.0.0.1` could carry `no_auth = true` and `POST /reload` would publish an
+  unauthenticated service on every interface, including the credential setters
+  and the admin routes. `PATCH /server/pending-config` could stage the same
+  state in the file for the next restart. Both are now refused
+  (`configuration_invalid` / `config_rejected`) with the running service left
+  authenticated, and a reload whose document declares a different address logs
+  `reload_listener_address_ignored` instead of appearing to move the listener.
+  `Config::validate_server_for_listener` exposes the check.
+- A configuration write no longer widens the file it publishes. Every
+  admin-scoped toggle rewrites `amatl.toml` through a temp file plus an atomic
+  rename, and the rename published the *temp* file's permissions, so a file the
+  operator had hardened (`chmod 600 amatl.toml`) came back with the umask
+  default after the first `POST /answer/enabled`, `PATCH /providers/{name}` or
+  any other config write. The target's own mode is now carried across the
+  replace, the temp file is created owner-only so configuration is never group-
+  or world-readable while it is being written, and a target that does not exist
+  yet stays `0600`.
+- The public-surface exemption is read-only. `required_scope` exempted
+  `/health`, `/ready`, `/metrics` and the UI asset paths from authentication by
+  path alone, and the decision is taken before routing: a mutating method on one
+  of those paths was therefore unauthenticated instead of fail-closed, so a
+  future `POST /health` — or any state-changing route registered under an asset
+  path — would have been served without a credential. The exemption now covers
+  `GET`/`HEAD` only and every other method lands on the same admin-protected
+  default as an undeclared route. `PATCH` also joins the mutating set that
+  decides the `/history`/`/saved` scope.
+- `/metrics` published the name of every configured source as a label value
+  while being reachable without a credential (`amatl_source_available{source}`,
+  `amatl_source_circuit_open{source}`, `amatl_source_success_rate{source}`,
+  `amatl_source_latency_ms{source}`), so an unauthenticated scraper could read
+  the deployment's provider inventory and which of them were failing. `/ready`
+  is deliberately coarse for exactly that reason; the scrape now publishes
+  aggregate counts plus the worst observed value, and per-source detail stays
+  behind `/status`, which requires the `read` scope.
 - Debian release asset names avoid GitHub's `~` normalization so published
   `SHA256SUMS` manifests remain directly verifiable.
 - SQLite downgrade from migration 5 now applies: the script was present but
