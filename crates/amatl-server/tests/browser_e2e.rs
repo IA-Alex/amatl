@@ -5,9 +5,12 @@
 //! keyboard-navigable, that the empty and degraded states are reachable — is
 //! only observable in a real browser. Nothing below stubs the DOM.
 //!
-//! These tests are gated exactly like `trafilatura_integration`: they are inert
-//! unless `AMATL_BROWSER_E2E=1` and a WebDriver endpoint are both present, so a
-//! checkout without a driver still passes `cargo test --workspace`.
+//! These tests are gated exactly like `trafilatura_integration`: without
+//! `AMATL_BROWSER_E2E=1` they are inert, so a checkout without a driver still
+//! passes `cargo test --workspace`. Once opted in, they are **fail-closed**: a
+//! missing, unreachable, or version-mismatched WebDriver fails the run instead
+//! of skipping green — a mismatch (e.g. a chromedriver that cannot drive the
+//! installed Chrome) must never look like a pass.
 //!
 //! Running them locally:
 //!
@@ -61,8 +64,16 @@ async fn spawn_server() -> u16 {
     panic!("server did not start on port {port}");
 }
 
-/// Connect a headless browser, or skip when no driver is reachable.
-async fn browser() -> Option<Client> {
+/// Connect a headless browser for an opted-in run.
+///
+/// Only called once [`enabled`] is true, i.e. the run declared it wants real
+/// browser coverage. At that point a missing or unusable driver is a **hard
+/// failure**, not a skip: an absent driver, a driver that fails to create a
+/// session, or — the case this guards — a driver whose version cannot drive the
+/// installed browser, must fail the run instead of reporting a green skip while
+/// testing nothing. A driver-less checkout stays green by never opting in
+/// (no `AMATL_BROWSER_E2E=1`), which is the only legitimate skip.
+async fn browser() -> Client {
     let mut capabilities = serde_json::Map::new();
     capabilities.insert(
         "goog:chromeOptions".into(),
@@ -80,11 +91,14 @@ async fn browser() -> Option<Client> {
         .connect(&webdriver_url())
         .await
     {
-        Ok(client) => Some(client),
-        Err(error) => {
-            eprintln!("skipping: no WebDriver at {}: {error}", webdriver_url());
-            None
-        }
+        Ok(client) => client,
+        Err(error) => panic!(
+            "AMATL_BROWSER_E2E=1 was set but no usable WebDriver could be reached at {}: {error}. \
+             Start a chromedriver matching the installed Chrome (a version mismatch reports \
+             'cannot find Chrome binary' / 'only supports Chrome version N'), or unset \
+             AMATL_BROWSER_E2E to skip the browser suite entirely.",
+            webdriver_url()
+        ),
     }
 }
 
@@ -105,9 +119,7 @@ async fn search_renders_results_in_a_real_browser() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -149,9 +161,7 @@ async fn the_search_flow_is_reachable_by_keyboard_alone() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -176,9 +186,7 @@ async fn an_empty_result_set_renders_its_own_state() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -219,9 +227,7 @@ async fn the_ui_has_no_automatically_detectable_accessibility_violations() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -284,9 +290,7 @@ async fn the_layout_holds_at_a_narrow_viewport() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client.set_window_size(360, 720).await.unwrap();
     client
@@ -305,6 +309,79 @@ async fn the_layout_holds_at_a_narrow_viewport() {
         .as_bool()
         .unwrap_or(true);
     assert!(!overflows, "the page scrolls horizontally at 360px");
+
+    client.close().await.unwrap();
+}
+
+/// The `hidden` attribute is the single mechanism the JS uses to show and hide
+/// panels, but a component that sets its own `display:` (flex / inline-flex /
+/// inline-block) beats the UA `[hidden] { display: none }` unless the author
+/// stylesheet restores `hidden`. The source selector, the Marginalia credential
+/// row, and a fragment's signal chips are all toggled this way, so each must
+/// compute to `display: none` the instant `element.hidden` is true. This runs in
+/// a real browser because only the computed style reveals the cascade winner.
+#[tokio::test]
+async fn hidden_attribute_collapses_the_panels_it_hides() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    // Open the collapsed filter `<details>` and force-render a Deep fragment so
+    // every probed element exists in the live DOM (fragment chips start inside
+    // a `<template>`, which is not a rendered node).
+    client
+        .execute(
+            "document.querySelector('details.filters').open = true; \
+             const tpl = document.getElementById('fragment-template').content.cloneNode(true); \
+             document.body.appendChild(tpl);",
+            vec![],
+        )
+        .await
+        .unwrap();
+
+    let report = client
+        .execute(
+            "const selectors = { \
+                 providerSelector: '#provider-selector', \
+                 credentialActions: '#credential-actions', \
+                 marginaliaGroup: '#marginalia-credential-group', \
+                 fragmentSignals: '.fragment-signals' \
+             }; \
+             const out = {}; \
+             for (const [name, sel] of Object.entries(selectors)) { \
+                 const el = document.querySelector(sel); \
+                 if (!el) { out[name] = 'missing'; continue; } \
+                 const before = el.hidden; \
+                 el.hidden = true; \
+                 out[name] = getComputedStyle(el).display; \
+                 el.hidden = before; \
+             } \
+             return JSON.stringify(out);",
+            vec![],
+        )
+        .await
+        .unwrap();
+    let computed = report.as_str().unwrap_or("{}");
+    let parsed: serde_json::Value = serde_json::from_str(computed).unwrap_or_default();
+    for name in [
+        "providerSelector",
+        "credentialActions",
+        "marginaliaGroup",
+        "fragmentSignals",
+    ] {
+        assert_eq!(
+            parsed.get(name).and_then(|value| value.as_str()),
+            Some("none"),
+            "{name} stayed visible while hidden=true (computed: {computed})"
+        );
+    }
 
     client.close().await.unwrap();
 }

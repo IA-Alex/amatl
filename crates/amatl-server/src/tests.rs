@@ -815,6 +815,7 @@ async fn request_timeout_cancels_a_slow_handler() {
         })),
         explicit_token: Some(TOKEN.into()),
         config_write_lock: Arc::new(AsyncMutex::new(())),
+        backup_idempotency: Arc::new(BackupIdempotency::default()),
         metrics: Arc::new(RequestMetrics::default()),
     };
     let app = Router::new()
@@ -2308,7 +2309,15 @@ async fn reload_picks_up_a_new_source_without_restarting() {
         .as_array()
         .unwrap()
         .iter()
-        .any(|value| value == "brave"));
+        .all(|value| value != "brave"));
+    // The operating sources are present.
+    assert!(["marginalia", "searxng"]
+        .iter()
+        .all(|source| report["registered_sources"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|value| value == source)));
 
     // The service really was replaced: the new limit is in force.
     let after = app
@@ -4111,6 +4120,231 @@ async fn create_backup_requires_the_admin_scope() {
     assert_eq!(response.status(), StatusCode::FORBIDDEN);
 }
 
+/// Paths `GET /persistence/backups` reports, newest first.
+async fn list_backups(app: &Router) -> Vec<String> {
+    let listed = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/persistence/backups")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    listed["backups"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|entry| entry.as_str().unwrap().to_owned())
+        .collect()
+}
+
+#[tokio::test]
+async fn create_backup_replays_a_repeated_idempotency_key() {
+    // `create_backup` runs the write on a task that survives the request
+    // deadline, so a client that timed out on a 504 and retries is doing the
+    // normal thing — and used to get a second backup file, which rotation can
+    // then use to evict an older one the operator wanted to keep.
+    let (app, path) = persistent_app().await;
+    // Opening the store already wrote a migration backup, so the assertions
+    // below compare against that baseline instead of an absolute count.
+    let before = list_backups(&app).await;
+    let mut paths = Vec::new();
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .header("idempotency-key", "before-migration")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        paths.push(
+            json_body(response).await["path"]
+                .as_str()
+                .unwrap()
+                .to_owned(),
+        );
+    }
+    assert_eq!(
+        paths[0], paths[1],
+        "a repeated key must replay the backup it already wrote"
+    );
+
+    let after = list_backups(&app).await;
+    assert_eq!(
+        after.len(),
+        before.len() + 1,
+        "a repeated key must not write a second file: {after:?}"
+    );
+    assert!(
+        after.contains(&paths[0]),
+        "the replay must point at the file the first call wrote: {after:?}"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    let _ = std::fs::remove_file(&paths[0]);
+}
+
+#[tokio::test]
+async fn concurrent_backups_with_one_key_write_one_backup() {
+    // The case the header exists for: the retry arrives while the first attempt
+    // is still running, which is exactly what a client does once its deadline
+    // fired. The second request must wait for the in-flight write and replay it
+    // rather than start a competing `VACUUM INTO`.
+    let (app, path) = persistent_app().await;
+    let before = list_backups(&app).await;
+    let request = || {
+        authorized("/persistence/backup")
+            .method(Method::POST)
+            .header("idempotency-key", "concurrent")
+            .body(Body::empty())
+            .unwrap()
+    };
+    let (first, second) = tokio::join!(
+        app.clone().oneshot(request()),
+        app.clone().oneshot(request())
+    );
+    let first = json_body(first.unwrap()).await;
+    let second = json_body(second.unwrap()).await;
+    assert_eq!(
+        first["path"], second["path"],
+        "the in-flight attempt must be replayed, not raced"
+    );
+
+    let after = list_backups(&app).await;
+    assert_eq!(
+        after.len(),
+        before.len() + 1,
+        "two concurrent requests with one key must write one file: {after:?}"
+    );
+    assert!(
+        after
+            .iter()
+            .any(|entry| entry == first["path"].as_str().unwrap()),
+        "the replay must point at the file the first call wrote: {after:?}"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    let _ = std::fs::remove_file(first["path"].as_str().unwrap());
+}
+
+#[tokio::test]
+async fn create_backup_without_a_key_writes_a_new_backup_each_time() {
+    // The header is what buys the replay guarantee, so an operator asking twice
+    // on purpose must still get two backups.
+    let (app, path) = persistent_app().await;
+    let mut paths = Vec::new();
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        paths.push(
+            json_body(response).await["path"]
+                .as_str()
+                .unwrap()
+                .to_owned(),
+        );
+    }
+    assert_ne!(
+        paths[0], paths[1],
+        "calls without a key must not be replayed"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    for entry in paths {
+        let _ = std::fs::remove_file(entry);
+    }
+}
+
+#[tokio::test]
+async fn create_backup_rejects_an_unusable_idempotency_key() {
+    // A caller that sends the header is relying on the retry guarantee, so a key
+    // the server cannot honour is refused instead of silently ignored: a
+    // silently ignored key leaves the caller believing a retry was safe.
+    let (app, path) = persistent_app().await;
+    let too_long = "x".repeat(MAX_IDEMPOTENCY_KEY_BYTES + 1);
+    for key in ["", "with space", too_long.as_str()] {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .header("idempotency-key", key)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::BAD_REQUEST,
+            "key {key:?} must be rejected"
+        );
+        assert_eq!(
+            json_body(response).await["error"]["code"],
+            "invalid_request",
+            "key {key:?} must report a malformed request"
+        );
+    }
+    let _ = std::fs::remove_file(&path);
+}
+
+#[test]
+fn backup_idempotency_bounds_the_keys_it_remembers() {
+    // A client that sends a fresh key per request must not be able to grow the
+    // map without bound.
+    let attempts = BackupIdempotency::default();
+    for index in 0..(BACKUP_IDEMPOTENCY_CAPACITY + 16) {
+        let _ = attempts.attempt(&format!("key-{index}"));
+    }
+    assert!(
+        attempts.attempts.lock().unwrap().len() <= BACKUP_IDEMPOTENCY_CAPACITY,
+        "remembered keys must stay bounded"
+    );
+}
+
+#[tokio::test]
+async fn backup_idempotency_keeps_a_key_whose_backup_is_still_running() {
+    // An entry past its window must still survive while its write is in flight:
+    // evicting it would let a retry start a second backup for a key that is
+    // already being written.
+    let attempts = BackupIdempotency::default();
+    let running = attempts.attempt("in-flight");
+    let guard = running.lock().await;
+    attempts
+        .attempts
+        .lock()
+        .unwrap()
+        .get_mut("in-flight")
+        .unwrap()
+        .expires = Instant::now();
+
+    for index in 0..(BACKUP_IDEMPOTENCY_CAPACITY + 1) {
+        let _ = attempts.attempt(&format!("other-{index}"));
+    }
+
+    assert!(
+        Arc::ptr_eq(&running, &attempts.attempt("in-flight")),
+        "an in-flight key must survive eviction"
+    );
+    drop(guard);
+}
+
 #[tokio::test]
 async fn circuits_reports_snapshots_and_reset_closes_them() {
     let app = app().await;
@@ -4558,6 +4792,342 @@ fn openapi_covers_every_router_operation() {
                 "OpenAPI omite {} {}",
                 method_str,
                 route.path
+            );
+        }
+    }
+}
+
+#[test]
+fn openapi_error_catalog_matches_shared_catalog() {
+    // The `ErrorResponse.code` enum is the client-visible half of the shared
+    // catalog in `amatl-core/src/errors.rs`. A code the server can emit but
+    // the contract omits makes a strictly-validating client reject a
+    // legitimate response, so both lists are asserted equal in each direction
+    // rather than merely "documented somewhere".
+    use amatl_core::ERROR_CATALOG;
+
+    // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
+    // that rewrote the fixture's line endings (see .gitattributes).
+    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let (_, after) = openapi
+        .split_once("    ErrorResponse:\n")
+        .expect("OpenAPI declares the ErrorResponse schema");
+    // Bound the search to this schema so an enum added to a later one cannot
+    // be picked up by mistake. A sibling schema starts at exactly four spaces
+    // of indentation, so stop at the first line that is indented by exactly
+    // four (deeper lines still belong to ErrorResponse).
+    let section: String = after
+        .split_inclusive('\n')
+        .take_while(|line| !line.starts_with("    ") || line.starts_with("     "))
+        .collect();
+    let enum_line = section
+        .lines()
+        .find(|line| line.trim_start().starts_with("enum: ["))
+        .expect("ErrorResponse.code declares an enum");
+    let documented: Vec<&str> = enum_line
+        .trim()
+        .trim_start_matches("enum: [")
+        .trim_end_matches(']')
+        .split(',')
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .collect();
+
+    for code in ERROR_CATALOG {
+        assert!(
+            documented.contains(&code.as_str()),
+            "OpenAPI ErrorResponse omits catalog code {}",
+            code.as_str()
+        );
+    }
+    for code in &documented {
+        assert!(
+            ERROR_CATALOG.iter().any(|entry| entry.as_str() == *code),
+            "OpenAPI ErrorResponse documents unknown code {code}"
+        );
+    }
+}
+
+/// One operation documented in `docs/api/openapi.yaml`.
+///
+/// Every contract guard below needs the same three facts about an operation —
+/// the status codes it documents, whether it is public (`security: []`) and
+/// whether it carries a request body — so they share one parser instead of
+/// each re-slicing the YAML with its own assumptions.
+struct DocumentedOperation {
+    path: String,
+    method: String,
+    statuses: Vec<String>,
+    public: bool,
+    has_request_body: bool,
+}
+
+impl DocumentedOperation {
+    fn documents(&self, status: &str) -> bool {
+        self.statuses.iter().any(|documented| documented == status)
+    }
+
+    fn label(&self) -> String {
+        format!("{} {}", self.method.to_uppercase(), self.path)
+    }
+}
+
+/// Collect the quoted three-digit keys of one line.
+///
+/// The contract writes response keys in both the block form (`'200':`) and the
+/// compact form (`responses: { '200': ..., '404': ... }`). No description,
+/// `$ref` or other value in the file contains a quoted three-digit string, so
+/// scanning for quoted triplets is exact rather than a heuristic.
+fn status_codes_in(line: &str) -> Vec<String> {
+    let mut codes = Vec::new();
+    let mut rest = line;
+    while let Some(open) = rest.find('\'') {
+        let after = &rest[open + 1..];
+        let Some(close) = after.find('\'') else { break };
+        let candidate = &after[..close];
+        if candidate.len() == 3 && candidate.chars().all(|c| c.is_ascii_digit()) {
+            codes.push(candidate.to_owned());
+        }
+        rest = &after[close + 1..];
+    }
+    codes
+}
+
+/// Parse every operation documented under `paths:` in the checked-in contract.
+fn documented_operations() -> Vec<DocumentedOperation> {
+    // Strip CR so the indentation-anchored matches below hold on a Windows
+    // checkout that rewrote the fixture's line endings (see .gitattributes).
+    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    const METHODS: [&str; 5] = ["get", "post", "patch", "delete", "put"];
+
+    let mut operations: Vec<DocumentedOperation> = Vec::new();
+    let mut in_paths = false;
+    let mut path = String::new();
+    let mut in_responses = false;
+
+    for line in openapi.lines() {
+        // Only `paths:` holds operations; `components:` reuses the same
+        // indentation for schemas, so bound the scan explicitly.
+        if line == "paths:" {
+            in_paths = true;
+            continue;
+        }
+        if !line.starts_with(' ') {
+            in_paths = false;
+            continue;
+        }
+        if !in_paths {
+            continue;
+        }
+        // A path key is indented by exactly two spaces.
+        if let Some(rest) = line.strip_prefix("  /") {
+            if line.ends_with(':') {
+                path = format!("/{}", rest.trim_end_matches(':'));
+                continue;
+            }
+        }
+        // A method key is indented by exactly four spaces.
+        if let Some(rest) = line.strip_prefix("    ") {
+            if !rest.starts_with(' ') {
+                let method = rest.trim_end_matches(':');
+                if METHODS.contains(&method) {
+                    operations.push(DocumentedOperation {
+                        path: path.clone(),
+                        method: method.to_owned(),
+                        statuses: Vec::new(),
+                        public: false,
+                        has_request_body: false,
+                    });
+                    in_responses = false;
+                    continue;
+                }
+            }
+        }
+        let Some(operation) = operations.last_mut() else {
+            continue;
+        };
+        let trimmed = line.trim_start();
+        if trimmed.starts_with("security:") {
+            operation.public = trimmed.contains("[]");
+        }
+        if trimmed.starts_with("requestBody:") {
+            operation.has_request_body = true;
+        }
+        if trimmed.starts_with("responses:") {
+            in_responses = true;
+        } else if in_responses && line.starts_with("      ") && !line.starts_with("       ") {
+            // A key at exactly six spaces is a sibling of `responses:`, so the
+            // block ended. Deeper lines are still part of a response.
+            in_responses = false;
+        }
+        if in_responses {
+            operation.statuses.extend(status_codes_in(line));
+        }
+    }
+    operations
+}
+
+#[test]
+fn openapi_operations_match_router_inventory() {
+    // Every contract guard below reads the shared parser, so this one proves the
+    // parser sees exactly the router's operations. Without it, a parser that
+    // silently dropped an operation would make each of those assertions
+    // vacuous.
+    use crate::routes::all_routes;
+
+    let mut documented: Vec<String> = documented_operations()
+        .iter()
+        .map(|operation| format!("{} {}", operation.method, operation.path))
+        .collect();
+    let mut routed: Vec<String> = all_routes()
+        .iter()
+        .flat_map(|route| {
+            route
+                .methods
+                .iter()
+                .map(|method| format!("{} {}", format!("{method:?}").to_lowercase(), route.path))
+        })
+        .collect();
+    documented.sort();
+    routed.sort();
+    assert_eq!(
+        documented, routed,
+        "el inventario OpenAPI diverge del router de Axum"
+    );
+}
+
+#[test]
+fn openapi_documents_transport_level_rejections() {
+    // `security_middleware` (lib.rs) wraps every route in the router, so these
+    // rejections are reachable on any operation and not only on the domain
+    // ones. Each status is traceable to an emitter and to the catalog entry
+    // that maps it:
+    //   400 invalid_host        `valid_host`
+    //   403 invalid_origin      `valid_origin`; scope_denied on protected routes
+    //   429 rate_limited        the per-client window
+    //   431 headers_too_large   the header budget
+    //   504 request_timeout     the request deadline
+    //   401 unauthorized        missing or expired credential (protected only)
+    //   413 body_too_large      the Content-Length pre-check, then DefaultBodyLimit
+    // A client generated from a contract that omits them cannot recover from an
+    // expired token or a throttled admin call, which is the drift this guard
+    // exists to prevent.
+    const UNIVERSAL: [&str; 5] = ["400", "403", "429", "431", "504"];
+
+    for operation in documented_operations() {
+        for status in UNIVERSAL {
+            assert!(
+                operation.documents(status),
+                "OpenAPI omite {status} en {}",
+                operation.label()
+            );
+        }
+        if !operation.public {
+            assert!(
+                operation.documents("401"),
+                "OpenAPI omite 401 en la ruta protegida {}",
+                operation.label()
+            );
+        }
+        if operation.has_request_body {
+            assert!(
+                operation.documents("413"),
+                "OpenAPI omite 413 en {} aunque declara requestBody",
+                operation.label()
+            );
+        }
+    }
+}
+
+#[test]
+fn openapi_component_refs_resolve() {
+    // A dangling `$ref` is invisible to every other guard and to a reader, yet
+    // it makes the document unrenderable for tooling. Both directions matter:
+    // every `#/components/...` target must exist, and every declared response
+    // or parameter must be referenced by at least one operation, because a
+    // component nothing points at is contract text that no longer describes the
+    // server. Security schemes are exempt: the top-level `security` block
+    // references them by bare name, not by `$ref`.
+    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = openapi.as_str();
+
+    let mut sections: Vec<(String, Vec<String>)> = Vec::new();
+    let mut in_components = false;
+    for line in openapi.lines() {
+        if line == "components:" {
+            in_components = true;
+            continue;
+        }
+        if !line.starts_with(' ') {
+            in_components = false;
+            continue;
+        }
+        if !in_components {
+            continue;
+        }
+        // A section key is indented by exactly two spaces, its entries by four.
+        for (indent, is_entry) in [("  ", false), ("    ", true)] {
+            if let Some(rest) = line.strip_prefix(indent) {
+                if rest.starts_with(' ') {
+                    continue;
+                }
+                let Some(name) = rest.strip_suffix(':') else {
+                    continue;
+                };
+                if is_entry {
+                    if let Some((_, names)) = sections.last_mut() {
+                        names.push(name.to_owned());
+                    }
+                } else {
+                    sections.push((name.to_owned(), Vec::new()));
+                }
+            }
+        }
+    }
+    assert!(
+        !sections.is_empty(),
+        "no se pudo leer `components:` de docs/api/openapi.yaml"
+    );
+
+    let mut referenced: Vec<(String, String)> = Vec::new();
+    let mut rest = openapi;
+    while let Some(index) = rest.find("#/components/") {
+        let tail = &rest[index + "#/components/".len()..];
+        let end = tail
+            .find(|character: char| {
+                !(character.is_ascii_alphanumeric() || character == '_' || character == '/')
+            })
+            .unwrap_or(tail.len());
+        if let Some((section, name)) = tail[..end].split_once('/') {
+            referenced.push((section.to_owned(), name.to_owned()));
+        }
+        // `end` is zero only if the target is empty, in which case stepping one
+        // byte keeps the scan moving instead of looping forever.
+        rest = &tail[end.max(1)..];
+    }
+    assert!(
+        !referenced.is_empty(),
+        "docs/api/openapi.yaml no referencia ningún componente"
+    );
+
+    for (section, name) in &referenced {
+        assert!(
+            sections.iter().any(|(declared, names)| {
+                declared == section && names.iter().any(|candidate| candidate == name)
+            }),
+            "OpenAPI tiene un $ref roto: #/components/{section}/{name}"
+        );
+    }
+    for (section, names) in &sections {
+        if !matches!(section.as_str(), "responses" | "parameters") {
+            continue;
+        }
+        for name in names {
+            assert!(
+                referenced
+                    .iter()
+                    .any(|(target, entry)| target == section && entry == name),
+                "OpenAPI declara {section}/{name} sin referenciarlo desde ninguna operación"
             );
         }
     }

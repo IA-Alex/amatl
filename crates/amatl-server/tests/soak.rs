@@ -99,10 +99,15 @@ async fn spawn_server() -> u16 {
     config.server.rate_limit_per_minute = 1_000_000;
 
     let service = AmatlService::new(config, true).await;
-    tokio::spawn(serve(service));
+    let mut server = tokio::spawn(serve(service));
 
     for _ in 0..100 {
-        let result: Result<_, std::io::Error> = TcpStream::connect(("127.0.0.1", port)).await;
+        let result: Result<_, std::io::Error> = tokio::select! {
+            result = &mut server => {
+                panic!("server failed before readiness: {result:?}");
+            }
+            result = TcpStream::connect(("127.0.0.1", port)) => result,
+        };
         match result {
             Ok(_) => return port,
             Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,
@@ -129,15 +134,23 @@ async fn spawn_server_with_persistence() -> u16 {
     config.server.rate_limit_per_minute = 1_000_000;
     config.persistence.enabled = true;
     config.persistence.path = dir.join("soak.sqlite3").display().to_string();
-    config.persistence.purge_interval_seconds = 1;
+    // The production configuration accepts 0 (disabled) or an interval of at
+    // least 60 seconds. Keep maintenance enabled while using a valid value so
+    // this soak exercises the same startup path as a real deployment.
+    config.persistence.purge_interval_seconds = 60;
     config.cache.provider_search.enabled = true;
     config.cache.document.enabled = true;
 
     let service = AmatlService::new(config, true).await;
-    tokio::spawn(serve(service));
+    let mut server = tokio::spawn(serve(service));
 
     for _ in 0..100 {
-        let result: Result<_, std::io::Error> = TcpStream::connect(("127.0.0.1", port)).await;
+        let result: Result<_, std::io::Error> = tokio::select! {
+            result = &mut server => {
+                panic!("server failed before readiness: {result:?}");
+            }
+            result = TcpStream::connect(("127.0.0.1", port)) => result,
+        };
         match result {
             Ok(_) => return port,
             Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,

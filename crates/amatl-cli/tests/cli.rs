@@ -159,20 +159,28 @@ fn ingest_rejects_unknown_binary_without_echoing_content() {
 
 #[test]
 fn provider_canary_refuses_incomplete_governance_without_network() {
+    // `mojeek` is declared in the shipped governance records but marked
+    // `Rejected`, so it is the current builtin that is enabled-and-declared yet
+    // fails the approval gate. (Brave is no longer shipped at all: it is absent
+    // from both the governance records and the registry, so enabling it fails
+    // config validation before the canary's governance preflight runs.)
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));
     std::fs::create_dir_all(&base).unwrap();
     let config = base.join("amatl.toml");
-    std::fs::write(&config, "[providers]\nenabled = [\"brave\"]\n").unwrap();
+    std::fs::write(&config, "[providers]\nenabled = [\"mojeek\"]\n").unwrap();
     let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
         .arg("--config-file")
         .arg(&config)
-        .args(["provider-canary", "brave", "rust"])
+        .args(["provider-canary", "mojeek", "rust"])
         .output()
         .unwrap();
     assert!(!output.status.success());
     let stderr = String::from_utf8(output.stderr).unwrap();
     assert!(stderr.contains("governance approval is incomplete or expired"));
+    // The refusal is the specific governance gate, not a generic config error,
+    // and it happens before any network access.
+    assert!(stderr.contains("provider_not_approved"), "{stderr}");
     std::fs::remove_file(config).unwrap();
     std::fs::remove_dir(base).unwrap();
 }
