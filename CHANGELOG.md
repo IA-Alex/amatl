@@ -57,12 +57,12 @@ adapter/extractor versions are independent axes as well.
   exposition: the endpoint is public, so per-source identity stays behind
   `/status`, which requires the `read` scope.
 - Two new blocking static-analysis gates. `tools/codeql/` is a CodeQL pack with
-  AMATL's own invariant queries — "no code outside `amatl-core`'s config module
-  validates a server configuration against the declared `bind`", and "the two
-  places that accept a configuration into a running process still anchor that
-  validation to the effective listener" — and CI fails when either reports a
-  violation. `tools/check_doc_refs.py` fails when a `file:line` citation in
-  `docs/` names a file that does not exist or a line past the end of that file;
+  AMATL's own invariant queries — "only `amatl-core`'s `config/mod.rs` validates
+  a server configuration against the declared `bind`", and "the two places that
+  accept a configuration into a running process still anchor that validation to
+  the effective listener" — and CI fails when either reports a violation.
+  `tools/check_doc_refs.py` fails when a `file:line` citation in `docs/` names a
+  file that does not exist or a line past the end of that file;
   that check is how the `config.rs` citations left behind by the config module
   split were found.
 - `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
@@ -260,6 +260,45 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- Two TLS advisories that entered the RustSec database on 2026-10-19 and
+  2026-10-20 leave the lockfile in one pass: `rustls-webpki` 0.103.14 moves to
+  0.103.16 (RUSTSEC-2026-0382, certificate verification can accept a path
+  through distrusted emSign intermediates whose private keys are now well known)
+  and `webpki-roots` 1.0.9 moves to 1.0.11 (RUSTSEC-2026-0381, the bundled trust
+  store still carried `emSign ECC Root CA - G3`). Both sit in the primary TLS
+  path — `rustls` → `axum-server` for the listener and `hyper-rustls` →
+  `reqwest` for outbound HTTPS — and both advisories had a single-package fix
+  inside the locked minor line. `tokio` 1.53.1 moves to 1.53.3 in the same pass
+  (RUSTSEC-2026-0386: the safe `AsyncFd` constructors accept any `T: AsRawFd`,
+  so a duplicated-then-closed descriptor can be deregistered and freed while
+  `epoll` still holds it, a use-after-free when readiness fires). `cargo deny
+  check` is clean again — it had been failing on that `unsound` advisory, which
+  cargo-deny denies as an error while `cargo audit` reports it as a warning —
+  and `cargo audit` reports only the `zip` findings that stay open and recorded.
+- The offline supply-chain contract asserts the floors those fixes established
+  (`rustls-webpki` 0.103.16, `webpki-roots` 1.0.10, `tokio` 1.53.3), so a later
+  downgrade fails `cargo test --workspace` on every host instead of passing
+  while the crate is vulnerable.
+- `docs/security/supply-chain.md` described a `zip`-only audit and claimed the
+  offline floors covered every advisory in the lockfile. Both were false once
+  the two TLS advisories landed, and the claim is what let the offline test pass
+  green while `cargo audit` was red. The document now states the rule the
+  contract actually implements — a floor for every *remediated* advisory whose
+  fix the locked graph can reach, with unreachable ones recorded as open
+  findings — records the three remediations with their dates, and stops
+  presenting the offline test as equivalent to the audit.
+- The `declared-bind-validation` invariant exempted the whole
+  `crates/amatl-core/src/config/` directory, so a *new* module added beside
+  `mod.rs` could call the bind-blind `validate_server` unreported; reproduced
+  against a CodeQL database built from a scratch checkout carrying such a
+  module. The exemption is now the exact file that holds the two legitimate
+  callers. Its companion `listener-anchored-count` counted only the anchors, so
+  renaming the loader that `listener-anchored-acceptance` keys on left both
+  queries silent; they now share that identification through
+  `acceptance_points.qll`, and the count asserts the acceptance-point number
+  too. Both checks stay presence-based: they prove that the anchored call is
+  made, not which address it is handed, which is the boundary these invariants
+  are defined at.
 - A configuration is now validated against the address the process is actually
   listening on, not the `bind` the document declares. `--bind`/`--port` override
   the file at startup and are never written back to it, so a file declaring
