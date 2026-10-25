@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
-    <title>AMATL — Búsqueda y evidencia</title>
+    <title data-i18n="pageTitle">AMATL — Búsqueda y evidencia</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
     <script src="/i18n.js" defer></script>
@@ -15,13 +15,13 @@
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#results">Ir a resultados</a>
+    <a class="skip-link" href="#results" data-i18n="skipToResults">Ir a resultados</a>
     <header class="masthead">
       <a class="brand" href="/" aria-label="AMATL, inicio">
         <img class="brand-icon" src="/brand-icon.png" alt="" width="71" height="120">
         <span>AMATL</span>
       </a>
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro">
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro" data-i18n-aria-label="themeToggleToLight">
         <svg class="icon-sun is-active" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <g fill="currentColor">
             <polygon points="12,1.2 13.6,5.6 10.4,5.6"/>
@@ -43,28 +43,28 @@
 
     <main class="shell">
       <section class="search-panel" aria-labelledby="search-heading">
-        <h1 id="search-heading">Busquemos</h1>
+        <h1 id="search-heading" data-i18n="searchHeading">Busquemos</h1>
         <form id="search-form" action="/search" method="post" role="search">
           <div class="search-row">
             <label class="sr-only" for="query">Consulta</label>
-            <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…">
+            <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…" data-i18n-placeholder="searchPlaceholder">
             <div class="search-actions" aria-label="Tipo de búsqueda">
-              <button id="search-button" type="submit" data-mode="search">Buscar</button>
-              <button id="deep-button" class="secondary-action" type="submit" data-mode="deep">Analizar evidencia</button>
-              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
+              <button id="search-button" type="submit" data-mode="search" disabled aria-disabled="true" data-i18n="searchButton">Buscar</button>
+              <button id="deep-button" class="secondary-action" type="submit" data-mode="deep" data-i18n="deepButton">Analizar evidencia</button>
+              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true" data-i18n="answerButton">Resumen con IA</button>
             </div>
           </div>
           <div class="model-options">
-            <label class="model-toggle-row">
+              <label class="model-toggle-row">
               <input type="checkbox" id="strategist-enabled-toggle" disabled>
-              <span id="strategist-toggle-label">Búsqueda con modelo</span>
+              <span id="strategist-toggle-label" data-i18n="strategistToggleLabel">Búsqueda con modelo</span>
             </label>
             <p id="strategist-toggle-status" class="field-help" hidden></p>
           </div>
           <details class="filters">
-            <summary id="filters-summary">Opciones y filtros</summary>
+            <summary id="filters-summary" data-i18n="filtersLabel">Opciones y filtros</summary>
             <fieldset class="provider-selector" id="provider-selector" hidden>
-              <legend id="provider-selector-label">Fuente de búsqueda</legend>
+              <legend id="provider-selector-label" data-i18n="providerSelectorLabel">Fuente de búsqueda</legend>
               <div class="provider-selector-options" id="provider-selector-options" role="radiogroup">
                 <label class="provider-selector-option">
                   <input type="radio" name="provider-source" value="marginalia">
@@ -76,14 +76,14 @@
                 </label>
                 <label class="provider-selector-option">
                   <input type="radio" name="provider-source" value="all">
-                  <span>Todas</span>
+                  <span data-i18n="providerSourceAll">Todas</span>
                 </label>
               </div>
               <p id="provider-selector-status" class="field-help" role="status" hidden></p>
             </fieldset>
             <div class="deep-options">
-              <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
-              <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
+              <label for="deep-max-fetches" data-i18n="deepMaxFetchesLabel">Máximo de recuperaciones para Deep (opcional)</label>
+              <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor" data-i18n-placeholder="deepMaxFetchesPlaceholder">
             </div>
             <div class="credential-actions" id="credential-actions">
               <div class="credential-group" id="marginalia-credential-group">
@@ -95,26 +95,26 @@
             <p id="answer-hint" class="field-help" hidden></p>
             <div class="filter-grid">
               <div>
-                <label for="language">Idioma</label>
+                <label for="language" data-i18n="languageLabel">Idioma</label>
                 <input id="language" name="lang" maxlength="16" placeholder="es">
               </div>
               <div>
-                <label for="region">Región</label>
+                <label for="region" data-i18n="regionLabel">Región</label>
                 <input id="region" name="region" maxlength="32" placeholder="MX">
               </div>
               <div>
-                <label for="file-type">Tipo de archivo</label>
+                <label for="file-type" data-i18n="fileTypeLabel">Tipo de archivo</label>
                 <select id="file-type" name="filetype">
-                  <option value="">Cualquiera</option>
+                  <option value="" data-i18n="fileTypeAny">Cualquiera</option>
                   <option value="pdf">PDF</option>
                   <option value="html">HTML</option>
                   <option value="txt">Texto</option>
                 </select>
               </div>
               <div>
-                <label for="local-token">Token de acceso</label>
+                <label for="local-token" data-i18n="tokenLabel">Token de acceso</label>
                 <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" placeholder="Token del servidor">
-                <p id="token-help" class="field-help">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
+                <p id="token-help" class="field-help" data-i18n="tokenHelp">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
               </div>
             </div>
           </details>
@@ -123,42 +123,42 @@
 
       <section class="result-area" aria-labelledby="result-heading">
         <div class="result-header">
-          <h2 id="result-heading">Resultados</h2>
+          <h2 id="result-heading" data-i18n="resultsHeading">Resultados</h2>
           <p id="status" class="status" role="status" aria-live="polite">Escribe una consulta para comenzar.</p>
         </div>
         <div id="loading" class="loading" hidden aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
-        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true">Cancelar</button>
+        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true" data-i18n="cancel">Cancelar</button>
         <div id="answer-card" class="answer-card" hidden>
           <p id="answer-text" class="answer-text"></p>
           <p id="answer-meta" class="answer-meta"></p>
         </div>
         <ol id="results" class="results" tabindex="-1"></ol>
         <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
-          <button id="previous" type="button">Anterior</button>
+          <button id="previous" type="button" data-i18n="previous">Anterior</button>
           <span id="page-label"></span>
-          <button id="next" type="button">Siguiente</button>
+          <button id="next" type="button" data-i18n="next">Siguiente</button>
         </nav>
       </section>
 
       <aside class="side-panels">
         <section class="provider-status" aria-labelledby="provider-heading" hidden>
-          <h2 id="provider-heading">Estado de fuentes</h2>
+          <h2 id="provider-heading" data-i18n="providerHeading">Estado de fuentes</h2>
           <ul id="provider-list" class="provider-list" role="list"></ul>
           <p id="provider-status-text" class="status"></p>
         </section>
 
         <section class="service-state" aria-labelledby="service-heading" hidden>
-          <h2 id="service-heading">Estado del servicio</h2>
+          <h2 id="service-heading" data-i18n="serviceHeading">Estado del servicio</h2>
           <p id="service-summary" class="status" role="status" aria-live="polite"></p>
           <ul id="service-indicators" class="indicator-list" role="list"></ul>
           <details id="answer-config" class="answer-config" hidden>
-            <summary id="answer-config-summary">Configuración de IA</summary>
+            <summary id="answer-config-summary" data-i18n="answerConfigLabel">Configuración de IA</summary>
             <dl id="answer-config-body" class="answer-config-body"></dl>
             <label class="answer-toggle-row">
               <input type="checkbox" id="answer-enabled-toggle">
-              <span id="answer-toggle-label">Activar función</span>
+              <span id="answer-toggle-label" data-i18n="answerToggleLabel">Activar función</span>
             </label>
             <p id="answer-toggle-status" class="field-help" hidden></p>
           </details>
@@ -166,15 +166,15 @@
 
         <section class="history-panel" aria-labelledby="history-heading" hidden>
           <div class="panel-header">
-            <h2 id="history-heading">Historial de búsquedas</h2>
-            <button id="history-purge" type="button" class="ghost-action">Borrar historial</button>
+          <h2 id="history-heading" data-i18n="historyHeading">Historial de búsquedas</h2>
+          <button id="history-purge" type="button" class="ghost-action" data-i18n="historyPurge">Borrar historial</button>
           </div>
           <ol id="history-list" class="history-list"></ol>
           <p id="history-empty" class="empty-note" hidden></p>
         </section>
 
         <section class="saved-panel" aria-labelledby="saved-heading" hidden>
-          <h2 id="saved-heading">Documentos guardados</h2>
+          <h2 id="saved-heading" data-i18n="savedHeading">Documentos guardados</h2>
           <ol id="saved-list" class="saved-list"></ol>
           <p id="saved-empty" class="empty-note" hidden></p>
         </section>

@@ -38,6 +38,7 @@ const MAX_FRAGMENT_BYTES = 512;
 const MAX_DOCUMENT_BYTES = 8 * 1024 * 1024;
 const MAX_SAVED_PAYLOAD_BYTES = 1024 * 1024;
 const LIST_LIMIT = 20;
+let searchAvailable = false;
 
 // Setup auth helper for the global api client
 globalThis.authHeaders = (extra) => {
@@ -133,7 +134,7 @@ function validHash(value) {
 }
 
 function setBusy(busy, mode) {
-  searchButton.disabled = busy;
+  searchButton.disabled = busy || !searchAvailable;
   deepButton.disabled = busy;
   searchButton.dataset.active = String(busy && mode === "search");
   deepButton.dataset.active = String(busy && mode === "deep");
@@ -484,11 +485,14 @@ function validatePayload(payload, mode) {
 
 function reportFailure(error) {
   if (error.name === "AbortError") return;
-  const message = error.message;
-  if (message.includes("401")) {
+  const key = ERROR_MESSAGE_KEYS[error.code];
+  if (key) {
+    setStatus(t(key), "error");
+    if (error.code === "unauthorized" || error.code === "scope_denied") tokenInput.focus();
+  } else if (error.status === 401 || error.message.includes("401")) {
     setStatus(t("unauthorized"), "error");
     tokenInput.focus();
-  } else if (message.includes("429")) {
+  } else if (error.status === 429 || error.message.includes("429")) {
     setStatus(t("rateLimited"), "error");
   } else if (message.includes("504")) {
     setStatus(t("timeout"), "error");
@@ -496,6 +500,27 @@ function reportFailure(error) {
     setStatus(t("genericError"), "error");
   }
 }
+
+const ERROR_MESSAGE_KEYS = {
+  invalid_request: "errorInvalidRequest",
+  invalid_query: "errorInvalidQuery",
+  unauthorized: "unauthorized",
+  rate_limited: "rateLimited",
+  request_timeout: "timeout",
+  egress_denied: "errorEgressDenied",
+  provider_not_declared: "errorProviderUnavailable",
+  provider_not_registered: "errorProviderUnavailable",
+  provider_not_enabled: "errorProviderUnavailable",
+  provider_not_approved: "errorProviderUnavailable",
+  provider_credential_missing: "errorProviderUnavailable",
+  provider_network_blocked: "errorProviderUnavailable",
+  search_planning_failed: "errorSearchUnavailable",
+  inference_unavailable: "errorSearchUnavailable",
+  ranking_backend_unavailable: "errorSearchUnavailable",
+  storage_unavailable: "errorStorageUnavailable",
+  answer_unavailable: "answerHintMissingCredential",
+  scope_denied: "scopeDenied",
+};
 
 async function run(mode, page) {
   const state = store.get();
@@ -746,8 +771,11 @@ async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh,
     checkbox.checked = !desired;
     checkbox.disabled = false;
     if (statusNode) statusNode.hidden = false;
-    // Basic error reporting based on message
-    statusNode.textContent = error.message.includes("401") ? t("unauthorized") : t(failKey);
+    statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
+      ? t(ERROR_MESSAGE_KEYS[error.code])
+      : error.status === 401 || error.message.includes("401")
+        ? t("unauthorized")
+        : t(failKey);
   }
 }
 
@@ -787,6 +815,7 @@ async function fetchProviderStatus() {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.checked = Boolean(provider.enabled);
+      checkbox.disabled = provider.status !== "available";
       checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
       const toggleText = document.createElement("span");
       toggleText.textContent = t("providerToggleLabel");
@@ -880,6 +909,11 @@ async function fetchServiceState() {
     }
     const sources = Array.isArray(payload.sources) ? payload.sources : [];
     const availableSources = sources.filter((source) => source.status === "available").length;
+    searchAvailable = availableSources > 0;
+    searchButton.disabled = !searchAvailable;
+    searchButton.setAttribute("aria-disabled", String(!searchAvailable));
+    searchButton.title = searchAvailable ? "" : t("searchUnavailable");
+    if (!searchAvailable) setStatus(t("errorSearchUnavailable"), "error");
     const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
     const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
     serviceIndicators.replaceChildren();
@@ -933,13 +967,13 @@ async function fetchServiceState() {
       );
       answerConfig.hidden = false;
       answerEnabledToggle.checked = Boolean(answerStatus.enabled);
-      answerEnabledToggle.disabled = false;
+      answerEnabledToggle.disabled = answerStatus.available === false;
     } else {
       answerConfig.hidden = true;
     }
     const strategistStatus =
       payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
-    if (strategistStatus.configured) {
+    if (strategistStatus.configured && strategistStatus.available !== false) {
       strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
       strategistEnabledToggle.disabled = false;
       strategistToggleLabel.textContent = t("strategistToggleLabel");
@@ -948,16 +982,23 @@ async function fetchServiceState() {
       // keep it off and disabled and explain why.
       strategistEnabledToggle.checked = false;
       strategistEnabledToggle.disabled = true;
-      strategistToggleLabel.textContent = t("strategistUnconfigured");
+      strategistToggleLabel.textContent = strategistStatus.configured
+        ? t("strategistUnavailable")
+        : t("strategistUnconfigured");
     }
     // Configured and switched on, but no usable credential: the toggle flips a
     // real flag, yet the model will not actually run. Say so instead of leaving
     // an operator to assume search is being refined — the same fail-loudly
     // pattern `answerHint` uses for the AI summary button.
-    strategistToggleStatus.hidden = !(
-      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available
-    );
-    strategistToggleStatus.textContent = t("strategistHintMissingCredential");
+    const strategistUnavailable =
+      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
+    strategistToggleStatus.hidden = !strategistUnavailable;
+    strategistToggleStatus.textContent = strategistStatus.available === false
+      ? t("strategistUnavailable")
+      : t("strategistHintMissingCredential");
+    strategistEnabledToggle.title = strategistStatus.available === false
+      ? t("strategistUnavailable")
+      : "";
     const degraded = payload.status !== "ok";
     serviceSummary.textContent = degraded ? t("serviceDegraded") : t("serviceOk");
     serviceSummary.dataset.state = degraded ? "partial" : "success";
@@ -965,7 +1006,13 @@ async function fetchServiceState() {
     syncMarginaliaFromStatus(payload);
     return payload;
   } catch (_) {
+    searchAvailable = false;
+    searchButton.disabled = true;
+    searchButton.setAttribute("aria-disabled", "true");
+    searchButton.title = t("searchUnavailable");
     servicePanel.hidden = true;
+    answerEnabledToggle.checked = false;
+    answerEnabledToggle.disabled = true;
     // No usable service state (e.g. the admin token is not loaded yet): the
     // model toggle must stay off, but it must not be silently greyed out with
     // no reason — explain the missing authentication so the operator knows the
@@ -1495,9 +1542,22 @@ historyPurgeButton.addEventListener("click", purgeHistory);
 tokenInput.addEventListener("change", refreshPanels);
 refreshPanels();
 
+function applyDeclarativeTranslations() {
+  for (const node of document.querySelectorAll("[data-i18n]")) {
+    node.textContent = t(node.dataset.i18n);
+  }
+  for (const node of document.querySelectorAll("[data-i18n-placeholder]")) {
+    node.placeholder = t(node.dataset.i18nPlaceholder);
+  }
+  for (const node of document.querySelectorAll("[data-i18n-aria-label]")) {
+    node.setAttribute("aria-label", t(node.dataset.i18nAriaLabel));
+  }
+}
+
 // Apply i18n to static HTML content on load.
 document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.lang = LANG;
+  applyDeclarativeTranslations();
   document.title = t("pageTitle");
   setStatus(t("initialStatus"), "");
   document.querySelector("#search-heading").textContent = t("searchHeading");

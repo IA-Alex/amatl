@@ -429,6 +429,46 @@ mod tests {
     }
 
     #[test]
+    fn declarative_i18n_markup_has_catalog_coverage() {
+        let html = text("/index.html");
+        let catalog = text("/i18n.js");
+        for attribute in [
+            "data-i18n=\"",
+            "data-i18n-placeholder=\"",
+            "data-i18n-aria-label=\"",
+        ] {
+            let mut remaining = html.as_str();
+            while let Some(start) = remaining.find(attribute) {
+                let value = &remaining[start + attribute.len()..];
+                let end = value.find('"').expect("closed i18n attribute");
+                let key = &value[..end];
+                assert!(
+                    catalog.contains(&format!("{key}:")),
+                    "missing catalog key: {key}"
+                );
+                remaining = &value[end + 1..];
+            }
+        }
+        assert!(html.contains("id=\"search-button\" type=\"submit\" data-mode=\"search\" disabled"));
+    }
+
+    #[test]
+    fn unavailable_backend_states_are_fail_closed_in_the_ui() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        assert!(html.contains("id=\"search-button\""));
+        assert!(javascript.contains("searchButton.disabled = !searchAvailable"));
+        assert!(javascript.contains("checkbox.disabled = provider.status !== \"available\""));
+        assert!(
+            javascript.contains("answerEnabledToggle.disabled = answerStatus.available === false")
+        );
+        assert!(javascript.contains("strategistStatus.available !== false"));
+        assert!(javascript.contains("strategistEnabledToggle.checked = false"));
+        assert!(javascript.contains("error.code"));
+        assert!(text("/client.js").contains("payload?.error?.code"));
+    }
+
+    #[test]
     fn marginalia_surface_copy_is_catalog_driven() {
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");

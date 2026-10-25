@@ -17,11 +17,16 @@ const client = {
     });
 
     if (!response.ok) {
-      // Handle 401/403/other errors centrally
-      if (response.status === 401) {
-        console.error("Unauthorized: check token");
-      }
-      throw new Error(`API Error: ${response.status} ${response.statusText}`);
+      let payload = null;
+      try {
+        payload = await response.json();
+      } catch (_) {}
+      const error = new Error(
+        payload?.error?.message || `API Error: ${response.status} ${response.statusText}`,
+      );
+      error.code = typeof payload?.error?.code === "string" ? payload.error.code : null;
+      error.status = response.status;
+      throw error;
     }
 
     return await response.json();
