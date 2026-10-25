@@ -74,12 +74,19 @@ pub struct ExecutionLimits {
     pub deep_timeout_ms: u64,
     pub deep_max_subqueries: u32,
     pub deep_max_subquery_cost: u64,
-    /// Deadline for one single-URL fetch exposed to a surface.
+    /// Redirect ceiling for one single-URL fetch exposed to a surface.
     pub fetch_timeout_ms: u64,
     /// Byte ceiling for one single-URL fetch exposed to a surface.
     pub fetch_max_bytes: u64,
     /// Redirect ceiling for one single-URL fetch exposed to a surface.
     pub fetch_max_redirects: u32,
+    /// Redirect ceiling for one Deep document fetch (the crawl's own path,
+    /// distinct from the standalone single-URL fetch above).
+    pub deep_max_redirects: u32,
+    /// Browser-render budget a surface may spend on one Deep request. The
+    /// unsandboxed renderer is the most expensive resource Deep can touch, so a
+    /// constrained surface (MCP) must not inherit the CLI's allowance.
+    pub deep_max_browser_calls: u32,
     /// Largest page a surface may request in one search.
     pub max_page_size: u32,
 }
@@ -101,6 +108,8 @@ impl ExecutionLimits {
             fetch_max_bytes: (config.deep.max_bytes / u64::from(config.deep.max_fetches.max(1)))
                 .max(1),
             fetch_max_redirects: config.deep.max_redirects,
+            deep_max_redirects: config.deep.max_redirects,
+            deep_max_browser_calls: config.deep.renderer.max_browser_calls,
             max_page_size: 100,
         };
         match surface.kind {
@@ -117,6 +126,8 @@ impl ExecutionLimits {
                 fetch_timeout_ms: base.fetch_timeout_ms.min(3_000),
                 fetch_max_bytes: base.fetch_max_bytes.min(256 * 1024),
                 fetch_max_redirects: base.fetch_max_redirects.min(2),
+                deep_max_redirects: base.deep_max_redirects.min(2),
+                deep_max_browser_calls: base.deep_max_browser_calls.min(1),
                 max_page_size: base.max_page_size.min(25),
             },
         }
@@ -472,6 +483,11 @@ pub struct AmatlService {
     cache_counters: Arc<CacheCounters>,
     /// Persistent breaker that removes a currently failing source from a round.
     circuit: ProviderCircuit,
+    /// Process-wide cap on simultaneous outbound provider calls, shared by
+    /// every orchestrator this service builds so concurrent searches cannot
+    /// each open their own concurrency window (see
+    /// [`crate::SearchOrchestrator::with_egress_gate`]).
+    egress_gate: Arc<tokio::sync::Semaphore>,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
     strategist: Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
@@ -500,6 +516,23 @@ pub struct AmatlService {
     _maintenance_cancel: Option<Arc<tokio_util::sync::DropGuard>>,
 }
 
+/// How an [`AmatlService`] build obtains its SQLite persistence.
+///
+/// Splitting this out is what lets a reload share process-scoped resources
+/// (pool, advisory file lock, maintenance task) with the service it replaces
+/// instead of opening a second of each — see [`AmatlService::reloaded`].
+enum ExistingStorage {
+    /// Open (and migrate) the database named by the configuration.
+    Open,
+    /// Adopt the persistence of a service being replaced, carrying its
+    /// degradation marker and maintenance-task guard forward unchanged.
+    Reuse {
+        storage: Option<SqliteStorage>,
+        degradation: Option<crate::Degradation>,
+        maintenance_cancel: Option<Arc<tokio_util::sync::DropGuard>>,
+    },
+}
+
 impl AmatlService {
     /// Service backed by the providers AMATL ships.
     pub async fn new(config: Config, mock: bool) -> Self {
@@ -509,50 +542,83 @@ impl AmatlService {
     /// Service backed by a caller-supplied registry, so an embedder can add or
     /// remove sources without changing the core.
     pub async fn with_registry(config: Config, mock: bool, registry: ProviderRegistry) -> Self {
-        let (storage, storage_degradation) = if config.persistence.enabled {
-            match SqliteStorage::open(
-                std::path::PathBuf::from(&config.persistence.path),
-                config.persistence.locking_mode,
-            )
-            .await
-            {
-                Ok(storage) => (Some(storage), None),
-                Err(error) => {
-                    let message = storage_failure_message(&error);
-                    tracing::warn!(
-                        target: "amatl::storage",
-                        error = %error,
-                        path = %config.persistence.path,
-                        quarantine_path = error.quarantine_path().map(|path| path.display().to_string()),
-                        "SQLite persistence is unavailable; continuing without persistent cache or telemetry"
-                    );
-                    (
-                        None,
-                        Some(crate::Degradation {
-                            code: ErrorCode::StorageUnavailable.as_str().into(),
-                            component: "sqlite".into(),
-                            message,
-                        }),
+        Self::build(config, mock, registry, ExistingStorage::Open).await
+    }
+
+    /// Build a service, deciding how persistence is obtained.
+    ///
+    /// [`ExistingStorage::Open`] opens (and migrates) the configured database.
+    /// [`ExistingStorage::Reuse`] adopts the storage handle of a service being
+    /// replaced, so a reload shares one connection pool, one advisory file
+    /// lock, and one background maintenance task for the life of the process
+    /// instead of opening a second of each against the same file — and, in
+    /// `exclusive` locking mode, instead of deadlocking on the file lock the
+    /// outgoing service still holds.
+    async fn build(
+        config: Config,
+        mock: bool,
+        registry: ProviderRegistry,
+        storage_source: ExistingStorage,
+    ) -> Self {
+        let (storage, storage_degradation, reuse_maintenance) = match storage_source {
+            ExistingStorage::Reuse {
+                storage,
+                degradation,
+                maintenance_cancel,
+            } => (storage, degradation, maintenance_cancel),
+            ExistingStorage::Open => {
+                let (storage, storage_degradation) = if config.persistence.enabled {
+                    match SqliteStorage::open(
+                        std::path::PathBuf::from(&config.persistence.path),
+                        config.persistence.locking_mode,
                     )
-                }
+                    .await
+                    {
+                        Ok(storage) => (Some(storage), None),
+                        Err(error) => {
+                            let message = storage_failure_message(&error);
+                            tracing::warn!(
+                                target: "amatl::storage",
+                                error = %error,
+                                path = %config.persistence.path,
+                                quarantine_path = error.quarantine_path().map(|path| path.display().to_string()),
+                                "SQLite persistence is unavailable; continuing without persistent cache or telemetry"
+                            );
+                            (
+                                None,
+                                Some(crate::Degradation {
+                                    code: ErrorCode::StorageUnavailable.as_str().into(),
+                                    component: "sqlite".into(),
+                                    message,
+                                }),
+                            )
+                        }
+                    }
+                } else {
+                    (None, None)
+                };
+                // Spawn background maintenance if persistence is enabled and
+                // either purging or automatic backups are configured. A reused
+                // storage already has a task; only a freshly opened one starts
+                // one here.
+                let maintenance_wanted = config.persistence.purge_interval_seconds > 0
+                    || config.persistence.auto_backup_enabled;
+                let maintenance_cancel = match (&storage, maintenance_wanted) {
+                    (Some(storage), true) => {
+                        let storage_arc = Arc::new(storage.clone());
+                        Some(Arc::new(
+                            storage_arc
+                                .spawn_maintenance(
+                                    &config.persistence,
+                                    config.telemetry.retention_days,
+                                )
+                                .drop_guard(),
+                        ))
+                    }
+                    _ => None,
+                };
+                (storage, storage_degradation, maintenance_cancel)
             }
-        } else {
-            (None, None)
-        };
-        // Spawn background maintenance if persistence is enabled and either
-        // purging or automatic backups are configured.
-        let maintenance_wanted =
-            config.persistence.purge_interval_seconds > 0 || config.persistence.auto_backup_enabled;
-        let maintenance_cancel = match (&storage, maintenance_wanted) {
-            (Some(storage), true) => {
-                let storage_arc = Arc::new(storage.clone());
-                Some(Arc::new(
-                    storage_arc
-                        .spawn_maintenance(&config.persistence, config.telemetry.retention_days)
-                        .drop_guard(),
-                ))
-            }
-            _ => None,
         };
 
         let config_circuit_policy = config.circuit_breaker;
@@ -643,6 +709,9 @@ impl AmatlService {
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
             circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
+            egress_gate: Arc::new(tokio::sync::Semaphore::new(
+                config.execution.global_concurrency.max(1),
+            )),
             audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
             ephemeral_credentials: Arc::new(RwLock::new(BTreeMap::new())),
             strategist: if config.strategist.enabled {
@@ -661,7 +730,7 @@ impl AmatlService {
             } else {
                 Arc::new(crate::strategist::NoOpStrategist)
             },
-            _maintenance_cancel: maintenance_cancel,
+            _maintenance_cancel: reuse_maintenance,
         }
     }
 
@@ -671,17 +740,41 @@ impl AmatlService {
     }
 
     /// Build a replacement service from a new configuration, reusing this
-    /// service's provider registry and mock flag.
+    /// service's provider registry, mock flag, connection pool and background
+    /// maintenance task.
     ///
     /// Nothing is mutated in place: the caller swaps the handle it hands to new
     /// requests, so in-flight work finishes against the configuration it
     /// started with. An invalid configuration is rejected before anything is
     /// rebuilt, so a bad reload leaves the running service untouched.
+    ///
+    /// Persistence is *reused*, never reopened: the replacement adopts this
+    /// service's `SqliteStorage` (same pool, same advisory file lock, same
+    /// maintenance task). Reopening would momentarily run two pools and two
+    /// maintenance tasks against one file, and — with `locking_mode =
+    /// "exclusive"` — would fail outright on the file lock this very service
+    /// still holds, making every reload impossible.
     pub async fn reloaded(self, config: Config) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
+        let registry = (*self.registry).clone();
+        self.rebuilt(config, registry).await
+    }
+
+    /// Shared reload body: carry the process-scoped resources (storage pool,
+    /// file lock, maintenance task, in-memory credentials) into a service built
+    /// from the new configuration.
+    async fn rebuilt(
+        mut self,
+        config: Config,
+        registry: ProviderRegistry,
+    ) -> Result<Self, ServiceError> {
         let ephemeral = self.ephemeral_credentials.clone();
-        let mut replacement =
-            Self::with_registry(config, self.mock, (*self.registry).clone()).await;
+        let storage_source = ExistingStorage::Reuse {
+            storage: self.storage.clone(),
+            degradation: self.storage_degradation.clone(),
+            maintenance_cancel: self._maintenance_cancel.take(),
+        };
+        let mut replacement = Self::build(config, self.mock, registry, storage_source).await;
         // Keep operator-injected in-memory credentials across a reload so a
         // provider key survives config rotation without a restart.
         replacement.ephemeral_credentials = ephemeral;
@@ -690,13 +783,10 @@ impl AmatlService {
 
     /// [`Self::reloaded`], runnable from a generic async position.
     ///
-    /// Opening SQLite runs migrations through `sqlx`, whose executor bound is
-    /// not provably `Send` when the resulting future is awaited from a generic
-    /// caller such as an HTTP handler. Driving that future on a blocking thread
-    /// of the *current* runtime sidesteps the bound without detaching the
-    /// connection pool from the runtime it belongs to. Reload is a rare,
-    /// operator-triggered action, so the extra thread hop costs nothing that
-    /// matters.
+    /// The reload reuses the running service's connection pool rather than
+    /// reopening SQLite (see [`Self::reloaded`]), so the `Send`-bound rationale
+    /// here applies to the rest of the rebuild (registry, inference runtime,
+    /// strategist); the storage handle is simply moved across.
     pub async fn reloaded_detached(self, config: Config) -> Result<Self, ServiceError> {
         let handle = tokio::runtime::Handle::current();
         tokio::task::spawn_blocking(move || handle.block_on(self.reloaded(config)))
@@ -705,17 +795,16 @@ impl AmatlService {
     }
 
     /// Build a replacement service with a different provider registry, for an
-    /// embedder that adds or removes a source implementation at runtime.
+    /// embedder that adds or removes a source implementation at runtime. Like
+    /// [`Self::reloaded`], it reuses the running service's persistence rather
+    /// than reopening the database.
     pub async fn reloaded_with_registry(
         self,
         config: Config,
         registry: ProviderRegistry,
     ) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
-        let ephemeral = self.ephemeral_credentials.clone();
-        let mut replacement = Self::with_registry(config, self.mock, registry).await;
-        replacement.ephemeral_credentials = ephemeral;
-        Ok(replacement)
+        self.rebuilt(config, registry).await
     }
 
     /// Identifier of the active inference backend, when one is available.
@@ -834,6 +923,7 @@ impl AmatlService {
                 self.config.execution.max_retries,
                 self.config.execution.retry_jitter_ms,
             )
+            .with_egress_gate(self.egress_gate.clone())
             .with_result_policies(
                 self.config.ranking_policy.clone(),
                 self.config.diversity_policy.clone(),
@@ -846,6 +936,19 @@ impl AmatlService {
         };
         let mut orchestrator = build_orchestrator();
         let mut response = orchestrator.search(query.clone(), providers.clone()).await;
+        // Names admitted into this round, for releasing unused probe claims.
+        // Computed once; both the primary and the refined round draw from the
+        // same selection.
+        let selected_names: Vec<String> = providers
+            .iter()
+            .map(|provider| provider.name().to_string())
+            .collect();
+        // Record the primary round's outcomes now, before the refined round can
+        // merge its own providers into `response`. Recording after the merge
+        // would double-count the refined round's failures and open the breaker
+        // faster than `failure_threshold` promises.
+        self.record_circuit_outcomes(&selected_names, &response)
+            .await;
 
         if self.config.strategist.enabled {
             if let Ok(Ok(Some(new_query))) = tokio::time::timeout(
@@ -863,9 +966,10 @@ impl AmatlService {
                         let mut refined_orchestrator = build_orchestrator();
                         let refined_response =
                             refined_orchestrator.search(refined_query, providers).await;
-                        // Keep the circuit breaker accurate for the providers the
-                        // refined search actually used, beyond the results merge.
-                        self.record_circuit_outcomes(&refined_response).await;
+                        // Record the refined round's outcomes against its own,
+                        // un-merged response — once, not again after the merge.
+                        self.record_circuit_outcomes(&selected_names, &refined_response)
+                            .await;
                         // Complement, never re-order: keep the original set as
                         // ranked and append only results the original search did
                         // not already return, deduplicating by canonical URL
@@ -879,7 +983,6 @@ impl AmatlService {
             }
         }
 
-        self.record_circuit_outcomes(&response).await;
         if !refusals.is_empty() {
             response.degradations.extend(refusals);
             if response.status == crate::SearchStatus::Success {
@@ -1245,8 +1348,8 @@ impl AmatlService {
         let deep_budget = DeepBudget::new(
             effective_max_fetches,
             limits.deep_max_bytes,
-            self.config.deep.max_redirects,
-            self.config.deep.renderer.max_browser_calls,
+            limits.deep_max_redirects,
+            limits.deep_max_browser_calls,
             self.config.deep.max_crawl_urls,
             remaining_deep_ms,
         )
@@ -1268,7 +1371,7 @@ impl AmatlService {
             document_cache,
             remaining_deep_ms,
             (limits.deep_max_bytes / u64::from(effective_max_fetches)).max(1),
-            self.config.deep.max_redirects,
+            limits.deep_max_redirects,
             self.config.deep.top_k as usize,
             self.config.deep.max_depth,
         )
@@ -1605,13 +1708,14 @@ impl AmatlService {
                             .find(|snapshot| snapshot.provider == *name)
                             .map(|snapshot| snapshot.state)
                             .unwrap_or(crate::circuit::CircuitState::Closed);
-                        let credential_source = if self.ephemeral_credential_present(name) {
-                            CredentialSource::Ephemeral
-                        } else if credential(runtime).is_some() {
-                            CredentialSource::Environment
-                        } else {
-                            CredentialSource::None
-                        };
+                        let credential_source = credential_source_for(
+                            self.registry
+                                .get(name)
+                                .map(|factory| factory.requires_credential())
+                                .unwrap_or(true),
+                            self.ephemeral_credential_present(name),
+                            runtime,
+                        );
                         SourceStatus {
                             name: name.to_owned(),
                             status: ProviderSurfaceStatus::Unavailable,
@@ -1746,13 +1850,11 @@ impl AmatlService {
             .declared()
             .filter_map(|(name, runtime)| {
                 let factory = self.registry.get(name)?;
-                let credential_source = if self.ephemeral_credential_present(name) {
-                    CredentialSource::Ephemeral
-                } else if credential(runtime).is_some() {
-                    CredentialSource::Environment
-                } else {
-                    CredentialSource::None
-                };
+                let credential_source = credential_source_for(
+                    factory.requires_credential(),
+                    self.ephemeral_credential_present(name),
+                    runtime,
+                );
                 Some((
                     factory.build(&ProviderBuildContext {
                         name,
@@ -1969,8 +2071,10 @@ impl AmatlService {
                 );
                 continue;
             }
-            // Claims the single half-open probe if the cooldown has expired, so
-            // concurrent searches admit one probe, not a stampede.
+            // Admissibility is a pure query: a source in cooldown with an
+            // in-flight probe is skipped here without touching the probe state.
+            // The single half-open probe is claimed later, only for providers
+            // that actually reach a call (see `record_circuit_outcomes`).
             if !self.circuit.allows_call(name, now) {
                 selection.degradations.push(crate::Degradation {
                     code: "provider_circuit_open".into(),
@@ -1990,6 +2094,12 @@ impl AmatlService {
                 credential: self.resolved_credential(name, runtime),
                 transport: transport.clone(),
             });
+            // Admitted into this round: claim the single half-open probe so a
+            // concurrent search does not also admit one. If this provider ends
+            // up never actually attempted (the router drops it), `search_inner`
+            // releases the claim so it cannot wedge the source — see
+            // `record_circuit_outcomes`.
+            self.circuit.claim_probe(name, now);
             selection.providers.push(self.with_cache(provider, runtime));
         }
         Ok(selection)
@@ -2015,10 +2125,28 @@ impl AmatlService {
         self.circuit.reset().await;
     }
 
-    /// Feed one search outcome into the breaker, one entry per attempted
-    /// source. A partial provider still counts as a success: it answered.
-    async fn record_circuit_outcomes(&self, response: &SearchResponse) {
+    /// Feed one search round's outcome into the breaker — exactly once per
+    /// round — and release any half-open probe that was claimed for a provider
+    /// the round did not actually attempt.
+    ///
+    /// `selected` is the set of providers admitted into the round
+    /// (`select_providers`, which claims the probe). Providers in `selected`
+    /// that are neither used nor failed were dropped by the router, so their
+    /// claim is released here; otherwise the unused claim would refuse the
+    /// source for a whole cooldown.
+    ///
+    /// `response` must be the *un-merged* response for the round being
+    /// recorded: recording a merged response would double-count the refined
+    /// round's failures against its own providers and trip the breaker faster
+    /// than `failure_threshold` promises.
+    async fn record_circuit_outcomes(&self, selected: &[String], response: &SearchResponse) {
         let now = now_unix();
+        let attempted: BTreeSet<&String> = response
+            .providers_used
+            .iter()
+            .chain(response.providers_failed.iter())
+            .chain(response.providers_partial.iter())
+            .collect();
         for provider in &response.providers_used {
             self.circuit.record(provider, true, now).await;
         }
@@ -2034,6 +2162,13 @@ impl AmatlService {
                 continue;
             }
             self.circuit.record(provider, false, now).await;
+        }
+        // Release the probe for any admitted provider that never reached a
+        // call, keeping the claim symmetric and the source usable.
+        for name in selected {
+            if !attempted.contains(name) {
+                self.circuit.release_probe(name);
+            }
         }
     }
 
@@ -2100,6 +2235,33 @@ fn credential(config: &ProviderRuntimeConfig) -> Option<Zeroizing<String>> {
         .and_then(|name| std::env::var(name).ok())
         .filter(|value| !value.is_empty())
         .map(Zeroizing::new)
+}
+
+/// Provenance of a source's credential, if any — never its value.
+///
+/// A provider whose adapter does not require a credential
+/// ([`ProviderFactory::requires_credential`], e.g. searxng, whose
+/// `credential_env` is only an instance URL with a default) never reports one:
+/// an environment variable holding its URL is *configuration*, not a secret,
+/// so the surface tells the truth only for sources that actually need a key.
+/// A provider that does require a credential resolves to `Ephemeral` (an
+/// operator-injected in-memory key, liquidable) or `Environment` (read from
+/// `credential_env`), else `None`.
+fn credential_source_for(
+    requires_credential: bool,
+    ephemeral_present: bool,
+    config: &ProviderRuntimeConfig,
+) -> CredentialSource {
+    if !requires_credential {
+        return CredentialSource::None;
+    }
+    if ephemeral_present {
+        CredentialSource::Ephemeral
+    } else if credential(config).is_some() {
+        CredentialSource::Environment
+    } else {
+        CredentialSource::None
+    }
 }
 
 /// Build the router's [`RoleAssignment`] from `[expansion]` config.
@@ -2515,6 +2677,35 @@ mod tests {
         assert!(mcp.deep_max_fetches < cli.deep_max_fetches);
         assert!(mcp.deep_max_bytes < cli.deep_max_bytes);
         assert!(mcp.deep_max_subqueries < cli.deep_max_subqueries);
+        // The Deep-scoped per-fetch and renderer ceilings must tighten too; they
+        // are read by `deep_from_search`, not just advertised.
+        assert!(mcp.deep_max_redirects <= cli.deep_max_redirects);
+        assert!(mcp.deep_max_browser_calls < cli.deep_max_browser_calls);
+    }
+
+    #[tokio::test]
+    async fn deep_uses_the_surface_redirect_and_browser_ceilings() {
+        // A Deep run must honor the surface's per-fetch ceilings, not the raw
+        // CLI-scale config: the same config on MCP and CLI yields different
+        // Deep limits, and the service consumes the surface value.
+        let config = Config::default();
+        let mcp = ExecutionLimits::for_surface(&config, ServiceSurface::mcp());
+        assert_eq!(
+            mcp.deep_max_redirects,
+            config.deep.max_redirects.min(2),
+            "MCP deep redirects are clamped"
+        );
+        assert_eq!(
+            mcp.deep_max_browser_calls,
+            config.deep.renderer.max_browser_calls.min(1),
+            "MCP browser calls are clamped"
+        );
+        let cli = ExecutionLimits::for_surface(&config, ServiceSurface::cli());
+        assert_eq!(cli.deep_max_redirects, config.deep.max_redirects);
+        assert_eq!(
+            cli.deep_max_browser_calls,
+            config.deep.renderer.max_browser_calls
+        );
     }
 
     #[tokio::test]
@@ -2697,6 +2888,38 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn a_provider_that_does_not_require_a_credential_never_reports_one() {
+        // SearXNG needs no credential: its `credential_env` names the instance
+        // URL (a URL with a default), not a secret. Even when that variable is
+        // present in the environment, the surface must report `None` — the
+        // variable holds configuration, not a key. Matches the documentation
+        // and `ProviderFactory::requires_credential()` for searxng.
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let var = format!("AMATL_TEST_SEARXNG_URL_VAR_{nonce}");
+        std::env::set_var(&var, "http://127.0.0.1:8888");
+
+        let mut config = Config::default();
+        config.providers.entry("searxng").credential_env = Some(var.clone());
+        let service = AmatlService::new(config, false).await;
+        let summary = service
+            .provider_summaries()
+            .unwrap()
+            .into_iter()
+            .find(|summary| summary.name == "searxng")
+            .unwrap();
+        assert_eq!(
+            summary.credential_source,
+            CredentialSource::None,
+            "searxng must not report a credential even when its URL variable is set"
+        );
+
+        std::env::remove_var(&var);
+    }
+
+    #[tokio::test]
     async fn status_sources_expose_credential_provenance_but_not_the_value() {
         let service = AmatlService::new(Config::default(), false).await;
         service
@@ -2734,14 +2957,14 @@ mod tests {
     fn real_provider_canary_is_fail_closed_before_network_access() {
         let config = Config::default();
         assert_eq!(
-            validate_provider_canary(&config, "brave"),
-            Err(ProviderCanaryError::NotEnabled("brave".into()))
+            validate_provider_canary(&config, "mojeek"),
+            Err(ProviderCanaryError::NotEnabled("mojeek".into()))
         );
         let mut enabled = config;
-        enabled.providers.enabled = vec!["brave".into()];
+        enabled.providers.enabled = vec!["mojeek".into()];
         assert_eq!(
-            validate_provider_canary(&enabled, "brave"),
-            Err(ProviderCanaryError::Governance("brave".into()))
+            validate_provider_canary(&enabled, "mojeek"),
+            Err(ProviderCanaryError::Governance("mojeek".into()))
         );
     }
 
@@ -2812,7 +3035,8 @@ mod tests {
         assert!(summaries
             .iter()
             .any(|summary| summary.name == "custom_archive"));
-        assert!(summaries.iter().any(|summary| summary.name == "brave"));
+        // Brave is not a shipped source and must not appear in the summaries.
+        assert!(!summaries.iter().any(|summary| summary.name == "brave"));
     }
 
     #[tokio::test]
@@ -2926,6 +3150,78 @@ mod tests {
         // An operator that fixed the cause can close it without a restart.
         service.reset_circuits().await;
         assert!(service.circuit_snapshots().is_empty());
+    }
+
+    #[tokio::test]
+    async fn a_single_search_records_each_provider_outcome_once() {
+        // Regression guard for the double-recording bug: with a threshold of 2,
+        // one failing search must leave the breaker closed. Recording the same
+        // round twice (as the post-merge pass used to) would open it after a
+        // single search, making the breaker eager beyond its configuration.
+        let mut config = archive_config();
+        config.circuit_breaker.failure_threshold = 2;
+        config.circuit_breaker.open_seconds = 600;
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await;
+
+        service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(
+            service.circuit_snapshots()[0].state,
+            crate::CircuitState::Closed,
+            "one failed search must count as one failure, not two"
+        );
+
+        // The second failed search crosses the threshold exactly once.
+        service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(
+            service.circuit_snapshots()[0].state,
+            crate::CircuitState::Open
+        );
+    }
+
+    #[tokio::test]
+    async fn reload_reuses_storage_so_exclusive_locking_survives_a_reload() {
+        // With `locking_mode = "exclusive"` the running service holds the
+        // advisory file lock. A reload that reopened SQLite would deadlock on
+        // that very lock; reusing the running pool must make it succeed.
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!("amatl-reload-{nonce}.sqlite3"));
+        let mut config = Config::default();
+        config.persistence.enabled = true;
+        config.persistence.path = path.display().to_string();
+        config.persistence.locking_mode = crate::config::SqliteLockingMode::Exclusive;
+
+        let service = AmatlService::new(config.clone(), true).await;
+        assert!(service.storage().is_some(), "persistence must be active");
+
+        let reloaded = service
+            .reloaded(config)
+            .await
+            .expect("reload must succeed in exclusive locking mode");
+        assert!(reloaded.storage().is_some());
+
+        // The reloaded service still works against the same database.
+        reloaded
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+
+        drop(reloaded);
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(format!("{}.lock", path.display()));
     }
 
     fn today_iso() -> String {

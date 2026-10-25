@@ -1154,6 +1154,44 @@ impl SqliteStorage {
             .map_err(operation)?;
         }
         loop {
+            // Byte-quota eviction in one statement: delete the oldest rows up
+            // to the smallest prefix whose cumulative size covers the overflow,
+            // measured by a windowed running sum. A per-row delete loop here
+            // would recompute `SUM(size_bytes)` on every iteration while
+            // holding the write lock and the SQLite write transaction, turning
+            // a single oversized payload into an O(n²) stall that blocks every
+            // other writer in the process.
+            let deleted = sqlx::query(
+                "DELETE FROM provider_search_cache WHERE rowid IN (
+                   SELECT rowid FROM (
+                     SELECT rowid,
+                            COALESCE(SUM(size_bytes) OVER (
+                              ORDER BY last_accessed ASC, rowid ASC
+                              ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING), 0) AS prior
+                     FROM provider_search_cache
+                   ) WHERE prior < ?
+                 )",
+            )
+            .bind(
+                sqlx::query_scalar::<_, i64>(
+                    "SELECT COALESCE(SUM(size_bytes), 0) FROM provider_search_cache",
+                )
+                .fetch_one(transaction.as_mut())
+                .await
+                .map_err(operation)?
+                    - max_bytes as i64,
+            )
+            .execute(transaction.as_mut())
+            .await
+            .map_err(operation)?
+            .rows_affected();
+            // One pass suffices: the prefix covering the overflow removes at
+            // least the excess. The loop guard only re-checks the degenerate
+            // case of a single row larger than the whole quota (which the
+            // minimal prefix cannot shrink further).
+            if deleted == 0 {
+                break;
+            }
             let size: i64 = sqlx::query_scalar(
                 "SELECT COALESCE(SUM(size_bytes), 0) FROM provider_search_cache",
             )
@@ -1161,18 +1199,6 @@ impl SqliteStorage {
             .await
             .map_err(operation)?;
             if size <= max_bytes as i64 {
-                break;
-            }
-            let deleted = sqlx::query(
-                "DELETE FROM provider_search_cache WHERE rowid =
-                 (SELECT rowid FROM provider_search_cache
-                  ORDER BY last_accessed ASC, rowid ASC LIMIT 1)",
-            )
-            .execute(transaction.as_mut())
-            .await
-            .map_err(operation)?
-            .rows_affected();
-            if deleted == 0 {
                 break;
             }
         }
@@ -1406,23 +1432,42 @@ impl SqliteStorage {
         .await
         .map_err(operation)?;
         loop {
-            let size: i64 =
-                sqlx::query_scalar("SELECT COALESCE(SUM(size_bytes), 0) FROM document_cache")
-                    .fetch_one(transaction.as_mut())
-                    .await
-                    .map_err(operation)?;
-            if size <= max_bytes as i64 {
-                break;
-            }
+            // Byte-quota eviction in one statement — see the identical
+            // reasoning in `cache_put`: a per-row delete loop recomputes
+            // `SUM(size_bytes)` each iteration while holding the write lock.
             let deleted = sqlx::query(
-                "DELETE FROM document_cache WHERE rowid =
-                 (SELECT rowid FROM document_cache ORDER BY last_accessed ASC, rowid ASC LIMIT 1)",
+                "DELETE FROM document_cache WHERE rowid IN (
+                   SELECT rowid FROM (
+                     SELECT rowid,
+                            COALESCE(SUM(size_bytes) OVER (
+                              ORDER BY last_accessed ASC, rowid ASC
+                              ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING), 0) AS prior
+                     FROM document_cache
+                   ) WHERE prior < ?
+                 )",
+            )
+            .bind(
+                sqlx::query_scalar::<_, i64>(
+                    "SELECT COALESCE(SUM(size_bytes), 0) FROM document_cache",
+                )
+                .fetch_one(transaction.as_mut())
+                .await
+                .map_err(operation)?
+                    - max_bytes as i64,
             )
             .execute(transaction.as_mut())
             .await
             .map_err(operation)?
             .rows_affected();
             if deleted == 0 {
+                break;
+            }
+            let size: i64 =
+                sqlx::query_scalar("SELECT COALESCE(SUM(size_bytes), 0) FROM document_cache")
+                    .fetch_one(transaction.as_mut())
+                    .await
+                    .map_err(operation)?;
+            if size <= max_bytes as i64 {
                 break;
             }
         }
@@ -1498,19 +1543,27 @@ impl SqliteStorage {
     pub(crate) async fn telemetry_load(
         &self,
         since: i64,
+        max_rows: u32,
     ) -> Result<Vec<StoredTelemetryObservation>, StorageError> {
+        // Newest-first with a hard LIMIT so a long retention window at high
+        // traffic cannot pull an unbounded number of rows into memory on every
+        // service build/reload. Callers restore the chronological order they
+        // need; the oldest beyond `max_rows` are the least relevant to routing,
+        // which weights recent observations most.
         let rows = sqlx::query(
             "SELECT observed_at, provider, category, outcome, latency_ms, total_results,
                     unique_results, duplicate_ratio, top_k_contribution, diversity, cost_units,
                     request_id
              FROM telemetry_observations WHERE observed_at >= ?
-             ORDER BY observed_at ASC, id ASC",
+             ORDER BY observed_at DESC, id DESC
+             LIMIT ?",
         )
         .bind(since)
+        .bind(max_rows as i64)
         .fetch_all(&self.pool)
         .await
         .map_err(operation)?;
-        Ok(rows
+        let mut observations = rows
             .into_iter()
             .map(|row| StoredTelemetryObservation {
                 observed_at: row.get("observed_at"),
@@ -1526,7 +1579,10 @@ impl SqliteStorage {
                 cost_units: row.get::<i64, _>("cost_units").max(0) as u64,
                 request_id: row.get("request_id"),
             })
-            .collect())
+            .collect::<Vec<_>>();
+        // Back to ascending (chronological) order for the in-memory deque.
+        observations.reverse();
+        Ok(observations)
     }
 
     pub(crate) async fn telemetry_prune(&self, before: i64) -> Result<u64, StorageError> {
@@ -2563,6 +2619,42 @@ mod tests {
             .is_none());
         assert!(storage
             .cache_get("p", "v1", "q2", "{}", 202, 100)
+            .await
+            .unwrap()
+            .is_some());
+    }
+
+    #[tokio::test]
+    async fn cache_byte_quota_evicts_the_oldest_rows_in_one_pass() {
+        let storage = SqliteStorage::open(
+            path("cache-quota-batch"),
+            crate::config::SqliteLockingMode::Normal,
+        )
+        .await
+        .unwrap();
+        // Three 4-byte payloads with a 6-byte quota: the oldest must be evicted
+        // so the survivors fit, exercising the batched (windowed) eviction that
+        // replaced the one-row-per-iteration loop.
+        for (query, at) in [("q1", 100_i64), ("q2", 101), ("q3", 102)] {
+            storage
+                .cache_put("p", "v1", query, "{}", "four", at, 1_000, 100, 6)
+                .await
+                .unwrap();
+        }
+        let stats = storage.cache_stats().await.unwrap();
+        assert!(
+            stats.size_bytes <= 6,
+            "quota must hold, got {}",
+            stats.size_bytes
+        );
+        // The most recently written entry survives; the oldest does not.
+        assert!(storage
+            .cache_get("p", "v1", "q1", "{}", 103, 1_000)
+            .await
+            .unwrap()
+            .is_none());
+        assert!(storage
+            .cache_get("p", "v1", "q3", "{}", 103, 1_000)
             .await
             .unwrap()
             .is_some());

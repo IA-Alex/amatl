@@ -55,6 +55,18 @@ const MINIMUM_TOKEN_BYTES: usize = 32;
 /// a single call can request (each query runs its own full search), so the
 /// surface cannot be used to fan out an unbounded number of provider calls.
 const MAX_BATCH_QUERIES: usize = 5;
+/// Request header a client sends to make an on-demand backup safe to retry.
+const IDEMPOTENCY_KEY_HEADER: &str = "idempotency-key";
+/// Longest `Idempotency-Key` accepted. A longer value is a malformed request
+/// rather than something to hash or truncate.
+const MAX_IDEMPOTENCY_KEY_BYTES: usize = 128;
+/// How long a completed on-demand backup stays replayable for a retry carrying
+/// the same key: long enough to cover a client's retry budget after a request
+/// deadline, short enough that a key is not remembered indefinitely.
+const BACKUP_IDEMPOTENCY_TTL: Duration = Duration::from_secs(600);
+/// Upper bound on remembered keys, so a client that sends a fresh key per
+/// request cannot grow the map without bound. Expired entries go first.
+const BACKUP_IDEMPOTENCY_CAPACITY: usize = 256;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 /// Wrapper so handlers can extract the request-id injected by the security
@@ -77,6 +89,74 @@ impl RequestId {
 /// Swappable service shared by every surface in one process.
 pub(crate) type ServiceHandle = Arc<RwLock<AmatlService>>;
 
+/// One remembered on-demand backup, keyed by a client-supplied
+/// `Idempotency-Key`.
+struct BackupAttempt {
+    /// Holds the written path once the backup succeeded, and is locked for the
+    /// whole `VACUUM INTO`: a duplicate that arrives while the first attempt is
+    /// still running waits here and then replays it, instead of starting a
+    /// second write.
+    cell: Arc<AsyncMutex<Option<PathBuf>>>,
+    /// When this key stops being replayable.
+    expires: Instant,
+}
+
+/// Replays on-demand backups for a repeated `Idempotency-Key`.
+///
+/// `create_backup` deliberately runs the write on a detached task so a request
+/// deadline cannot interrupt `VACUUM INTO` and leave a partial file beside the
+/// live database. The consequence is that a client which times out and retries
+/// would otherwise write a second backup and, once `auto_backup_max_count` is
+/// reached, rotate an older one away. This map is what lets a client that sends
+/// `Idempotency-Key` treat that retry as safe; a client that omits the header
+/// keeps the previous behaviour, where every accepted call writes a backup.
+#[derive(Default)]
+struct BackupIdempotency {
+    attempts: Mutex<BTreeMap<String, BackupAttempt>>,
+}
+
+impl BackupIdempotency {
+    /// Cell for `key`, created on first use and refreshed on every later use.
+    ///
+    /// Expired entries are dropped, but never one whose write is still running:
+    /// evicting it would let a retry start a second backup for the same key.
+    fn attempt(&self, key: &str) -> Arc<AsyncMutex<Option<PathBuf>>> {
+        let mut attempts = self
+            .attempts
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        let now = Instant::now();
+        attempts.retain(|_, attempt| attempt.expires > now || attempt.cell.try_lock().is_err());
+        if let Some(existing) = attempts.get_mut(key) {
+            existing.expires = now + BACKUP_IDEMPOTENCY_TTL;
+            return Arc::clone(&existing.cell);
+        }
+        if attempts.len() >= BACKUP_IDEMPOTENCY_CAPACITY {
+            // Evict the key closest to expiring among those not currently
+            // running: evicting a key whose write is in flight would let a retry
+            // start a second backup for it, which is the one thing this map
+            // exists to prevent.
+            if let Some(oldest) = attempts
+                .iter()
+                .filter(|(_, attempt)| attempt.cell.try_lock().is_ok())
+                .min_by_key(|(_, attempt)| attempt.expires)
+                .map(|(key, _)| key.clone())
+            {
+                attempts.remove(&oldest);
+            }
+        }
+        let cell = Arc::new(AsyncMutex::new(None));
+        attempts.insert(
+            key.to_owned(),
+            BackupAttempt {
+                cell: Arc::clone(&cell),
+                expires: now + BACKUP_IDEMPOTENCY_TTL,
+            },
+        );
+        cell
+    }
+}
+
 #[derive(Clone)]
 struct AppState {
     service: ServiceHandle,
@@ -98,6 +178,9 @@ struct AppState {
     /// config-mutating handler, so a reload always observes the file the
     /// request just wrote.
     config_write_lock: Arc<AsyncMutex<()>>,
+    /// Survives reloads like the rate limiter: a retry that arrives after a
+    /// reload must still be recognised as a repeat of the same backup request.
+    backup_idempotency: Arc<BackupIdempotency>,
     metrics: Arc<RequestMetrics>,
 }
 
@@ -647,6 +730,7 @@ pub async fn build_router_with_reload(
         })),
         explicit_token,
         config_write_lock: Arc::new(AsyncMutex::new(())),
+        backup_idempotency: Arc::new(BackupIdempotency::default()),
         metrics,
     };
     let cors = cors_layer(&allowed_origins)?;
@@ -2081,21 +2165,70 @@ async fn list_backups(State(state): State<AppState>) -> Response {
 /// filesystem and competes with the periodic maintenance task's rotation.
 /// Identical in every way to what that task writes; see
 /// [`amatl_core::AmatlService::trigger_backup`].
-async fn create_backup(State(state): State<AppState>) -> Response {
+///
+/// A client may send `Idempotency-Key` to make a retry safe: the first accepted
+/// request with a key performs the write, and that key replays its outcome for
+/// [`BACKUP_IDEMPOTENCY_TTL`] — including while the first request is still
+/// running, so a retry after a 504 waits for it rather than writing a second
+/// backup. Without the header every accepted call writes a new backup, which is
+/// what an operator asking twice on purpose expects.
+async fn create_backup(State(state): State<AppState>, headers: HeaderMap) -> Response {
+    let attempt = match idempotency_key(&headers) {
+        Ok(Some(key)) => Some(state.backup_idempotency.attempt(&key)),
+        Ok(None) => None,
+        // A client that sends the header is asking for a retry guarantee;
+        // ignoring a key we cannot honour would silently deny it.
+        Err(()) => return api_error(ErrorCode::InvalidRequest),
+    };
+    let service = state.service();
     // Run the backup on its own task: if the request deadline fires, the task
     // keeps running to completion instead of being dropped mid-`VACUUM INTO`
     // and leaving a partial file next to the live database.
-    let service = state.service();
-    let handle = tokio::spawn(async move { service.trigger_backup().await });
+    let handle = tokio::spawn(async move {
+        let Some(cell) = attempt else {
+            return service.trigger_backup().await.map_err(service_error_code);
+        };
+        // Held for the whole write, so a duplicate that arrives while the first
+        // attempt is still running waits here and then replays it.
+        let mut completed = cell.lock().await;
+        if let Some(path) = completed.as_ref() {
+            return Ok(path.clone());
+        }
+        let outcome = service.trigger_backup().await.map_err(service_error_code);
+        // Only a success is remembered: replaying a transient storage failure
+        // for the whole window would turn one bad minute into ten.
+        if let Ok(path) = &outcome {
+            *completed = Some(path.clone());
+        }
+        outcome
+    });
     match handle.await {
         Ok(Ok(path)) => Json(json!({
             "schema_version": SCHEMA_VERSION,
             "path": path.display().to_string(),
         }))
         .into_response(),
-        Ok(Err(error)) => service_error(error),
+        Ok(Err(code)) => api_error(code),
         Err(_) => api_error(ErrorCode::InternalError),
     }
+}
+
+/// `Idempotency-Key` from the request, `Ok(None)` when it is absent.
+///
+/// An empty, over-long or non-ASCII value is rejected instead of ignored,
+/// because a caller that sent a key is relying on the retry guarantee.
+fn idempotency_key(headers: &HeaderMap) -> Result<Option<String>, ()> {
+    let Some(value) = headers.get(IDEMPOTENCY_KEY_HEADER) else {
+        return Ok(None);
+    };
+    let value = value.to_str().map_err(|_| ())?;
+    let usable = !value.is_empty()
+        && value.len() <= MAX_IDEMPOTENCY_KEY_BYTES
+        && value.chars().all(|character| character.is_ascii_graphic());
+    if !usable {
+        return Err(());
+    }
+    Ok(Some(value.to_owned()))
 }
 
 /// Current breaker state for every provider the process has observed —
@@ -3277,6 +3410,14 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
 
 /// Render a domain failure with its catalog code and status.
 fn service_error(error: ServiceError) -> Response {
+    api_error(service_error_code(error))
+}
+
+/// Catalog code for a service failure, with the same server-side log
+/// `service_error` emits. Split out so a handler that has to carry the failure
+/// across a task boundary — `create_backup` remembers the outcome of the task
+/// it spawned — keeps the log and the mapping identical.
+fn service_error_code(error: ServiceError) -> ErrorCode {
     let code = error.code();
     if code.http_status() >= 500 {
         tracing::warn!(
@@ -3286,7 +3427,7 @@ fn service_error(error: ServiceError) -> Response {
             "request failed"
         );
     }
-    api_error(code)
+    code
 }
 
 /// Error body for a catalog code, using the code's own transport status.

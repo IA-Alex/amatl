@@ -13,6 +13,14 @@ pub const TELEMETRY_MIN_RETENTION_DAYS: u32 = 7;
 pub const TELEMETRY_MAX_RETENTION_DAYS: u32 = 365;
 /// Default retention window when no config is provided.
 pub const TELEMETRY_DEFAULT_RETENTION_DAYS: u32 = 30;
+/// Hard cap on observations retained in memory at once.
+///
+/// The retention window is time-based, so its size is unbounded in traffic
+/// volume. Without a count cap a busy deployment would hold the whole window
+/// in a `VecDeque` and rebuild it on every service reload. Routing weights
+/// recent observations most, so the newest `MAX_IN_MEMORY_OBSERVATIONS` are
+/// kept and the rest are dropped; the durable copy in SQLite is untouched.
+pub const MAX_IN_MEMORY_OBSERVATIONS: usize = 50_000;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -315,7 +323,10 @@ impl InMemoryTelemetry {
 
     async fn restore_best_effort(&self, now: i64) {
         let Some(storage) = &self.storage else { return };
-        match storage.telemetry_load(now - self.window_seconds).await {
+        match storage
+            .telemetry_load(now - self.window_seconds, MAX_IN_MEMORY_OBSERVATIONS as u32)
+            .await
+        {
             Ok(observations) => {
                 self.lock_state().observations = observations
                     .into_iter()
@@ -523,6 +534,12 @@ fn health_for(sample: u64, success_rate: f64, timeout_rate: f64) -> ProviderHeal
 
 fn prune_memory(observations: &mut VecDeque<TelemetryObservation>, cutoff: i64) {
     observations.retain(|item| item.observed_at >= cutoff);
+    // Time alone does not bound memory: a burst inside the window can grow the
+    // deque without limit. Keep only the newest observations so routing (which
+    // weights recency) sees the relevant tail and memory stays bounded.
+    while observations.len() > MAX_IN_MEMORY_OBSERVATIONS {
+        observations.pop_front();
+    }
 }
 
 pub fn now_unix() -> i64 {
@@ -612,6 +629,25 @@ mod tests {
         assert_eq!(snapshot.sample, 2);
         assert!((snapshot.weighted_sample - 1.5).abs() < 1e-12);
         assert!(snapshot.success_rate > snapshot.timeout_rate);
+    }
+
+    #[test]
+    fn memory_window_is_bounded_by_count_not_only_time() {
+        // A burst inside the retention window must not grow the in-memory deque
+        // without limit: the newest observations are kept and the oldest are
+        // dropped, so memory stays bounded regardless of traffic volume.
+        let mut observations: VecDeque<TelemetryObservation> = (0..MAX_IN_MEMORY_OBSERVATIONS
+            + 500)
+            .map(|i| observation(1_000 + i as i64, TelemetryOutcome::Success))
+            .collect();
+        prune_memory(&mut observations, 0);
+        assert_eq!(observations.len(), MAX_IN_MEMORY_OBSERVATIONS);
+        // The surviving tail is the newest, not the oldest.
+        assert_eq!(
+            observations.back().unwrap().observed_at,
+            1_000 + (MAX_IN_MEMORY_OBSERVATIONS as i64 + 499)
+        );
+        assert_eq!(observations.front().unwrap().observed_at, 1_000 + 500);
     }
 
     /// A panic while another thread holds `state` poisons the mutex. Memory

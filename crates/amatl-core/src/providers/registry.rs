@@ -5,9 +5,7 @@
 //! source therefore means shipping a factory and a governance record — no
 //! `match` arm inside the service, no new field in the configuration struct.
 
-use super::{
-    BraveProvider, HttpTransport, MarginaliaProvider, MojeekProvider, Provider, SearXngProvider,
-};
+use super::{HttpTransport, MarginaliaProvider, MojeekProvider, Provider, SearXngProvider};
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -61,9 +59,13 @@ impl ProviderRegistry {
     }
 
     /// Registry with the sources AMATL ships.
+    ///
+    /// Brave is deliberately not registered: the operator policy runs only
+    /// no-cost self-hosted sources (SearXNG) and the approved key-gated
+    /// Marginalia. Removing the factory makes `brave` resolve to
+    /// `provider_not_registered`, so it can never be selected or send traffic.
     pub fn builtin() -> Self {
         Self::empty()
-            .with(Arc::new(BraveFactory))
             .with(Arc::new(MojeekFactory))
             .with(Arc::new(SearXngFactory))
             .with(Arc::new(MarginaliaFactory))
@@ -103,23 +105,6 @@ impl ProviderRegistry {
     /// Registered names in stable alphabetical order.
     pub fn names(&self) -> Vec<&str> {
         self.factories.keys().map(String::as_str).collect()
-    }
-}
-
-struct BraveFactory;
-
-impl ProviderFactory for BraveFactory {
-    fn name(&self) -> &str {
-        "brave"
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        Arc::new(BraveProvider::new(
-            context.credential.clone(),
-            context.enabled,
-            context.approved,
-            context.transport.clone(),
-        ))
     }
 }
 
@@ -264,11 +249,10 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        assert_eq!(
-            registry.names(),
-            vec!["brave", "marginalia", "mojeek", "searxng"]
-        );
-        assert!(registry.get("brave").unwrap().requires_credential());
+        // Brave is deliberately not shipped; the builtin set is the two
+        // operating sources (SearXNG, Marginalia) plus the rejected Mojeek.
+        assert_eq!(registry.names(), vec!["marginalia", "mojeek", "searxng"]);
+        assert!(registry.get("brave").is_none());
         assert!(!registry.get("searxng").unwrap().requires_credential());
         assert!(registry.get("marginalia").unwrap().requires_credential());
     }
@@ -277,7 +261,8 @@ mod tests {
     fn third_party_sources_register_without_touching_the_builtin_set() {
         let registry = ProviderRegistry::builtin().with(Arc::new(CustomFactory));
         assert!(registry.contains("custom_archive"));
-        assert!(registry.contains("brave"));
+        // Brave is not part of the builtin set and must not be present.
+        assert!(!registry.contains("brave"));
         assert!(ProviderRegistry::empty().names().is_empty());
 
         // A source can also be withdrawn without rebuilding the registry.
@@ -285,6 +270,6 @@ mod tests {
         assert!(registry.unregister("custom_archive").is_some());
         assert!(!registry.contains("custom_archive"));
         assert!(registry.unregister("custom_archive").is_none());
-        assert!(registry.contains("brave"));
+        assert!(!registry.contains("brave"));
     }
 }

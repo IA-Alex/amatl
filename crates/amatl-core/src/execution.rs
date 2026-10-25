@@ -69,6 +69,15 @@ pub struct SearchOrchestrator {
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
     request_id: Option<String>,
+    /// Process-wide cap on simultaneous outbound provider calls.
+    ///
+    /// The router bounds how many providers one search may select, but without
+    /// a shared gate N concurrent searches would each open their own
+    /// `global_concurrency` window and multiply egress by the number of
+    /// in-flight requests — enough to trip a keyed provider's rate limit. The
+    /// service owns one gate and shares it with every orchestrator it builds;
+    /// absent one (standalone use, tests) each call falls back to its own.
+    egress_gate: Option<Arc<Semaphore>>,
 }
 
 impl SearchOrchestrator {
@@ -89,6 +98,7 @@ impl SearchOrchestrator {
             routing_trace: vec![],
             last_plan: None,
             request_id: None,
+            egress_gate: None,
         }
     }
 
@@ -103,6 +113,15 @@ impl SearchOrchestrator {
         self.per_provider_concurrency = per_provider_concurrency.max(1);
         self.max_retries = max_retries.min(2);
         self.retry_jitter_ms = retry_jitter_ms;
+        self
+    }
+
+    /// Share a process-wide egress gate so concurrent searches cannot each
+    /// open their own `global_concurrency` window. The gate must be sized to
+    /// `global_concurrency`; the service builds it once and hands the same
+    /// handle to every orchestrator it constructs.
+    pub fn with_egress_gate(mut self, gate: Arc<Semaphore>) -> Self {
+        self.egress_gate = Some(gate);
         self
     }
 
@@ -514,7 +533,10 @@ impl SearchOrchestrator {
             .into_iter()
             .map(|provider| (provider.name().to_string(), provider))
             .collect();
-        let global_semaphore = Arc::new(Semaphore::new(self.global_concurrency));
+        let global_semaphore = self
+            .egress_gate
+            .clone()
+            .unwrap_or_else(|| Arc::new(Semaphore::new(self.global_concurrency)));
         let provider_semaphores = plan
             .selected_providers
             .iter()
@@ -1151,6 +1173,63 @@ mod tests {
             .search(parse_query("rust async".into()).unwrap(), providers)
             .await;
         assert_eq!(seen.lock().unwrap().as_slice(), [Some("req-42".to_owned())]);
+    }
+
+    #[tokio::test]
+    async fn a_shared_egress_gate_caps_concurrent_outbound_calls_across_searches() {
+        // Two searches running at once must not each open their own
+        // `global_concurrency` window: the shared gate holds the process-wide
+        // cap. With one permit, the two outbound provider calls cannot overlap.
+        let concurrent = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+        let peak = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+
+        struct GatedProvider {
+            concurrent: Arc<std::sync::atomic::AtomicUsize>,
+            peak: Arc<std::sync::atomic::AtomicUsize>,
+        }
+        #[async_trait::async_trait]
+        impl Provider for GatedProvider {
+            fn name(&self) -> &str {
+                "gated"
+            }
+            fn capabilities(&self) -> crate::ProviderCapabilities {
+                MockProvider::success("gated", vec![]).capabilities()
+            }
+            async fn search(
+                &self,
+                plan: &SearchPlan,
+                context: &ProviderContext,
+            ) -> Result<ProviderResult, ProviderError> {
+                let now = self.concurrent.fetch_add(1, Ordering::SeqCst) + 1;
+                self.peak.fetch_max(now, Ordering::SeqCst);
+                tokio::time::sleep(Duration::from_millis(30)).await;
+                self.concurrent.fetch_sub(1, Ordering::SeqCst);
+                MockProvider::success("gated", vec![item("https://example.com/gated")])
+                    .search(plan, context)
+                    .await
+            }
+        }
+
+        let gate = Arc::new(Semaphore::new(1));
+        let run = || {
+            let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(GatedProvider {
+                concurrent: concurrent.clone(),
+                peak: peak.clone(),
+            })];
+            let gate = gate.clone();
+            async move {
+                SearchOrchestrator::new(Budget::new(1, 8_000), 1_000)
+                    .with_egress_gate(gate)
+                    .search(parse_query("rust".into()).unwrap(), providers)
+                    .await
+            }
+        };
+        tokio::join!(run(), run());
+        assert_eq!(
+            peak.load(Ordering::SeqCst),
+            1,
+            "the shared gate must serialize outbound calls across searches"
+        );
     }
 
     #[tokio::test]

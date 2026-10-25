@@ -7,6 +7,24 @@ info:
     the string schema_version carried by AMATL data contracts. Every response
     produced by the application includes a server-generated X-Request-ID; an
     inbound value is never trusted or echoed.
+
+    Errors are deliberately not RFC 7807 problem documents. Every surface (CLI,
+    API, MCP, UI) renders the shared code catalog in amatl-core/src/errors.rs,
+    so the wire shape is ErrorResponse with a stable snake_case code. Adding a
+    code is a compatible change; renaming or removing one is not.
+
+    The listener carries no URI version prefix. A breaking change is published
+    as a new binary major version and, when the data contract changes, a new
+    schema_version; a client negotiates by inspecting both rather than by path.
+
+    Every operation documents the same transport-level rejections because one
+    middleware wraps the whole router: 400 invalid_host, 403 invalid_origin or
+    scope_denied, 429 rate_limited, 431 headers_too_large and 504
+    request_timeout, plus 401 on protected operations and 413 on operations with
+    a request body. They repeat per operation instead of being described once
+    here so a generated client can model them. The rate limit is keyed on the
+    socket peer address; X-Forwarded-For is ignored on purpose, because
+    honouring a client-supplied header would let a caller evade its own budget.
 servers:
   - url: http://127.0.0.1:8080
     description: Default loopback development listener
@@ -56,10 +74,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchResponse'
         '400': { $ref: '#/components/responses/BadRequest' }
-        '422': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '422': { $ref: '#/components/responses/BadRequest' }
         '429': { $ref: '#/components/responses/RateLimited' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
@@ -141,10 +159,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeepResponse'
         '400': { $ref: '#/components/responses/BadRequest' }
-        '422': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '422': { $ref: '#/components/responses/BadRequest' }
         '429': { $ref: '#/components/responses/RateLimited' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
@@ -180,10 +198,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/AnswerResult'
         '400': { $ref: '#/components/responses/BadRequest' }
-        '422': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '422': { $ref: '#/components/responses/BadRequest' }
         '429': { $ref: '#/components/responses/RateLimited' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
@@ -198,7 +216,11 @@ paths:
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /answer/enabled:
     post:
       operationId: answerToggle
@@ -234,7 +256,9 @@ paths:
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   /strategist/enabled:
@@ -277,7 +301,9 @@ paths:
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   /providers:
@@ -313,9 +339,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceStatus'
+        '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
@@ -337,9 +365,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReloadReport'
+        '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   /security-events:
@@ -367,7 +397,9 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /history:
     get:
       operationId: historyList
@@ -389,6 +421,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
     delete:
@@ -403,10 +436,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletedResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /history/{id}:
     delete:
       operationId: historyDelete
@@ -422,11 +458,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletedResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '404': { $ref: '#/components/responses/NotFound' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /saved:
     get:
       operationId: savedList
@@ -447,7 +486,9 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     post:
       operationId: savedPut
       summary: Persist one document for cross-session reuse
@@ -476,7 +517,9 @@ paths:
         '403': { $ref: '#/components/responses/Forbidden' }
         '413': { $ref: '#/components/responses/BodyTooLarge' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /saved/{id}:
     delete:
       operationId: savedDelete
@@ -492,11 +535,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletedResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '404': { $ref: '#/components/responses/NotFound' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /metrics:
     get:
       operationId: metrics
@@ -517,8 +563,10 @@ paths:
           content:
             text/plain:
               schema: { type: string }
+        '400': { $ref: '#/components/responses/BadRequest' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   /health:
     get:
@@ -536,6 +584,7 @@ paths:
                 $ref: '#/components/schemas/HealthResponse'
         '400': { $ref: '#/components/responses/BadRequest' }
         '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   # AUDIT-01: administrative routes implemented by amatl-server.
@@ -544,159 +593,418 @@ paths:
     get:
       operationId: providerRecord
       summary: Read a provider governance record
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     patch:
       operationId: providerRecordUpdate
       summary: Upsert a provider governance record
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /providers/{name}/enabled:
     parameters: [{ $ref: '#/components/parameters/ProviderName' }]
     post:
       operationId: providerToggle
       summary: Enable or disable a declared provider and reload it
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /providers/{name}/credential:
     parameters: [{ $ref: '#/components/parameters/ProviderName' }]
     post:
       operationId: providerCredentialPut
       summary: Insert or replace a provider credential in memory only, after a live canary validates it
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     delete:
       operationId: providerCredentialDelete
       summary: Liquidate a provider's in-memory credential (idempotent)
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /inference:
     patch:
       operationId: inferenceUpdate
       summary: Update inference settings and apply them live
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /server/clients:
     get:
       operationId: serverClientsList
       summary: List configured server clients without credentials
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     post:
       operationId: serverClientCreate
       summary: Create a client and return its token once
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' }, '409': { $ref: '#/components/responses/Conflict' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /server/clients/{id}:
     parameters: [{ $ref: '#/components/parameters/ClientId' }]
     patch:
       operationId: serverClientUpdate
       summary: Update one client's scopes, tools, or expiry
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     delete:
       operationId: serverClientDelete
       summary: Revoke one server client
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /server/clients/{id}/rotate:
     parameters: [{ $ref: '#/components/parameters/ClientId' }]
     post:
       operationId: serverClientRotate
       summary: Rotate a client's token and return the replacement once
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /server/pending-config:
     get:
       operationId: serverPendingConfig
       summary: Read listener and transport configuration
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     patch:
       operationId: serverPendingConfigUpdate
       summary: Persist server settings without an implicit reload
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /data-policy:
     post:
       operationId: dataPolicyUpdate
       summary: Update egress and inference data-policy gates
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /policies:
     get:
       operationId: policies
       summary: Read all search-quality policies
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /policies/{name}:
     parameters: [{ $ref: '#/components/parameters/PolicyName' }]
     patch:
       operationId: policyUpdate
       summary: Replace one named search-quality policy
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' }, '404': { $ref: '#/components/responses/NotFound' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /persistence:
     get:
       operationId: persistenceConfig
       summary: Read local persistence configuration
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     patch:
       operationId: persistenceUpdate
       summary: Update persistence retention and backup settings
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /persistence/backups:
     get:
       operationId: persistenceBackups
       summary: List database backups
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /persistence/backup:
     post:
       operationId: persistenceBackupCreate
       summary: Create an on-demand database backup
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
+      description: >-
+        Writes the same kind of backup the periodic maintenance task writes,
+        right now. Without `Idempotency-Key` every accepted call writes a new
+        file, so a client that retries blindly — after a 504, say — can push an
+        older backup out of the auto_backup_max_count rotation. Send
+        `Idempotency-Key` to make such a retry replay the first result instead.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '200':
+          description: Backup written; path is the file this call created or replayed
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [schema_version, path]
+                properties:
+                  schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+                  path:
+                    type: string
+                    description: Absolute path of the backup file
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504':
+          description: >-
+            The request deadline expired, but the write is not cancelled: it
+            continues in the background, because interrupting VACUUM INTO would
+            leave a partial file beside the live database. The backup may
+            therefore exist even though this response was returned. Reconcile
+            with GET /persistence/backups, and retry with the same
+            Idempotency-Key rather than without one.
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
   /circuits:
     get:
       operationId: circuits
       summary: List provider circuit-breaker snapshots
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /circuits/reset:
     post:
       operationId: circuitsReset
       summary: Close all observed provider circuits
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /telemetry:
     get:
       operationId: telemetryConfig
       summary: Read telemetry configuration
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     patch:
       operationId: telemetryUpdate
       summary: Update telemetry configuration
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /deep/limits:
     get:
       operationId: deepConfig
       summary: Read Deep safety limits and configuration
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
     patch:
       operationId: deepConfigUpdate
       summary: Update Deep safety limits
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /deep/extractor:
     patch:
       operationId: deepExtractorUpdate
       summary: Update Deep extractor configuration
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /deep/renderer:
     patch:
       operationId: deepRendererUpdate
       summary: Update Deep renderer configuration
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /ready:
     get:
       operationId: ready
       summary: Read process readiness, including local state availability
       security: []
-      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
 components:
   headers:
     RequestId:
@@ -755,6 +1063,18 @@ components:
       in: path
       required: true
       schema: { type: string, minLength: 1 }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      description: >-
+        Makes a retry of this call safe. The first accepted request carrying a
+        given value performs the write; a later request with the same value
+        replays that result instead of writing a second backup, and a request
+        that arrives while the first is still running waits for it. Accepted
+        values are 1 to 128 visible ASCII characters; anything else is rejected
+        as invalid_request.
+      schema: { type: string, minLength: 1, maxLength: 128 }
   requestBodies:
     AdminPatch:
       required: true
@@ -781,7 +1101,10 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
     BadRequest:
-      description: Invalid query, JSON, or request shape
+      description: >-
+        Invalid request shape: unusable query text or malformed JSON, or a
+        `Host` header absent from or outside the configured allow list
+        (`invalid_host`)
       headers:
         X-Request-ID: { $ref: '#/components/headers/RequestId' }
       content:
@@ -965,7 +1288,7 @@ components:
               description: >-
                 Shared error catalog (amatl-core/src/errors.rs). Every AMATL
                 surface renders the same identifiers.
-              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, answer_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, conflict, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, config_rejected, inference_unavailable, ranking_backend_unavailable, answer_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string

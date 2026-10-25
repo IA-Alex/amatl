@@ -134,48 +134,20 @@ impl Default for ProviderConfig {
 /// Governance records shipped with AMATL, used as the base every configuration
 /// file extends or overrides.
 ///
-/// Brave and Mojeek are declared `Rejected`, not `Draft`: both adapters are
-/// implemented and tested, but both sources require a paid plan (Brave
-/// dropped its free tier in 2026-02; Mojeek has none), and operator policy is
-/// to run only no-cost sources. This is a deliberate, closed decision, not an
-/// incomplete governance filing — `approved()` treats `Rejected` the same as
-/// `Draft` (neither passes the gate), so the distinction changes nothing at
-/// runtime; it exists so a future review (human or automated) reads the
-/// status and finds a closed "no", not an invitation to fill in the paperwork
-/// and enable a paid source. Re-approving either requires an explicit policy
+/// Brave is no longer part of the product: the operator policy runs only no-cost
+/// self-hosted sources plus the approved key-gated Marginalia, and since the
+/// policy drop Brave is neither declared here nor registered in
+/// [`crate::providers::ProviderRegistry::builtin`], so it resolves to
+/// `provider_not_registered` — it can never be selected or send traffic.
+///
+/// Mojeek is declared `Rejected` (not `Draft`): the adapter is implemented and
+/// tested, but the source requires a paid plan (Mojeek has none), and operator
+/// policy is to run only no-cost sources. This is a deliberate, closed decision,
+/// not an incomplete governance filing — `approved()` treats `Rejected` the same
+/// as `Draft` (neither passes the gate). Re-approving requires an explicit policy
 /// change, not just completing the dossier. See «Viabilidad y coste» in
 /// `docs/gobernanza-providers.md`.
 fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRuntimeConfig> {
-    let brave = ProviderRuntimeConfig {
-        adapter_version: Some("brave-v1".into()),
-        approval_status: ApprovalStatus::Rejected,
-        credential_env: Some("BRAVE_API_KEY".into()),
-        terms_url: Some(
-            "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
-                .into(),
-        ),
-        terms_version_or_date: Some("2026-02-11".into()),
-        allowed_access_method: Some("official_api".into()),
-        cost_model: Some(
-            "Paid since 2026-02 (card required at signup; ~5 USD/mo credit, \
-             usage billed beyond it)."
-                .into(),
-        ),
-        operational_risk: Some(
-            "Rejected by operator policy: no paid search providers. Do not \
-             enable without an explicit policy change; see «Viabilidad y \
-             coste» in docs/gobernanza-providers.md."
-                .into(),
-        ),
-        supported_filters: vec![
-            "site".into(),
-            "filetype".into(),
-            "language".into(),
-            "region".into(),
-            "time_range".into(),
-        ],
-        ..ProviderRuntimeConfig::default()
-    };
     let mojeek = ProviderRuntimeConfig {
         adapter_version: Some("mojeek-v1".into()),
         approval_status: ApprovalStatus::Rejected,
@@ -223,7 +195,6 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
         ..ProviderRuntimeConfig::default()
     };
     std::collections::BTreeMap::from([
-        ("brave".to_string(), brave),
         ("mojeek".to_string(), mojeek),
         ("searxng".to_string(), searxng),
         ("marginalia".to_string(), marginalia),

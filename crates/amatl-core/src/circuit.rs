@@ -172,20 +172,55 @@ impl ProviderCircuit {
         }
     }
 
-    /// Whether a call to `provider` may be attempted now.
+    /// Whether a call to `provider` may be attempted now, *without* claiming
+    /// the half-open probe.
     ///
-    /// In `HalfOpen` this *claims* the single probe: the first caller after the
-    /// cooldown gets `true`, every concurrent caller gets `false` until the
-    /// probe completes (`record`), so the breaker admits one probe rather than
-    /// a stampede.
+    /// This is a pure query: it reports whether the source is admissible
+    /// (closed, or half-open with no probe currently in flight). Claiming the
+    /// probe is a separate, deliberate step ([`Self::claim_probe`]) taken only
+    /// when the source is actually about to be called — see that method for why
+    /// the split matters.
     pub fn allows_call(&self, provider: &str, now: i64) -> bool {
         match self.state(provider, now) {
             CircuitState::Closed => true,
             CircuitState::Open => false,
             CircuitState::HalfOpen => {
-                let Ok(mut records) = self.records.lock() else {
+                let Ok(records) = self.records.lock() else {
+                    // A poisoned lock must not admit a stampede; refuse.
                     return false;
                 };
+                match records.get(provider).and_then(|r| r.probe_started_at) {
+                    Some(started) => {
+                        // A claim older than the cooldown is stale (the probe
+                        // was admitted but never recorded); treat it as free.
+                        now.saturating_sub(started) >= self.policy.open_seconds as i64
+                    }
+                    None => true,
+                }
+            }
+        }
+    }
+
+    /// Claim the single half-open probe for `provider` at `now`.
+    ///
+    /// Returns `true` when the caller now owns the probe and may call the
+    /// source, `false` when another caller already holds it or the source is
+    /// open. Call this **immediately before** the call it authorizes, not at
+    /// selection time: a claim that is never followed by a recorded outcome
+    /// (because the router did not ultimately select the source) would
+    /// otherwise wedge a healthy provider out of service for the cooldown.
+    pub fn claim_probe(&self, provider: &str, now: i64) -> bool {
+        if !self.policy.enabled {
+            return true;
+        }
+        let Ok(mut records) = self.records.lock() else {
+            return false;
+        };
+        match records.get(provider).and_then(|r| r.open_until) {
+            None => true,                        // Closed: no probe needed.
+            Some(until) if now < until => false, // Still open.
+            Some(_) => {
+                // Half-open: admit exactly one probe, reclaiming a stale one.
                 let record = records.entry(provider.to_owned()).or_default();
                 let active = record.probe_started_at.is_some_and(|started| {
                     now.saturating_sub(started) < self.policy.open_seconds as i64
@@ -196,6 +231,17 @@ impl ProviderCircuit {
                     record.probe_started_at = Some(now);
                     true
                 }
+            }
+        }
+    }
+
+    /// Release a probe claim without recording an outcome, for a provider that
+    /// was admitted but never actually called. Keeps [`Self::claim_probe`]
+    /// symmetric so an unused claim cannot wedge the source.
+    pub fn release_probe(&self, provider: &str) {
+        if let Ok(mut records) = self.records.lock() {
+            if let Some(record) = records.get_mut(provider) {
+                record.probe_started_at = None;
             }
         }
     }
@@ -321,14 +367,16 @@ mod tests {
         breaker.record("brave", false, 11).await;
         assert_eq!(breaker.state("brave", 41), CircuitState::HalfOpen);
         // The first caller claims the probe; a concurrent caller is refused.
-        assert!(breaker.allows_call("brave", 41));
+        assert!(breaker.claim_probe("brave", 41));
+        assert!(!breaker.claim_probe("brave", 41));
+        // A pure admissibility check also reports "no" while the probe is held.
         assert!(!breaker.allows_call("brave", 41));
         // Completing the probe releases the claim and reopens the circuit.
         breaker.record("brave", false, 41).await;
         assert_eq!(breaker.state("brave", 42), CircuitState::Open);
         // After the next cooldown a fresh probe is admitted.
         assert_eq!(breaker.state("brave", 72), CircuitState::HalfOpen);
-        assert!(breaker.allows_call("brave", 72));
+        assert!(breaker.claim_probe("brave", 72));
     }
 
     #[tokio::test]
@@ -337,10 +385,26 @@ mod tests {
         breaker.record("brave", false, 10).await;
         breaker.record("brave", false, 11).await;
         // Claim at 41, then never record: the claim must not wedge forever.
-        assert!(breaker.allows_call("brave", 41));
-        assert!(!breaker.allows_call("brave", 50));
+        assert!(breaker.claim_probe("brave", 41));
+        assert!(!breaker.claim_probe("brave", 50));
         // Past the cooldown the claim is stale and can be reclaimed.
-        assert!(breaker.allows_call("brave", 41 + 30));
+        assert!(breaker.claim_probe("brave", 41 + 30));
+    }
+
+    #[tokio::test]
+    async fn releasing_an_unused_probe_frees_the_source() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("brave", false, 10).await;
+        breaker.record("brave", false, 11).await;
+        assert_eq!(breaker.state("brave", 41), CircuitState::HalfOpen);
+        // A search admits and claims the probe…
+        assert!(breaker.claim_probe("brave", 41));
+        // …but never actually calls the source, so it releases the claim.
+        breaker.release_probe("brave");
+        // The very next search may probe immediately, instead of being wedged
+        // out for the whole cooldown by a claim that produced no outcome.
+        assert!(breaker.allows_call("brave", 41));
+        assert!(breaker.claim_probe("brave", 41));
     }
 
     #[tokio::test]

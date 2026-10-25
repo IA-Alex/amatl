@@ -621,7 +621,9 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        assert!(!config.providers.get("brave").unwrap().approved());
+        // Brave is no longer a shipped source (policy drop); it must not be
+        // declared in the built-in records.
+        assert!(config.providers.get("brave").is_none());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -781,16 +783,21 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
-    /// Locks in a policy decision, not just a paperwork gap: Brave and
-    /// Mojeek are `Rejected`, with the reason stated in `cost_model`/
+    /// Locks in a policy decision, not just a paperwork gap: Mojeek is
+    /// `Rejected`, with the reason stated in `cost_model`/
     /// `operational_risk`, precisely so a future review — human or
     /// automated — reads a closed "no" instead of an incomplete dossier
     /// inviting completion. If this regresses to `Draft`, that decision was
-    /// silently lost.
+    /// silently lost. (Brave is no longer shipped at all: it is not declared
+    /// and not registered, so there is no record to keep Rejected.)
     #[test]
     fn paid_providers_are_rejected_by_default_not_merely_draft() {
         let config = Config::default();
-        for name in ["brave", "mojeek"] {
+        // A named helper instead of a one-element `for` loop: clippy rejects
+        // single-element loops, and the assertion has to stay reusable so a
+        // second paid provider is one more call here — not a re-derived copy
+        // of these three checks that could drift from the policy.
+        let assert_paid_provider_is_rejected = |name: &str| {
             let record = config.providers.get(name).unwrap();
             assert_eq!(
                 record.approval_status,
@@ -809,7 +816,8 @@ mod tests {
                     .is_some_and(|value| value.contains("operator policy")),
                 "{name}'s rejection reason must stay explicit, not silently blanked"
             );
-        }
+        };
+        assert_paid_provider_is_rejected("mojeek");
         // The two free sources stay eligible for approval — only their
         // operator-specific identity/date fields are missing, not the
         // decision itself.
