@@ -5,13 +5,22 @@
 # repository contains Python, so nothing else is affected.
 #
 # Why it exists: `tools/` was written without a linter, and a first
-# `ruff check tools/` (ruff 0.15.22, 2026-10-25) reported 355 findings. 313 of
-# them were E701/E702 -- several statements per line, the deliberate house
-# style of these scripts -- and are therefore ignored globally below. The
-# remaining 42 (unused imports, unused variables, imports below module level,
-# one lambda assignment, one duplicated dictionary key) are pre-existing debt:
-# they are frozen per file in `per-file-ignores`, which is a debt ledger, not a
-# licence to add more.
+# `ruff check tools/` (ruff 0.15.22, 2026-10-25) reported 355 findings:
+#
+#   * 313 E701/E702 -- several statements per line, the deliberate house style
+#     of these scripts, ignored globally below;
+#   * 41 real findings (18 unused imports, 14 unused variables, 4 imports below
+#     module level, 3 multiple imports on one line, 1 lambda assignment, 1
+#     duplicated dictionary key) -- pre-existing debt, frozen per file in
+#     `per-file-ignores` below, which is a debt ledger, not a licence to add
+#     more;
+#   * 1 `invalid-syntax` on a file ruff mis-parses (see below), which no rule
+#     can silence and which is therefore excluded from the gate.
+#
+# The ledger shrinks as the debt is paid: the duplicated key (F601, in
+# `build_s2_forensic_analysis.py`) was fixed on 2026-10-25, leaving 354 findings
+# (313 style + 40 debt + 1 parser error). 24 of the 53 files in `tools/` still
+# carry frozen debt.
 #
 # The gate therefore blocks *new* problems only: a new file, or a new finding
 # of a kind not listed below, fails `ruff check tools/`. Pay the debt down by
@@ -34,6 +43,11 @@
 #     def f():
 #         a=1; match=b
 #         return match
+#
+# A parser error cannot be silenced with `ignore`, so the file stays out of the
+# gate until either ruff fixes the parse or the local variable is renamed
+# (`match` -> `matched`, three occurrences in `validate_arm_assignments`), at
+# which point this line should be deleted.
 extend-exclude = ["pre_execution_novelty_diversity_gate.py"]
 
 # Ruff's default rule set, stated explicitly so that a future change to the
@@ -48,7 +62,7 @@ ignore = ["E701", "E702"]
 # Frozen per-file debt. Keys are relative to this file's directory.
 [lint.per-file-ignores]
 "analyze_supplemental_v3_treatment_control.py" = ["F401"]
-"build_s2_forensic_analysis.py" = ["F401", "F601"]
+"build_s2_forensic_analysis.py" = ["F401"]
 "close_v5_execution.py" = ["E401"]
 "create_v5_searxng_preflight.py" = ["F841"]
 "evaluate_offline_candidate_universe.py" = ["F401", "F841"]
@@ -71,22 +85,3 @@ ignore = ["E701", "E702"]
 "validate_supplemental_ground_truth.py" = ["F841"]
 "validate_supplemental_pilot_preflight.py" = ["F401"]
 "validate_supplemental_v2_preflight.py" = ["F841"]
-
-# `extend-exclude` (not `exclude`) so ruff's built-in exclusions stay in place.
-#
-# `pre_execution_novelty_diversity_gate.py:97` is a ruff parser bug, not a
-# defect in the script: ruff reports `invalid-syntax: Compound statements are
-# not allowed on the same line as simple statements` for a line of the form
-# `x=1; match=y`, because it reads the soft keyword `match` as the start of a
-# `match` statement after the semicolon. Minimal repro that ruff rejects while
-# `ast.parse` and `py_compile` accept it:
-#
-#     def f():
-#         a=1; match=b
-#         return match
-#
-# A parser error cannot be silenced with `ignore`, so the file is left out of
-# the gate until either ruff fixes the parse or the local variable is renamed
-# (`match` -> `matched`, three occurrences in `validate_arm_assignments`), at
-# which point the `extend-exclude` entry at the top of this file should be
-# deleted.
