@@ -95,7 +95,7 @@ thing standing between "full amatl musl + Candle" and a green build is the
 
 `EXPERIMENTAL_FEATURE_OR_BOUNDARY` =
 `amatl-core` cargo feature **`experimental-local-embeddings`** (off by
-default) → `crates/amatl-core/src/experimental_embeddings.rs`.
+default) → `crates/amatl-core/src/experimental_embeddings/mod.rs`.
 
 | invariant | how it holds |
 |---|---|
@@ -268,7 +268,7 @@ All three hashes are identical to `candle-musl-feasibility.md` §3.
 
 ## 8. Failure tests
 
-`crates/amatl-core/src/experimental_embeddings.rs` unit tests +
+`crates/amatl-core/src/experimental_embeddings/` unit tests +
 `experimental_embedding_latency::seam_failure_modes_fall_back_to_bounded_semantic`
 (runs in the default, non-ignored feature build):
 

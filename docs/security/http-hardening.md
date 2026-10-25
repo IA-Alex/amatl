@@ -2,7 +2,7 @@
 
 The Axum server hosts UI, REST-like JSON endpoints, and MCP Streamable HTTP on
 one listener. Defaults below come from `ServerConfig::default`
-(`config.rs:487-503`) and are validated before router construction.
+(`config/server.rs:121-141`) and are validated before router construction.
 
 The embedded UI submits Search as `POST /search` and Deep as `POST /deep`, both
 with an `application/json` body. Its password-style token control has no form
@@ -30,26 +30,36 @@ permit same-origin and embedded data; forms stay same-origin. No `unsafe-inline`
 `X-Frame-Options: DENY`, and `Cache-Control: no-store` unless an asset declares
 its own cache policy. HTTPS adds `Strict-Transport-Security:
 max-age=31536000; includeSubDomains` (`amatl-ui/src/lib.rs:39-53`,
-`amatl-server/src/lib.rs:374-395`).
+`amatl-server/src/lib.rs:3266-3286`).
 
 ## Host, Origin, CORS, and methods
 
 - Default hosts: `127.0.0.1`, `localhost`, `[::1]`; values must be exact HTTP
-  authorities without wildcards (`config.rs:494,652-659`).
+  authorities without wildcards (`config/server.rs:129,456-464`).
 - An incoming `Host` is mandatory, structurally parsed, and matched exactly by
-  authority or host (`amatl-server/src/lib.rs:430-442`).
+  authority or host (`amatl-server/src/lib.rs:3387-3407`).
 - Explicit Origins must be root HTTP(S) origins without query/fragment. When
   none are configured, origins are derived from scheme + allowed host + port
-  (`config.rs:661-672`, `amatl-server/src/lib.rs:493-504`).
-- CORS allows only configured origins, GET/POST/OPTIONS, and Authorization,
-  Content-Type, and Accept headers (`amatl-server/src/lib.rs:506-515`).
+  (`config/server.rs:465-475`, `amatl-server/src/lib.rs:3452-3463`).
+- CORS allows only configured origins, GET/POST/PATCH/DELETE/OPTIONS, and
+  Authorization, Content-Type, and Accept headers
+  (`amatl-server/src/lib.rs:3465-3483`).
 
 ## Authentication and exposure matrix
 
-Protected: `/search`, `/deep`, `/providers`, `/mcp` and descendants. Public:
-`/health` and static UI assets. Tokens are read from `server.token_env`, must be
-at least 32 bytes, and are compared in constant time
-(`amatl-server/src/lib.rs:93-108,401-427`).
+Protected: `/search`, `/deep`, `/providers`, `/mcp` and descendants. Public and
+read-only: `/health`, `/ready`, `/metrics` and the static UI assets. The
+exemption is declared per path *and* method in `required_scope`
+(`amatl-server/src/lib.rs:544-642`), so a mutating method on one of those paths
+does not inherit it and lands on the same fail-closed default as an undeclared
+route. Tokens are read from `server.token_env`, must be at least 32 bytes, and
+are compared in constant time (`amatl-server/src/lib.rs:53,459-521,3376-3385`).
+
+`/metrics` is deliberately coarse for the same reason `/ready` is: it publishes
+request counters, latency quantiles, cache/storage gauges and *aggregate* source
+counts, never source names or per-source values. Which sources a deployment
+declares is deployment-internal data and stays behind `/status`, which requires
+the `read` scope (`amatl-server/src/lib.rs:2721-2769,2854-2911`).
 
 | Bind | `no_auth` | TLS pair | Valid configuration | Meaning |
 |---|---:|---:|---:|---|
@@ -61,10 +71,22 @@ at least 32 bytes, and are compared in constant time
 
 Certificate and key must both be set or both absent. Remote exposure does not
 infer proxy TLS termination; AMATL itself requires the configured pair
-(`config.rs:616-650`). rustls uses its safe protocol defaults (TLS 1.2 and 1.3),
-and every outbound reqwest client also declares TLS 1.2 as its minimum
-(`amatl-server/src/lib.rs:168-190`, `providers/http.rs:49-55`,
+(`config/server.rs:446-455`). rustls uses its safe protocol defaults (TLS 1.2 and
+1.3), and every outbound reqwest client also declares TLS 1.2 as its minimum
+(`amatl-server/src/lib.rs:865-868`, `providers/http.rs:49-55`,
 `fetch.rs:168-177`).
+
+The matrix is evaluated against the address the process is actually listening
+on, not the `bind` the document declares. `--bind`/`--port` override the file at
+startup and are never written back to it, so a document may legitimately name an
+address this process is not serving. Every configuration accepted into a running
+process — a `POST /reload`, a `SIGHUP`, or a `PATCH /server/pending-config` — is
+therefore re-checked against the live listener and refused when it would leave
+that listener without authentication or TLS (`config/mod.rs:525-541`;
+`amatl-server/src/lib.rs:241-251,2555-2560`). A file declaring `127.0.0.1` cannot
+switch `no_auth` on for a process bound to `0.0.0.0`. Moving the listener still
+needs a restart, and a reload whose document declares a different address logs
+`reload_listener_address_ignored` instead of pretending the listener moved.
 
 ## Resource limits
 
@@ -83,13 +105,13 @@ Authorization header. The limit applies before authentication and also covers
 public routes; invalid credentials cannot create new buckets. Expired windows
 are purged periodically rather than scanning on every request. Limits are per
 process and do not trust forwarding headers
-(`amatl-server/src/lib.rs:500-528`).
+(`amatl-server/src/lib.rs:3425-3451`).
 
 Rejected headers/bodies, Host/Origin failures, rate limiting, failed
 authentication and request timeouts emit structured `amatl::security` events.
 They include only a stable event code, normalized path and socket IP; Host,
 Origin and credential values are deliberately omitted
-(`amatl-server/src/lib.rs:316-418`).
+(`amatl-server/src/lib.rs:2975-3141,3143-3240`).
 
 Every application response receives a fresh `X-Request-ID` made from a
 process-local sequence and timestamp. Incoming values are not reused. The ID is
@@ -106,7 +128,7 @@ state, and shows whether token/TLS prerequisites are ready
 (`amatl-cli/src/main.rs:201-207,240-260,403-443`). `/health` is a public,
 lightweight process/router availability response only:
 `{"schema_version":"1","status":"ok"}`. It does not validate providers,
-SQLite, token readiness, or outbound network (`amatl-server/src/lib.rs:291-293`).
+SQLite, token readiness, or outbound network (`amatl-server/src/lib.rs:2717-2719`).
 
 Tests cover hardened public health, bearer enforcement, the simple and
 protected Host/Origin/CORS matrix, rate and body limits, secret-safe security

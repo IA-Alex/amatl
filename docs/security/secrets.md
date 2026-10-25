@@ -20,6 +20,16 @@ autorización en código, commits, configuración TOML, fixtures, logs, telemetr
 mensajes de error o URLs visibles. La caché y SQLite tampoco son almacenes de
 secretos.
 
+`amatl.toml` no guarda secretos, sólo el *nombre* de la variable que los
+contiene, pero sí describe el despliegue; AMATL no impone un modo concreto al
+fichero, así que restringirlo (`chmod 600 amatl.toml`) sigue siendo
+responsabilidad del operador. Lo que sí garantiza es que una escritura
+administrativa no lo relaje: cada toggle hace un reemplazo atómico (fichero
+temporal privado + `rename`) que conserva el modo que el fichero ya tenía, y un
+fichero nuevo se crea `0600`. Antes el `rename` publicaba el modo del temporal,
+de modo que el primer `POST /answer/enabled` devolvía un `0600` al umbral por
+defecto del `umask`.
+
 ## Credenciales de providers
 
 Una variable no vacía no equivale a una credencial válida. Para un provider
@@ -84,7 +94,12 @@ Para rotarlo:
 
 AMATL usa un único token activo; no existe periodo de solapamiento ni lista de
 revocación. `no_auth = true` sólo es válido en loopback y es exclusivamente para
-desarrollo.
+desarrollo. El modo se juzga contra la dirección en la que el proceso escucha de
+verdad, no contra el `bind` que declara el fichero: `--bind`/`--port` se aplican
+al arrancar y no se escriben de vuelta, así que una recarga o un
+`PATCH /server/pending-config` que dejaría sin autenticación al listener en uso
+se rechaza (un fichero con `bind = "127.0.0.1"` no puede activar `no_auth` en un
+proceso publicado en `0.0.0.0`).
 
 ## Prevención de exposición
 

@@ -21,7 +21,7 @@ MCP; ninguna superficie replica reglas de negocio.
 | telemetry | `telemetry.rs` | Emisión asíncrona, enrutamiento y diagnóstico |
 | inferencia | `inference.rs` | Contrato de embeddings/reranker y backend local offline para Ranking v2 |
 | errores | `errors.rs` | Catálogo único de códigos, estado HTTP y mensaje para todas las superficies |
-| security/data policy | `config.rs`, `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
+| security/data policy | `config/` (el módulo dividido: `server.rs`, `data_policy.rs`, `providers.rs`, …), `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
 | superficies | `amatl-cli`, `amatl-ui`, `amatl-server` | Entrada/salida y transporte, sin lógica duplicada |
 
 El core no contiene marcadores de superficie: la implementación de transporte
@@ -120,7 +120,12 @@ reutilizar artefactos de otro espacio.
 La autorización es una propiedad del borde, no de cada handler: una tabla
 única (`required_scope`) decide qué capacidad exige cada ruta y método, y de
 ella se deriva qué está protegido, de modo que añadir una ruta sin declarar su
-scope la deja protegida por defecto. La identidad autenticada viaja en las
+scope la deja protegida por defecto. La superficie pública es una excepción
+declarada —`/health`, `/ready`, `/metrics` y los assets de la UI— y cubre sólo
+métodos de lectura (`GET`/`HEAD`): un método mutante sobre una de esas rutas no
+hereda la exención, porque la decisión se toma antes del enrutado y un
+`POST /health` futuro debe fallar cerrado, no publicarse sin credencial. La
+identidad autenticada viaja en las
 extensiones de la solicitud y llega hasta las herramientas MCP, que aplican su
 propia lista por herramienta. Los rechazos se registran y, con persistencia, se
 guardan en `security_events`.

@@ -546,14 +546,15 @@ paths:
   /metrics:
     get:
       operationId: metrics
-      summary: Prometheus exposition of request, latency, source and cache metrics
+      summary: Prometheus exposition of request, latency, aggregate source and cache metrics
       description: >-
-        Public like /health so a local scraper needs no credential. Exposes
-        request counters, p50/p95/p99 latency over the last 1024 requests per
-        surface, per-source availability and observed value, cache hit rates
-        and whether local persistence is usable. Source names appear as label
-        values; do not expose this port outside the host if configured source
-        names are sensitive.
+        Public like /health so a local scraper needs no credential, and
+        deliberately coarse for the same reason /ready is: request counters,
+        p50/p95/p99 latency over the last 1024 requests per surface, cache hit
+        rates, whether local persistence is usable, and aggregate source counts
+        (declared, available, in circuit cooldown, plus the worst observed
+        success rate and latency). Source names never appear as label values;
+        per-source detail requires the read scope and lives on /status.
       security: []
       responses:
         '200':

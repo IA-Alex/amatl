@@ -15,7 +15,7 @@ usar la base es best effort (`service.rs:101-112`).
 | Ingestión local | URI `file:`, nombre, texto extraído, hashes, metadata del filesystem y Evidence | sólo respuesta CLI en memoria | no usa caché documental ni SQLite | desaparece al terminar el proceso; redirección de stdout queda bajo control del operador |
 | Telemetría | timestamp, provider, categoría, outcome, latencia, conteos, ratio de duplicados, contribución top-K, diversidad y coste | sólo memoria; SQLite desactivado | ventana/retención fija v1 de 30 días; decaimiento exponencial con vida media de 30 días | memoria y SQLite eliminan observaciones anteriores a la ventana al registrar; no hay comando CLI de purga dedicado |
 
-Fuentes: `config.rs:382-483`, migraciones `0001_phase3_persistence.sql` y
+Fuentes: `config/persistence.rs:8-41,310-400`, migraciones `0001_phase3_persistence.sql` y
 `0002_phase5_document_cache.sql`, `storage.rs:121-451`, `telemetry.rs:8-10,
 114-134,372-452`.
 
@@ -60,7 +60,7 @@ URL canónica, hash de contenido y versión del extractor.
 Si `store_content` es falso, se persiste metadata del `Document` pero se elimina
 su cuerpo antes de serializar (`document_cache.rs:47-60`). Configurar una caché o
 telemetría persistente sin `persistence.enabled = true` es inválido
-(`config.rs:570-580`).
+(`config/mod.rs:499-509`).
 
 Evidence v2 no abre una ruta de almacenamiento adicional: sus fragmentos se
 calculan durante Deep a partir de `Document.content` y sólo forman parte de la

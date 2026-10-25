@@ -309,16 +309,22 @@ Prometheus 0.0.4:
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
 | `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
 | `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
-| `amatl_source_available{source}` | gauge | 1 si la fuente declarada está disponible |
-| `amatl_source_success_rate{source}`, `amatl_source_latency_ms{source}` | gauge | valor observado por fuente; sólo aparecen con muestras |
+| `amatl_sources_declared` | gauge | número de fuentes que declara este despliegue |
+| `amatl_sources_available` | gauge | fuentes declaradas disponibles |
+| `amatl_sources_circuit_open` | gauge | fuentes declaradas en cooldown de circuito |
+| `amatl_sources_success_rate_min`, `amatl_sources_latency_ms_max` | gauge | peor valor observado entre las fuentes con muestras; sólo aparecen con muestras |
 | `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |
 | `amatl_storage_available` | gauge | 1 si la persistencia local es usable |
-| `amatl_source_circuit_open{source}` | gauge | 1 mientras el circuito de esa fuente está abierto |
 
 Los contadores son monótonos y se reinician con el proceso; las cuantías de
-latencia describen sólo la ventana retenida. Los nombres de fuente aparecen
-como valores de etiqueta: si esos nombres son sensibles en tu despliegue, no
-expongas el puerto fuera del host.
+latencia describen sólo la ventana retenida. `/metrics` es público, así que es
+deliberadamente agregado, igual que `/ready`: **los nombres de fuente no
+aparecen como etiquetas**. Qué fuentes declara y cuáles fallan es información
+interna del despliegue y vive en `/status`, que exige el scope `read`. Las
+etiquetas `cache` restantes son clases internas de caché
+(`provider_search`/`document`), no configuración del operador. El perfil de
+tráfico y latencia sí queda visible sin credencial: si eso importa en tu
+despliegue, no expongas el puerto fuera del host.
 
 ## Estados y degradaciones
 

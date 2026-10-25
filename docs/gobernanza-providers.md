@@ -10,7 +10,7 @@ Una ficha es aprobada sólo cuando `approval_status = "approved"`, `reviewed_at`
 es una fecha ISO válida con antigüedad máxima de 90 días y existen valores no
 vacíos para adapter version, reviewer, terms URL y versión/fecha, método de
 acceso, plan/contrato, rate limit, coste, notas de datos y riesgo operativo
-(`config.rs`). Además, el adapter real exige habilitación y credencial
+(`config/mod.rs:114-137`). Además, el adapter real exige habilitación y credencial
 cuando corresponda. Una ficha expirada o incompleta produce provider no
 disponible; no existe fallback que omita la puerta.
 
@@ -57,12 +57,12 @@ repositorio si contienen información privada.
 | Provider | Nivel de diseño | Adapter | Config default | Estado efectivo | Datos pendientes |
 |---|---|---|---|---|---|
 | Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
-| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config.rs`; ver «Fichas de aprobación» |
+| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config/providers.rs`; ver «Fichas de aprobación» |
 | Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en «Fichas de aprobación» |
 | Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
 
 **Brave y Mojeek están descartados, no pendientes.** `builtin_provider_records()`
-(`config.rs`) fija `approval_status = "rejected"` para ambos por defecto, con el
+(`config/providers.rs:150-175`) fija `approval_status = "rejected"` para ambos por defecto, con el
 motivo explícito en `cost_model`/`operational_risk` ("Rejected by operator
 policy: no paid search providers"). Un test dedicado
 (`paid_providers_are_rejected_by_default_not_merely_draft`) falla si esto
@@ -82,12 +82,12 @@ Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún
 revisor está definido para ninguno de los dos, pero eso ya no es lo que los
 bloquea: `approval_status = "rejected"` los bloquea por decisión de política,
 con o sin revisor. Ambos quedan bloqueados para tráfico real aunque existan
-adapters (`config.rs`, `service.rs:277-353`).
+adapters (`config/providers.rs`, `service.rs:277-353`).
 
 ## Fichas de aprobación: SearXNG y Marginalia
 
 Esta sección fija las fichas de gobernanza para las dos fuentes gratuitas
-verificadas. La puerta de activación (`config.rs:603-626`, `approved_on`) exige,
+verificadas. La puerta de activación (`config/mod.rs:108-138`, `approved_on`) exige,
 además de `approval_status = "approved"` y un `reviewed_at` vigente (≤ 90 días),
 valores no vacíos para `adapter_version`, `reviewer`, `terms_url`,
 `terms_version_or_date`, `allowed_access_method`, `plan_or_contract`,
@@ -99,7 +99,7 @@ resto esté completo. `adapter_version` debe coincidir con el valor registrado e
 ### SearXNG (autohospedado) — aprobable
 
 El adapter está implementado y probado (`providers/searxng.rs`); la ficha
-incorporada en `config.rs` ya declara método, contrato, cuota, coste, derechos,
+incorporada en `config/providers.rs` ya declara método, contrato, cuota, coste, derechos,
 notas de datos y riesgo. Sólo faltan `reviewer`, `reviewed_at` y
 `approval_status`, que son específicos del operador:
 
