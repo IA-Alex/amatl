@@ -4,7 +4,19 @@ members = ["crates/amatl-core", "crates/amatl-cli", "crates/amatl-ui", "crates/a
 # lockfile and heavy ML dependencies (fastembed/ort). Deliberately excluded from
 # the workspace so `cargo {check,clippy,test} --workspace` and production builds
 # never see it. See experiments/embedding-relevance/README.md.
-exclude = ["experiments/embedding-relevance"]
+#
+# STEP 4D local-embedding integration boundary. Same treatment for the same
+# reason, plus one more: its Candle stack (`candle-core 0.9.2` -> `zip ^7.2.0`)
+# carries RUSTSEC-2026-0367/-0368/-0369, patched only from `zip 9.0.0`, which no
+# candle release reaches. Keeping the stack in this excluded crate with its own
+# lockfile is what closes that finding without a waiver: the workspace
+# `Cargo.lock` — and therefore `cargo audit` — no longer contains it. See
+# experiments/local-embeddings-boundary/README.md and
+# docs/security/supply-chain.md.
+exclude = [
+    "experiments/embedding-relevance",
+    "experiments/local-embeddings-boundary",
+]
 resolver = "2"
 
 [workspace.package]

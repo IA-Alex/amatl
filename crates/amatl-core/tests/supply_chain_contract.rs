@@ -12,10 +12,12 @@
 //! the advisory text instead of trusting the constant.
 //!
 //! Only remediated advisories belong here. An advisory whose fix no compatible
-//! release can reach — `zip 7.2.0` under the optional
-//! `experimental-local-embeddings` stack is the current case — is recorded as
-//! open in `docs/security/supply-chain.md`: asserting its floor would redden
-//! the suite on every host without remediating anything.
+//! release can reach is recorded in `docs/security/supply-chain.md` instead:
+//! asserting its floor would redden the suite on every host without remediating
+//! anything. `zip 7.2.0` (RUSTSEC-2026-0367/-0368/-0369) was that case until the
+//! Candle stack that pulled it in was quarantined out of the workspace into
+//! `experiments/local-embeddings-boundary`; the lockfile read below no longer
+//! contains it, so there is no floor to assert.
 
 use std::cmp::Ordering;
 use std::path::PathBuf;

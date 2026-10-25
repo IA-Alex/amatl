@@ -1,8 +1,6 @@
 //! STEP4E infrastructure-only validation. It uses no relevance corpus rows.
 
-#![cfg(feature = "experimental-local-embeddings")]
-
-use amatl_core::experimental_embeddings::{
+use amatl_local_embeddings_boundary::{
     model_config::{ModelPackage, PINNED_MODEL_VERSION},
     CandleBackend, EmbeddingBackend,
 };

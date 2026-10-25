@@ -205,6 +205,26 @@ adapter/extractor versions are independent axes as well.
 
 ### Changed
 
+- The STEP 4D experimental local-embedding stack leaves the workspace lockfile,
+  closing the three `zip` findings without a waiver. `amatl-core` no longer
+  declares the optional `experimental-local-embeddings` feature or the
+  `candle-core`/`candle-nn`/`candle-transformers`/`tokenizers`/`safetensors`/
+  `memmap2` dependencies: the module
+  `crates/amatl-core/src/experimental_embeddings/` and its five integration tests
+  moved verbatim to `experiments/local-embeddings-boundary/`, a crate excluded
+  from the workspace with its own lockfile — the pattern
+  `experiments/embedding-relevance` already used. `candle-core 0.9.2` depends on
+  `zip ^7.2.0`, and `zip < 9.0.0` carries RUSTSEC-2026-0367 (7.3 high),
+  RUSTSEC-2026-0368 and RUSTSEC-2026-0369 (9.1 critical), patched only from
+  `zip 9.0.0`; no candle release reaches that fix (0.9.2 needs `^7.2.0`, 0.11.0
+  needs `^8.6.0`). The feature was off by default and the module had no
+  production caller (`evaluate_with_embeddings` and `SemanticRescore` had zero
+  call sites outside it), so the default dependency graph, every build target and
+  the search path are unchanged. Nothing is suppressed: no `ignore` entry was
+  added to `deny.toml`, and the workspace `cargo audit` step of the contract gate
+  now passes on the graph itself. The quarantine is the removal plan and is
+  reversible — re-admit the crate once a candle release depends on
+  `zip >= 9.0.0`.
 - Search now reports `failure` whenever the final normalized result set is
   empty. In particular, an empty transport-level response from one provider
   can no longer mask a peer's failure as `success`; the regression is covered
@@ -274,7 +294,9 @@ adapter/extractor versions are independent axes as well.
   `epoll` still holds it, a use-after-free when readiness fires). `cargo deny
   check` is clean again — it had been failing on that `unsound` advisory, which
   cargo-deny denies as an error while `cargo audit` reports it as a warning —
-  and `cargo audit` reports only the `zip` findings that stay open and recorded.
+  and `cargo audit` reported only the `zip` findings that were still open at that
+  point; they were closed by exclusion later the same day, see the
+  `### Changed` entry above.
 - The offline supply-chain contract asserts the floors those fixes established
   (`rustls-webpki` 0.103.16, `webpki-roots` 1.0.10, `tokio` 1.53.3), so a later
   downgrade fails `cargo test --workspace` on every host instead of passing

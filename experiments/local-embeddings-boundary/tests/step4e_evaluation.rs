@@ -41,19 +41,17 @@
 //!   --test step4e_evaluation -- --ignored --nocapture --test-threads=1
 //! ```
 
-#![cfg(feature = "experimental-local-embeddings")]
-
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
-use amatl_core::experimental_embeddings::model_config::PINNED_MODEL_VERSION;
-use amatl_core::experimental_embeddings::{
-    EmbeddingBackend, ExperimentalSemanticConfig, SemanticEvaluator,
-};
 use amatl_core::{
     assess_result, parse_query, CanonicalUrl, DeduplicatedResult, DuplicateStatus, OriginalUrl,
     Rank, RelevanceClassification, RelevanceThresholds, ResultType, SCHEMA_VERSION,
+};
+use amatl_local_embeddings_boundary::model_config::PINNED_MODEL_VERSION;
+use amatl_local_embeddings_boundary::{
+    EmbeddingBackend, ExperimentalSemanticConfig, SemanticEvaluator,
 };
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};

@@ -25,17 +25,13 @@
 //!
 //! Every number printed comes from this executed run.
 
-#![cfg(feature = "experimental-local-embeddings")]
-
 use std::time::Instant;
 
-use amatl_core::experimental_embeddings::{
-    evaluate_with_embeddings, EmbeddingBackend, FixtureBackend,
-};
 use amatl_core::{
     assess_result, assess_semantics, parse_query, CanonicalUrl, DeduplicatedResult,
     DuplicateStatus, OriginalUrl, Rank, RelevanceThresholds, ResultType, SCHEMA_VERSION,
 };
+use amatl_local_embeddings_boundary::{evaluate_with_embeddings, EmbeddingBackend, FixtureBackend};
 use serde::Deserialize;
 use std::collections::BTreeMap;
 
@@ -322,7 +318,7 @@ fn cpu_time_ms() -> f64 {
 /// Fallback tests for the seam, run in the integrated (feature-on) build.
 #[test]
 fn seam_failure_modes_fall_back_to_bounded_semantic() {
-    use amatl_core::experimental_embeddings::EmbeddingUnavailable;
+    use amatl_local_embeddings_boundary::EmbeddingUnavailable;
 
     let query = parse_query("kubernetes ingress controller".to_string()).unwrap();
     let bounded = assess_semantics(

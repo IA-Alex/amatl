@@ -1,9 +1,18 @@
 //! STEP 4D — EXPERIMENTAL local-embedding integration.
 //!
-//! **This module is compiled only under `--features experimental-local-embeddings`
-//! and is never reachable from the default search path.** STEP 4C established
-//! the typed seam here; STEP 4D moves the *real* pure-Rust Candle backend into
-//! the workspace behind the same feature (see [`candle`]), adds the optional
+//! **This crate lives OUTSIDE the amatl workspace: no production build, no
+//! `cargo {check,clippy,test} --workspace` run and — decisively — no workspace
+//! `Cargo.lock` ever sees it.** It used to be the `amatl-core` module
+//! `experimental_embeddings`, compiled behind the `experimental-local-embeddings`
+//! feature. The Candle stack moved here because `candle-core 0.9.2` depends on
+//! `zip ^7.2.0`, and `zip < 9.0.0` carries RUSTSEC-2026-0367 (7.3 high),
+//! RUSTSEC-2026-0368 and RUSTSEC-2026-0369 (9.1 critical). No compatible `zip`
+//! release reaches the fix from the candle line, so the stack was quarantined
+//! out of the workspace lockfile instead of waived. See this crate's `README.md`
+//! and `docs/security/supply-chain.md`.
+//!
+//! STEP 4C established the typed seam here; STEP 4D moved the *real* pure-Rust
+//! Candle backend behind the same feature (see [`candle`]), added the optional
 //! model-package config with pinned hashes ([`model_config`]), and the
 //! optimized bounded-K semantic-evaluation pipeline ([`pipeline`]).
 //!
@@ -14,9 +23,9 @@
 //!
 //! ## Hard invariants
 //!
-//! * The production default is **unchanged**. [`crate::relevance::assess_relevance`]
-//!   and [`crate::relevance::assess_result`] do not call anything here.
-//! * Lexical + bounded-semantic relevance ([`crate::relevance_semantics`]) stays
+//! * The production default is **unchanged**. [`amatl_core::relevance::assess_relevance`]
+//!   and [`amatl_core::relevance::assess_result`] do not call anything here.
+//! * Lexical + bounded-semantic relevance ([`amatl_core::relevance_semantics`]) stays
 //!   authoritative. An embedding signal here can only ever be an *advisory
 //!   paraphrase-recall booster*, subordinate to negative / entity evidence.
 //! * Embedding failure (missing model, corrupt weights, hash mismatch, backend
@@ -28,10 +37,9 @@
 //!
 //! ## What lives here
 //!
-//! * [`EmbeddingBackend`] — the trait an experimental backend implements. The
-//!   real Candle implementation stays in the excluded experiment crate; only a
-//!   deterministic [`FixtureBackend`] ships here, for the latency harness and
-//!   the failure-mode tests.
+//! * [`EmbeddingBackend`] — the trait a backend implements. Two
+//!   implementations exist: the real [`CandleBackend`] and the deterministic
+//!   [`FixtureBackend`] used by the latency harness and the failure-mode tests.
 //! * [`SemanticRescore`] — the advisory output. It carries only a bounded
 //!   cosine-derived hint and the fallback flag; it deliberately has **no** way
 //!   to express "this result is RELEVANT".
@@ -39,12 +47,13 @@
 //!   [`SemanticAssessment`] and a backend, returns a [`SemanticRescore`],
 //!   falling back to a neutral result on any backend failure.
 
-use crate::model::Query;
-use crate::relevance_semantics::SemanticAssessment;
+use amatl_core::model::Query;
+use amatl_core::relevance_semantics::SemanticAssessment;
 
 pub mod candle;
 pub mod model_config;
 pub mod pipeline;
+mod text;
 
 pub use candle::CandleBackend;
 pub use model_config::{ModelHashes, ModelPackage, ModelPackageError};
@@ -254,7 +263,7 @@ impl FixtureBackend {
         if let Some(e) = &self.forced_error {
             return Err(e.clone());
         }
-        let normalized = crate::text::normalized_text(text);
+        let normalized = text::normalized_text(text);
         if normalized.trim().is_empty() {
             return Err(EmbeddingUnavailable::EmptyInput);
         }
@@ -316,8 +325,8 @@ fn fnv1a(bytes: &[u8]) -> u64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::model::Query;
-    use crate::parse_query;
+    use amatl_core::model::Query;
+    use amatl_core::parse_query;
 
     fn q(s: &str) -> Query {
         parse_query(s.to_string()).unwrap()

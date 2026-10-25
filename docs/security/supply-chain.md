@@ -33,11 +33,11 @@ floor is a minimum, never a pin: a newer compatible release passes.
 
 An advisory whose fix no compatible release reaches is **not** a floor: asserting
 one would redden the suite on every host without remediating anything. It is
-recorded as an open finding below, and the authoritative gate stays red until it
-is remediated or waived by a written ADR. This offline test guards the advisories
-already closed; it reads a lockfile, never the RustSec database, so it cannot
-discover an advisory that no floor names yet. It is a regression guard, not an
-equivalent of the audit.
+recorded below and the authoritative gate stays red until it is remediated,
+removed from the graph, or waived by a written ADR. This offline test guards the
+advisories already closed; it reads a lockfile, never the RustSec database, so it
+cannot discover an advisory that no floor names yet. It is a regression guard,
+not an equivalent of the audit.
 
 Three advisories were remediated on 2026-10-25 and are now floors:
 RUSTSEC-2026-0382 (`rustls-webpki` 0.103.16), RUSTSEC-2026-0381 (`webpki-roots`
@@ -57,17 +57,18 @@ An exception requires a written ADR with advisory, affected path, exploitability
 compensating controls, owner, expiration date, and removal plan. `@IA-Alex` must
 approve it explicitly; no exception is pre-approved.
 
-## Open findings
+## Findings closed by exclusion
 
 `cargo audit` scans every package in `Cargo.lock`; `cargo deny check` resolves
 the default-feature graph and classifies severity differently — `unsound` is an
 error that fails the job, while `cargo audit` reports it as a warning. Neither
-gate subsumes the other: dependencies that only the optional
-`experimental-local-embeddings` feature pulls in are visible to the audit and
-invisible to `cargo deny`, and the two disagree on severity, so both are read.
-As of 2026-10-25 the workspace audit reports three open vulnerabilities in
-`zip 7.2.0`, reached only through that feature (`amatl-core` →
-`candle-core 0.9.2` → `zip`):
+gate subsumes the other: a dependency reached only through an optional feature is
+visible to the audit and invisible to `cargo deny`, and the two disagree on
+severity, so both are read.
+
+On 2026-10-25 the workspace audit reported three open vulnerabilities in
+`zip 7.2.0`, reached only through the optional `experimental-local-embeddings`
+stack (`amatl-core` → `candle-core 0.9.2` → `zip`):
 
 | Advisory | Severity | Fixed release |
 |---|---|---|
@@ -75,27 +76,41 @@ As of 2026-10-25 the workspace audit reports three open vulnerabilities in
 | RUSTSEC-2026-0368 | not rated | `zip >= 9.0.0` |
 | RUSTSEC-2026-0369 | 9.1 critical | `zip >= 9.0.0` |
 
-No compatible upgrade closes them. `zip` is a mandatory, non-optional dependency
+No compatible upgrade closed them. `zip` is a mandatory, non-optional dependency
 of `candle-core` (`^7.2.0` in the locked 0.9.2, `^8.6.0` in the latest stable
 0.11.0) and the advisories are patched only from `9.0.0`, so the whole candle
-line is exposed. The affected code is the extraction helpers that apply symlink
+line was exposed. The affected code is the extraction helpers that apply symlink
 targets, Unix permissions and SUID/SGID bits (`ZipArchive::extract`,
 `ZipStreamReader::extract`); `candle-core` calls only `ZipArchive::new`,
-`by_index`, `by_name` and `ZipWriter` (`src/npy.rs`), the feature is off by
-default, and its only input is a local, operator-provided model package. That
-bounds the impact but does not close the finding.
+`by_index`, `by_name` and `ZipWriter` (`src/npy.rs`), and its only input is a
+local, operator-provided model package. That bounded the impact but did not close
+the finding.
 
-This is an open finding, not a waiver: no ignore entry exists in `deny.toml`,
-and the workspace audit stays red until `@IA-Alex` decides between a written ADR
-exception (with the fields listed above) and removing the experimental stack
-from the workspace lockfile, the way `experiments/embedding-relevance` is
-excluded from the workspace and keeps its own lockfile. Warnings are separate:
-`paste 1.0.15` (unmaintained, same optional stack) and `chacha20 0.10.1`
-(yanked, via `rand 0.10.2` → `rmcp 3.1.2`) are reviewer judgement under the
-policy above; `cargo deny check` passes with both. The class decides, not the
-entry: `unmaintained` and `yanked` warn, `unsound` is an error. `tokio 1.53.1`
-failed `cargo deny check` that way until it was remediated to `1.53.3` on
-2026-10-25.
+**Closed by exclusion, not by waiver.** The Candle integration boundary was
+quarantined out of the workspace:
+`crates/amatl-core/src/experimental_embeddings/` and its five integration tests
+moved to `experiments/local-embeddings-boundary/`, a standalone crate listed in
+the root `Cargo.toml`'s `exclude` with its own `Cargo.lock` — the same pattern
+`experiments/embedding-relevance` already used. `amatl-core` no longer declares
+the optional `experimental-local-embeddings` feature, the Candle dependencies or
+`zip`, so the workspace `Cargo.lock` contains none of them and `cargo audit` is
+green. No `ignore` entry was added to `deny.toml` and no exception was granted:
+nothing is suppressed. Production behaviour is unchanged — the feature was off by
+default, the module had no production caller (`evaluate_with_embeddings` and
+`SemanticRescore` had zero call sites outside the module), and neither the
+default dependency graph nor any build target changed.
+
+The exclusion is itself the removal plan, and it is reversible: re-admit the
+crate to the workspace and its dependencies to `amatl-core` once a candle release
+depends on `zip >= 9.0.0`. `candle-core 0.11.0` still requires `^8.6.0`, so no
+release does today.
+
+Warnings are separate: `chacha20 0.10.1` (yanked, via `rand 0.10.2` →
+`rmcp 3.1.2`) is reviewer judgement under the policy above, and `cargo deny
+check` passes with it. `paste 1.0.15` (unmaintained) disappeared with the Candle
+stack, which was its only path. The class decides, not the entry: `unmaintained`
+and `yanked` warn, `unsound` is an error. `tokio 1.53.1` failed `cargo deny
+check` that way until it was remediated to `1.53.3` on 2026-10-25.
 
 ## SBOM
 

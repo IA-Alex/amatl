@@ -8,6 +8,15 @@
 the experimental seam (`amatl-core` feature `experimental-local-embeddings`)
 carries no model and no download code.
 
+> **Status update — 2026-10-25: quarantined.** The experimental seam named below
+> no longer lives in `crates/amatl-core/src/experimental_embeddings/`, and
+> `amatl-core` no longer declares the `experimental-local-embeddings` feature. The
+> stack moved unchanged to `experiments/local-embeddings-boundary/`, a crate
+> excluded from the workspace with its own `Cargo.lock`, because
+> `candle-core 0.9.2` depends on `zip ^7.2.0` and `zip < 9.0.0` carries
+> RUSTSEC-2026-0367/-0368/-0369. The distribution analysis and its decision are
+> unaffected. See `docs/security/supply-chain.md`.
+
 Resolves spec §6 / §7: how the ~128 MB `bge-small-en-v1.5` model would reach
 AMATL users **if** local embeddings were ever promoted out of the experiment.
 

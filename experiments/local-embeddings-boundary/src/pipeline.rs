@@ -31,9 +31,11 @@
 //! Nothing here is wired into routing, ranking, telemetry, or provider
 //! selection. When the feature is off the whole module is uncompiled.
 
-use crate::model::{DeduplicatedResult, Query, RelevanceClassification, ResultRelevanceAssessment};
-use crate::relevance::{assess_result, RelevanceThresholds};
-use crate::relevance_semantics::assess_semantics;
+use amatl_core::model::{
+    DeduplicatedResult, Query, RelevanceClassification, ResultRelevanceAssessment,
+};
+use amatl_core::relevance::{assess_result, RelevanceThresholds};
+use amatl_core::relevance_semantics::assess_semantics;
 
 use super::candle::CandleBackend;
 use super::model_config::ModelPackage;

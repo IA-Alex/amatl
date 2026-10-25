@@ -1,0 +1,49 @@
+[package]
+name = "amatl-local-embeddings-boundary"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.88"
+publish = false
+license = "MIT OR Apache-2.0"
+description = "STEP 4D experimental local-embedding integration boundary (NOT production code)"
+
+# Intentionally OUTSIDE the amatl workspace, exactly like
+# `experiments/embedding-relevance`: the root Cargo.toml lists both under
+# `exclude`, so `cargo {check,clippy,test} --workspace`, every production build
+# and — decisively — the workspace `Cargo.lock` never see this crate or the
+# Candle stack it pulls in.
+#
+# Why the exclusion is load-bearing: `candle-core 0.9.2` depends on
+# `zip ^7.2.0`, and `zip < 9.0.0` carries RUSTSEC-2026-0367 (7.3 high),
+# RUSTSEC-2026-0368 and RUSTSEC-2026-0369 (9.1 critical). No compatible `zip`
+# release reaches the fix from the candle line (0.9.2 -> `^7.2.0`, latest stable
+# 0.11.0 -> `^8.6.0`), so while these dependencies sat in the workspace
+# lockfile the workspace `cargo audit` step of the contract gate could not pass.
+# Keeping the stack in its own excluded crate, with its own lockfile, closes
+# that finding by exclusion instead of by waiver: no `ignore` entry is added
+# anywhere, and the production dependency graph is unchanged.
+#
+# Re-admit the stack to the workspace (and its dependencies back into
+# `amatl-core`) once a candle release depends on `zip >= 9.0.0`. See
+# docs/security/supply-chain.md and README.md in this directory.
+
+[dependencies]
+amatl-core = { path = "../../crates/amatl-core" }
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+unicode-normalization = "0.1"
+
+# Candle (pure Rust, musl-clean) — the STEP 4B feasibility versions.
+candle-core = { version = "0.9.2", default-features = false }
+candle-nn = { version = "0.9.2", default-features = false }
+candle-transformers = { version = "0.9.2", default-features = false }
+# `unstable_wasm` selects the pure-Rust `fancy-regex` backend (no `onig_sys` C
+# dependency), which is what lets the stack cross-compile to musl.
+tokenizers = { version = "0.20.4", default-features = false, features = ["unstable_wasm"] }
+safetensors = { version = "0.7.0" }
+memmap2 = "0.9"
+
+[dev-dependencies]
+url = "2"

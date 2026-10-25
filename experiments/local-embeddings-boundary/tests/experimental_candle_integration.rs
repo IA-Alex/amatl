@@ -15,18 +15,16 @@
 //! The fallback-matrix tests need no model and run in the ordinary
 //! feature-on `cargo test`.
 
-#![cfg(feature = "experimental-local-embeddings")]
-
 use std::collections::BTreeMap;
 
-use amatl_core::experimental_embeddings::{
-    model_config::{ModelPackage, ModelPackageError, PINNED_MODEL_VERSION},
-    CandleBackend, EmbeddingBackend, ExperimentalSemanticConfig, SemanticEvaluator,
-    DEFAULT_EXPERIMENTAL_K,
-};
 use amatl_core::{
     parse_query, CanonicalUrl, DeduplicatedResult, DuplicateStatus, OriginalUrl, Rank,
     RelevanceClassification, ResultType, SCHEMA_VERSION,
+};
+use amatl_local_embeddings_boundary::{
+    model_config::{ModelPackage, ModelPackageError, PINNED_MODEL_VERSION},
+    CandleBackend, EmbeddingBackend, ExperimentalSemanticConfig, SemanticEvaluator,
+    DEFAULT_EXPERIMENTAL_K,
 };
 
 fn model_dir() -> Option<std::path::PathBuf> {

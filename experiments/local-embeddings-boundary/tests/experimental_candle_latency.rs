@@ -10,17 +10,15 @@
 //!   --test experimental_candle_latency -- --ignored --nocapture --test-threads=1
 //! ```
 
-#![cfg(feature = "experimental-local-embeddings")]
-
 use std::collections::BTreeMap;
 use std::time::Instant;
 
-use amatl_core::experimental_embeddings::{
-    model_config::PINNED_MODEL_VERSION, ExperimentalSemanticConfig, SemanticEvaluator,
-};
 use amatl_core::{
     assess_result, parse_query, CanonicalUrl, DeduplicatedResult, DuplicateStatus, OriginalUrl,
     Rank, RelevanceThresholds, ResultType, SCHEMA_VERSION,
+};
+use amatl_local_embeddings_boundary::{
+    model_config::PINNED_MODEL_VERSION, ExperimentalSemanticConfig, SemanticEvaluator,
 };
 
 fn model_dir() -> Option<std::path::PathBuf> {
