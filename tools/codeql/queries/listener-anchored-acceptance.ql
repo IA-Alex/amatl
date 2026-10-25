@@ -13,36 +13,7 @@
  */
 
 import rust
-
-/**
- * The functions that accept a configuration into a *running* process:
- * `AppState::reload` (which re-reads the document and swaps the service) and
- * `update_server_pending_config` (which writes a `[server]` patch that the next
- * start applies). The reload branch also requires the `Config::load_optional`
- * call, because two other functions in the same file are called `reload` and
- * neither accepts a configuration: `ReloadHandle::reload` forwards to
- * `AppState::reload`, and the HTTP handler forwards to the handle.
- */
-predicate is_acceptance_point(Function function) {
-  exists(function.getName()) and
-  (
-    function.getName().getText() = "update_server_pending_config"
-    or
-    function.getName().getText() = "reload" and
-    exists(Call load |
-      load.getEnclosingCallable() = function and
-      load.getTargetName() = "load_optional"
-    )
-  )
-}
-
-/** Whether `function` validates a configuration against the effective listener. */
-predicate anchors(Function function) {
-  exists(Call anchored |
-    anchored.getEnclosingCallable() = function and
-    anchored.getTargetName() = "validate_server_for_listener"
-  )
-}
+import acceptance_points
 
 from Function function
 where
