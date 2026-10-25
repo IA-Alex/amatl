@@ -1,12 +1,19 @@
 name: static-analysis
 
-# Mostly advisory, with one blocking gate.
+# Mostly advisory, with two blocking gates.
 #
 # Ruff lint over `tools/` is blocking. `tools/ruff.toml` ignores the deliberate
 # one-liner style of the evaluation scripts (E701/E702) and freezes their
 # pre-existing findings per file, so only *new* problems fail the job. That
 # configuration file records the measured baseline (355 findings on 2026-10-25,
 # 313 of them the ignored style rules) and explains how to pay it down.
+#
+# The documentation-reference check is also blocking and equally narrow:
+# `tools/check_doc_refs.py` fails when a `file:line` citation in `docs/` names a
+# file that does not exist or a line past the end of that file. It freezes the
+# few intentionally-external references (upstream dependency source, host-side
+# SearXNG files) and cannot see *semantic* drift, so it does not replace
+# re-checking a citation when the code it points at moves.
 #
 # The remaining steps are advisory because their baselines are not zero yet:
 # `ruff format --check` (52 files would be rewritten today) and semgrep, which
@@ -21,11 +28,17 @@ on:
     paths:
       - "tools/**"
       - "crates/**"
+      - "docs/**"
+      - "README.md"
+      - "SECURITY.md"
       - ".github/workflows/static-analysis.yml"
   pull_request:
     paths:
       - "tools/**"
       - "crates/**"
+      - "docs/**"
+      - "README.md"
+      - "SECURITY.md"
       - ".github/workflows/static-analysis.yml"
   schedule:
     # Weekly drift check: findings can change without a push to those paths.
@@ -81,6 +94,30 @@ jobs:
             ruff format --check tools/ || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  doc-refs:
+    name: Documentation references (blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      # Standard library only, so there is nothing to install. The script
+      # freezes the intentionally-external references and fails on new ones.
+      - name: Every `file:line` citation must resolve
+        run: |
+          set -euo pipefail
+          {
+            echo '### Documentation references'
+            echo
+            echo '```'
+            python3 tools/check_doc_refs.py --list || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # Last command decides the exit code, so this is the gate.
+          python3 tools/check_doc_refs.py
 
   semgrep:
     name: Semgrep (advisory)

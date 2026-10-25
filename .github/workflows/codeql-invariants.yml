@@ -1,0 +1,85 @@
+name: codeql-invariants
+
+# Blocking gate for AMATL's own CodeQL queries in `tools/codeql/`.
+#
+# These are not the standard security queries: they encode invariants of this
+# codebase that no general rule can know, and a regression in one of them is a
+# security regression rather than a style one. Each query is written as a
+# *violation* query, so the gate passes when both select nothing.
+#
+# Why the CLI instead of `github/codeql-action`: the action deletes the database
+# after analysis, so a custom pack cannot be run against the extracted database
+# in the same job. Downloading the pinned CLI bundle reproduces exactly what
+# `tools/codeql/qlpack.yml` documents for a local run.
+#
+# Runtime: extracting the workspace with the Rust extractor and evaluating two
+# queries takes ~10 minutes, which is why this is its own workflow rather than a
+# step in `ci.yml`. The pinned CLI version and the `codeql/rust-all` dependency
+# in `tools/codeql/qlpack.yml` move together.
+on:
+  push:
+    paths:
+      - "crates/**"
+      - "tools/codeql/**"
+      - ".github/workflows/codeql-invariants.yml"
+  pull_request:
+    paths:
+      - "crates/**"
+      - "tools/codeql/**"
+      - ".github/workflows/codeql-invariants.yml"
+  schedule:
+    # Weekly drift check: a query's meaning can change without a push.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codeql-invariants-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CODEQL_VERSION: "2.27.3"
+
+jobs:
+  invariants:
+    name: AMATL invariants (blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Install the CodeQL CLI
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location \
+            "https://github.com/github/codeql-cli-binaries/releases/download/v${CODEQL_VERSION}/codeql-linux64.zip" \
+            --output /tmp/codeql.zip
+          unzip -q /tmp/codeql.zip -d /opt
+          echo "/opt/codeql" >> "$GITHUB_PATH"
+      - name: Resolve the query pack
+        run: codeql pack install tools/codeql
+      - name: Extract the workspace
+        run: |
+          set -euo pipefail
+          codeql database create /tmp/amatl-db \
+            --language=rust \
+            --source-root=. \
+            --command="cargo build --workspace --locked"
+      - name: Evaluate the invariant queries
+        run: |
+          set -euo pipefail
+          codeql database analyze /tmp/amatl-db tools/codeql \
+            --format=sarif-latest \
+            --output=/tmp/amatl-invariants.sarif
+      - name: Fail on any violation
+        run: python3 tools/codeql/check_sarif.py /tmp/amatl-invariants.sarif
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: codeql-invariants-sarif
+          retention-days: 7
+          path: /tmp/amatl-invariants.sarif
+          if-no-files-found: ignore
