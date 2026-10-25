@@ -97,8 +97,12 @@ jobs:
 
   browser-e2e:
     # The UI's behaviour lives in 32 KB of vanilla JavaScript, so it is only
-    # observable in a real browser. The tests are inert without
-    # AMATL_BROWSER_E2E, which keeps a driver-less checkout green.
+    # observable in a real browser. The tests only run with AMATL_BROWSER_E2E=1,
+    # which keeps a driver-less checkout green; once opted in they are
+    # fail-closed, so a missing or version-mismatched driver fails the job
+    # instead of skipping green (the trap that a stale local chromedriver sets).
+    # `setup-chrome` installs Chrome and a *matching* chromedriver together,
+    # which is the pairing the fail-closed check demands.
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

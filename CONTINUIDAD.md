@@ -18,6 +18,25 @@
 >   y la sección final «Marginalia — key privada operativa, ficha de aprobación
 >   completada».
 
+> **Nota de consolidación (2026-10-15 — supersede la nota anterior en lo que la
+> contradiga).** Sigue siendo un historial *append-only*; los conteos de pruebas
+> de las secciones con fecha son fotografías de ese momento, no el estado actual.
+> La verdad vigente es:
+>
+> - **Brave ya no forma parte del producto.** Se retiró del registry, de los
+>   registros de gobernanza y de la UI: no hay selector `value="brave"`, ni
+>   botón/diálogo de key, ni claves `brave*` en el catálogo de mensajes. La nota
+>   de consolidación de arriba (que lo describía como opt-in en la UI) quedó
+>   obsoleta. Las fuentes activables son **Marginalia** y **SearXNG**.
+> - **Browser E2E: 6 pruebas**, no 4 ni 5. El historial registra «4 pruebas E2E»
+>   (2026-08-14) y «5/5» (fix de contraste); después se añadió
+>   `hidden_attribute_collapses_the_panels_it_hides`, que verifica en navegador
+>   real que el atributo `hidden` colapsa los paneles con `display:` propio. El
+>   suite ahora es **fail-closed**: con `AMATL_BROWSER_E2E=1` un driver ausente
+>   o desemparejado **falla**, en vez de saltarse en verde.
+> - **Conteos de workspace:** `cargo test --workspace` → **661 aprobadas, 0
+>   fallos** (los 338/190 de la bitácora son históricos).
+
 ## Snapshot verificable
 
 Estado revisado el **2026-08-16** sobre la rama `consolidacion-ui-observabilidad`:

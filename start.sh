@@ -65,6 +65,14 @@ fi
 
 # credential_env de cada provider *habilitado* solo se advierte, no bloquea:
 # algunos (p.ej. searxng) tienen valor por defecto en el propio adapter.
+#
+# Solo se avisa por una credencial *real*: distinguimos por el nombre de la
+# variable. Un provider cuyo credential_env es una API key/token/secreto
+# ("..._KEY", "..._TOKEN", "..._SECRET" o que contenga "KEY") sí necesita esa
+# variable en el entorno para funcionar, y merece aviso si falta. Un provider
+# cuyo credential_env solo nombra una URL/lugar de instancia con default en el
+# propio adapter (p.ej. searxng -> SEARXNG_INSTANCE_URL, http://127.0.0.1:8888)
+# NO lleva credencial, y el aviso sería ruido.
 if [ -f "$CONFIG_FILE" ]; then
   enabled_providers="$(sed -n 's/^enabled = \[\(.*\)\]/\1/p' "$CONFIG_FILE" | tr -d '"' | tr ',' '\n' | tr -d ' ')"
   for provider in $enabled_providers; do
@@ -73,8 +81,10 @@ if [ -f "$CONFIG_FILE" ]; then
       /^\[/ { infile=0 }
       infile && /credential_env/ { print; exit }
     ' "$CONFIG_FILE" | sed -E 's/.*"(.+)"/\1/')"
-    if [ -n "$cred_var" ] && [ -z "${!cred_var:-}" ]; then
-      echo "Aviso: provider '$provider' habilitado sin $cred_var en el entorno (puede tener default propio)." >&2
+    if [ -n "$cred_var" ] \
+      && printf '%s' "$cred_var" | grep -qiE '(^|_)(key|token|secret)(_|$)|(^|_)api_?key(_|$)' \
+      && [ -z "${!cred_var:-}" ]; then
+      echo "Aviso: provider '$provider' habilitado sin $cred_var en el entorno." >&2
     fi
   done
 fi
