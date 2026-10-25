@@ -808,6 +808,12 @@ async fn request_timeout_cancels_a_slow_handler() {
     let state = AppState {
         service: Arc::new(RwLock::new(service)),
         config_path: None,
+        effective_bind: config
+            .server
+            .bind
+            .parse()
+            .expect("the default bind is a literal IP"),
+        effective_port: config.server.port,
         security: Arc::new(RwLock::new(security)),
         rate_limiter: Arc::new(Mutex::new(RateLimiter {
             windows: BTreeMap::new(),
@@ -2213,8 +2219,9 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
         "amatl_search_latency_ms",
         "amatl_deep_latency_ms",
         "amatl_search_latency_samples",
-        "amatl_source_available",
-        "amatl_source_circuit_open",
+        "amatl_sources_declared",
+        "amatl_sources_available",
+        "amatl_sources_circuit_open",
         "amatl_cache_hits_total",
         "amatl_cache_misses_total",
         "amatl_cache_hit_rate",
@@ -2226,8 +2233,24 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
             "missing sample line for {name}"
         );
     }
+    // The worst-case source gauges are declared unconditionally but only
+    // sampled once a source has observations, so only their header is
+    // guaranteed here.
+    for name in [
+        "amatl_sources_success_rate_min",
+        "amatl_sources_latency_ms_max",
+    ] {
+        assert!(body.contains(&format!("# HELP {name} ")), "missing {name}");
+    }
     assert!(body.contains("amatl_search_latency_ms{quantile=\"0.95\"}"));
     assert!(body.contains("amatl_cache_hit_rate{cache=\"document\"}"));
+    // `/metrics` is public like `/ready`, so it must not name the sources this
+    // deployment declares — that inventory is what `/status` (read scope) is
+    // for.
+    assert!(
+        !body.contains("source=\""),
+        "public metrics must not label a series with a source name"
+    );
     assert!(body.ends_with('\n'));
 }
 
@@ -2354,6 +2377,138 @@ async fn a_rejected_reload_leaves_the_running_service_in_place() {
         .await
         .unwrap();
     assert_eq!(still_serving.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+/// A process started with a listener override: the running service was built
+/// for `0.0.0.0` with TLS, while the file on disk declares `127.0.0.1`.
+///
+/// This is the shape `amatl serve --bind 0.0.0.0` produces, because the
+/// override is applied to the running configuration and never written back to
+/// the file. Every check that trusts the document's declared `bind` is
+/// therefore checking an address this process is not listening on.
+async fn listener_override_app(body: &str) -> (Router, std::path::PathBuf) {
+    let nonce = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let path = std::env::temp_dir().join(format!(
+        "amatl-server-listener-{}-{nonce}.toml",
+        std::process::id()
+    ));
+    std::fs::write(&path, body).unwrap();
+    let mut config = amatl_core::Config::default();
+    config.server.bind = "0.0.0.0".into();
+    config.server.tls.cert_path = Some("cert.pem".into());
+    config.server.tls.key_path = Some("key.pem".into());
+    config.validate().unwrap();
+    let router = build_router_with_config_path(
+        AmatlService::new(config, true).await,
+        Some(TOKEN.into()),
+        Some(path.clone()),
+    )
+    .await
+    .unwrap();
+    (router, path)
+}
+
+#[tokio::test]
+async fn reload_refuses_a_document_that_is_unsafe_for_the_effective_listener() {
+    // The file declares loopback, which is all `Config::validate` can see, but
+    // the process serves every interface. Flipping `no_auth` on must be
+    // refused: accepting it would publish an unauthenticated service.
+    let base = "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\n";
+    let (app, path) = listener_override_app(base).await;
+    assert_eq!(
+        app.clone()
+            .oneshot(request("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::UNAUTHORIZED
+    );
+
+    std::fs::write(
+        &path,
+        "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\nno_auth = true\n",
+    )
+    .unwrap();
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+
+    // Unchanged on both counts: still refusing anonymous callers, still
+    // serving authenticated requests.
+    assert_eq!(
+        app.clone()
+            .oneshot(request("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::UNAUTHORIZED
+    );
+    assert_eq!(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::OK
+    );
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn pending_server_patch_cannot_weaken_the_effective_listener() {
+    // The same divergence, reached the way an operator reaches it: a reload of
+    // a document that declares loopback with TLS and authentication is
+    // accepted, and leaves the running configuration disagreeing with the
+    // socket. The `[server]` patch must still be judged against the socket.
+    let base = "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\n\n\
+                [server.tls]\ncert_path = \"cert.pem\"\nkey_path = \"key.pem\"\n";
+    let (app, path) = listener_override_app(base).await;
+    let reloaded = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(reloaded.status(), StatusCode::OK);
+
+    let response = app
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"no_auth": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "config_rejected"
+    );
+
+    // Nothing was staged for the next restart either.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains("no_auth"));
     let _ = std::fs::remove_file(path);
 }
 
@@ -3582,6 +3737,52 @@ async fn unknown_paths_are_admin_protected_and_public_surfaces_stay_public() {
         .await
         .unwrap();
     assert_eq!(admin.status(), StatusCode::NOT_FOUND);
+}
+/// The public-surface exemption is read-only. It is decided *before* routing,
+/// so exempting a path by itself would publish a future `POST` on one of those
+/// paths — or any state-changing route added under an asset path — as
+/// unauthenticated. A mutating method now falls through to the same fail-closed
+/// default as an undeclared path, while the read-only methods those routes
+/// actually serve stay public.
+#[tokio::test]
+async fn mutating_methods_do_not_inherit_the_public_surface_exemption() {
+    let app = app().await;
+
+    for path in ["/health", "/metrics", "/app.js"] {
+        let response = app
+            .clone()
+            .oneshot(request(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::OK,
+            "GET {path} must stay public"
+        );
+    }
+
+    for (method, path) in [
+        (Method::POST, "/health"),
+        (Method::DELETE, "/metrics"),
+        (Method::POST, "/"),
+        (Method::PATCH, "/app.js"),
+    ] {
+        let response = app
+            .clone()
+            .oneshot(
+                request(path)
+                    .method(method.clone())
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::UNAUTHORIZED,
+            "{method} {path} must not be public"
+        );
+    }
 }
 
 // ── Provider governance ficha, inference and answer advanced fields ───

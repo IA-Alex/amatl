@@ -171,6 +171,15 @@ struct AppState {
     /// one. Without it a reload revalidates and rebuilds from the running
     /// configuration, which still resets provider construction and breakers.
     config_path: Option<PathBuf>,
+    /// Address this process is actually listening on, captured when the router
+    /// was built. `--bind`/`--port` override the configuration file and are
+    /// never written back to it, so a document re-read later can declare a
+    /// `bind` that is not the socket serving traffic. Every configuration
+    /// accepted into the running process — a reload, or a `[server]` patch —
+    /// is validated against this address instead of the declared one.
+    effective_bind: IpAddr,
+    /// Port this process is actually listening on; see `effective_bind`.
+    effective_port: u16,
     /// Serializes every config-file write in this process. Two concurrent
     /// admin PATCHes would otherwise read the same file text and each write
     /// back their own version, silently dropping the other's change (a lost
@@ -223,6 +232,39 @@ impl AppState {
             }
             None => current.config().clone(),
         };
+        // The listening address is fixed at startup, so the reloaded document
+        // is checked against the socket that is actually serving, never against
+        // the `bind` it declares. `Config::load_optional` has already accepted
+        // the document as written; without this second check a file declaring
+        // loopback could flip `no_auth` on a process listening on every
+        // interface, and the reload would publish an unauthenticated service.
+        if let Err(error) = config.validate_server_for_listener(self.effective_bind) {
+            tracing::warn!(
+                target: "amatl::http",
+                event = "reload_listener_policy_rejected",
+                effective_bind = %self.effective_bind,
+                declared_bind = %config.server.bind,
+                error = %error,
+                "configuration is invalid for the listening address; refusing to reload so the running service is unchanged"
+            );
+            return Err(ServiceError::Configuration);
+        }
+        // A reload cannot move the listener, so a document that declares a
+        // different bind/port is applied everywhere except there. Say so,
+        // rather than letting the running configuration look like it moved.
+        if config.server.bind.parse::<IpAddr>().ok() != Some(self.effective_bind)
+            || config.server.port != self.effective_port
+        {
+            tracing::warn!(
+                target: "amatl::http",
+                event = "reload_listener_address_ignored",
+                effective_bind = %self.effective_bind,
+                effective_port = self.effective_port,
+                declared_bind = %config.server.bind,
+                declared_port = config.server.port,
+                "the listening address is fixed at startup; restart the process to apply the declared bind and port"
+            );
+        }
         // Credentials are part of the reloaded configuration: rotating a token
         // or retiring a client must not need a restart either. Rebuilt before
         // the swap so a bad credential set changes nothing.
@@ -500,12 +542,28 @@ fn digest_from_hex(value: &str) -> Option<[u8; 32]> {
 /// Public surfaces are therefore explicit, so the list below is the complete
 /// set of paths reachable without a credential.
 fn required_scope(method: &Method, path: &str) -> Option<Scope> {
-    let mutating = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    // `PATCH` mutates as surely as `POST`/`PUT`/`DELETE`. Listing it keeps the
+    // `/history`/`/saved` arm below from granting a read scope to a method that
+    // edits state, should one ever be registered on those paths.
+    let mutating = matches!(
+        *method,
+        Method::POST | Method::PUT | Method::PATCH | Method::DELETE
+    );
     // Public surfaces, explicitly listed so the fail-closed default below
     // cannot silently lock them down: liveness probes, the metrics scrape,
     // and the UI assets served by the fallback handler. `amatl_ui::asset` is
     // the same table `static_asset` serves, so the two cannot drift.
-    if matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some() {
+    //
+    // Read-only methods only. These paths are registered as GETs and the
+    // fallback serves static bytes, so a mutating method on one of them has no
+    // handler today — but the exemption is decided *before* routing, so
+    // exempting by path alone would silently publish a future `POST /health`
+    // (or any state-changing route added under an asset path) as
+    // unauthenticated. Restricting the exemption to GET/HEAD leaves every other
+    // method with the same fail-closed default as an undeclared path.
+    if matches!(*method, Method::GET | Method::HEAD)
+        && (matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some())
+    {
         return None;
     }
     match path {
@@ -685,6 +743,16 @@ pub async fn build_router_with_reload(
 ) -> Result<(Router, ReloadHandle), ServerError> {
     service.config().validate()?;
     let server = service.config().server.clone();
+    // The address this process was actually built for, captured before the
+    // service is moved behind its handle. `--bind`/`--port` override the file
+    // and are never written back to it, so this is the only address a later
+    // configuration can be trusted against (see `AppState::reload` and
+    // `update_server_pending_config`).
+    let effective_bind = server
+        .bind
+        .parse::<IpAddr>()
+        .map_err(|error| ServerError::Configuration(Box::new(error)))?;
+    let effective_port = server.port;
     let https = server.tls.cert_path.is_some();
     let clients = resolve_clients(service.config(), explicit_token.clone())?;
     let allowed_origins = effective_origins(service.config(), https);
@@ -723,6 +791,8 @@ pub async fn build_router_with_reload(
     let state = AppState {
         service: handle,
         config_path,
+        effective_bind,
+        effective_port,
         security: Arc::new(RwLock::new(security)),
         rate_limiter: Arc::new(Mutex::new(RateLimiter {
             windows: BTreeMap::new(),
@@ -2494,6 +2564,16 @@ async fn update_server_pending_config(
     if candidate.validate().is_err() {
         return api_error(ErrorCode::ConfigRejected);
     }
+    // `candidate.validate` reads the document's own `bind`; the pending change
+    // must also be safe for the address this process is really serving, or a
+    // file declaring loopback would let `no_auth` be staged under a listener
+    // that is on every interface.
+    if candidate
+        .validate_server_for_listener(state.effective_bind)
+        .is_err()
+    {
+        return api_error(ErrorCode::ConfigRejected);
+    }
     if amatl_core::Config::set_server_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
@@ -2763,62 +2843,70 @@ fn latency_metrics(surface: &str, window: &LatencyWindow) -> String {
     )
 }
 
-/// Per-source availability and observed value, labelled by source name.
+/// Aggregate source health, deliberately without source names.
+///
+/// `/metrics` is public like `/ready`, and `/ready` is coarse for exactly this
+/// reason: which sources a deployment declares, and which of them are failing,
+/// names its internals and stays behind `/status`, which requires the `read`
+/// scope. Per-source labels would hand that inventory to an unauthenticated
+/// scraper, so this publishes counts plus the worst observed value: enough to
+/// alert on "a source is down or degraded" without naming it.
 fn source_metrics(service: &AmatlService) -> String {
     let Ok(summaries) = service.provider_summaries() else {
         return String::new();
     };
     let snapshots = service.source_snapshots();
     let circuits = service.circuit_snapshots();
-    let mut body = String::from(
-        "# HELP amatl_source_available Whether a declared source is available (1) or not (0).\n\
-         # TYPE amatl_source_available gauge\n",
+    let declared = summaries.len();
+    let available = summaries
+        .iter()
+        .filter(|summary| summary.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    let circuit_open = summaries
+        .iter()
+        .filter(|summary| {
+            circuits.iter().any(|snapshot| {
+                snapshot.provider == summary.name
+                    && snapshot.state == amatl_core::CircuitState::Open
+            })
+        })
+        .count();
+    // Worst case across the sources that have observations. Absent when no
+    // source has any, rather than publishing a fabricated zero — the same rule
+    // the per-source series used.
+    let worst_success = snapshots
+        .iter()
+        .filter(|snapshot| snapshot.sample > 0)
+        .map(|snapshot| snapshot.success_rate)
+        .reduce(f64::min);
+    let worst_latency = snapshots
+        .iter()
+        .filter(|snapshot| snapshot.sample > 0)
+        .map(|snapshot| snapshot.average_latency_ms)
+        .reduce(f64::max);
+    let mut body = format!(
+        "# HELP amatl_sources_declared Number of sources this deployment declares.\n\
+         # TYPE amatl_sources_declared gauge\n\
+         amatl_sources_declared {declared}\n\
+         # HELP amatl_sources_available Declared sources currently available.\n\
+         # TYPE amatl_sources_available gauge\n\
+         amatl_sources_available {available}\n\
+         # HELP amatl_sources_circuit_open Declared sources currently in circuit cooldown.\n\
+         # TYPE amatl_sources_circuit_open gauge\n\
+         amatl_sources_circuit_open {circuit_open}\n\
+         # HELP amatl_sources_success_rate_min Worst observed success ratio across sources with observations in the telemetry window.\n\
+         # TYPE amatl_sources_success_rate_min gauge\n\
+         # HELP amatl_sources_latency_ms_max Worst observed average latency across sources with observations in the telemetry window.\n\
+         # TYPE amatl_sources_latency_ms_max gauge\n"
     );
-    let mut value_block = String::from(
-        "# HELP amatl_source_success_rate Observed success ratio per source in the telemetry window.\n\
-         # TYPE amatl_source_success_rate gauge\n",
-    );
-    let mut latency_block = String::from(
-        "# HELP amatl_source_latency_ms Observed average latency per source in the telemetry window.\n\
-         # TYPE amatl_source_latency_ms gauge\n",
-    );
-    let mut circuit_block = String::from(
-        "# HELP amatl_source_circuit_open Whether a source is currently in circuit cooldown.\n\
-         # TYPE amatl_source_circuit_open gauge\n",
-    );
-    for summary in summaries {
-        let label = escape_label(&summary.name);
-        let available = u8::from(summary.status == amatl_core::ProviderSurfaceStatus::Available);
+    if let Some(success_rate) = worst_success {
         body.push_str(&format!(
-            "amatl_source_available{{source=\"{label}\"}} {available}\n"
+            "amatl_sources_success_rate_min {success_rate:.4}\n"
         ));
-        let open = u8::from(
-            circuits
-                .iter()
-                .find(|snapshot| snapshot.provider == summary.name)
-                .is_some_and(|snapshot| snapshot.state == amatl_core::CircuitState::Open),
-        );
-        circuit_block.push_str(&format!(
-            "amatl_source_circuit_open{{source=\"{label}\"}} {open}\n"
-        ));
-        if let Some(snapshot) = snapshots
-            .iter()
-            .find(|snapshot| snapshot.provider == summary.name)
-            .filter(|snapshot| snapshot.sample > 0)
-        {
-            value_block.push_str(&format!(
-                "amatl_source_success_rate{{source=\"{label}\"}} {:.4}\n",
-                snapshot.success_rate
-            ));
-            latency_block.push_str(&format!(
-                "amatl_source_latency_ms{{source=\"{label}\"}} {:.1}\n",
-                snapshot.average_latency_ms
-            ));
-        }
     }
-    body.push_str(&circuit_block);
-    body.push_str(&value_block);
-    body.push_str(&latency_block);
+    if let Some(latency) = worst_latency {
+        body.push_str(&format!("amatl_sources_latency_ms_max {latency:.1}\n"));
+    }
     body
 }
 
@@ -2868,20 +2956,6 @@ async fn cache_metrics(service: &AmatlService) -> String {
         telemetry.persistence_failures,
         telemetry.in_memory_observations,
     )
-}
-
-/// Escape a Prometheus label value; source names are configuration-controlled
-/// but the exposition format must stay parseable regardless.
-fn escape_label(value: &str) -> String {
-    value
-        .chars()
-        .flat_map(|character| match character {
-            '\\' => vec!['\\', '\\'],
-            '"' => vec!['\\', '"'],
-            '\n' => vec!['\\', 'n'],
-            other => vec![other],
-        })
-        .collect()
 }
 
 async fn static_asset(uri: Uri) -> Response {

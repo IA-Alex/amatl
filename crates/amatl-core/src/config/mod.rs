@@ -218,6 +218,14 @@ impl Default for Config {
 /// reader — including a concurrent `POST /reload` — therefore never observes a
 /// truncated file, and a crash mid-write cannot corrupt the only copy the way a
 /// truncating `std::fs::write` can.
+///
+/// The rename publishes the *temp* file's permissions, so this also carries the
+/// target's own mode across: an operator who hardened the file (`chmod 600
+/// amatl.toml`) must not have it widened back to the umask default — typically
+/// `0644` — just because an admin endpoint flipped one field. The temp file is
+/// created private and only takes that mode immediately before the rename, so
+/// configuration is never group- or world-readable while it is being written.
+/// A target that does not exist yet stays private (`0600`).
 pub(crate) fn write_config_document(
     path: &Path,
     document: &toml_edit::DocumentMut,
@@ -225,9 +233,44 @@ pub(crate) fn write_config_document(
     use std::io::Write;
     let temp = path.with_extension(format!("tmp.{}", std::process::id()));
     let mut file = std::fs::File::create(&temp)?;
+    set_private_mode(&temp)?;
     file.write_all(document.to_string().as_bytes())?;
     file.sync_all()?;
+    copy_target_mode(path, &temp)?;
     std::fs::rename(&temp, path)?;
+    Ok(())
+}
+
+/// Restrict `path` to owner-only access.
+#[cfg(unix)]
+fn set_private_mode(path: &Path) -> Result<(), ConfigError> {
+    use std::os::unix::fs::PermissionsExt;
+    std::fs::set_permissions(path, std::fs::Permissions::from_mode(0o600))?;
+    Ok(())
+}
+
+#[cfg(not(unix))]
+fn set_private_mode(_path: &Path) -> Result<(), ConfigError> {
+    Ok(())
+}
+
+/// Give `temp` the mode `target` already has, so the rename that publishes it
+/// is not also a permission change. A target that does not exist yet keeps
+/// `temp`'s private mode.
+#[cfg(unix)]
+fn copy_target_mode(target: &Path, temp: &Path) -> Result<(), ConfigError> {
+    use std::os::unix::fs::PermissionsExt;
+    let mode = match std::fs::metadata(target) {
+        Ok(metadata) => metadata.permissions().mode() & 0o7777,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => 0o600,
+        Err(error) => return Err(error.into()),
+    };
+    std::fs::set_permissions(temp, std::fs::Permissions::from_mode(mode))?;
+    Ok(())
+}
+
+#[cfg(not(unix))]
+fn copy_target_mode(_target: &Path, _temp: &Path) -> Result<(), ConfigError> {
     Ok(())
 }
 
@@ -520,6 +563,24 @@ impl Config {
 
         self.validate_server(bind)?;
         Ok(())
+    }
+
+    /// Validate the HTTP server section against the address this process is
+    /// actually listening on, rather than the one the document declares.
+    ///
+    /// [`Self::validate`] can only see `server.bind` as written in the file,
+    /// but `--bind`/`--port` override the file at startup and are never written
+    /// back to it: the process then serves an address the document does not
+    /// mention, and the document is free to describe a listener that does not
+    /// exist. Checking a would-be configuration against the effective address
+    /// closes that gap — a document declaring `127.0.0.1` while the process
+    /// serves `0.0.0.0` can no longer carry `no_auth = true` (or drop the TLS
+    /// pair) and be applied as an unauthenticated service on every interface.
+    ///
+    /// Used by `amatl-server` wherever a configuration is about to be accepted
+    /// into a running process: `AppState::reload` and the `[server]` patch.
+    pub fn validate_server_for_listener(&self, bind: std::net::IpAddr) -> Result<(), ConfigError> {
+        self.validate_server(bind)
     }
 }
 
@@ -1231,6 +1292,32 @@ mod tests {
 
         let reparsed = Config::from_toml(&written).unwrap();
         assert!(reparsed.answer.enabled);
+    }
+
+    /// The atomic replace publishes the temp file's permissions, so a file the
+    /// operator hardened must survive every toggle an admin endpoint can flip.
+    /// Before this was carried across, the first write reset the mode to the
+    /// umask default (`0644`), silently widening a `0600` configuration.
+    #[cfg(unix)]
+    #[test]
+    fn config_write_preserves_the_operator_file_mode() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-mode-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n[answer]\nenabled = false\n").unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
+
+        Config::set_answer_enabled(&path, true).unwrap();
+
+        let mode = std::fs::metadata(&path).unwrap().permissions().mode() & 0o777;
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert_eq!(mode, 0o600, "the write must keep the operator's mode");
+        assert!(written.contains("enabled = true"));
     }
 
     #[test]
