@@ -47,6 +47,39 @@ const ADVISORY_FLOORS: &[(&str, &str, &str)] = &[
      non-default `brotli` feature, which this graph does not enable: the locked \
      feature set is ring,std,tls12.",
     ),
+    (
+        "rustls-webpki",
+        "0.103.16",
+        "RUSTSEC-2026-0382 (certificate verification can accept a path through \
+     distrusted emSign intermediates whose private keys are now well known; \
+     fixed in 0.103.16), published 2026-10-20. In the primary TLS path: \
+     `rustls 0.23.46` -> `axum-server` for the listener and `hyper-rustls` -> \
+     `reqwest` for outbound HTTPS, so it is compiled into both the server and \
+     the client builds.",
+    ),
+    (
+        "tokio",
+        "1.53.3",
+        "RUSTSEC-2026-0386 (the safe `AsyncFd::new`, `with_interest`, `try_new` \
+     and `try_with_interest` constructors accept any `T: AsRawFd`, so a \
+     duplicated-then-closed descriptor can be deregistered and freed while \
+     `epoll` still holds it - a use-after-free when readiness fires; fixed in \
+     1.53.3 on this line, and in 1.51.6 on the 1.51 line), published \
+     2026-10-13. The async runtime of every crate in the workspace. The \
+     workspace never calls `AsyncFd`, so the deprecation the fix introduces \
+     reaches no call site here.",
+    ),
+    (
+        "webpki-roots",
+        "1.0.10",
+        "RUSTSEC-2026-0381 (the bundled trust store still contains `emSign ECC \
+     Root CA - G3`, so certificate paths through distrusted emSign \
+     intermediates are trusted; fixed in 1.0.10, which removes the root), \
+     published 2026-10-19. Trust store for `hyper-rustls` -> `reqwest`. The \
+     advisory marks the 0.26.11 compatibility package unaffected because it \
+     holds no trust store of its own and re-exports the roots from its \
+     separately resolved 1.x parent, so the floor has to guard that parent.",
+    ),
 ];
 
 /// The workspace lockfile, or `None` outside a workspace checkout (a published

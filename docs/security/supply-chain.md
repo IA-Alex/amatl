@@ -22,14 +22,30 @@ generation (`.github/workflows/ci.yml`). An advisory reported by `cargo audit`
 fails the job; it is not silently allowlisted in repository configuration.
 
 Independently of the network-dependent audit, `cargo test --workspace` asserts a
-floor for every crate whose locked version carries a RustSec advisory
-(`crates/amatl-core/tests/supply_chain_contract.rs`). The test reads the
+floor for every **remediated** advisory whose fixed release the locked graph can
+reach (`crates/amatl-core/tests/supply_chain_contract.rs`). The test reads the
 workspace `Cargo.lock`, the same file CI installs with `--locked`, so it fails
 offline on every host — including the macOS/Windows jobs that never run `cargo
 audit`. Each entry records the advisory IDs and their fixed releases next to the
 version, so the number is re-derived from the advisory text instead of trusted;
 removing a crate from the graph requires deleting its entry deliberately. The
 floor is a minimum, never a pin: a newer compatible release passes.
+
+An advisory whose fix no compatible release reaches is **not** a floor: asserting
+one would redden the suite on every host without remediating anything. It is
+recorded as an open finding below, and the authoritative gate stays red until it
+is remediated or waived by a written ADR. This offline test guards the advisories
+already closed; it reads a lockfile, never the RustSec database, so it cannot
+discover an advisory that no floor names yet. It is a regression guard, not an
+equivalent of the audit.
+
+Three advisories were remediated on 2026-10-25 and are now floors:
+RUSTSEC-2026-0382 (`rustls-webpki` 0.103.16), RUSTSEC-2026-0381 (`webpki-roots`
+1.0.10) and RUSTSEC-2026-0386 (`tokio` 1.53.3). The first two entered the RustSec
+database on 2026-10-19 and 2026-10-20 — at or after the date the open list below
+was written — and all three sat in the locked graph, the two TLS ones in the
+primary HTTPS path, while this document still described a `zip`-only audit. The
+floors are what keeps that gap from reopening silently.
 
 The accountable security role is repository owner `@IA-Alex`. The response SLA
 in `SECURITY.md` requires acknowledgement in 1/2/5/10 business days and targets
@@ -44,10 +60,12 @@ approve it explicitly; no exception is pre-approved.
 ## Open findings
 
 `cargo audit` scans every package in `Cargo.lock`; `cargo deny check` resolves
-the default-feature graph. Dependencies that only the optional
+the default-feature graph and classifies severity differently — `unsound` is an
+error that fails the job, while `cargo audit` reports it as a warning. Neither
+gate subsumes the other: dependencies that only the optional
 `experimental-local-embeddings` feature pulls in are visible to the audit and
-invisible to `cargo deny`, and the audit is the stricter of the two. As of
-2026-10-19 the workspace audit reports three open vulnerabilities in
+invisible to `cargo deny`, and the two disagree on severity, so both are read.
+As of 2026-10-25 the workspace audit reports three open vulnerabilities in
 `zip 7.2.0`, reached only through that feature (`amatl-core` →
 `candle-core 0.9.2` → `zip`):
 
@@ -74,7 +92,10 @@ from the workspace lockfile, the way `experiments/embedding-relevance` is
 excluded from the workspace and keeps its own lockfile. Warnings are separate:
 `paste 1.0.15` (unmaintained, same optional stack) and `chacha20 0.10.1`
 (yanked, via `rand 0.10.2` → `rmcp 3.1.2`) are reviewer judgement under the
-policy above, not failures.
+policy above; `cargo deny check` passes with both. The class decides, not the
+entry: `unmaintained` and `yanked` warn, `unsound` is an error. `tokio 1.53.1`
+failed `cargo deny check` that way until it was remediated to `1.53.3` on
+2026-10-25.
 
 ## SBOM
 
