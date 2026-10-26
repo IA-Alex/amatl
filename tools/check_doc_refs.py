@@ -83,12 +83,24 @@ FROZEN = {
     # they cite are what was true when they were written, and each document
     # carries a status note naming where the code lives now, so rewriting the
     # paths would falsify the record.
-    ("docs/experiments/candle-e2e-4c.md", "crates/amatl-core/src/experimental_embeddings/mod.rs"),
-    ("docs/experiments/candle-e2e-4c.md", "crates/amatl-core/tests/experimental_embedding_latency.rs"),
+    (
+        "docs/experiments/candle-e2e-4c.md",
+        "crates/amatl-core/src/experimental_embeddings/mod.rs",
+    ),
+    (
+        "docs/experiments/candle-e2e-4c.md",
+        "crates/amatl-core/tests/experimental_embedding_latency.rs",
+    ),
     ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/mod.rs"),
     ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/candle.rs"),
-    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/model_config.rs"),
-    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/pipeline.rs"),
+    (
+        "docs/experiments/candle-integration-4d.md",
+        "experimental_embeddings/model_config.rs",
+    ),
+    (
+        "docs/experiments/candle-integration-4d.md",
+        "experimental_embeddings/pipeline.rs",
+    ),
     # Host-side SearXNG files captured during a campaign: the SearXNG install
     # and a rollback snapshot under /tmp, neither of which the repository owns.
     ("docs/testing/searxng-characterization.md", "/etc/searxng/settings.yml"),

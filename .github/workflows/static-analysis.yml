@@ -16,9 +16,11 @@ name: static-analysis
 # re-checking a citation when the code it points at moves.
 #
 # The remaining steps are advisory because their baselines are not zero yet:
-# `ruff format --check` (52 files would be rewritten today) and semgrep, which
-# reports style-adjacent noise in a test-rich checkout. They run with
-# `continue-on-error: true` and publish a summary instead of failing the job.
+# `ruff format --check` (52 of the 54 Python files in `tools/` would be rewritten,
+# as of the 2026-10-25 baseline — a number that drifts silently, so re-measure it
+# before quoting it) and semgrep, which reports style-adjacent noise in a
+# test-rich checkout. They run with `continue-on-error: true` and publish a
+# summary instead of failing the job.
 #
 # ast-grep is deliberately absent: without a project ruleset it can only produce
 # the same style noise ruff already reports. It stays a local/agent tool until

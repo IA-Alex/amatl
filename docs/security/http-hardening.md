@@ -30,20 +30,20 @@ permit same-origin and embedded data; forms stay same-origin. No `unsafe-inline`
 `X-Frame-Options: DENY`, and `Cache-Control: no-store` unless an asset declares
 its own cache policy. HTTPS adds `Strict-Transport-Security:
 max-age=31536000; includeSubDomains` (`amatl-ui/src/lib.rs:39-53`,
-`amatl-server/src/lib.rs:3266-3286`).
+`amatl-server/src/lib.rs:3275-3295`).
 
 ## Host, Origin, CORS, and methods
 
 - Default hosts: `127.0.0.1`, `localhost`, `[::1]`; values must be exact HTTP
   authorities without wildcards (`config/server.rs:129,456-464`).
 - An incoming `Host` is mandatory, structurally parsed, and matched exactly by
-  authority or host (`amatl-server/src/lib.rs:3387-3407`).
+  authority or host (`amatl-server/src/lib.rs:3396-3416`).
 - Explicit Origins must be root HTTP(S) origins without query/fragment. When
   none are configured, origins are derived from scheme + allowed host + port
-  (`config/server.rs:465-475`, `amatl-server/src/lib.rs:3452-3463`).
+  (`config/server.rs:465-475`, `amatl-server/src/lib.rs:3461-3472`).
 - CORS allows only configured origins, GET/POST/PATCH/DELETE/OPTIONS, and
   Authorization, Content-Type, and Accept headers
-  (`amatl-server/src/lib.rs:3465-3483`).
+  (`amatl-server/src/lib.rs:3474-3492`).
 
 ## Authentication and exposure matrix
 
@@ -53,13 +53,13 @@ exemption is declared per path *and* method in `required_scope`
 (`amatl-server/src/lib.rs:544-642`), so a mutating method on one of those paths
 does not inherit it and lands on the same fail-closed default as an undeclared
 route. Tokens are read from `server.token_env`, must be at least 32 bytes, and
-are compared in constant time (`amatl-server/src/lib.rs:53,459-521,3376-3385`).
+are compared in constant time (`amatl-server/src/lib.rs:53,459-521,3385-3394`).
 
 `/metrics` is deliberately coarse for the same reason `/ready` is: it publishes
 request counters, latency quantiles, cache/storage gauges and *aggregate* source
 counts, never source names or per-source values. Which sources a deployment
 declares is deployment-internal data and stays behind `/status`, which requires
-the `read` scope (`amatl-server/src/lib.rs:2721-2769,2854-2911`).
+the `read` scope (`amatl-server/src/lib.rs:2721-2778,2863-2920`).
 
 | Bind | `no_auth` | TLS pair | Valid configuration | Meaning |
 |---|---:|---:|---:|---|
@@ -105,13 +105,13 @@ Authorization header. The limit applies before authentication and also covers
 public routes; invalid credentials cannot create new buckets. Expired windows
 are purged periodically rather than scanning on every request. Limits are per
 process and do not trust forwarding headers
-(`amatl-server/src/lib.rs:3425-3451`).
+(`amatl-server/src/lib.rs:3434-3460`).
 
 Rejected headers/bodies, Host/Origin failures, rate limiting, failed
 authentication and request timeouts emit structured `amatl::security` events.
 They include only a stable event code, normalized path and socket IP; Host,
 Origin and credential values are deliberately omitted
-(`amatl-server/src/lib.rs:2975-3141,3143-3240`).
+(`amatl-server/src/lib.rs:2984-3150,3152-3249`).
 
 Every application response receives a fresh `X-Request-ID` made from a
 process-local sequence and timestamp. Incoming values are not reused. The ID is

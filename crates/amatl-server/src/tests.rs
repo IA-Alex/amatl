@@ -5465,3 +5465,229 @@ fn server_error_configuration_preserves_the_source() {
     assert!(message.contains("bad config"), "message was: {message}");
     assert!(std::error::Error::source(&wrapped).is_some());
 }
+
+/// Readiness counts *available* sources, not usable ones, and the difference is
+/// observable: a single-source deployment whose only source is `available` but
+/// has its circuit open answers `503` with `sources_available` still at `1`.
+/// `docs/operacion.md` states the rule for operators, and this test pins it so a
+/// later "cleanup" of the count cannot silently change what the field means.
+///
+/// The helpers stay next to the only test that uses them — and at the end of the
+/// file, like `FailingFactory` in `amatl-core` — so the line ranges cited by
+/// `docs/security/threat-model.md` and `docs/security/asvs-checklist.md` keep
+/// resolving to the tests they name.
+#[tokio::test]
+async fn ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit() {
+    let router = failing_archive_app().await;
+    // The same deployment is ready before the first failure, so the assertions
+    // below isolate the circuit breaker and nothing else.
+    let before = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(before.status(), StatusCode::OK);
+    assert_eq!(json_body(before).await["sources_available"], 1);
+
+    let search = router
+        .clone()
+        .oneshot(authorized("/search?q=rust").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(search.status(), StatusCode::OK);
+    assert_eq!(
+        json_body(search).await["providers_failed"],
+        json!(["custom_archive"])
+    );
+
+    let after = router
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(after.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let body = json_body(after).await;
+    assert_eq!(body["status"], "degraded");
+    // The count still reports the surface status `/status` shows for the source,
+    // so it is deliberately *not* the readiness predicate: gate on the status
+    // code, or on `status`, never on this field.
+    assert_eq!(body["sources_available"], 1);
+}
+
+/// A deployment with exactly one enabled source, governed, and always failing.
+/// It is registered under a name no shipped factory claims, so the search never
+/// leaves the process — it only has to trip the circuit breaker.
+async fn failing_archive_app() -> Router {
+    let mut config = amatl_core::Config::default();
+    config
+        .providers
+        .declare("custom_archive", approved_archive_record());
+    config.providers.enabled = vec!["custom_archive".into()];
+    config.circuit_breaker.failure_threshold = 1;
+    config.circuit_breaker.open_seconds = 600;
+    config.validate().unwrap();
+    build_router(
+        AmatlService::with_registry(
+            config,
+            false,
+            amatl_core::ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await,
+        Some(TOKEN.into()),
+    )
+    .await
+    .unwrap()
+}
+
+/// Governance record that satisfies the runtime approval gate today.
+fn approved_archive_record() -> amatl_core::ProviderRuntimeConfig {
+    amatl_core::ProviderRuntimeConfig {
+        adapter_version: Some("archive-v1".into()),
+        approval_status: amatl_core::ApprovalStatus::Approved,
+        reviewed_at: Some(today_iso()),
+        reviewer: Some("owner".into()),
+        terms_url: Some("https://archive.invalid/terms".into()),
+        terms_version_or_date: Some("2026-08-01".into()),
+        allowed_access_method: Some("official_api".into()),
+        plan_or_contract: Some("contract-1".into()),
+        rate_limit: Some("1 qps".into()),
+        cost_model: Some("free".into()),
+        data_handling_notes: Some("no cache".into()),
+        operational_risk: Some("none".into()),
+        ..amatl_core::ProviderRuntimeConfig::default()
+    }
+}
+
+/// Same name as the record above, but every search fails.
+struct FailingFactory;
+
+impl amatl_core::ProviderFactory for FailingFactory {
+    fn name(&self) -> &str {
+        "custom_archive"
+    }
+
+    fn requires_credential(&self) -> bool {
+        false
+    }
+
+    fn build(
+        &self,
+        context: &amatl_core::ProviderBuildContext<'_>,
+    ) -> Arc<dyn amatl_core::Provider> {
+        Arc::new(amatl_core::MockProvider::new(
+            context.name,
+            amatl_core::MockBehavior::Failure(amatl_core::ProviderErrorKind::Unavailable),
+        ))
+    }
+}
+
+/// `amatl_sources_available` and `/ready`'s `sources_available` are one quantity
+/// published on two surfaces, and the relation to `amatl_sources_declared` is
+/// what an alert has to get right: the *declared* gauge counts every source the
+/// deployment declares — including the ones the operator left disabled, which
+/// report `Unavailable` with `provider_disabled` — while the *available* gauge
+/// counts only those whose surface status is `available`.
+///
+/// So `declared - available` is not an incident count. On a single-source
+/// deployment it is two by configuration, and alerting on the difference pages
+/// the operator for a decision they made on purpose. `docs/operacion.md` states
+/// the relation for operators; this test pins both numbers against one
+/// deployment so neither gauge can drift into the other's meaning.
+#[tokio::test]
+async fn source_gauges_count_declared_sources_while_readiness_counts_available_ones() {
+    let router = searxng_only_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(ready.status(), StatusCode::OK);
+    assert_eq!(json_body(ready).await["sources_available"], 1);
+
+    let response = router
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let gauge = |name: &str| -> f64 {
+        body.lines()
+            .find_map(|line| line.strip_prefix(&format!("{name} ")))
+            .and_then(|value| value.trim().parse::<f64>().ok())
+            .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
+    };
+
+    // Three sources declared, one of them enabled and available: the two
+    // disabled ones are declared but never available, which is why the
+    // difference is a configuration choice and not a degradation.
+    assert_eq!(gauge("amatl_sources_declared"), 3.0);
+    assert_eq!(gauge("amatl_sources_available"), 1.0);
+    assert_eq!(gauge("amatl_sources_circuit_open"), 0.0);
+}
+
+/// `--mock` is a deployment the CLI ships, and it is the one place where the two
+/// surfaces of the source count disagree: `/ready` reports the mock sources the
+/// service actually searches with, while `/metrics` keeps reporting the declared
+/// ones. Measured on the isolated mock deployment below: `/ready` answers `200`
+/// with `"sources_available":2` and `/search` answers `200` — the deployment
+/// serves — while `/metrics` publishes `amatl_sources_declared 3` and
+/// `amatl_sources_available 0`, because the real sources are declared but cannot
+/// serve under `egress = "deny"`.
+///
+/// The divergence has the shape D2 removed from `/status` — a surface announcing
+/// that nothing can serve while `/search` succeeds — so it is pinned rather than
+/// fixed unilaterally: making `/metrics` mock-aware changes the value of a
+/// published metric, which needs an owner decision and its own consumer review.
+/// `docs/operacion.md` documents the case for operators.
+#[tokio::test]
+async fn mock_deployments_disagree_between_ready_and_the_source_gauges() {
+    let router = isolated_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(ready.status(), StatusCode::OK);
+    assert_eq!(json_body(ready).await["sources_available"], 2);
+
+    // The deployment really serves: the mock sources answer, which is what makes
+    // the zero published below a trap rather than a harmless default.
+    let search = router
+        .clone()
+        .oneshot(
+            authorized("/search")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"q":"rust"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(search.status(), StatusCode::OK);
+
+    let response = router
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 512 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let gauge = |name: &str| -> f64 {
+        body.lines()
+            .find_map(|line| line.strip_prefix(&format!("{name} ")))
+            .and_then(|value| value.trim().parse::<f64>().ok())
+            .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
+    };
+
+    assert_eq!(gauge("amatl_sources_declared"), 3.0);
+    assert_eq!(gauge("amatl_sources_available"), 0.0);
+}

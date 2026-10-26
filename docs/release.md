@@ -61,6 +61,40 @@ The generated binary is static musl. Native packages intentionally install the
 same verified binary, README, licenses and manual page; Trafilatura and Chromium
 remain optional runtime capabilities and are not package dependencies.
 
+## What each event runs, and what a local gate does not accredit
+
+A branch push, a pull request and an annotated tag are not equivalent events, and
+these workflows are not interchangeable triggers for one another:
+
+| Workflow | Runs on | Notes |
+|---|---|---|
+| `contract-gate` (`ci.yml`) | push, pull request, nightly cron at 03:00, manual | the workspace suite on Linux, macOS and Windows, plus `msrv`, `browser-e2e` and `trafilatura-integration`; `soak` runs only on cron or manual, because it is `#[ignore]`d in the per-push gate |
+| `static-analysis` | push/PR touching `tools/**`, `crates/**`, `docs/**`, `README.md`, `SECURITY.md`, plus a weekly cron and manual | Ruff over `tools/` and the `file:line` citation check are blocking; formatting and semgrep are advisory |
+| `codeql-invariants` | push/PR touching `crates/**` or `tools/codeql/**`, plus a weekly cron | path-filtered, so a `docs/`-only change never runs it |
+| `chromium-isolation` | push/PR touching `packaging/amatl-chromium-sandbox`, `crates/amatl-core/src/render.rs`, `crates/amatl-core/src/fetch.rs`, its own document or workflow, plus manual | Linux-only contract |
+| `provider-canary` | manual only | live provider calls are never made on push |
+| `release-candidate` | manual, push to `main` limited to `packaging/**` and the workflow file, tags matching `v*-rc.*` | builds and uploads a candidate artifact without publishing |
+| `publish-crates`, `publish-aur` | push of a stable tag matching `v[0-9]+.[0-9]+.[0-9]+`, plus manual dispatch | release candidates are excluded on purpose |
+
+Two consequences the procedure above depends on:
+
+- **A local green gate is not remote CI.** `cargo test --workspace` on one Linux
+  host runs none of the macOS/Windows jobs, Chrome WebDriver, MSRV, CodeQL or the
+  soak job. Each of those can be reproduced individually by running that job's own
+  commands — `CONTINUIDAD.md` records the exact commands, the pinned versions they
+  need and their results — but reproducing a command is not reproducing the run:
+  another runner, another cache and, on a Linux host, no macOS or Windows at all,
+  which leaves `cross-platform` as the one job no local command can accredit. The
+  evidence that a commit is releasable is the green `contract-gate` run for *that*
+  SHA on GitHub; a local transcript is a precondition, not a substitute.
+- **A tag is a publication, not a marker.** `publish-crates.yml` uploads to
+  crates.io, where a version can be yanked but never removed, and
+  `publish-aur.yml` replaces the package every Arch user installs once the AUR
+  package exists (`packaging/PKGBUILD` is the recipe, and the repository does not
+  claim the package until that submission happens). Neither is reversible, so
+  both stay behind an explicit owner decision; the manual dispatch path exists
+  for candidates, not as a shortcut around that decision.
+
 ## Native package validation
 
 The workflow builds:

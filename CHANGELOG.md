@@ -480,7 +480,82 @@ adapter/extractor versions are independent axes as well.
 - `clippy::single_element_loop` in `config/mod.rs` no longer fails
   `cargo clippy --workspace --all-targets --all-features -- -D warnings`: the
   one-element `for` over the paid providers became a named, reusable assertion
-  helper.
+- The documented readiness rule is stated as a table instead of a sentence,
+  because the sentence was read as "a deployment whose sources are all declared
+  and disabled is ready", and the two cases differ. `docs/operacion.md` now
+  spells out that one or more *enabled* sources with at least one usable answers
+  `200`, that enabled-but-unusable answers `503`, and that no enabled source
+  answers `503`: declaring and disabling sources is neither an incident nor
+  capacity.
+- Readiness counts *available* sources, not usable ones, and the two diverge
+  whenever a circuit is open, so `sources_available` can read `1` on a `503`
+  response. That was true by construction and undocumented; the rustdoc on the
+  `/ready` handler and `docs/operacion.md` now state it, and
+  `ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit`
+  pins it against a later "cleanup" of the count. The field's meaning is
+  deliberately unchanged: renaming or redefining it is a contract change that
+  needs its own consumer review.
+- The `file:line` citations into `crates/amatl-server/src/lib.rs` in
+  `docs/security/threat-model.md`, `docs/security/http-hardening.md` and
+  `docs/security/asvs-checklist.md` were re-anchored after the new rustdoc above
+  the `/ready` handler shifted that file by nine lines, so every citation still
+  resolves to the code it names.
+- The yanked `chacha20` 0.10.1 leaves the lockfile, at 0.10.2. The path is the
+  one the supply-chain notes already described (`chacha20` ← `rand 0.10.2` ←
+  `rmcp 3.1.2` ← `amatl-server` ← `amatl-cli`, per `cargo tree -i chacha20
+  --locked`), so this is the one-line `cargo update -p chacha20` the warning
+  class would have let a reviewer accept, not a dependency change. Evidence with
+  the real advisory database: `cargo audit` loads 1352 advisories, scans 382
+  locked dependencies and exits 0 with no yanked warning, and `cargo deny check`
+  answers `advisories ok, bans ok, licenses ok, sources ok` with no new `ignore`
+  entry — the `yanked` class stays a warning, there is simply nothing left in it.
+  `docs/security/supply-chain.md` no longer lists the case as an open warning.
+- `docs/release.md` records which event runs which workflow, because they are not
+  interchangeable: `contract-gate` runs on push, pull request, a nightly cron and
+  manually, with `soak` only on cron or dispatch; `static-analysis` and
+  `codeql-invariants` are path-filtered and also run weekly; `chromium-isolation`
+  is a Linux-only contract; `provider-canary` is manual-only;
+  `release-candidate` accepts a manual dispatch, a `packaging/**`-only push to
+  `main` and `v*-rc.*` tags; and `publish-crates`/`publish-aur` accept stable
+  `v[0-9]+.[0-9]+.[0-9]+` tags or a manual dispatch. The section states the two
+  rules the split implies: a local `cargo test --workspace` runs none of the
+  macOS/Windows, Chrome WebDriver, MSRV, CodeQL or soak jobs — those are
+  reproducible individually by running each job's own commands, which
+  `CONTINUIDAD.md` records, but reproducing a command is not reproducing the run
+  and no local command can accredit `cross-platform` on a Linux host — and a tag
+  is a publication rather than a marker — crates.io only yanks, the AUR replaces
+  the package every Arch user installs — so neither tags nor manual dispatches are
+  taken without a specific owner decision.
+- The `/metrics` source gauges and `/ready`'s `sources_available` are now
+  documented as the pair they are: `amatl_sources_declared` counts every declared
+  source including the disabled ones — which report `unavailable` with
+  `provider_disabled` — while `amatl_sources_available` counts only those whose
+  surface status is `available`, the same quantity `/ready` publishes in a real
+  deployment. So `declared − available` is not an incident count — it is two on a
+  single-source deployment by configuration — and `docs/operacion.md` says so
+  where operators read the readiness rule.
+  `source_gauges_count_declared_sources_while_readiness_counts_available_ones`
+  pins all three numbers against one deployment, so neither gauge can drift into
+  the other's meaning.
+- The one deployment where those two surfaces disagree is pinned too, because it
+  is a real trap rather than a hypothetical one: `amatl serve --mock` reports the
+  mock sources it searches with from `/ready` (`200`, `"sources_available":2` in
+  the isolated mock deployment) while `/metrics` keeps describing the declared
+  real sources (`amatl_sources_declared 3`, `amatl_sources_available 0`), so a
+  healthy mock deployment publishes `amatl_sources_available 0` and an
+  availability alert on that gauge would fire forever. It is the same shape D2
+  removed from `/status`, and it stays documented and pinned
+  (`mock_deployments_disagree_between_ready_and_the_source_gauges`) instead of
+  being silently aligned: making `/metrics` mock-aware changes the value of a
+  published metric, which needs its own consumer review.
+- `tools/check_doc_refs.py` is back in `ruff format`'s canonical shape, which
+  restores the format baseline the `static-analysis` comment quotes. `365b5836`
+  added the six candle experiment tuples in the compact one-line style while the
+  file's other tuples were already expanded, so the file stopped being formatted
+  and the advisory count read 53 files where the comment said 52. The reflow
+  touches no logic, the tool still answers `12 known-dead, 0 new` with exit 0,
+  and the workflow comment now dates the number it quotes so a future drift shows
+  up as a stale date instead of a silently false claim.
 
 ### Changed
 

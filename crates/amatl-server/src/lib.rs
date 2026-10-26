@@ -2727,6 +2727,15 @@ async fn health() -> Json<serde_json::Value> {
 ///
 /// Returns `503` when degraded so a load balancer can drain the instance
 /// without parsing the body.
+///
+/// `sources_available` is a *surface* count, not the readiness predicate: it
+/// counts the sources whose [`amatl_core::ProviderSurfaceStatus`] is
+/// `Available`, exactly the field `/status` reports per source. An enabled
+/// source whose circuit breaker is open still reports `Available` there while
+/// the service degrades, so a `503` response can carry
+/// `"sources_available":1`. The authoritative signal is the HTTP status code
+/// (or `status`), never this count; the divergence is deliberate and pinned by
+/// `ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit`.
 async fn ready(State(state): State<AppState>) -> Response {
     let Ok(status) = state.service().status().await else {
         return (

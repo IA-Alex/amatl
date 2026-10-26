@@ -140,9 +140,50 @@ describen el despliegue y sólo aparecen en `GET /status`, que exige el scope
 `read`. La persistencia desactivada cuenta como sana; habilitada pero no
 disponible, no. Una fuente declarada pero no habilitada es una decisión de
 configuración, no una incidencia: sólo una fuente **habilitada** que esté
-aprobada, disponible y con el circuito cerrado mantiene la instancia lista. Un
-despliegue sin ninguna fuente habilitada —o con todas las habilitadas
-indisponibles— no puede buscar y responde `503`.
+aprobada, disponible y con el circuito cerrado mantiene la instancia lista.
+
+La regla completa, porque el caso ambiguo es justamente el de los orígenes
+declarados y deshabilitados:
+
+| Orígenes **habilitados** | Estado de ésos | `/ready` |
+|---|---|---|
+| Uno o más | Al menos uno aprobado, disponible y con el circuito cerrado | `200` |
+| Uno o más | Ninguno utilizable (no aprobado, no disponible o circuito abierto) | `503` |
+| Ninguno —sólo declarados y deshabilitados— | — | `503` |
+
+Dicho de otro modo: «un origen habilitado y utilizable, con el resto declarado
+y deshabilitado» responde `200`; «ningún origen habilitado» responde `503`,
+porque la instancia no puede buscar. Declarar y deshabilitar orígenes no es una
+incidencia, y tampoco es capacidad.
+
+`sources_available` cuenta los orígenes cuyo estado de superficie es
+`available` —el mismo valor que `GET /status` publica por fuente— y **no** es el
+predicado de readiness: un origen habilitado con el circuito abierto sigue
+contando ahí mientras la instancia responde `503`, de modo que el campo puede
+valer `1` en una respuesta degradada. Automatice sobre el código HTTP o sobre
+`status`, nunca sobre ese contador; cambiar su significado exige revisar los
+consumidores y versionar el contrato.
+
+Ese contador y el gauge `amatl_sources_available` de `/metrics` son la misma
+cantidad publicada en dos superficies **en un despliegue real**.
+`amatl_sources_declared` cuenta además las fuentes **deshabilitadas**, que
+reportan `unavailable` con `provider_disabled`: por eso `declared − available` no
+es un conteo de incidentes —en un despliegue de un solo origen vale dos por
+configuración— y alertar sobre esa diferencia avisa de una decisión del operador,
+no de una avería. Para incidentes use `amatl_sources_circuit_open` y los gauges de
+peor caso.
+
+Con `amatl serve --mock` las dos superficies **discrepan**, y hay que saber cuál
+mirar: `/ready` informa las fuentes simuladas con las que el servicio busca de
+verdad —en el despliegue mock aislado, `200` con `"sources_available":2`— mientras
+`/metrics` sigue describiendo las fuentes declaradas reales, que en ese modo no
+sirven tráfico (`amatl_sources_declared 3`, `amatl_sources_available 0`). Un
+despliegue mock sano puede por tanto publicar `amatl_sources_available 0`, así que
+no automatice una alerta de caída sobre ese gauge sin excluir el modo mock. La
+divergencia está fijada por
+`mock_deployments_disagree_between_ready_and_the_source_gauges`; alinearla exige
+cambiar el valor de una métrica publicada, y es una decisión del propietario, no
+un arreglo de documentación.
 
 `GET /status` y la herramienta MCP `status` reportan además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
@@ -313,8 +354,8 @@ Prometheus 0.0.4:
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
 | `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
 | `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
-| `amatl_sources_declared` | gauge | número de fuentes que declara este despliegue |
-| `amatl_sources_available` | gauge | fuentes declaradas disponibles |
+| `amatl_sources_declared` | gauge | fuentes que declara el despliegue, **incluidas** las deshabilitadas |
+| `amatl_sources_available` | gauge | fuentes declaradas con superficie `available`; es la misma cantidad que `sources_available` en `/ready` |
 | `amatl_sources_circuit_open` | gauge | fuentes declaradas en cooldown de circuito |
 | `amatl_sources_success_rate_min`, `amatl_sources_latency_ms_max` | gauge | peor valor observado entre las fuentes con muestras; sólo aparecen con muestras |
 | `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |

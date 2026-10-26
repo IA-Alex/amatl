@@ -105,12 +105,16 @@ crate to the workspace and its dependencies to `amatl-core` once a candle releas
 depends on `zip >= 9.0.0`. `candle-core 0.11.0` still requires `^8.6.0`, so no
 release does today.
 
-Warnings are separate: `chacha20 0.10.1` (yanked, via `rand 0.10.2` →
-`rmcp 3.1.2`) is reviewer judgement under the policy above, and `cargo deny
-check` passes with it. `paste 1.0.15` (unmaintained) disappeared with the Candle
-stack, which was its only path. The class decides, not the entry: `unmaintained`
-and `yanked` warn, `unsound` is an error. `tokio 1.53.1` failed `cargo deny
-check` that way until it was remediated to `1.53.3` on 2026-10-25.
+Warnings are separate from advisories, and the class decides, not the entry:
+`unmaintained` and `yanked` warn, `unsound` is an error. `tokio 1.53.1` failed
+`cargo deny check` that way until it was remediated to `1.53.3` on 2026-10-25,
+and `chacha20 0.10.1` — yanked, via `rand 0.10.2` → `rmcp 3.1.2` — was
+remediated to `0.10.2` on 2026-10-26: a one-line `cargo update -p chacha20` that
+the policy above would have let a reviewer accept, but that is cheaper to fix
+than to carry. `paste 1.0.15` (unmaintained) disappeared with the Candle stack,
+which was its only path. With `chacha20 0.10.2` locked, `cargo audit` reports no
+yanked package in the 382-dependency graph it scans and `cargo deny check` is
+clean without any `ignore` entry, so no `yanked` warning is open today.
 
 ## SBOM
 

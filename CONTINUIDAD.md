@@ -1114,7 +1114,9 @@ Advertencia de dependencias sin cambio, por decisión: `chacha20 0.10.1` (vía
 `--locked`, así que el build es reproducible. La política del repo
 (`docs/security/supply-chain.md`) clasifica los yanked como juicio del revisor;
 la corrección disponible es de una línea (`cargo update -p chacha20` → 0.10.2)
-y queda para el operador. No se tocó.
+y queda para el operador. No se tocó. *(Cerrado el 2026-10-26: el lockfile quedó
+en `chacha20 0.10.2`; ver «H3 a H6 del informe externo» al final de este
+archivo.)*
 
 Controles positivos del informe revisados y mantenidos sin cambios: scope
 fail-closed para rutas no declaradas (`amatl-server/src/lib.rs`), validación
@@ -1192,6 +1194,9 @@ excepción está pre-aprobada, así que no se aplicó ninguna):
    no un arreglo de una línea.
 3. Independiente de lo anterior: `cargo update -p chacha20` → 0.10.2 (yanked,
    vía `rand 0.10.2` → `rmcp 3.1.2`) sigue pendiente como decisión de una línea.
+   *(Hecho el 2026-10-26: el lockfile quedó en `chacha20 0.10.2` con
+   `cargo audit` sin advertencia de yanked y `cargo deny check` limpio; ver «H3 a
+   H6 del informe externo» al final de este archivo.)*
 
 Lo que **no** se hizo, a propósito: no se añadió ningún `ignore` a `deny.toml`
 (la política lo prohíbe sin ADR aprobado); no se tocó
@@ -1205,4 +1210,180 @@ cambios: `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets
 --all-features -- -D warnings`, `cargo test --workspace --locked` y
 `cargo deny check` en verde; `cargo audit` en rojo **sólo** por los tres
 hallazgos abiertos de `zip`.
+
+## Revisión crítica externa del archivo — H1 y H2 cerrados sin cambio de contrato (2026-10-26)
+
+Llegó un informe de revisión crítica sobre una copia archivada del repositorio
+(`amatl_revision_critica.md`) con seis hallazgos. Los dos primeros tocan D2 y
+ninguno es un defecto de la lógica: se cerraron en documentación y prueba, que
+es donde estaba el defecto real.
+
+**H1 — la tabla narrativa estaba mal; el código no.** El informe citaba una fila
+«sólo orígenes deshabilitados (declarados)» → `/ready` `200`. Esa fila no está
+en el repositorio: la única aparición de esa frase en el árbol es el propio
+informe, así que la tabla errónea vivía en el informe de validación, no en el
+código ni en la documentación publicada. Y contradice
+`crates/amatl-core/src/service.rs`, donde la degradación se calcula con
+`summary.enabled && status == Available && circuit == Closed` por fuente y
+`degraded = summaries_unavailable || (storage.enabled && !storage.available) ||
+!enabled_usable`; `tests.rs::ready_reports_unavailable_when_no_source_is_enabled`
+ya exigía HTTP `503` desde D2. Lo que se corrigió es el enunciado, porque la
+frase admite la lectura equivocada: `docs/operacion.md` publica ahora la regla
+como tabla —uno o más orígenes **habilitados** con al menos uno aprobado,
+disponible y con el circuito cerrado responde `200`; habilitados pero ninguno
+utilizable, `503`; ningún habilitado, `503`— y dice expresamente que declarar y
+deshabilitar orígenes no es una incidencia, y tampoco es capacidad.
+
+**H2 — `sources_available` es un conteo de superficie, no el predicado de
+readiness.** El handler `ready` (`crates/amatl-server/src/lib.rs`) cuenta
+`ProviderSurfaceStatus::Available` sin excluir los circuitos abiertos, mientras
+`service.rs` sí los excluye al decidir: un despliegue de un solo origen puede
+responder `503` con `sources_available: 1`. Confirmado leyendo ambos caminos y
+ahora fijado por
+`ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit`
+(`crates/amatl-server/src/tests.rs`), que primero comprueba `200` con el mismo
+despliegue sano, luego rompe el único origen con
+`circuit_breaker.failure_threshold = 1` y exige `503` con el contador todavía en
+`1` —la misma aserción que el núcleo ya hacía en
+`status_degrades_when_the_only_enabled_source_circuit_is_open`, ahora también en
+la superficie HTTP—. El rustdoc de `ready` y `docs/operacion.md` documentan la
+diferencia y mandan automatizar sobre el código HTTP o sobre `status`. **No se
+cambió el significado del campo**: renombrarlo o redefinirlo es un cambio de
+contrato que exige revisar consumidores y versionar, justo lo que el informe pide
+no mezclar con este cierre.
+
+El rustdoc nuevo desplazó `crates/amatl-server/src/lib.rs` nueve líneas, así que
+las citas `file:line` de `docs/security/threat-model.md`,
+`docs/security/http-hardening.md` y `docs/security/asvs-checklist.md` que
+apuntan a ese archivo se reanclaron (+9 en todo extremo ≥ 2730) y se verificaron
+comparando el contenido citado antes y después del desplazamiento: mismo texto,
+líneas nuevas. `tools/check_doc_refs.py` sigue en `12 known-dead, 0 new`.
+
+## H3 a H6 del informe externo: lo que se verificó y lo que queda fuera del gate local (2026-10-26)
+
+Los cuatro hallazgos restantes no son defectos de código y ninguno se puede cerrar
+ejecutando algo en esta máquina: dos piden ejecución remota, uno autorización, y el
+cuarto es una deuda de dependencias que sí se remedió.
+
+**H5 — `chacha20` yanked: remediado.** El lockfile pasa de `0.10.1` a `0.10.2` con
+`cargo update -p chacha20`, que es la corrección de una línea que la entrada
+anterior de este archivo dejaba al operador. La ruta no cambia:
+`chacha20 v0.10.2` ← `rand v0.10.2` ← `rmcp v3.1.2` ← `amatl-server` ←
+`amatl-cli`, confirmada con `cargo tree -i chacha20 --locked`. Evidencia de cierre
+con la base de avisos real: `cargo audit` descarga RustSec, carga 1352 avisos,
+escanea 382 dependencias y sale `0` **sin** la advertencia de yanked; `cargo deny
+check` responde `advisories ok, bans ok, licenses ok, sources ok`. No se añadió
+ningún `ignore` a `deny.toml`: la clase `yanked` sigue siendo advertencia y lo que
+cambió es que ya no hay ninguna entrada en esa clase.
+`docs/security/supply-chain.md` deja de listar el caso como advertencia abierta.
+
+**H3 — el gate local no acredita CI remoto: sigue abierto, y ahora está
+demostrado por qué.** El commit que contiene todo esto (`365b5836`, 2026-10-25) no
+es alcanzable desde ninguna punta remota verificada, así que no puede tener una
+corrida de CI. La punta real de `chore/start-sh-token-bootstrap` en `origin` es
+`b6820867` (2026-10-14, «fix(ui): balance mobile search actions…»),
+`git merge-base --is-ancestor b6820867 HEAD` confirma que es ancestro de HEAD —de
+modo que los 19 commits son locales— y `git fetch origin --dry-run` no trae nada,
+así que las referencias de seguimiento locales no estaban obsoletas. Lo que **sí**
+se pudo acreditar sin publicar nada, ejecutando los comandos exactos
+de cada workflow con las versiones que el propio CI fija, el 2026-10-26 en esta
+máquina y todo con `--locked`:
+
+| Job de CI | Comando replicado | Resultado |
+|---|---|---|
+| `contract-gate` | `cargo check --workspace --benches --locked` | ok |
+| `contract-gate` | `RUSTDOCFLAGS=-D warnings cargo doc --workspace --no-deps --locked` | ok |
+| `contract-gate` | `cargo run --locked -p amatl-cli -- benchmark ranking-v2 --json` | `passed: true`, nDCG@3 0.92 frente a 0.66 |
+| `contract-gate` | `cargo cyclonedx` | 4 SBOM `*.cdx.xml` |
+| `msrv` | `cargo +1.88.0 check --workspace --all-targets --locked` | ok (1.88.0 es el `rust-version` del workspace) |
+| `soak` | `cargo test --locked -p amatl-server --test soak -- --ignored` | 2 passed |
+| `browser-e2e` | `chromedriver --port=4444` + `AMATL_BROWSER_E2E=1 cargo test --locked -p amatl-server --test browser_e2e -- --test-threads=1` | 6 passed en Chrome real |
+| `trafilatura-integration` | `trafilatura==2.2.0` en venv + `AMATL_TRAFILATURA_INTEGRATION=1 cargo test --locked -p amatl-core --test trafilatura_integration` | 1 passed |
+| `chromium-isolation` | los tres pasos de shell con `packaging/amatl-chromium-sandbox` + `AMATL_CHROMIUM_INTEGRATION=1 cargo test --locked -p amatl-core --test deep_phase5 -- --test-threads=1` | 13 passed, incluido `rendered_pages_cannot_reach_the_network`; el sandbox bloquea loopback |
+| `static-analysis` | `ruff check tools/ --output-format=github` (ruff 0.15.22) | `All checks passed!` |
+| `static-analysis` | `python3 tools/check_doc_refs.py` | `12 known-dead, 0 new` |
+| `static-analysis` | `ruff format --check tools/` (advisory) | 52 |
+| `static-analysis` | `semgrep scan --config=p/python` / `p/rust` (advisory) | 1 y 51 hallazgos |
+| `codeql-invariants` | `codeql pack install tools/codeql` + `codeql database create --language=rust --command="cargo build --workspace --locked"` + `codeql database analyze` + `python3 tools/codeql/check_sarif.py` (CLI 2.27.3 y `codeql/rust-all` 0.2.24, las versiones fijadas) | `no invariant violations` |
+
+Tres matices que el informe obliga a no difuminar. Primero: replicar el comando no
+es replicar la corrida —otro runner, otra caché y, sobre todo, Linux—; el sandbox
+local usó Chrome 156 en lugar del `chrome-headless-shell` 152.0.7977.42 que
+descarga el workflow, así que acredita el aislamiento, no el binario fijado.
+Segundo: lo que sigue sin poder acreditarse aquí es la matriz `cross-platform`
+(macOS y Windows, la única prueba de que el workspace compila y pasa su suite
+completa fuera de Linux) y `provider-canary`, que es manual y exige credenciales
+reales. Tercero: publicar el SHA y ver `contract-gate` en verde para ese SHA sigue
+siendo la única forma de cerrar H3; el desglose de qué workflow corre con qué
+evento quedó en `docs/release.md`.
+
+**H4 — publicación remota: verificada la lectura, no autorizada la escritura.**
+`git ls-remote` sin credenciales especiales responde: `origin` es
+`https://github.com/IA-Alex/amatl.git` y su `main` está en `98ed0282`. Lo que falta
+no es información sino autorización: **no se hizo push, no se creó ninguna
+etiqueta y no se despachó ningún workflow**, ni se hará en este cierre sin una
+instrucción explícita de `@IA-Alex` sobre destino y SHA.
+
+**H6 — workflows con efectos distintos según evento: documentado como tabla.** La
+diferencia no es cosmética y ya está escrita donde se decide una publicación
+(`docs/release.md`): `contract-gate` corre en push, PR, cron nocturno y manual,
+con `soak` sólo en cron o manual; `static-analysis` y `codeql-invariants` filtran
+por rutas y además tienen cron semanal; `chromium-isolation` es contrato Linux;
+`provider-canary` es sólo manual; `release-candidate` acepta `workflow_dispatch`,
+push a `main` limitado a `packaging/**` y tags `v*-rc.*`; y
+`publish-crates`/`publish-aur` sólo tags estables `v[0-9]+.[0-9]+.[0-9]+` o
+despacho manual. La regla operativa que se deriva, y que este archivo hace
+explícita: **una etiqueta es una publicación, no una marca** —crates.io sólo
+permite yank y el AUR reemplaza el paquete de cada usuario Arch—, así que ni tags
+ni despachos manuales sin aprobación específica del propietario.
+
+**Dos hallazgos nuevos, de la clase que el informe sí señala: enunciado que
+contradice implementación.** No están en el informe externo; aparecieron al
+replicar el gate local y ninguno cambia contrato.
+
+El primero es un número desfasado en un workflow. El comentario de
+`.github/workflows/static-analysis.yml` justificaba el paso advisory de formato
+diciendo «52 files would be rewritten today», y hoy son **53**: `365b5836`, el
+mismo commit bajo revisión, añadió seis tuplas a `tools/check_doc_refs.py` en
+estilo compacto cuando el archivo ya estaba en la forma canónica de `ruff format`,
+de modo que el archivo dejó de estar formateado y el conteo subió en uno —el
+único archivo que cambió de estado, verificado comparando el conteo en el commit
+del baseline (`6948046a`, 52 de 53 archivos) con HEAD (`53` de 54)—. Se restauró
+la forma canónica con `ruff format tools/check_doc_refs.py` (sólo reflow: 16
+inserciones y 4 borrados, ninguna línea de lógica), con lo que el conteo vuelve a
+52 y el comentario a ser cierto; `tools/check_doc_refs.py` sigue respondiendo
+`12 known-dead, 0 new` con código `0` y `python3 -m compileall -q tools` sigue en
+verde. El otro número del comentario —la deuda congelada, 24 archivos de 53— sí
+coincidía: la tabla `per-file-ignores` de `tools/ruff.toml` tiene exactamente 24
+entradas, y `ruff check tools/` responde `All checks passed!` con ruff 0.15.22,
+la misma versión que instala el workflow.
+
+El segundo es la relación entre el gauge de fuentes declaradas y el conteo de
+disponibles, que no estaba escrita en ningún sitio. `amatl_sources_declared`
+cuenta **todas** las fuentes declaradas, incluidas las deshabilitadas —que
+reportan `unavailable` con `provider_disabled`—, mientras `sources_available` de
+`/ready` y `amatl_sources_available` de `/metrics` cuentan sólo las de superficie
+`available` —en un despliegue real, `sources_available` de `/ready` y
+`amatl_sources_available` de `/metrics` son la misma cantidad en dos superficies—.
+Por tanto `declared − available` vale dos en un despliegue de un solo origen por
+pura configuración: alertar sobre esa diferencia avisa de una decisión del
+operador, no de una avería. `docs/operacion.md` lo dice ahora junto a la regla de
+readiness y
+`source_gauges_count_declared_sources_while_readiness_counts_available_ones`
+(`crates/amatl-server/src/tests.rs`) fija los tres números —3 declaradas, 1
+disponible, 0 con circuito abierto— contra un solo despliegue, de modo que ningún
+gauge pueda derivar al significado del otro.
+
+Al medirlo apareció una segunda divergencia, esta vez *entre* superficies y sólo
+en `amatl serve --mock`: `/ready` informa las fuentes simuladas con las que el
+servicio busca —`200` con `sources_available: 2` en el despliegue mock aislado—
+mientras `/metrics` sigue describiendo las declaradas reales
+(`amatl_sources_declared 3`, `amatl_sources_available 0`), así que un despliegue
+mock sano publica `amatl_sources_available 0` y una alerta de caída sobre ese gauge
+dispararía siempre. Es la misma forma que D2 quitó de `/status` —una superficie
+anunciando que nada puede servir mientras `/search` responde— y por eso queda
+**fijada, no arreglada**, por
+`mock_deployments_disagree_between_ready_and_the_source_gauges`: hacer que
+`/metrics` sea consciente del modo mock cambia el valor de una métrica publicada,
+y eso es una decisión del propietario con su propia revisión de consumidores.
 
