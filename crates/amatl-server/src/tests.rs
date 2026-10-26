@@ -29,6 +29,32 @@ async fn isolated_app() -> Router {
         .unwrap()
 }
 
+/// A non-mock service with exactly one source enabled and governed: the
+/// single-source deployment readiness must not penalize (D2). Every other
+/// shipped source stays declared and disabled, as it is in a real deployment
+/// that runs only SearXNG.
+async fn searxng_only_app() -> Router {
+    let mut config = amatl_core::Config::default();
+    let runtime = config.providers.entry("searxng");
+    runtime.approval_status = amatl_core::ApprovalStatus::Approved;
+    runtime.reviewed_at = Some(today_iso());
+    runtime.reviewer = Some("owner".into());
+    config.providers.enabled = vec!["searxng".into()];
+    config.validate().unwrap();
+    build_router(AmatlService::new(config, false).await, Some(TOKEN.into()))
+        .await
+        .unwrap()
+}
+
+/// A non-mock service with nothing enabled: no source can be called at all.
+async fn no_source_app() -> Router {
+    let config = amatl_core::Config::default();
+    config.validate().unwrap();
+    build_router(AmatlService::new(config, false).await, Some(TOKEN.into()))
+        .await
+        .unwrap()
+}
+
 fn request(path: &str) -> axum::http::request::Builder {
     Request::builder().uri(path).header(HOST, "localhost:8080")
 }
@@ -136,6 +162,63 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
             "readiness body leaked {internal:?}: {rendered}"
         );
     }
+}
+/// D2: a deployment that enables exactly one governed source is ready. The
+/// shipped sources it left disabled are a configuration choice, so `/ready`
+/// must not answer 503 — a load balancer would otherwise drain an instance that
+/// serves every search correctly.
+#[tokio::test]
+async fn ready_stays_ok_when_the_only_enabled_source_is_available() {
+    let response = searxng_only_app()
+        .await
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["status"], "ok");
+    assert_eq!(body["storage_ok"], true);
+    // Readiness counts what is available, not what is declared.
+    assert_eq!(body["sources_available"], 1);
+}
+
+/// The other half of the same rule: ignoring disabled sources must not make an
+/// instance with nothing enabled look ready. It cannot search at all.
+#[tokio::test]
+async fn ready_reports_unavailable_when_no_source_is_enabled() {
+    let response = no_source_app()
+        .await
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let body = json_body(response).await;
+    assert_eq!(body["status"], "degraded");
+    assert_eq!(body["sources_available"], 0);
+}
+
+/// `/status` and `/ready` are two views of one decision: the operator view
+/// names the disabled sources, and readiness — the same `status` field — still
+/// says the instance is serving. Diverging here is what made the UI gate search
+/// on a service it believed was unusable.
+#[tokio::test]
+async fn status_and_ready_agree_on_a_single_source_deployment() {
+    let router = searxng_only_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let ready_body = json_body(ready).await;
+    let status = router
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(status.status(), StatusCode::OK);
+    let status_body = json_body(status).await;
+    assert_eq!(ready_body["status"], status_body["status"]);
+    assert_eq!(ready_body["sources_available"], 1);
+    assert_eq!(status_body["sources"].as_array().unwrap().len(), 3);
 }
 
 #[tokio::test]

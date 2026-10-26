@@ -1,5 +1,5 @@
 use amatl_core::{
-    parse_query, BraveProvider, Budget, HttpRequest, HttpResponse, HttpTransport, MockProvider,
+    parse_query, Budget, HttpRequest, HttpResponse, HttpTransport, MockProvider, MojeekProvider,
     Provider, ProviderItem, Rank, SearchOrchestrator, SearchStatus,
 };
 use async_trait::async_trait;
@@ -50,10 +50,16 @@ fn item() -> ProviderItem {
 }
 
 #[tokio::test]
-async fn brave_without_token_is_omitted_without_network_access() {
+async fn mojeek_without_token_is_omitted_without_network_access() {
     let transport = Arc::new(FixtureTransport::new(200, BTreeMap::new(), b"{}"));
     let providers: Vec<Arc<dyn Provider>> = vec![
-        Arc::new(BraveProvider::new(None, true, true, transport.clone())),
+        Arc::new(MojeekProvider::new(
+            None,
+            true,
+            true,
+            vec![],
+            transport.clone(),
+        )),
         Arc::new(MockProvider::success("local", vec![item()])),
     ];
     let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
@@ -68,16 +74,17 @@ async fn brave_without_token_is_omitted_without_network_access() {
 }
 
 #[tokio::test]
-async fn brave_fixture_crosses_provider_and_global_pipeline() {
+async fn mojeek_fixture_crosses_provider_and_global_pipeline() {
     let transport = Arc::new(FixtureTransport::new(
         200,
         BTreeMap::new(),
-        br#"{"web":{"results":[{"title":"Rust","url":"https://example.com/?utm_source=brave","description":"Guide"}]}}"#,
+        br#"{"response":{"status":"OK","results":[{"url":"https://example.com/?utm_source=mojeek","title":"Rust","desc":"Guide"}]}}"#,
     ));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MojeekProvider::new(
         Some("fixture-token".to_owned().into()),
         true,
         true,
+        vec![],
         transport.clone(),
     ))];
     let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
@@ -94,10 +101,11 @@ async fn brave_fixture_crosses_provider_and_global_pipeline() {
 #[tokio::test]
 async fn real_adapter_rate_limit_uses_bounded_retry_policy() {
     let transport = Arc::new(FixtureTransport::new(429, BTreeMap::new(), b"private body"));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MojeekProvider::new(
         Some("fixture-token".to_owned().into()),
         true,
         true,
+        vec![],
         transport.clone(),
     ))];
     let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)

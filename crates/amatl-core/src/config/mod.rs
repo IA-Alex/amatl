@@ -775,7 +775,7 @@ mod tests {
     fn denied_egress_rejects_network_providers_and_remote_inference() {
         let mut provider = Config::default();
         provider.data_policy.egress = EgressPolicy::Deny;
-        provider.providers.enabled = vec!["brave".into()];
+        provider.providers.enabled = vec!["searxng".into()];
         assert!(provider.validate().is_err());
 
         let mut inference = Config::default();
@@ -787,7 +787,7 @@ mod tests {
 
     #[test]
     fn rejects_unknown_provider_names_including_case_and_whitespace_typos() {
-        for unknown in ["Brave", "brave ", "custom"] {
+        for unknown in ["SearXNG", "searxng ", "custom"] {
             let mut config = Config::default();
             config.providers.enabled = vec![unknown.into()];
             let error = config.validate().unwrap_err().to_string();
@@ -901,15 +901,21 @@ mod tests {
             adapter_version = "custom-v1"
             credential_env = "CUSTOM_ARCHIVE_TOKEN"
 
-            [providers.brave]
-            adapter_version = "brave-pinned"
+            [providers.custom_news]
+            adapter_version = "custom-news-v1"
             "#,
         )
         .unwrap();
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec!["brave", "custom_archive", "marginalia", "mojeek", "searxng"]
+            vec![
+                "custom_archive",
+                "custom_news",
+                "marginalia",
+                "mojeek",
+                "searxng"
+            ]
         );
         assert_eq!(
             config
@@ -921,8 +927,8 @@ mod tests {
             Some("CUSTOM_ARCHIVE_TOKEN")
         );
         assert_eq!(
-            config.providers.get("brave").unwrap().adapter_version,
-            Some("brave-pinned".into())
+            config.providers.get("custom_news").unwrap().adapter_version,
+            Some("custom-news-v1".into())
         );
         assert!(config.providers.is_declared("mojeek"));
         assert!(!config.providers.storage_rights("custom_archive"));
@@ -933,7 +939,7 @@ mod tests {
         let mut config = Config::default();
         config
             .providers
-            .declare("Brave Search", ProviderRuntimeConfig::default());
+            .declare("SearXNG Mirror", ProviderRuntimeConfig::default());
         let error = config.validate().unwrap_err().to_string();
         assert!(error.contains("invalid provider name"), "{error}");
     }

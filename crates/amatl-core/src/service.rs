@@ -311,8 +311,11 @@ pub struct SaveDocumentInput {
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct ServiceStatus {
     pub schema_version: String,
-    /// `ok` when every declared source is available and persistence is healthy
-    /// (or disabled by configuration); `degraded` otherwise.
+    /// `ok` when at least one enabled source is usable and persistence is
+    /// healthy (or disabled by configuration); `degraded` otherwise.
+    ///
+    /// Declared-but-disabled sources never degrade this field: they are a
+    /// configuration choice, not an incident. They stay visible in `sources`.
     pub status: String,
     pub sources: Vec<SourceStatus>,
     pub storage: StorageStatus,
@@ -1669,8 +1672,9 @@ impl AmatlService {
         } else {
             self.provider_summaries()
         };
-        let (sources, summaries_unavailable) = match summaries {
+        let (sources, summaries_unavailable, enabled_usable) = match summaries {
             Ok(summaries) => {
+                let mut enabled_usable = false;
                 let sources = summaries
                     .into_iter()
                     .map(|summary| {
@@ -1682,6 +1686,18 @@ impl AmatlService {
                             .find(|snapshot| snapshot.provider == summary.name)
                             .map(|snapshot| snapshot.state)
                             .unwrap_or(crate::circuit::CircuitState::Closed);
+                        // Readiness follows the deployment the operator asked
+                        // for. A source that is declared but not enabled is a
+                        // configuration choice, not an incident, so it cannot
+                        // degrade the service on its own. Only an enabled source
+                        // that is usable — approved and reporting `Available`,
+                        // with its circuit closed — keeps the service ready.
+                        if summary.enabled
+                            && summary.status == ProviderSurfaceStatus::Available
+                            && circuit == crate::circuit::CircuitState::Closed
+                        {
+                            enabled_usable = true;
+                        }
                         SourceStatus {
                             name: summary.name,
                             status: summary.status,
@@ -1698,7 +1714,7 @@ impl AmatlService {
                         }
                     })
                     .collect::<Vec<_>>();
-                (sources, false)
+                (sources, false, enabled_usable)
             }
             Err(error) => {
                 // Diagnostics must survive the failure they are meant to
@@ -1740,7 +1756,7 @@ impl AmatlService {
                         }
                     })
                     .collect::<Vec<_>>();
-                (sources, true)
+                (sources, true, false)
             }
         };
         let storage = self.storage_status().await;
@@ -1754,12 +1770,11 @@ impl AmatlService {
             document_bytes: document_stats.size_bytes,
             effectiveness: self.cache_effectiveness(),
         };
-        let degraded = summaries_unavailable
-            || storage.enabled && !storage.available
-            || sources.iter().any(|source| {
-                source.status != ProviderSurfaceStatus::Available
-                    || source.circuit != crate::circuit::CircuitState::Closed
-            });
+        // Degraded means "this instance cannot serve useful traffic". Persistence
+        // is optional by design, but an instance with no usable enabled source
+        // cannot search, so it is degraded — and never ready.
+        let degraded =
+            summaries_unavailable || storage.enabled && !storage.available || !enabled_usable;
         Ok(ServiceStatus {
             schema_version: SCHEMA_VERSION.into(),
             status: if degraded { "degraded" } else { "ok" }.into(),
@@ -2808,7 +2823,7 @@ mod tests {
                 && summary.code.as_deref() == Some("egress_denied")
         }));
         assert_eq!(
-            validate_provider_canary(service.config(), "brave"),
+            validate_provider_canary(service.config(), "marginalia"),
             Err(ProviderCanaryError::EgressDenied)
         );
     }
@@ -2993,6 +3008,10 @@ mod tests {
         );
         assert_eq!(available, expected.len());
         assert_eq!(
+            status.status, "ok",
+            "mock search is always available, so readiness must not degrade it"
+        );
+        assert_eq!(
             status
                 .sources
                 .iter()
@@ -3001,6 +3020,121 @@ mod tests {
             expected,
             "the operator view must name the sources mock search uses"
         );
+    }
+
+    /// D2: readiness must follow the deployment the operator asked for. A source
+    /// that is declared but not enabled is a configuration choice, not an
+    /// incident, so it cannot make the instance look degraded while an enabled
+    /// source is serving traffic — otherwise `/ready` answers 503 and a load
+    /// balancer drains a perfectly healthy single-source deployment.
+    #[tokio::test]
+    async fn status_ignores_declared_sources_the_operator_did_not_enable() {
+        let service = AmatlService::new(searxng_only_config(), false).await;
+        let status = service.status().await.unwrap();
+        assert_eq!(
+            status.status, "ok",
+            "a declared-but-disabled source must not degrade a serving deployment: {:?}",
+            status.sources
+        );
+        // The declared sources stay visible where they belong: `/status` still
+        // names them and their blocking code, it just no longer treats them as
+        // incidents of this deployment.
+        let source = |name: &str| {
+            status
+                .sources
+                .iter()
+                .find(|source| source.name == name)
+                .unwrap()
+        };
+        assert_eq!(source("searxng").status, ProviderSurfaceStatus::Available);
+        assert_eq!(source("searxng").code, None);
+        assert_eq!(source("mojeek").status, ProviderSurfaceStatus::Unavailable);
+        assert_eq!(source("mojeek").code.as_deref(), Some("provider_disabled"));
+        assert_eq!(
+            source("marginalia").status,
+            ProviderSurfaceStatus::Unavailable
+        );
+    }
+
+    /// The other half of the D2 rule: ignoring disabled sources must not make a
+    /// deployment with no enabled source look ready. It cannot search at all.
+    #[tokio::test]
+    async fn status_degrades_when_no_source_is_enabled() {
+        let service = AmatlService::new(Config::default(), false).await;
+        let status = service.status().await.unwrap();
+        assert_eq!(status.status, "degraded");
+    }
+
+    /// Enabled is not enough: the governance gate still blocks traffic, so the
+    /// deployment has no usable source and readiness must say so.
+    #[tokio::test]
+    async fn status_degrades_when_the_only_enabled_source_is_not_approved() {
+        let mut config = Config::default();
+        config.providers.enabled = vec!["searxng".into()];
+        let service = AmatlService::new(config, false).await;
+        let status = service.status().await.unwrap();
+        assert_eq!(status.status, "degraded");
+        let searxng = status
+            .sources
+            .iter()
+            .find(|source| source.name == "searxng")
+            .unwrap();
+        assert_eq!(searxng.code.as_deref(), Some("provider_not_approved"));
+    }
+
+    /// The third clause of the D2 rule: an enabled and approved source that
+    /// still reports `Available` cannot serve once its circuit is open, so
+    /// readiness must degrade — the breaker is the only evidence that traffic is
+    /// no longer reaching it, and `/status` keeps naming it available.
+    #[tokio::test]
+    async fn status_degrades_when_the_only_enabled_source_circuit_is_open() {
+        let mut config = archive_config();
+        config.circuit_breaker.failure_threshold = 1;
+        config.circuit_breaker.open_seconds = 600;
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await;
+        // Before the first failure the same deployment is ready, so the
+        // assertion below isolates the circuit and nothing else.
+        let before = service.status().await.unwrap();
+        assert_eq!(before.status, "ok", "{:?}", before.sources);
+
+        let failure = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(failure.response.providers_failed, vec!["custom_archive"]);
+
+        let after = service.status().await.unwrap();
+        let source = after
+            .sources
+            .iter()
+            .find(|source| source.name == "custom_archive")
+            .unwrap();
+        assert_eq!(source.status, ProviderSurfaceStatus::Available);
+        assert_eq!(source.circuit, crate::CircuitState::Open);
+        assert_eq!(
+            after.status, "degraded",
+            "an open circuit means the enabled source cannot serve: {:?}",
+            after.sources
+        );
+    }
+
+    /// Configuration for the deployment D2 is about: exactly one source enabled
+    /// and fully governed. The shipped SearXNG record already carries every
+    /// approval field except the three that record the human decision.
+    fn searxng_only_config() -> Config {
+        let mut config = Config::default();
+        let runtime = config.providers.entry("searxng");
+        runtime.approval_status = crate::ApprovalStatus::Approved;
+        runtime.reviewed_at = Some(today_iso());
+        runtime.reviewer = Some("owner".into());
+        config.providers.enabled = vec!["searxng".into()];
+        config.validate().unwrap();
+        config
     }
 
     #[test]

@@ -18,7 +18,9 @@ whenever the code it cites moves.
 Bare names (`fetch.rs`, `config/mod.rs`) are resolved by suffix, because the
 documents write them relative to the crate or module that owns them; a reference
 that matches several files is accepted when at least one of them satisfies the
-line numbers.
+line numbers. A reference written under a name the repository only carries in
+another form -- the deployed `amatl.toml` against the shipped
+`amatl.example.toml` -- is resolved through `ALIASES`.
 
 Pre-existing dead references are frozen in `FROZEN` below, so this gate blocks
 *new* ones only. Each entry is a debt note: fix the reference and delete its
@@ -74,6 +76,19 @@ FROZEN = {
     # Upstream `candle-core` source cited while discussing its zip handling; the
     # file lives in the dependency, not in this repository.
     ("docs/security/supply-chain.md", "src/npy.rs"),
+    # The STEP 4C/4D candle experiment records: the stack they describe was
+    # quarantined out of the workspace (RUSTSEC-2026-0367/-0368/-0369 through
+    # `zip < 9.0.0`) into `experiments/local-embeddings-boundary/`, a crate
+    # excluded from the workspace. The measurements and the in-workspace layout
+    # they cite are what was true when they were written, and each document
+    # carries a status note naming where the code lives now, so rewriting the
+    # paths would falsify the record.
+    ("docs/experiments/candle-e2e-4c.md", "crates/amatl-core/src/experimental_embeddings/mod.rs"),
+    ("docs/experiments/candle-e2e-4c.md", "crates/amatl-core/tests/experimental_embedding_latency.rs"),
+    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/mod.rs"),
+    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/candle.rs"),
+    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/model_config.rs"),
+    ("docs/experiments/candle-integration-4d.md", "experimental_embeddings/pipeline.rs"),
     # Host-side SearXNG files captured during a campaign: the SearXNG install
     # and a rollback snapshot under /tmp, neither of which the repository owns.
     ("docs/testing/searxng-characterization.md", "/etc/searxng/settings.yml"),
@@ -115,16 +130,33 @@ def spans(suffix):
         yield int(start), int(end) if end else int(start)
 
 
+# References written under a name the repository does not carry. The documents
+# cite the operator's configuration file as `amatl.toml`, which is the name it
+# has once the operator copies the template into place -- and `.gitignore` keeps
+# that copy out of the repository, so a fresh checkout only ever has
+# `amatl.example.toml`. Resolving the pair keeps those citations resolvable --
+# and line-checked wherever a line is cited -- against the template instead of
+# freezing them, and keeps the gate meaningful in CI, which never has the
+# deployed file.
+ALIASES = {
+    "amatl.toml": "amatl.example.toml",
+}
+
+
 def candidates(reference, index):
     """Files the reference could name: an exact path, or a suffix match."""
     exact = [path for path in index if str(path) == reference]
     if exact:
         return exact
-    return [
+    matches = [
         path
         for path in index
         if str(path).endswith("/" + reference) or path.name == reference
     ]
+    if matches:
+        return matches
+    alias = ALIASES.get(reference)
+    return [path for path in index if str(path) == alias] if alias else []
 
 
 def line_count(path):

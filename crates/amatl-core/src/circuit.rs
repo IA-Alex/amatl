@@ -338,16 +338,16 @@ mod tests {
     #[tokio::test]
     async fn opens_after_consecutive_failures_and_recovers_after_the_cooldown() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("brave", false, 1_000).await;
-        assert_eq!(breaker.state("brave", 1_000), CircuitState::Closed);
-        breaker.record("brave", false, 1_001).await;
-        assert_eq!(breaker.state("brave", 1_001), CircuitState::Open);
-        assert!(!breaker.allows_call("brave", 1_010));
+        breaker.record("marginalia", false, 1_000).await;
+        assert_eq!(breaker.state("marginalia", 1_000), CircuitState::Closed);
+        breaker.record("marginalia", false, 1_001).await;
+        assert_eq!(breaker.state("marginalia", 1_001), CircuitState::Open);
+        assert!(!breaker.allows_call("marginalia", 1_010));
         // The cooldown expires into a single probe, not straight back to closed.
-        assert_eq!(breaker.state("brave", 1_031), CircuitState::HalfOpen);
-        assert!(breaker.allows_call("brave", 1_031));
-        breaker.record("brave", true, 1_032).await;
-        assert_eq!(breaker.state("brave", 1_032), CircuitState::Closed);
+        assert_eq!(breaker.state("marginalia", 1_031), CircuitState::HalfOpen);
+        assert!(breaker.allows_call("marginalia", 1_031));
+        breaker.record("marginalia", true, 1_032).await;
+        assert_eq!(breaker.state("marginalia", 1_032), CircuitState::Closed);
     }
 
     #[tokio::test]
@@ -363,48 +363,48 @@ mod tests {
     #[tokio::test]
     async fn only_one_half_open_probe_is_admitted_at_a_time() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("brave", false, 10).await;
-        breaker.record("brave", false, 11).await;
-        assert_eq!(breaker.state("brave", 41), CircuitState::HalfOpen);
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
         // The first caller claims the probe; a concurrent caller is refused.
-        assert!(breaker.claim_probe("brave", 41));
-        assert!(!breaker.claim_probe("brave", 41));
+        assert!(breaker.claim_probe("marginalia", 41));
+        assert!(!breaker.claim_probe("marginalia", 41));
         // A pure admissibility check also reports "no" while the probe is held.
-        assert!(!breaker.allows_call("brave", 41));
+        assert!(!breaker.allows_call("marginalia", 41));
         // Completing the probe releases the claim and reopens the circuit.
-        breaker.record("brave", false, 41).await;
-        assert_eq!(breaker.state("brave", 42), CircuitState::Open);
+        breaker.record("marginalia", false, 41).await;
+        assert_eq!(breaker.state("marginalia", 42), CircuitState::Open);
         // After the next cooldown a fresh probe is admitted.
-        assert_eq!(breaker.state("brave", 72), CircuitState::HalfOpen);
-        assert!(breaker.claim_probe("brave", 72));
+        assert_eq!(breaker.state("marginalia", 72), CircuitState::HalfOpen);
+        assert!(breaker.claim_probe("marginalia", 72));
     }
 
     #[tokio::test]
     async fn a_stale_probe_claim_is_reclaimed() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("brave", false, 10).await;
-        breaker.record("brave", false, 11).await;
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
         // Claim at 41, then never record: the claim must not wedge forever.
-        assert!(breaker.claim_probe("brave", 41));
-        assert!(!breaker.claim_probe("brave", 50));
+        assert!(breaker.claim_probe("marginalia", 41));
+        assert!(!breaker.claim_probe("marginalia", 50));
         // Past the cooldown the claim is stale and can be reclaimed.
-        assert!(breaker.claim_probe("brave", 41 + 30));
+        assert!(breaker.claim_probe("marginalia", 41 + 30));
     }
 
     #[tokio::test]
     async fn releasing_an_unused_probe_frees_the_source() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("brave", false, 10).await;
-        breaker.record("brave", false, 11).await;
-        assert_eq!(breaker.state("brave", 41), CircuitState::HalfOpen);
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
         // A search admits and claims the probe…
-        assert!(breaker.claim_probe("brave", 41));
+        assert!(breaker.claim_probe("marginalia", 41));
         // …but never actually calls the source, so it releases the claim.
-        breaker.release_probe("brave");
+        breaker.release_probe("marginalia");
         // The very next search may probe immediately, instead of being wedged
         // out for the whole cooldown by a claim that produced no outcome.
-        assert!(breaker.allows_call("brave", 41));
-        assert!(breaker.claim_probe("brave", 41));
+        assert!(breaker.allows_call("marginalia", 41));
+        assert!(breaker.claim_probe("marginalia", 41));
     }
 
     #[tokio::test]
@@ -414,10 +414,10 @@ mod tests {
             ..policy()
         });
         for tick in 0..10 {
-            breaker.record("brave", false, tick).await;
+            breaker.record("marginalia", false, tick).await;
         }
-        assert_eq!(breaker.state("brave", 10), CircuitState::Closed);
-        assert!(breaker.allows_call("brave", 10));
+        assert_eq!(breaker.state("marginalia", 10), CircuitState::Closed);
+        assert!(breaker.allows_call("marginalia", 10));
     }
 
     #[test]
@@ -451,17 +451,17 @@ mod tests {
             .await
             .unwrap();
         let breaker = ProviderCircuit::restored(policy(), Some(storage.clone())).await;
-        breaker.record("brave", false, 5_000).await;
-        breaker.record("brave", false, 5_001).await;
-        assert_eq!(breaker.state("brave", 5_002), CircuitState::Open);
+        breaker.record("marginalia", false, 5_000).await;
+        breaker.record("marginalia", false, 5_001).await;
+        assert_eq!(breaker.state("marginalia", 5_002), CircuitState::Open);
 
         let restarted = ProviderCircuit::restored(policy(), Some(storage.clone())).await;
-        assert_eq!(restarted.state("brave", 5_002), CircuitState::Open);
+        assert_eq!(restarted.state("marginalia", 5_002), CircuitState::Open);
         assert_eq!(restarted.snapshots(5_002)[0].consecutive_failures, 2);
 
         restarted.reset().await;
         let cleared = ProviderCircuit::restored(policy(), Some(storage)).await;
-        assert_eq!(cleared.state("brave", 5_002), CircuitState::Closed);
+        assert_eq!(cleared.state("marginalia", 5_002), CircuitState::Closed);
         let _ = std::fs::remove_file(path);
     }
 }

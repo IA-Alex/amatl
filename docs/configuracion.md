@@ -81,18 +81,19 @@ AMATL.
 | `.data_handling_notes` | string opcional | No vacío requerido |
 | `.operational_risk` | string opcional | No vacío requerido |
 
-Defaults específicos: Brave usa `brave-v1`, `BRAVE_API_KEY`, API oficial, URL
-de términos, fecha de términos `2026-02-11` y filtros site/filetype/language/
-region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL de
-soporte. **Ambos están `rejected` por defecto**, no `draft`: ambos requieren un
-plan de pago (Brave eliminó su tier gratuito en 2026-02; Mojeek no tiene tier
-gratuito) y la política del operador excluye providers de pago. No es papeleo
-pendiente — reactivarlos exige revertir esa decisión explícitamente, no sólo
-completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
+Defaults específicos: Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL
+de soporte, con filtros site/filetype/language/region/time_range. **Está
+`rejected` por defecto**, no `draft`: requiere un plan de pago (Mojeek no tiene
+tier gratuito) y la política del operador excluye providers de pago. No es
+papeleo pendiente — reactivarlo exige revertir esa decisión explícitamente, no
+sólo completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
 Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) sí están `draft` con adapter
 completo y ficha aprobable; sólo falta `reviewer`/`reviewed_at`/
 `approval_status` con identidad real. `duckduckgo_html` se retiró del
-registro: DuckDuckGo no ofrece API de búsqueda web. Antes de elegir fuente,
+registro: DuckDuckGo no ofrece API de búsqueda web. Brave también se retiró del
+producto (fuente de pago desde 2026-02): no está declarado, no está registrado y
+no hay adapter, así que no existe ficha que aprobar y `brave` no construye
+ninguna fuente. Antes de elegir fuente,
 consulta la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una

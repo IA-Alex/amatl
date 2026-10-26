@@ -56,17 +56,24 @@ repositorio si contienen información privada.
 
 | Provider | Nivel de diseño | Adapter | Config default | Estado efectivo | Datos pendientes |
 |---|---|---|---|---|---|
-| Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
 | SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config/providers.rs`; ver «Fichas de aprobación» |
 | Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en «Fichas de aprobación» |
 | Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
 
-**Brave y Mojeek están descartados, no pendientes.** `builtin_provider_records()`
-(`config/providers.rs:150-175`) fija `approval_status = "rejected"` para ambos por defecto, con el
+**Brave Search API se retiró del producto.** La política del operador ejecuta sólo
+fuentes sin coste, y Brave pasó a ser de pago en 2026-02, así que no se declara
+en los expedientes incorporados, no está registrado en `ProviderRegistry` y su
+módulo de adapter se eliminó de `providers/`: un `brave` en `providers.enabled`
+no construye ninguna fuente. No queda ficha que completar ni que descartar; ver
+«Viabilidad y coste» para el motivo de mercado.
+
+**Mojeek está descartado, no pendiente.** `builtin_provider_records()`
+(`config/providers.rs:150-175`) fija `approval_status = "rejected"` para Mojeek
+por defecto, con el
 motivo explícito en `cost_model`/`operational_risk` ("Rejected by operator
 policy: no paid search providers"). Un test dedicado
 (`paid_providers_are_rejected_by_default_not_merely_draft`) falla si esto
-regresa silenciosamente a `draft`. Reactivarlos exige una decisión explícita de
+regresa silenciosamente a `draft`. Reactivarlo exige una decisión explícita de
 política, no simplemente completar `reviewer`/`reviewed_at` — a diferencia de
 SearXNG y Marginalia, que sí son papeleo pendiente sobre una decisión ya
 tomada (usarlas).
@@ -76,13 +83,15 @@ líneas sin endpoint, cliente HTTP ni parseo, y DuckDuckGo no ofrece API de
 búsqueda web (sólo Instant Answer, que no devuelve resultados web). Mantenerlo
 listado como provider era engañoso; ver «Viabilidad y coste» más abajo.
 
-La fecha `2026-02-11` existente en el default de Brave es
-`terms_version_or_date`; **no** es `reviewed_at`. No se registra como revisión.
 Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún
-revisor está definido para ninguno de los dos, pero eso ya no es lo que los
-bloquea: `approval_status = "rejected"` los bloquea por decisión de política,
-con o sin revisor. Ambos quedan bloqueados para tráfico real aunque existan
-adapters (`config/providers.rs`, `service.rs:277-353`).
+revisor está definido para él, pero eso ya no es lo que lo bloquea:
+`approval_status = "rejected"` lo bloquea por decisión de política, con o sin
+revisor. Queda bloqueado para tráfico real aunque exista su adapter: la selección
+de fuentes exige `approved()` y, al fallar, registra `provider_not_approved` y no
+llama a la fuente (`config/providers.rs`, `service.rs:2086-2094`). Brave no está
+en esa situación:
+al retirarse no queda expediente ni adapter que bloquear, y el nombre no
+resuelve a ningún provider.
 
 ## Fichas de aprobación: SearXNG y Marginalia
 
@@ -185,7 +194,7 @@ el coste esté **declarado**, sea cual sea.
 
 | Fuente | Coste real | Clave | API de búsqueda web | Cobertura |
 |---|---|---|---|---|
-| Brave Search API | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
+| Brave Search API (**retirada del producto**) | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
 | Mojeek Search API | De pago | Sí | Sí, oficial | Índice propio, medio |
 | Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí; para producción requiere una key genuina emitida al operador y una cuota verificable. Una key pública/de ejemplo no es una credencial productiva. | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
 | SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, DuckDuckGo y otros |

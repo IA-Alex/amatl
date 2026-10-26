@@ -135,7 +135,7 @@ impl Provider for SearXngProvider {
     ) -> Result<ProviderResult, ProviderError> {
         let (request, filters) = self.request(plan, context.timeout_ms)?;
         let response = self.transport.execute(request).await.map_err(|_| {
-            // Parity with brave/mojeek/marginalia: a transport failure is
+            // Parity with mojeek/marginalia: a transport failure is
             // `Network`, not `Unavailable`, and the message is fixed. The
             // transport layer (`http.rs`) already logs the classified cause
             // against a sanitized URL; reqwest's own `Display` can embed the

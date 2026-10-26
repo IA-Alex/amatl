@@ -135,10 +135,10 @@ impl Default for ProviderConfig {
 /// file extends or overrides.
 ///
 /// Brave is no longer part of the product: the operator policy runs only no-cost
-/// self-hosted sources plus the approved key-gated Marginalia, and since the
-/// policy drop Brave is neither declared here nor registered in
-/// [`crate::providers::ProviderRegistry::builtin`], so it resolves to
-/// `provider_not_registered` — it can never be selected or send traffic.
+/// self-hosted sources plus the approved key-gated Marginalia. Since the policy
+/// drop Brave is neither declared here, nor registered in
+/// [`crate::providers::ProviderRegistry::builtin`], nor shipped as an adapter, so
+/// it resolves to `provider_not_registered` — it can never send traffic.
 ///
 /// Mojeek is declared `Rejected` (not `Draft`): the adapter is implemented and
 /// tested, but the source requires a paid plan (Mojeek has none), and operator

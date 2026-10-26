@@ -60,10 +60,10 @@ impl ProviderRegistry {
 
     /// Registry with the sources AMATL ships.
     ///
-    /// Brave is deliberately not registered: the operator policy runs only
-    /// no-cost self-hosted sources (SearXNG) and the approved key-gated
-    /// Marginalia. Removing the factory makes `brave` resolve to
-    /// `provider_not_registered`, so it can never be selected or send traffic.
+    /// Brave is deliberately not registered and no adapter ships for it: the
+    /// operator policy runs only no-cost self-hosted sources (SearXNG) and the
+    /// approved key-gated Marginalia, so `brave` resolves to
+    /// `provider_not_registered` — it can never be selected or send traffic.
     pub fn builtin() -> Self {
         Self::empty()
             .with(Arc::new(MojeekFactory))

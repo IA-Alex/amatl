@@ -140,7 +140,7 @@ globalThis.AMATL_LOCALES = {
       strategistUnavailable: "Búsqueda con modelo no disponible en este momento.",
       strategistToggleFailed: "No se pudo cambiar el estado. Verifica que tu credencial tenga permiso de administrador.",
       strategistHintMissingCredential: "Búsqueda con modelo: activada, pero falta la clave del proveedor en el servidor; el modelo no participará.",
-      // Source selector (Marginalia / SearXNG / Brave / All)
+      // Source selector (Marginalia / SearXNG / All)
       providerSelectorLabel: "Fuente de búsqueda",
       providerSourceMarginalia: "Marginalia",
       providerSourceSearxng: "SearXNG",
@@ -372,7 +372,6 @@ globalThis.AMATL_LOCALES = {
       marginaliaStatusPresent: "Marginalia key active in memory.",
       marginaliaStatusAbsent: "No Marginalia key in memory.",
       marginaliaStatusEnvironment: "Marginalia uses a key from the environment variable: it cannot be removed from here.",
-      // Brave API key (option: credential management in the panel, same pattern)
       // History panel
       historyHeading: "Search history",
       historyEmpty: "No searches recorded yet.",

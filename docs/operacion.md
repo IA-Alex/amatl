@@ -138,7 +138,11 @@ degradada, de modo que un balanceador pueda drenarla sin interpretar el cuerpo:
 El cuerpo es agregado a propósito. Nombres de fuentes, códigos de error y rutas
 describen el despliegue y sólo aparecen en `GET /status`, que exige el scope
 `read`. La persistencia desactivada cuenta como sana; habilitada pero no
-disponible, no.
+disponible, no. Una fuente declarada pero no habilitada es una decisión de
+configuración, no una incidencia: sólo una fuente **habilitada** que esté
+aprobada, disponible y con el circuito cerrado mantiene la instancia lista. Un
+despliegue sin ninguna fuente habilitada —o con todas las habilitadas
+indisponibles— no puede buscar y responde `503`.
 
 `GET /status` y la herramienta MCP `status` reportan además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
@@ -349,7 +353,7 @@ conserva en el log del operador.
 
 ```bash
 amatl --config-file amatl.toml \
-  provider-canary brave "rust programming language" --json
+  provider-canary searxng "rust programming language" --json
 ```
 
 Para Marginalia, ejecuta una sola consulta canario y comprueba que el resultado
@@ -359,8 +363,9 @@ portal del provider; ese estado no confirma autenticación.
 
 En GitHub, el workflow manual `provider-canary` usa el environment homónimo para
 aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML completo
-ya aprobado y `BRAVE_API_KEY` o `MOJEEK_API_KEY`; nunca se ejecuta en `push` ni
-en pull requests.
+ya aprobado y, según la fuente elegida, el secreto `MARGINALIA_API_KEY` o
+`SEARXNG_INSTANCE_URL` (SearXNG no requiere credencial, sólo la URL de la
+instancia); nunca se ejecuta en `push` ni en pull requests.
 
 ## SQLite y caché
 

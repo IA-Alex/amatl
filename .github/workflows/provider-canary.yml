@@ -8,8 +8,8 @@ on:
         required: true
         type: choice
         options:
-          - brave
-          - mojeek
+          - searxng
+          - marginalia
       query:
         description: Non-sensitive canary query
         required: true
@@ -25,8 +25,8 @@ jobs:
     environment: provider-canary
     timeout-minutes: 10
     env:
-      BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
-      MOJEEK_API_KEY: ${{ secrets.MOJEEK_API_KEY }}
+      MARGINALIA_API_KEY: ${{ secrets.MARGINALIA_API_KEY }}
+      SEARXNG_INSTANCE_URL: ${{ secrets.SEARXNG_INSTANCE_URL }}
     steps:
       - uses: actions/checkout@v6
       - uses: dtolnay/rust-toolchain@stable

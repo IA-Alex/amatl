@@ -185,15 +185,10 @@ adapter/extractor versions are independent axes as well.
   a route requires declaring it in one place.
 - Search-source selector in the web UI: a single-choice control that derives
   from the authoritative `providers.enabled` list and exposes
-  Marginalia / SearXNG / Brave / All. Picking one issues the ordered per-provider
+  Marginalia / SearXNG / All. Picking one issues the ordered per-provider
   `POST /providers/{name}/enabled` toggles to reach exactly that membership, so
   the operator chooses which sources (and therefore what the strategist LLM
   refines over) run per search.
-- Brave as a first-class (paid, opt-in) source with an in-memory key surface
-  mirroring Marginalia: `POST`/`DELETE /providers/brave/credential`, a live
-  canary before acceptance, and a liquidate affordance gated on the reported
-  `credential_source`. Brave's governance record is approved in the local
-  `amatl.toml`; `amatl.example.toml` carries the commented template.
 - Retained-documents expiry (`saved_documents_retention_days`): saved
   documents older than the configured window are pruned on the maintenance
   pass, bounding table growth while keeping the unlimited (0) default.
@@ -272,9 +267,27 @@ adapter/extractor versions are independent axes as well.
   caller after cooldown claims the probe and concurrent callers are refused
   until it completes, so a recovering source is not stampeded. A claim older
   than the cooldown is reclaimed.
+- Readiness follows the deployment the operator asked for. `/ready` and
+  `GET /status` degrade on an enabled source that cannot serve — not approved,
+  reporting `unavailable`, or with its circuit open — and no longer on a source
+  that is merely declared. A declared-but-disabled source is a configuration
+  choice, so a single-source deployment that is serving traffic stays ready
+  instead of being drained by a load balancer; an instance with no enabled
+  usable source still answers `503`, because it cannot search at all. The
+  per-source detail (name, `provider_disabled`, `provider_not_approved`,
+  circuit) stays in `/status` behind the `read` scope.
 
 ### Removed
 
+- Brave as a shipped source: the adapter module (`providers/brave.rs`), its
+  registry factory, its built-in governance record and the UI credential
+  affordance are gone, so `brave` in `providers.enabled` now fails configuration
+  validation as an unknown enabled provider and no request can be sent. The
+  credential routes themselves stay — `POST`/`DELETE /providers/{name}/credential`
+  are parameterized by provider, not Brave-specific — and now reject `brave`
+  like any other name the registry does not carry. The canary workflow's
+  provider choices and secrets follow the shipped sources (`searxng`,
+  `marginalia`).
 - Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
   transport surfaces live in `amatl-server`.
 

@@ -4,8 +4,10 @@
 
 Los secretos entran por dos vías sancionadas, y ninguna otra:
 
-1. **Variables de entorno** (vía por defecto). `BRAVE_API_KEY` y
-   `MOJEEK_API_KEY` son los defaults de los adapters; el servidor lee la variable
+1. **Variables de entorno** (vía por defecto). `MOJEEK_API_KEY` y
+   `MARGINALIA_API_KEY` son los defaults de los adapters que usan credencial
+   (SearXNG no la usa: lee la URL de su instancia desde `SEARXNG_INSTANCE_URL`);
+   el servidor lee la variable
    nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El
    archivo `amatl.toml` sólo puede contener el **nombre** de la variable, nunca
    su valor.

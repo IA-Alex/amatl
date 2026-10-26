@@ -675,8 +675,8 @@ const providerSelectorStatus = document.querySelector("#provider-selector-status
 const PROVIDER_SOURCE_NAME = ["marginalia", "searxng"];
 
 // Map a `providers.enabled` list to a radio value: "all" when every selector
-// provider is on, otherwise the single on one, or null if zero (or a pair the
-// single-choice control cannot express, e.g. marginalia+searxng without brave).
+// provider is on, the single on one when exactly one is, and null when neither
+// is (the single-choice control cannot express "no source of the pair").
 function providerSourceValue(enabledList) {
   const list = Array.isArray(enabledList) ? enabledList : [];
   const on = PROVIDER_SOURCE_NAME.filter((name) => list.includes(name));

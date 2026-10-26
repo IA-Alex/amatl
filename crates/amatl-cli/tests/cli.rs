@@ -399,8 +399,12 @@ fn serve_reports_the_effective_listener_before_binding() {
 #[test]
 fn cli_reports_the_same_error_catalog_codes_as_the_other_surfaces() {
     // A domain failure carries a catalog code on stderr, next to the message.
+    // The probe is `searxng`: it is declared, registered and shipped, and just
+    // not enabled by default, which is the code this assertion pins. (The
+    // preflight checks enablement before declaration and registration, so the
+    // name only has to be one the operator did not enable.)
     let canary = Command::new(env!("CARGO_BIN_EXE_amatl"))
-        .args(["provider-canary", "brave", "rust"])
+        .args(["provider-canary", "searxng", "rust"])
         .output()
         .expect("amatl binary should run");
     assert!(!canary.status.success());
