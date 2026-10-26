@@ -1,6 +1,6 @@
 use amatl_core::{
-    parse_query, Budget, HttpRequest, HttpResponse, HttpTransport, MockProvider, MojeekProvider,
-    Provider, ProviderItem, Rank, SearchOrchestrator, SearchStatus,
+    parse_query, Budget, HttpRequest, HttpResponse, HttpTransport, MarginaliaProvider,
+    MockProvider, Provider, ProviderItem, Rank, SearchOrchestrator, SearchStatus,
 };
 use async_trait::async_trait;
 use std::collections::BTreeMap;
@@ -49,17 +49,16 @@ fn item() -> ProviderItem {
     }
 }
 
+/// The one shipped source that needs a credential is Marginalia, so it carries
+/// the end-to-end coverage for the whole key-gated path: credential handling,
+/// response parsing through the global pipeline, and bounded retry. SearXNG is
+/// credential-free and covered by the characterization suite; the retired paid
+/// sources no longer ship an adapter to test.
 #[tokio::test]
-async fn mojeek_without_token_is_omitted_without_network_access() {
+async fn key_gated_provider_without_credential_is_omitted_without_network_access() {
     let transport = Arc::new(FixtureTransport::new(200, BTreeMap::new(), b"{}"));
     let providers: Vec<Arc<dyn Provider>> = vec![
-        Arc::new(MojeekProvider::new(
-            None,
-            true,
-            true,
-            vec![],
-            transport.clone(),
-        )),
+        Arc::new(MarginaliaProvider::new(None, true, true, transport.clone())),
         Arc::new(MockProvider::success("local", vec![item()])),
     ];
     let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
@@ -74,17 +73,16 @@ async fn mojeek_without_token_is_omitted_without_network_access() {
 }
 
 #[tokio::test]
-async fn mojeek_fixture_crosses_provider_and_global_pipeline() {
+async fn marginalia_fixture_crosses_provider_and_global_pipeline() {
     let transport = Arc::new(FixtureTransport::new(
         200,
         BTreeMap::new(),
-        br#"{"response":{"status":"OK","results":[{"url":"https://example.com/?utm_source=mojeek","title":"Rust","desc":"Guide"}]}}"#,
+        br#"{"results":[{"title":"Rust","url":"https://example.com/?utm_source=marginalia","description":"Guide"}]}"#,
     ));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MojeekProvider::new(
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
         Some("fixture-token".to_owned().into()),
         true,
         true,
-        vec![],
         transport.clone(),
     ))];
     let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
@@ -101,11 +99,10 @@ async fn mojeek_fixture_crosses_provider_and_global_pipeline() {
 #[tokio::test]
 async fn real_adapter_rate_limit_uses_bounded_retry_policy() {
     let transport = Arc::new(FixtureTransport::new(429, BTreeMap::new(), b"private body"));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MojeekProvider::new(
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
         Some("fixture-token".to_owned().into()),
         true,
         true,
-        vec![],
         transport.clone(),
     ))];
     let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)

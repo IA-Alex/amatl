@@ -353,11 +353,11 @@ mod tests {
     #[tokio::test]
     async fn a_failed_probe_reopens_the_circuit() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("mojeek", false, 10).await;
-        breaker.record("mojeek", false, 11).await;
-        assert_eq!(breaker.state("mojeek", 41), CircuitState::HalfOpen);
-        breaker.record("mojeek", false, 41).await;
-        assert_eq!(breaker.state("mojeek", 42), CircuitState::Open);
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
+        breaker.record("marginalia", false, 41).await;
+        assert_eq!(breaker.state("marginalia", 42), CircuitState::Open);
     }
 
     #[tokio::test]

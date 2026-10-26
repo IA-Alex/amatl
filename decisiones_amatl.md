@@ -590,3 +590,76 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing`);
   `docs/operacion.md`; `docs/security/threat-model.md`
   (`Core → inference (strategist)`).
+
+## ADR-016 — Retiro de Brave y Mojeek del producto
+
+- **Fecha:** 2026-10-26
+- **Estado:** Aceptada
+- **Contexto:** ADR-010 retiró DuckDuckGo HTML porque su adapter nunca podría
+  aprobar gobernanza, y dejó a Brave y Mojeek en un estado intermedio: adapter
+  completo y funcional, pero con `approval_status = "rejected"` fijado por
+  política (no se contratan fuentes de pago) y, además, expuestos en la UI como
+  fuente opcional opt-in (selector, diálogo de key, `/providers/brave/*`). Ese
+  estado es incoherente: el operador ve una fuente seleccionable que el propio
+  producto considera no contratable, y la superficie de credencial de un
+  provider retirado es riesgo sin contrapartida (ADR-014 tuvo que endurecer el
+  ciclo de vida de la key de un adapter que ya no se puede usar). Se cierra la
+  ambigüedad retirándolos de verdad, no apagándolos.
+- **Decisión:** Se retiran `brave` y `mojeek` de extremo a extremo:
+  - **Código:** se eliminan `providers/brave.rs` y `providers/mojeek.rs`, sus
+    factories y sus entradas en `builtin_provider_records()`.
+    `ProviderRegistry::builtin()` despacha exactamente SearXNG y Marginalia.
+  - **Configuración (segunda puerta):** `RETIRED_PROVIDERS` /
+    `is_retired_provider()` (`config/providers.rs`) y `Config::validate()`
+    rechazan ambos nombres **por nombre**, tanto en una tabla declarada
+    `[providers.brave]`/`[providers.mojeek]` como en `providers.enabled`. El
+    error es explícito («retirado por política») en lugar del genérico
+    `unknown enabled provider`, que se leería como una errata. Una configuración
+    antigua falla en el arranque en vez de desplegar una fuente menos en
+    silencio; incluso una config construida a mano que los liste se detiene en el
+    registro (`UnknownProvider`).
+  - **UI:** desaparecen selector, diálogo de key, botones y claves de catálogo
+    `brave*`/`mojeek*`; un test impide que vuelvan.
+  - **Documentación y pruebas:** `amatl.toml`, `amatl.example.toml`,
+    `docs/configuracion.md`, `docs/gobernanza-providers.md`,
+    `docs/security/{secrets,threat-model,asvs-checklist}.md` y los suites de
+    CLI/core/servidor/UI se actualizan al inventario real.
+- **Consecuencias:** AMATL publica exactamente **dos fuentes: SearXNG (sin
+  credencial) y Marginalia (con credencial)**; «conectar una fuente de búsqueda
+  real» queda cumplido sin candidatos fantasma. La política de «no se contratan
+  fuentes de pago» pasa de ser un `rejected` por defecto —overrideable en
+  `amatl.toml`— a una puerta dura en el código: reactivar Brave o Mojeek exige
+  revertir esta ADR (restaurar adapter y quitar el nombre de
+  `RETIRED_PROVIDERS`), no cambiar una ficha. Riesgo residual: el nombre
+  `brave` sigue apareciendo como **motor upstream de SearXNG** en los fixtures
+  de `providers/searxng.rs` y en la evidencia histórica
+  (`docs/testing/searxng-characterization.md`, `test-results/`); es un motor de
+  la instancia SearXNG del operador, no una fuente de AMATL. ADR-014 sigue
+  vigente en su mecanismo (credencial efímera zeroizada), pero su enumeración de
+  adapters se reduce a Marginalia.
+- **Alternativas descartadas:** dejar los adapters apagados con
+  `approval_status = "rejected"` (mantiene el código muerto y la superficie de
+  credencial que ADR-014 tuvo que blindar, y confunde al operador con una fuente
+  seleccionable que no se puede contratar); conservar sólo la comprobación de
+  configuración sin borrar los adapters (un adapter presente se puede reactivar
+  por error al tocar el registry); borrar los nombres del historial
+  (`CHANGELOG.md`, ADRs previas, `CONTINUIDAD.md`) en lugar de anotarlos
+  (destruiría la trazabilidad de por qué se retiraron).
+- **Trazabilidad:** `crates/amatl-core/src/providers/{registry.rs,searxng.rs,marginalia.rs}`;
+  `crates/amatl-core/src/config/providers.rs` (`RETIRED_PROVIDERS:148`,
+  `is_retired_provider`); `crates/amatl-core/src/service.rs`
+  (`validate_provider_canary`, `retired_provider_canary_stops_at_the_registry_door`,
+  y las vistas `/status`, `/ready`);
+  `crates/amatl-ui/src/lib.rs`
+  (`retired_sources_are_not_shipped_in_the_ui`);
+  `crates/amatl-cli/tests/cli.rs`
+  (`provider_canary_rejects_retired_sources_as_configuration_errors`);
+  `crates/amatl-core/src/config/mod.rs`
+  (`retired_providers_are_absent_and_refused_by_validate`,
+  `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`);
+  `crates/amatl-server/src/tests.rs`
+  (`reload_picks_up_a_new_source_without_restarting`,
+  `source_gauges_count_declared_sources_while_readiness_counts_available_ones`);
+  `docs/gobernanza-providers.md`; `docs/configuracion.md`;
+  `docs/security/secrets.md`; `CHANGELOG.md` (Unreleased → Removed).
+

@@ -81,24 +81,33 @@ AMATL.
 | `.data_handling_notes` | string opcional | No vacío requerido |
 | `.operational_risk` | string opcional | No vacío requerido |
 
-Defaults específicos: Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL
-de soporte, con filtros site/filetype/language/region/time_range. **Está
-`rejected` por defecto**, no `draft`: requiere un plan de pago (Mojeek no tiene
-tier gratuito) y la política del operador excluye providers de pago. No es
-papeleo pendiente — reactivarlo exige revertir esa decisión explícitamente, no
-sólo completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
-Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) sí están `draft` con adapter
-completo y ficha aprobable; sólo falta `reviewer`/`reviewed_at`/
-`approval_status` con identidad real. `duckduckgo_html` se retiró del
-registro: DuckDuckGo no ofrece API de búsqueda web. Brave también se retiró del
-producto (fuente de pago desde 2026-02): no está declarado, no está registrado y
-no hay adapter, así que no existe ficha que aprobar y `brave` no construye
-ninguna fuente. Antes de elegir fuente,
-consulta la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
+Defaults específicos: SearXNG (`searxng-v1`, sin credencial) y Marginalia
+(`marginalia-v1`, `MARGINALIA_API_KEY`) están `draft` con adapter completo y ficha
+aprobable; sólo falta `reviewer`/`reviewed_at`/`approval_status` con identidad
+real. `duckduckgo_html` se retiró del registro: DuckDuckGo no ofrece API de
+búsqueda web. Los proveedores de pago **`brave` y `mojeek` se retiraron del
+producto**: no están declarados en los expedientes incorporados, no están
+registrados en el `ProviderRegistry`, sus adapters se eliminaron de `providers/`
+y `Config::validate()` rechaza ambos nombres de forma explícita
+(`RETIRED_PROVIDERS` en `config/providers.rs:148`), de modo que aparecer en
+`providers.enabled` o declarar `[providers.brave]`/`[providers.mojeek]` es un
+error de configuración, no una fuente omitida en silencio. Antes de elegir
+fuente, consulta la sección «Viabilidad y coste» de
+`docs/gobernanza-providers.md`.
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
-fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
-no elimina los demás. El nombre debe ser una clave estable (minúsculas ASCII,
+fuente, y la sustitución es **por nombre de fuente, no por campo**. Declarar
+`[providers.searxng]` reemplaza esa ficha pero deja intactas las demás, así que
+ajustar una fuente no elimina las otras; en cambio, dentro de la ficha, la
+tabla **reemplaza** el expediente incorporado completo (el wire struct usa
+`#[serde(default)]`, sin fusión campo a campo): una tabla que sólo traiga
+`approval_status`, `reviewed_at` y `reviewer` descarta `terms_url`, `rate_limit`,
+`cost_model` y el resto, y la puerta de `approved_on` vuelve a cerrarse en
+silencio (`provider_not_approved`). Para aprobar una fuente incorporada hay que
+reescribir la ficha entera, como muestran los ejemplos de
+`docs/gobernanza-providers.md`; el test
+`declaring_a_table_replaces_the_builtin_record_instead_of_merging_it` fija esa
+semántica. El nombre debe ser una clave estable (minúsculas ASCII,
 dígitos y `_`). Declarar una fuente no la implementa: el servicio la construye
 sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
 (ver `docs/arquitectura.md`).

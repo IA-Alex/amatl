@@ -159,20 +159,21 @@ fn ingest_rejects_unknown_binary_without_echoing_content() {
 
 #[test]
 fn provider_canary_refuses_incomplete_governance_without_network() {
-    // `mojeek` is declared in the shipped governance records but marked
-    // `Rejected`, so it is the current builtin that is enabled-and-declared yet
-    // fails the approval gate. (Brave is no longer shipped at all: it is absent
-    // from both the governance records and the registry, so enabling it fails
-    // config validation before the canary's governance preflight runs.)
+    // `searxng` is declared in the shipped governance records but still
+    // `draft`, so it is the current builtin that is enabled-and-declared yet
+    // fails the approval gate. (The retired paid sources `brave` and `mojeek`
+    // are no longer shipped at all: they are absent from both the governance
+    // records and the registry, so enabling one fails config validation before
+    // the canary's governance preflight runs.)
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));
     std::fs::create_dir_all(&base).unwrap();
     let config = base.join("amatl.toml");
-    std::fs::write(&config, "[providers]\nenabled = [\"mojeek\"]\n").unwrap();
+    std::fs::write(&config, "[providers]\nenabled = [\"searxng\"]\n").unwrap();
     let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
         .arg("--config-file")
         .arg(&config)
-        .args(["provider-canary", "mojeek", "rust"])
+        .args(["provider-canary", "searxng", "rust"])
         .output()
         .unwrap();
     assert!(!output.status.success());
@@ -181,6 +182,32 @@ fn provider_canary_refuses_incomplete_governance_without_network() {
     // The refusal is the specific governance gate, not a generic config error,
     // and it happens before any network access.
     assert!(stderr.contains("provider_not_approved"), "{stderr}");
+    std::fs::remove_file(config).unwrap();
+    std::fs::remove_dir(base).unwrap();
+}
+
+#[test]
+fn provider_canary_rejects_retired_sources_as_configuration_errors() {
+    // The other closed door: a retired name is refused by configuration
+    // validation by name, so it can never reach the canary's network stage.
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let base =
+        std::env::temp_dir().join(format!("amatl-canary-retired-{}-{id}", std::process::id()));
+    std::fs::create_dir_all(&base).unwrap();
+    let config = base.join("amatl.toml");
+    for retired in ["mojeek", "brave"] {
+        std::fs::write(&config, format!("[providers]\nenabled = [\"{retired}\"]\n")).unwrap();
+        let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+            .arg("--config-file")
+            .arg(&config)
+            .args(["provider-canary", retired, "rust"])
+            .output()
+            .unwrap();
+        assert!(!output.status.success(), "{retired} must be refused");
+        let stderr = String::from_utf8(output.stderr).unwrap();
+        assert!(stderr.contains("retired"), "{retired}: {stderr}");
+        assert!(stderr.contains(retired), "{retired}: {stderr}");
+    }
     std::fs::remove_file(config).unwrap();
     std::fs::remove_dir(base).unwrap();
 }

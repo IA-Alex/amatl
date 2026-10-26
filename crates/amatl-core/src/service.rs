@@ -3048,12 +3048,20 @@ mod tests {
         };
         assert_eq!(source("searxng").status, ProviderSurfaceStatus::Available);
         assert_eq!(source("searxng").code, None);
-        assert_eq!(source("mojeek").status, ProviderSurfaceStatus::Unavailable);
-        assert_eq!(source("mojeek").code.as_deref(), Some("provider_disabled"));
         assert_eq!(
             source("marginalia").status,
             ProviderSurfaceStatus::Unavailable
         );
+        assert_eq!(
+            source("marginalia").code.as_deref(),
+            Some("provider_disabled")
+        );
+        // Retired sources are not merely disabled: they ship no record at all,
+        // so they cannot even be named by `/status`.
+        assert!(status
+            .sources
+            .iter()
+            .all(|source| source.name != "mojeek" && source.name != "brave"));
     }
 
     /// The other half of the D2 rule: ignoring disabled sources must not make a
@@ -3157,14 +3165,40 @@ mod tests {
     fn real_provider_canary_is_fail_closed_before_network_access() {
         let config = Config::default();
         assert_eq!(
-            validate_provider_canary(&config, "mojeek"),
-            Err(ProviderCanaryError::NotEnabled("mojeek".into()))
+            validate_provider_canary(&config, "searxng"),
+            Err(ProviderCanaryError::NotEnabled("searxng".into()))
         );
         let mut enabled = config;
-        enabled.providers.enabled = vec!["mojeek".into()];
+        enabled.providers.enabled = vec!["searxng".into()];
         assert_eq!(
-            validate_provider_canary(&enabled, "mojeek"),
-            Err(ProviderCanaryError::Governance("mojeek".into()))
+            validate_provider_canary(&enabled, "searxng"),
+            Err(ProviderCanaryError::Governance("searxng".into()))
+        );
+    }
+
+    #[test]
+    fn retired_provider_canary_stops_at_the_registry_door() {
+        // Configuration validation refuses retired names first, so this test
+        // bypasses it on purpose: it declares `mojeek` and enables both retired
+        // names by hand. Even then the canary cannot reach the network, because
+        // the builtin registry ships no factory for them.
+        let mut config = Config::default();
+        config
+            .providers
+            .declare("mojeek", approved_record("mojeek-v1"));
+        config.providers.enabled = vec!["mojeek".into(), "brave".into()];
+        assert!(config.validate().is_err(), "validation is the first door");
+        // `mojeek` passes the governance-record lookup (declared, enabled) and
+        // still stops at the registry, which carries no factory for it.
+        assert_eq!(
+            validate_provider_canary(&config, "mojeek"),
+            Err(ProviderCanaryError::UnknownProvider("mojeek".into()))
+        );
+        // `brave` is not declared at all, so it stops one check earlier — same
+        // typed error, never a network attempt.
+        assert_eq!(
+            validate_provider_canary(&config, "brave"),
+            Err(ProviderCanaryError::UnknownProvider("brave".into()))
         );
     }
 
@@ -3235,8 +3269,11 @@ mod tests {
         assert!(summaries
             .iter()
             .any(|summary| summary.name == "custom_archive"));
-        // Brave is not a shipped source and must not appear in the summaries.
-        assert!(!summaries.iter().any(|summary| summary.name == "brave"));
+        // The retired paid sources are not shipped and must not appear in the
+        // summaries, which are built from the configuration records.
+        assert!(!summaries
+            .iter()
+            .any(|summary| summary.name == "brave" || summary.name == "mojeek"));
     }
 
     #[tokio::test]

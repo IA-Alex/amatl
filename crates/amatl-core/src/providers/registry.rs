@@ -5,7 +5,7 @@
 //! source therefore means shipping a factory and a governance record — no
 //! `match` arm inside the service, no new field in the configuration struct.
 
-use super::{HttpTransport, MarginaliaProvider, MojeekProvider, Provider, SearXngProvider};
+use super::{HttpTransport, MarginaliaProvider, Provider, SearXngProvider};
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -60,13 +60,14 @@ impl ProviderRegistry {
 
     /// Registry with the sources AMATL ships.
     ///
-    /// Brave is deliberately not registered and no adapter ships for it: the
-    /// operator policy runs only no-cost self-hosted sources (SearXNG) and the
-    /// approved key-gated Marginalia, so `brave` resolves to
-    /// `provider_not_registered` — it can never be selected or send traffic.
+    /// Exactly two sources are registered: the self-hosted, credential-free
+    /// SearXNG and the approved key-gated Marginalia. The retired paid sources
+    /// (`brave`, `mojeek`) ship no adapter and no factory, so their names
+    /// resolve to `provider_not_registered` — they can never be selected or send
+    /// traffic. Configuration validation rejects those names outright
+    /// (`config/mod.rs`), so the registry is the second of two closed doors.
     pub fn builtin() -> Self {
         Self::empty()
-            .with(Arc::new(MojeekFactory))
             .with(Arc::new(SearXngFactory))
             .with(Arc::new(MarginaliaFactory))
     }
@@ -105,24 +106,6 @@ impl ProviderRegistry {
     /// Registered names in stable alphabetical order.
     pub fn names(&self) -> Vec<&str> {
         self.factories.keys().map(String::as_str).collect()
-    }
-}
-
-struct MojeekFactory;
-
-impl ProviderFactory for MojeekFactory {
-    fn name(&self) -> &str {
-        "mojeek"
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        Arc::new(MojeekProvider::new(
-            context.credential.clone(),
-            context.enabled,
-            context.approved,
-            context.runtime.supported_filters.clone(),
-            context.transport.clone(),
-        ))
     }
 }
 
@@ -249,10 +232,11 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        // Brave is deliberately not shipped; the builtin set is the two
-        // operating sources (SearXNG, Marginalia) plus the rejected Mojeek.
-        assert_eq!(registry.names(), vec!["marginalia", "mojeek", "searxng"]);
+        // Only the two sanctioned sources ship. The retired paid names are
+        // neither registered nor declared, so they cannot be selected.
+        assert_eq!(registry.names(), vec!["marginalia", "searxng"]);
         assert!(registry.get("brave").is_none());
+        assert!(registry.get("mojeek").is_none());
         assert!(!registry.get("searxng").unwrap().requires_credential());
         assert!(registry.get("marginalia").unwrap().requires_credential());
     }
@@ -261,8 +245,9 @@ mod tests {
     fn third_party_sources_register_without_touching_the_builtin_set() {
         let registry = ProviderRegistry::builtin().with(Arc::new(CustomFactory));
         assert!(registry.contains("custom_archive"));
-        // Brave is not part of the builtin set and must not be present.
+        // The retired names are not part of the builtin set and must not appear.
         assert!(!registry.contains("brave"));
+        assert!(!registry.contains("mojeek"));
         assert!(ProviderRegistry::empty().names().is_empty());
 
         // A source can also be withdrawn without rebuilding the registry.
@@ -271,5 +256,6 @@ mod tests {
         assert!(!registry.contains("custom_archive"));
         assert!(registry.unregister("custom_archive").is_none());
         assert!(!registry.contains("brave"));
+        assert!(!registry.contains("mojeek"));
     }
 }

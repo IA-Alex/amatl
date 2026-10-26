@@ -525,7 +525,8 @@ mod tests {
         let catalog = text("/i18n.js");
         // A single-choice segmented control (Marginalia / SearXNG / All) must
         // exist in the search panel and resolve its copy through the catalog,
-        // not half-hardcoded. Brave is no longer a shipped source.
+        // not half-hardcoded. The retired paid sources (`brave`, `mojeek`) are
+        // no longer shipped.
         assert!(html.contains("id=\"provider-selector\""));
         assert!(html.contains("name=\"provider-source\""));
         assert!(html.contains("value=\"marginalia\""));
@@ -544,17 +545,18 @@ mod tests {
         assert!(javascript.contains("marginalia: [\"marginalia\"]"));
         assert!(javascript.contains("searxng: [\"searxng\"]"));
         assert!(!javascript.contains("brave: [\"brave\"]"));
+        assert!(!javascript.contains("mojeek: [\"mojeek\"]"));
         assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
         assert!(javascript.contains("syncProviderSelector"));
         assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
     }
 
     #[test]
-    fn brave_is_not_shipped_in_the_ui() {
+    fn retired_sources_are_not_shipped_in_the_ui() {
         let html = text("/index.html");
         let catalog = text("/i18n.js");
-        // Brave was removed from the product (policy drop): no Brave control,
-        // no Brave key surface, and no Brave catalog keys remain in the UI.
+        // Brave and Mojeek were removed from the product (policy drop): no
+        // control, no key surface, and no catalog keys remain in the UI.
         for id in [
             "brave-key-button",
             "brave-clear-button",
@@ -562,10 +564,16 @@ mod tests {
             "brave-key",
             "brave-save",
             "brave-cancel",
+            "mojeek-key-button",
+            "mojeek-clear-button",
+            "mojeek-dialog",
+            "mojeek-key",
+            "mojeek-save",
+            "mojeek-cancel",
         ] {
             assert!(
                 !html.contains(&format!("id=\"{id}\"")),
-                "brave element must be gone from the UI: {id}"
+                "retired element must be gone from the UI: {id}"
             );
         }
         for key in [
@@ -577,10 +585,18 @@ mod tests {
             "braveSave",
             "braveCancel",
             "braveStatusEnvironment",
+            "mojeekKeyButton",
+            "mojeekClearButton",
+            "mojeekDialogHeading",
+            "mojeekDialogHelp",
+            "mojeekKeyPlaceholder",
+            "mojeekSave",
+            "mojeekCancel",
+            "mojeekStatusEnvironment",
         ] {
             assert!(
                 !catalog.contains(key),
-                "brave catalog key must be gone: {key}"
+                "retired catalog key must be gone: {key}"
             );
         }
     }

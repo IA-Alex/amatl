@@ -470,6 +470,28 @@ impl Config {
         }
         if let Some(name) = self
             .providers
+            .names()
+            .into_iter()
+            .find(|name| is_retired_provider(name))
+        {
+            return Err(ConfigError::Policy(format!(
+                "provider '{name}' was retired from the product by operator policy \
+                 (no paid search providers); delete the [providers.{name}] table"
+            )));
+        }
+        if let Some(name) = self
+            .providers
+            .enabled
+            .iter()
+            .find(|name| is_retired_provider(name))
+        {
+            return Err(ConfigError::Policy(format!(
+                "provider '{name}' was retired from the product by operator policy \
+                 (no paid search providers); remove it from providers.enabled"
+            )));
+        }
+        if let Some(name) = self
+            .providers
             .enabled
             .iter()
             .find(|name| !self.providers.is_declared(name))
@@ -682,9 +704,10 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        // Brave is no longer a shipped source (policy drop); it must not be
-        // declared in the built-in records.
+        // The retired paid sources ship no governance record at all, so they
+        // cannot be enabled from a stale file without failing validation.
         assert!(config.providers.get("brave").is_none());
+        assert!(config.providers.get("mojeek").is_none());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -844,44 +867,52 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
-    /// Locks in a policy decision, not just a paperwork gap: Mojeek is
-    /// `Rejected`, with the reason stated in `cost_model`/
-    /// `operational_risk`, precisely so a future review — human or
-    /// automated — reads a closed "no" instead of an incomplete dossier
-    /// inviting completion. If this regresses to `Draft`, that decision was
-    /// silently lost. (Brave is no longer shipped at all: it is not declared
-    /// and not registered, so there is no record to keep Rejected.)
+    /// Locks in a policy decision, not just a paperwork gap. The paid sources
+    /// were retired outright, so this asserts the stronger property: no record
+    /// exists, and naming one in `providers.enabled` or declaring a table for it
+    /// fails validation with a message that says *retired*, not *unknown*.
+    /// If retirement ever regresses to "merely undeclared", the name would fall
+    /// through to the generic `unknown enabled provider` error and an operator
+    /// would read a deliberate policy removal as their own typo.
     #[test]
-    fn paid_providers_are_rejected_by_default_not_merely_draft() {
+    fn retired_providers_are_absent_and_refused_by_validate() {
         let config = Config::default();
-        // A named helper instead of a one-element `for` loop: clippy rejects
-        // single-element loops, and the assertion has to stay reusable so a
-        // second paid provider is one more call here — not a re-derived copy
-        // of these three checks that could drift from the policy.
-        let assert_paid_provider_is_rejected = |name: &str| {
-            let record = config.providers.get(name).unwrap();
-            assert_eq!(
-                record.approval_status,
-                ApprovalStatus::Rejected,
-                "{name} must stay Rejected, not Draft: it requires a paid plan and \
-                 operator policy excludes paid providers"
-            );
+        for name in RETIRED_PROVIDERS {
             assert!(
-                !record.approved(),
-                "{name} must never pass the approval gate"
+                config.providers.get(name).is_none(),
+                "{name} was retired: it must ship no governance record"
             );
-            assert!(
-                record
-                    .operational_risk
-                    .as_deref()
-                    .is_some_and(|value| value.contains("operator policy")),
-                "{name}'s rejection reason must stay explicit, not silently blanked"
-            );
-        };
-        assert_paid_provider_is_rejected("mojeek");
-        // The two free sources stay eligible for approval — only their
-        // operator-specific identity/date fields are missing, not the
-        // decision itself.
+            assert!(is_retired_provider(name));
+        }
+        assert!(!is_retired_provider("searxng"));
+        assert!(!is_retired_provider("marginalia"));
+
+        // Enabling a retired name is refused by name, not as a typo.
+        let mut enabled = Config::default();
+        enabled.providers.enabled = vec!["mojeek".into()];
+        let error = enabled.validate().unwrap_err().to_string();
+        assert!(error.contains("retired"), "{error}");
+        assert!(error.contains("mojeek"), "{error}");
+
+        // Declaring a table for it is refused too, so a file cannot smuggle the
+        // record back in and then enable it.
+        let declared = Config::from_toml(
+            r#"
+            [providers]
+            enabled = ["mojeek"]
+
+            [providers.mojeek]
+            adapter_version = "mojeek-v1"
+            "#,
+        )
+        .unwrap();
+        assert!(declared.providers.is_declared("mojeek"));
+        let error = declared.validate().unwrap_err().to_string();
+        assert!(error.contains("retired"), "{error}");
+        assert!(error.contains("providers.mojeek"), "{error}");
+
+        // The two sanctioned sources stay eligible for approval — only their
+        // operator-specific identity/date fields are missing, not the decision.
         for name in ["searxng", "marginalia"] {
             assert_eq!(
                 config.providers.get(name).unwrap().approval_status,
@@ -909,13 +940,7 @@ mod tests {
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec![
-                "custom_archive",
-                "custom_news",
-                "marginalia",
-                "mojeek",
-                "searxng"
-            ]
+            vec!["custom_archive", "custom_news", "marginalia", "searxng"]
         );
         assert_eq!(
             config
@@ -930,8 +955,97 @@ mod tests {
             config.providers.get("custom_news").unwrap().adapter_version,
             Some("custom-news-v1".into())
         );
-        assert!(config.providers.is_declared("mojeek"));
+        // The retired names are absent from the merged records: adding a custom
+        // source must not resurrect them.
+        assert!(!config.providers.is_declared("mojeek"));
+        assert!(!config.providers.is_declared("brave"));
         assert!(!config.providers.storage_rights("custom_archive"));
+    }
+
+    /// Declaring a table for an already-declared source **replaces** its record,
+    /// it does not merge field by field: the wire struct is `#[serde(default)]`,
+    /// so every key the table omits falls back to `None`/`false` instead of
+    /// keeping the built-in value.
+    ///
+    /// This is the trap the runtime smoke test walked into: a `[providers.searxng]`
+    /// table carrying only `approval_status`, `reviewed_at` and `reviewer` looked
+    /// approved but dropped `terms_url`, `rate_limit`, `cost_model`, … so the gate
+    /// in `ProviderRuntimeConfig::approved_on` closed and the source silently
+    /// reported `provider_not_approved`. The fix is to restate the whole ficha,
+    /// as `docs/gobernanza-providers.md` already shows.
+    #[test]
+    fn declaring_a_table_replaces_the_builtin_record_instead_of_merging_it() {
+        // The gate is date-bounded (≤ 90 days), so the ficha is built against
+        // today instead of a literal that would rot.
+        let today = time::OffsetDateTime::now_utc().date();
+        let today = format!(
+            "{:04}-{:02}-{:02}",
+            today.year(),
+            u8::from(today.month()),
+            today.day()
+        );
+        let partial = Config::from_toml(&format!(
+            r#"
+            [providers]
+            enabled = ["searxng"]
+
+            [providers.searxng]
+            approval_status = "approved"
+            reviewed_at = "{today}"
+            reviewer = "smoke"
+            "#,
+        ))
+        .unwrap();
+        assert!(partial.validate().is_ok(), "the file is valid TOML");
+        let record = partial.providers.get("searxng").unwrap();
+        assert_eq!(record.adapter_version, None, "the built-in value is gone");
+        assert_eq!(record.terms_url, None, "the built-in value is gone");
+        assert_eq!(record.rate_limit, None, "the built-in value is gone");
+        assert!(
+            !record.approved(),
+            "an approved status without the rest of the ficha does not open the gate"
+        );
+
+        // Restating the whole ficha — the documented recipe — does approve.
+        let complete = Config::from_toml(&format!(
+            r#"
+            [providers]
+            enabled = ["searxng"]
+
+            [providers.searxng]
+            adapter_version = "searxng-v1"
+            approval_status = "approved"
+            reviewed_at = "{today}"
+            reviewer = "smoke"
+            terms_url = "https://docs.searxng.org/"
+            terms_version_or_date = "self-certified"
+            allowed_access_method = "self_hosted"
+            plan_or_contract = "self-hosted"
+            rate_limit = "unlimited (self-hosted)"
+            cost_model = "0"
+            data_handling_notes = "smoke"
+            operational_risk = "smoke"
+            "#,
+        ))
+        .unwrap();
+        let record = complete.providers.get("searxng").unwrap();
+        assert_eq!(record.credential_env, None, "omitted keys are dropped too");
+        assert!(
+            record.approved(),
+            "a complete ficha must open the gate; the smoke test observed this"
+        );
+
+        // A table for another source must not disturb this one: the map still
+        // merges, only the per-name record is replaced.
+        assert_eq!(
+            complete
+                .providers
+                .get("marginalia")
+                .unwrap()
+                .adapter_version
+                .as_deref(),
+            Some("marginalia-v1")
+        );
     }
 
     #[test]

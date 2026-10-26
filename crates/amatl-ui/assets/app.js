@@ -1076,8 +1076,8 @@ const marginaliaCredentialGroup = document.querySelector("#marginalia-credential
 // surface is needed, so the row stays hidden; picking Marginalia (or All)
 // reveals its insert/liquidate row. The visibility follows `providers.enabled`
 // — the same single source of truth the source selector drives — so the key
-// area can never drift from the active selection. (Brave was removed from the
-// product, so Marginalia is the only credential-gated source.)
+// area can never drift from the active selection. (Brave and Mojeek were
+// removed from the product, so Marginalia is the only credential-gated source.)
 function syncCredentialActions(enabledList) {
   const list = Array.isArray(enabledList) ? enabledList : [];
   const marginaliaOn = list.includes("marginalia");

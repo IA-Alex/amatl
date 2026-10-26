@@ -120,9 +120,9 @@ pub use progressive::{
     SearchPolicyV1, SearchStopReason,
 };
 pub use providers::{
-    HttpRequest, HttpResponse, HttpTransport, MockBehavior, MockProvider, MojeekProvider, Provider,
-    ProviderAvailability, ProviderBuildContext, ProviderContext, ProviderFactory, ProviderRegistry,
-    ReqwestTransport, SearXngProvider,
+    HttpRequest, HttpResponse, HttpTransport, MarginaliaProvider, MockBehavior, MockProvider,
+    Provider, ProviderAvailability, ProviderBuildContext, ProviderContext, ProviderFactory,
+    ProviderRegistry, ReqwestTransport, SearXngProvider,
 };
 pub use query::{parse_query, QueryParseError};
 pub use ranking::{RankingPolicyError, RankingPolicyV1};

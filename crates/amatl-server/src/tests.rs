@@ -218,7 +218,7 @@ async fn status_and_ready_agree_on_a_single_source_deployment() {
     let status_body = json_body(status).await;
     assert_eq!(ready_body["status"], status_body["status"]);
     assert_eq!(ready_body["sources_available"], 1);
-    assert_eq!(status_body["sources"].as_array().unwrap().len(), 3);
+    assert_eq!(status_body["sources"].as_array().unwrap().len(), 2);
 }
 
 #[tokio::test]
@@ -2415,7 +2415,7 @@ async fn reload_picks_up_a_new_source_without_restarting() {
         .as_array()
         .unwrap()
         .iter()
-        .all(|value| value != "brave"));
+        .all(|value| value != "brave" && value != "mojeek"));
     // The operating sources are present.
     assert!(["marginalia", "searxng"]
         .iter()
@@ -5588,7 +5588,7 @@ impl amatl_core::ProviderFactory for FailingFactory {
 /// counts only those whose surface status is `available`.
 ///
 /// So `declared - available` is not an incident count. On a single-source
-/// deployment it is two by configuration, and alerting on the difference pages
+/// deployment it is one by configuration, and alerting on the difference pages
 /// the operator for a decision they made on purpose. `docs/operacion.md` states
 /// the relation for operators; this test pins both numbers against one
 /// deployment so neither gauge can drift into the other's meaning.
@@ -5622,10 +5622,10 @@ async fn source_gauges_count_declared_sources_while_readiness_counts_available_o
             .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
     };
 
-    // Three sources declared, one of them enabled and available: the two
-    // disabled ones are declared but never available, which is why the
-    // difference is a configuration choice and not a degradation.
-    assert_eq!(gauge("amatl_sources_declared"), 3.0);
+    // Two sources declared, one of them enabled and available: the disabled one
+    // is declared but never available, which is why the difference is a
+    // configuration choice and not a degradation.
+    assert_eq!(gauge("amatl_sources_declared"), 2.0);
     assert_eq!(gauge("amatl_sources_available"), 1.0);
     assert_eq!(gauge("amatl_sources_circuit_open"), 0.0);
 }
@@ -5635,7 +5635,7 @@ async fn source_gauges_count_declared_sources_while_readiness_counts_available_o
 /// service actually searches with, while `/metrics` keeps reporting the declared
 /// ones. Measured on the isolated mock deployment below: `/ready` answers `200`
 /// with `"sources_available":2` and `/search` answers `200` — the deployment
-/// serves — while `/metrics` publishes `amatl_sources_declared 3` and
+/// serves — while `/metrics` publishes `amatl_sources_declared 2` and
 /// `amatl_sources_available 0`, because the real sources are declared but cannot
 /// serve under `egress = "deny"`.
 ///
@@ -5688,6 +5688,6 @@ async fn mock_deployments_disagree_between_ready_and_the_source_gauges() {
             .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
     };
 
-    assert_eq!(gauge("amatl_sources_declared"), 3.0);
+    assert_eq!(gauge("amatl_sources_declared"), 2.0);
     assert_eq!(gauge("amatl_sources_available"), 0.0);
 }

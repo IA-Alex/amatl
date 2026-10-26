@@ -97,7 +97,8 @@ impl HttpTransport for ReqwestTransport {
         // parameters already stripped: this is the only form of the URL that
         // may reach a log line, never the raw request URL or the transport
         // error's own `Display`, which reqwest renders with the request URL
-        // (and any query string, e.g. Mojeek's `api_key`) embedded in it.
+        // (and any query string, e.g. a provider API key passed as a query
+        // parameter) embedded in it.
         let sanitized_url = request.sanitized_url();
         let mut builder = match request.body {
             Some(body) => self.client.post(request.url).body(body),

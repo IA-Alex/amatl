@@ -9,13 +9,11 @@ use std::time::Duration;
 
 mod http;
 mod marginalia;
-mod mojeek;
 mod registry;
 mod searxng;
 
 pub use http::{HttpRequest, HttpResponse, HttpTransport, ReqwestTransport};
 pub use marginalia::MarginaliaProvider;
-pub use mojeek::MojeekProvider;
 pub use registry::{ProviderBuildContext, ProviderFactory, ProviderRegistry};
 pub use searxng::SearXngProvider;
 

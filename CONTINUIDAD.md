@@ -34,8 +34,64 @@
 >   real que el atributo `hidden` colapsa los paneles con `display:` propio. El
 >   suite ahora es **fail-closed**: con `AMATL_BROWSER_E2E=1` un driver ausente
 >   o desemparejado **falla**, en vez de saltarse en verde.
-> - **Conteos de workspace:** `cargo test --workspace` → **661 aprobadas, 0
->   fallos** (los 338/190 de la bitácora son históricos).
+> - **Conteos de workspace:** `cargo test --workspace` → **680 aprobadas, 0
+>   fallos** (los 338/190 de la bitácora son históricos; el 661 anterior contaba
+>   los tres tests del servidor que aún asumían tres fuentes declaradas; el 680
+>   añade `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`).
+>
+> **Nota de consolidación (2026-10-26 — supersede las notas anteriores en lo que
+> las contradiga).** Sigue siendo un historial *append-only*: las secciones con
+> fecha describen el estado de ese momento. La verdad vigente es:
+>
+> - **`brave` y `mojeek` se retiraron del producto de extremo a extremo**, no
+>   sólo del registry: se eliminaron los módulos `providers/brave.rs` y
+>   `providers/mojeek.rs`, sus factories (`MojeekFactory`) y sus entradas en
+>   `builtin_provider_records()`. `ProviderRegistry::builtin()` despacha
+>   exactamente **SearXNG y Marginalia**. Las notas de arriba que describen Brave
+>   como opción opt-in de la UI (2026-10-15 y anteriores) quedaron obsoletas: no
+>   hay selector, diálogo de key ni claves `brave*`/`mojeek*` en el catálogo de
+>   mensajes.
+> - **Dos puertas cerradas, no una.** Además de no haber adapter, la
+>   configuración los rechaza **por nombre**: `RETIRED_PROVIDERS` y
+>   `is_retired_provider()` en `config/providers.rs`, aplicados en
+>   `Config::validate()` tanto a las tablas declaradas como a la lista
+>   `providers.enabled`. Un `brave`/`mojeek` produce error de configuración en
+>   lugar de una fuente omitida en silencio; ni siquiera una config construida a
+>   mano que los liste construye algo (`UnknownProvider` en el registro). Cobertura:
+>   `retired_providers_are_absent_and_refused_by_validate`,
+>   `retired_provider_canary_stops_at_the_registry_door`,
+>   `provider_canary_rejects_retired_sources_as_configuration_errors` y
+>   `retired_sources_are_not_shipped_in_the_ui`.
+> - La única aparición legítima de `brave` que sobrevive en el repositorio es
+>   como **nombre de motor upstream de SearXNG** en los fixtures de
+>   `providers/searxng.rs`; no es una fuente de AMATL.
+> - **Smoke test en runtime (2026-10-26, verificado en puerto 18457).** Con un
+>   `amatl.toml` que habilita y aprueba sólo SearXNG, `amatl serve` arranca con
+>   `{"authenticated":true,…,"surfaces":["ui","rest","mcp"]}` y responde `/health`
+>   200, `/ready` 200 `sources_available: 1` y `/status` `ok` listando
+>   **exactamente dos fuentes** (`marginalia` `provider_disabled`, `searxng`
+>   `available`), con **cero** menciones de `brave`/`mojeek` en el payload
+>   (`grep -oiE 'mojeek|brave' → 0`); `/metrics` publica `amatl_sources_declared 2`
+>   / `amatl_sources_available 1`. Los nombres retirados se rechazan **antes de
+>   cualquier intento de red**, con `exit=1` y `configuration_invalid`:
+>   `provider-canary brave` (no declarado en `enabled`) → «remove it from
+>   providers.enabled»; `provider-canary mojeek` con `[providers.mojeek]` completo
+>   y aprobado declarado a mano → «delete the [providers.mojeek] table». Los otros
+>   dos rechazos son mensajes distintos a propósito: `provider_not_enabled` para
+>   `marginalia` declarado y no habilitado, y `provider_not_approved` para
+>   `searxng` habilitado con ficha parcial. Control positivo contra la instancia
+>   viva: `provider-canary searxng rust` → `status: success`, 12 resultados reales
+>   en 559 ms. Reproducido de nuevo al cerrar la sesión (mismos códigos y mismos
+>   conteos); `cargo test --workspace` → 680 aprobadas, 0 fallos, `cargo clippy
+>   --workspace --all-targets -- -D warnings` limpio.
+> - **Trampa de configuración descubierta en ese smoke test.** La tabla
+>   `[providers.<nombre>]` **reemplaza** la ficha incorporada completa (el wire
+>   struct es `#[serde(default)]`), no la fusiona campo a campo: una tabla con sólo
+>   `approval_status`/`reviewed_at`/`reviewer` pierde `terms_url`, `rate_limit`,
+>   `cost_model`, … y la fuente cae a `provider_not_approved` sin error de arranque.
+>   Se documenta en `docs/configuracion.md` (semántica) y `docs/operacion.md`
+>   (comprobación con el canario) y queda fijada por
+>   `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`.
 
 ## Snapshot verificable
 
@@ -266,17 +322,14 @@ Invariantes no negociables:
 ## Disponibilidad real y límites
 
 - `MockProvider` es la vía determinista para desarrollo y pruebas sin red.
-- Brave y Mojeek tienen adapters completos, pero están **descartados por
-  política del operador** (`approval_status = "rejected"` por defecto, no
-  `draft`): ambos son de pago y no se contratan providers de pago. No es un
-  papeleo de gobernanza pendiente — reactivarlos exige revertir esa decisión
-  explícitamente. **Matiz de superficie:** el frontend expone **Brave como
-  fuente opcional/opt-in** (selector `value="brave"`, botón "Insertar key
-  Brave", `/providers/brave/credential`, `/providers/brave/enabled`); Brave
-  aparece en `GET /providers` como declarado (`enabled=false`,
-  `status=Unavailable`), pero sólo se vuelve usable si el operador overridea
-  la política en su `amatl.toml`. Ver «Estado actual verificable» en
-  `docs/gobernanza-providers.md`.
+- `brave` y `mojeek` **se retiraron del producto de extremo a extremo** (ver la
+  nota de consolidación 2026-10-26): no hay adapter (`providers/brave.rs` y
+  `providers/mojeek.rs` eliminados), no están declarados en los expedientes
+  incorporados, no están registrados en `ProviderRegistry` y `Config::validate()`
+  los rechaza **por nombre** (`RETIRED_PROVIDERS`), así que no son una fuente
+  omitida en silencio sino un error de configuración. La UI tampoco los expone:
+  no hay selector, diálogo de key ni claves `brave*`/`mojeek*` en el catálogo de
+  mensajes. Ver «Estado actual verificable» en `docs/gobernanza-providers.md`.
 - SearXNG y Marginalia tienen adapter real y completo. **Marginalia está
   aprobada** en el `amatl.toml` real del operador (`reviewed_at = "2026-09-08"`;
   aprobación intermedia 2026-08-15 con clave pública compartida). **SearXNG

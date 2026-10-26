@@ -168,7 +168,7 @@ Ese contador y el gauge `amatl_sources_available` de `/metrics` son la misma
 cantidad publicada en dos superficies **en un despliegue real**.
 `amatl_sources_declared` cuenta además las fuentes **deshabilitadas**, que
 reportan `unavailable` con `provider_disabled`: por eso `declared − available` no
-es un conteo de incidentes —en un despliegue de un solo origen vale dos por
+es un conteo de incidentes —en un despliegue de un solo origen vale uno por
 configuración— y alertar sobre esa diferencia avisa de una decisión del operador,
 no de una avería. Para incidentes use `amatl_sources_circuit_open` y los gauges de
 peor caso.
@@ -177,7 +177,7 @@ Con `amatl serve --mock` las dos superficies **discrepan**, y hay que saber cuá
 mirar: `/ready` informa las fuentes simuladas con las que el servicio busca de
 verdad —en el despliegue mock aislado, `200` con `"sources_available":2`— mientras
 `/metrics` sigue describiendo las fuentes declaradas reales, que en ese modo no
-sirven tráfico (`amatl_sources_declared 3`, `amatl_sources_available 0`). Un
+sirven tráfico (`amatl_sources_declared 2`, `amatl_sources_available 0`). Un
 despliegue mock sano puede por tanto publicar `amatl_sources_available 0`, así que
 no automatice una alerta de caída sobre ese gauge sin excluir el modo mock. La
 divergencia está fijada por
@@ -407,6 +407,41 @@ aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML comple
 ya aprobado y, según la fuente elegida, el secreto `MARGINALIA_API_KEY` o
 `SEARXNG_INSTANCE_URL` (SearXNG no requiere credencial, sólo la URL de la
 instancia); nunca se ejecuta en `push` ni en pull requests.
+
+### Comprobar que los nombres retirados siguen cerrados
+
+Con el registro reducido a SearXNG y Marginalia (ver ADR-016 y
+`docs/gobernanza-providers.md`), el canario sirve además para verificar que
+`brave` y `mojeek` no vuelven por configuración. Los dos casos fallan **antes de
+cualquier intento de red**, con `exit=1` y `error_code=configuration_invalid`:
+
+```bash
+# providers.enabled = ["brave"], sin tabla declarada
+$ amatl --config-file retired.toml provider-canary brave rust
+invalid result policy: provider 'brave' was retired from the product by operator
+policy (no paid search providers); remove it from providers.enabled
+
+# [providers.mojeek] completo y aprobado declarado a mano
+$ amatl --config-file retired-declared.toml provider-canary mojeek rust
+invalid result policy: provider 'mojeek' was retired from the product by operator
+policy (no paid search providers); delete the [providers.mojeek] table
+```
+
+Verificado el 2026-10-26 con una instancia SearXNG viva
+(`SEARXNG_INSTANCE_URL=http://127.0.0.1:8888`) como control positivo:
+`provider-canary searxng rust` devuelve `status: success` con 12 resultados en
+~0,6 s. Los tres mensajes de rechazo son deliberadamente distintos —`provider_not_enabled`
+para una fuente declarada pero no habilitada, `provider_not_approved` para una
+habilitada cuya ficha de gobernanza está incompleta, y el error de política para
+un nombre retirado— y ninguno de ellos implica tráfico saliente.
+
+En el mismo despliegue, `/ready` responde `200` con `"sources_available":1`,
+`/status` responde `ok` listando **exactamente dos fuentes** (`marginalia`
+`provider_disabled`, `searxng` `available`) sin ninguna mención de los nombres
+retirados, y `/metrics` publica `amatl_sources_declared 2` /
+`amatl_sources_available 1`. Al escribir la tabla `[providers.<nombre>]` hay que
+reescribir la ficha completa: la tabla reemplaza el expediente incorporado entero
+en vez de fusionarse campo a campo (ver `docs/configuracion.md`).
 
 ## SQLite y caché
 

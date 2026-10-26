@@ -282,12 +282,24 @@ adapter/extractor versions are independent axes as well.
 - Brave as a shipped source: the adapter module (`providers/brave.rs`), its
   registry factory, its built-in governance record and the UI credential
   affordance are gone, so `brave` in `providers.enabled` now fails configuration
-  validation as an unknown enabled provider and no request can be sent. The
-  credential routes themselves stay — `POST`/`DELETE /providers/{name}/credential`
-  are parameterized by provider, not Brave-specific — and now reject `brave`
-  like any other name the registry does not carry. The canary workflow's
-  provider choices and secrets follow the shipped sources (`searxng`,
-  `marginalia`).
+  validation and no request can be sent. The credential routes themselves stay —
+  `POST`/`DELETE /providers/{name}/credential` are parameterized by provider, not
+  Brave-specific — and now reject `brave` like any other name the registry does
+  not carry. The canary workflow's provider choices and secrets follow the
+  shipped sources (`searxng`, `marginalia`).
+- Mojeek as a shipped source, completing the paid-source policy drop: the
+  adapter module (`providers/mojeek.rs`), its registry factory and its built-in
+  governance record are gone, so `ProviderRegistry::builtin()` now ships exactly
+  SearXNG and Marginalia. Removal is enforced at **two** doors instead of one:
+  beyond the missing adapter, `RETIRED_PROVIDERS` and `is_retired_provider()`
+  (`config/providers.rs`) make `Config::validate()` reject `brave` and `mojeek` by
+  name — in a declared `[providers.<name>]` table as well as in
+  `providers.enabled` — so a stale configuration fails loudly at startup instead
+  of silently shipping one source fewer, and even a hand-built config that lists
+  a retired name stops at the registry (`UnknownProvider`). UI selectors, key
+  dialogs, message-catalog keys and the canary workflows no longer mention either
+  name; the only surviving `brave` in the tree is the upstream SearXNG engine
+  name in the `providers/searxng.rs` fixtures.
 - Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
   transport surfaces live in `amatl-server`.
 
@@ -445,7 +457,7 @@ adapter/extractor versions are independent axes as well.
 - Migration downgrades 0006/0007 now remove their version row from
   `amatl_schema_migrations`, keeping the ledger consistent with the actual
   schema after a downgrade.
-- Provider parsers (brave, marginalia, mojeek, searxng) tolerate malformed
+- Provider parsers (marginalia, searxng) tolerate malformed
   envelope items: optional fields default instead of failing the whole parse,
   empty-URL items are dropped, and provider ranks are renumbered over the final
   vector so SearXNG answers and results keep a unique ordinal.
@@ -556,6 +568,22 @@ adapter/extractor versions are independent axes as well.
   touches no logic, the tool still answers `12 known-dead, 0 new` with exit 0,
   and the workflow comment now dates the number it quotes so a future drift shows
   up as a stale date instead of a silently false claim.
+- The documents that describe the Brave/Mojeek retirement cited the deleted
+  adapter modules as their evidence (`providers/brave.rs`, `providers/mojeek.rs`),
+  which the blocking `tools/check_doc_refs.py` gate refuses by design: it
+  reported five dead references and exit 1, so the removal was not shippable
+  while its own documentation pointed at files that no longer exist. Both
+  documents now cite what does exist — `RETIRED_PROVIDERS` in
+  `config/providers.rs:148`, which is what `Config::validate()` reads — and the
+  gate is back to `12 known-dead, 0 new`.
+- The `[providers.<name>]` semantics the same smoke test exposed are now
+  documented instead of being a silent trap: a declared table **replaces** the
+  built-in record wholesale (the wire struct is `#[serde(default)]`), it does not
+  merge field by field, so an approval table carrying only `approval_status`,
+  `reviewed_at` and `reviewer` drops `terms_url`, `rate_limit`, `cost_model` and
+  the rest, and the source falls to `provider_not_approved` with no startup error
+  (`docs/configuracion.md`, `docs/operacion.md`). Pinned by
+  `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`.
 
 ### Changed
 

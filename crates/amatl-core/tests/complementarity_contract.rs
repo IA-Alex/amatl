@@ -299,20 +299,23 @@ fn zero_expansion_results_do_not_produce_nan() {
 #[test]
 fn multiple_expansion_providers_preserve_provenance() {
     // Two expansion providers both find the same URL; provenance must keep both.
+    // The second label is deliberately a synthetic name: the shipped set is
+    // SearXNG plus Marginalia, and this test is about the metric, not about any
+    // particular adapter being installed.
     let mut assignment = RoleAssignment::primary_expansion(
         "marginalia",
-        ["searxng".to_string(), "mojeek".to_string()],
+        ["searxng".to_string(), "custom_archive".to_string()],
     );
     assignment.active = true;
     let set = [
-        deduped("https://a.example/1", &["searxng", "mojeek"], &[]),
+        deduped("https://a.example/1", &["searxng", "custom_archive"], &[]),
         deduped("https://b.example/2", &["marginalia"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &assignment).unwrap();
     assert_eq!(m.found_expansion, 1);
     assert_eq!(m.found_primary, 1);
     assert_eq!(m.unique_expansion, 1);
-    assert_eq!(set[0].providers, ["searxng", "mojeek"]);
+    assert_eq!(set[0].providers, ["searxng", "custom_archive"]);
 }
 
 #[test]
