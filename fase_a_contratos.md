@@ -1386,6 +1386,12 @@ salvo derechos contractuales explícitos.
 
 ## 52. Brave Search API (`stable`)
 
+> **Retirado del producto (ADR-016, 2026-10-26).** Esta sección documenta la
+> evaluación que se hizo cuando Brave era un candidato; ya no describe una
+> fuente de AMATL. El adapter (`providers/brave.rs`) y su ficha de gobernanza
+> se eliminaron, el nombre se rechaza en `Config::validate()` y ningún plan de
+> contratación lo reactiva.
+
 | Campo | Decisión |
 |---|---|
 | Método | API oficial autenticada; prohibido scraping de resultados web. |
@@ -1407,6 +1413,11 @@ Fuentes oficiales: [API y precios](https://brave.com/search/api/),
 y [privacidad](https://api-dashboard.search.brave.com/privacy-policy).
 
 ## 53. Mojeek Search API (`stable`)
+
+> **Retirado del producto (ADR-016, 2026-10-26).** Igual que la sección 52: la
+> evaluación queda como historial, no como plan. El adapter
+> (`providers/mojeek.rs`) y su ficha se eliminaron y el nombre se rechaza en
+> `Config::validate()`.
 
 | Campo | Decisión |
 |---|---|
