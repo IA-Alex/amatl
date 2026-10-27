@@ -313,6 +313,56 @@ async fn the_layout_holds_at_a_narrow_viewport() {
     client.close().await.unwrap();
 }
 
+#[tokio::test]
+async fn switching_interface_language_updates_language_and_primary_copy() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    client
+        .execute(
+            "const select = document.getElementById('ui-language'); \
+             select.value = 'es'; \
+             select.dispatchEvent(new Event('change', { bubbles: true }));",
+            vec![],
+        )
+        .await
+        .unwrap();
+
+    let language = client
+        .execute("return document.documentElement.lang;", vec![])
+        .await
+        .unwrap();
+    assert_eq!(language.as_str(), Some("es"));
+
+    let heading = client
+        .find(Locator::Id("search-heading"))
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    assert_eq!(heading, "Busquemos");
+
+    let mode_help = client
+        .find(Locator::Id("search-mode-help"))
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    assert!(mode_help.contains("Buscar"));
+
+    client.close().await.unwrap();
+}
+
 /// The `hidden` attribute is the single mechanism the JS uses to show and hide
 /// panels, but a component that sets its own `display:` (flex / inline-flex /
 /// inline-block) beats the UA `[hidden] { display: none }` unless the author

@@ -453,6 +453,17 @@ mod tests {
     }
 
     #[test]
+    fn default_markup_matches_default_locale_and_explains_search_modes() {
+        let html = text("/index.html");
+        assert!(html.contains("<html lang=\"en\">"));
+        assert!(html.contains("AMATL — Search and evidence"));
+        assert!(html.contains("id=\"search-mode-help\""));
+        assert!(html.contains("aria-describedby=\"search-mode-help\""));
+        assert!(!html.contains("AMATL — Búsqueda y evidencia"));
+        assert!(!html.contains(">Busquemos</h1>"));
+    }
+
+    #[test]
     fn unavailable_backend_states_are_fail_closed_in_the_ui() {
         let html = text("/index.html");
         let javascript = text("/app.js");
