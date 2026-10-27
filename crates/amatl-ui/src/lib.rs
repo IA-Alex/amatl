@@ -531,6 +531,20 @@ mod tests {
     }
 
     #[test]
+    fn marginalia_key_dialog_submits_as_a_keyboard_operable_form() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        assert!(html.contains("<form id=\"marginalia-form\""));
+        assert!(html.contains("<button type=\"submit\" id=\"marginalia-save\">"));
+        assert!(javascript
+            .contains("const marginaliaForm = document.querySelector(\"#marginalia-form\")"));
+        assert!(javascript.contains("event.preventDefault();"));
+        assert!(
+            javascript.contains("marginaliaForm.addEventListener(\"submit\", saveMarginaliaKey)")
+        );
+    }
+
+    #[test]
     fn strategist_toggle_reports_an_enabled_but_unavailable_state() {
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");

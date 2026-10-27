@@ -1355,6 +1355,7 @@ const marginaliaKeyButton = document.querySelector("#marginalia-key-button");
 const marginaliaClearButton = document.querySelector("#marginalia-clear-button");
 const marginaliaStatus = document.querySelector("#marginalia-status");
 const marginaliaDialog = document.querySelector("#marginalia-dialog");
+const marginaliaForm = document.querySelector("#marginalia-form");
 const marginaliaKeyInput = document.querySelector("#marginalia-key");
 const marginaliaKeyError = document.querySelector("#marginalia-key-error");
 const marginaliaSave = document.querySelector("#marginalia-save");
@@ -1421,7 +1422,8 @@ marginaliaDialog.addEventListener("click", (event) => {
   if (event.target === marginaliaDialog) marginaliaDialog.close();
 });
 
-marginaliaSave.addEventListener("click", async () => {
+async function saveMarginaliaKey(event) {
+  event.preventDefault();
   const key = marginaliaKeyInput.value.trim();
   if (!key) {
     marginaliaKeyError.hidden = false;
@@ -1455,7 +1457,9 @@ marginaliaSave.addEventListener("click", async () => {
   } finally {
     marginaliaSave.disabled = false;
   }
-});
+}
+
+marginaliaForm.addEventListener("submit", saveMarginaliaKey);
 
 marginaliaClearButton.addEventListener("click", async () => {
   try {

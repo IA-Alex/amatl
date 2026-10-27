@@ -333,13 +333,15 @@
     </dialog>
 
     <dialog id="marginalia-dialog" class="token-dialog" aria-labelledby="marginalia-dialog-heading">
-      <h2 id="marginalia-dialog-heading">Key de Marginalia</h2>
-      <p id="marginalia-dialog-help" class="field-help">Pega la API key privada de Marginalia. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
-      <label class="sr-only" for="marginalia-key">API key de Marginalia</label>
-      <input id="marginalia-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="marginalia-…">
-      <p id="marginalia-key-error" class="field-help" hidden></p>
-      <button type="button" id="marginalia-save">Guardar y verificar</button>
-      <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
+      <form id="marginalia-form" method="dialog">
+        <h2 id="marginalia-dialog-heading">Key de Marginalia</h2>
+        <p id="marginalia-dialog-help" class="field-help">Pega la API key privada de Marginalia. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
+        <label class="sr-only" for="marginalia-key">API key de Marginalia</label>
+        <input id="marginalia-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="marginalia-…">
+        <p id="marginalia-key-error" class="field-help" hidden></p>
+        <button type="submit" id="marginalia-save">Guardar y verificar</button>
+        <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
+      </form>
     </dialog>
   </body>
 </html>
