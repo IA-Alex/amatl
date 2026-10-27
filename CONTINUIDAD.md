@@ -1440,3 +1440,120 @@ anunciando que nada puede servir mientras `/search` responde— y por eso queda
 `/metrics` sea consciente del modo mock cambia el valor de una métrica publicada,
 y eso es una decisión del propietario con su propia revisión de consumidores.
 
+## Revisión de seguridad del 2026-10-26 — entornos hijos, rutas de programa y las dos intermitencias (`9afc8334`)
+
+Esta ronda se cerró en un solo commit de código, `9afc8334` («fix(core,packaging,ui):
+scrub child environments and close the spawn and deadline flakes», 32 archivos,
++1 861/−173), con su informe fechado en `docs/security/hallazgos-2026-10-26.md`
+—enlazado desde `docs/README.md` y `docs/seguridad.md`— y con
+`amatl_revision_critica.md`, el informe de revisión crítica del archivo que cita
+la sección anterior de este historial, ya bajo control de versiones: las citas de
+este documento resuelven ahora sobre un clon limpio, no sobre el árbol de trabajo.
+
+**H1 — el hijo heredaba el entorno del servicio (Alta, remediado).** Ningún
+`Command::new` llamaba a `env_clear`, y el entorno del padre es justo donde viven
+`server.token_env` y el `credential_env` de cada provider: un fallo de memoria en
+Trafilatura, `pdftotext` o Chromium —los tres parsean contenido hostil— era robo
+silencioso de credenciales, sin señal en logs. `crates/amatl-core/src/child_process.rs`
+(nuevo) concentra la política: `scrub_environment` vacía el entorno y reenvía sólo
+`PATH`, `HOME`, `TMPDIR`, `LANG`, `LC_ALL` y `TZ` —una prueba comprueba que ninguno
+de esos nombres puede contener un secreto—, y lo que un sitio necesite además se
+nombra con `forward_environment` (el renderer reenvía sólo `AMATL_CHROMIUM_BIN`,
+`AMATL_CHROMIUM_TASKS_MAX`, `XDG_RUNTIME_DIR` y `DBUS_SESSION_BUS_ADDRESS`). Los
+cuatro sitios de spawn lo aplican (`extract.rs:70`, `extract.rs:122`,
+`ingest.rs:327`, `render.rs:207`) y la prueba es por camino real, no por
+convención: canarios en
+`extract::tests::extractor_child_does_not_inherit_server_credentials`,
+`ingest::tests::pdf_extractor_child_does_not_inherit_server_credentials` y
+`the_renderer_hands_the_harness_a_scrubbed_environment` (`tests/deep_phase5.rs`,
+con harness de reemplazo), más un paso nuevo del workflow `chromium-isolation`
+que sustituye Chromium por un volcador de `env` y exige que el canario no
+aparezca y que `HOME=/tmp/home` sí.
+
+**H4 — el harness re-heredaba dentro del sandbox (Media, remediado).** El harness
+pasa ahora `--clearenv` a `bwrap` antes de aplicar sus propios `--setenv`, así que
+el vaciado no depende de que el padre lo haya hecho bien.
+
+**H2 — rutas relativas de programa (Media, remediado).** Una ruta *relativa* con
+separador (`./trafilatura`, `bin/extract`) la resuelve `Command::new` contra el
+directorio de trabajo, de modo que quien pudiera escribir ahí elegía el binario
+que ejecuta el servicio. `is_relative_program_path` rechaza esa forma en
+`deep.extractor.executable` y —sólo mientras el renderer está habilitado, y se
+revalida al habilitarlo, para que el orden de configuración no salte la
+comprobación— en `deep.renderer.sandbox_path`: sólo se aceptan ruta absoluta o
+nombre simple.
+
+**H3 — `Debug` derivado de `HttpRequest` (Media, remediado).** El struct ya no
+deriva `Debug`: su impl manual imprime la URL saneada y sólo los *nombres* de las
+cabeceras, de modo que el `tracing::warn!(?request, …)` obvio no puede publicar la
+clave que algunos providers llevan en la query ni el valor de `Authorization`.
+
+**C2a y C2b — las dos intermitencias (Baja, remediadas y medidas).** C2a era
+`ETXTBSY`: `execve` rechaza arrancar un fichero que todavía tiene un escritor y la
+prueba escribe el script que luego ejecuta, así que un `fork` concurrente de otra
+prueba puede mantener el descriptor abierto; `spawn_with_busy_retry` reintenta
+exactamente ese `ExecutableFileBusy` (siete duplicaciones desde 1 ms, 127 ms en el
+peor caso) en los sitios de spawn, en vez de que la prueba duerma a ciegas. C2b
+era un presupuesto de 1 000 ms con reserva de producción de 750 ms
+(`minimum_remaining_deadline_ms`): un hipo de planificación metía la ronda en
+`DeadlineNear`, añadía la degradación `deadline_near` y bajaba el estado a
+`PartialSuccess`; los presupuestos de esas pruebas suben a 8 000 ms (el
+`timeouts.global_ms` de producción) en `execution.rs` y en los arneses de
+`operational.rs`. **Ningún presupuesto de producción cambió.** Medición de cierre:
+`cargo test -p amatl-core -- --test-threads=16` ×12 con 24 procesos `yes` en 24
+núcleos → 12/12 `cargo_exit=0`, 5 976 pruebas, 0 fallos, sin `DeadlineNear`; y el
+control crudo sin reintento falló 54 de 4 000 intentos (1,35 %) en la sonda
+temporal, borrada al cerrar el hallazgo —las citas del informe que apuntaban a
+ella se reescribieron.
+
+
+**C3 y la documentación de los controles.** `docs/security/secrets.md` gana la
+sección «Procesos hijos»; `asvs-checklist.md` pasa 13.3.1 a cubrir *todo* parser
+lanzado y 13.4.1 a registrar `--clearenv`; `http-hardening.md` declara el coste de
+no confiar en `X-Forwarded-For` en vez de dejar un proxy inverso de confianza como
+pendiente; `chromium-isolation.md` documenta la sonda de entorno;
+`docs/configuracion.md` precisa la forma aceptada de las dos rutas; e
+`identidad-visual.md` registra el límite de control de WCAG 1.4.11. Las citas
+`file:line` que la inserción en `providers/http.rs` había desplazado se
+re-anclaron, y `python3 tools/check_doc_refs.py` sigue respondiendo
+`12 known-dead, 0 new` con código `0`.
+
+**Dos defectos de UI cerrados en el mismo commit.** El primero es un
+`ReferenceError`: `reportFailure` leía un identificador `message` que `ac11624a` ya
+había eliminado, así que cualquier fallo que llegara a la rama del `504` lanzaba
+`ReferenceError: message is not defined` en vez de informar del timeout —el
+operador no veía estado alguno—, y nada lo detectaba porque las pruebas de assets
+comprueban presencia de cadenas, no semántica de JS, y el CI no trae linter de JS;
+`report_failure_reads_only_error_properties_never_a_bare_message` parsea ahora el
+cuerpo de la función y rechaza una `message` desnuda. El segundo es de
+accesibilidad: `--border` es un divisor (~1,26:1 sobre `--surface`, por debajo del
+3:1 que WCAG 2.2 AA (1.4.11) exige al límite de un control), así que los campos de
+texto, los `select` y el selector de idioma usan `--border-control`, alias
+semántico del `--muted` ya existente (5,20:1 oscuro, 5,60:1 claro) y no un color
+nuevo; en el mismo paso `aria-busy` pasa del input al panel `#results` que sí
+cambia, el formulario es `novalidate` para que se vean los mensajes del catálogo,
+el `lang` estático coincide con el locale por defecto del catálogo y se corrige
+antes del primer pintado, y el campo de idioma de resultados gana `datalist` y
+`aria-describedby`. El selector de idioma de la interfaz (`#ui-language`,
+English/Español) es una elección explícita y persistida (`localStorage`),
+resuelta como elección guardada → preferencia del navegador → defecto del
+catálogo, y conmuta sin recargar y sin perder resultados.
+
+**Estado verificado de este commit, en esta máquina y con `--locked`.** Los
+comandos del gate local, ejecutados sobre el árbol de `9afc8334`: `cargo fmt --all
+-- --check` en verde; `cargo clippy --workspace --all-targets --all-features
+--locked -- -D warnings` sin avisos; `cargo test --workspace --locked` → **690
+aprobadas, 0 fallos** (las 680 de la nota de consolidación más las diez pruebas
+nuevas de esta ronda); `cargo deny check` → `advisories ok, bans ok, licenses ok,
+sources ok`; y `python3 tools/check_doc_refs.py` → `12 known-dead, 0 new`.
+
+**Lo que este cierre no puede afirmar.** No se ejecutó CI remoto: el commit no es
+alcanzable desde ninguna punta remota verificada, así que `contract-gate`,
+`static-analysis` y `chromium-isolation` no tienen corrida sobre este SHA, y
+publicarlo —y ver esos tres jobs en verde— es la única forma de cerrarlo, lo que
+exige una instrucción explícita del propietario sobre destino y SHA: **no se hizo
+push, no se creó ninguna etiqueta y no se despachó ningún workflow.** Tampoco se
+ejecutó `cargo publish`, ni la matriz `cross-platform` (macOS/Windows), ni
+`provider-canary` (manual y con credenciales reales), que son las comprobaciones
+que este entorno no puede replicar.
+

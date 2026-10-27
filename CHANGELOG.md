@@ -197,6 +197,23 @@ adapter/extractor versions are independent axes as well.
 - Atomic configuration writes (`config::write_config_document`): every config
   setter writes to a process-temp file, fsyncs and renames over the target, so
   a crash mid-write cannot leave `amatl.toml` truncated.
+- Interface language picker in the web UI (`#ui-language`, English/Español). The
+  locale is an explicit, persisted operator choice (`localStorage`), resolved as
+  stored choice → browser preference → catalog default, so a visitor whose
+  browser asks for a locale the catalog does not ship can still reach the
+  complete `es` catalog that was already shipping. Switching re-applies every
+  translation in place — no reload and no lost results — re-renders the
+  catalog-derived panels and status line, and moves `document.documentElement.lang`
+  with it. Singular/plural copy needs no ICU dependency: a `<key>One` entry is
+  selected when the count is exactly 1, and a locale that ships only the base
+  key keeps working.
+- `docs/security/hallazgos-2026-10-26.md`, the dated report of the 2026-10-26
+  security review over `ce172d9d`: scope, method, one regression test per
+  finding and — explicitly — the claims that could not be verified locally (no
+  remote CI, no `cargo publish`, no tag). It is a dated *informe*, not a norm:
+  the controls stay in `docs/security/threat-model.md` and
+  `docs/security/asvs-checklist.md`, and both `docs/README.md` and
+  `docs/seguridad.md` link the report.
 
 ### Changed
 
@@ -584,6 +601,82 @@ adapter/extractor versions are independent axes as well.
   the rest, and the source falls to `provider_not_approved` with no startup error
   (`docs/configuracion.md`, `docs/operacion.md`). Pinned by
   `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`.
+- Every external process AMATL spawns started from the parent's whole
+  environment, which is exactly where `server.token_env` and each provider's
+  `credential_env` live. Trafilatura, `pdftotext` and Chromium are the three
+  parsers that read attacker-controlled bytes, so a memory-safety bug in one of
+  them was silent credential theft rather than a crash. The new
+  `amatl-core/src/child_process.rs` owns the policy: `scrub_environment` clears
+  the environment and restores only `PATH`, `HOME`, `TMPDIR`, `LANG`, `LC_ALL`
+  and `TZ` — none of which can hold a secret, and a test asserts that of the list
+  itself — while a spawn site that needs more names it explicitly through
+  `forward_environment` (the renderer forwards `AMATL_CHROMIUM_BIN`,
+  `AMATL_CHROMIUM_TASKS_MAX`, `XDG_RUNTIME_DIR` and
+  `DBUS_SESSION_BUS_ADDRESS`). All four spawn sites (`extract.rs` twice,
+  `ingest.rs`, `render.rs`) call it, `bwrap` is handed `--clearenv` so the
+  sandbox clears again before applying its own `--setenv`, and the wiring is
+  proved per path with a canary instead of by convention: canary tests in
+  `extract.rs`, `ingest.rs` and `deep_phase5.rs` (the last one through
+  `ChromiumRenderer::render` with a stand-in harness), plus a new
+  `chromium-isolation` step whose stand-in "Chromium" dumps `env` into the DOM
+  and must not find the canary while still finding `HOME`.
+- `deep.extractor.executable` and `deep.renderer.sandbox_path` accepted a
+  *relative* path containing a separator (`./trafilatura`, `bin/extract`), which
+  `Command::new` resolves against the process working directory: whoever could
+  write there chose which binary the service executed. Both are now an absolute
+  path or a bare program name (`is_relative_program_path`), and the harness path
+  is checked whenever the renderer is enabled, so enabling it later re-validates
+  instead of skipping the check by ordering.
+- `HttpRequest` no longer derives `Debug`. A hand-written impl prints the same
+  URL `sanitized_url` produces and the header *names* only, so the obvious
+  `tracing::warn!(?request, …)` can no longer publish the API key some providers
+  carry as a query parameter or the `Authorization` value the operator
+  authenticates with.
+- The two intermittent failures the review reproduced under load are closed.
+  `extract::tests::fixed_cli_contract_requests_metadata_without_network_arguments`
+  could fail with `ETXTBSY`: `execve` refuses to start a file that still has a
+  writer, and the test writes the script it then executes, so a concurrent `fork`
+  in another test can hold the descriptor open — a transient
+  `ExecutableFileBusy` no caller ever wanted to see.
+  `child_process::spawn_with_busy_retry` retries exactly that error (seven
+  doublings from 1 ms, a 127 ms worst case, bounded well below every caller's
+  timeout) at the spawn sites instead of the test sleeping its way out.
+  `execution::tests::success_serializes_an_empty_error_list` asserted on a
+  1 000 ms budget while the production `search_policy_v1` reserve is 750 ms, so
+  one scheduling hiccup pushed the round into `DeadlineNear`, appended a
+  `deadline_near` degradation and downgraded the status to `PartialSuccess`; the
+  budgets of those tests move to 8 000 ms (the production `timeouts.global_ms`
+  default) in `execution.rs` and in the `operational.rs` benchmark harnesses.
+  **No production budget changed.** Twelve full-suite runs under load
+  (`--test-threads 16`, 24 `yes` processes on 24 cores) are green: 5 976 tests,
+  zero failures, no `DeadlineNear` stop.
+- The web UI's `reportFailure` read a `message` identifier that `ac11624a` had
+  already removed, so any failure reaching the `504` branch threw
+  `ReferenceError: message is not defined` instead of reporting the timeout —
+  the operator saw no status at all. Nothing caught it because the asset tests
+  assert string presence rather than JS semantics and CI ships no JS linter;
+  `report_failure_reads_only_error_properties_never_a_bare_message` now parses
+  the function body and refuses a bare `message` reference.
+- The web UI's form controls sat below WCAG 2.2 AA (1.4.11): `--border` is a
+  divider and measures ~1.26:1 against `--surface`. Inputs, selects and the new
+  language picker use `--border-control`, a semantic alias of the existing
+  `--muted` (5.20:1 dark, 5.60:1 light) rather than a new colour, and the
+  boundary is recorded in `docs/identidad-visual.md`. The same pass fixes the
+  announcement path: `aria-busy` moves from the query input to the `#results`
+  region that actually changes, the search form is `novalidate` so the
+  catalog-derived messages are what the operator sees, the static `lang`
+  attribute matches the catalog default and is corrected before the first paint,
+  and the result-language field gains a `datalist` plus `aria-describedby`
+  instead of relying on its placeholder.
+- The security documents that the review proved wrong were corrected in the same
+  pass: `docs/security/secrets.md` gains the child-process section,
+  `asvs-checklist.md` moves 13.3.1 to cover every spawned parser and 13.4.1 to
+  record `--clearenv`, `http-hardening.md` states the cost of not trusting
+  `X-Forwarded-For` instead of listing a trusted reverse proxy as pending,
+  `chromium-isolation.md` documents the environment probe, and
+  `docs/configuracion.md` names the accepted shape of both program paths. The
+  `file:line` citations the `providers/http.rs` insertion had displaced were
+  re-anchored, and `tools/check_doc_refs.py` stays at `12 known-dead, 0 new`.
 
 ### Changed
 
