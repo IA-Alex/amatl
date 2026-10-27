@@ -322,6 +322,18 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- `crates/amatl-core/Cargo.toml` declared `readme = "../../README.md"`, a path
+  outside the package, while the crate ships its own
+  `crates/amatl-core/README.md`. Cargo resolves that collision in favour of the
+  local file and rewrites the field in the published manifest, so the source
+  declaration described a package that was never published, and every
+  `cargo package -p amatl-core` — including the `--list` that
+  `.github/workflows/publish-crates.yml` runs — printed a warning asking for a
+  path relative to the package root. The field is now `readme = "README.md"`,
+  which is what Cargo was already publishing: the tarball is unchanged and the
+  warning is gone. The other three crates keep `../../README.md`, which is
+  correct for them — they ship no README of their own and Cargo copies the root
+  one into the package.
 - Two TLS advisories that entered the RustSec database on 2026-10-19 and
   2026-10-20 leave the lockfile in one pass: `rustls-webpki` 0.103.14 moves to
   0.103.16 (RUSTSEC-2026-0382, certificate verification can accept a path
@@ -692,6 +704,17 @@ adapter/extractor versions are independent axes as well.
   and an AUR push replaces the package every Arch user installs.
 - The crates.io publish waits on the sparse index for the leaf crates instead of
   sleeping a fixed 30 seconds before publishing their dependents.
+
+### Changed
+
+- The HTTP contract moved from `docs/api/openapi.yaml` to
+  `crates/amatl-server/openapi.yaml`, next to the crate that serves it, and the
+  package now carries it: the four `include_str!` guards in
+  `crates/amatl-server/src/tests.rs` read a path that no longer escapes the
+  package, so `cargo test` compiles and runs on an extracted tarball (C1 in
+  `docs/security/hallazgos-2026-10-26.md`). `README.md`, `docs/README.md` and the
+  two `docs/experiments/` documents point at the new path; `docs/api/` keeps
+  `mcp.md`.
 
 ## [0.1.0-rc.1] - 2026-08-13
 

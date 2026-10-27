@@ -2954,6 +2954,51 @@ async fn several_credentials_are_accepted_and_scoped_independently() {
     assert_eq!(unknown.status(), StatusCode::UNAUTHORIZED);
 }
 
+#[test]
+fn duplicate_resolved_credentials_fail_closed() {
+    let mut config = scoped_config();
+    config.server.clients[0].token_sha256 = Some(sha256_hex(SEARCH_ONLY_TOKEN));
+    config.validate().unwrap();
+
+    let result = resolve_clients(&config, Some(SEARCH_ONLY_TOKEN.into()));
+    assert!(
+        matches!(result, Err(ServerError::Configuration(_))),
+        "a token must not resolve to multiple identities"
+    );
+}
+
+#[test]
+fn rate_limiter_windows_are_bounded() {
+    let config = amatl_core::Config::default();
+    let security = SecurityState {
+        clients: resolve_clients(&config, Some(TOKEN.into())).unwrap(),
+        allowed_hosts: config.server.allowed_hosts.clone(),
+        allowed_origins: effective_origins(&config, false),
+        max_header_bytes: config.server.max_header_bytes,
+        max_body_bytes: config.server.max_body_bytes,
+        timeout: Duration::from_millis(config.server.request_timeout_ms),
+        rate_limit_per_minute: config.server.rate_limit_per_minute,
+        https: false,
+    };
+    let limiter = Mutex::new(RateLimiter {
+        windows: BTreeMap::new(),
+        last_cleanup: Instant::now(),
+    });
+
+    for index in 0..=RATE_LIMITER_CAPACITY {
+        let ip = IpAddr::V6(std::net::Ipv6Addr::from(index as u128 + 1));
+        let mut request = Request::builder()
+            .uri("/health")
+            .body(Body::empty())
+            .unwrap();
+        request
+            .extensions_mut()
+            .insert(ConnectInfo(std::net::SocketAddr::new(ip, 8080)));
+        assert!(within_rate_limit(&request, &security, &limiter));
+    }
+    assert_eq!(limiter.lock().unwrap().windows.len(), RATE_LIMITER_CAPACITY);
+}
+
 #[tokio::test]
 async fn an_expired_credential_stops_being_accepted() {
     let mut config = scoped_config();
@@ -5079,9 +5124,13 @@ fn openapi_covers_every_router_operation() {
     // from being omitted altogether.
     use crate::routes::all_routes;
 
+    // The contract ships inside the crate, next to the code that serves it:
+    // Cargo refuses a path that escapes the package, so an `include_str!` of
+    // `docs/` compiles in a clone and breaks `cargo test` on the extracted
+    // tarball (C1 in docs/security/hallazgos-2026-10-26.md).
     // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
     // that rewrote the fixture's line endings (see .gitattributes).
-    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
     let openapi = openapi.as_str();
     let routes = all_routes();
 
@@ -5114,7 +5163,7 @@ fn openapi_error_catalog_matches_shared_catalog() {
 
     // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
     // that rewrote the fixture's line endings (see .gitattributes).
-    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
     let (_, after) = openapi
         .split_once("    ErrorResponse:\n")
         .expect("OpenAPI declares the ErrorResponse schema");
@@ -5154,7 +5203,7 @@ fn openapi_error_catalog_matches_shared_catalog() {
     }
 }
 
-/// One operation documented in `docs/api/openapi.yaml`.
+/// One operation documented in `crates/amatl-server/openapi.yaml`.
 ///
 /// Every contract guard below needs the same three facts about an operation —
 /// the status codes it documents, whether it is public (`security: []`) and
@@ -5203,7 +5252,7 @@ fn status_codes_in(line: &str) -> Vec<String> {
 fn documented_operations() -> Vec<DocumentedOperation> {
     // Strip CR so the indentation-anchored matches below hold on a Windows
     // checkout that rewrote the fixture's line endings (see .gitattributes).
-    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
     const METHODS: [&str; 5] = ["get", "post", "patch", "delete", "put"];
 
     let mut operations: Vec<DocumentedOperation> = Vec::new();
@@ -5354,7 +5403,7 @@ fn openapi_component_refs_resolve() {
     // component nothing points at is contract text that no longer describes the
     // server. Security schemes are exempt: the top-level `security` block
     // references them by bare name, not by `$ref`.
-    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
     let openapi = openapi.as_str();
 
     let mut sections: Vec<(String, Vec<String>)> = Vec::new();
@@ -5392,7 +5441,7 @@ fn openapi_component_refs_resolve() {
     }
     assert!(
         !sections.is_empty(),
-        "no se pudo leer `components:` de docs/api/openapi.yaml"
+        "no se pudo leer `components:` de crates/amatl-server/openapi.yaml"
     );
 
     let mut referenced: Vec<(String, String)> = Vec::new();
@@ -5413,7 +5462,7 @@ fn openapi_component_refs_resolve() {
     }
     assert!(
         !referenced.is_empty(),
-        "docs/api/openapi.yaml no referencia ningún componente"
+        "crates/amatl-server/openapi.yaml no referencia ningún componente"
     );
 
     for (section, name) in &referenced {

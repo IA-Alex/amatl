@@ -106,6 +106,13 @@ FROZEN = {
     ("docs/testing/searxng-characterization.md", "/etc/searxng/settings.yml"),
     ("docs/testing/searxng-reproducible-campaign-closure.md", "settings.yml"),
     ("docs/testing/searxng-reproducible-campaign-closure.md", "/tmp/settings_now.yml"),
+    # Cargo's own `readme` warning, quoted verbatim in the C4 finding of
+    # `hallazgos-2026-10-26.md`. The path inside it is relative to the crate
+    # root, not to the repository, so the resolver -- which only knows
+    # repository-relative paths -- can never resolve it. The quote is the
+    # evidence the finding rests on, so it stays verbatim instead of being
+    # rewritten into something the gate can parse.
+    ("docs/security/hallazgos-2026-10-26.md", "../../README.md"),
 }
 
 

@@ -81,8 +81,14 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 
 | Documento | Contenido |
 |---|---|
-| [api/openapi.yaml](api/openapi.yaml) | Contrato HTTP (OpenAPI) |
+| [crates/amatl-server/openapi.yaml](../crates/amatl-server/openapi.yaml) | Contrato HTTP (OpenAPI) |
 | [api/mcp.md](api/mcp.md) | Model Context Protocol |
+
+El contrato HTTP vive en el crate y no en `docs/` para que el paquete de
+`amatl-server` se pueda probar sin este árbol de documentación: Cargo no
+empaqueta rutas que salen del crate, así que un `include_str!` de `docs/` rompe
+`cargo test` sobre el tarball (C1 en
+[security/hallazgos-2026-10-26.md](security/hallazgos-2026-10-26.md)).
 
 ### Ingeniería (How-to de desarrollo)
 

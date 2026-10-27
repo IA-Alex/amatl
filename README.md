@@ -152,7 +152,7 @@ al redirigir; controla detalle con `RUST_LOG`.
   [CONTINUIDAD.md](CONTINUIDAD.md).
 - Seguridad (raw entry que GitHub muestra en inglés):
   [política](SECURITY.md); guías de seguridad en el [portal](docs/README.md).
-- Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).
+- Contratos: [OpenAPI](crates/amatl-server/openapi.yaml) y [MCP](docs/api/mcp.md).
 - Comunidad: [código de conducta](CODE_OF_CONDUCT.md) (EN) y
   [espejo en español](docs/codigo-de-conducta.md).
 

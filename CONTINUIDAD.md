@@ -1264,6 +1264,12 @@ cambios: `cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets
 `cargo deny check` en verde; `cargo audit` en rojo **sólo** por los tres
 hallazgos abiertos de `zip`.
 
+*(Resuelto después, el 2026-10-25 en `def066aa` —«quarantine the candle stack out
+of the workspace lockfile»—: se ejecutó la opción 2, y `zip`, `paste`, `tokenizers`,
+`gemm*` y `pulp` salieron del lockfile del workspace junto con la feature
+`experimental-local-embeddings` de `amatl-core`, así que `cargo audit` queda limpio
+sin ADR de excepción. Hoy `grep -c 'name = "zip"' Cargo.lock` → 0.)*
+
 ## Revisión crítica externa del archivo — H1 y H2 cerrados sin cambio de contrato (2026-10-26)
 
 Llegó un informe de revisión crítica sobre una copia archivada del repositorio
@@ -1556,4 +1562,92 @@ push, no se creó ninguna etiqueta y no se despachó ningún workflow.** Tampoco
 ejecutó `cargo publish`, ni la matriz `cross-platform` (macOS/Windows), ni
 `provider-canary` (manual y con credenciales reales), que son las comprobaciones
 que este entorno no puede replicar.
+
+## Revisión de empaquetado del 2026-10-27 — el aviso de `readme` de `amatl-core`, C1 refutado y una deuda de dependencias que no existía (`167fb8dd`)
+
+Tercera pasada sobre el informe de seguridad del 2026-10-26, centrada en el
+empaquetado y hecha **sobre los tarballs ya extraídos**, no sobre listas de ficheros.
+El árbol bajo revisión no se movió: `167fb8dd`. `cargo package --workspace --locked
+--allow-dirty` termina en exit 0 y los cuatro tarballs (`amatl-core`, `amatl-ui`,
+`amatl-server`, `amatl-cli`) se verifican compilando, sin un solo aviso.
+
+**C4 era real y está cerrado: un `readme` que apuntaba fuera del paquete.**
+`crates/amatl-core/Cargo.toml:10` declaraba `readme = "../../README.md"`, una ruta
+fuera del paquete, mientras el crate embarca su propio
+`crates/amatl-core/README.md`. Cargo resuelve esa colisión a favor del fichero local
+y **reescribe el campo** en el manifiesto publicado, así que la declaración del
+fuente describía un paquete que nunca se publicó, y cada `cargo package -p
+amatl-core` —incluido el `--list` que corre `publish-crates.yml`— pedía una ruta
+relativa a la raíz del paquete. El campo es ahora `readme = "README.md"`, que es lo
+que Cargo ya publicaba: **el tarball no cambió** (el `readme` empaquetado era y sigue
+siendo `README.md`, y el README del tarball es byte a byte el del crate, 3 999 B) y el
+aviso desapareció. Los otros tres crates mantienen `../../README.md`, y ahí es
+correcto: no embarcan README propio y Cargo copia el de la raíz al paquete.
+
+**C1: la premisa «el tarball no se puede construir» es falsa para `cargo package` y
+cierta sólo para `cargo test` sobre el tarball.** Las cuatro citas del `include_str!`
+del OpenAPI existen, pero viven en `src/tests.rs`, que `lib.rs` declara con
+`#[cfg(test)] mod tests;`. La verificación de `cargo package` construye la librería y
+los binarios, no los objetivos de prueba, de modo que el `include_str!` no se expande
+y el empaquetado pasa: el fallo de publicación de `amatl-server` es la dependencia
+`path` de `amatl-core`/`amatl-ui` —reescrita a `version = "0.1.0-rc.1"` al empaquetar
+y no publicada—, una **condición de orden de release**, no un defecto de código. La
+severidad baja de Alta a Baja y la parte que sí queda es deuda de empaquetado, medida
+el 2026-10-27 sobre el tarball extraído en `target/package/amatl-server-0.1.0-rc.1/`:
+allí `cargo test --offline --no-run` muere **en la resolución**, antes de compilar
+(`no matching package named 'amatl-core' found`), así que hoy el `include_str!` no es
+lo primero que rompe sino lo que romperá después, cuando las dependencias internas
+estén publicadas; y que romperá es un hecho estático —`src/tests.rs` sigue llevando
+`include_str!("../../../docs/api/openapi.yaml")`, `docs/` no existe dentro del paquete
+y la ruta resuelve fuera de él—. Quedan dos salidas y ninguna es gratis: duplicar el
+contrato dentro del crate, con riesgo de deriva, o mover el contrato canónico al
+crate. La decisión sigue abierta.
+
+**La corrección aparente de C1 tampoco sirve, y falla en silencio.** Añadir
+`"../../docs/api/openapi.yaml"` al `include` de `crates/amatl-server/Cargo.toml` se
+probó y se revirtió: `cargo package -p amatl-server --list --locked --allow-dirty`
+sale con exit 0, **sin ningún aviso**, y el listado conserva los mismos 13 ficheros,
+sin el OpenAPI. Cargo descarta en silencio las entradas que salen del directorio del
+paquete, de modo que un `include` con `..` deja el manifiesto **peor** que antes
+—promete un fichero que no viaja— y sin señal de que no se cumplió. Es un hallazgo
+durable: la corrección evidente es la que hay que descartar primero.
+
+**La deuda de `chacha20` que el informe daba por abierta no existía en su base.** El
+informe afirmaba un `chacha20` yanked transitivo por `rand` y `rmcp`. `git show
+ce172d9d:Cargo.lock` ya trae `chacha20 0.10.2`, y el cierre está documentado en
+`docs/security/supply-chain.md:111-115`. Enunciado corregido en las dos secciones que
+lo sostenían —la lista de deuda abierta y «Lo que no se puede afirmar»—, no borrado.
+
+**El gate de referencias gana una entrada congelada, no una excepción tácita.** El
+hallazgo C4 cita **literalmente** el aviso de Cargo, y la ruta que contiene
+(`../../README.md`) es relativa a la raíz del crate, no al repositorio, así que el
+resolutor de `tools/check_doc_refs.py` —que sólo conoce rutas relativas al
+repositorio— no podrá resolverla nunca. Se añadió `("docs/security/hallazgos-2026-10-26.md",
+"../../README.md")` a `FROZEN` con su justificación escrita al lado: la cita es la
+prueba sobre la que descansa el hallazgo, de modo que se deja literal en vez de
+reescribirla en algo que el gate sepa leer. El gate sigue respondiendo
+`13 known-dead, 0 new` con código `0`.
+
+**Estado verificado de este cierre, en esta máquina y con `--locked`.** `cargo fmt
+--all --check` en verde; `cargo clippy --workspace --all-targets --all-features
+--locked -- -D warnings` sin avisos; `cargo check --workspace --all-targets --benches
+--locked` sin avisos; `cargo doc --workspace --no-deps` con `-D warnings` sin avisos;
+`cargo test --workspace --locked` → **690 aprobadas, 0 fallos, 2 ignoradas** sobre 25
+binarios; `cargo package --workspace --locked --allow-dirty` → exit 0 con los cuatro
+tarballs verificados y **0 avisos de `readme`**; `cargo run --locked --quiet -p
+amatl-cli -- benchmark ranking-v2 --json` → `"passed": true`; `cargo audit` y `cargo
+deny check` → `advisories ok, bans ok, licenses ok, sources ok`; y
+`python3 tools/check_doc_refs.py` → `13 known-dead, 0 new`. Los archivos tocados por
+esta ronda son cinco: `CHANGELOG.md`, `CONTINUIDAD.md`, `crates/amatl-core/Cargo.toml`,
+`docs/security/hallazgos-2026-10-26.md` y `tools/check_doc_refs.py`.
+
+**Lo que este cierre no puede afirmar.** No se ejecutó `cargo publish` ni se creó
+ninguna etiqueta: lo reproducido es `cargo package`, que es la fase donde aparece la
+dependencia `path` sin publicar, y por tanto **el orden de publicación
+`amatl-core`/`amatl-ui` antes que `amatl-server` sigue sin ejercitarse de verdad**.
+No se ejecutó CI remoto sobre `167fb8dd`, así que `publish-crates` —el único job que
+vería el aviso de `readme` en un flujo real— no tiene corrida que confirme la
+desaparición del aviso en su salida, sólo la corrida local. Y el `include_str!` del
+OpenAPI sigue sin remediar en su parte real: la decisión entre duplicar el contrato y
+moverlo al crate queda abierta, como deuda de empaquetado de severidad Baja.
 

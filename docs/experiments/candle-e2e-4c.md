@@ -208,7 +208,7 @@ why the decision below is **`_WITH_OPTIMIZATION`**, not plain acceptable.
 `LATENCY_BUDGET_SOURCE`: **AMATL defines no latency/SLO target.**
 `docs/benchmarks.md` states its numbers are "evidence for one controlled
 machine, not a production SLA". The only hard bound is the **30 000 ms request
-deadline** (`docs/api/openapi.yaml`, `config` `request_timeout_ms`), which is a
+deadline** (`crates/amatl-server/openapi.yaml`, `config` `request_timeout_ms`), which is a
 timeout ceiling, not a budget.
 
 `LATENCY_DECISION` = **`LATENCY_COST_ACCEPTABLE_WITH_OPTIMIZATION`**

@@ -50,7 +50,7 @@ tokenizer or config silently changes embeddings.
   therefore be **fully offline after install** and must never trigger a
   network fetch during an ordinary search.
 * **No formal latency SLO** (see `candle-e2e-4c.md` §5) — but a
-  30 000 ms request deadline (`docs/api/openapi.yaml`).
+  30 000 ms request deadline (`crates/amatl-server/openapi.yaml`).
 
 ## Option A — vendor the model inside the release artifact
 

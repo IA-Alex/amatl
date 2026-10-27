@@ -20,10 +20,11 @@ en `docs/security/threat-model.md` y `docs/security/asvs-checklist.md`.
 | H3 | No existía una forma segura de instrumentar `HttpRequest`: derivar `Debug` publica URL y cabeceras | Media | Remediado |
 | H4 | El harness re-heredaba dentro del sandbox lo que el padre no había limpiado | Media | Remediado |
 | H5 | Riesgos aceptados sin declarar (`admin` equivale a ejecución; sondas públicas) | Baja | Documentado |
-| C1 | `include_str!` del OpenAPI en un módulo `#[cfg(test)]`: rompe `cargo test` sobre el tarball, no la publicación | Baja (empaquetado) | Refutado como bloqueo de release (ver correcciones) |
+| C1 | `include_str!` del OpenAPI en un módulo `#[cfg(test)]`: rompe `cargo test` sobre el tarball, no la publicación | Baja (empaquetado) | Refutado como bloqueo de release y **reparado el 2026-10-27** (ver C1) |
 | C2a | Test intermitente `extract::tests::fixed_cli_contract_…`: `ETXTBSY` al lanzar el script recién escrito | Baja | Remediado en esta revisión |
 | C2b | Test intermitente `execution::tests::success_serializes_an_empty_error_list`: plazo de 1 000 ms con reserva de 750 ms | Baja | Remediado en esta revisión |
 | C3 | Citas `file:line` desplazadas en `docs/security` por una inserción en `providers/http.rs` | Baja (integridad documental) | Remediado |
+| C4 | El `readme` de `amatl-core` apunta fuera del paquete y Cargo lo reescribe: aviso de empaquetado y campo que no describe lo publicado | Baja (empaquetado) | Remediado en esta revisión |
 
 ## H1 — El hijo heredaba el entorno del servicio (Alta)
 
@@ -129,7 +130,7 @@ contadores, latencias y agregados). El disparador de revisión del modelo incorp
 ya el cambio de entorno de un proceso externo
 (`docs/security/threat-model.md:124`).
 
-## C1 — Refutado: el `include_str!` del OpenAPI no bloquea la publicación (Baja, deuda de empaquetado)
+## C1 — Refutado como bloqueo de release y reparado el 2026-10-27: el `include_str!` del OpenAPI no impide publicar (Baja, empaquetado)
 
 **Afirmación de la primera versión, refutada.** Se sostuvo que
 `crates/amatl-server/src/tests.rs:5084` —y también `:5117`, `:5206` y `:5357`— usa
@@ -163,11 +164,26 @@ Es reproducible en el propio repositorio: `cargo package -p amatl-core --allow-d
 2.74s` tras empaquetar 102 ficheros.
 
 **Consecuencia real (Baja, deuda de empaquetado).** El tarball de `amatl-server`
-incluye `src/tests.rs` pero no `docs/api/openapi.yaml` (13 ficheros, ninguno con
+incluía `src/tests.rs` pero no el contrato OpenAPI (13 ficheros, ninguno con
 `openapi` en el nombre), así que **desempaquetar el tarball y ejecutar `cargo test` no
-compila**. Afecta a quien pruebe el código empaquetado o a un árbol sin `docs/`, no a
-la publicación. En un clon del repositorio el fichero está presente (85 113 bytes, no
-ignorado por git) y la suite compila.
+compilaba**. Afectaba a quien pruebe el código empaquetado o a un árbol sin `docs/`,
+no a la publicación; en un clon del repositorio el contrato estaba presente (85 113
+bytes, no ignorado por git) y la suite siempre compiló. Reparado el 2026-10-27 moviendo
+el contrato al crate; ver la nota al final de esta sección.
+
+**Precisión del 2026-10-27: el bloqueo del tarball es doble y hoy solo se observa el
+primero.** Sobre el tarball extraído —el que deja `cargo package` en
+`target/package/amatl-server-0.1.0-rc.1/`—, `cargo test --offline --no-run` muere en
+la resolución, antes de compilar nada: `no matching package named 'amatl-core'
+found`. El manifiesto empaquetado ya reescribió la dependencia a
+`version = "0.1.0-rc.1"` sin `path`, y esa versión no está publicada, así que hoy el
+`include_str!` no es lo primero que rompe: es lo que romperá después, cuando
+`amatl-core` y `amatl-ui` estén publicadas. Que romperá es un hecho estático,
+comprobable sin resolver dependencias: en el tarball, `src/tests.rs` sigue llevando
+`include_str!("../../../docs/api/openapi.yaml")`, `docs/` no existe dentro del
+paquete y la ruta resuelve fuera de él. Y la razón de que la verificación de
+`cargo package` no lo detecte es la de arriba —verifica construyendo la librería, y
+`src/tests.rs` cuelga de un `#[cfg(test)]`—, no una bandera ausente.
 
 **La otra mitad de la afirmación también era falsa.** Se añadía que «el mismo patrón
 ya se aplicó en `amatl-core` (lectura en tiempo de ejecución con `read_to_string` más
@@ -200,6 +216,47 @@ condición de secuencia de release —publicar `amatl-core` y `amatl-ui` antes q
 como hallazgo de seguridad. Si se quisiera que el tarball se pudiera probar sin
 `docs/`, la opción es leer el OpenAPI en tiempo de ejecución con `read_to_string` más
 una guarda de presencia; no se ha aplicado.
+
+**La corrección aparente tampoco sirve, y falla en silencio.** La tentación es
+declarar el fichero en el `include` del crate. Se probó el 2026-10-27 sobre
+`167fb8dd` añadiendo `"../../docs/api/openapi.yaml"` al `include` de
+`crates/amatl-server/Cargo.toml`: `cargo package -p amatl-server --list --locked
+--allow-dirty` termina con exit 0, **no emite ningún aviso** y el listado sigue
+teniendo los mismos 13 ficheros, sin el OpenAPI. Cargo descarta en silencio las
+entradas que salen del directorio del paquete, así que un `include` con `..` deja
+el manifiesto peor que antes —promete un fichero que no viaja— y sin señal alguna
+de que no se cumplió. La sonda se revirtió y el árbol quedó como estaba. Quedan,
+por tanto, dos salidas reales y ninguna es gratis: duplicar el contrato dentro del
+crate (con riesgo de deriva) o mover el contrato canónico al crate. La decisión se
+tomó al día siguiente; ver la nota siguiente.
+
+**Reparado el 2026-10-27: el contrato se movió al crate.** De las dos salidas abiertas
+se eligió la segunda, mover el canónico en lugar de duplicarlo: el contrato pasó de
+`docs/api/` a la raíz del crate con `git mv` (85 113 bytes, sin un solo cambio de
+contenido), y los cuatro `include_str!` de `crates/amatl-server/src/tests.rs` —más los
+tres textos que citaban la ruta— apuntan ahora a `crates/amatl-server/openapi.yaml`. El contrato sigue
+siendo uno solo y vive junto al código que lo sirve; `README.md`, `docs/README.md` y
+los dos documentos de `docs/experiments/` apuntan a la ruta nueva, y `docs/api/`
+conserva `mcp.md`.
+
+Evidencia (toda local, sobre el árbol con el cambio):
+
+| Comprobación | Comando | Resultado |
+|---|---|---|
+| El contrato viaja en el paquete | `cargo package -p amatl-server --list --locked --allow-dirty --no-verify` | 14 ficheros, `openapi.yaml` en la raíz del paquete (antes 13, ninguno con `openapi`) |
+| Los tests de contrato siguen pasando | `cargo test --locked -p amatl-server --lib openapi` | 5 passed; 0 failed |
+| El tarball compila y ejecuta esos tests | tarball real extraído, `cargo test --offline --lib openapi` | `5 passed; 0 failed` dentro del tarball |
+| El fallo, reproducido sobre el tarball anterior | mismo tarball, anterior al arreglo | 4 errores `couldn't read` del contrato → `could not compile amatl-server (lib test)` |
+
+La última fila es la reproducción directa del hallazgo y la primera su cierre: el
+tarball anterior moría compilando `src/tests.rs`, uno por cada `include_str!`, y el
+actual no. Los dos `cargo package` se obtuvieron con `--no-verify` porque la
+preparación del paquete falla antes, por la dependencia `path` sin publicar; para
+compilar los tests dentro del tarball se aportó esa resolución a mano con un `[patch]`
+hacia los crates locales, que es lo que aísla el `include_str!` del problema de orden
+de release. Ese problema **no** cambia con este arreglo: `cargo package -p
+amatl-server` sin `--no-verify` sigue fallando al preparar el paquete mientras
+`amatl-core` y `amatl-ui` no estén publicadas.
 
 ## C2a — Test intermitente por `ETXTBSY` al lanzar el extractor de prueba (Baja, remediado en esta revisión)
 
@@ -382,6 +439,38 @@ comprobó además que las citas a `extract.rs`, `ingest.rs`, `config/mod.rs` y
 `config/deep_config.rs` siguen cayendo en el mismo bloque tras los cambios
 (desplazamientos de hasta 3 líneas dentro de la misma región).
 
+## C4 — El `readme` de `amatl-core` no describía lo que se publica (Baja, remediado en esta revisión)
+
+**Causa.** `crates/amatl-core/Cargo.toml:10` declaraba
+`readme = "../../README.md"`, una ruta fuera del paquete, mientras el crate ya
+tiene su propio `crates/amatl-core/README.md` (3 999 bytes). Cargo resuelve esa
+colisión a favor del fichero local y **reescribe** el campo en el manifiesto
+publicado, así que la declaración de origen no describía el paquete que se
+publica, y cada `cargo package -p amatl-core` —incluido el `--list` que ejecuta
+`.github/workflows/publish-crates.yml`— imprimía este aviso:
+
+```
+warning: readme `../../README.md` appears to be a path outside of the package, but there is already a file named `README.md` in the root of the package. The archived crate will contain the copy in the root of the package. Update the readme to point to the path relative to the root of the package to remove this warning.
+```
+
+**Alcance.** El artefacto publicado no estaba mal: el tarball
+`amatl-core-0.1.0-rc.1.crate` lleva el README del crate y su `Cargo.toml` ya dice
+`readme = "README.md"`. El defecto es del manifiesto de origen —un campo muerto
+que no describe la realidad— más el ruido de empaquetado. No afecta a los otros
+tres crates: `amatl-cli`, `amatl-server` y `amatl-ui` usan la misma ruta,
+`readme = "../../README.md"`, sin aviso, porque no tienen README propio y Cargo
+copia el de la raíz al paquete; comprobado en el tarball de `amatl-server`, que
+lleva el README raíz (`# AMATL`) y `readme = "README.md"` en su manifiesto.
+
+**Cambio.** `readme = "README.md"` en `crates/amatl-core/Cargo.toml:10`, que es lo
+que Cargo ya publicaba. El contenido del tarball es el mismo; lo que cambia es que
+el manifiesto dice la verdad y el aviso desaparece.
+
+**Prueba.** `cargo package -p amatl-core --list --locked --allow-dirty`: antes del
+cambio, 1 aviso por stderr; después, exit 0 con stderr vacío (0 bytes) y los
+mismos 102 ficheros. `cargo package --workspace --allow-dirty --locked` sigue
+terminando en exit 0 sin ningún aviso.
+
 ## Verificación ejecutada
 
 | Comprobación | Comando | Resultado |
@@ -401,6 +490,9 @@ comprobó además que las citas a `extract.rs`, `ingest.rs`, `config/mod.rs` y
 | `ETXTBSY` en `spawn`, aislado y bajo carga | sonda temporal (borrada al cerrar el hallazgo): 1 hilo / 16 hilos crudos / 16 hilos con `spawn_with_busy_retry` | 0 / 54 / 0 fallos de 4 000 intentos (1,35 % solo en el control crudo concurrente) |
 | Suite completa bajo carga, tras los remedios | `cargo test -p amatl-core -- --test-threads=16` ×12, 24 procesos `yes` en 24 núcleos | 12/12 `cargo_exit=0`; 5 976 pruebas, 0 fallos; sin `FAILED` ni `DeadlineNear` |
 | `--clearenv` sobre el harness real | sonda `bwrap` + render Chromium | canario ausente, `HOME` explícito presente, render `rendered` |
+| Aviso de `readme` en el núcleo | `cargo package -p amatl-core --list --locked --allow-dirty` | antes: 1 aviso (ruta `..` con `README.md` local); tras el arreglo: stderr vacío, 102 ficheros, exit 0 |
+| Empaquetado del workspace completo | `cargo package --workspace --allow-dirty --locked` | exit 0: los cuatro tarballs verifican compilando, `amatl-server` incluido |
+| Entrada `..` en `[package] include` | sonda sobre `crates/amatl-server/Cargo.toml` (revertida) | exit 0, 0 avisos y el OpenAPI **no** entra en el tarball: 13 ficheros |
 
 ## Lo que no se puede afirmar
 
@@ -413,11 +505,20 @@ comprobó además que las citas a `extract.rs`, `ingest.rs`, `config/mod.rs` y
 - Las pruebas de H1 fuera de `amatl-core` requieren `AMATL_CHROMIUM_INTEGRATION=1` y
   el harness instalado; sin esa variable se omiten en vez de fallar, así que un
   entorno sin `bwrap` no aporta evidencia alguna.
-- C1 sigue sin remediar en su parte real: el `include_str!` del OpenAPI no resuelve al
-  ejecutar `cargo test` sobre el tarball de `amatl-server`. Lo que no bloquea es la
-  publicación por ese motivo.
-- La deuda de dependencias (`chacha20 0.10.1` yanked, transitiva por `rand` y `rmcp`)
-  sigue abierta y no se aborda aquí.
+- C1 quedaba sin remediar en su parte real cuando se escribió esta revisión: el
+  `include_str!` del OpenAPI no resolvía al ejecutar `cargo test` sobre el tarball de
+  `amatl-server`. Se reparó el 2026-10-27 moviendo el contrato al crate (ver la nota
+  al final de C1). Lo que nunca bloqueó es la publicación por ese motivo. Medido el
+  2026-10-27 sobre el tarball anterior al arreglo: ese `cargo test` fallaba primero
+  por la resolución de `amatl-core` —no publicada, sin `path` en el manifiesto
+  empaquetado—, y el `include_str!` era el bloqueo siguiente, el que queda cuando las
+  dependencias internas ya están publicadas: aportada esa resolución con un `[patch]`,
+  la compilación moría con cuatro errores `couldn't read` del contrato.
+- La deuda de dependencias que la primera versión daba por abierta (`chacha20`
+  yanked, transitiva por `rand` y `rmcp`) **no estaba abierta en la base de este
+  informe**: `git show ce172d9d:Cargo.lock` ya trae `chacha20 0.10.2`, y el cierre
+  está documentado en `docs/security/supply-chain.md:111-115`. Enunciado corregido
+  en «Correcciones».
 
 ## Correcciones a la primera versión de este informe
 
@@ -443,3 +544,23 @@ contra el repositorio y contra sondas reproducibles. Dos hallazgos estaban mal:
   y `:498-500`).
 - El resto de afirmaciones (H1, H3, H4, H5, C3 y el empaquetado de `amatl-core`) se
   comprobaron cita a cita contra el árbol actual y se mantienen.
+
+**Añadido en la revisión de empaquetado del 2026-10-27.** Una tercera pasada,
+centrada en el empaquetado y hecha sobre los tarballs ya extraídos, añade un
+hallazgo y corrige un enunciado:
+
+- **C4 (nuevo).** El aviso de `readme` de `amatl-core` lo emitía el mismo comando
+  que la tabla de arriba registra como «verificación compila y termina»
+  (`cargo package -p amatl-core --allow-dirty --locked`) y no se anotó: el aviso
+  viaja por stderr, no por la salida que esa tabla resume. Remediado; ver C4.
+- **`chacha20` (corrección).** El informe daba la deuda por abierta cuando su
+  propia base ya la tenía cerrada: `git show ce172d9d:Cargo.lock` trae
+  `chacha20 0.10.2`, y `docs/security/supply-chain.md:111-115` documenta el
+  `cargo update -p chacha20` del 2026-10-26. Corregido también en «Lo que no se
+  puede afirmar».
+- **C1, confirmado con una prueba más fuerte.** La refutación no depende de la
+  sonda mínima: `cargo package --workspace --allow-dirty --locked` verifica los
+  cuatro tarballs compilándolos —`amatl-server` incluido— y termina en exit 0, con
+  el único aviso de stderr siendo el `readme` de C4. Lo que sigue roto es `cargo
+  test` sobre el tarball extraído, y la vía `[package] include` con `..` se probó y
+  no sirve (ver C1).

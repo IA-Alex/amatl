@@ -67,6 +67,10 @@ const BACKUP_IDEMPOTENCY_TTL: Duration = Duration::from_secs(600);
 /// Upper bound on remembered keys, so a client that sends a fresh key per
 /// request cannot grow the map without bound. Expired entries go first.
 const BACKUP_IDEMPOTENCY_CAPACITY: usize = 256;
+/// Upper bound on source-IP windows retained by the in-process rate limiter.
+/// A remote client can rotate source addresses, so time-based cleanup alone
+/// must not allow the map to grow without bound between cleanup passes.
+const RATE_LIMITER_CAPACITY: usize = 4096;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 /// Wrapper so handlers can extract the request-id injected by the security
@@ -469,9 +473,10 @@ fn resolve_clients(
         .or_else(|| std::env::var(&server.token_env).ok())
         .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
     {
+        let digest = token_digest(&token);
         clients.push(AuthorizedClient {
             id: "default".into(),
-            digest: token_digest(&token),
+            digest,
             expires_at: None,
             scopes: Scope::ALL.to_vec(),
             tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
@@ -500,6 +505,17 @@ fn resolve_clients(
             },
             (None, None) => continue,
         };
+        if clients
+            .iter()
+            .any(|client| constant_time_eq(&client.digest, &digest))
+        {
+            return Err(ServerError::Configuration(Box::new(ConfigError::Policy(
+                format!(
+                    "duplicate server credential digest for client {}",
+                    declared.id
+                ),
+            ))));
+        }
         clients.push(AuthorizedClient {
             id: declared.id.clone(),
             digest,
@@ -3446,6 +3462,16 @@ fn within_rate_limit(
             .windows
             .retain(|_, window| now.duration_since(window.started) < Duration::from_secs(60));
         limiter.last_cleanup = now;
+    }
+    if !limiter.windows.contains_key(&ip) && limiter.windows.len() >= RATE_LIMITER_CAPACITY {
+        if let Some(oldest_ip) = limiter
+            .windows
+            .iter()
+            .min_by_key(|(_, window)| window.started)
+            .map(|(ip, _)| *ip)
+        {
+            limiter.windows.remove(&oldest_ip);
+        }
     }
     let window = limiter.windows.entry(ip).or_insert(RateWindow {
         started: now,
