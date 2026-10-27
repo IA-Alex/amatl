@@ -94,6 +94,7 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 | [release.md](release.md) | Release y empaquetado Linux |
 | [benchmarks.md](benchmarks.md) | Benchmarks y quality gates |
 | [testing.md](testing.md) | Estrategia de testing y cobertura |
+| [depuracion.md](depuracion.md) | Depuración local (DebugMCP/codelldb) y la restricción de `ptrace` |
 
 ### Testing, evaluación y experimentos (evidencia)
 
