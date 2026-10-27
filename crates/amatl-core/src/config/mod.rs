@@ -1232,6 +1232,35 @@ mod tests {
     }
 
     #[test]
+    fn relative_deep_program_paths_are_rejected() {
+        // `./trafilatura` and `packaging/...` are resolved against the
+        // process's working directory, so the binary that gets executed would
+        // be chosen by whoever can write there, not by the operator.
+        let mut relative_extractor = Config::default();
+        relative_extractor.deep.extractor.executable = "./trafilatura".into();
+        assert!(relative_extractor.validate().is_err());
+
+        let mut relative_harness = Config::default();
+        relative_harness.deep.renderer.enabled = true;
+        relative_harness.deep.renderer.sandbox_path = "packaging/amatl-chromium-sandbox".into();
+        assert!(relative_harness.validate().is_err());
+
+        // A disabled renderer never launches the harness, so the path is not
+        // rejected until it can matter; enabling it re-validates.
+        let mut disabled = Config::default();
+        disabled.deep.renderer.sandbox_path = "packaging/amatl-chromium-sandbox".into();
+        assert!(disabled.validate().is_ok());
+
+        // The two accepted shapes: a bare name resolved through PATH (the
+        // default) and an absolute path.
+        let mut accepted = Config::default();
+        accepted.deep.extractor.executable = "trafilatura".into();
+        accepted.deep.renderer.enabled = true;
+        accepted.deep.renderer.sandbox_path = "/usr/lib/amatl/amatl-chromium-sandbox".into();
+        assert!(accepted.validate().is_ok());
+    }
+
+    #[test]
     fn set_inference_fields_rejects_an_unstorable_value_without_touching_the_file() {
         // Last line of defense for the same corruption: even a caller that
         // skips `Config::validate` must not be able to write a value that

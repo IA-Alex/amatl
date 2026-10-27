@@ -1,3 +1,4 @@
+use crate::child_process::{scrub_environment, spawn_with_busy_retry};
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
@@ -65,20 +66,21 @@ impl TrafilaturaExtractor {
 
     pub async fn probe_version(&self) -> Result<String, ExtractError> {
         let operation = async {
-            let mut child = Command::new(&self.executable)
+            let mut command = Command::new(&self.executable);
+            scrub_environment(&mut command);
+            command
                 .arg("--version")
                 .stdin(Stdio::null())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::null())
-                .kill_on_drop(true)
-                .spawn()
-                .map_err(|error| {
-                    if error.kind() == std::io::ErrorKind::NotFound {
-                        ExtractError::Unavailable
-                    } else {
-                        ExtractError::Failed
-                    }
-                })?;
+                .kill_on_drop(true);
+            let mut child = spawn_with_busy_retry(&mut command).await.map_err(|error| {
+                if error.kind() == std::io::ErrorKind::NotFound {
+                    ExtractError::Unavailable
+                } else {
+                    ExtractError::Failed
+                }
+            })?;
             let stdout = child.stdout.take().ok_or(ExtractError::Failed)?;
             let mut limited = stdout.take(257);
             let mut output = Vec::new();
@@ -116,20 +118,23 @@ impl Extractor for TrafilaturaExtractor {
 
     async fn extract(&self, html: &[u8]) -> Result<ExtractionResult, ExtractError> {
         let operation = async {
-            let mut child = Command::new(&self.executable)
-                .args(["--json", "--with-metadata", "--no-comments", "--no-tables"])
-                .stdin(Stdio::piped())
-                .stdout(Stdio::piped())
-                .stderr(Stdio::null())
-                .kill_on_drop(true)
-                .spawn()
-                .map_err(|error| {
+            let mut command = Command::new(&self.executable);
+            scrub_environment(&mut command);
+            let mut child = {
+                command
+                    .args(["--json", "--with-metadata", "--no-comments", "--no-tables"])
+                    .stdin(Stdio::piped())
+                    .stdout(Stdio::piped())
+                    .stderr(Stdio::null())
+                    .kill_on_drop(true);
+                spawn_with_busy_retry(&mut command).await.map_err(|error| {
                     if error.kind() == std::io::ErrorKind::NotFound {
                         ExtractError::Unavailable
                     } else {
                         ExtractError::Failed
                     }
-                })?;
+                })?
+            };
             let mut stdin = child.stdin.take().ok_or(ExtractError::Failed)?;
             let stdout = child.stdout.take().ok_or(ExtractError::Failed)?;
             let mut limited = stdout.take(self.max_output_bytes.saturating_add(1));
@@ -538,6 +543,54 @@ mod tests {
         assert_eq!(
             extractor.extract(b"<p>x</p>").await,
             Err(ExtractError::Unavailable)
+        );
+    }
+
+    /// The extractor is handed hostile markup, so a parser bug that becomes
+    /// code execution inside the child must not also hand over the credentials
+    /// the parent holds in its environment. The child here reports whether it
+    /// can see a canary variable the parent sets, which is the same shape as
+    /// `AMATL_SERVER_TOKEN` and every provider `credential_env`.
+    #[cfg(unix)]
+    #[tokio::test]
+    async fn extractor_child_does_not_inherit_server_credentials() {
+        const CANARY: &str = "AMATL_EXTRACTOR_ENV_CANARY_5c07";
+        let path = std::env::temp_dir().join(format!(
+            "amatl-env-extractor-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        std::fs::write(
+            &path,
+            br###"#!/bin/sh
+while read -r _line; do :; done
+if [ -n "${AMATL_EXTRACTOR_ENV_CANARY_5c07:-}" ]; then
+  printf '%s' '{"text":"leaked"}'
+else
+  printf '%s' '{"text":"clean"}'
+fi
+"###,
+        )
+        .unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o700)).unwrap();
+        std::env::set_var(CANARY, "server-token-canary");
+        let extractor = TrafilaturaExtractor::new(
+            path.to_string_lossy().into_owned(),
+            "test".into(),
+            500,
+            4096,
+        );
+        let result = extractor.extract(b"<main>x</main>").await;
+        std::env::remove_var(CANARY);
+        let _ = std::fs::remove_file(path);
+
+        assert_eq!(
+            result.expect("extraction succeeds").content,
+            "clean",
+            "the extractor read a credential out of its environment"
         );
     }
 

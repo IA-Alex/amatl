@@ -1,3 +1,4 @@
+use crate::child_process::{scrub_environment, spawn_with_busy_retry};
 use crate::evidence::analyze_evidence_bundle_optional;
 use crate::{
     CanonicalUrl, DataPolicyConfig, Document, DocumentStatus, Evidence, EvidenceV2, FetchMethod,
@@ -322,20 +323,21 @@ impl LocalIngestor {
             return Err(LocalIngestError::ExternalExtractorDenied);
         }
         let operation = async {
-            let mut child = Command::new(&self.pdf_executable)
+            let mut command = Command::new(&self.pdf_executable);
+            scrub_environment(&mut command);
+            command
                 .args(["-", "-"])
                 .stdin(Stdio::piped())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::null())
-                .kill_on_drop(true)
-                .spawn()
-                .map_err(|error| {
-                    if error.kind() == std::io::ErrorKind::NotFound {
-                        LocalIngestError::PdfExtractorUnavailable
-                    } else {
-                        LocalIngestError::PdfExtractorFailed
-                    }
-                })?;
+                .kill_on_drop(true);
+            let mut child = spawn_with_busy_retry(&mut command).await.map_err(|error| {
+                if error.kind() == std::io::ErrorKind::NotFound {
+                    LocalIngestError::PdfExtractorUnavailable
+                } else {
+                    LocalIngestError::PdfExtractorFailed
+                }
+            })?;
             let mut stdin = child
                 .stdin
                 .take()
@@ -993,6 +995,33 @@ mod tests {
         assert_eq!(
             response.document.extractor_used.as_deref(),
             Some("local-pdftotext-v1")
+        );
+    }
+
+    /// `pdftotext` parses hostile files, so the process must not be able to
+    /// read the server's credentials out of its own environment either.
+    #[cfg(unix)]
+    #[tokio::test]
+    async fn pdf_extractor_child_does_not_inherit_server_credentials() {
+        const CANARY: &str = "AMATL_PDF_ENV_CANARY_1a37";
+        let executable = temp_file(
+            "sh",
+            b"#!/bin/sh\ncat >/dev/null\nif [ -n \"${AMATL_PDF_ENV_CANARY_1a37:-}\" ]; then\n  printf 'leaked'\nelse\n  printf 'clean'\nfi\n",
+        );
+        std::fs::set_permissions(&executable, std::fs::Permissions::from_mode(0o700)).unwrap();
+        let pdf = temp_file("pdf", b"%PDF-1.7\nfixture");
+        std::env::set_var(CANARY, "server-token-canary");
+        let ingestor =
+            LocalIngestor::with_test_limits(1024, 1024, 2_000, 5_000, executable.clone(), true);
+        let response = ingestor.ingest(&pdf, None).await;
+        std::env::remove_var(CANARY);
+        std::fs::remove_file(executable).unwrap();
+        std::fs::remove_file(pdf).unwrap();
+
+        assert_eq!(
+            response.unwrap().document.content.as_deref(),
+            Some("clean"),
+            "the PDF extractor read a credential out of its environment"
         );
     }
 

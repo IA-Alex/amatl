@@ -107,6 +107,14 @@ are purged periodically rather than scanning on every request. Limits are per
 process and do not trust forwarding headers
 (`amatl-server/src/lib.rs:3434-3460`).
 
+Forwarded headers are never consulted, and the cost of that choice is stated
+rather than hidden: behind a reverse proxy every client shares the proxy's
+address, so they share one rate-limit bucket and the audit trail names the proxy
+instead of the caller. Trusting `X-Forwarded-For` would be worse — any client
+could forge its own identity, and a forged key would also poison the audit
+trail — so a deployment that needs per-client attribution must put an
+authenticated proxy in front and let it enforce its own limits.
+
 Rejected headers/bodies, Host/Origin failures, rate limiting, failed
 authentication and request timeouts emit structured `amatl::security` events.
 They include only a stable event code, normalized path and socket IP; Host,

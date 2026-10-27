@@ -63,7 +63,9 @@ async fn confirmed_duplicate_keeps_all_contributing_providers() {
             )],
         )),
     ];
-    let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
+    // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+    // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+    let response = SearchOrchestrator::new(Budget::new(2, 8_000), 100)
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert_eq!(response.status, SearchStatus::Success);

@@ -289,7 +289,7 @@ disponibles.
 
 | Clave | Tipo/default | Rango validado |
 |---|---:|---|
-| `deep.extractor.executable` | string / `trafilatura` | sin validación de contenido; ausencia degrada |
+| `deep.extractor.executable` | string / `trafilatura` | ruta absoluta o nombre simple; una ruta relativa con separador se rechaza; ausencia degrada |
 | `.version` | string / `trafilatura-2.2.0-cli-json-v1` | contrato fijado; participa en caché |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.max_output_bytes` | u64 / 4194304 | >0 |
@@ -303,7 +303,7 @@ disponibles.
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.shutdown_grace_ms` | u64 / 500 | >0 |
 | `.max_memory_mb` | u64 / 512 | >0; se propaga al harness como `AMATL_CHROMIUM_MEMORY_MB` |
-| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
+| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; ruta absoluta o nombre simple (una ruta relativa con separador se rechaza) y se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
 | `.max_dom_bytes` | u64 / 8388608 | Tope del DOM devuelto; se propaga como `AMATL_CHROMIUM_MAX_DOM_BYTES` |
 | `.max_redirects` | u32 / 5 | cualquier u32 |
 

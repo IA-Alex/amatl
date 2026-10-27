@@ -75,6 +75,7 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 | [security/data-retention.md](security/data-retention.md) | Retención de datos |
 | [security/supply-chain.md](security/supply-chain.md) | Seguridad de la cadena de suministro |
 | [security/chromium-isolation.md](security/chromium-isolation.md) | Aislamiento del renderer Chromium |
+| [security/hallazgos-2026-10-26.md](security/hallazgos-2026-10-26.md) | Informe fechado: hallazgos y remediación |
 
 ### Contratos (API y transporte)
 

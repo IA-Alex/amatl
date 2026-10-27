@@ -76,6 +76,16 @@ sobre `--background`/`--surface`, igual que el tema oscuro.
 | `--error` | `#B3342F` |
 | `--error-on-tint` | `#7A231F` |
 
+## Límite de controles (WCAG 1.4.11)
+
+`--border` es una línea divisoria: sobre `--surface` mide ~1,26:1, por debajo del
+3:1 que WCAG 2.2 (AA, 1.4.11) exige para el límite visual de un control de
+formulario. Los campos de texto (`input`, `select`) y el selector de idioma de la
+interfaz usan `--border-control`, que **no es un color nuevo**: es un alias
+semántico de `--muted` (5,20:1 sobre `--surface` en tema oscuro, 5,60:1 sobre
+blanco en claro), ya presente en las dos tablas de arriba. `--border` sigue siendo
+el valor de divisores, bordes de tarjeta y controles secundarios.
+
 ## Regla no negociable
 
 **Ningún documento, artefacto o propuesta visual introduce un color

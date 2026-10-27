@@ -85,7 +85,9 @@ async fn marginalia_fixture_crosses_provider_and_global_pipeline() {
         true,
         transport.clone(),
     ))];
-    let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+    // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+    // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert_eq!(response.status, SearchStatus::Success);

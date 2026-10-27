@@ -468,6 +468,43 @@ mod tests {
         assert!(text("/client.js").contains("payload?.error?.code"));
     }
 
+    /// `reportFailure` must never read a bare `message` identifier.
+    ///
+    /// Commit `ac11624a` replaced `const message = error.message;` with direct
+    /// `error.code`/`error.status` handling but left the `504` branch reading
+    /// the removed local, so any failure reaching that branch threw
+    /// `ReferenceError: message is not defined` instead of reporting a timeout
+    /// or a generic error: the operator saw no status at all. Nothing else
+    /// catches it, because the asset tests assert string presence rather than
+    /// JS semantics and the CI pipeline ships no JS linter.
+    #[test]
+    fn report_failure_reads_only_error_properties_never_a_bare_message() {
+        let javascript = text("/app.js");
+        let body = javascript
+            .split_once("function reportFailure(error) {")
+            .expect("reportFailure is defined in app.js")
+            .1
+            .split_once("\n}\n")
+            .expect("reportFailure closes at column zero")
+            .0;
+        let mut rest = body;
+        let mut references = 0;
+        while let Some(index) = rest.find("message") {
+            assert!(
+                rest[..index].ends_with('.'),
+                "bare `message` identifier in reportFailure near: {}",
+                &rest[index.saturating_sub(24)..]
+            );
+            references += 1;
+            rest = &rest[index + "message".len()..];
+        }
+        assert!(
+            references >= 3,
+            "reportFailure must inspect error.message on every branch"
+        );
+        assert!(javascript.contains("error.message.includes(\"504\")"));
+    }
+
     #[test]
     fn marginalia_surface_copy_is_catalog_driven() {
         let javascript = text("/app.js");

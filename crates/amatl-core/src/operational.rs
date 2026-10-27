@@ -115,7 +115,10 @@ async fn benchmark_search(
                 )),
             ];
             let sample_started = Instant::now();
-            let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
+            // Deadline far above `minimum_remaining_deadline_ms` (750 ms): a
+            // `DeadlineNear`/`TimeExhausted` stop would change the status these
+            // rates are asserted on. The provider-call budget is unchanged.
+            let response = SearchOrchestrator::new(Budget::new(2, 8_000), 100)
                 .with_execution_limits(2, 1, 0, 0)
                 .search(
                     parse_query(format!("operational search {index}")).unwrap(),
@@ -168,7 +171,7 @@ async fn benchmark_deep(
                 vec![provider_item(&format!("https://deep-{index}.example/"))],
             ));
             let query = parse_query(format!("operational deep {index}")).unwrap();
-            let mut search = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+            let mut search = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
                 .with_execution_limits(1, 1, 0, 0);
             let response = search.search(query.clone(), vec![provider]).await;
             let request = DeepRequest {

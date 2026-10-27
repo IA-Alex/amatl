@@ -105,6 +105,30 @@ al arrancar y no se escriben de vuelta, así que una recarga o un
 se rechaza (un fichero con `bind = "127.0.0.1"` no puede activar `no_auth` en un
 proceso publicado en `0.0.0.0`).
 
+## Procesos hijos
+
+Trafilatura, `pdftotext` y el harness de Chromium parsean contenido hostil, así
+que un fallo de memoria en cualquiera de ellos es ejecución de código *dentro
+del hijo*. Por defecto un hijo hereda el entorno del padre, que es justo donde
+viven `server.token_env` y el `credential_env` de cada provider: la fuga sería
+silenciosa y convertiría cualquier bug de parser en robo de credenciales.
+
+Por eso ningún spawn del núcleo hereda el entorno. Cada sitio (`extract.rs`,
+`ingest.rs`, `render.rs`) llama a `child_process::scrub_environment`, que vacía
+el entorno y devuelve sólo `PATH`, `HOME`, `TMPDIR`, `LANG`, `LC_ALL` y `TZ`
+—ninguno puede contener un secreto—. Lo que un hijo necesite además se nombra
+explícitamente con `forward_environment` (el renderer reenvía, por ejemplo,
+`AMATL_CHROMIUM_BIN`, `AMATL_CHROMIUM_TASKS_MAX` y el par del bus de usuario de
+systemd), nunca «todo el entorno». Dentro del sandbox, el harness vuelve a
+vaciarlo con `--clearenv` antes de aplicar sus propios `--setenv`.
+
+La prueba no es de convención. `child_process` verifica con una variable canaria
+que un hijo no ve el entorno del padre; `extract.rs` e `ingest.rs` lo verifican
+sobre el camino real de spawn; `deep_phase5.rs` lo verifica sobre
+`ChromiumRenderer::render` con un harness de reemplazo; y el workflow
+`chromium-isolation` lo verifica sobre el harness real con un Chromium de
+reemplazo que vuelca `env` al DOM.
+
 ## Prevención de exposición
 
 El transporte de providers devuelve errores genéricos. Las URLs de request

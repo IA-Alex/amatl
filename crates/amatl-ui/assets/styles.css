@@ -10,6 +10,12 @@
      --background (5.69:1) and on --surface cards (5.28:1), while staying well
      below --secondary (#9da5ae, 6.93:1) so the muted hierarchy is preserved. */
   --muted: #878f99;
+  /* WCAG 1.4.11 boundary for form controls: the visual limit of a field must
+     reach 3:1 against the surface it sits on, and `--border` (a hairline meant
+     for dividers and card edges) only reaches ~1.26:1. This is a semantic alias
+     of an existing identity token — `--muted` — so no new colour enters the
+     palette (see docs/identidad-visual.md, "Regla no negociable"). */
+  --border-control: var(--muted);
   --accent: #4f8cff;
   /* Same hue as --accent, darkened so white-on-accent (buttons) clears WCAG
      2 AA's 4.5:1 for normal text; --accent itself already clears it as text
@@ -62,6 +68,10 @@
      while staying lighter than --secondary (#4b5560) to keep the low-emphasis
      reading that "muted" is meant to carry. */
   --muted: #5e6873;
+  /* Same alias as the dark theme above: `--muted` clears 3:1 on both --surface
+     (white) and --background, so control boundaries stay visible without
+     inventing a colour. */
+  --border-control: var(--muted);
   --accent: #2b66d6;
   --accent-strong: #2757b8;
   --on-accent: #ffffff;
@@ -84,6 +94,10 @@
        above): keeps small muted helper/meta text at >= 4.5:1 on light
        backgrounds while staying lighter than --secondary. */
     --muted: #5e6873;
+    /* Same alias as the dark theme above: `--muted` clears 3:1 on both
+       --surface (white) and --background, so control boundaries are visible
+       without inventing a colour. */
+    --border-control: var(--muted);
     --accent: #2b66d6;
     --accent-strong: #2757b8;
     --on-accent: #ffffff;
@@ -121,13 +135,18 @@ button, input, select { box-sizing: border-box; }
 
 button, input, select, summary, a { outline-offset: 0.2rem; }
 
+/* Disclosure summaries are pointer targets as well as text: a 16px-tall label
+   fails WCAG 2.5.8's 24px minimum, so every summary gets a padded hit area
+   (the visible label stays the same size). */
+summary { min-height: 1.5rem; padding-block: 0.2rem; }
+
 :focus-visible { outline: 0.15rem solid var(--cyan); }
 
 .skip-link {
   position: fixed;
-  z-index: 10;
-  top: 0.5rem;
-  left: 0.5rem;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
   padding: 0.6rem 0.8rem;
   transform: translateY(-150%);
   border-radius: var(--radius-sm);
@@ -135,7 +154,14 @@ button, input, select, summary, a { outline-offset: 0.2rem; }
   color: var(--background);
 }
 
-.skip-link:focus { transform: translateY(0); }
+.skip-link:focus {
+  transform: translateY(0);
+  /* The focus indicator must be fully visible when the link overlaps the
+     masthead (WCAG 2.4.11): the outline is drawn outside the padding box, so it
+     needs room on every side rather than being clipped by the viewport edge. */
+  outline: 0.15rem solid var(--cyan);
+  outline-offset: 0.15rem;
+}
 
 .masthead {
   display: flex;
@@ -193,7 +219,7 @@ h1 {
 input, select {
   width: 100%;
   min-height: var(--control-h);
-  border: 0.0625rem solid var(--border);
+  border: 0.0625rem solid var(--border-control);
   border-radius: var(--radius-md);
   background: var(--surface);
   color: var(--text);
@@ -239,11 +265,24 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
   font-size: 0.75rem;
 }
 
-/* Sits at the far right of .masthead (margin-left: auto), mirroring .brand
-   at the far left — the header stays a two-point layout, identity on one
-   side and the one control on the other, at any width. */
-.theme-toggle {
+/* Interface-language picker: the locale must be reachable from the UI, and the
+   `#language` field inside the filters panel is a *query* operator, not this
+   control. It owns the `margin-left: auto` that used to sit on .theme-toggle, so
+   the pair still hugs the right edge of the masthead. */
+.ui-language {
   margin-left: auto;
+  width: auto;
+  min-height: var(--control-h-sm);
+  border-color: var(--border-control);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+/* Sits at the far right of .masthead, after the language picker, mirroring
+   .brand at the far left — the header stays a two-point layout, identity on one
+   side and the controls on the other, at any width. */
+.theme-toggle {
   flex: none;
   min-height: 0;
   width: 2.5rem;
@@ -267,7 +306,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .filters { margin-top: 0.7rem; color: var(--secondary); }
 .deep-options { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; color: var(--secondary); font-size: 0.78rem; }
 .deep-options label { font-size: 0.75rem; }
-.deep-options input { width: 11rem; }
+.deep-options input { width: 11rem; max-width: 100%; }
 /* Operator credential management (option A): its own secondary row, mirroring
    the rhythm (spacing/font/gap) of .deep-options/.model-options so it reads as
    one more configuration row without competing with the search axis. */
@@ -313,6 +352,19 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .status[data-state="success"] { color: var(--success); }
 .status[data-state="partial"] { color: var(--warning); }
 .status[data-state="error"] { color: var(--error); }
+/* An empty result set is not a degradation: `partial` (amber) means a partial
+   or degraded answer, so "no results" keeps the neutral reading. */
+.status[data-state="empty"] { color: var(--secondary); }
+
+/* Per-surface status lines (`#history-panel-status`, `#saved-panel-status`,
+   `#client-panel-status`, `#service-mode`, `#client-token-status`) carry the
+   same success/partial/error semantics as the global status. */
+.field-help[data-state="success"] { color: var(--success); }
+.field-help[data-state="partial"] { color: var(--warning); }
+.field-help[data-state="warning"] { color: var(--warning); }
+.field-help[data-state="error"] { color: var(--error); }
+
+#results-empty { margin-top: 1rem; }
 
 /* Sits above the raw results, never in place of them — search/deep results
    always render below unchanged; this is an additional, clearly separate
@@ -329,13 +381,17 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .answer-meta { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.75rem; }
 
 .results { min-width: 0; margin: 1rem 0 0; padding: 0; list-style: none; }
-.result-card button, .result-card input, .result-card select { min-height: 0; }
+/* The blanket `min-height: 0` used to strip the minimum from every control in a
+   card, so a target could end up 16px tall. The checkbox keeps a compact box —
+   the ≥24px hit area is the wrapping <label>, which is what WCAG 2.5.8 measures
+   — while the card's buttons and selects go back to the shared scale. */
+.result-card input[type="checkbox"] { min-height: 0; }
 .result-card { min-width: 0; padding: 1.2rem 0; border-top: 0.0625rem solid var(--border); }
 .result-card:last-child { border-bottom: 0.0625rem solid var(--border); }
-.deep-target-select { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--secondary); font-size: 0.75rem; cursor: pointer; }
+.deep-target-select { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 1.5rem; padding-block: 0.2rem; color: var(--secondary); font-size: 0.75rem; cursor: pointer; }
 .deep-target-select input { width: auto; }
 .result-card h3 { margin: 0.25rem 0 0.45rem; font-size: clamp(1.0625rem, 3vw, 1.125rem); line-height: 1.35; }
-.result-title { color: var(--accent); text-decoration: none; }
+.result-title { display: inline-block; padding-block: 0.15rem; color: var(--accent); text-decoration: none; }
 .result-title:hover { text-decoration: underline; text-underline-offset: 0.2rem; }
 .result-url, .result-meta {
   margin: 0;
@@ -569,6 +625,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 @media (max-width: 44rem) {
   .masthead, .shell { width: min(100% - 1.25rem, 72rem); }
   .shell { padding-top: 2rem; }
+  .ui-language { max-width: 8rem; }
   .search-row { grid-template-columns: minmax(0, 1fr); }
   .search-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .search-actions button { padding-inline: 0.6rem; }
@@ -807,11 +864,27 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   flex-shrink: 0;
 }
 
+/* The save result sits next to the button that produced it: the global `#status`
+   is overwritten by whatever runs next, so a message about this card belongs
+   here. space-between keeps the action on the right and the message on the left;
+   with the message hidden the button stays right-aligned. */
 .document-actions {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
   margin-top: 0.75rem;
 }
+
+.document-save-status {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.75rem;
+}
+
+.document-save-status[data-state="success"] { color: var(--success); }
+.document-save-status[data-state="error"] { color: var(--error); }
 
 .ghost-action {
   min-height: var(--control-h-sm);
@@ -884,7 +957,10 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   background: var(--background);
 }
 #client-create-form label:not(.scope-option) { display: block; margin-bottom: 0.35rem; font-size: 0.75rem; }
-#client-create-form input { min-height: var(--control-h-sm); }
+/* The form's own fields use the full control height (docs/ux-ui-spec.md: 44px
+   targets); the scope checkboxes are excluded so their box stays compact and the
+   ≥24px hit area comes from the wrapping label. */
+#client-create-form input:not([type="checkbox"]) { min-height: var(--control-h); }
 
 .client-scopes {
   display: flex;
@@ -899,12 +975,14 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  min-height: 1.5rem;
+  padding-block: 0.15rem;
   font-size: 0.8rem;
   cursor: pointer;
 }
 .scope-option input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
 
-#client-create-submit { align-self: flex-start; min-height: var(--control-h-sm); padding: 0 0.9rem; }
+#client-create-submit { align-self: flex-start; min-height: var(--control-h); padding: 0 0.9rem; }
 #client-create-error { color: var(--error); }
 
 /* One-time credential reveal: native <dialog>, no JS-driven focus trap
@@ -927,6 +1005,11 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   font-size: 0.8rem;
   margin-bottom: 0.9rem;
 }
+/* The one-time token dialog: an explicit copy action plus the result of the
+   copy, so the operator never has to guess whether the secret made it to the
+   clipboard before the dialog is dismissed. */
+#client-token-status { margin: 0 0 0.9rem; color: var(--secondary); font-size: 0.8rem; }
+#client-token-copy { width: 100%; margin-bottom: 0.5rem; }
 #client-token-close { width: 100%; }
 #marginalia-dialog input { width: 100%; margin-bottom: 0.9rem; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.8rem; }
 #marginalia-dialog .field-help { margin: 0 0 0.9rem; color: var(--secondary); font-size: 0.8rem; }

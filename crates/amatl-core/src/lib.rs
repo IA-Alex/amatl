@@ -5,6 +5,7 @@ pub mod audit;
 pub mod budget;
 pub mod cache;
 pub mod canonical;
+pub mod child_process;
 pub mod circuit;
 pub mod classify;
 pub mod complementarity;

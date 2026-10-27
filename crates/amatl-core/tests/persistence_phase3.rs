@@ -62,7 +62,9 @@ async fn provider_cache_runs_before_pipeline_and_avoids_second_adapter_call() {
         true,
     ));
     for _ in 0..2 {
-        let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+        // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+        // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+        let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
             .search(parse_query("rust".into()).unwrap(), vec![cached.clone()])
             .await;
         assert_eq!(response.status, SearchStatus::Success);
@@ -109,7 +111,9 @@ async fn search_records_live_provider_health_for_later_routing() {
         "p",
         vec![item("https://one.example/"), item("https://two.example/")],
     ))];
-    let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+    // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+    // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
         .with_telemetry(telemetry.clone())
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;

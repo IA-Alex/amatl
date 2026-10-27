@@ -22,14 +22,51 @@ applyTheme(storedTheme());
 // ── i18n ────────────────────────────────────────────────────────
 const CATALOG = globalThis.AMATL_LOCALES || { defaultLocale: "en", locales: { en: {} } };
 const FALLBACK = CATALOG.locales[CATALOG.defaultLocale] || {};
-const LANG = (() => {
-  const nav = ((typeof navigator !== "undefined" && navigator.language) || "").slice(0, 2);
-  return Object.prototype.hasOwnProperty.call(CATALOG.locales, nav) ? nav : CATALOG.defaultLocale;
-})();
+const LANGUAGE_KEY = "amatl-language";
+
+function catalogLocale(candidate) {
+  const value = typeof candidate === "string" ? candidate.slice(0, 2).toLowerCase() : "";
+  return Object.prototype.hasOwnProperty.call(CATALOG.locales, value) ? value : null;
+}
+
+function storedLocale() {
+  try {
+    return catalogLocale(localStorage.getItem(LANGUAGE_KEY));
+  } catch {
+    return null;
+  }
+}
+
+function navigatorLocale() {
+  return catalogLocale(typeof navigator !== "undefined" ? navigator.language : "")
+    || CATALOG.defaultLocale;
+}
+
+// The interface locale is an explicit choice first (the picker in the masthead
+// persists it), then the browser preference, then the catalog default. It used
+// to come from `navigator.language` alone, so an operator browsing in en-US had
+// no way to reach the complete `es` catalog that already ships.
+let LANG = storedLocale() || navigatorLocale();
 
 function t(key) {
   return CATALOG.locales[LANG]?.[key] || FALLBACK[key] || key;
 }
+
+// One/other selection without an ICU dependency: `<key>One` is the singular and
+// `<key>` the plural; a locale that ships only the base key keeps working.
+function pluralKey(key, count) {
+  return count === 1 && CATALOG.locales[LANG]?.[`${key}One`] !== undefined ? `${key}One` : key;
+}
+
+function countLabel(count, key) {
+  return `${count} ${t(pluralKey(key, count))}`;
+}
+
+// Corrected before the first paint: the script is deferred, so this runs right
+// after parsing and the real locale replaces the catalog default the markup
+// ships with, instead of leaving a screen reader with the wrong language while
+// the page loads.
+document.documentElement.lang = LANG;
 
 const PAGE_SIZE = 10;
 const MAX_DEEP_DOCUMENTS = 20;
@@ -73,6 +110,7 @@ const resultHeading = document.querySelector("#result-heading");
 const statusNode = document.querySelector("#status");
 const loadingNode = document.querySelector("#loading");
 const resultsNode = document.querySelector("#results");
+const resultsEmpty = document.querySelector("#results-empty");
 const paginationNode = document.querySelector("#pagination");
 const previousButton = document.querySelector("#previous");
 const nextButton = document.querySelector("#next");
@@ -82,6 +120,7 @@ const deepTemplate = document.querySelector("#deep-template");
 const fragmentTemplate = document.querySelector("#fragment-template");
 const cancelButton = document.querySelector("#cancel-button");
 const themeToggle = document.querySelector("#theme-toggle");
+const uiLanguage = document.querySelector("#ui-language");
 
 // Initialize store and subscribe to changes
 store.subscribe((state) => {
@@ -114,6 +153,29 @@ themeToggle.addEventListener("click", () => {
   updateThemeToggle();
 });
 
+// Interface language: an explicit, persisted operator choice. Switching
+// re-applies every translation in place — no reload, no lost results — and
+// re-renders the panels whose labels come from the catalog, while
+// `document.documentElement.lang` follows so assistive technology announces the
+// new language.
+function setLocale(next) {
+  const resolved = catalogLocale(next) || CATALOG.defaultLocale;
+  if (resolved === LANG) return;
+  LANG = resolved;
+  try {
+    localStorage.setItem(LANGUAGE_KEY, LANG);
+  } catch {}
+  uiLanguage.value = LANG;
+  applyTranslations();
+  render(store.get());
+  refreshPanels();
+  // The status line is catalog-derived as well, so it is re-rendered from its
+  // own thunk instead of keeping the previous language until the next action.
+  rerenderStatus();
+}
+
+uiLanguage.addEventListener("change", () => setLocale(uiLanguage.value));
+
 function safeHttpUrl(value) {
   if (typeof value !== "string" || value.length > 8192) return null;
   try {
@@ -138,16 +200,48 @@ function setBusy(busy, mode) {
   deepButton.disabled = busy;
   searchButton.dataset.active = String(busy && mode === "search");
   deepButton.dataset.active = String(busy && mode === "deep");
-  queryInput.setAttribute("aria-busy", String(busy));
+  // `aria-busy` belongs on the region that actually changes (`#results`), not on
+  // the query input: the input is not what is being replaced. The spinner stays
+  // `aria-hidden` and the progress text goes to the `#status` live region.
+  resultsNode.setAttribute("aria-busy", String(busy));
   loadingNode.hidden = !busy;
   loadingNode.setAttribute("aria-hidden", String(!busy));
   cancelButton.hidden = !busy;
   cancelButton.setAttribute("aria-hidden", String(!busy));
 }
 
-function setStatus(message, status) {
-  statusNode.textContent = message;
+// The status message is composed from the catalog, so it is kept as a render
+// function rather than a finished string: switching the interface language can
+// then re-render the *same* message in the new language instead of leaving the
+// previous one on screen until the next action.
+let statusRenderer = null;
+let statusState = "";
+
+function renderStatus(render, status) {
+  statusRenderer = render;
+  statusState = status;
+  statusNode.textContent = render();
   statusNode.dataset.state = status;
+}
+
+// For messages that are a single catalog key (the common case).
+function setStatusKey(key, status) {
+  renderStatus(() => t(key), status);
+}
+
+// Re-applies the current message after the locale changed.
+function rerenderStatus() {
+  if (statusRenderer) renderStatus(statusRenderer, statusState);
+}
+
+// One live region per surface: `#status` narrates the search flow, so the
+// result of a panel action is announced where it happened instead of
+// overwriting — and being overwritten by — unrelated messages. The key is kept
+// on the node so a locale switch can re-render the message in place.
+function announce(node, key, state) {
+  node.dataset.i18nKey = key;
+  node.textContent = t(key);
+  node.dataset.state = state;
 }
 
 function addOperator(parts, name, value) {
@@ -161,6 +255,33 @@ function queryText() {
   addOperator(parts, "region", regionInput.value);
   addOperator(parts, "filetype", fileTypeInput.value);
   return parts.join(" ");
+}
+
+// ── Filters disclosure ──────────────────────────────────────────
+// The panel is collapsed by default, so the summary carries the active state: a
+// stale region/type/token is visible without opening it, and a missing
+// requirement opens it (see `reportFailure`) instead of hiding the fix.
+const filtersDetails = document.querySelector("details.filters");
+const filtersSummary = document.querySelector("#filters-summary");
+
+function updateFiltersSummary() {
+  const active = [];
+  if (languageInput.value.trim()) {
+    active.push(`${t("resultLanguageLabel")}: ${boundedText(languageInput.value.trim(), 16)}`);
+  }
+  if (regionInput.value.trim()) {
+    active.push(`${t("regionLabel")}: ${boundedText(regionInput.value.trim(), 32)}`);
+  }
+  if (fileTypeInput.value) active.push(`${t("fileTypeLabel")}: ${fileTypeInput.value}`);
+  if (tokenInput.value) active.push(`${t("tokenLabel")}: ${t("filterValueSet")}`);
+  filtersSummary.textContent = active.length
+    ? `${t("filtersLabel")} — ${active.join(" · ")}`
+    : t("filtersLabel");
+}
+
+for (const field of [languageInput, regionInput, fileTypeInput, tokenInput]) {
+  field.addEventListener("input", updateFiltersSummary);
+  field.addEventListener("change", updateFiltersSummary);
 }
 
 function searchMetadata(result) {
@@ -425,7 +546,13 @@ function renderAnswerCard(answer) {
 }
 
 function render(state) {
+  // While a request is in flight the committed view stays on screen: results
+  // are only replaced once a payload has been accepted, so a failed, cancelled
+  // or raced request can no longer destroy work the operator still needs.
+  if (state.pending) return;
   resultsNode.replaceChildren();
+  resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
+  if (state.mode !== "answer") answerCard.hidden = true;
   if (state.mode === "deep") {
     for (const item of state.items) renderDeepDocument(item);
     paginationNode.hidden = true;
@@ -483,21 +610,29 @@ function validatePayload(payload, mode) {
   return Array.isArray(payload.results);
 }
 
+// A credential failure is only actionable when the field that fixes it is
+// reachable: the token lives inside the collapsed filters panel, so open it
+// before moving focus there instead of leaving the operator to hunt for it.
+function focusTokenField() {
+  filtersDetails.open = true;
+  tokenInput.focus();
+}
+
 function reportFailure(error) {
   if (error.name === "AbortError") return;
   const key = ERROR_MESSAGE_KEYS[error.code];
   if (key) {
-    setStatus(t(key), "error");
-    if (error.code === "unauthorized" || error.code === "scope_denied") tokenInput.focus();
+    setStatusKey(key, "error");
+    if (error.code === "unauthorized" || error.code === "scope_denied") focusTokenField();
   } else if (error.status === 401 || error.message.includes("401")) {
-    setStatus(t("unauthorized"), "error");
-    tokenInput.focus();
+    setStatusKey("unauthorized", "error");
+    focusTokenField();
   } else if (error.status === 429 || error.message.includes("429")) {
-    setStatus(t("rateLimited"), "error");
-  } else if (message.includes("504")) {
-    setStatus(t("timeout"), "error");
+    setStatusKey("rateLimited", "error");
+  } else if (error.status === 504 || error.message.includes("504")) {
+    setStatusKey("timeout", "error");
   } else {
-    setStatus(t("genericError"), "error");
+    setStatusKey("genericError", "error");
   }
 }
 
@@ -526,24 +661,26 @@ async function run(mode, page) {
   const state = store.get();
   if (state.controller) state.controller.abort();
   const controller = new AbortController();
-  
-  // Use our centralized store to manage controller and state
-  store.update({ controller, items: [], mode, page: mode === "deep" ? 0 : page });
-  
+  const previousPage = state.page;
+
+  // The committed view is not reset here: `pending` suppresses the subscriber
+  // render, so the previous results stay on screen until a payload is accepted
+  // and a failed, cancelled or raced request leaves the last valid set intact
+  // instead of blanking the page (it used to `replaceChildren()` before the
+  // fetch, destroying work the operator could still use).
+  store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
+
   const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
   if (mode === "search") store.update({ selectedTargets: [] });
-  
+
   resultHeading.textContent = mode === "deep"
     ? t("evidenceHeading")
     : mode === "answer"
       ? t("answerHeading")
       : t("resultsHeading");
-  resultsNode.replaceChildren();
-  answerCard.hidden = true;
-  paginationNode.hidden = true;
   setBusy(true, mode);
-  setStatus(
-    mode === "deep" ? t("analyzing") : mode === "answer" ? t("answerGenerating") : t("searching"),
+  setStatusKey(
+    mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
     "loading",
   );
   try {
@@ -569,21 +706,33 @@ async function run(mode, page) {
     
     if (mode === "deep") {
       const items = deepItems(payload);
-      store.update({ items });
+      store.update({ pending: false, mode, page: 0, items });
       const fragments = items.reduce(
         (total, item) => total + evidenceFragments(item.evidence).length,
         0,
       );
       if (!items.length) {
-        setStatus(t("noEvidence"), "partial");
+        setStatusKey("noEvidence", "partial");
       } else if (!fragments || (Array.isArray(payload.degradations) && payload.degradations.length)) {
-        setStatus(`${items.length} ${t("partialEvidence")}`, "partial");
+        renderStatus(() => countLabel(items.length, "partialEvidence"), "partial");
       } else {
-        setStatus(`${items.length} ${t("evidenceCount")} ${fragments} ${t("evidenceFragments")}`, "success");
+        renderStatus(
+          () => `${countLabel(items.length, "evidenceCount")} ${fragments} ${t("evidenceFragments")}`,
+          "success",
+        );
       }
     } else if (mode === "answer") {
-      store.update({ items: payload.search.results, answer: payload.answer });
-      setStatus(`${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`, "success");
+      store.update({
+        pending: false,
+        mode,
+        page: 0,
+        items: payload.search.results,
+        answer: payload.answer,
+      });
+      renderStatus(
+        () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
+        "success",
+      );
     } else {
       const items = payload.results;
       const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
@@ -593,24 +742,42 @@ async function run(mode, page) {
         ? payload.total_results
         : items.length;
       
+      const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
+
       store.update({
+        pending: false,
+        mode,
         items,
         totalResults,
-        page: typeof payload.page === "number" ? payload.page : store.get().page,
+        page: currentPage,
         totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
       });
       
       if (!items.length) {
-        setStatus(t("noResults"), "partial");
+        // An empty set is not a degradation: the amber `partial` tone means
+        // partial or degraded answers, so "no results" gets its own neutral
+        // state and the note under the list carries the next step.
+        setStatusKey("noResults", "empty");
       } else if (payload.status === "partial_success") {
-        setStatus(`${items.length} ${t("partialResults")}`, "partial");
+        renderStatus(() => countLabel(items.length, "partialResults"), "partial");
       } else {
-        setStatus(`${items.length} ${t("of")} ${totalResults} ${t("resultsCount")}`, "success");
+        renderStatus(
+          () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
+          "success",
+        );
       }
+      syncLocation(currentPage);
     }
-    resultsNode.focus({ preventScroll: true });
+    // A keyboard operator who submitted from the query field stays there for the
+    // next refinement — `#status` already announces the outcome — so focus only
+    // moves into the results when the operator was somewhere else.
+    if (document.activeElement !== queryInput) resultsNode.focus({ preventScroll: true });
     refreshPanels();
   } catch (error) {
+    // Nothing was committed: drop `pending` silently (no subscriber render, so
+    // the DOM and any focus inside it survive), restore the page the operator
+    // was on, and report the reason.
+    store.updateSilent({ pending: false, page: previousPage });
     reportFailure(error);
   } finally {
     if (store.get().controller === controller) {
@@ -620,13 +787,91 @@ async function run(mode, page) {
   }
 }
 
+// ── Location state ──────────────────────────────────────────────
+// The last committed search lives in the URL, so a refresh or a shared link
+// reproduces it instead of losing everything. `replaceState` (not `pushState`)
+// keeps one history entry per search: Back still leaves the page, which is what
+// a single-view app should do.
+function searchLocation(page) {
+  const parts = [`q=${encodeURIComponent(queryInput.value.trim())}`];
+  if (languageInput.value.trim()) {
+    parts.push(`lang=${encodeURIComponent(languageInput.value.trim())}`);
+  }
+  if (regionInput.value.trim()) {
+    parts.push(`region=${encodeURIComponent(regionInput.value.trim())}`);
+  }
+  if (fileTypeInput.value) parts.push(`filetype=${encodeURIComponent(fileTypeInput.value)}`);
+  if (page > 0) parts.push(`page=${page + 1}`);
+  return `${location.pathname}?${parts.join("&")}`;
+}
+
+function syncLocation(page) {
+  try {
+    history.replaceState(null, "", searchLocation(page));
+  } catch (_) {
+    // A blocked History API is not worth interrupting a successful search for.
+  }
+}
+
+function restoreFromLocation() {
+  const pairs = location.search.replace(/^\?/, "").split("&").filter(Boolean);
+  const params = new Map();
+  for (const pair of pairs) {
+    const [key, value = ""] = pair.split("=");
+    params.set(decodeURIComponent(key), decodeURIComponent(value.replace(/\+/g, " ")));
+  }
+  const query = boundedText((params.get("q") || "").trim(), 2048);
+  if (!query) return;
+  queryInput.value = query;
+  languageInput.value = boundedText(params.get("lang") || "", 16);
+  regionInput.value = boundedText(params.get("region") || "", 32);
+  const fileType = params.get("filetype") || "";
+  if (["pdf", "html", "txt"].includes(fileType)) fileTypeInput.value = fileType;
+  const requested = Number.parseInt(params.get("page") || "1", 10);
+  const page = Number.isSafeInteger(requested) && requested > 1 ? requested - 1 : 0;
+  updateFiltersSummary();
+  run("search", page);
+}
+
+// The form is `novalidate`: validation runs here so the message is the app's own
+// copy in the operator's locale (native bubbles speak the browser's language
+// and sit outside the catalog), the offending field is marked, and the collapsed
+// filters panel opens when the fix lives inside it.
+function queryValidationError() {
+  if (!queryInput.value.trim()) return "errorQueryRequired";
+  if (tokenInput.value && tokenInput.value.length < 32) return "errorTokenTooShort";
+  return null;
+}
+
+function reportValidationError(key) {
+  const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
+  setStatusKey(key, "error");
+  field.setAttribute("aria-invalid", "true");
+  if (filtersDetails.contains(field)) filtersDetails.open = true;
+  field.focus();
+}
+
+function clearValidationError() {
+  queryInput.removeAttribute("aria-invalid");
+  tokenInput.removeAttribute("aria-invalid");
+}
+
+queryInput.addEventListener("input", clearValidationError);
+tokenInput.addEventListener("input", clearValidationError);
+
 function execute(event) {
   event.preventDefault();
   if (requestedModeIsUnavailable(event.submitter)) {
-    setStatus(t("answerHintMissingCredential"), "error");
+    // The reason is already visible next to the button; repeating it in the
+    // status region keeps the click from being a dead end.
+    renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
     return;
   }
-  if (!form.reportValidity()) return;
+  const invalid = queryValidationError();
+  if (invalid) {
+    reportValidationError(invalid);
+    return;
+  }
   const requested = event.submitter?.dataset.mode;
   const mode = requested === "deep" || requested === "answer" ? requested : "search";
   run(mode, 0);
@@ -641,7 +886,7 @@ cancelButton.addEventListener("click", () => {
   const state = store.get();
   if (state.controller) {
     state.controller.abort();
-    setStatus(t("cancelled"), "partial");
+    setStatusKey("cancelled", "partial");
   }
 });
 window.addEventListener("pagehide", () => {
@@ -852,7 +1097,7 @@ async function fetchProviderStatus() {
       providerStatusText.textContent = t("allAvailable");
       providerStatusText.dataset.state = "success";
     } else if (unavailable < payload.providers.length) {
-      providerStatusText.textContent = `${unavailable} ${t("someUnavailable")}`;
+      providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
       providerStatusText.dataset.state = "partial";
     } else {
       providerStatusText.textContent = t("noneAvailable");
@@ -871,6 +1116,7 @@ async function fetchProviderStatus() {
 const servicePanel = document.querySelector(".service-state");
 const serviceSummary = document.querySelector("#service-summary");
 const serviceIndicators = document.querySelector("#service-indicators");
+const serviceMode = document.querySelector("#service-mode");
 
 function indicator(label, value, indicatorState) {
   const item = document.createElement("li");
@@ -909,11 +1155,21 @@ async function fetchServiceState() {
     }
     const sources = Array.isArray(payload.sources) ? payload.sources : [];
     const availableSources = sources.filter((source) => source.status === "available").length;
+    // Mock mode: `/status` reports the synthetic sources search actually uses
+    // (`mock-a`/`mock-b`), so the environment can be labelled instead of letting
+    // an evaluator mistake fixtures for real data. A deployment that names its
+    // own providers `mock-*` would be mislabelled; that is the price of the
+    // payload carrying no dedicated flag.
+    const mockOnly = sources.length > 0
+      && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
+    serviceMode.hidden = !mockOnly;
+    serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
+    if (mockOnly) serviceMode.dataset.state = "warning";
     searchAvailable = availableSources > 0;
     searchButton.disabled = !searchAvailable;
     searchButton.setAttribute("aria-disabled", String(!searchAvailable));
     searchButton.title = searchAvailable ? "" : t("searchUnavailable");
-    if (!searchAvailable) setStatus(t("errorSearchUnavailable"), "error");
+    if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
     const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
     const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
     serviceIndicators.replaceChildren();
@@ -953,11 +1209,24 @@ async function fetchServiceState() {
     // execute() intercepts the click and explains instead of submitting.
     answerButton.classList.toggle("is-unavailable", !answerStatus.available);
     answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
-    // Lives right by the search buttons, not just in the status panel below
-    // the fold: that panel is easy to miss, and this is the one place an
-    // operator will actually look when the button they expect isn't there.
-    answerHint.hidden = !(answerStatus.enabled && !answerStatus.available);
-    answerHint.textContent = t("answerHintMissingCredential");
+    // Lives right by the search buttons, not just in the status panel below the
+    // fold: that panel is easy to miss, and this is the one place an operator
+    // looks when the button they expect is not there. The reason is shown
+    // *before* the click and tied to the control with `aria-describedby`, which
+    // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
+    // version only explained itself after a failed click.
+    if (answerStatus.available) {
+      answerHint.hidden = true;
+      answerButton.removeAttribute("aria-describedby");
+      answerButton.removeAttribute("title");
+    } else {
+      answerHint.textContent = answerStatus.enabled
+        ? t("answerHintMissingCredential")
+        : t("answerHintUnconfigured");
+      answerHint.hidden = false;
+      answerButton.setAttribute("aria-describedby", "answer-hint");
+      answerButton.setAttribute("title", answerHint.textContent);
+    }
     if (answerStatus.configured) {
       answerConfigBody.replaceChildren();
       answerConfigBody.append(
@@ -976,15 +1245,14 @@ async function fetchServiceState() {
     if (strategistStatus.configured && strategistStatus.available !== false) {
       strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
       strategistEnabledToggle.disabled = false;
-      strategistToggleLabel.textContent = t("strategistToggleLabel");
     } else {
-      // No endpoint/model configured: the toggle has nothing to enable, so
-      // keep it off and disabled and explain why.
+      // No endpoint/model configured: the toggle has nothing to enable, so keep
+      // it off and disabled. The reason goes in the help line below it, not in
+      // the label — a control keeps a short label and states carry the sentence
+      // (`strategistToggleLabel` is applied declaratively and is no longer
+      // overwritten with a whole unavailability sentence).
       strategistEnabledToggle.checked = false;
       strategistEnabledToggle.disabled = true;
-      strategistToggleLabel.textContent = strategistStatus.configured
-        ? t("strategistUnavailable")
-        : t("strategistUnconfigured");
     }
     // Configured and switched on, but no usable credential: the toggle flips a
     // real flag, yet the model will not actually run. Say so instead of leaving
@@ -992,16 +1260,33 @@ async function fetchServiceState() {
     // pattern `answerHint` uses for the AI summary button.
     const strategistUnavailable =
       strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
-    strategistToggleStatus.hidden = !strategistUnavailable;
-    strategistToggleStatus.textContent = strategistStatus.available === false
-      ? t("strategistUnavailable")
-      : t("strategistHintMissingCredential");
+    if (strategistUnavailable) {
+      strategistToggleStatus.hidden = false;
+      strategistToggleStatus.textContent = t("strategistHintMissingCredential");
+    } else if (strategistStatus.available === false) {
+      strategistToggleStatus.hidden = false;
+      strategistToggleStatus.textContent = t("strategistUnavailable");
+    } else if (!strategistStatus.configured) {
+      strategistToggleStatus.hidden = false;
+      strategistToggleStatus.textContent = t("strategistUnconfigured");
+    } else {
+      strategistToggleStatus.hidden = true;
+      strategistToggleStatus.textContent = "";
+    }
     strategistEnabledToggle.title = strategistStatus.available === false
       ? t("strategistUnavailable")
       : "";
     const degraded = payload.status !== "ok";
-    serviceSummary.textContent = degraded ? t("serviceDegraded") : t("serviceOk");
-    serviceSummary.dataset.state = degraded ? "partial" : "success";
+    // "Service operating normally" beside "Local storage Disabled" read as a
+    // contradiction and made the 503 on save look like a bug: when persistence
+    // is off, say what that costs instead of claiming everything is fine.
+    const storageOff = !storage.enabled;
+    serviceSummary.textContent = storageOff
+      ? t("serviceOkStorageOff")
+      : degraded
+        ? t("serviceDegraded")
+        : t("serviceOk");
+    serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
     servicePanel.hidden = false;
     syncMarginaliaFromStatus(payload);
     return payload;
@@ -1011,8 +1296,14 @@ async function fetchServiceState() {
     searchButton.setAttribute("aria-disabled", "true");
     searchButton.title = t("searchUnavailable");
     servicePanel.hidden = true;
+    serviceMode.hidden = true;
     answerEnabledToggle.checked = false;
     answerEnabledToggle.disabled = true;
+    // The AI summary button stays visibly unavailable with its reason attached,
+    // even when the service state itself could not be read.
+    answerHint.textContent = t("answerHintUnavailable");
+    answerHint.hidden = false;
+    answerButton.setAttribute("aria-describedby", "answer-hint");
     // No usable service state (e.g. the admin token is not loaded yet): the
     // model toggle must stay off, but it must not be silently greyed out with
     // no reason — explain the missing authentication so the operator knows the
@@ -1144,7 +1435,7 @@ marginaliaSave.addEventListener("click", async () => {
     marginaliaDialog.close();
     marginaliaKeyInput.value = "";
     updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
-    setStatus(t("marginaliaSaved"), "success");
+    setStatusKey("marginaliaSaved", "success");
     fetchServiceState();
   } catch (error) {
     // 401/403 means the operator token lacks admin scope; anything else means
@@ -1170,10 +1461,10 @@ marginaliaClearButton.addEventListener("click", async () => {
   try {
     await globalThis.api.delete("/providers/marginalia/credential");
     updateMarginaliaUi("none");
-    setStatus(t("marginaliaCleared"), "success");
+    setStatusKey("marginaliaCleared", "success");
     fetchServiceState();
   } catch (_) {
-    setStatus(t("marginaliaClearedFailed"), "error");
+    setStatusKey("marginaliaClearedFailed", "error");
   }
 });
 
@@ -1183,6 +1474,7 @@ const historyList = document.querySelector("#history-list");
 const historyEmpty = document.querySelector("#history-empty");
 const historyTemplate = document.querySelector("#history-template");
 const historyPurgeButton = document.querySelector("#history-purge");
+const historyPanelStatus = document.querySelector("#history-panel-status");
 
 function historyLabel(entry) {
   const parts = [];
@@ -1228,20 +1520,20 @@ async function fetchHistory() {
 async function deleteHistoryEntry(id) {
   try {
     await globalThis.api.delete(`/history/${id}`);
-    setStatus(t("historyDeleted"), "success");
+    announce(historyPanelStatus, "historyDeleted", "success");
     await fetchHistory();
   } catch (_) {
-    setStatus(t("genericError"), "error");
+    announce(historyPanelStatus, "genericError", "error");
   }
 }
 
 async function purgeHistory() {
   try {
     await globalThis.api.delete("/history");
-    setStatus(t("historyPurged"), "success");
+    announce(historyPanelStatus, "historyPurged", "success");
     await fetchHistory();
   } catch (_) {
-    setStatus(t("genericError"), "error");
+    announce(historyPanelStatus, "genericError", "error");
   }
 }
 
@@ -1250,6 +1542,7 @@ const savedPanel = document.querySelector(".saved-panel");
 const savedList = document.querySelector("#saved-list");
 const savedEmpty = document.querySelector("#saved-empty");
 const savedTemplate = document.querySelector("#saved-template");
+const savedPanelStatus = document.querySelector("#saved-panel-status");
 
 async function fetchSavedDocuments() {
   try {
@@ -1284,10 +1577,10 @@ async function fetchSavedDocuments() {
 async function deleteSavedDocument(id) {
   try {
     await globalThis.api.delete(`/saved/${id}`);
-    setStatus(t("savedDeleted"), "success");
+    announce(savedPanelStatus, "savedDeleted", "success");
     await fetchSavedDocuments();
   } catch (_) {
-    setStatus(t("genericError"), "error");
+    announce(savedPanelStatus, "genericError", "error");
   }
 }
 
@@ -1296,10 +1589,49 @@ async function deleteSavedDocument(id) {
 // payload deliberately never carries the document's extracted `content` (or any
 // other bulk field): the UI posts provenance and metadata only, so saved
 // documents stay small and never duplicate the full extraction.
+// A save can fail for reasons the operator can act on (storage off on the
+// server, a token without write scope) or for reasons they cannot. Collapsing
+// every failure into one generic line — while leaving the button looking ready
+// for another click — is what made this a High finding: the reason is now
+// specific, it is shown next to the control that failed, and the document stays
+// on screen so nothing the operator produced is lost.
+function saveFailureKey(error) {
+  const code = typeof error?.code === "string" ? error.code : "";
+  if (code === "storage_unavailable" || error?.status === 503) return "savedFailedStorage";
+  if (
+    code === "unauthorized"
+    || code === "scope_denied"
+    || error?.status === 401
+    || error?.status === 403
+  ) {
+    return "savedFailedUnauthorized";
+  }
+  return "savedFailed";
+}
+
+// Per-surface status line: `#status` is the global live region and whatever ran
+// last overwrites it, so a message about one card belongs next to that card. The
+// key is kept on the node (like `announce`) so a locale switch re-renders it.
+function setInlineStatus(node, key, state) {
+  if (!node) return;
+  if (key) {
+    node.dataset.i18nKey = key;
+    node.textContent = t(key);
+  } else {
+    node.textContent = "";
+    delete node.dataset.i18nKey;
+  }
+  node.hidden = !key;
+  if (state) node.dataset.state = state;
+  else node.removeAttribute("data-state");
+}
+
 async function saveDocument(documentValue, provenance, button) {
+  const inline = button.closest(".document-actions")?.querySelector(".document-save-status") || null;
   const url = safeHttpUrl(documentValue.canonical_url);
   if (!url || !validHash(documentValue.content_hash)) {
-    setStatus(t("savedFailed"), "error");
+    setInlineStatus(inline, "savedFailed", "error");
+    setStatusKey("savedFailed", "error");
     return;
   }
   const payload = JSON.stringify({
@@ -1311,10 +1643,12 @@ async function saveDocument(documentValue, provenance, button) {
     retrieved_at: boundedText(provenance.retrieved_at, 64),
   });
   if (new TextEncoder().encode(payload).length > MAX_SAVED_PAYLOAD_BYTES) {
-    setStatus(t("savedFailed"), "error");
+    setInlineStatus(inline, "savedFailed", "error");
+    setStatusKey("savedFailed", "error");
     return;
   }
   button.disabled = true;
+  setInlineStatus(inline, "", null);
   try {
     await globalThis.api.post("/saved", {
       canonical_url: url.href,
@@ -1326,13 +1660,19 @@ async function saveDocument(documentValue, provenance, button) {
       source_query: boundedText(queryInput.value, 2048),
       tags: [],
     });
-    setStatus(t("savedDone"), "success");
-    button.textContent = t("savedDone");
+    setStatusKey("savedDone", "success");
+    button.textContent = t("savedActionDone");
+    setInlineStatus(inline, "savedDone", "success");
     await fetchSavedDocuments();
-  } catch (_) {
+  } catch (error) {
+    // The button stays usable and now says what it does: the operator can save
+    // again the moment storage is back, and the reason sits next to the editor
+    // instead of only in the global status line.
+    const key = saveFailureKey(error);
     button.disabled = false;
-    button.textContent = t("savedAction");
-    setStatus(t("genericError"), "error");
+    button.textContent = t("savedAgain");
+    setInlineStatus(inline, key, "error");
+    setStatusKey(key, "error");
   }
 }
 
@@ -1354,6 +1694,9 @@ const clientTokenDialog = document.querySelector("#client-token-dialog");
 const clientTokenId = document.querySelector("#client-token-id");
 const clientTokenValue = document.querySelector("#client-token-value");
 const clientTokenClose = document.querySelector("#client-token-close");
+const clientTokenCopy = document.querySelector("#client-token-copy");
+const clientTokenStatus = document.querySelector("#client-token-status");
+const clientPanelStatus = document.querySelector("#client-panel-status");
 
 const SCOPE_LABEL_KEYS = {
   search: "scopeSearch",
@@ -1442,9 +1785,30 @@ function openClientTokenDialog(id, token) {
   clientTokenValue.select();
 }
 
-clientTokenClose.addEventListener("click", () => {
+clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+
+// The token is single-use: clear it whenever the dialog closes, not only when
+// the Close button is pressed, so Escape or a backdrop click cannot leave a live
+// credential sitting in the DOM.
+clientTokenDialog.addEventListener("close", () => {
   clientTokenValue.value = "";
-  clientTokenDialog.close();
+  setInlineStatus(clientTokenStatus, "", null);
+});
+
+clientTokenCopy.addEventListener("click", async () => {
+  const token = clientTokenValue.value;
+  if (!token) return;
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
+    await navigator.clipboard.writeText(token);
+    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
+  } catch (_) {
+    // No clipboard access (insecure context, denied permission): leave the token
+    // selected so the operator can copy it by hand, and say so.
+    clientTokenValue.focus();
+    clientTokenValue.select();
+    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
+  }
 });
 
 async function createServerClient(event) {
@@ -1468,6 +1832,10 @@ async function createServerClient(event) {
     clientCreateForm.reset();
     clientCreateDetails.open = false;
     await fetchServerClients();
+    // Announced in the panel it happened in, not in the search flow's status
+    // region: the token dialog opens next and the operator needs to know the
+    // client really exists before copying a one-time secret.
+    announce(clientPanelStatus, "clientCreated", "success");
     if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
       openClientTokenDialog(payload.id, payload.token);
     }
@@ -1490,10 +1858,10 @@ async function deleteServerClient(id, button) {
   button.disabled = true;
   try {
     await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
-    setStatus(t("clientDeleted"), "success");
+    announce(clientPanelStatus, "clientDeleted", "success");
     await fetchServerClients();
   } catch (_) {
-    setStatus(t("clientDeleteFailed"), "error");
+    announce(clientPanelStatus, "clientDeleteFailed", "error");
     button.disabled = false;
   }
 }
@@ -1511,7 +1879,7 @@ async function rotateServerClient(id, button) {
       openClientTokenDialog(payload.id, payload.token);
     }
   } catch (_) {
-    setStatus(t("clientRotateFailed"), "error");
+    announce(clientPanelStatus, "clientRotateFailed", "error");
     button.disabled = false;
   }
 }
@@ -1552,14 +1920,22 @@ function applyDeclarativeTranslations() {
   for (const node of document.querySelectorAll("[data-i18n-aria-label]")) {
     node.setAttribute("aria-label", t(node.dataset.i18nAriaLabel));
   }
+  // Per-surface messages announced through `announce()` keep the key they were
+  // rendered from, so they follow a locale switch like the static copy does.
+  for (const node of document.querySelectorAll("[data-i18n-key]")) {
+    node.textContent = t(node.dataset.i18nKey);
+  }
 }
 
-// Apply i18n to static HTML content on load.
-document.addEventListener("DOMContentLoaded", () => {
+// Every imperative translation of static markup lives in this one function so
+// the locale can be switched at runtime (the masthead picker) without a reload;
+// the `data-i18n*` attributes cover the rest, and the composed strings (filters
+// summary, empty-state note) are refreshed in the same pass.
+function applyTranslations() {
   document.documentElement.lang = LANG;
   applyDeclarativeTranslations();
   document.title = t("pageTitle");
-  setStatus(t("initialStatus"), "");
+  resultsEmpty.textContent = t("resultsEmptyHint");
   document.querySelector("#search-heading").textContent = t("searchHeading");
   document.querySelector("#search-button").textContent = t("searchButton");
   document.querySelector("#deep-button").textContent = t("deepButton");
@@ -1581,7 +1957,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#saved-heading").textContent = t("savedHeading");
   queryInput.placeholder = t("searchPlaceholder");
   document.querySelector("#filters-summary").textContent = t("filtersLabel");
-  document.querySelector("label[for='language']").textContent = t("languageLabel");
+  document.querySelector("label[for='language']").textContent = t("resultLanguageLabel");
   document.querySelector("label[for='region']").textContent = t("regionLabel");
   document.querySelector("label[for='file-type']").textContent = t("fileTypeLabel");
   document.querySelector("#file-type option[value='']").textContent = t("fileTypeAny");
@@ -1619,5 +1995,14 @@ document.addEventListener("DOMContentLoaded", () => {
     '.provider-selector-option input[value="all"]',
   ).closest("label");
   sourceAllOption.querySelector("span").textContent = t("providerSourceAll");
+  updateFiltersSummary();
   updateThemeToggle();
+}
+
+// Applied on load, and again on every explicit language change.
+document.addEventListener("DOMContentLoaded", () => {
+  uiLanguage.value = LANG;
+  applyTranslations();
+  setStatusKey("initialStatus", "");
+  restoreFromLocation();
 });

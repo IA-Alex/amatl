@@ -59,6 +59,35 @@ impl HttpRequest {
     }
 }
 
+/// Redacted rendering, so the obvious way to log a request is also the safe
+/// one.
+///
+/// A request carries the URL — which for some providers holds the API key as a
+/// query parameter — *and* the header values that authenticate the operator.
+/// A derived `Debug` would publish both the moment someone wrote
+/// `tracing::warn!(?request, ...)`, which is why this struct deliberately has
+/// no `#[derive(Debug)]`: this hand-written impl prints the same URL
+/// `sanitized_url` produces and the header *names* only, and the raw values
+/// stay reachable solely through the fields the transport needs to send them.
+impl std::fmt::Debug for HttpRequest {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("HttpRequest")
+            .field("url", &self.sanitized_url())
+            .field(
+                "headers",
+                &self
+                    .headers
+                    .iter()
+                    .map(|(name, _)| name.as_str())
+                    .collect::<Vec<_>>(),
+            )
+            .field("timeout_ms", &self.timeout_ms)
+            .field("body_bytes", &self.body.as_ref().map(Vec::len))
+            .finish()
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct HttpResponse {
     pub status: u16,
@@ -187,6 +216,21 @@ fn classify_transport_error(error: &reqwest::Error) -> &'static str {
 mod tests {
     use super::*;
     use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+    /// Logging a whole request must not be able to publish the credential in
+    /// its URL or the one in its `Authorization` header.
+    #[test]
+    fn debug_rendering_redacts_url_secrets_and_header_values() {
+        let request = HttpRequest::get(
+            Url::parse("https://example.com/search?api_key=super-secret&q=rust").unwrap(),
+            vec![("authorization".into(), "Bearer super-secret".into())],
+            10,
+        );
+        let rendered = format!("{request:?}");
+        assert!(!rendered.contains("super-secret"), "{rendered}");
+        assert!(rendered.contains("authorization"), "{rendered}");
+        assert!(rendered.contains("rust"), "{rendered}");
+    }
 
     #[test]
     fn sanitizes_secret_query_parameters() {

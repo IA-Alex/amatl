@@ -1284,7 +1284,11 @@ mod tests {
         ));
         let providers: Vec<Arc<dyn Provider>> = vec![retry.clone(), auth.clone()];
         let query = parse_query("rust".into()).unwrap();
-        SearchOrchestrator::new(Budget::new(2, 1_000), 100)
+        // Same deadline reasoning as `success_serializes_an_empty_error_list`:
+        // a near-deadline round also shrinks the per-provider timeout to
+        // `provider_timeout_ms.min(remaining_ms)`, which can cut the one
+        // recoverable retry this test counts.
+        SearchOrchestrator::new(Budget::new(2, 8_000), 100)
             .search(query, providers)
             .await;
         assert_eq!(retry.attempts(), 2);
@@ -1297,7 +1301,13 @@ mod tests {
             "ok",
             vec![item("https://example.com/")],
         ))];
-        let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+        // The deadline must stay far above `minimum_remaining_deadline_ms`
+        // (750 ms, the production `search_policy_v1` value): with a 1 000 ms
+        // budget the second round is one scheduling hiccup away from
+        // `DeadlineNear`, which appends a `deadline_near` degradation and
+        // downgrades the status to `PartialSuccess`. 8 000 ms is the production
+        // default (`timeouts.global_ms`), so the slack here matches real use.
+        let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
             .search(parse_query("rust".into()).unwrap(), providers)
             .await;
         assert_eq!(response.status, SearchStatus::Success);
@@ -1317,7 +1327,7 @@ mod tests {
             )),
         ];
         let started = Instant::now();
-        let response = SearchOrchestrator::new(Budget::new(2, 1_000), 200)
+        let response = SearchOrchestrator::new(Budget::new(2, 8_000), 200)
             .with_execution_limits(1, 1, 0, 0)
             .search(parse_query("rust".into()).unwrap(), providers)
             .await;

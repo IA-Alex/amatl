@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="es">
+<!-- The static `lang` is the catalog's default locale (`en`, see `defaultLocale`
+     in i18n.js). app.js sets the visitor's locale as its first statement, so the
+     attribute is already correct before the first paint and a screen reader
+     never hears a language the page is not in. -->
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +25,11 @@
         <img class="brand-icon" src="/brand-icon.png" alt="" width="71" height="120">
         <span>AMATL</span>
       </a>
+      <label class="sr-only" for="ui-language" data-i18n="uiLanguageLabel">Idioma de la interfaz</label>
+      <select id="ui-language" class="ui-language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
       <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro" data-i18n-aria-label="themeToggleToLight">
         <svg class="icon-sun is-active" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <g fill="currentColor">
@@ -44,11 +53,11 @@
     <main class="shell">
       <section class="search-panel" aria-labelledby="search-heading">
         <h1 id="search-heading" data-i18n="searchHeading">Busquemos</h1>
-        <form id="search-form" action="/search" method="post" role="search">
+        <form id="search-form" action="/search" method="post" role="search" novalidate>
           <div class="search-row">
-            <label class="sr-only" for="query">Consulta</label>
+            <label class="sr-only" for="query" data-i18n="queryLabel">Consulta</label>
             <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…" data-i18n-placeholder="searchPlaceholder">
-            <div class="search-actions" aria-label="Tipo de búsqueda">
+            <div class="search-actions" aria-label="Tipo de búsqueda" data-i18n-aria-label="searchActionsLabel">
               <button id="search-button" type="submit" data-mode="search" disabled aria-disabled="true" data-i18n="searchButton">Buscar</button>
               <button id="deep-button" class="secondary-action" type="submit" data-mode="deep" data-i18n="deepButton">Analizar evidencia</button>
               <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true" data-i18n="answerButton">Resumen con IA</button>
@@ -95,8 +104,17 @@
             <p id="answer-hint" class="field-help" hidden></p>
             <div class="filter-grid">
               <div>
-                <label for="language" data-i18n="languageLabel">Idioma</label>
-                <input id="language" name="lang" maxlength="16" placeholder="es">
+                <label for="language" data-i18n="resultLanguageLabel">Idioma de resultados</label>
+                <input id="language" name="lang" maxlength="16" placeholder="es" list="language-codes" aria-describedby="language-help">
+                <datalist id="language-codes">
+                  <option value="es"></option>
+                  <option value="en"></option>
+                  <option value="pt"></option>
+                  <option value="fr"></option>
+                  <option value="de"></option>
+                  <option value="it"></option>
+                </datalist>
+                <p id="language-help" class="field-help" data-i18n="languageHelp">Filtra los resultados por idioma (código de dos letras, por ejemplo es o en).</p>
               </div>
               <div>
                 <label for="region" data-i18n="regionLabel">Región</label>
@@ -108,12 +126,12 @@
                   <option value="" data-i18n="fileTypeAny">Cualquiera</option>
                   <option value="pdf">PDF</option>
                   <option value="html">HTML</option>
-                  <option value="txt">Texto</option>
+                  <option value="txt" data-i18n="fileTypeText">Texto</option>
                 </select>
               </div>
               <div>
                 <label for="local-token" data-i18n="tokenLabel">Token de acceso</label>
-                <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" placeholder="Token del servidor">
+                <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" data-i18n-placeholder="tokenPlaceholder" placeholder="Token del servidor">
                 <p id="token-help" class="field-help" data-i18n="tokenHelp">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
               </div>
             </div>
@@ -134,8 +152,9 @@
           <p id="answer-text" class="answer-text"></p>
           <p id="answer-meta" class="answer-meta"></p>
         </div>
-        <ol id="results" class="results" tabindex="-1"></ol>
-        <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
+        <ol id="results" class="results" tabindex="-1" aria-labelledby="result-heading"></ol>
+        <p id="results-empty" class="empty-note" hidden></p>
+        <nav id="pagination" class="pagination" aria-label="Páginas de resultados" data-i18n-aria-label="paginationLabel" hidden>
           <button id="previous" type="button" data-i18n="previous">Anterior</button>
           <span id="page-label"></span>
           <button id="next" type="button" data-i18n="next">Siguiente</button>
@@ -152,6 +171,7 @@
         <section class="service-state" aria-labelledby="service-heading" hidden>
           <h2 id="service-heading" data-i18n="serviceHeading">Estado del servicio</h2>
           <p id="service-summary" class="status" role="status" aria-live="polite"></p>
+          <p id="service-mode" class="field-help" hidden></p>
           <ul id="service-indicators" class="indicator-list" role="list"></ul>
           <details id="answer-config" class="answer-config" hidden>
             <summary id="answer-config-summary" data-i18n="answerConfigLabel">Configuración de IA</summary>
@@ -171,16 +191,19 @@
           </div>
           <ol id="history-list" class="history-list"></ol>
           <p id="history-empty" class="empty-note" hidden></p>
+          <p id="history-panel-status" class="field-help" role="status"></p>
         </section>
 
         <section class="saved-panel" aria-labelledby="saved-heading" hidden>
           <h2 id="saved-heading" data-i18n="savedHeading">Documentos guardados</h2>
           <ol id="saved-list" class="saved-list"></ol>
           <p id="saved-empty" class="empty-note" hidden></p>
+          <p id="saved-panel-status" class="field-help" role="status"></p>
         </section>
 
         <section class="clients-panel" aria-labelledby="clients-heading" hidden>
           <h2 id="clients-heading">Clientes y tokens</h2>
+          <p id="client-panel-status" class="field-help" role="status"></p>
           <ul id="client-list" class="client-list" role="list"></ul>
           <p id="client-list-empty" class="empty-note" hidden></p>
           <details id="client-create">
@@ -245,6 +268,7 @@
           <ol class="evidence-fragments"></ol>
         </section>
         <div class="document-actions">
+          <p class="document-save-status" role="status" hidden></p>
           <button type="button" class="save-document ghost-action">Guardar</button>
         </div>
         <details class="provenance">
@@ -303,6 +327,8 @@
       <p class="token-dialog-id"><strong id="client-token-id"></strong></p>
       <label class="sr-only" for="client-token-value">Token</label>
       <input id="client-token-value" type="text" readonly>
+      <p id="client-token-status" class="field-help" role="status" hidden></p>
+      <button type="button" id="client-token-copy" class="secondary-action" data-i18n="clientTokenCopy">Copiar</button>
       <button type="button" id="client-token-close">Cerrar</button>
     </dialog>
 

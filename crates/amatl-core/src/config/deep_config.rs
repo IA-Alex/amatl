@@ -464,6 +464,37 @@ impl Config {
                 "invalid Gap Analyzer safety limit".into(),
             ));
         }
+        // Program paths: a *relative* path that contains a separator
+        // (`./trafilatura`, `bin/extract`) is resolved against the process's
+        // working directory, so whoever can write there decides which binary
+        // the server executes — the extractor and the harness are the two
+        // spawn sites where that turns into code execution as the service
+        // user. A bare name (resolved through `PATH`, which is how the
+        // defaults work) and an absolute path are the only unambiguous shapes.
+        // The harness path is only checked while the renderer is enabled,
+        // because that is when it can actually be launched; enabling it later
+        // re-validates, so the check cannot be skipped by ordering.
+        if !self.deep.extractor.executable.is_empty()
+            && is_relative_program_path(&self.deep.extractor.executable)
+        {
+            return Err(ConfigError::Policy(
+                "deep.extractor.executable must be an absolute path or a bare program name".into(),
+            ));
+        }
+        if self.deep.renderer.enabled
+            && !self.deep.renderer.sandbox_path.is_empty()
+            && is_relative_program_path(&self.deep.renderer.sandbox_path)
+        {
+            return Err(ConfigError::Policy(
+                "deep.renderer.sandbox_path must be an absolute path or a bare program name".into(),
+            ));
+        }
         Ok(())
     }
+}
+
+/// Whether `value` names a program through the current directory — the shape
+/// `Command::new` resolves against the process CWD rather than `PATH`.
+fn is_relative_program_path(value: &str) -> bool {
+    !Path::new(value).is_absolute() && value.contains(std::path::MAIN_SEPARATOR)
 }
