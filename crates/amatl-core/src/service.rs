@@ -3186,7 +3186,9 @@ mod tests {
         // for it — a typed error, never a network attempt.
         assert_eq!(
             validate_provider_canary(&config, "unshipped_source"),
-            Err(ProviderCanaryError::UnknownProvider("unshipped_source".into()))
+            Err(ProviderCanaryError::UnknownProvider(
+                "unshipped_source".into()
+            ))
         );
     }
 

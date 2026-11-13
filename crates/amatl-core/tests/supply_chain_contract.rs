@@ -82,7 +82,48 @@ const ADVISORY_FLOORS: &[(&str, &str, &str)] = &[
      holds no trust store of its own and re-exports the roots from its \
      separately resolved 1.x parent, so the floor has to guard that parent.",
     ),
+    (
+        "rmcp",
+        "3.9.0",
+        "RUSTSEC-2026-0457 (the OAuth client SSRF filter checks host strings \
+     instead of the resolved addresses, fixed in 3.7.0), RUSTSEC-2026-0461 \
+     (the Streamable HTTP server transport caches tool schemas without a \
+     bound, fixed in 3.6.0) and RUSTSEC-2026-0462 (the Streamable HTTP \
+     clients buffer an unbounded response body before parsing, fixed in \
+     3.9.0), all published 2026-10-20 and 2026-10-22. The MCP transport of \
+     `amatl-server`, so it is compiled into the shipped server build. The \
+     floor is the highest fix, 3.9.0; any newer compatible release passes.",
+    ),
+    (
+        "rustix",
+        "1.1.5",
+        "RUSTSEC-2026-0486 (the xattr functions mark unwritten bytes as \
+     initialized when given a zero-length buffer, so a caller can read \
+     uninitialized memory; `cargo deny check` classifies it `unsound`, an \
+     error, while `cargo audit` reports it as a warning), published \
+     2026-10-27. Reached through `tokio`'s Unix signal and fs paths; the \
+     advisory's fixed release is 1.1.5 and the lockfile carries 1.1.6.",
+    ),
+    (
+        "quinn-udp",
+        "0.5.16",
+        "RUSTSEC-2026-0538 (the receive loop can spin after a truncated \
+     datagram), published 2026-10-27. An optional dependency reached through \
+     `quinn`/`reqwest`'s HTTP/3 stack, which this workspace locks but never \
+     enables; the advisory's fixed releases are `>=0.5.16, <0.6.0` or \
+     `>=0.6.3`, and the lockfile carries 0.5.16, so the 0.5.x floor is the \
+     one that applies to the locked line.",
+    ),
 ];
+
+// Advisories whose fix no compatible release in the locked graph can reach are
+// NOT floors (asserting one would redden every host without remediating
+// anything). `libsqlite3-sys` RUSTSEC-2026-0459 is that case today: `sqlx`
+// 0.8.6 caps it at `^0.30` and even `sqlx 0.9.0` caps it at `>=0.30.1,
+// <0.38.0`, while the fix is `>=0.39.0`, so no released `sqlx` reaches it. It
+// is recorded in `docs/security/supply-chain.md` and the authoritative
+// `cargo audit`/`cargo deny check` gates stay red until it is remediated,
+// removed from the graph, or waived by a written ADR.
 
 /// The workspace lockfile, or `None` outside a workspace checkout (a published
 /// crate has no lockfile to guard). Inside the workspace the file always

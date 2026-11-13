@@ -20,6 +20,8 @@ La fila «Sólo orígenes deshabilitados (declarados)» = `/ready` 200 contradic
 ### H5 — Advertencia de dependencia (deuda documentada)
 El informe adjunto reconoce `chacha20 0.10.1` yanked, transitivo a través de `rand`/`rmcp`. Los gates locales informados aceptaron esa advertencia; no se demuestra remediación. No actualizar el lockfile a ciegas.
 
+> **Corrección 2026-11-13:** H5 es obsoleto. El lockfile actual ya fija `chacha20 0.10.2` (remediado el 2026-10-26, documentado en `docs/security/supply-chain.md`); `git show ce172d9d:Cargo.lock` ya traía `0.10.2`, así que la advertencia citada no existía ni en la base de esta revisión. Se deja el párrafo literal como registro histórico y se remite a la re-auditoría del 2026-11-13, donde el riesgo vigente es otro (`libsqlite3-sys` RUSTSEC-2026-0459, abierto y sin fix compatible).
+
 ### H6 — CI con efectos distintos según evento (confirmado)
 El workflow de contrato se activa por push/PR; `release.yml` se activa en `main` para ciertos paths, tags RC y manual; `publish-crates.yml` y `publish-aur.yml` admiten tags estables y despacho manual. Una publicación de rama y la creación de una etiqueta NO son operaciones equivalentes. Evitar etiquetas y despachos manuales sin aprobación específica.
 

@@ -1182,7 +1182,12 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
         initialized["result"]["serverInfo"]["version"],
         env!("CARGO_PKG_VERSION")
     );
-    assert_eq!(initialized["result"]["protocolVersion"], "2026-07-28");
+    // Since SEP-2567 the newest revision (`2026-07-28`) carries its lifecycle in
+    // per-request `_meta` and has no `initialize` handshake, so an `initialize`
+    // request is answered with the newest revision that still has one
+    // (`2025-11-25`). The stateless `2026-07-28` path is exercised separately by
+    // the `tools/list` call below, which names `2026-07-28` in its `_meta`.
+    assert_eq!(initialized["result"]["protocolVersion"], "2025-11-25");
 
     let list = json!({
         "jsonrpc": "2.0",
@@ -1946,31 +1951,35 @@ async fn mcp_initialize_returns_correct_server_info() {
         body["result"]["serverInfo"]["version"],
         env!("CARGO_PKG_VERSION")
     );
-    assert_eq!(body["result"]["protocolVersion"], "2026-07-28");
+    // An `initialize` handshake is answered with the newest revision that still
+    // has one; `2026-07-28` moved the lifecycle into per-request `_meta`
+    // (SEP-2567), so it can no longer be named by `initialize`.
+    assert_eq!(body["result"]["protocolVersion"], "2025-11-25");
     assert!(body["result"]["capabilities"]["tools"].is_object());
 }
 
 #[tokio::test]
-async fn mcp_initialize_rejects_unsupported_protocol_version() {
+async fn mcp_initialize_never_echoes_a_version_newer_than_supported() {
     let app = app().await;
     let call = json!({
         "jsonrpc": "2.0",
         "id": 1,
         "method": "initialize",
         "params": {
-            "protocolVersion": "2024-11-05",
+            // A revision newer than every version this server advertises: the
+            // negotiated answer must be one of the server's own versions, never
+            // the unsupported request echoed back.
+            "protocolVersion": "2099-01-01",
             "capabilities": {},
             "clientInfo": { "name": "conformance-test", "version": "1" }
         }
     });
     let (status, body) = mcp_post(&app, call).await;
     assert_eq!(status, StatusCode::OK);
-    // rmcp negotiates down to the highest mutually supported version.
-    // The negotiated version must differ from the requested unsupported one.
     let negotiated = body["result"]["protocolVersion"].as_str().unwrap_or("");
     assert_ne!(
-        negotiated, "2024-11-05",
-        "server should not accept unsupported protocol version, got: {body}"
+        negotiated, "2099-01-01",
+        "server must not echo an unsupported protocol version, got: {body}"
     );
     assert!(
         !negotiated.is_empty(),

@@ -1,10 +1,14 @@
 # MCP surface
 
 AMATL exposes MCP Streamable HTTP at `/mcp` through the same Axum listener and
-`AmatlService` used by API and CLI. It supports protocol version `2026-07-28`,
-uses stateless protocol metadata, JSON responses, no legacy session mode, and
-requires the same bearer token, Host/Origin checks, body limits and rate limit
-as protected HTTP endpoints (`amatl-server/src/lib.rs`). Every response also
+`AmatlService` used by API and CLI. It advertises every protocol revision up to
+`2026-07-28`, uses stateless protocol metadata, JSON responses, no legacy session
+mode, and requires the same bearer token, Host/Origin checks, body limits and
+rate limit as protected HTTP endpoints (`amatl-server/src/lib.rs`). Since
+SEP-2567 the `2026-07-28` revision carries its lifecycle in per-request `_meta`
+and has no `initialize` handshake, so a client that sends `initialize` negotiates
+down to `2025-11-25` (the newest revision with a handshake) while a client that
+speaks `2026-07-28` statelessly is served as-is. Every response also
 receives a server-generated `X-Request-ID`; the same identifier is attached to
 the request span and any SSRF rejection audit emitted while handling that MCP
 call.

@@ -188,12 +188,18 @@ fn provider_canary_rejects_unshipped_sources_as_configuration_errors() {
     // The other closed door: an unshipped name is refused by configuration
     // validation, so it can never reach the canary's network stage.
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
-    let base =
-        std::env::temp_dir().join(format!("amatl-canary-unshipped-{}-{id}", std::process::id()));
+    let base = std::env::temp_dir().join(format!(
+        "amatl-canary-unshipped-{}-{id}",
+        std::process::id()
+    ));
     std::fs::create_dir_all(&base).unwrap();
     let config = base.join("amatl.toml");
     for unshipped in ["unshipped_source", "another_missing_source"] {
-        std::fs::write(&config, format!("[providers]\nenabled = [\"{unshipped}\"]\n")).unwrap();
+        std::fs::write(
+            &config,
+            format!("[providers]\nenabled = [\"{unshipped}\"]\n"),
+        )
+        .unwrap();
         let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
             .arg("--config-file")
             .arg(&config)
@@ -202,7 +208,10 @@ fn provider_canary_rejects_unshipped_sources_as_configuration_errors() {
             .unwrap();
         assert!(!output.status.success(), "{unshipped} must be refused");
         let stderr = String::from_utf8(output.stderr).unwrap();
-        assert!(stderr.contains("unknown enabled provider"), "{unshipped}: {stderr}");
+        assert!(
+            stderr.contains("unknown enabled provider"),
+            "{unshipped}: {stderr}"
+        );
         assert!(stderr.contains(unshipped), "{unshipped}: {stderr}");
     }
     std::fs::remove_file(config).unwrap();

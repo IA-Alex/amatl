@@ -310,7 +310,15 @@ impl McpSurface {
 )]
 impl ServerHandler for McpSurface {
     fn supported_protocol_versions(&self) -> Cow<'static, [ProtocolVersion]> {
-        Cow::Borrowed(&[ProtocolVersion::V_2026_07_28])
+        // Advertise every revision up to the newest (`2026-07-28`), not only
+        // that one. Since SEP-2567 the newest revision carries its lifecycle in
+        // per-request `_meta` and has no `initialize` handshake, so a server
+        // declaring *only* `2026-07-28` answers every legacy `initialize` with
+        // `UNSUPPORTED_PROTOCOL_VERSION`. Listing the full `known_up_to(LATEST)`
+        // range lets a handshake-based client negotiate down to `2025-11-25`
+        // (the newest revision that still has `initialize`) while a client that
+        // speaks the stateless `2026-07-28` revision is served as-is.
+        Cow::Borrowed(ProtocolVersion::known_up_to(&ProtocolVersion::LATEST))
     }
 }
 

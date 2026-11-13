@@ -77,6 +77,11 @@ const MAX_SAVED_PAYLOAD_BYTES = 1024 * 1024;
 const LIST_LIMIT = 20;
 let searchAvailable = false;
 
+// Allowlist mapping a server-reported provider status onto the badge class the
+// stylesheet actually defines. Anything unknown falls back to `unavailable`, so
+// an unexpected status string can never inject extra class tokens.
+const PROVIDER_STATUS_CLASSES = { available: "available", unavailable: "unavailable" };
+
 // Setup auth helper for the global api client
 globalThis.authHeaders = (extra) => {
   const headers = Object.assign({ Accept: "application/json" }, extra || {});
@@ -818,7 +823,18 @@ function restoreFromLocation() {
   const params = new Map();
   for (const pair of pairs) {
     const [key, value = ""] = pair.split("=");
-    params.set(decodeURIComponent(key), decodeURIComponent(value.replace(/\+/g, " ")));
+    // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. `%`).
+    // A hand-edited or truncated shared link must not abort the bootstrap, so a
+    // pair that cannot be decoded is skipped rather than propagated.
+    let decodedKey;
+    let decodedValue;
+    try {
+      decodedKey = decodeURIComponent(key);
+      decodedValue = decodeURIComponent(value.replace(/\+/g, " "));
+    } catch (_) {
+      continue;
+    }
+    params.set(decodedKey, decodedValue);
   }
   const query = boundedText((params.get("q") || "").trim(), 2048);
   if (!query) return;
@@ -1052,7 +1068,11 @@ async function fetchProviderStatus() {
       name.className = "provider-name";
       name.textContent = provider.name;
       const badge = document.createElement("span");
-      badge.className = `provider-badge provider-badge--${provider.status}`;
+      // `provider.status` is a server string; map it through an allowlist so a
+      // value outside the known vocabulary cannot inject arbitrary class tokens
+      // (the CSS only styles `--available` / `--unavailable`).
+      const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
+      badge.className = `provider-badge provider-badge--${statusClass}`;
       badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
       if (provider.code) badge.title = provider.code;
       const toggleLabel = document.createElement("label");

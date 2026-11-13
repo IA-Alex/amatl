@@ -282,8 +282,19 @@ impl RobotsCache {
         let Ok(mut entries) = self.entries.lock() else {
             return;
         };
-        if entries.len() >= self.max_entries {
-            entries.clear();
+        // Evict only the single oldest entry (by `fetched_at`), not the whole
+        // cache: one distinct origin over the cap must not force every other
+        // origin to re-fetch its `robots.txt`. Inserting a key that is already
+        // present does not grow the map, so only evict when it is genuinely new
+        // and the cache is at capacity.
+        if entries.len() >= self.max_entries && !entries.contains_key(&origin) {
+            if let Some(oldest) = entries
+                .iter()
+                .min_by_key(|(_, entry)| entry.fetched_at)
+                .map(|(key, _)| key.clone())
+            {
+                entries.remove(&oldest);
+            }
         }
         entries.insert(
             origin,
@@ -348,6 +359,7 @@ fn path_and_query(url: &Url) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::fetch::{FetchError, FetchResult};
 
     const SAMPLE: &str = "\
 User-agent: *
@@ -362,6 +374,17 @@ Disallow: /*.pdf$
 
     fn rules() -> RobotsRules {
         RobotsRules::parse(SAMPLE, ROBOTS_USER_AGENT)
+    }
+
+    /// Test-only fetcher for cache-behaviour tests: `store`/`entries` never call
+    /// it, so it never performs I/O and always reports a transport failure.
+    struct NoFetch;
+
+    #[async_trait::async_trait]
+    impl Fetcher for NoFetch {
+        async fn fetch(&self, _request: FetchRequest) -> Result<FetchResult, FetchError> {
+            Err(FetchError::Network)
+        }
     }
 
     #[test]
@@ -446,5 +469,34 @@ Disallow: /*.pdf$
             rules.decide("/b"),
             RobotsDecision::Allowed { crawl_delay_ms: 0 }
         );
+    }
+
+    /// Filling the cache must evict the single oldest entry, never clear the
+    /// whole map: one origin over the cap otherwise forced every other origin to
+    /// re-fetch its `robots.txt` (a bounded but pointless crawl amplification).
+    #[test]
+    fn overflowing_the_cache_evicts_one_entry_instead_of_clearing_it() {
+        let cache = RobotsCache::new(Arc::new(NoFetch), 1_000, 4_096);
+        let cap = cache.max_entries;
+        // Distinct fetch timestamps so "oldest" is unambiguous; `first` is
+        // written earliest and must be the one evicted.
+        for index in 0..cap {
+            cache.store(format!("https://host{index}.example"), None, index as i64);
+        }
+        let first = "https://host0.example".to_string();
+        // Re-read through the map to confirm it is present before the overflow.
+        assert!(cache.entries.lock().unwrap().contains_key(&first));
+
+        cache.store("https://overflow.example".to_string(), None, 10_000);
+
+        let entries = cache.entries.lock().unwrap();
+        assert_eq!(entries.len(), cap, "the cache must stay at its cap");
+        assert!(
+            !entries.contains_key(&first),
+            "the oldest entry must be the one evicted"
+        );
+        // A more recent entry must survive, proving it was not a full clear.
+        assert!(entries.contains_key("https://host1.example"));
+        assert!(entries.contains_key("https://overflow.example"));
     }
 }

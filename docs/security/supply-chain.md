@@ -47,6 +47,29 @@ was written — and all three sat in the locked graph, the two TLS ones in the
 primary HTTPS path, while this document still described a `zip`-only audit. The
 floors are what keeps that gap from reopening silently.
 
+### Re-audit 2026-11-13
+
+A re-run of the gate on 2026-11-13 found five advisories that had entered the
+locked graph after the 2026-10-26 measurement: `rmcp 3.1.2` (RUSTSEC-2026-0457,
+-0461, -0462), `rustix 1.1.4` (RUSTSEC-2026-0486, `unsound`), `quinn-udp 0.5.15`
+(RUSTSEC-2026-0538) and `libsqlite3-sys 0.30.1` (RUSTSEC-2026-0459). Four were
+remediated the same day by compatible `cargo update` and are now floors:
+`rmcp` 3.10.0, `rustix` 1.1.6 and `quinn-udp` 0.5.16.
+
+`libsqlite3-sys` RUSTSEC-2026-0459 remains **open and not remediable by a
+compatible upgrade**. The advisory (patched in `>=0.39.0`) applies only to the
+`bundled` SQLite source, which this workspace does enable (`sqlx`'s `sqlite`
+feature → `sqlx-sqlite`'s `bundled` → `libsqlite3-sys`'s `bundled`). No released
+`sqlx` reaches the fix: `sqlx 0.8.6` caps it at `^0.30` and `sqlx 0.9.0` caps it
+at `>=0.30.1, <0.38.0`. The attack is local (`AV:L`, `UI:P`): it needs a less
+trusted party to place a crafted database file and its `-wal` sibling where the
+operator opens them, and the AMATL database path is operator-controlled and
+local, which bounds the exposure. It is therefore **not** a floor. The
+authoritative `cargo audit` and `cargo deny check` gates stay **red** until it is
+remediated (a future `sqlx` release admitting `libsqlite3-sys >= 0.39`), removed
+from the graph, or waived by a written ADR approved by `@IA-Alex`. Adding an
+`ignore` entry without that ADR is not permitted by the policy above.
+
 The accountable security role is repository owner `@IA-Alex`. The response SLA
 in `SECURITY.md` requires acknowledgement in 1/2/5/10 business days and targets
 remediation in 14/30/60/90 calendar days for critical/high/medium/low findings,
@@ -113,8 +136,11 @@ remediated to `0.10.2` on 2026-10-26: a one-line `cargo update -p chacha20` that
 the policy above would have let a reviewer accept, but that is cheaper to fix
 than to carry. `paste 1.0.15` (unmaintained) disappeared with the Candle stack,
 which was its only path. With `chacha20 0.10.2` locked, `cargo audit` reports no
-yanked package in the 382-dependency graph it scans and `cargo deny check` is
-clean without any `ignore` entry, so no `yanked` warning is open today.
+yanked package in the dependency graph it scans, and no `yanked` warning is open
+today. This paragraph describes the state on 2026-10-26; the 2026-11-13 re-audit
+above supersedes its claim that `cargo deny check` is clean — it is red on the
+single open `libsqlite3-sys` advisory (RUSTSEC-2026-0459), which is unrelated to
+the yanked-package class discussed here.
 
 ## SBOM
 

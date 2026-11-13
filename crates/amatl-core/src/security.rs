@@ -89,8 +89,15 @@ fn public_v4(address: Ipv4Addr) -> bool {
 }
 
 fn public_v6(address: Ipv6Addr) -> bool {
-    if let Some(mapped) = address.to_ipv4_mapped() {
-        return public_v4(mapped);
+    // `to_ipv4()` covers both the IPv4-mapped form (`::ffff:a.b.c.d`, the only
+    // one `to_ipv4_mapped()` recognizes) and the deprecated IPv4-compatible
+    // form (`::a.b.c.d`, RFC 4291 §2.5.5.1). Checking only `to_ipv4_mapped()`
+    // let `::127.0.0.1`, `::10.0.0.1` and `::169.254.169.254` through as
+    // "public", which is an SSRF bypass: an AAAA record in either form reaches
+    // loopback, RFC1918 or the cloud metadata address. Both forms embed the same
+    // IPv4 address, so they get the same verdict.
+    if let Some(embedded) = address.to_ipv4() {
+        return public_v4(embedded);
     }
     let segments = address.segments();
     !(address.is_loopback()
@@ -98,7 +105,12 @@ fn public_v6(address: Ipv6Addr) -> bool {
         || address.is_multicast()
         || (segments[0] & 0xfe00) == 0xfc00
         || (segments[0] & 0xffc0) == 0xfe80
-        || (segments[0] == 0x2001 && segments[1] == 0x0db8))
+        || (segments[0] == 0x2001 && segments[1] == 0x0db8)
+        // NAT64 well-known prefix `64:ff9b::/96` and 6to4 `2002::/16` can each
+        // embed an IPv4 destination, so an AAAA in these ranges must not be
+        // treated as a plain public IPv6 host.
+        || (segments[0] == 0x0064 && segments[1] == 0xff9b)
+        || segments[0] == 0x2002)
 }
 
 #[cfg(test)]
@@ -167,6 +179,38 @@ mod tests {
     #[test]
     fn rejects_ipv4_mapped_and_compat_ipv6_that_resolve_to_private_space() {
         for address in ["::ffff:10.0.0.1", "::ffff:169.254.1.1"] {
+            assert!(!is_public_ip(address.parse().unwrap()), "{address}");
+        }
+    }
+
+    /// `to_ipv4_mapped()` only recognizes `::ffff:a.b.c.d`, so the deprecated
+    /// IPv4-compatible form `::a.b.c.d` slipped past the guard as "public" even
+    /// though it embeds the same private/loopback/metadata address. This is the
+    /// regression test for that SSRF bypass.
+    #[test]
+    fn rejects_ipv4_compatible_ipv6_that_embeds_private_or_metadata_space() {
+        for address in [
+            "::127.0.0.1",       // loopback
+            "::10.0.0.1",        // RFC1918
+            "::192.168.1.1",     // RFC1918
+            "::172.16.0.1",      // RFC1918
+            "::169.254.169.254", // cloud metadata (link-local)
+            "::100.64.0.1",      // CGNAT
+        ] {
+            let parsed = address.parse().unwrap();
+            assert!(!is_public_ip(parsed), "{address}");
+            assert!(
+                validate_resolved_addresses(&[parsed]).is_err(),
+                "{address} must be rejected as a resolved address"
+            );
+        }
+    }
+
+    /// NAT64 `64:ff9b::/96` and 6to4 `2002::/16` can embed an IPv4 destination,
+    /// so they are treated as non-public rather than as plain public IPv6.
+    #[test]
+    fn rejects_ipv4_embedding_transition_ranges() {
+        for address in ["64:ff9b::7f00:1", "64:ff9b::a00:1", "2002:7f00:1::1"] {
             assert!(!is_public_ip(address.parse().unwrap()), "{address}");
         }
     }

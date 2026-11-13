@@ -686,6 +686,47 @@ adapter/extractor versions are independent axes as well.
   `docs/configuracion.md` names the accepted shape of both program paths. The
   `file:line` citations the `providers/http.rs` insertion had displaced were
   re-anchored, and `tools/check_doc_refs.py` stays at `12 known-dead, 0 new`.
+- The SSRF address filter treated IPv4-compatible IPv6 addresses as public.
+  `crates/amatl-core/src/security.rs` unwrapped only the IPv4-mapped form
+  (`::ffff:a.b.c.d`) via `to_ipv4_mapped()`, so `::10.0.0.1`, `::192.168.1.1`,
+  `::169.254.169.254` and `::127.0.0.1` — the deprecated IPv4-compatible form of
+  the same private, metadata and loopback addresses — passed
+  `validate_resolved_addresses` and the fetcher connected to them. `public_v6`
+  now unwraps with `to_ipv4()`, which covers both forms, and NAT64 `64:ff9b::/96`
+  and 6to4 `2002::/16` are rejected as well since each can embed an IPv4
+  destination. Reachable through `POST /deep` targets, whose URL the client
+  supplies; the DNS-resolved-address check was the single barrier. Regression
+  tests cover the compatible form and the transition ranges.
+- `RobotsCache::store` cleared the whole per-origin cache when it reached its
+  64-entry cap, so one origin over the limit forced every other origin to
+  re-fetch its `robots.txt`. It now evicts only the single oldest entry (by
+  `fetched_at`) and leaves the rest in place.
+- The web UI's `restoreFromLocation` called `decodeURIComponent` unguarded on the
+  query string, so a shared link such as `/?q=%` threw `URIError` and aborted the
+  restore. A pair that cannot be decoded is now skipped. The provider badge maps
+  the server-reported `status` through an allowlist (`PROVIDER_STATUS_CLASSES`)
+  instead of interpolating it raw into `className`, so an unexpected value cannot
+  inject arbitrary class tokens.
+- Four advisories that entered the locked graph after the 2026-10-26 measurement
+  are remediated in one pass: `rmcp` 3.1.2 moves to 3.10.0 (RUSTSEC-2026-0457,
+  -0461, -0462), `rustix` 1.1.4 to 1.1.6 (RUSTSEC-2026-0486, `unsound`) and
+  `quinn-udp` 0.5.15 to 0.5.16 (RUSTSEC-2026-0538). The offline supply-chain
+  contract asserts the three new floors. `libsqlite3-sys` RUSTSEC-2026-0459 is
+  recorded as open and not remediable by a compatible upgrade — `sqlx 0.8.6`
+  caps it at `^0.30` and `sqlx 0.9.0` at `<0.38.0` while the fix is `>=0.39.0` —
+  so `cargo audit` and `cargo deny check` stay red on that one advisory until a
+  future `sqlx` release or a signed ADR, and `docs/security/supply-chain.md`
+  states that.
+- The MCP handshake broke after the `rmcp` upgrade. Since SEP-2567 the newest
+  revision AMATL advertises (`2026-07-28`) carries its lifecycle in per-request
+  `_meta` and has no `initialize` handshake, so declaring only that version made
+  every legacy `initialize` fail with `UNSUPPORTED_PROTOCOL_VERSION`.
+  `supported_protocol_versions` now returns `known_up_to(LATEST)`, so an
+  `initialize` client negotiates down to `2025-11-25` (the newest revision with a
+  handshake) while a client speaking the stateless `2026-07-28` revision is
+  served as-is. The two conformance tests were updated to the new contract and
+  the "unsupported version" test now requests a revision newer than every
+  advertised one.
 
 ### Changed
 
