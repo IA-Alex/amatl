@@ -587,13 +587,11 @@ mod tests {
         let catalog = text("/i18n.js");
         // A single-choice segmented control (Marginalia / SearXNG / All) must
         // exist in the search panel and resolve its copy through the catalog,
-        // not half-hardcoded. The retired paid sources (`brave`, `mojeek`) are
-        // no longer shipped.
+        // not half-hardcoded.
         assert!(html.contains("id=\"provider-selector\""));
         assert!(html.contains("name=\"provider-source\""));
         assert!(html.contains("value=\"marginalia\""));
         assert!(html.contains("value=\"searxng\""));
-        assert!(!html.contains("value=\"brave\""));
         assert!(html.contains("value=\"all\""));
         assert!(catalog.contains("providerSelectorLabel"));
         assert!(catalog.contains("providerSourceAll"));
@@ -606,60 +604,37 @@ mod tests {
         assert!(javascript.contains("PROVIDER_SOURCE_TARGET"));
         assert!(javascript.contains("marginalia: [\"marginalia\"]"));
         assert!(javascript.contains("searxng: [\"searxng\"]"));
-        assert!(!javascript.contains("brave: [\"brave\"]"));
-        assert!(!javascript.contains("mojeek: [\"mojeek\"]"));
         assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
         assert!(javascript.contains("syncProviderSelector"));
         assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
     }
 
     #[test]
-    fn retired_sources_are_not_shipped_in_the_ui() {
+    fn only_the_shipped_sources_are_selectable_in_the_ui() {
         let html = text("/index.html");
+        let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // Brave and Mojeek were removed from the product (policy drop): no
-        // control, no key surface, and no catalog keys remain in the UI.
-        for id in [
-            "brave-key-button",
-            "brave-clear-button",
-            "brave-dialog",
-            "brave-key",
-            "brave-save",
-            "brave-cancel",
-            "mojeek-key-button",
-            "mojeek-clear-button",
-            "mojeek-dialog",
-            "mojeek-key",
-            "mojeek-save",
-            "mojeek-cancel",
-        ] {
+        // The source selector exposes exactly the two shipped sources plus the
+        // "all" convenience choice: no control, no key surface, and no catalog
+        // key exists for any other source.
+        for value in ["marginalia", "searxng", "all"] {
             assert!(
-                !html.contains(&format!("id=\"{id}\"")),
-                "retired element must be gone from the UI: {id}"
+                html.contains(&format!("value=\"{value}\"")),
+                "shipped choice must exist in the UI: {value}"
             );
         }
-        for key in [
-            "braveKeyButton",
-            "braveClearButton",
-            "braveDialogHeading",
-            "braveDialogHelp",
-            "braveKeyPlaceholder",
-            "braveSave",
-            "braveCancel",
-            "braveStatusEnvironment",
-            "mojeekKeyButton",
-            "mojeekClearButton",
-            "mojeekDialogHeading",
-            "mojeekDialogHelp",
-            "mojeekKeyPlaceholder",
-            "mojeekSave",
-            "mojeekCancel",
-            "mojeekStatusEnvironment",
-        ] {
-            assert!(
-                !catalog.contains(key),
-                "retired catalog key must be gone: {key}"
-            );
-        }
+        // A segmented radio group: exactly three choices, one per shipped
+        // source plus the convenience "all".
+        let selector_values = html.matches("name=\"provider-source\"").count();
+        assert_eq!(
+            selector_values, 3,
+            "the source selector is a three-way radio group"
+        );
+        assert!(javascript.contains("marginalia: [\"marginalia\"]"));
+        assert!(javascript.contains("searxng: [\"searxng\"]"));
+        assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
+        // Marginalia is the only credential-gated source, so its key surface is
+        // the only one in the catalog.
+        assert!(catalog.contains("marginaliaKeyButton"));
     }
 }

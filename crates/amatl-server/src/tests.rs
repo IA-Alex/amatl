@@ -2415,7 +2415,7 @@ async fn reload_picks_up_a_new_source_without_restarting() {
         .as_array()
         .unwrap()
         .iter()
-        .all(|value| value != "brave" && value != "mojeek"));
+        .all(|value| value != "unshipped_source"));
     // The operating sources are present.
     assert!(["marginalia", "searxng"]
         .iter()

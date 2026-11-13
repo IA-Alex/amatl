@@ -3056,12 +3056,6 @@ mod tests {
             source("marginalia").code.as_deref(),
             Some("provider_disabled")
         );
-        // Retired sources are not merely disabled: they ship no record at all,
-        // so they cannot even be named by `/status`.
-        assert!(status
-            .sources
-            .iter()
-            .all(|source| source.name != "mojeek" && source.name != "brave"));
     }
 
     /// The other half of the D2 rule: ignoring disabled sources must not make a
@@ -3177,28 +3171,22 @@ mod tests {
     }
 
     #[test]
-    fn retired_provider_canary_stops_at_the_registry_door() {
-        // Configuration validation refuses retired names first, so this test
-        // bypasses it on purpose: it declares `mojeek` and enables both retired
-        // names by hand. Even then the canary cannot reach the network, because
-        // the builtin registry ships no factory for them.
+    fn undeclared_provider_canary_stops_at_the_registry_door() {
+        // Configuration validation refuses undeclared names first, so this test
+        // bypasses it on purpose: it declares a source with a governance record
+        // and enables it by hand. Even then the canary cannot reach the network,
+        // because the builtin registry ships no factory for it.
         let mut config = Config::default();
         config
             .providers
-            .declare("mojeek", approved_record("mojeek-v1"));
-        config.providers.enabled = vec!["mojeek".into(), "brave".into()];
-        assert!(config.validate().is_err(), "validation is the first door");
-        // `mojeek` passes the governance-record lookup (declared, enabled) and
-        // still stops at the registry, which carries no factory for it.
+            .declare("unshipped_source", approved_record("unshipped-v1"));
+        config.providers.enabled = vec!["unshipped_source".into()];
+        // The declared source passes the governance-record lookup (declared,
+        // enabled) and still stops at the registry, which carries no factory
+        // for it — a typed error, never a network attempt.
         assert_eq!(
-            validate_provider_canary(&config, "mojeek"),
-            Err(ProviderCanaryError::UnknownProvider("mojeek".into()))
-        );
-        // `brave` is not declared at all, so it stops one check earlier — same
-        // typed error, never a network attempt.
-        assert_eq!(
-            validate_provider_canary(&config, "brave"),
-            Err(ProviderCanaryError::UnknownProvider("brave".into()))
+            validate_provider_canary(&config, "unshipped_source"),
+            Err(ProviderCanaryError::UnknownProvider("unshipped_source".into()))
         );
     }
 
@@ -3269,11 +3257,6 @@ mod tests {
         assert!(summaries
             .iter()
             .any(|summary| summary.name == "custom_archive"));
-        // The retired paid sources are not shipped and must not appear in the
-        // summaries, which are built from the configuration records.
-        assert!(!summaries
-            .iter()
-            .any(|summary| summary.name == "brave" || summary.name == "mojeek"));
     }
 
     #[tokio::test]

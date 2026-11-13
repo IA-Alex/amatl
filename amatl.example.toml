@@ -50,11 +50,10 @@ enabled = []
 # data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
 # operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
 #
-# Los proveedores de pago (brave, mojeek) se retiraron del producto (política
-# del operador: sólo fuentes sin coste). No están declarados en los expedientes
-# incorporados, no están registrados y no hay adapter, así que no queda ficha
-# que aprobar; además Config::validate() los rechaza por nombre, así que un
-# "brave" o "mojeek" en enabled falla la validación.
+# Sólo se sirven fuentes sin coste (SearXNG autoalojado y Marginalia). No hay
+# expediente ni adapter para ninguna otra, así que no queda ficha que aprobar;
+# además Config::validate() rechaza por nombre, así que un nombre no declarado
+# en enabled falla la validación.
 # Ver docs/gobernanza-providers.md.
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.

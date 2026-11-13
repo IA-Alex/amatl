@@ -28,7 +28,7 @@ El workflow de contrato se activa por push/PR; `release.yml` se activa en `main`
 - `python3 tools/check_doc_refs.py`: `12 known-dead, 0 new`, exit 0.
 - `python3 -m compileall -q tools`: exit 0 (sintaxis Python, no prueba funcional).
 - `git diff --check`: sin errores en copia.
-- Código de D1: archivo `crates/amatl-core/src/providers/brave.rs` eliminado; `provider-canary.yml` ofrece `searxng` y `marginalia`.
+- Código de D1: módulo de adapter del proveedor de pago retirado eliminado; `provider-canary.yml` ofrece `searxng` y `marginalia`.
 - Código de D2: comprobado contra `service.rs` y pruebas HTTP reales del repositorio.
 
 ## Decisión

@@ -7,7 +7,7 @@ Los secretos entran por dos vías sancionadas, y ninguna otra:
 1. **Variables de entorno** (vía por defecto). `MARGINALIA_API_KEY` es el default
    del único adapter que usa credencial
    (SearXNG no la usa: lee la URL de su instancia desde `SEARXNG_INSTANCE_URL`;
-   los proveedores de pago retirados —`brave`, `mojeek`— ya no tienen adapter ni
+   los proveedores de pago retirados ya no tienen adapter ni
    variable asociada);
    el servidor lee la variable
    nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El

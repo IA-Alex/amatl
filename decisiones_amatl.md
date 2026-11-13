@@ -61,20 +61,20 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   final de Search.
 - **Trazabilidad:** `config.rs:382-411`; `service.rs:101-112`; `storage.rs:58-118`.
 
-## ADR-005 — DuckDuckGo HTML bloqueado por gobernanza
+## ADR-005 — Adaptador HTML bloqueado por gobernanza
 
 - **Fecha:** 2026-08-12
 - **Estado:** Aceptada
 - **Contexto:** Un adapter HTML `best_effort` no implica autorización para
   scraping ni certeza sobre ToS/coste.
-- **Decisión:** DuckDuckGo HTML siempre declara
+- **Decisión:** El adaptador HTML siempre declara
   `provider_pending_explicit_approval` y no ejecuta red hasta una revisión
   verificable y ficha completa.
 - **Consecuencias:** Incluir el nombre en `providers.enabled` no lo activa; su
   ausencia nunca rompe el estado global si hay resultados útiles.
 - **Alternativas descartadas:** habilitación implícita, scraping oportunista o
   asumir permiso por acceso público.
-- **Trazabilidad:** `providers/duckduckgo.rs:8-59`; `service.rs:298,349`.
+- **Trazabilidad:** adaptador HTML retirado (ver ADR-010); `service.rs:298,349`.
 
 ## ADR-006 — Trafilatura como capability opcional
 
@@ -138,18 +138,18 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
 - **Trazabilidad:** `model.rs:7`; `ranking.rs`; `diversity.rs`; `progressive.rs`;
   `ranking_v2.rs:11-128`; corpus `ranking_v2_corpus.json`.
 
-## ADR-010 — Retiro de DuckDuckGo HTML; Marginalia pasa de scaffold a adapter real
+## ADR-010 — Retiro del adaptador HTML; Marginalia pasa de scaffold a adapter real
 
 - **Fecha:** 2026-08-15
 - **Estado:** Aceptada
-- **Contexto:** ADR-005 bloqueaba DuckDuckGo HTML fail-closed a la espera de
-  revisión, pero DuckDuckGo no ofrece API de búsqueda web (sólo Instant
-  Answer, que no devuelve resultados web); el adapter era un stub de 73
+- **Contexto:** ADR-005 bloqueaba el adaptador HTML fail-closed a la espera de
+  revisión, pero no había API de búsqueda web oficial (sólo una Instant
+  Answer API, que no devuelve resultados web); el adapter era un stub de 73
   líneas sin endpoint, cliente HTTP ni parseo que nunca podría aprobar
   gobernanza. Mantenerlo listado era una fuente "en progreso" fantasma.
   Marginalia, por otro lado, sí tiene API de búsqueda oficial y era el
   scaffold señalado como siguiente paso en `CONTINUIDAD.md`.
-- **Decisión:** Se retira `duckduckgo_html` del código (`providers/duckduckgo.rs`
+- **Decisión:** Se retira el adaptador HTML del código (módulo
   eliminado), del `ProviderRegistry`, de `config.rs` y de la documentación de
   gobernanza — no queda como adapter apagado, deja de existir. Se implementa
   `search()` real de Marginalia contra `api2.marginalia-search.com` (el
@@ -163,7 +163,7 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   Marginalia pasa a "aprobable" en `docs/gobernanza-providers.md`, pendiente
   sólo de `reviewer`/`reviewed_at`/`approval_status` (decisión del propietario,
   no de código). SearXNG sigue siendo la única fuente sin credencial.
-- **Alternativas descartadas:** implementar el stub de DuckDuckGo HTML (sin API
+- **Alternativas descartadas:** implementar el stub HTML (sin API
   de búsqueda real, exige scraping sin ToS verificable — contradice la puerta
   de gobernanza); mantener el criterio de routing ciego a coste.
 - **Trazabilidad:** `providers/marginalia.rs`; `router.rs` (penalización por
@@ -474,7 +474,7 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   - La key vive en `BTreeMap<String, Zeroizing<String>>` en RAM; `Zeroizing`
     borra el buffer al reemplazar, liquidar o caer el proceso. `resolved_credential`
     y `ProviderBuildContext.credential` propagan `Zeroizing`, y los adapters
-    (Brave/Mojeek/Marginalia) guardan `Option<Zeroizing<String>>`, de modo que
+    (Marginalia) guardan `Option<Zeroizing<String>>`, de modo que
     la copia que retiene cada provider se borra al caer. El cuerpo HTTP se
     deserializa en un `SecretKey` que se zeroiza en `Drop`.
   - `ProviderSummary`/`SourceStatus` exponen `credential_source`
@@ -489,7 +489,7 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
 - **Superficie:** `crates/amatl-core/src/service.rs` (`CredentialSource`,
   `ProviderSummary.credential_source`, `SourceStatus.credential_source`,
   `ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>`);
-  `providers/{registry,brave,mojeek,marginalia}.rs`; `amatl-server/src/lib.rs`
+  `providers/{registry,marginalia}.rs`; `amatl-server/src/lib.rs`
   (`SecretKey`, `audit_credential_action`); `docs/api/openapi.yaml`
   (`CredentialSource`); `amatl-ui/assets/{app.js,i18n.js}`.
 - **Consecuencias:** «Liquidar» erradica la key en memoria de forma efectiva
@@ -591,35 +591,35 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `docs/operacion.md`; `docs/security/threat-model.md`
   (`Core → inference (strategist)`).
 
-## ADR-016 — Retiro de Brave y Mojeek del producto
+## ADR-016 — Retiro de las fuentes de pago del producto
 
 - **Fecha:** 2026-10-26
 - **Estado:** Aceptada
-- **Contexto:** ADR-010 retiró DuckDuckGo HTML porque su adapter nunca podría
-  aprobar gobernanza, y dejó a Brave y Mojeek en un estado intermedio: adapter
+- **Contexto:** ADR-010 retiró el adaptador HTML porque su adapter nunca podría
+  aprobar gobernanza, y dejó a las fuentes de pago en un estado intermedio: adapter
   completo y funcional, pero con `approval_status = "rejected"` fijado por
   política (no se contratan fuentes de pago) y, además, expuestos en la UI como
-  fuente opcional opt-in (selector, diálogo de key, `/providers/brave/*`). Ese
+  fuente opcional opt-in (selector, diálogo de key, rutas de credencial). Ese
   estado es incoherente: el operador ve una fuente seleccionable que el propio
   producto considera no contratable, y la superficie de credencial de un
   provider retirado es riesgo sin contrapartida (ADR-014 tuvo que endurecer el
   ciclo de vida de la key de un adapter que ya no se puede usar). Se cierra la
   ambigüedad retirándolos de verdad, no apagándolos.
-- **Decisión:** Se retiran `brave` y `mojeek` de extremo a extremo:
-  - **Código:** se eliminan `providers/brave.rs` y `providers/mojeek.rs`, sus
+- **Decisión:** Se retiran las fuentes de pago de extremo a extremo:
+  - **Código:** se eliminan sus módulos de adapter, sus
     factories y sus entradas en `builtin_provider_records()`.
     `ProviderRegistry::builtin()` despacha exactamente SearXNG y Marginalia.
   - **Configuración (segunda puerta):** `RETIRED_PROVIDERS` /
     `is_retired_provider()` (`config/providers.rs`) y `Config::validate()`
-    rechazan ambos nombres **por nombre**, tanto en una tabla declarada
-    `[providers.brave]`/`[providers.mojeek]` como en `providers.enabled`. El
+    rechazan esos nombres **por nombre**, tanto en una tabla declarada
+    `[providers.<nombre>]` como en `providers.enabled`. El
     error es explícito («retirado por política») en lugar del genérico
     `unknown enabled provider`, que se leería como una errata. Una configuración
     antigua falla en el arranque en vez de desplegar una fuente menos en
     silencio; incluso una config construida a mano que los liste se detiene en el
     registro (`UnknownProvider`).
-  - **UI:** desaparecen selector, diálogo de key, botones y claves de catálogo
-    `brave*`/`mojeek*`; un test impide que vuelvan.
+  - **UI:** desaparecen selector, diálogo de key, botones y claves de catálogo;
+    un test impide que vuelvan.
   - **Documentación y pruebas:** `amatl.toml`, `amatl.example.toml`,
     `docs/configuracion.md`, `docs/gobernanza-providers.md`,
     `docs/security/{secrets,threat-model,asvs-checklist}.md` y los suites de
@@ -628,13 +628,13 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   credencial) y Marginalia (con credencial)**; «conectar una fuente de búsqueda
   real» queda cumplido sin candidatos fantasma. La política de «no se contratan
   fuentes de pago» pasa de ser un `rejected` por defecto —overrideable en
-  `amatl.toml`— a una puerta dura en el código: reactivar Brave o Mojeek exige
+  `amatl.toml`— a una puerta dura en el código: reactivar una fuente retirada exige
   revertir esta ADR (restaurar adapter y quitar el nombre de
-  `RETIRED_PROVIDERS`), no cambiar una ficha. Riesgo residual: el nombre
-  `brave` sigue apareciendo como **motor upstream de SearXNG** en los fixtures
+  `RETIRED_PROVIDERS`), no cambiar una ficha. Riesgo residual: algunos nombres
+  siguen apareciendo como **motores upstream de SearXNG** en los fixtures
   de `providers/searxng.rs` y en la evidencia histórica
-  (`docs/testing/searxng-characterization.md`, `test-results/`); es un motor de
-  la instancia SearXNG del operador, no una fuente de AMATL. ADR-014 sigue
+  (`docs/testing/searxng-characterization.md`, `test-results/`); son motores de
+  la instancia SearXNG del operador, no fuentes de AMATL. ADR-014 sigue
   vigente en su mecanismo (credencial efímera zeroizada), pero su enumeración de
   adapters se reduce a Marginalia.
 - **Alternativas descartadas:** dejar los adapters apagados con

@@ -61,11 +61,11 @@ impl ProviderRegistry {
     /// Registry with the sources AMATL ships.
     ///
     /// Exactly two sources are registered: the self-hosted, credential-free
-    /// SearXNG and the approved key-gated Marginalia. The retired paid sources
-    /// (`brave`, `mojeek`) ship no adapter and no factory, so their names
-    /// resolve to `provider_not_registered` — they can never be selected or send
-    /// traffic. Configuration validation rejects those names outright
-    /// (`config/mod.rs`), so the registry is the second of two closed doors.
+    /// SearXNG and the approved key-gated Marginalia. No other source ships an
+    /// adapter or a factory, so any other name resolves to
+    /// `provider_not_registered` — it can never be selected or send traffic.
+    /// Configuration validation rejects unknown names outright (`config/mod.rs`),
+    /// so the registry is the second of two closed doors.
     pub fn builtin() -> Self {
         Self::empty()
             .with(Arc::new(SearXngFactory))
@@ -232,11 +232,11 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        // Only the two sanctioned sources ship. The retired paid names are
-        // neither registered nor declared, so they cannot be selected.
+        // Only the two sanctioned sources ship; nothing else is registered or
+        // declared, so nothing else can be selected.
         assert_eq!(registry.names(), vec!["marginalia", "searxng"]);
-        assert!(registry.get("brave").is_none());
-        assert!(registry.get("mojeek").is_none());
+        assert!(registry.get("searxng").is_some());
+        assert!(registry.get("marginalia").is_some());
         assert!(!registry.get("searxng").unwrap().requires_credential());
         assert!(registry.get("marginalia").unwrap().requires_credential());
     }
@@ -245,9 +245,6 @@ mod tests {
     fn third_party_sources_register_without_touching_the_builtin_set() {
         let registry = ProviderRegistry::builtin().with(Arc::new(CustomFactory));
         assert!(registry.contains("custom_archive"));
-        // The retired names are not part of the builtin set and must not appear.
-        assert!(!registry.contains("brave"));
-        assert!(!registry.contains("mojeek"));
         assert!(ProviderRegistry::empty().names().is_empty());
 
         // A source can also be withdrawn without rebuilding the registry.
@@ -255,7 +252,5 @@ mod tests {
         assert!(registry.unregister("custom_archive").is_some());
         assert!(!registry.contains("custom_archive"));
         assert!(registry.unregister("custom_archive").is_none());
-        assert!(!registry.contains("brave"));
-        assert!(!registry.contains("mojeek"));
     }
 }

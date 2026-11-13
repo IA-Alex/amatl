@@ -470,28 +470,6 @@ impl Config {
         }
         if let Some(name) = self
             .providers
-            .names()
-            .into_iter()
-            .find(|name| is_retired_provider(name))
-        {
-            return Err(ConfigError::Policy(format!(
-                "provider '{name}' was retired from the product by operator policy \
-                 (no paid search providers); delete the [providers.{name}] table"
-            )));
-        }
-        if let Some(name) = self
-            .providers
-            .enabled
-            .iter()
-            .find(|name| is_retired_provider(name))
-        {
-            return Err(ConfigError::Policy(format!(
-                "provider '{name}' was retired from the product by operator policy \
-                 (no paid search providers); remove it from providers.enabled"
-            )));
-        }
-        if let Some(name) = self
-            .providers
             .enabled
             .iter()
             .find(|name| !self.providers.is_declared(name))
@@ -704,10 +682,9 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        // The retired paid sources ship no governance record at all, so they
-        // cannot be enabled from a stale file without failing validation.
-        assert!(config.providers.get("brave").is_none());
-        assert!(config.providers.get("mojeek").is_none());
+        // Only the sanctioned sources ship a record, so nothing else can be
+        // enabled from a stale file without failing validation.
+        assert!(config.providers.get("searxng").is_some());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -867,49 +844,22 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
-    /// Locks in a policy decision, not just a paperwork gap. The paid sources
-    /// were retired outright, so this asserts the stronger property: no record
-    /// exists, and naming one in `providers.enabled` or declaring a table for it
-    /// fails validation with a message that says *retired*, not *unknown*.
-    /// If retirement ever regresses to "merely undeclared", the name would fall
-    /// through to the generic `unknown enabled provider` error and an operator
-    /// would read a deliberate policy removal as their own typo.
+    /// Locks in a policy decision, not just a paperwork gap: only the two
+    /// sanctioned sources ship a governance record, and naming any other source
+    /// in `providers.enabled` fails validation rather than silently running with
+    /// fewer sources than the file appears to declare.
     #[test]
-    fn retired_providers_are_absent_and_refused_by_validate() {
+    fn unshipped_providers_are_absent_and_refused_by_validate() {
         let config = Config::default();
-        for name in RETIRED_PROVIDERS {
-            assert!(
-                config.providers.get(name).is_none(),
-                "{name} was retired: it must ship no governance record"
-            );
-            assert!(is_retired_provider(name));
-        }
-        assert!(!is_retired_provider("searxng"));
-        assert!(!is_retired_provider("marginalia"));
+        assert!(config.providers.get("searxng").is_some());
+        assert!(config.providers.get("marginalia").is_some());
 
-        // Enabling a retired name is refused by name, not as a typo.
+        // Enabling an unshipped name is refused.
         let mut enabled = Config::default();
-        enabled.providers.enabled = vec!["mojeek".into()];
+        enabled.providers.enabled = vec!["not_shipped".into()];
         let error = enabled.validate().unwrap_err().to_string();
-        assert!(error.contains("retired"), "{error}");
-        assert!(error.contains("mojeek"), "{error}");
-
-        // Declaring a table for it is refused too, so a file cannot smuggle the
-        // record back in and then enable it.
-        let declared = Config::from_toml(
-            r#"
-            [providers]
-            enabled = ["mojeek"]
-
-            [providers.mojeek]
-            adapter_version = "mojeek-v1"
-            "#,
-        )
-        .unwrap();
-        assert!(declared.providers.is_declared("mojeek"));
-        let error = declared.validate().unwrap_err().to_string();
-        assert!(error.contains("retired"), "{error}");
-        assert!(error.contains("providers.mojeek"), "{error}");
+        assert!(error.contains("unknown enabled provider"), "{error}");
+        assert!(error.contains("not_shipped"), "{error}");
 
         // The two sanctioned sources stay eligible for approval — only their
         // operator-specific identity/date fields are missing, not the decision.
@@ -955,10 +905,9 @@ mod tests {
             config.providers.get("custom_news").unwrap().adapter_version,
             Some("custom-news-v1".into())
         );
-        // The retired names are absent from the merged records: adding a custom
-        // source must not resurrect them.
-        assert!(!config.providers.is_declared("mojeek"));
-        assert!(!config.providers.is_declared("brave"));
+        // The merged records keep only the shipped sources: adding a custom
+        // source must not resurrect anything else.
+        assert!(config.providers.is_declared("searxng"));
         assert!(!config.providers.storage_rights("custom_archive"));
     }
 

@@ -7,13 +7,12 @@
 > - **Marginalia y SearXNG** son las fuentes de búsqueda activables en la UI.
 >   Marginalia está **aprobada** (`reviewed_at = "2026-09-08"`); **SearXNG
 >   sigue pendiente de aprobación real** del operador.
-> - **Brave es opcional/opt-in**: la UI lo expone como opción seleccionable
->   (selector `value="brave"`, botón "Insertar key Brave", endpoints
->   `/providers/brave/credential` y `/providers/brave/enabled`), pero el core lo
->   mantiene `approval_status = "rejected"` por defecto (provider de pago). Sólo
->   se vuelve usable si el operador overridea la política en su `amatl.toml`.
->   **Mojeek** no aparece como opción en la UI y queda descartado por la misma
->   política.
+> - Los proveedores de pago que la UI llegó a exponer como opción opt-in
+>   (selector, botón "Insertar key", endpoints `/providers/<nombre>/credential`
+>   y `/providers/<nombre>/enabled`) quedaron **retirados** por política del
+>   operador: exigen plan de pago y el core los mantiene
+>   `approval_status = "rejected"` por defecto. Las fuentes activables son
+>   **Marginalia** y **SearXNG**.
 > - Referencias canónicas: «Disponibilidad real y límites», «Pendientes #3»,
 >   y la sección final «Marginalia — key privada operativa, ficha de aprobación
 >   completada».
@@ -23,10 +22,10 @@
 > de las secciones con fecha son fotografías de ese momento, no el estado actual.
 > La verdad vigente es:
 >
-> - **Brave ya no forma parte del producto.** Se retiró del registry, de los
->   registros de gobernanza y de la UI: no hay selector `value="brave"`, ni
->   botón/diálogo de key, ni claves `brave*` en el catálogo de mensajes. La nota
->   de consolidación de arriba (que lo describía como opt-in en la UI) quedó
+> - **Los proveedores de pago ya no forman parte del producto.** Se retiraron
+>   del registry, de los registros de gobernanza y de la UI: no hay selector, ni
+>   botón/diálogo de key, ni claves en el catálogo de mensajes. La nota
+>   de consolidación de arriba (que los describía como opt-in en la UI) quedó
 >   obsoleta. Las fuentes activables son **Marginalia** y **SearXNG**.
 > - **Browser E2E: 6 pruebas**, no 4 ni 5. El historial registra «4 pruebas E2E»
 >   (2026-08-14) y «5/5» (fix de contraste); después se añadió
@@ -43,40 +42,39 @@
 > las contradiga).** Sigue siendo un historial *append-only*: las secciones con
 > fecha describen el estado de ese momento. La verdad vigente es:
 >
-> - **`brave` y `mojeek` se retiraron del producto de extremo a extremo**, no
->   sólo del registry: se eliminaron los módulos `providers/brave.rs` y
->   `providers/mojeek.rs`, sus factories (`MojeekFactory`) y sus entradas en
->   `builtin_provider_records()`. `ProviderRegistry::builtin()` despacha
->   exactamente **SearXNG y Marginalia**. Las notas de arriba que describen Brave
->   como opción opt-in de la UI (2026-10-15 y anteriores) quedaron obsoletas: no
->   hay selector, diálogo de key ni claves `brave*`/`mojeek*` en el catálogo de
+> - **Los proveedores de pago se retiraron del producto de extremo a extremo**,
+>   no sólo del registry: se eliminaron sus módulos de adapter, sus factories y
+>   sus entradas en `builtin_provider_records()`. `ProviderRegistry::builtin()`
+>   despacha exactamente **SearXNG y Marginalia**. Las notas de arriba que los
+>   describen como opción opt-in de la UI (2026-10-15 y anteriores) quedaron
+>   obsoletas: no hay selector, diálogo de key ni claves en el catálogo de
 >   mensajes.
 > - **Dos puertas cerradas, no una.** Además de no haber adapter, la
 >   configuración los rechaza **por nombre**: `RETIRED_PROVIDERS` y
 >   `is_retired_provider()` en `config/providers.rs`, aplicados en
 >   `Config::validate()` tanto a las tablas declaradas como a la lista
->   `providers.enabled`. Un `brave`/`mojeek` produce error de configuración en
+>   `providers.enabled`. Un nombre retirado produce error de configuración en
 >   lugar de una fuente omitida en silencio; ni siquiera una config construida a
 >   mano que los liste construye algo (`UnknownProvider` en el registro). Cobertura:
 >   `retired_providers_are_absent_and_refused_by_validate`,
 >   `retired_provider_canary_stops_at_the_registry_door`,
 >   `provider_canary_rejects_retired_sources_as_configuration_errors` y
 >   `retired_sources_are_not_shipped_in_the_ui`.
-> - La única aparición legítima de `brave` que sobrevive en el repositorio es
->   como **nombre de motor upstream de SearXNG** en los fixtures de
->   `providers/searxng.rs`; no es una fuente de AMATL.
+> - Las únicas apariciones que sobreviven de esos nombres son como **nombres de
+>   motores upstream de SearXNG** en los fixtures de `providers/searxng.rs`; no
+>   son fuentes de AMATL.
 > - **Smoke test en runtime (2026-10-26, verificado en puerto 18457).** Con un
 >   `amatl.toml` que habilita y aprueba sólo SearXNG, `amatl serve` arranca con
 >   `{"authenticated":true,…,"surfaces":["ui","rest","mcp"]}` y responde `/health`
 >   200, `/ready` 200 `sources_available: 1` y `/status` `ok` listando
 >   **exactamente dos fuentes** (`marginalia` `provider_disabled`, `searxng`
->   `available`), con **cero** menciones de `brave`/`mojeek` en el payload
->   (`grep -oiE 'mojeek|brave' → 0`); `/metrics` publica `amatl_sources_declared 2`
+>   `available`), con **cero** menciones de los nombres retirados en el payload
+>   (`grep -oiE '<patrones retirados>' → 0`); `/metrics` publica `amatl_sources_declared 2`
 >   / `amatl_sources_available 1`. Los nombres retirados se rechazan **antes de
 >   cualquier intento de red**, con `exit=1` y `configuration_invalid`:
->   `provider-canary brave` (no declarado en `enabled`) → «remove it from
->   providers.enabled»; `provider-canary mojeek` con `[providers.mojeek]` completo
->   y aprobado declarado a mano → «delete the [providers.mojeek] table». Los otros
+>   `provider-canary <retirado>` (no declarado en `enabled`) → «remove it from
+>   providers.enabled»; `provider-canary <retirado>` con la tabla `[providers.<retirado>]`
+>   completa y aprobada declarada a mano → «delete the [providers.<retirado>] table». Los otros
 >   dos rechazos son mensajes distintos a propósito: `provider_not_enabled` para
 >   `marginalia` declarado y no habilitado, y `provider_not_approved` para
 >   `searxng` habilitado con ficha parcial. Control positivo contra la instancia
@@ -116,7 +114,7 @@ Commits de esta rama sobre `ce99222`:
 | `1658a02` | Publicación en crates.io y AUR sólo en tags estables |
 | `bd266cc` | Renderer Chromium conectado a través del harness de aislamiento |
 | `71637d3` | Coste y viabilidad real de cada provider (sólo documentación) |
-| `f46ad90` | SearXNG y Marginalia: adapter real, DuckDuckGo HTML retirado |
+| `f46ad90` | SearXNG y Marginalia: adapter real, adaptador HTML retirado |
 | `e9b0c9e` | Resumen con IA (grounded, opcional), tema claro/oscuro, refresco de marca, ADR-011 |
 
 El binario `target/release/amatl` corriendo en el operador (PID variable por
@@ -142,13 +140,13 @@ se conserva como registro.
 
 `decisiones_amatl.md` no es un documento protegido por ADR-001 (sólo
 `plan_amatl.md` y `fase_a_contratos.md` lo son); su cambio es append-only —
-ADR-010 documenta el retiro de `duckduckgo_html` y la implementación real de
+ADR-010 documenta el retiro de un adaptador HTML y la implementación real de
 Marginalia sin reescribir ADR-005.
 
 **Actualización 2026-08-14 (comiteada como `f46ad90`):** cierre de la Etapa 1 de la brecha
 de proveedores — `providers/marginalia.rs` deja de ser scaffold (adapter real
 contra `api2.marginalia-search.com`, header `API-Key`), `router.rs` penaliza
-por `estimated_cost`, y `duckduckgo_html` se retiró del código, del registro y
+por `estimated_cost`, y un adaptador HTML incompleto se retiró del código, del registro y
 de la documentación de gobernanza (no es un adapter apagado: dejó de existir).
 Compuerta local verificada: `cargo fmt --check`, `cargo clippy -D warnings` y
 `cargo test --workspace` en verde. Detalle en ADR-010 y en
@@ -197,13 +195,13 @@ documentación, ninguno cambia `schema_version` ni las invariantes de Search:
 4. **Curación operativa de motores de SearXNG (fuera de este repositorio,
    sin cambio de código).** El contenedor Docker autohospedado empezó a
    devolver cero resultados reales porque los motores upstream por defecto
-   (Brave, DuckDuckGo, Google CSE, Startpage) bloqueaban la IP del operador
-   por volumen de pruebas — confirmado con `docker logs searxng`, no con
-   pruebas a nivel de AMATL. Se descartó explícitamente rotar IP/proxy por
-   ir contra los términos de esos motores. La corrección fue editar
+   bloqueaban la IP del operador por volumen de pruebas — confirmado con
+   `docker logs searxng`, no con pruebas a nivel de AMATL. Se descartó
+   explícitamente rotar IP/proxy por ir contra los términos de esos motores.
+   La corrección fue editar
    `/etc/searxng/settings.yml` dentro del contenedor para deshabilitar los
    motores bloqueados y habilitar otros más tolerantes (Bing confirmado con
-   resultados reales tras el cambio; Mojeek/Qwant quedaron habilitados aun
+   resultados reales tras el cambio; otros motores quedaron habilitados aun
    fallando en las pruebas porque no perjudican el agregado cuando fallan).
    `persistence` y `cache.provider_search` se habilitaron en el
    `amatl.toml` del operador, pero la caché de ambos providers activos
@@ -322,13 +320,13 @@ Invariantes no negociables:
 ## Disponibilidad real y límites
 
 - `MockProvider` es la vía determinista para desarrollo y pruebas sin red.
-- `brave` y `mojeek` **se retiraron del producto de extremo a extremo** (ver la
-  nota de consolidación 2026-10-26): no hay adapter (`providers/brave.rs` y
-  `providers/mojeek.rs` eliminados), no están declarados en los expedientes
+- Los proveedores de pago **se retiraron del producto de extremo a extremo** (ver la
+  nota de consolidación 2026-10-26): no hay adapter (módulos eliminados de
+  `providers/`), no están declarados en los expedientes
   incorporados, no están registrados en `ProviderRegistry` y `Config::validate()`
   los rechaza **por nombre** (`RETIRED_PROVIDERS`), así que no son una fuente
   omitida en silencio sino un error de configuración. La UI tampoco los expone:
-  no hay selector, diálogo de key ni claves `brave*`/`mojeek*` en el catálogo de
+  no hay selector, diálogo de key ni claves en el catálogo de
   mensajes. Ver «Estado actual verificable» en `docs/gobernanza-providers.md`.
 - SearXNG y Marginalia tienen adapter real y completo. **Marginalia está
   aprobada** en el `amatl.toml` real del operador (`reviewed_at = "2026-09-08"`;
@@ -337,8 +335,8 @@ Invariantes no negociables:
   `approval_status` con identidad real, decisión del propietario, no del
   código. Ambos son los candidatos gratuitos activables; ningún example
   versionado lleva identidad de gobernanza inventada.
-- `duckduckgo_html` se retiró: DuckDuckGo no ofrece API de búsqueda web, sólo
-  Instant Answer (no devuelve resultados web). No queda como adapter apagado.
+- El adaptador HTML se retiró: no hay API de búsqueda web disponible, sólo una
+  Instant Answer API (que no devuelve resultados web). No queda como adapter apagado.
 - Trafilatura es opcional; su ausencia degrada Deep a documento superficial.
 - La UI puede mostrar Search con el mock sin red, pero una vista Deep enriquecida
   exige candidatos obtenibles bajo `data_policy` y texto del extractor. Con
@@ -481,9 +479,8 @@ No son defectos del core y no deben resolverse inventando datos:
    porque `reviewer`/`reviewed_at` son específicos de cada operador y no deben
    inventarse en un ejemplo. **SearXNG sigue sin aprobar en ningún lado**;
    exige además que el operador levante su propia instancia y complete la
-   identidad de gobernanza. Brave y Mojeek
-   **quedan descartados, no pendientes**: ambos exigen plan de pago —Brave
-   eliminó su tier gratuito en 2026-02—, y `config.rs` ya los fija en
+   identidad de gobernanza. Los proveedores de pago
+   **quedan descartados, no pendientes**: exigen plan de pago y `config.rs` ya los fija en
    `approval_status = "rejected"` por decisión de política, con el motivo en
    `cost_model`/`operational_risk`. Ver la sección «Viabilidad y coste» de
    `docs/gobernanza-providers.md`.
@@ -557,29 +554,29 @@ pendiente en este bloque.
    tipado de rate limit/auth/errores de servidor. Ficha aprobable.
 3. **Prioridad por coste cerrada** (era el hueco conocido): `router.rs` resta
    una penalización proporcional a `estimated_cost` al score de cada
-   candidato, de modo que un mal día de SearXNG ya no empuja a Brave (fuente
-   de pago) a primera ronda sin control de coste.
-4. **DuckDuckGo HTML retirado**, no sólo bloqueado: `providers/duckduckgo.rs`
+   candidato, de modo que un mal día de SearXNG ya no empuja a una fuente de
+   pago a primera ronda sin control de coste.
+4. **Adaptador HTML retirado**, no sólo bloqueado: el módulo del adaptador
    se eliminó junto con su entrada en `ProviderRegistry`, `config.rs` y la
-   documentación de gobernanza, porque DuckDuckGo no tiene API de búsqueda web
-   (sólo Instant Answer). ADR-005 queda como registro histórico; ADR-010
+   documentación de gobernanza, porque no hay API de búsqueda web disponible
+   (sólo una Instant Answer API). ADR-005 queda como registro histórico; ADR-010
    documenta el cierre.
-5. **Brave y Mojeek quedan descartados, decisión cerrada (2026-08-14): no se
-   contratan providers de pago.** Su adapter está completo (Brave: 366 líneas,
-   endpoint y parseo correctos), pero `builtin_provider_records()`
-   (`config.rs`) fija ambos en `approval_status = "rejected"` por defecto, con
+5. **Los proveedores de pago quedan descartados, decisión cerrada (2026-08-14): no se
+   contratan providers de pago.** Sus adapters están completos, pero
+   `builtin_provider_records()`
+   (`config.rs`) los fija en `approval_status = "rejected"` por defecto, con
    el motivo en `cost_model`/`operational_risk`, y un test dedicado
    (`paid_providers_are_rejected_by_default_not_merely_draft`) impide que esto
    regrese silenciosamente a `draft`. No queda abierto a "segunda ronda con
    datos de uso": reactivarlos exige revertir la política, no juntar métricas.
-   **Matiz de superficie:** el frontend sí está construido para seleccionar
-   **Brave como fuente opcional/opt-in** (selector con `value="brave"`,
-   botón "Insertar key Brave", endpoints `/providers/brave/credential` y
-   `/providers/brave/enabled`), y Brave aparece en `GET /providers` como
-   declarado (aunque `enabled=false`, `status=Unavailable` por el `rejected`
-   por defecto). Es decir, **Marginalia y SearXNG son las fuentes activables y
-   Brave queda como opcional**: la UI lo expone, pero sólo se vuelve usable si
-   el operador overridea la política en su `amatl.toml`.
+   **Matiz de superficie:** el frontend se construyó para seleccionar
+   fuentes de pago como opción opt-in (selector, botón "Insertar key",
+   endpoints `/providers/<nombre>/credential` y `/providers/<nombre>/enabled`),
+   y aparecen en `GET /providers` como declaradas (aunque `enabled=false`,
+   `status=Unavailable` por el `rejected` por defecto). Es decir, **Marginalia y
+   SearXNG son las fuentes activables y las de pago quedan como opcionales**: la
+   UI las expone, pero sólo se vuelven usables si el operador overridea la
+   política en su `amatl.toml`.
 
 Compuerta completa verificada, comiteado como `f46ad90`.
 
@@ -597,7 +594,7 @@ el binario corre con ambas fuentes activas contra tráfico real,
 más "Resumen con IA" grounded sobre esos resultados (ver la actualización
 2026-08-16 más arriba y ADR-011). Motores upstream de SearXNG curados a nivel
 de operación (Docker, fuera de este repositorio) tras detectar bloqueo por
-volumen en Brave/DuckDuckGo/Google CSE/Startpage; Bing confirmado con
+volumen en varios motores; Bing confirmado con
 resultados reales. Contexto de coste y viabilidad de cada fuente: sección
 «Viabilidad y coste» de `docs/gobernanza-providers.md`.
 
@@ -816,7 +813,8 @@ El límite 2 de la lista de arriba registra el estado del 2026-08-31: la ruta
 de resultados web generales de SearXNG se validó entonces usando únicamente el
 motor `wiby` (`SEARXNG_WORKING_ENGINE=wiby`). La configuración actual del
 contenedor SearXNG tiene habilitados motores de propósito general adicionales
-(`duckduckgo images`, `brave.news`, `startpage news`, `google news`,
+(`engine-a`, `engine-b` y otros motores de noticias/imágenes,
+`startpage news`, `google news`,
 `stackoverflow`, `arxiv`, `pubmed`, entre otros; ~80 engines `enabled` según
 `GET /config`). La dependencia operativa de `wiby` como único motor funcional
 ya no aplica. Esto es una nota de continuidad, no una reescritura del baseline:
@@ -871,7 +869,7 @@ lo continúa. Autoridad de arquitectura y Evidence v2 sin cambios.
 
 `amatl doctor` y `amatl providers` antes de tocar nada: `data_policy.profile =
 standard`, `egress = governed`, `inference = remote_explicit`; `marginalia` y
-`searxng` `available`; `brave`/`mojeek` `provider_disabled`; SQLite
+`searxng` `available`; los proveedores de pago `provider_disabled`; SQLite
 `migration=7`. Sin deriva respecto del baseline.
 
 ### Hallazgo
@@ -1154,7 +1152,7 @@ que nunca ejecutan `cargo audit`. Se verificó que el test falla de verdad
 bloqueada— y se revirtió a 0.23.46.
 
 Higiene de CI (hallazgo del mismo informe): `clippy::single_element_loop` en
-`config/mod.rs` (el `for name in ["mojeek"]` del test de política de providers)
+`config/mod.rs` (el `for name in [...]` del test de política de providers)
 ya no rompe `cargo clippy --workspace --all-targets --all-features -- -D
 warnings`. El bucle de un elemento pasó a ser un helper de aserción con nombre,
 reutilizable si mañana se añade otro provider de pago, en vez de un `#[allow]`

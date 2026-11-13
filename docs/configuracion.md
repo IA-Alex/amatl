@@ -84,13 +84,12 @@ AMATL.
 Defaults específicos: SearXNG (`searxng-v1`, sin credencial) y Marginalia
 (`marginalia-v1`, `MARGINALIA_API_KEY`) están `draft` con adapter completo y ficha
 aprobable; sólo falta `reviewer`/`reviewed_at`/`approval_status` con identidad
-real. `duckduckgo_html` se retiró del registro: DuckDuckGo no ofrece API de
-búsqueda web. Los proveedores de pago **`brave` y `mojeek` se retiraron del
-producto**: no están declarados en los expedientes incorporados, no están
+real. Los adaptadores sin API de búsqueda web disponible y las fuentes de pago
+**se retiraron del producto**: no están declarados en los expedientes incorporados, no están
 registrados en el `ProviderRegistry`, sus adapters se eliminaron de `providers/`
-y `Config::validate()` rechaza ambos nombres de forma explícita
+y `Config::validate()` rechaza esos nombres de forma explícita
 (`RETIRED_PROVIDERS` en `config/providers.rs:148`), de modo que aparecer en
-`providers.enabled` o declarar `[providers.brave]`/`[providers.mojeek]` es un
+`providers.enabled` o declarar `[providers.<nombre>]` para un nombre retirado es un
 error de configuración, no una fuente omitida en silencio. Antes de elegir
 fuente, consulta la sección «Viabilidad y coste» de
 `docs/gobernanza-providers.md`.

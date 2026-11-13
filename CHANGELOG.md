@@ -296,27 +296,24 @@ adapter/extractor versions are independent axes as well.
 
 ### Removed
 
-- Brave as a shipped source: the adapter module (`providers/brave.rs`), its
-  registry factory, its built-in governance record and the UI credential
-  affordance are gone, so `brave` in `providers.enabled` now fails configuration
+- The paid sources dropped by operator policy as shipped sources: their adapter
+  modules, registry factories and built-in governance records are gone, so
+  `ProviderRegistry::builtin()` now ships exactly SearXNG and Marginalia.
+  Any other source name in `providers.enabled` now fails configuration
   validation and no request can be sent. The credential routes themselves stay —
-  `POST`/`DELETE /providers/{name}/credential` are parameterized by provider, not
-  Brave-specific — and now reject `brave` like any other name the registry does
-  not carry. The canary workflow's provider choices and secrets follow the
-  shipped sources (`searxng`, `marginalia`).
-- Mojeek as a shipped source, completing the paid-source policy drop: the
-  adapter module (`providers/mojeek.rs`), its registry factory and its built-in
-  governance record are gone, so `ProviderRegistry::builtin()` now ships exactly
-  SearXNG and Marginalia. Removal is enforced at **two** doors instead of one:
-  beyond the missing adapter, `RETIRED_PROVIDERS` and `is_retired_provider()`
-  (`config/providers.rs`) make `Config::validate()` reject `brave` and `mojeek` by
+  `POST`/`DELETE /providers/{name}/credential` are parameterized by provider and
+  now reject any name the registry does not carry. The canary workflow's
+  provider choices and secrets follow the shipped sources (`searxng`,
+  `marginalia`). Removal is enforced at **two** doors instead of one: beyond the
+  missing adapters, `RETIRED_PROVIDERS` and `is_retired_provider()`
+  (`config/providers.rs`) make `Config::validate()` reject the retired names by
   name — in a declared `[providers.<name>]` table as well as in
   `providers.enabled` — so a stale configuration fails loudly at startup instead
   of silently shipping one source fewer, and even a hand-built config that lists
   a retired name stops at the registry (`UnknownProvider`). UI selectors, key
-  dialogs, message-catalog keys and the canary workflows no longer mention either
-  name; the only surviving `brave` in the tree is the upstream SearXNG engine
-  name in the `providers/searxng.rs` fixtures.
+  dialogs, message-catalog keys and the canary workflows no longer mention those
+  names; the only surviving upstream engine names live in the
+  `providers/searxng.rs` fixtures.
 - Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
   transport surfaces live in `amatl-server`.
 
@@ -597,10 +594,10 @@ adapter/extractor versions are independent axes as well.
   touches no logic, the tool still answers `12 known-dead, 0 new` with exit 0,
   and the workflow comment now dates the number it quotes so a future drift shows
   up as a stale date instead of a silently false claim.
-- The documents that describe the Brave/Mojeek retirement cited the deleted
-  adapter modules as their evidence (`providers/brave.rs`, `providers/mojeek.rs`),
-  which the blocking `tools/check_doc_refs.py` gate refuses by design: it
-  reported five dead references and exit 1, so the removal was not shippable
+- The documents that describe the paid-source retirement cited the deleted
+  adapter modules as their evidence, which the blocking
+  `tools/check_doc_refs.py` gate refuses by design: it reported five dead
+  references and exit 1, so the removal was not shippable
   while its own documentation pointed at files that no longer exist. Both
   documents now cite what does exist — `RETIRED_PROVIDERS` in
   `config/providers.rs:148`, which is what `Config::validate()` reads — and the
@@ -723,7 +720,7 @@ adapter/extractor versions are independent axes as well.
 - Multi-provider Search pipeline with explicit Query, Classification,
   SearchPlan, Budget, Normalization, Canonicalization, Deduplication, ranking,
   Diversity, degradation and telemetry contracts.
-- Governed Brave and Mojeek adapters; fail-closed DuckDuckGo HTML adapter.
+- Governed paid-source adapters; a fail-closed HTML adapter.
 - Optional SQLite provider/document caches and provider telemetry.
 - Bounded Deep fetching, optional Trafilatura extraction, Evidence, Ranking v2,
   Gap analysis and SubQuery expansion; Chromium remains fail-closed.

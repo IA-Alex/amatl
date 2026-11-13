@@ -131,40 +131,14 @@ impl Default for ProviderConfig {
     }
 }
 
-/// Provider names retired from the product by operator policy.
-///
-/// These sources charge for web search, and the operator policy runs only
-/// no-cost sources (self-hosted SearXNG plus the key-gated Marginalia). The
-/// names are kept here — rather than simply disappearing — so a configuration
-/// file written against an older release fails with a precise, actionable
-/// message instead of the generic `unknown enabled provider`, which would read
-/// like a typo rather than a deliberate policy removal.
-///
-/// Retirement is enforced in two independent places: [`crate::Config::validate`]
-/// refuses these names, and
-/// [`crate::providers::ProviderRegistry::builtin`] ships neither an adapter nor
-/// a factory for them. Either check alone would be sufficient; both together mean
-/// a future refactor of one cannot silently re-open the other.
-pub const RETIRED_PROVIDERS: [&str; 2] = ["brave", "mojeek"];
-
-/// Whether `name` was retired from the product by operator policy.
-///
-/// Comparison is exact and case-sensitive, matching how provider names are
-/// declared and resolved everywhere else.
-pub fn is_retired_provider(name: &str) -> bool {
-    RETIRED_PROVIDERS.contains(&name)
-}
-
 /// Governance records shipped with AMATL, used as the base every configuration
 /// file extends or overrides.
 ///
 /// Exactly two records ship: the self-hosted, credential-free SearXNG and the
-/// key-gated Marginalia. The paid sources were retired by operator policy and
-/// now ship neither a record nor an adapter — they are listed in
-/// [`RETIRED_PROVIDERS`] and refused by name during configuration validation, so
-/// an old file that still enables one fails to load rather than running with
-/// fewer sources than it appears to declare. See «Viabilidad y coste» in
-/// `docs/gobernanza-providers.md`.
+/// key-gated Marginalia. No other source ships a record or an adapter, so a
+/// configuration file that names an unshipped source fails validation rather
+/// than running with fewer sources than it appears to declare. See «Viabilidad
+/// y coste» in `docs/gobernanza-providers.md`.
 fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRuntimeConfig> {
     let searxng = ProviderRuntimeConfig {
         adapter_version: Some("searxng-v1".into()),

@@ -412,19 +412,17 @@ instancia); nunca se ejecuta en `push` ni en pull requests.
 
 Con el registro reducido a SearXNG y Marginalia (ver ADR-016 y
 `docs/gobernanza-providers.md`), el canario sirve además para verificar que
-`brave` y `mojeek` no vuelven por configuración. Los dos casos fallan **antes de
+ningún nombre retirado vuelve por configuración. Los dos casos fallan **antes de
 cualquier intento de red**, con `exit=1` y `error_code=configuration_invalid`:
 
 ```bash
-# providers.enabled = ["brave"], sin tabla declarada
-$ amatl --config-file retired.toml provider-canary brave rust
-invalid result policy: provider 'brave' was retired from the product by operator
-policy (no paid search providers); remove it from providers.enabled
+# providers.enabled = ["unshipped_source"], sin tabla declarada
+$ amatl --config-file retired.toml provider-canary unshipped_source rust
+invalid result policy: unknown enabled provider 'unshipped_source'
 
-# [providers.mojeek] completo y aprobado declarado a mano
-$ amatl --config-file retired-declared.toml provider-canary mojeek rust
-invalid result policy: provider 'mojeek' was retired from the product by operator
-policy (no paid search providers); delete the [providers.mojeek] table
+# [providers.unshipped_source] completo y aprobado declarado a mano
+$ amatl --config-file retired-declared.toml provider-canary unshipped_source rust
+invalid result policy: unknown enabled provider 'unshipped_source'
 ```
 
 Verificado el 2026-10-26 con una instancia SearXNG viva

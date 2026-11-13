@@ -13,7 +13,7 @@ La campaña cubrió caracterización, diagnóstico de routing y adapter, una rep
 - AMATL: commit `48d0a9a24b3365e996a3b5e63eb3792fe70ed57a` en los artefactos.
 - Provider: `searxng` / adapter `searxng-v1`. AMATL envió `q`, `format=json` y `pageno=1`, sin `engines` ni `categories` para búsquedas generales.
 - Corridas principales: secuenciales, sin reintentos, con persistencia, historial, cachés y telemetría persistente deshabilitados.
-- **Baseline v1 — pre-change:** anterior a deshabilitar DuckDuckGo, Mojeek y Qwant.
+- **Baseline v1 — pre-change:** anterior a deshabilitar `engine-a`, `engine-b` y Qwant.
 - **Current state — post-change, not yet benchmarked:** posterior al cambio. No existe Baseline SearXNG v2 ni evidencia comparativa de mejora o empeoramiento.
 
 ## 4. Metodología
@@ -33,9 +33,9 @@ Una cuenta configurada no demuestra selección, ejecución ni contribución de r
 | 1. Caracterización | 14:58:32 | `test-results/searxng/20260823-145832/` | 3 consultas; una llegó a SearXNG sin resultados utilizables. |
 | 2. Routing | 15:04:42 | `test-results/searxng-diagnostic/20260823-150442/` | Los filtros excluyeron SearXNG antes del adapter. |
 | 3. Adapter/mapping | 15:10:35 | `test-results/searxng-diagnostic/20260823-151035-mapping/` | HTTP 200 y `results=0`; sin pérdida posterior observable. |
-| 4. Motores/repetición | 15:16:06 | `test-results/searxng-diagnostic/20260823-151606-engines/` | 10 resultados; DuckDuckGo `access denied`. |
+| 4. Motores/repetición | 15:16:06 | `test-results/searxng-diagnostic/20260823-151606-engines/` | 10 resultados; `engine-a` `access denied`. |
 | 5. Baseline v1 | 15:30:23 | `test-results/benchmarks/searxng-v1/20260823-153023/` | 30 corridas pre-change. |
-| 6. Actividad individual | 15:46:39 | `test-results/searxng-diagnostic/20260823-154639-engine-activity/` | DuckDuckGo falló; Qwant activo; Mojeek `UNKNOWN`. |
+| 6. Actividad individual | 15:46:39 | `test-results/searxng-diagnostic/20260823-154639-engine-activity/` | `engine-a` falló; Qwant activo; `engine-b` `UNKNOWN`. |
 | 7. Cambio posterior | 16:17:54 | `test-results/searxng-configuration/20260823-161754-disable-engines/` | Se deshabilitaron sólo tres motores. |
 | 8. Inventario/contrato | 16:36:46 | `test-results/searxng-diagnostic/20260823-163646-effective-engines/` | 111 → 18 → hasta 17; `success + 0 results`. |
 | 9. Runtime por motor | posterior | `test-results/searxng-diagnostic/20260823-165200-runtime-engines/` | `BLOCKED` antes de SearXNG. |
@@ -90,23 +90,23 @@ Una cuenta configurada no demuestra selección, ejecución ni contribución de r
 
 ## 10. Diagnóstico de motores
 
-**Evidencia.** Una repetición limitada anterior devolvió HTTP 200, diez resultados, un motor no responsivo y `partial_success`: DuckDuckGo / `access denied`.
+**Evidencia.** Una repetición limitada anterior devolvió HTTP 200, diez resultados, un motor no responsivo y `partial_success`: `engine-a` / `access denied`.
 
 **OBSERVATION.** `results=0` no fue determinista. Los dos motores no responsivos de la ejecución de cero resultados son `UNKNOWN`: sólo se guardó el conteo dos.
 
 | Motor | Clasificación | Evidencia y alcance |
 | --- | --- | --- |
-| DuckDuckGo | `CONFIRMED_ATTEMPT_FAILED` | HTTP 200 de SearXNG con cero resultados y `access denied`; log: intento POST y HTTP 403. |
+| `engine-a` | `CONFIRMED_ATTEMPT_FAILED` | HTTP 200 de SearXNG con cero resultados y `access denied`; log: intento POST y HTTP 403. |
 | Qwant | `CONFIRMED_ACTIVE` | Consulta selectiva sólo Qwant: 10 resultados. |
-| Mojeek | `UNKNOWN` | Selección explícita HTTP 200/0, sin error ni atribución en log. |
+| `engine-b` | `UNKNOWN` | Selección explícita HTTP 200/0, sin error ni atribución en log. |
 
 **INFERENCE.** La disponibilidad de motores puede contribuir a la parcialidad, pero no hay `ROOT_CAUSE` para el patrón completo 10/0 del baseline.
 
-**Limitación.** `200/0` de Mojeek no prueba funcionamiento ni fallo. La validación selectiva no revela los motores de búsquedas generales del baseline.
+**Limitación.** `200/0` de `engine-b` no prueba funcionamiento ni fallo. La validación selectiva no revela los motores de búsquedas generales del baseline.
 
 ## 11. Cambio de configuración posterior
 
-**Evidencia.** En `/etc/searxng/settings.yml`, con backup `/etc/searxng/settings.yml.bak-20260823-161754-disable-engines`, sólo DuckDuckGo, Mojeek y Qwant cambiaron de `disabled: false` a `disabled: true`. La validación efectiva posterior los resolvió deshabilitados.
+**Evidencia.** En `/etc/searxng/settings.yml`, con backup `/etc/searxng/settings.yml.bak-20260823-161754-disable-engines`, sólo `engine-a`, `engine-b` y Qwant cambiaron de `disabled: false` a `disabled: true`. La validación efectiva posterior los resolvió deshabilitados.
 
 **OBSERVATION.** El cambio ocurrió después del Baseline v1 y no habilitó ni añadió motores, categorías o cambios de AMATL.
 
@@ -154,8 +154,8 @@ Los 93 restantes pertenecían exclusivamente a categorías no generales bajo est
 
 - Los filtros explícitos pueden excluir SearXNG por capabilities declaradas.
 - La ejecución de mapping HTTP 200 tenía cero resultados desde la respuesta deserializada, sin pérdida demostrada posterior en AMATL.
-- Hubo variabilidad: una repetición produjo diez resultados y DuckDuckGo reportó `access denied`.
-- DuckDuckGo tiene intento fallido confirmado (HTTP 403), Qwant actividad confirmada con diez resultados y Mojeek permanece `UNKNOWN`.
+- Hubo variabilidad: una repetición produjo diez resultados y `engine-a` reportó `access denied`.
+- `engine-a` tiene intento fallido confirmado (HTTP 403), Qwant actividad confirmada con diez resultados y `engine-b` permanece `UNKNOWN`.
 - AMATL puede comunicarse funcionalmente con SearXNG: existen ejecuciones históricas con resultados.
 - El Baseline v1 pre-change describe disponibilidad efectiva degradada, no relevancia.
 
@@ -172,7 +172,7 @@ Una instancia, ventana temporal y muestras acotadas no permiten generalización.
 
 ## 18. Estado actual
 
-AMATL ha demostrado comunicación funcional previa con SearXNG y resultados utilizables en algunas ejecuciones. El Baseline v1 es **pre-change**. DuckDuckGo, Mojeek y Qwant están deshabilitados **post-change**. Hay 18 candidatos generales estáticos y hasta 17 registrables, pero su participación runtime es `UNKNOWN` porque la última observación quedó `BLOCKED` antes de SearXNG. No existe Baseline SearXNG v2 ni evidencia para afirmar que la configuración actual mejoró o empeoró SearXNG.
+AMATL ha demostrado comunicación funcional previa con SearXNG y resultados utilizables en algunas ejecuciones. El Baseline v1 es **pre-change**. `engine-a`, `engine-b` y Qwant están deshabilitados **post-change**. Hay 18 candidatos generales estáticos y hasta 17 registrables, pero su participación runtime es `UNKNOWN` porque la última observación quedó `BLOCKED` antes de SearXNG. No existe Baseline SearXNG v2 ni evidencia para afirmar que la configuración actual mejoró o empeoró SearXNG.
 
 ## 19. Referencias a artefactos
 

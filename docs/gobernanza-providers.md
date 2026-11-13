@@ -58,15 +58,15 @@ repositorio si contienen información privada.
 |---|---|---|---|---|---|
 | SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config/providers.rs`; ver «Fichas de aprobación» |
 | Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en «Fichas de aprobación» |
-| Brave Search API y Mojeek Search API | **retirados del producto** | adapters y fichas eliminados de `providers/` | no declarados, no registrados | **Retirados por política del operador** (fuentes de pago; no es papeleo pendiente) | Ninguno — ambos nombres se rechazan en `Config::validate()` salvo cambio explícito de política |
+| Fuentes de pago retiradas | **retiradas del producto** | adapters y fichas eliminados de `providers/` | no declaradas, no registradas | **Retiradas por política del operador** (fuentes de pago; no es papeleo pendiente) | Ninguno — esos nombres se rechazan en `Config::validate()` salvo cambio explícito de política |
 
-**Brave Search API y Mojeek Search API se retiraron del producto.** La política
-del operador ejecuta sólo fuentes sin coste, y ambas exigen plan de pago (Brave
-desde 2026-02), así que no se declaran en los expedientes incorporados, no están
+**Las fuentes de pago se retiraron del producto.** La política
+del operador ejecuta sólo fuentes sin coste, así que no se declaran en los
+expedientes incorporados, no están
 registradas en `ProviderRegistry` y sus módulos de adapter se eliminaron de
 `providers/`. Además, `Config::validate()` los rechaza **por nombre**:
-`RETIRED_PROVIDERS` (`config/providers.rs:148`) los lista y un `brave` o `mojeek`
-en `providers.enabled` —o una tabla `[providers.brave]`/`[providers.mojeek]`—
+`RETIRED_PROVIDERS` (`config/providers.rs:148`) los lista y un nombre retirado
+en `providers.enabled` —o una tabla `[providers.<nombre>]`—
 produce un error de configuración explícito en lugar de una fuente omitida en
 silencio. No queda ficha que completar ni que descartar; ver «Viabilidad y
 coste» para el motivo de mercado.
@@ -76,16 +76,16 @@ extremo, no sólo de registro: `retired_providers_are_absent_and_refused_by_vali
 y `retired_provider_canary_stops_at_the_registry_door` comprueban que ni siquiera
 una configuración construida a mano que liste un nombre retirado llega a
 construir una fuente (`UnknownProvider`), y la superficie de UI ya no expone
-selector, diálogo de key ni claves `brave*`/`mojeek*` en el catálogo de mensajes.
+selector, diálogo de key ni claves retiradas en el catálogo de mensajes.
 
-`duckduckgo_html` se retiró del registro y de `providers/`: era un stub de 73
-líneas sin endpoint, cliente HTTP ni parseo, y DuckDuckGo no ofrece API de
-búsqueda web (sólo Instant Answer, que no devuelve resultados web). Mantenerlo
+El adaptador HTML se retiró del registro y de `providers/`: era un stub de 73
+líneas sin endpoint, cliente HTTP ni parseo, y no hay API de búsqueda web
+disponible (sólo una Instant Answer API, que no devuelve resultados web). Mantenerlo
 listado como provider era engañoso; ver «Viabilidad y coste» más abajo.
 
 La redacción de credenciales en URLs sigue cubierta por el adapter que queda con
 credencial: `sanitized_url()` se prueba en `providers/marginalia.rs:495-496`
-sobre una URL con `API-Key` en query, de modo que retirar Mojeek no dejó esa
+sobre una URL con `API-Key` en query, de modo que retirar las fuentes de pago no dejó esa
 propiedad sin cobertura. La selección de fuentes exige `approved()` y, al
 fallar, registra `provider_not_approved` y no llama a la fuente
 (`config/providers.rs`, `service.rs:2086-2094`).
@@ -191,11 +191,9 @@ el coste esté **declarado**, sea cual sea.
 
 | Fuente | Coste real | Clave | API de búsqueda web | Cobertura |
 |---|---|---|---|---|
-| Brave Search API (**retirada del producto**) | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
-| Mojeek Search API (**retirada del producto**) | De pago; no se contrata por política del operador | Sí | Sí, oficial | Índice propio, medio |
+| Fuentes de pago (**retiradas del producto**) | De pago; no se contratan por política del operador | Sí | Sí, oficial | Índice propio |
 | Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí; para producción requiere una key genuina emitida al operador y una cuota verificable. Una key pública/de ejemplo no es una credencial productiva. | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
-| SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, DuckDuckGo y otros |
-| DuckDuckGo | 0 | No | **No existe.** Sólo Instant Answer API, que devuelve definiciones y resúmenes, no resultados web | — |
+| SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, engine-a y otros |
 
 Consecuencia práctica: **gratuito, amplio y con términos permisivos no coexisten
 en una sola fuente.** Toda elección sacrifica una de las tres.

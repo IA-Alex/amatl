@@ -161,10 +161,7 @@ fn ingest_rejects_unknown_binary_without_echoing_content() {
 fn provider_canary_refuses_incomplete_governance_without_network() {
     // `searxng` is declared in the shipped governance records but still
     // `draft`, so it is the current builtin that is enabled-and-declared yet
-    // fails the approval gate. (The retired paid sources `brave` and `mojeek`
-    // are no longer shipped at all: they are absent from both the governance
-    // records and the registry, so enabling one fails config validation before
-    // the canary's governance preflight runs.)
+    // fails the approval gate.
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));
     std::fs::create_dir_all(&base).unwrap();
@@ -187,26 +184,26 @@ fn provider_canary_refuses_incomplete_governance_without_network() {
 }
 
 #[test]
-fn provider_canary_rejects_retired_sources_as_configuration_errors() {
-    // The other closed door: a retired name is refused by configuration
-    // validation by name, so it can never reach the canary's network stage.
+fn provider_canary_rejects_unshipped_sources_as_configuration_errors() {
+    // The other closed door: an unshipped name is refused by configuration
+    // validation, so it can never reach the canary's network stage.
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base =
-        std::env::temp_dir().join(format!("amatl-canary-retired-{}-{id}", std::process::id()));
+        std::env::temp_dir().join(format!("amatl-canary-unshipped-{}-{id}", std::process::id()));
     std::fs::create_dir_all(&base).unwrap();
     let config = base.join("amatl.toml");
-    for retired in ["mojeek", "brave"] {
-        std::fs::write(&config, format!("[providers]\nenabled = [\"{retired}\"]\n")).unwrap();
+    for unshipped in ["unshipped_source", "another_missing_source"] {
+        std::fs::write(&config, format!("[providers]\nenabled = [\"{unshipped}\"]\n")).unwrap();
         let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
             .arg("--config-file")
             .arg(&config)
-            .args(["provider-canary", retired, "rust"])
+            .args(["provider-canary", unshipped, "rust"])
             .output()
             .unwrap();
-        assert!(!output.status.success(), "{retired} must be refused");
+        assert!(!output.status.success(), "{unshipped} must be refused");
         let stderr = String::from_utf8(output.stderr).unwrap();
-        assert!(stderr.contains("retired"), "{retired}: {stderr}");
-        assert!(stderr.contains(retired), "{retired}: {stderr}");
+        assert!(stderr.contains("unknown enabled provider"), "{unshipped}: {stderr}");
+        assert!(stderr.contains(unshipped), "{unshipped}: {stderr}");
     }
     std::fs::remove_file(config).unwrap();
     std::fs::remove_dir(base).unwrap();

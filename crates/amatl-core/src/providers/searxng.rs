@@ -135,7 +135,7 @@ impl Provider for SearXngProvider {
     ) -> Result<ProviderResult, ProviderError> {
         let (request, filters) = self.request(plan, context.timeout_ms)?;
         let response = self.transport.execute(request).await.map_err(|_| {
-            // Parity with mojeek/marginalia: a transport failure is
+            // Parity with the other adapters: a transport failure is
             // `Network`, not `Unavailable`, and the message is fixed. The
             // transport layer (`http.rs`) already logs the classified cause
             // against a sanitized URL; reqwest's own `Display` can embed the
@@ -220,7 +220,7 @@ struct SearXngResponse {
     results: Vec<SearXngResult>,
     #[serde(default)]
     answers: Vec<SearXngAnswer>,
-    /// `[engine_name, error_type]` pairs, e.g. `["brave", "too many
+    /// `[engine_name, error_type]` pairs, e.g. `["example_engine", "too many
     /// requests"]`. A plain `Vec<String>` here previously produced "invalid
     /// type: sequence, expected a string" on any real SearXNG instance,
     /// since every element is itself a 2-item array, not a string — this
@@ -498,7 +498,7 @@ mod tests {
             body: br#"{
                 "query": "rust",
                 "results": [{"title": "Rust", "url": "https://rust-lang.org/", "content": "ok"}],
-                "unresponsive_engines": [["duckduckgo", "timeout"], ["google", "too many requests"]]
+                "unresponsive_engines": [["example_engine", "timeout"], ["google", "too many requests"]]
             }"#
             .to_vec(),
         };
@@ -527,7 +527,7 @@ mod tests {
                     "img_src": "", "iframe_src": "", "audio_src": "", "thumbnail": "",
                     "publishedDate": null, "pubdate": "", "length": null,
                     "views": "", "author": "", "metadata": "", "priority": "",
-                    "engines": ["google", "brave"],
+                    "engines": ["google", "example_engine"],
                     "open_group": false, "close_group": false,
                     "positions": [1, 3],
                     "score": 4.5,
@@ -539,7 +539,7 @@ mod tests {
                 "corrections": [],
                 "infoboxes": [],
                 "suggestions": [],
-                "unresponsive_engines": [["brave", "too many requests"], ["startpage", "Suspended: CAPTCHA"]]
+                "unresponsive_engines": [["example_engine", "too many requests"], ["startpage", "Suspended: CAPTCHA"]]
             }"#
             .to_vec(),
         };
