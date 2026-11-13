@@ -663,3 +663,61 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `docs/gobernanza-providers.md`; `docs/configuracion.md`;
   `docs/security/secrets.md`; `CHANGELOG.md` (Unreleased → Removed).
 
+## ADR-017 — Plan de salida de `libsqlite3-sys` (RUSTSEC-2026-0459)
+
+- **Fecha:** 2026-11-13
+- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`
+- **Contexto:** La re-auditoría de 2026-11-13 dejó un único advisory abierto en el
+  grafo bloqueado: `libsqlite3-sys 0.30.1` (RUSTSEC-2026-0459, `medium`/6.8,
+  CVE-2026-119375), alcanzado por `sqlx 0.8.6 → sqlx-sqlite → libsqlite3-sys`.
+  El advisory afecta sólo a la fuente SQLite `bundled`, que el workspace sí
+  habilita, y la explotabilidad es **baja**: vector local (`AV:L`, `UI:P`), sin
+  superficie remota —requiere que un tercero menos confiable coloque un fichero
+  de base de datos y su `-wal` donde el operador los abra, y la ruta SQLite de
+  AMATL es local y controlada por el propio operador (`docs/security/supply-chain.md`,
+  «Exploitability: low — no remote surface»). No hay upgrade compatible: el fix
+  es `libsqlite3-sys >= 0.39.0`; `sqlx 0.8.6` lo fija en `^0.30` y `sqlx 0.9.0`
+  (2026-05-21) lo admite en un rango con tope `< 0.38.0`. Por política
+  (`docs/security/supply-chain.md`, `SECURITY.md`) un `ignore` en `deny.toml`
+  exige una ADR escrita y aprobada por `@IA-Alex`; ninguna excepción está
+  pre-aprobada.
+- **Decisión (propuesta):** Cerrar el hallazgo por su **plan de salida**, no por
+  supresión. Se adopta como camino principal la **espera activa al rango de
+  `sqlx`**, con dos hitos verificables y sin `ignore` en `deny.toml`:
+  1. **Salir del pin `0.30.1`:** evaluar el salto a `sqlx 0.9.x` (rango con tope
+     `< 0.38.0`), que además desbloquea subir el mínimo en el futuro. Bloqueo
+     conocido: MSRV `1.94.0` de `sqlx 0.9.0` frente al `rust-version = "1.88"`
+     del workspace → exige decidir el salto de MSRV. Uso de `sqlx` acotado a
+     `crates/amatl-core/src/storage.rs` (~74 llamadas), así que el impacto de
+     adaptación es local, pero **no** cierra el advisory por sí solo.
+  2. **Admitir el fix:** en cuanto una release de `sqlx` incorpore
+     `libsqlite3-sys >= 0.39.0` en su rango, un `cargo update -p libsqlite3-sys`
+     (o `-p sqlx`) elimina el advisory y el gate vuelve a verde. `sqlx` declaró
+     que sube el **máximo** del rango en releases compatibles puente
+     (`sqlx-sqlite/src/lib.rs`), así que este hito no necesita un major nuevo.
+  - **Controles compensatorios mientras esté abierto (ya vigentes):** el gate
+    `cargo audit`/`cargo deny check` permanece **rojo** y bloquea merge; el test
+    offline `tests/supply_chain_contract.rs` mantiene floors para los advisories
+    remediables y **excluye este caso con justificación escrita**; `deny.toml`
+    no tiene allowlist silencioso (`wildcards = "deny"`, registries fijados).
+- **Consecuencias:** El hallazgo queda clasificado como **deuda local acotada**,
+  no como riesgo de producción remoto, y con ruta de cierre explícita y
+  revisable. El gate rojo se lee como «dependencia fijada esperando un fix
+  upstream». Esta ADR **no** concede un waiver: no autoriza ningún `ignore` y no
+  cambia el estado rojo de los gates. Si alguno de los dos hitos no llegara en el
+  SLA correspondiente (medium → 60 días de `SECURITY.md`), esta ADR debe
+  convertirse en un waiver temporal **firmado**, con fecha de caducidad y plan de
+  retirada, o resolver el hallazgo por exclusión del grafo.
+- **Alternativas descartadas:** (a) añadir `ignore` en `deny.toml` sin ADR
+  firmada — prohibido por la política; (b) forzar un `[patch]`/fork de
+  `sqlx-sqlite` para elevar el rango a `>= 0.39.0` — mete un fork no auditado en
+  la cadena de suministro, peor que el propio advisory; (c) migrar de driver
+  SQLite (`rusqlite`, `sqlite3` directo) — reescribe la capa de persistencia por
+  un riesgo local bajo, coste desproporcionado; (d) retirar el escritor de
+  `bundled` por `sqlite-unbundled` — cambia el modelo de enlace y la
+  reproducibilidad del binario sólo para esquivar un advisory que permanece en el
+  grafo de todas formas.
+- **Trazabilidad:** `docs/security/supply-chain.md` («Re-audit 2026-11-13»);
+  `deny.toml`; `tests/supply_chain_contract.rs`; `Cargo.lock`
+  (`libsqlite3-sys 0.30.1`); `crates/amatl-core/src/storage.rs`; `SECURITY.md`.
+

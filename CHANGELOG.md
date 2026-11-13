@@ -221,6 +221,16 @@ adapter/extractor versions are independent axes as well.
   an automation that needs "usable now" can gate on the new field instead of
   misreading a degraded `503` with `"sources_available":1`. Additive; stays on
   `schema_version` `"1"`.
+- `docs/security/supply-chain.md` states the RUSTSEC-2026-0459 exploitability
+  explicitly: **low, no remote surface** (local write to the operator's own
+  SQLite file plus its `-wal`), so the red gate reads as bounded local debt
+  awaiting an upstream `sqlx` fix and is not paraphrased as a remotely reachable
+  vulnerability.
+- `ADR-017` (`decisiones_amatl.md`): the planned exit for `libsqlite3-sys`
+  RUSTSEC-2026-0459 — wait for a `sqlx` release admitting `libsqlite3-sys >=
+  0.39.0`, evaluated first as an upgrade to `sqlx 0.9.x` (raises MSRV to 1.94).
+  Proposed and awaiting `@IA-Alex`'s signature; grants **no** waiver and adds no
+  `ignore` to `deny.toml`, so the gate stays red and merge stays blocked.
 
 ### Changed
 

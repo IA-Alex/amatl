@@ -70,6 +70,19 @@ remediated (a future `sqlx` release admitting `libsqlite3-sys >= 0.39`), removed
 from the graph, or waived by a written ADR approved by `@IA-Alex`. Adding an
 `ignore` entry without that ADR is not permitted by the policy above.
 
+**Exploitability: low — no remote surface.** The advisory is explicit that only a
+process which opens a database file, together with its `-wal`, that a less
+trusted party could have written is exposed. In AMATL the SQLite file *is* the
+local store the user owns and points at: there is no server that accepts a
+database path, no endpoint that ingests a `.sqlite3`/`-wal` pair, and no remote
+attacker path to those bytes — an adversary who can already write beside the
+operator's database file has local write access to the host. The finding is
+therefore **bounded local debt, not an open production risk**: the red gate is
+read as "a pinned dependency awaits an upstream fix", and it must not be
+paraphrased as a remotely reachable vulnerability. This is the exploitability
+statement the eventual ADR (task below) rests on; it does not, by itself, waive
+the finding.
+
 The accountable security role is repository owner `@IA-Alex`. The response SLA
 in `SECURITY.md` requires acknowledgement in 1/2/5/10 business days and targets
 remediation in 14/30/60/90 calendar days for critical/high/medium/low findings,
