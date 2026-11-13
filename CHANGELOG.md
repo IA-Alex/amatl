@@ -214,6 +214,13 @@ adapter/extractor versions are independent axes as well.
   the controls stay in `docs/security/threat-model.md` and
   `docs/security/asvs-checklist.md`, and both `docs/README.md` and
   `docs/seguridad.md` link the report.
+- `GET /ready` adds `sources_usable`: the count of sources whose surface status
+  is `available` **and** whose circuit breaker is not `open` — i.e. the sources
+  that can serve right now. It never exceeds the existing `sources_available`,
+  which stays the surface count the `amatl_sources_available` gauge publishes, so
+  an automation that needs "usable now" can gate on the new field instead of
+  misreading a degraded `503` with `"sources_available":1`. Additive; stays on
+  `schema_version` `"1"`.
 
 ### Changed
 
@@ -293,6 +300,12 @@ adapter/extractor versions are independent axes as well.
   usable source still answers `503`, because it cannot search at all. The
   per-source detail (name, `provider_disabled`, `provider_not_approved`,
   circuit) stays in `/status` behind the `read` scope.
+- `GET /deep` is retired: Deep is a network-retrieval surface and its contract is
+  POST-only, matching what `docs/testing.md`, the UI transport and the CHANGELOG
+  already declared. `get(deep)` leaves the router and the `deepGet` operation
+  leaves `openapi.yaml`, so the OpenAPI inventory and the Axum router stay equal;
+  `GET /deep` now answers `405` and a regression test pins the invariant. `POST
+  /deep` is unchanged.
 
 ### Removed
 

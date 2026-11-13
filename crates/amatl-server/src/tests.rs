@@ -147,6 +147,7 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
         [
             "schema_version",
             "sources_available",
+            "sources_usable",
             "status",
             "storage_ok"
         ]
@@ -155,6 +156,7 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
     assert_eq!(body["schema_version"], "1");
     assert!(body["storage_ok"].is_boolean());
     assert!(body["sources_available"].is_u64());
+    assert!(body["sources_usable"].is_u64());
     let rendered = body.to_string();
     for internal in ["provider_", "mock", "sqlite", "/", "path"] {
         assert!(
@@ -1537,9 +1539,8 @@ async fn request_id_header_is_present_on_all_api_responses() {
         ("GET", "/providers"),
         ("GET", "/metrics"),
         ("GET", "/search?q=test"),
-        ("GET", "/deep?q=test"),
     ] {
-        let builder = if path == "/search?q=test" || path == "/deep?q=test" {
+        let builder = if path == "/search?q=test" {
             authorized(path)
         } else {
             request(path)
@@ -1554,6 +1555,43 @@ async fn request_id_header_is_present_on_all_api_responses() {
             "{method} {path} missing X-Request-Id header"
         );
     }
+}
+
+/// Deep is a network-retrieval surface and its contract is POST-only: the
+/// authenticated `GET /deep` that once coexisted with `POST /deep` is retired.
+/// This pins the invariant so a future router edit cannot silently republish a
+/// GET recovery path that no test, doc or OpenAPI entry describes.
+#[tokio::test]
+async fn deep_is_post_only_and_get_is_method_not_allowed() {
+    let app = app().await;
+
+    let get = app
+        .clone()
+        .oneshot(authorized("/deep?q=test").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(
+        get.status(),
+        StatusCode::METHOD_NOT_ALLOWED,
+        "GET /deep must no longer be routed"
+    );
+
+    // The POST surface stays available: the endpoint itself did not disappear.
+    let post = app
+        .oneshot(
+            authorized("/deep")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({ "query": "test" }).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_ne!(
+        post.status(),
+        StatusCode::METHOD_NOT_ALLOWED,
+        "POST /deep must remain routed"
+    );
 }
 
 // ── MCP protocol conformance tests ──────────────────────────────────────────
@@ -5545,8 +5583,10 @@ async fn ready_reports_degraded_while_counting_an_available_source_with_an_open_
         .await
         .unwrap();
     assert_eq!(before.status(), StatusCode::OK);
-    assert_eq!(json_body(before).await["sources_available"], 1);
-
+    let before_body = json_body(before).await;
+    assert_eq!(before_body["sources_available"], 1);
+    // With the breaker closed the source is both advertised and usable.
+    assert_eq!(before_body["sources_usable"], 1);
     let search = router
         .clone()
         .oneshot(authorized("/search?q=rust").body(Body::empty()).unwrap())
@@ -5569,6 +5609,9 @@ async fn ready_reports_degraded_while_counting_an_available_source_with_an_open_
     // so it is deliberately *not* the readiness predicate: gate on the status
     // code, or on `status`, never on this field.
     assert_eq!(body["sources_available"], 1);
+    // `sources_usable` folds the open breaker in: the source is advertised but
+    // cannot serve right now, which is the count an automation should gate on.
+    assert_eq!(body["sources_usable"], 0);
 }
 
 /// A deployment with exactly one enabled source, governed, and always failing.

@@ -22,6 +22,7 @@ call.
 | `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S) with SafeFetcher SSRF rules; time, byte and redirect limits derived from configuration for the MCP surface |
 | `providers` | no parameters | provider summaries and capabilities | no outbound provider call |
 | `status` | no parameters | service state (sources, storage, caches, inference backend) plus the limits in force for this surface | no outbound provider call; same aggregation as `GET /status` |
+| `answer` | `{ "query": string }` | grounded answer with citations synthesized from Search results | query 1–2048 bytes; needs an operator-configured completion backend, otherwise `inference_unavailable`; scope `answer` (reuses Deep's) |
 
 `deep_search` is the long operation. A client that sends
 `notifications/cancelled` stops the wait immediately and receives
@@ -87,7 +88,7 @@ de ser proxy. La política de AMATL no puede demostrar que el cliente MCP que
 envía la consulta sea local; para ejercicios confidenciales el cliente/modelo
 también debe ejecutarse localmente y el host debe aplicar defensa en profundidad.
 
-The contract test initializes MCP, lists exactly these five tools, asserts that
+The contract test initializes MCP, lists exactly these six tools, asserts that
 no ingestion tool exists, and calls `search` and `status`
 (`amatl-server/src/tests.rs`).
 

@@ -992,37 +992,6 @@ async fn search(
     }
 }
 
-async fn deep(
-    State(state): State<AppState>,
-    Extension(request_id): Extension<RequestId>,
-    params: Result<Query<SearchParams>, QueryRejection>,
-) -> Response {
-    let Ok(Query(params)) = params else {
-        return api_error(ErrorCode::InvalidRequest);
-    };
-    if !valid_query(&params.q) {
-        return api_error(ErrorCode::InvalidQuery);
-    }
-    let started = Instant::now();
-    let outcome = state
-        .service()
-        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
-        .await;
-    state
-        .metrics
-        .deep_latency
-        .record(started.elapsed().as_millis() as u64);
-    // Count every request received, not just successful ones.
-    state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
-    match outcome {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => {
-            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
-            service_error(error)
-        }
-    }
-}
-
 async fn search_post(
     State(state): State<AppState>,
     Extension(request_id): Extension<RequestId>,
@@ -2752,6 +2721,14 @@ async fn health() -> Json<serde_json::Value> {
 /// `"sources_available":1`. The authoritative signal is the HTTP status code
 /// (or `status`), never this count; the divergence is deliberate and pinned by
 /// `ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit`.
+///
+/// `sources_usable` is the count an automation that needs "can this source
+/// actually serve right now" should read: the same surface filter **minus** the
+/// sources whose circuit is `open` (in cooldown). It is additive — it does not
+/// change `sources_available`, which stays the one quantity `/ready` and the
+/// `amatl_sources_available` gauge publish together. `sources_usable` never
+/// exceeds `sources_available`, so `available - usable` is exactly the number
+/// of sources skipped by an open breaker.
 async fn ready(State(state): State<AppState>) -> Response {
     let Ok(status) = state.service().status().await else {
         return (
@@ -2761,6 +2738,7 @@ async fn ready(State(state): State<AppState>) -> Response {
                 "status": "degraded",
                 "storage_ok": false,
                 "sources_available": 0,
+                "sources_usable": 0,
             })),
         )
             .into_response();
@@ -2772,6 +2750,16 @@ async fn ready(State(state): State<AppState>) -> Response {
         .sources
         .iter()
         .filter(|source| source.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    // "Usable now" excludes the sources whose breaker is open: `available` is a
+    // surface status, `usable` is that status with the cooldown folded in.
+    let sources_usable = status
+        .sources
+        .iter()
+        .filter(|source| {
+            source.status == amatl_core::ProviderSurfaceStatus::Available
+                && source.circuit != amatl_core::CircuitState::Open
+        })
         .count();
     let ready = status.status == "ok";
     let code = if ready {
@@ -2786,6 +2774,7 @@ async fn ready(State(state): State<AppState>) -> Response {
             "status": if ready { "ok" } else { "degraded" },
             "storage_ok": storage_ok,
             "sources_available": sources_available,
+            "sources_usable": sources_usable,
         })),
     )
         .into_response()

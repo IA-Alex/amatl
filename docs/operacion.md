@@ -132,7 +132,7 @@ provider esté alcanzable.
 degradada, de modo que un balanceador pueda drenarla sin interpretar el cuerpo:
 
 ```json
-{"schema_version":"1","status":"ok","storage_ok":true,"sources_available":1}
+{"schema_version":"1","status":"ok","storage_ok":true,"sources_available":1,"sources_usable":1}
 ```
 
 El cuerpo es agregado a propósito. Nombres de fuentes, códigos de error y rutas
@@ -163,6 +163,16 @@ contando ahí mientras la instancia responde `503`, de modo que el campo puede
 valer `1` en una respuesta degradada. Automatice sobre el código HTTP o sobre
 `status`, nunca sobre ese contador; cambiar su significado exige revisar los
 consumidores y versionar el contrato.
+
+`sources_usable` es el contador que sí responde «¿puede este origen servir
+ahora mismo?»: aplica el mismo filtro de superficie que `sources_available` y
+además descarta los orígenes con el circuito **abierto** (en cooldown). Nunca
+supera a `sources_available`, así que `sources_available - sources_usable` es
+exactamente cuántos orígenes está saltando un breaker abierto. Es un campo
+aditivo: no cambia `sources_available`, que sigue siendo la misma cantidad que
+publica el gauge `amatl_sources_available`. Una automatización que quiera evitar
+el falso positivo de `sources_available` debe leer `sources_usable`; la sonda de
+readiness sigue siendo el código HTTP o `status`.
 
 Ese contador y el gauge `amatl_sources_available` de `/metrics` son la misma
 cantidad publicada en dos superficies **en un despliegue real**.
@@ -222,7 +232,7 @@ de un solo operador. Declarar clientes con nombre reparte capacidad:
 | Scope | Rutas |
 |---|---|
 | `search` | `POST/GET /search`, `GET /search/batch` |
-| `deep` | `POST/GET /deep` |
+| `deep` | `POST /deep` |
 | `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
 | `write` | escritura y borrado en `/history` y `/saved` |
 | `admin` | `/reload`, `/security-events` |

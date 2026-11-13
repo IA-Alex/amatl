@@ -158,3 +158,18 @@ en un servicio que se declara `degraded`/no listo.
 
 Los ítems 1–4 son cambios locales y verificables sin red; el 5 exige decisión de gobernanza
 (ADR) y no debe resolverse con `ignore` en `deny.toml` según la política vigente.
+
+---
+
+## 7. Cierre de los ítems 1–3 (2026-11-13)
+
+Aplicado según `audit/plan-remediacion-2026-11-13.md`. Gates en verde (699/0/2,
+clippy/fmt/rustdoc OK).
+
+| # | Hallazgo | Cierre |
+|---|---|---|
+| 1 | `GET /deep` contradice "POST-only" | **CERRADO (opción a)**: `get(deep)` fuera del router, handler `deep` eliminado, operación `deepGet` fuera de `openapi.yaml`, test `deep_is_post_only_and_get_is_method_not_allowed` (405 en GET) y `docs/operacion.md` alineado (`POST /deep`). |
+| 2 | `docs/api/mcp.md` documenta 5 tools | **CERRADO**: fila `answer` añadida, "five"→"six", memoria `server/http-mcp` actualizada. El código ya exponía 6 y el test ya las afirmaba. |
+| 3 | `/ready` — `sources_available` ≠ utilizables | **CERRADO (aditivo)**: campo `sources_usable` (superficie `available` **y** circuito `!= open`); `sources_available` intacto (sigue igual al gauge). Documentado en `ready()` y `docs/operacion.md`; test del circuito abierto extendido (`available=1`, `usable=0`) y test de forma del cuerpo actualizado. |
+
+Ítems 4 y 5 siguen abiertos y fuera del alcance acordado.

@@ -119,27 +119,6 @@ paths:
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
   /deep:
-    get:
-      operationId: deepGet
-      summary: Run bounded Deep enrichment after Search
-      parameters:
-        - $ref: '#/components/parameters/Query'
-      responses:
-        '200':
-          description: Deep response, including partial documents and degradations
-          headers:
-            X-Request-ID: { $ref: '#/components/headers/RequestId' }
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeepResponse'
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '429': { $ref: '#/components/responses/RateLimited' }
-        '431': { $ref: '#/components/responses/HeadersTooLarge' }
-        '500': { $ref: '#/components/responses/ServiceUnavailable' }
-        '504': { $ref: '#/components/responses/RequestTimeout' }
     post:
       operationId: deepPost
       summary: Run bounded Deep enrichment using a JSON body or selected Search targets
