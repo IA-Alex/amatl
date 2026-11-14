@@ -63,7 +63,11 @@
             </div>
             <p id="search-mode-help" class="field-help search-mode-help" data-i18n="searchModeHelp">Search returns ranked results quickly. Analyze evidence fetches documents and verifies quoted fragments. AI summary is an optional server feature.</p>
           </div>
-          <div class="model-options">
+          <!-- Hidden until the server reports the strategist configured and
+               usable: with no endpoint/model there is nothing to enable, and
+               a dead checkbox under the search box is noise. Same gating the
+               source selector already uses (`hidden` + reveal on state). -->
+          <div class="model-options" id="model-options" hidden>
               <label class="model-toggle-row">
               <input type="checkbox" id="strategist-enabled-toggle" disabled>
               <span id="strategist-toggle-label" data-i18n="strategistToggleLabel">Búsqueda con modelo</span>

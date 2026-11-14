@@ -108,6 +108,7 @@ const answerConfig = document.querySelector("#answer-config");
 const answerConfigBody = document.querySelector("#answer-config-body");
 const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
 const answerToggleStatus = document.querySelector("#answer-toggle-status");
+const modelOptions = document.querySelector("#model-options");
 const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
 const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
 const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
@@ -1283,6 +1284,7 @@ async function fetchServiceState() {
     if (strategistStatus.configured && strategistStatus.available !== false) {
       strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
       strategistEnabledToggle.disabled = false;
+      if (modelOptions) modelOptions.hidden = false;
     } else {
       // No endpoint/model configured: the toggle has nothing to enable, so keep
       // it off and disabled. The reason goes in the help line below it, not in
@@ -1291,6 +1293,10 @@ async function fetchServiceState() {
       // overwritten with a whole unavailability sentence).
       strategistEnabledToggle.checked = false;
       strategistEnabledToggle.disabled = true;
+      // Nothing to enable means nothing to show: hide the whole row so the
+      // search box is not preceded by a dead control. It reappears as soon as
+      // the server reports the strategist configured and usable.
+      if (modelOptions) modelOptions.hidden = true;
     }
     // Configured and switched on, but no usable credential: the toggle flips a
     // real flag, yet the model will not actually run. Say so instead of leaving
@@ -1350,6 +1356,9 @@ async function fetchServiceState() {
     strategistEnabledToggle.disabled = true;
     strategistToggleStatus.hidden = false;
     strategistToggleStatus.textContent = t("unauthorized");
+    // Without a readable service state the row has nothing to offer either;
+    // hide it so the search box is not preceded by a dead control.
+    if (modelOptions) modelOptions.hidden = true;
     return null;
   }
 }
