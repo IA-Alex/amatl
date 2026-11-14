@@ -637,4 +637,93 @@ mod tests {
         // the only one in the catalog.
         assert!(catalog.contains("marginaliaKeyButton"));
     }
+
+    /// The history rows render a result count, and a single result must read
+    /// "1 resultado."/"1 result.", never the bare plural.
+    ///
+    /// Regression guard for a real defect: `historyLabel` called
+    /// `t("resultsCount")` directly while the results header went through
+    /// `countLabel`/`pluralKey`, so one query showed as "1 of 1 result" above
+    /// and "1 resultados." in the history panel below. The singular keys exist
+    /// in both locales; the fix routes history through the same helper.
+    #[test]
+    fn history_count_uses_the_plural_aware_helper() {
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // The catalog ships both forms in every locale.
+        assert!(catalog.contains("resultsCount:"));
+        assert!(catalog.contains("resultsCountOne:"));
+        // The history label selects between them instead of hardcoding the
+        // plural, so the two views of one number cannot disagree.
+        assert!(
+            javascript.contains("countLabel(entry.total_results, \"resultsCount\")"),
+            "historyLabel must pluralize through countLabel"
+        );
+        assert!(
+            !javascript.contains("${entry.total_results} ${t(\"resultsCount\")}"),
+            "historyLabel still bypasses pluralization"
+        );
+    }
+
+    /// The token field is a credential, not a query filter: it lives in its own
+    /// disclosure and no longer pollutes the filter summary.
+    #[test]
+    fn token_field_is_grouped_as_access_not_as_a_filter() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        assert!(html.contains("class=\"filters access-filters\""));
+        assert!(html.contains("id=\"access-summary\" data-i18n=\"accessLabel\""));
+        assert!(html.contains("id=\"local-token\""));
+        assert!(catalog.contains("accessLabel:"));
+        // The access panel must be a *sibling* of the filter panel, not nested
+        // inside it: nesting would leave the token reachable only after opening
+        // the filters, which is exactly the grouping confusion this fixed.
+        // Between the token panel and the form close there is exactly one
+        // `</details>` (the access panel's own); if it were nested inside the
+        // filters panel there would be two.
+        let after_access = html
+            .split("class=\"filters access-filters\"")
+            .nth(1)
+            .expect("access panel exists");
+        let closers_before_form_end = after_access
+            .split("</form>")
+            .next()
+            .expect("form closes")
+            .matches("</details>")
+            .count();
+        assert_eq!(
+            closers_before_form_end, 1,
+            "the access panel is nested inside the filters panel instead of beside it"
+        );
+        // The token is absent from the filter summary and drives its own.
+        assert!(!javascript.contains("if (tokenInput.value) active.push"));
+        assert!(javascript.contains("function updateAccessSummary"));
+        assert!(javascript.contains("updateAccessSummary();"));
+        // A token validation error opens the panel that actually holds it.
+        assert!(
+            javascript.contains("if (accessDetails.contains(field)) accessDetails.open = true;")
+        );
+    }
+
+    /// The side panels keep a shared, drift-proof control scale: the checkbox
+    /// box comes from one token so the toggle/scope rows cannot diverge, and
+    /// the history panel's height is decoupled from its entry count.
+    #[test]
+    fn side_panel_sizing_uses_shared_tokens_and_bounds_the_history() {
+        let css = text("/styles.css");
+        assert!(css.contains("--checkbox-size:"));
+        assert!(css.contains("width: var(--checkbox-size);"));
+        assert!(css.contains("height: var(--checkbox-size);"));
+        assert!(!css.contains("width: 1rem;\n  height: 1rem;"));
+        // The history scroll region bounds the panel height.
+        assert!(css.contains(".panel-scroll {"));
+        assert!(css.contains("max-height: 22rem;"));
+        // The provider panel aligns with its grid siblings instead of carrying
+        // the legacy standalone `margin-top: 2rem`.
+        assert!(
+            !css.contains(".provider-status {\n  margin-top: 2rem;"),
+            "provider-status still carries the legacy standalone margin"
+        );
+    }
 }

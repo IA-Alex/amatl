@@ -43,6 +43,11 @@
   --radius-pill: 999px;  /* status badges */
   --control-h: 2.75rem;  /* primary + secondary buttons, and text inputs */
   --control-h-sm: 2rem;  /* compact row actions (ghost buttons) */
+  /* Checkbox/radio box: a 1rem box inside a 2.75rem control row read as an
+     undersized dot (16px against 44px). 1.25rem keeps the box proportionate to
+     the row while the wrapping <label> still carries the >=24px hit area WCAG
+     2.5.8 measures. One token, so the three toggle/scope rows cannot drift. */
+  --checkbox-size: 1.25rem;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--background);
   color: var(--text);
@@ -507,7 +512,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   cursor: pointer;
   width: fit-content;
 }
-.answer-toggle-row input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
+.answer-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
 /* Shared checkbox look and disabled dimming with `.provider-toggle` below —
    the two toggles must not drift (they were already diverging: the provider
    one had lost the disabled opacity). The cursor differs on purpose:
@@ -534,7 +539,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   cursor: pointer;
   width: fit-content;
 }
-.model-toggle-row input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
+.model-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
 .model-toggle-row input:disabled { opacity: 0.55; cursor: not-allowed; }
 .model-options .field-help { margin: 0; }
 .provenance a { color: var(--accent); }
@@ -590,8 +595,8 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 }
 .provider-selector-option input[type="radio"] {
   accent-color: var(--accent-strong);
-  width: 1rem;
-  height: 1rem;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
   margin: 0;
   cursor: pointer;
 }
@@ -648,8 +653,12 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 }
 
 /* ── Provider status ─────────────────────────────────────────── */
+/* `margin-top: 0`, matching the other `.side-panels` children below: this panel
+   is a grid cell now, so the inherited `2rem` (from when it was a standalone
+   block under the search form) pushed its top edge 32px below its row-mates and
+   broke the row baseline. The grid `gap` already supplies the separation. */
 .provider-status {
-  margin-top: 2rem;
+  margin-top: 0;
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -710,8 +719,8 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 
 .provider-toggle input[type="checkbox"] {
   accent-color: var(--accent-strong);
-  width: 1rem;
-  height: 1rem;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
   margin: 0;
   cursor: pointer;
 }
@@ -784,6 +793,20 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .history-panel[hidden],
 .saved-panel[hidden],
 .clients-panel[hidden] { display: none; }
+
+/* The search history is the one side panel whose height is driven by data (one
+   row per stored query), and an unbounded list made the whole `.side-panels`
+   grid row as tall as itself, leaving a ~500px void under the shorter panels
+   beside it. Capping the scroll region decouples the panel's height from the
+   entry count: the panel stays a predictable size and the newest entries stay
+   reachable by scrolling inside it. `min-height: 0` lets the flex child shrink
+   below its content so the overflow actually engages. */
+.panel-scroll {
+  max-height: 22rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
 
 .service-state h2,
 .history-panel h2,
@@ -862,6 +885,22 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   display: flex;
   gap: 0.4rem;
   flex-shrink: 0;
+}
+
+/* The row actions stay in the DOM (and remain keyboard-reachable/tabbable) but
+   only become visible on hover or when focus enters the row: with one query
+   repeated a dozen times, two always-on buttons per row turned the panel into a
+   wall of identical controls. `opacity` rather than `display` keeps the hit
+   area and the tab order intact; `:focus-within` is what keeps it operable by
+   keyboard. Touch devices have no hover, so the actions are always shown at
+   pointer-coarse widths (see the media query below). */
+.history-item .history-actions {
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.history-item:hover .history-actions,
+.history-item:focus-within .history-actions {
+  opacity: 1;
 }
 
 /* The save result sits next to the button that produced it: the global `#status`
@@ -980,7 +1019,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   font-size: 0.8rem;
   cursor: pointer;
 }
-.scope-option input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
+.scope-option input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
 
 #client-create-submit { align-self: flex-start; min-height: var(--control-h); padding: 0 0.9rem; }
 #client-create-error { color: var(--error); }
@@ -1023,4 +1062,11 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .history-item, .saved-item { display: block; }
   .history-actions { margin-top: 0.5rem; }
   .client-item-row { display: block; }
+}
+
+/* Touch pointers cannot hover, so the hover-revealed history actions would be
+   unreachable on a phone: this is the one place they stay permanently visible,
+   which is also where a per-row tap target is expected. */
+@media (hover: none) {
+  .history-item .history-actions { opacity: 1; }
 }

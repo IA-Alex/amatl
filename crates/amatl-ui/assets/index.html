@@ -129,6 +129,17 @@
                   <option value="txt" data-i18n="fileTypeText">Texto</option>
                 </select>
               </div>
+            </div>
+          </details>
+          <!-- The server token is not a query filter, so it lives in its own
+               disclosure as a sibling of the filter panel instead of between
+               "Result language" and "File type": as one of the filter-grid cells
+               it read as a way to narrow the search, which it never was. It
+               stays inside the form (same ids, still kept in memory the same
+               way) so nothing about its behavior changed, only its grouping. -->
+          <details class="filters access-filters">
+            <summary id="access-summary" data-i18n="accessLabel">Acceso al servidor</summary>
+            <div class="filter-grid">
               <div>
                 <label for="local-token" data-i18n="tokenLabel">Token de acceso</label>
                 <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" data-i18n-placeholder="tokenPlaceholder" placeholder="Token del servidor">
@@ -189,7 +200,9 @@
           <h2 id="history-heading" data-i18n="historyHeading">Historial de búsquedas</h2>
           <button id="history-purge" type="button" class="ghost-action" data-i18n="historyPurge">Borrar historial</button>
           </div>
-          <ol id="history-list" class="history-list"></ol>
+          <div class="panel-scroll">
+            <ol id="history-list" class="history-list"></ol>
+          </div>
           <p id="history-empty" class="empty-note" hidden></p>
           <p id="history-panel-status" class="field-help" role="status"></p>
         </section>

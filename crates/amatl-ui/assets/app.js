@@ -264,10 +264,12 @@ function queryText() {
 
 // ── Filters disclosure ──────────────────────────────────────────
 // The panel is collapsed by default, so the summary carries the active state: a
-// stale region/type/token is visible without opening it, and a missing
-// requirement opens it (see `reportFailure`) instead of hiding the fix.
+// stale region/type is visible without opening it, and a missing requirement
+// opens it (see `reportFailure`) instead of hiding the fix.
 const filtersDetails = document.querySelector("details.filters");
 const filtersSummary = document.querySelector("#filters-summary");
+const accessDetails = document.querySelector("details.access-filters");
+const accessSummary = document.querySelector("#access-summary");
 
 function updateFiltersSummary() {
   const active = [];
@@ -278,15 +280,26 @@ function updateFiltersSummary() {
     active.push(`${t("regionLabel")}: ${boundedText(regionInput.value.trim(), 32)}`);
   }
   if (fileTypeInput.value) active.push(`${t("fileTypeLabel")}: ${fileTypeInput.value}`);
-  if (tokenInput.value) active.push(`${t("tokenLabel")}: ${t("filterValueSet")}`);
   filtersSummary.textContent = active.length
     ? `${t("filtersLabel")} — ${active.join(" · ")}`
     : t("filtersLabel");
 }
 
-for (const field of [languageInput, regionInput, fileTypeInput, tokenInput]) {
+// The token is a credential, not a query filter: it reports on its own
+// disclosure so "is a token set?" is answerable at a glance without implying the
+// token narrows the search.
+function updateAccessSummary() {
+  accessSummary.textContent = tokenInput.value
+    ? `${t("accessLabel")} — ${t("tokenLabel")}: ${t("filterValueSet")}`
+    : t("accessLabel");
+}
+
+for (const field of [languageInput, regionInput, fileTypeInput]) {
   field.addEventListener("input", updateFiltersSummary);
   field.addEventListener("change", updateFiltersSummary);
+}
+for (const event of ["input", "change"]) {
+  tokenInput.addEventListener(event, updateAccessSummary);
 }
 
 function searchMetadata(result) {
@@ -616,10 +629,11 @@ function validatePayload(payload, mode) {
 }
 
 // A credential failure is only actionable when the field that fixes it is
-// reachable: the token lives inside the collapsed filters panel, so open it
-// before moving focus there instead of leaving the operator to hunt for it.
+// reachable: the token lives inside its own collapsed "Server access" panel,
+// so open that one before moving focus there instead of leaving the operator
+// to hunt for it.
 function focusTokenField() {
-  filtersDetails.open = true;
+  accessDetails.open = true;
   tokenInput.focus();
 }
 
@@ -863,7 +877,11 @@ function reportValidationError(key) {
   const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
   setStatusKey(key, "error");
   field.setAttribute("aria-invalid", "true");
+  // Open the disclosure that actually holds the offending field: the token's
+  // panel and the filter panel are separate, so a fixed `filtersDetails.open`
+  // would leave a token error focused inside a still-collapsed panel.
   if (filtersDetails.contains(field)) filtersDetails.open = true;
+  if (accessDetails.contains(field)) accessDetails.open = true;
   field.focus();
 }
 
@@ -1502,7 +1520,11 @@ const historyPanelStatus = document.querySelector("#history-panel-status");
 
 function historyLabel(entry) {
   const parts = [];
-  if (Number.isSafeInteger(entry.total_results)) parts.push(`${entry.total_results} ${t("resultsCount")}`);
+  // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
+  // "1 resultado." instead of "1 resultados." — the singular key exists in every
+  // locale and the same helper already drives the results header and per-surface
+  // status lines, so the two views of one number cannot disagree.
+  if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
   if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
     parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
   }
@@ -2020,6 +2042,7 @@ function applyTranslations() {
   ).closest("label");
   sourceAllOption.querySelector("span").textContent = t("providerSourceAll");
   updateFiltersSummary();
+  updateAccessSummary();
   updateThemeToggle();
 }
 
