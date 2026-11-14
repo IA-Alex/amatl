@@ -189,9 +189,9 @@ paths:
       operationId: answerUpdate
       summary: Update answer synthesis settings and apply them live
       description: Admin-scoped partial update of `[answer]`; unset fields are preserved.
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/AnswerPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -213,16 +213,7 @@ paths:
         the running service change. On success, writes only `answer.enabled`
         to the configuration file with comments and every other key
         preserved, then reloads the service without a restart.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-              required: [enabled]
-              properties:
-                enabled: { type: boolean }
+      requestBody: { $ref: '#/components/requestBodies/ToggleEnabled' }
       responses:
         '200':
           description: The flag was written and the service reloaded with it applied
@@ -258,16 +249,7 @@ paths:
         running service change. On success, writes only `strategist.enabled`
         to the configuration file with comments and every other key
         preserved, then reloads the service without a restart.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-              required: [enabled]
-              properties:
-                enabled: { type: boolean }
+      requestBody: { $ref: '#/components/requestBodies/ToggleEnabled' }
       responses:
         '200':
           description: The flag was written and the service reloaded with it applied
@@ -574,7 +556,7 @@ paths:
       operationId: providerRecord
       summary: Read a provider governance record
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ProviderRecord' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -585,9 +567,9 @@ paths:
     patch:
       operationId: providerRecordUpdate
       summary: Upsert a provider governance record
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ProviderRecord' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ProviderRecord' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -600,9 +582,9 @@ paths:
     post:
       operationId: providerToggle
       summary: Enable or disable a declared provider and reload it
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ProviderToggleEnabled' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -615,9 +597,9 @@ paths:
     post:
       operationId: providerCredentialPut
       summary: Insert or replace a provider credential in memory only, after a live canary validates it
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ProviderCredential' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ProviderCredentialReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -629,7 +611,7 @@ paths:
       operationId: providerCredentialDelete
       summary: Liquidate a provider's in-memory credential (idempotent)
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ProviderCredentialReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -640,9 +622,9 @@ paths:
     patch:
       operationId: inferenceUpdate
       summary: Update inference settings and apply them live
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/InferencePatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -655,7 +637,7 @@ paths:
       operationId: serverClientsList
       summary: List configured server clients without credentials
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ServerClientList' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -665,9 +647,9 @@ paths:
     post:
       operationId: serverClientCreate
       summary: Create a client and return its token once
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ServerClientCreate' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/CreatedServerClient' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -681,9 +663,9 @@ paths:
     patch:
       operationId: serverClientUpdate
       summary: Update one client's scopes, tools, or expiry
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ServerClientUpdate' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ServerClientRecord' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -696,7 +678,7 @@ paths:
       operationId: serverClientDelete
       summary: Revoke one server client
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -710,7 +692,7 @@ paths:
       operationId: serverClientRotate
       summary: Rotate a client's token and return the replacement once
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/CreatedServerClient' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -723,7 +705,7 @@ paths:
       operationId: serverPendingConfig
       summary: Read listener and transport configuration
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ServerConfigReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -733,9 +715,9 @@ paths:
     patch:
       operationId: serverPendingConfigUpdate
       summary: Persist server settings without an implicit reload
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ServerPendingConfigPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ServerPendingConfigReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -747,9 +729,9 @@ paths:
     post:
       operationId: dataPolicyUpdate
       summary: Update egress and inference data-policy gates
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/DataPolicyPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -762,7 +744,7 @@ paths:
       operationId: policies
       summary: Read all search-quality policies
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/PoliciesReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -774,9 +756,9 @@ paths:
     patch:
       operationId: policyUpdate
       summary: Replace one named search-quality policy
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/PolicyPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -790,7 +772,7 @@ paths:
       operationId: persistenceConfig
       summary: Read local persistence configuration
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/PersistenceConfigReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -800,9 +782,9 @@ paths:
     patch:
       operationId: persistenceUpdate
       summary: Update persistence retention and backup settings
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/PersistencePatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -815,7 +797,7 @@ paths:
       operationId: persistenceBackups
       summary: List database backups
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/BackupList' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -836,21 +818,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdempotencyKey'
       responses:
-        '200':
-          description: Backup written; path is the file this call created or replayed
-          headers:
-            X-Request-ID: { $ref: '#/components/headers/RequestId' }
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties: false
-                required: [schema_version, path]
-                properties:
-                  schema_version: { $ref: '#/components/schemas/SchemaVersion' }
-                  path:
-                    type: string
-                    description: Absolute path of the backup file
+        '200': { $ref: '#/components/responses/BackupCreated' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -875,7 +843,7 @@ paths:
       operationId: circuits
       summary: List provider circuit-breaker snapshots
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/CircuitList' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -887,7 +855,7 @@ paths:
       operationId: circuitsReset
       summary: Close all observed provider circuits
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/CircuitList' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -899,7 +867,7 @@ paths:
       operationId: telemetryConfig
       summary: Read telemetry configuration
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/TelemetryConfigReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -909,9 +877,9 @@ paths:
     patch:
       operationId: telemetryUpdate
       summary: Update telemetry configuration
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/TelemetryPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -924,7 +892,7 @@ paths:
       operationId: deepConfig
       summary: Read Deep safety limits and configuration
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/DeepConfigReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -934,9 +902,9 @@ paths:
     patch:
       operationId: deepConfigUpdate
       summary: Update Deep safety limits
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/DeepPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -948,9 +916,9 @@ paths:
     patch:
       operationId: deepExtractorUpdate
       summary: Update Deep extractor configuration
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/ExtractorPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -962,9 +930,9 @@ paths:
     patch:
       operationId: deepRendererUpdate
       summary: Update Deep renderer configuration
-      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      requestBody: { $ref: '#/components/requestBodies/RendererPatch' }
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReloadReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403': { $ref: '#/components/responses/Forbidden' }
@@ -978,7 +946,7 @@ paths:
       summary: Read process readiness, including local state availability
       security: []
       responses:
-        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '200': { $ref: '#/components/responses/ReadyReport' }
         '400': { $ref: '#/components/responses/BadRequest' }
         '403': { $ref: '#/components/responses/Forbidden' }
         '429': { $ref: '#/components/responses/RateLimited' }
@@ -1056,23 +1024,215 @@ components:
         as invalid_request.
       schema: { type: string, minLength: 1, maxLength: 128 }
   requestBodies:
-    AdminPatch:
+    ToggleEnabled:
       required: true
-      description: >-
-        Endpoint-specific partial configuration object. Field names and limits
-        are defined by the matching TOML section in docs/configuracion.md;
-        omitted fields retain their current values.
+      description: Feature flag toggle.
       content:
         application/json:
-          schema: { $ref: '#/components/schemas/AdminPayload' }
+          schema: { $ref: '#/components/schemas/ToggleInput' }
+    ProviderToggleEnabled:
+      required: true
+      description: Provider enable/disable toggle.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ProviderToggleInput' }
+    ProviderCredential:
+      required: true
+      description: Provider credential, canary-validated and kept in memory only.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ProviderCredentialInput' }
+    ProviderRecord:
+      required: true
+      description: Partial provider governance record.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ProviderRecordInput' }
+    InferencePatch:
+      required: true
+      description: Partial inference settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/InferencePatch' }
+    AnswerPatch:
+      required: true
+      description: Partial answer-synthesis settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/AnswerPatch' }
+    DataPolicyPatch:
+      required: true
+      description: Partial data-policy settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/DataPolicyPatch' }
+    PolicyPatch:
+      required: true
+      description: Complete policy object for the addressed policy name.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/PolicyPatch' }
+    PersistencePatch:
+      required: true
+      description: Partial persistence settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/PersistencePatch' }
+    TelemetryPatch:
+      required: true
+      description: Partial telemetry settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/TelemetryPatch' }
+    DeepPatch:
+      required: true
+      description: Partial Deep limits.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/DeepPatch' }
+    ExtractorPatch:
+      required: true
+      description: Partial extractor settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ExtractorPatch' }
+    RendererPatch:
+      required: true
+      description: Partial renderer settings.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/RendererPatch' }
+    ServerClientCreate:
+      required: true
+      description: New server client definition.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerClientCreateInput' }
+    ServerClientUpdate:
+      required: true
+      description: Partial server client update.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerClientUpdateInput' }
+    ServerPendingConfigPatch:
+      required: true
+      description: Partial server configuration.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerPendingConfigPatch' }
   responses:
-    AdminSuccess:
-      description: Current or updated administrative resource.
+    ReloadReport:
+      description: Configuration change applied (or rejected as a whole) without a restart.
       headers:
         X-Request-ID: { $ref: '#/components/headers/RequestId' }
       content:
         application/json:
-          schema: { $ref: '#/components/schemas/AdminPayload' }
+          schema: { $ref: '#/components/schemas/ReloadReport' }
+    ProviderCredentialReport:
+      description: Credential state after insert, replace or delete.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ProviderCredentialReport' }
+    ProviderRecord:
+      description: Current provider governance record.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ProviderRecordReport' }
+    ServerClientList:
+      description: Configured server clients without credentials.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerClientList' }
+    ServerClientRecord:
+      description: The updated server client, without its credential.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerClientRecord' }
+    CreatedServerClient:
+      description: The created or rotated client with its one-time plaintext token.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/CreatedServerClient' }
+    ServerPendingConfigReport:
+      description: Result of writing the pending server configuration.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerPendingConfigReport' }
+    ServerConfigReport:
+      description: Effective server configuration, without clients.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ServerConfigReport' }
+    PersistenceConfigReport:
+      description: Effective persistence configuration.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/PersistenceConfigReport' }
+    BackupList:
+      description: Known backup files, newest first.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/BackupList' }
+    BackupCreated:
+      description: Path of the backup just written.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/BackupCreated' }
+    CircuitList:
+      description: Provider circuit breaker states.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/CircuitList' }
+    TelemetryConfigReport:
+      description: Effective telemetry configuration.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/TelemetryConfigReport' }
+    DeepConfigReport:
+      description: Effective Deep configuration.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/DeepConfigReport' }
+    PoliciesReport:
+      description: Effective policies for every human-readable name.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/PoliciesReport' }
+    ReadyReport:
+      description: Process readiness and local-state availability.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ReadyReport' }
     Conflict:
       description: Resource already exists or cannot be changed in its current state
       headers:
@@ -1160,17 +1320,524 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
   schemas:
-    AdminPayload:
-      type: object
-      description: >-
-        Administrative response or endpoint-specific update object. It always
-        uses JSON and may contain the schema_version field. Configuration
-        shapes are intentionally open because their precise fields are the
-        versioned TOML contract documented in docs/configuracion.md.
-      additionalProperties: true
     SchemaVersion:
       type: string
       const: '1'
+    # ── Administrative request bodies ────────────────────────────────────────
+    # Field names and types mirror the Rust patch structs (snake_case, no
+    # renames except `local_cache_capacity`). Every field is optional: an
+    # omitted field retains its current value, and an empty string clears an
+    # optional string field (see lib.rs empty-string-clears convention).
+    ToggleInput:
+      type: object
+      additionalProperties: false
+      required: [enabled]
+      description: Flip a boolean feature flag and apply it live.
+      properties:
+        enabled: { type: boolean }
+    ProviderToggleInput:
+      type: object
+      additionalProperties: false
+      required: [enabled]
+      description: Enable or disable a declared provider and reload it.
+      properties:
+        enabled: { type: boolean }
+    ProviderCredentialInput:
+      type: object
+      additionalProperties: false
+      required: [key]
+      description: >-
+        Insert or replace a provider credential in memory only. The key is used
+        for a live canary and never written to disk.
+      properties:
+        key:
+          type: string
+          minLength: 1
+          description: Provider credential value; zeroized server-side.
+    ProviderRecordInput:
+      type: object
+      additionalProperties: false
+      description: >-
+        Partial provider governance record. Omitted fields are unchanged; an
+        empty string clears an optional string field.
+      properties:
+        adapter_version: { type: [string, 'null'] }
+        approval_status: { $ref: '#/components/schemas/ApprovalStatus' }
+        reviewed_at: { type: [string, 'null'] }
+        reviewer: { type: [string, 'null'] }
+        terms_url: { type: [string, 'null'] }
+        terms_version_or_date: { type: [string, 'null'] }
+        allowed_access_method: { type: [string, 'null'] }
+        plan_or_contract: { type: [string, 'null'] }
+        rate_limit: { type: [string, 'null'] }
+        cost_model: { type: [string, 'null'] }
+        credential_env: { type: [string, 'null'] }
+        storage_rights: { type: [boolean, 'null'] }
+        supported_regions: { type: [array, 'null'], items: { type: string } }
+        supported_filters: { type: [array, 'null'], items: { type: string } }
+        data_handling_notes: { type: [string, 'null'] }
+        operational_risk: { type: [string, 'null'] }
+    InferencePatch:
+      type: object
+      additionalProperties: false
+      description: Partial inference settings; omitted fields are unchanged.
+      properties:
+        backend: { type: [string, 'null'] }
+        embedding_dimensions: { type: [integer, 'null'], minimum: 0 }
+        max_documents: { type: [integer, 'null'], minimum: 0 }
+        max_input_chars: { type: [integer, 'null'], minimum: 0 }
+        reranker_prior_weight: { type: [number, 'null'] }
+        local_model_path: { type: [string, 'null'] }
+        local_cache_capacity:
+          type: [integer, 'null']
+          minimum: 0
+          description: Also accepted under the alias `local_model_batch`.
+        local_cache_path: { type: [string, 'null'] }
+        remote_endpoint: { type: [string, 'null'] }
+        remote_model: { type: [string, 'null'] }
+        remote_credential_env: { type: [string, 'null'] }
+        remote_timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        remote_max_batch: { type: [integer, 'null'], minimum: 0 }
+    DataPolicyPatch:
+      type: object
+      additionalProperties: false
+      description: Partial data-policy settings; omitted fields are unchanged.
+      properties:
+        profile: { $ref: '#/components/schemas/SecurityProfile' }
+        egress: { $ref: '#/components/schemas/EgressPolicy' }
+        inference: { $ref: '#/components/schemas/InferenceMode' }
+    PolicyPatch:
+      type: object
+      additionalProperties: true
+      description: >-
+        A complete policy object, validated against the policy type selected by
+        `{name}` (ranking, diversity, search, ranking_v2 or gaps). The concrete
+        shape is versioned per policy; an unknown name is `not_found`.
+    PersistencePatch:
+      type: object
+      additionalProperties: false
+      description: >-
+        Partial persistence settings; omitted fields are unchanged. `enabled`,
+        `path` and `locking_mode` are not mutable through this surface.
+      properties:
+        history_enabled: { type: [boolean, 'null'] }
+        saved_document_max_bytes: { type: [integer, 'null'], minimum: 0 }
+        saved_documents_retention_days: { type: [integer, 'null'], minimum: 0 }
+        audit_retention_days: { type: [integer, 'null'], minimum: 0 }
+        history_retention_days: { type: [integer, 'null'], minimum: 0 }
+        cache_retention_days: { type: [integer, 'null'], minimum: 0 }
+        document_cache_retention_days: { type: [integer, 'null'], minimum: 0 }
+        purge_interval_seconds: { type: [integer, 'null'], minimum: 0 }
+        auto_backup_enabled: { type: [boolean, 'null'] }
+        auto_backup_interval_seconds: { type: [integer, 'null'], minimum: 0 }
+        auto_backup_max_count: { type: [integer, 'null'], minimum: 0 }
+        backup_directory: { type: [string, 'null'] }
+    TelemetryPatch:
+      type: object
+      additionalProperties: false
+      description: Partial telemetry settings; omitted fields are unchanged.
+      properties:
+        persistence_enabled: { type: [boolean, 'null'] }
+        retention_days: { type: [integer, 'null'], minimum: 0 }
+    DeepPatch:
+      type: object
+      additionalProperties: false
+      description: Partial Deep limits; omitted fields are unchanged.
+      properties:
+        top_k: { type: [integer, 'null'], minimum: 0 }
+        max_fetches: { type: [integer, 'null'], minimum: 0 }
+        max_bytes: { type: [integer, 'null'], minimum: 0 }
+        max_redirects: { type: [integer, 'null'], minimum: 0 }
+        max_crawl_urls: { type: [integer, 'null'], minimum: 0 }
+        max_depth: { type: [integer, 'null'], minimum: 0 }
+        respect_robots: { type: [boolean, 'null'] }
+        robots_timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        robots_max_bytes: { type: [integer, 'null'], minimum: 0 }
+        timeout_ms: { type: [integer, 'null'], minimum: 0 }
+    ExtractorPatch:
+      type: object
+      additionalProperties: false
+      description: Partial extractor settings; omitted fields are unchanged.
+      properties:
+        executable: { type: [string, 'null'] }
+        version: { type: [string, 'null'] }
+        timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        max_output_bytes: { type: [integer, 'null'], minimum: 0 }
+    RendererPatch:
+      type: object
+      additionalProperties: false
+      description: Partial renderer settings; omitted fields are unchanged.
+      properties:
+        enabled: { type: [boolean, 'null'] }
+        max_browser_calls: { type: [integer, 'null'], minimum: 0 }
+        timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        shutdown_grace_ms: { type: [integer, 'null'], minimum: 0 }
+        max_memory_mb: { type: [integer, 'null'], minimum: 0 }
+        max_redirects: { type: [integer, 'null'], minimum: 0 }
+        sandbox_path: { type: [string, 'null'] }
+        max_dom_bytes: { type: [integer, 'null'], minimum: 0 }
+    AnswerPatch:
+      type: object
+      additionalProperties: false
+      description: >-
+        Partial answer-synthesis settings; omitted fields are unchanged.
+        `enabled` is not mutable here — use POST /answer/enabled.
+      properties:
+        endpoint: { type: [string, 'null'] }
+        model: { type: [string, 'null'] }
+        credential_env: { type: [string, 'null'] }
+        timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        max_sources: { type: [integer, 'null'], minimum: 0 }
+        max_source_chars: { type: [integer, 'null'], minimum: 0 }
+        max_answer_tokens: { type: [integer, 'null'], minimum: 0 }
+    ServerClientCreateInput:
+      type: object
+      additionalProperties: false
+      required: [id, scopes]
+      properties:
+        id: { type: string, minLength: 1 }
+        scopes:
+          type: array
+          items: { $ref: '#/components/schemas/Scope' }
+        tools:
+          type: array
+          items: { type: string }
+          default: []
+        expires_at: { type: [string, 'null'] }
+    ServerClientUpdateInput:
+      type: object
+      additionalProperties: false
+      description: >-
+        Omitted fields are unchanged. For `expires_at`, absent means unchanged
+        and an explicit `null` clears the expiry.
+      properties:
+        scopes:
+          type: [array, 'null']
+          items: { $ref: '#/components/schemas/Scope' }
+        tools:
+          type: [array, 'null']
+          items: { type: string }
+        expires_at: { type: [string, 'null'] }
+    ServerPendingConfigPatch:
+      type: object
+      additionalProperties: false
+      description: >-
+        Partial server configuration; omitted fields are unchanged. A write may
+        require a restart (see `requires_restart` in the response).
+      properties:
+        bind: { type: [string, 'null'] }
+        port: { type: [integer, 'null'], minimum: 0, maximum: 65535 }
+        token_env: { type: [string, 'null'] }
+        no_auth: { type: [boolean, 'null'] }
+        allowed_hosts: { type: [array, 'null'], items: { type: string } }
+        allowed_origins: { type: [array, 'null'], items: { type: string } }
+        max_body_bytes: { type: [integer, 'null'], minimum: 0 }
+        max_header_bytes: { type: [integer, 'null'], minimum: 0 }
+        request_timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        idle_timeout_ms: { type: [integer, 'null'], minimum: 0 }
+        rate_limit_per_minute: { type: [integer, 'null'], minimum: 0 }
+        max_connections: { type: [integer, 'null'], minimum: 0 }
+        tls_cert_path: { type: [string, 'null'] }
+        tls_key_path: { type: [string, 'null'] }
+    # ── Enums shared by request bodies ───────────────────────────────────────
+    ApprovalStatus:
+      type: string
+      enum: [draft, approved, expired, rejected]
+    SecurityProfile:
+      type: string
+      enum: [standard, isolated]
+    EgressPolicy:
+      type: string
+      enum: [deny, governed]
+    InferenceMode:
+      type: string
+      enum: [disabled, local_only, remote_explicit]
+    Scope:
+      type: string
+      enum: [search, deep, read, write, admin, mcp]
+    CircuitState:
+      type: string
+      enum: [closed, open, half_open]
+    SqliteLockingMode:
+      type: string
+      enum: [normal, exclusive]
+    # ── Administrative response bodies ───────────────────────────────────────
+    ReloadReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, config_file, declared_sources, enabled_sources, registered_sources, inference_backend, clients]
+      description: Result of applying a configuration change without a restart.
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        config_file: { type: [string, 'null'] }
+        declared_sources: { type: array, items: { type: string } }
+        enabled_sources: { type: array, items: { type: string } }
+        registered_sources: { type: array, items: { type: string } }
+        inference_backend: { type: [string, 'null'] }
+        clients: { type: array, items: { type: string } }
+    ProviderCredentialReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, name, set, available]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        name: { type: string }
+        set: { type: boolean }
+        available: { type: boolean }
+    ProviderRecordReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, name, record, approved]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        name: { type: string }
+        record: { $ref: '#/components/schemas/ProviderRuntimeConfig' }
+        approved: { type: boolean }
+    ProviderRuntimeConfig:
+      type: object
+      additionalProperties: false
+      required: [adapter_version, approval_status, reviewed_at, reviewer, terms_url, terms_version_or_date, allowed_access_method, plan_or_contract, rate_limit, cost_model, credential_env, storage_rights, supported_regions, supported_filters, data_handling_notes, operational_risk]
+      properties:
+        adapter_version: { type: [string, 'null'] }
+        approval_status: { $ref: '#/components/schemas/ApprovalStatus' }
+        reviewed_at: { type: [string, 'null'] }
+        reviewer: { type: [string, 'null'] }
+        terms_url: { type: [string, 'null'] }
+        terms_version_or_date: { type: [string, 'null'] }
+        allowed_access_method: { type: [string, 'null'] }
+        plan_or_contract: { type: [string, 'null'] }
+        rate_limit: { type: [string, 'null'] }
+        cost_model: { type: [string, 'null'] }
+        credential_env: { type: [string, 'null'] }
+        storage_rights: { type: boolean }
+        supported_regions: { type: array, items: { type: string } }
+        supported_filters: { type: array, items: { type: string } }
+        data_handling_notes: { type: [string, 'null'] }
+        operational_risk: { type: [string, 'null'] }
+    ServerClientSummary:
+      type: object
+      additionalProperties: false
+      required: [id, scopes, tools, expires_at, credential_kind]
+      properties:
+        id: { type: string }
+        scopes: { type: array, items: { $ref: '#/components/schemas/Scope' } }
+        tools: { type: array, items: { type: string } }
+        expires_at: { type: [string, 'null'] }
+        credential_kind: { type: string, enum: [token_env, token_sha256] }
+    ServerClientList:
+      type: object
+      additionalProperties: false
+      required: [schema_version, clients]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        clients: { type: array, items: { $ref: '#/components/schemas/ServerClientSummary' } }
+    ServerClientRecord:
+      type: object
+      additionalProperties: false
+      required: [schema_version, client]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        client: { $ref: '#/components/schemas/ServerClientSummary' }
+    CreatedServerClient:
+      type: object
+      additionalProperties: false
+      required: [schema_version, id, scopes, tools, expires_at, credential_kind, token]
+      description: A client summary plus the plaintext token, shown exactly once.
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        id: { type: string }
+        scopes: { type: array, items: { $ref: '#/components/schemas/Scope' } }
+        tools: { type: array, items: { type: string } }
+        expires_at: { type: [string, 'null'] }
+        credential_kind: { type: string, enum: [token_env, token_sha256] }
+        token:
+          type: string
+          description: Plaintext bearer token; never retrievable again.
+    ServerPendingConfigReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, written, applied, requires_restart, hot_fields, cold_fields]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        written: { type: array, items: { type: string } }
+        applied: { type: boolean }
+        requires_restart: { type: boolean }
+        hot_fields: { type: array, items: { type: string } }
+        cold_fields: { type: array, items: { type: string } }
+    ServerConfigReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, server]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        server: { $ref: '#/components/schemas/ServerConfigView' }
+    ServerConfigView:
+      type: object
+      additionalProperties: false
+      required: [bind, port, token_env, no_auth, allowed_hosts, allowed_origins, max_body_bytes, max_header_bytes, request_timeout_ms, idle_timeout_ms, rate_limit_per_minute, max_connections, tls]
+      properties:
+        bind: { type: string }
+        port: { type: integer }
+        token_env: { type: string }
+        no_auth: { type: boolean }
+        allowed_hosts: { type: array, items: { type: string } }
+        allowed_origins: { type: array, items: { type: string } }
+        max_body_bytes: { type: integer }
+        max_header_bytes: { type: integer }
+        request_timeout_ms: { type: integer }
+        idle_timeout_ms: { type: integer }
+        rate_limit_per_minute: { type: integer }
+        max_connections: { type: integer }
+        tls:
+          type: object
+          additionalProperties: false
+          required: [cert_path, key_path]
+          properties:
+            cert_path: { type: [string, 'null'] }
+            key_path: { type: [string, 'null'] }
+    PersistenceConfigReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, persistence]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        persistence: { $ref: '#/components/schemas/PersistenceConfigView' }
+    PersistenceConfigView:
+      type: object
+      additionalProperties: false
+      required: [enabled, path, history_enabled, saved_document_max_bytes, saved_documents_retention_days, audit_retention_days, history_retention_days, cache_retention_days, document_cache_retention_days, purge_interval_seconds, auto_backup_enabled, auto_backup_interval_seconds, auto_backup_max_count, backup_directory, locking_mode]
+      properties:
+        enabled: { type: boolean }
+        path: { type: string }
+        history_enabled: { type: boolean }
+        saved_document_max_bytes: { type: integer }
+        saved_documents_retention_days: { type: integer }
+        audit_retention_days: { type: integer }
+        history_retention_days: { type: integer }
+        cache_retention_days: { type: integer }
+        document_cache_retention_days: { type: integer }
+        purge_interval_seconds: { type: integer }
+        auto_backup_enabled: { type: boolean }
+        auto_backup_interval_seconds: { type: integer }
+        auto_backup_max_count: { type: integer }
+        backup_directory: { type: [string, 'null'] }
+        locking_mode: { $ref: '#/components/schemas/SqliteLockingMode' }
+    BackupList:
+      type: object
+      additionalProperties: false
+      required: [schema_version, backups]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        backups: { type: array, items: { type: string } }
+    BackupCreated:
+      type: object
+      additionalProperties: false
+      required: [schema_version, path]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        path: { type: string }
+    CircuitList:
+      type: object
+      additionalProperties: false
+      required: [schema_version, circuits]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        circuits: { type: array, items: { $ref: '#/components/schemas/CircuitSnapshot' } }
+    CircuitSnapshot:
+      type: object
+      additionalProperties: false
+      required: [provider, state, consecutive_failures, open_until]
+      properties:
+        provider: { type: string }
+        state: { $ref: '#/components/schemas/CircuitState' }
+        consecutive_failures: { type: integer }
+        open_until: { type: [integer, 'null'] }
+    TelemetryConfigReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, telemetry]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        telemetry: { $ref: '#/components/schemas/TelemetryConfigView' }
+    TelemetryConfigView:
+      type: object
+      additionalProperties: false
+      required: [persistence_enabled, retention_days]
+      properties:
+        persistence_enabled: { type: boolean }
+        retention_days: { type: integer }
+    DeepConfigReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, deep]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        deep: { $ref: '#/components/schemas/DeepConfigView' }
+    DeepConfigView:
+      type: object
+      additionalProperties: false
+      required: [top_k, max_fetches, max_bytes, max_redirects, max_crawl_urls, max_depth, respect_robots, robots_timeout_ms, robots_max_bytes, timeout_ms, extractor, renderer, ranking_v2, gaps]
+      properties:
+        top_k: { type: integer }
+        max_fetches: { type: integer }
+        max_bytes: { type: integer }
+        max_redirects: { type: integer }
+        max_crawl_urls: { type: integer }
+        max_depth: { type: integer }
+        respect_robots: { type: boolean }
+        robots_timeout_ms: { type: integer }
+        robots_max_bytes: { type: integer }
+        timeout_ms: { type: integer }
+        extractor: { $ref: '#/components/schemas/ExtractorConfigView' }
+        renderer: { $ref: '#/components/schemas/RendererConfigView' }
+        ranking_v2: { type: object, additionalProperties: true, description: Versioned Ranking v2 configuration. }
+        gaps: { type: object, additionalProperties: true, description: Versioned gap-analysis configuration. }
+    ExtractorConfigView:
+      type: object
+      additionalProperties: false
+      required: [executable, version, timeout_ms, max_output_bytes]
+      properties:
+        executable: { type: [string, 'null'] }
+        version: { type: [string, 'null'] }
+        timeout_ms: { type: integer }
+        max_output_bytes: { type: integer }
+    RendererConfigView:
+      type: object
+      additionalProperties: false
+      required: [enabled, max_browser_calls, timeout_ms, shutdown_grace_ms, max_memory_mb, max_redirects, sandbox_path, max_dom_bytes]
+      properties:
+        enabled: { type: boolean }
+        max_browser_calls: { type: integer }
+        timeout_ms: { type: integer }
+        shutdown_grace_ms: { type: integer }
+        max_memory_mb: { type: integer }
+        max_redirects: { type: integer }
+        sandbox_path: { type: [string, 'null'] }
+        max_dom_bytes: { type: integer }
+    PoliciesReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, ranking_policy, diversity_policy, search_policy, ranking_v2_policy, gap_policy]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        ranking_policy: { type: object, additionalProperties: true }
+        diversity_policy: { type: object, additionalProperties: true }
+        search_policy: { type: object, additionalProperties: true }
+        ranking_v2_policy: { type: object, additionalProperties: true }
+        gap_policy: { type: object, additionalProperties: true }
+    ReadyReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, status, storage_ok, sources_available, sources_usable]
+      description: >-
+        Liveness/readiness probe payload. `sources_usable` counts available
+        sources whose circuit breaker is not open.
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        status: { type: string, enum: [ok, degraded] }
+        storage_ok: { type: boolean }
+        sources_available: { type: integer }
+        sources_usable: { type: integer }
     QueryInput:
       type: object
       required: [q]
@@ -1749,7 +2416,7 @@ components:
     ServiceStatus:
       type: object
       additionalProperties: false
-      required: [schema_version, status, sources, storage, cache, inference_backend, answer]
+      required: [schema_version, status, sources, storage, cache, inference_backend, answer, strategist, data_policy]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         status: { type: string, enum: [ok, degraded] }
@@ -1765,6 +2432,68 @@ components:
             Read-only view of the answer-synthesis configuration: never the
             credential, only what a settings screen needs to explain why the
             feature is or isn't available right now.
+        strategist:
+          $ref: '#/components/schemas/StrategistStatus'
+          description: >-
+            Read-only view of the search-strategist configuration: whether the
+            optional LLM may participate in a search. Never the credential, only
+            what a settings screen needs to explain why the "search with model"
+            toggle is or isn't usable.
+        data_policy:
+          $ref: '#/components/schemas/DataPolicyStatus'
+          description: >-
+            Read-only view of data_policy — the profile, egress and inference
+            gate every other capability in this status checks against. Exposed
+            so a settings screen can explain why a source, remote embedding or
+            answer call is unavailable instead of just reporting that it is.
+    DataPolicyStatus:
+      type: object
+      additionalProperties: false
+      required: [profile, egress, inference]
+      properties:
+        profile:
+          type: string
+          enum: [standard, isolated]
+          description: >-
+            data_policy.profile. The isolated profile is fail-closed before any
+            network egress, so providers, Deep fetch and remote inference are
+            all unavailable while it is set.
+        egress:
+          type: string
+          enum: [deny, governed]
+          description: >-
+            data_policy.egress. `deny` blocks all outbound network; `governed`
+            allows only what the provider/governance records approve.
+        inference:
+          type: string
+          enum: [disabled, local_only, remote_explicit]
+          description: >-
+            data_policy.inference. `remote_explicit` permits an operator-approved
+            remote embedding/answer endpoint; `local_only` restricts inference to
+            an on-device backend.
+    StrategistStatus:
+      type: object
+      additionalProperties: false
+      required: [enabled, configured, available, model, endpoint]
+      properties:
+        enabled:
+          type: boolean
+          description: >-
+            strategist.enabled in configuration — the operator's on/off intent,
+            exactly what POST /strategist/enabled flips.
+        configured:
+          type: boolean
+          description: >-
+            Whether endpoint and model are both present, regardless of enabled —
+            "is there a real configuration on disk to toggle".
+        available:
+          type: boolean
+          description: >-
+            Whether calling the strategist would work right now: enabled AND
+            configured AND the credential environment variable was present. A UI
+            should gate the feature on this, not on enabled or configured alone.
+        model: { type: [string, 'null'] }
+        endpoint: { type: [string, 'null'] }
     SearchHistoryEntry:
       type: object
       additionalProperties: false

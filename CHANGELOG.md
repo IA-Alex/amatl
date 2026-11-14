@@ -342,6 +342,29 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- The OpenAPI document typed every administrative request body and success
+  response as one intentionally open object (`AdminPayload`,
+  `additionalProperties: true`), so the published contract pinned no field for
+  any of the ~15 admin request bodies or ~29 admin responses: `/inference`,
+  `/data-policy`, `/policies/{name}`, `/persistence`, `/telemetry`, `/deep/*`,
+  `/providers/{name}`, `/server/clients*`, `/server/pending-config`, the boolean
+  toggles and every matching response. Each now carries a concrete schema
+  derived from the Rust patch structs and response types (field names and types,
+  `snake_case` enums, optional-field semantics), and the three boolean toggles
+  share one `ToggleInput` instead of two inline copies plus a generic fallback.
+  A regression test pins every admin GET response and a toggle response against
+  their schema's `required` list, so the contract cannot drift from the handler
+  silently again.
+- The OpenAPI `ServiceStatus` schema declared `additionalProperties: false` but
+  omitted `strategist` and `data_policy`, two fields the server has emitted in
+  `GET /status` since the search-strategist and data-policy surfaces landed. A
+  client validating `/status` against the published contract therefore rejected a
+  response the server considered valid, and the document understated the real
+  response shape. The two fields and their `StrategistStatus`/`DataPolicyStatus`
+  schemas are now declared and required, and a regression test compares the keys
+  of the live `/status` body against the schema's `required` list so the contract
+  cannot drift unnoticed again (`docs/testing.md` also listed five MCP tools while
+  the server exposes six — corrected).
 - The normalization stage discarded every `published_at` reported as a *naive*
   timestamp (`YYYY-MM-DDTHH:MM:SS`, no offset), which is exactly the shape a live
   SearXNG instance emits in `publishedDate`. `normalize_date` accepted RFC 3339

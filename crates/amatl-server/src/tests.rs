@@ -2182,6 +2182,191 @@ async fn status_reports_sources_storage_and_cache() {
     assert_eq!(body["data_policy"]["inference"], "disabled");
 }
 
+/// Regression for AUDIT H-01: the OpenAPI `ServiceStatus` schema declared
+/// `additionalProperties: false` but omitted `strategist` and `data_policy`,
+/// which the server emits. A client validating `/status` against the published
+/// contract therefore rejected a response the server considered valid. Nothing
+/// asserted the response shape before, so the schema silently drifted.
+///
+/// This test parses the live `/status` body and fails if any top-level key is
+/// missing from the schema's `required` list. It is deliberately key-level (not
+/// a full validator) so it needs no new dependency and stays robust.
+#[tokio::test]
+async fn status_response_matches_the_openapi_service_status_schema() {
+    let response = app()
+        .await
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let emitted: std::collections::BTreeSet<String> = body
+        .as_object()
+        .expect("status body is an object")
+        .keys()
+        .cloned()
+        .collect();
+
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let required = service_status_required_fields(&openapi);
+    let missing: Vec<&String> = emitted.difference(&required).collect();
+    assert!(
+        missing.is_empty(),
+        "/status emits keys absent from the OpenAPI ServiceStatus schema: {missing:?}; \
+         emitted={emitted:?} declared={required:?}"
+    );
+    // The schema must also not declare a field the server never sends, or a
+    // strict client would expect a key that is always absent.
+    let phantom: Vec<&String> = required.difference(&emitted).collect();
+    assert!(
+        phantom.is_empty(),
+        "OpenAPI ServiceStatus requires keys the server never emits: {phantom:?}"
+    );
+}
+
+/// Extracts the `ServiceStatus.required` list from an OpenAPI document.
+fn service_status_required_fields(openapi: &str) -> std::collections::BTreeSet<String> {
+    let start = openapi
+        .find("\n    ServiceStatus:")
+        .expect("OpenAPI declares ServiceStatus");
+    let rest = &openapi[start..];
+    let line = rest
+        .lines()
+        .find(|line| line.trim_start().starts_with("required:"))
+        .expect("ServiceStatus has a required list");
+    let list = line
+        .split_once('[')
+        .and_then(|(_, tail)| tail.split_once(']'))
+        .expect("required is an inline list")
+        .0;
+    list.split(',')
+        .map(|name| name.trim().to_owned())
+        .filter(|name| !name.is_empty())
+        .collect()
+}
+
+/// Extracts the inline `required:` list of a named schema from an OpenAPI
+/// document. Mirrors `service_status_required_fields` for the admin schemas
+/// that the repair typed (H-03).
+fn schema_required_fields(openapi: &str, schema: &str) -> std::collections::BTreeSet<String> {
+    // Restrict to the `schemas:` section: several names also exist as
+    // `responses:` entries, which carry no `required:` list.
+    let schemas_start = openapi
+        .find("\n  schemas:")
+        .expect("OpenAPI has a schemas section");
+    let section = &openapi[schemas_start..];
+    let anchor = format!("\n    {schema}:");
+    let start = section
+        .find(&anchor)
+        .unwrap_or_else(|| panic!("OpenAPI declares schema {schema}"));
+    let rest = &section[start..];
+    let line = rest
+        .lines()
+        .find(|line| line.trim_start().starts_with("required:"))
+        .unwrap_or_else(|| panic!("{schema} has a required list"));
+    let list = line
+        .split_once('[')
+        .and_then(|(_, tail)| tail.split_once(']'))
+        .expect("required is an inline list")
+        .0;
+    list.split(',')
+        .map(|name| name.trim().to_owned())
+        .filter(|name| !name.is_empty())
+        .collect()
+}
+
+/// Regression for AUDIT H-03: the admin request/response bodies were typed as
+/// an intentionally open generic object (`AdminPayload`), so the published
+/// contract did not pin the fields the server actually reads or returns. They
+/// now carry concrete schemas; this test pins each admin GET response's
+/// top-level keys against its schema's `required` list, so the contract cannot
+/// silently drift from the handler again.
+#[tokio::test]
+async fn admin_responses_match_their_openapi_schemas() {
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    // (path, schema name) for the admin read surfaces that are always 200 on a
+    // default service (no persistence needed).
+    let cases: &[(&str, &str)] = &[
+        ("/providers/searxng", "ProviderRecordReport"),
+        ("/providers/marginalia", "ProviderRecordReport"),
+        ("/policies", "PoliciesReport"),
+        ("/persistence", "PersistenceConfigReport"),
+        ("/telemetry", "TelemetryConfigReport"),
+        ("/deep/limits", "DeepConfigReport"),
+        ("/circuits", "CircuitList"),
+        ("/server/pending-config", "ServerConfigReport"),
+        ("/server/clients", "ServerClientList"),
+    ];
+    let app = app().await;
+    for (path, schema) in cases {
+        let response = app
+            .clone()
+            .oneshot(authorized(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK, "{path} status");
+        let body = json_body(response).await;
+        let emitted: std::collections::BTreeSet<String> = body
+            .as_object()
+            .unwrap_or_else(|| panic!("{path} body is not an object"))
+            .keys()
+            .cloned()
+            .collect();
+        let declared = schema_required_fields(openapi.as_str(), schema);
+        let missing: Vec<&String> = emitted.difference(&declared).collect();
+        let phantom: Vec<&String> = declared.difference(&emitted).collect();
+        assert!(
+            missing.is_empty(),
+            "{path} emits keys absent from schema {schema}: {missing:?}"
+        );
+        assert!(
+            phantom.is_empty(),
+            "schema {schema} requires keys {path} never emits: {phantom:?}"
+        );
+    }
+}
+
+/// A toggle uses the shared `ToggleInput` schema, and its success response uses
+/// the typed `ReloadReport` rather than the old generic object (H-03).
+#[tokio::test]
+async fn toggle_response_matches_the_openapi_reload_report_schema() {
+    // A reloadable app flips a real flag and returns ReloadReport; the default
+    // test app has no configuration file and would fail closed with 500.
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"deepseek-ai/DeepSeek-V3\"\n\
+                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+    let response = app
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"enabled":true}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let emitted: std::collections::BTreeSet<String> =
+        body.as_object().expect("object").keys().cloned().collect();
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let declared = schema_required_fields(openapi.as_str(), "ReloadReport");
+    let missing: Vec<&String> = emitted.difference(&declared).collect();
+    let phantom: Vec<&String> = declared.difference(&emitted).collect();
+    assert!(
+        missing.is_empty(),
+        "toggle response emits keys absent from ReloadReport: {missing:?}"
+    );
+    assert!(
+        phantom.is_empty(),
+        "ReloadReport requires keys the toggle never emits: {phantom:?}"
+    );
+    let _ = std::fs::remove_file(path);
+}
+
 #[tokio::test]
 async fn history_and_saved_surfaces_fail_closed_without_persistence() {
     let app = app().await;
