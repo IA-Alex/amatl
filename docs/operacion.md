@@ -443,6 +443,33 @@ para una fuente declarada pero no habilitada, `provider_not_approved` para una
 habilitada cuya ficha de gobernanza está incompleta, y el error de política para
 un nombre retirado— y ninguno de ellos implica tráfico saliente.
 
+### Levantar la instancia SearXNG
+
+El único requisito de SearXNG que AMATL no puede suplir desde su configuración
+es que la instancia tenga habilitada la **salida JSON**: la imagen oficial trae
+`format: json` deshabilitado y, sin él, el adapter recibe `403` y AMATL reporta
+`provider_invalid_response`. Para una instancia local de loopback:
+
+```bash
+deploy/searxng/run.sh 8888          # arranca + verifica la API JSON
+export SEARXNG_INSTANCE_URL=http://127.0.0.1:8888
+amatl --config-file amatl.toml provider-canary searxng "rust" --json
+deploy/searxng/run.sh stop          # detener
+```
+
+El script publica `deploy/searxng/settings.yml`, que deshabilita el *rate
+limiter* de SearXNG (bloquea clientes automatizados como el adapter), habilita
+`json` y deshabilita los motores que suelen bloquear tráfico automatizado
+(Google, Bing, Startpage, Qwant), coherente con la guía de operador de
+`docs/gobernanza-providers.md`. Reemplaza `secret_key` antes de exponer la
+instancia más allá de loopback. La ficha de gobernanza del provider sigue
+necesitando aprobación en `amatl.toml`.
+
+**Nota de motores.** Un `status: partial_success` con resultados es normal: la
+respuesta agrega varios motores y cualquiera de ellos puede informarse en
+`unresponsive_engines`. Solo `failure` sin resultados indica que ningún motor
+respondió.
+
 En el mismo despliegue, `/ready` responde `200` con `"sources_available":1`,
 `/status` responde `ok` listando **exactamente dos fuentes** (`marginalia`
 `provider_disabled`, `searxng` `available`) sin ninguna mención de los nombres

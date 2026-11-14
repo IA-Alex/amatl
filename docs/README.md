@@ -98,6 +98,7 @@ empaqueta rutas que salen del crate, así que un `include_str!` de `docs/` rompe
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Contribución (EN) |
 | [contribuir.md](contribuir.md) | Contribución (espejo ES) |
 | [release.md](release.md) | Release y empaquetado Linux |
+| [../deploy/searxng/](../deploy/searxng/) | Instancia SearXNG local para la fuente `searxng` (JSON habilitado) |
 | [benchmarks.md](benchmarks.md) | Benchmarks y quality gates |
 | [testing.md](testing.md) | Estrategia de testing y cobertura |
 | [depuracion.md](depuracion.md) | Depuración local (DebugMCP/codelldb) y la restricción de `ptrace` |
