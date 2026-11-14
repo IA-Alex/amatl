@@ -303,14 +303,28 @@ fn parse_response(
         .collect();
 
     // Promote answers as synthetic results at the top.
-    for (index, answer) in searxng.answers.into_iter().enumerate() {
+    //
+    // An answer with no URL cannot be opened by the caller, so it is dropped
+    // for the same reason a URL-less result is: inserting it with `url: ""`
+    // hands the shared pipeline an item it rejects item by item, recording an
+    // `invalid_url` degradation and turning an otherwise clean response into
+    // `partial_success`. Answers that carry a usable URL are still promoted.
+    for (offset, answer) in searxng
+        .answers
+        .into_iter()
+        .filter_map(|answer| {
+            let url = answer.url.filter(|value| !value.is_empty())?;
+            Some((url, answer.answer))
+        })
+        .enumerate()
+    {
         results.insert(
-            index,
+            offset,
             ProviderItem {
-                title: answer.answer.clone(),
-                url: answer.url.unwrap_or_default(),
+                title: answer.1.clone(),
+                url: answer.0,
                 provider_rank: None,
-                snippet: answer.answer,
+                snippet: answer.1,
                 result_type: None,
                 published_at: None,
                 author: None,
@@ -453,6 +467,33 @@ mod tests {
         assert!(filters.ignored.contains(&"region".into()));
         assert!(filters.ignored.contains(&"time_range".into()));
         assert!(filters.ignored.contains(&"filetype".into()));
+    }
+
+    #[test]
+    fn answer_without_a_url_is_dropped_not_promoted_with_an_empty_url() {
+        // A promoted answer must be openable. Inserting it with `url: ""`
+        // handed `normalize` an item it rejects with an `invalid_url`
+        // degradation, flipping a clean response to `partial_success`.
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{
+                "query": "rust",
+                "results": [],
+                "answers": [
+                    {"answer": "no url answer"},
+                    {"answer": "null url answer", "url": null},
+                    {"answer": "empty url answer", "url": ""},
+                    {"answer": "kept", "url": "https://example.com/"}
+                ],
+                "unresponsive_engines": []
+            }"#
+            .to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(result.results.len(), 1);
+        assert_eq!(result.results[0].url, "https://example.com/");
+        assert_eq!(result.results[0].provider_rank, Rank::new(1).ok());
     }
 
     #[test]

@@ -342,6 +342,26 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- The normalization stage discarded every `published_at` reported as a *naive*
+  timestamp (`YYYY-MM-DDTHH:MM:SS`, no offset), which is exactly the shape a live
+  SearXNG instance emits in `publishedDate`. `normalize_date` accepted RFC 3339
+  (offset required) or a bare `YYYY-MM-DD`, so a valid, common date was dropped,
+  preserved only as `reported_published_at_invalid` metadata, and recorded as an
+  `invalid_published_at` degradation that flipped a clean response to
+  `partial_success`. Observed against `searxng/searxng:latest` (2026-11-14):
+  ~11 of 35 results per query lost their date and the whole response degraded.
+  Naive timestamps (with optional fractional seconds) are now anchored to UTC —
+  the same assumption already applied to a bare date — and RFC 3339 offsets are
+  still preserved verbatim.
+- The SearXNG adapter promoted an `answers` entry with a missing or empty `url`
+  as a synthetic result with `url: ""`. The shared `normalize` stage rejects a
+  URL-less item, so one such answer added an `invalid_url` degradation and — with
+  at least one real result present — flipped an otherwise clean single-engine
+  response to `partial_success`. The results path had already been fixed
+  (URL-less items are dropped, matching Marginalia); the answer-promotion path
+  kept the old behavior because the two code paths were written separately. It
+  now drops a URL-less answer for the same reason, so `parse_response` only ever
+  emits openable items.
 - `crates/amatl-core/Cargo.toml` declared `readme = "../../README.md"`, a path
   outside the package, while the crate ships its own
   `crates/amatl-core/README.md`. Cargo resolves that collision in favour of the

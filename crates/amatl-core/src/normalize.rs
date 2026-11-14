@@ -176,6 +176,21 @@ fn normalize_date(value: &str) -> Option<String> {
     if let Ok(date_time) = OffsetDateTime::parse(value, &Rfc3339) {
         return date_time.format(&Rfc3339).ok();
     }
+    // Naive timestamp with a time component but no offset. A live SearXNG
+    // instance emits `publishedDate` this way (`YYYY-MM-DDTHH:MM:SS`), so
+    // rejecting it discarded a valid date and degraded an otherwise clean
+    // response with `invalid_published_at`. The time is already in the
+    // provider's local clock; AMATL cannot recover the true offset, so it is
+    // anchored to UTC — the same assumption already made for a bare date
+    // below. A fractional second is accepted when present.
+    for format in [
+        format_description!("[year]-[month]-[day]T[hour]:[minute]:[second].[subsecond]"),
+        format_description!("[year]-[month]-[day]T[hour]:[minute]:[second]"),
+    ] {
+        if let Ok(naive) = PrimitiveDateTime::parse(value, &format) {
+            return naive.assume_utc().format(&Rfc3339).ok();
+        }
+    }
     let date = Date::parse(value, format_description!("[year]-[month]-[day]")).ok()?;
     PrimitiveDateTime::new(date, Time::MIDNIGHT)
         .assume_utc()
@@ -251,5 +266,42 @@ mod tests {
             "2026-02-30"
         );
         assert_eq!(items[0].degradations.len(), 2);
+    }
+
+    #[test]
+    fn published_date_accepts_the_formats_real_providers_emit() {
+        // RFC 3339 with an offset is preserved verbatim (the offset is
+        // meaningful and is not silently rewritten to `Z`).
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31+02:00").as_deref(),
+            Some("2024-06-11T13:20:31+02:00")
+        );
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31Z").as_deref(),
+            Some("2024-06-11T13:20:31Z")
+        );
+        // Naive timestamp without an offset (live SearXNG `publishedDate`),
+        // anchored to UTC.
+        assert_eq!(
+            normalize_date("2024-06-11T00:00:00").as_deref(),
+            Some("2024-06-11T00:00:00Z")
+        );
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31").as_deref(),
+            Some("2024-06-11T13:20:31Z")
+        );
+        // Fractional seconds are preserved.
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31.123").as_deref(),
+            Some("2024-06-11T13:20:31.123Z")
+        );
+        // Bare date is midnight UTC.
+        assert_eq!(
+            normalize_date("2024-06-11").as_deref(),
+            Some("2024-06-11T00:00:00Z")
+        );
+        // Genuinely invalid values still fail closed.
+        assert_eq!(normalize_date("2026-02-30"), None);
+        assert_eq!(normalize_date("yesterday"), None);
     }
 }

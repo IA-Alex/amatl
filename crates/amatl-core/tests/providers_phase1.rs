@@ -379,3 +379,41 @@ async fn searxng_drops_results_without_a_url_like_marginalia() {
         response.degradations
     );
 }
+
+#[tokio::test]
+async fn searxng_answer_without_a_url_does_not_degrade_a_clean_response() {
+    // Same contract as `searxng_drops_results_without_a_url_like_marginalia`,
+    // but for the `answers` promotion path. A promoted answer with a null or
+    // absent `url` used to be inserted with `url: ""`, which the shared
+    // `normalize` stage rejects with an `invalid_url` degradation and thereby
+    // flips a single-engine, otherwise clean response to `PartialSuccess`.
+    let transport = Arc::new(FixtureTransport::new(
+        200,
+        BTreeMap::new(),
+        br#"{
+            "query": "rust",
+            "results": [{"title":"Has URL","url":"https://rust-lang.org/","content":"ok"}],
+            "answers": [{"answer": "Rust is a systems programming language"}],
+            "unresponsive_engines": []
+        }"#,
+    ));
+    let providers: Vec<Arc<dyn Provider>> = vec![searxng(transport, true, true)];
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+        .search(parse_query("rust".into()).unwrap(), providers)
+        .await;
+
+    assert_eq!(response.status, SearchStatus::Success);
+    assert_eq!(response.results.len(), 1);
+    assert_eq!(
+        response.results[0].canonical_url.0.as_str(),
+        "https://rust-lang.org/"
+    );
+    assert!(
+        response
+            .degradations
+            .iter()
+            .all(|degradation| !degradation.code.contains("url")),
+        "a URL-less answer must not reach normalize as an item: {:?}",
+        response.degradations
+    );
+}
