@@ -2188,9 +2188,9 @@ async fn status_reports_sources_storage_and_cache() {
 /// contract therefore rejected a response the server considered valid. Nothing
 /// asserted the response shape before, so the schema silently drifted.
 ///
-/// This test parses the live `/status` body and fails if any top-level key is
-/// missing from the schema's `required` list. It is deliberately key-level (not
-/// a full validator) so it needs no new dependency and stays robust.
+/// This test parses the live `/status` body and recursively validates it
+/// against the schema: every emitted key (at any depth) must be declared and
+/// every required key must be present. It needs no new dependency.
 #[tokio::test]
 async fn status_response_matches_the_openapi_service_status_schema() {
     let response = app()
@@ -2200,90 +2200,309 @@ async fn status_response_matches_the_openapi_service_status_schema() {
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
     let body = json_body(response).await;
-    let emitted: std::collections::BTreeSet<String> = body
-        .as_object()
-        .expect("status body is an object")
-        .keys()
-        .cloned()
-        .collect();
 
     let openapi = include_str!("../openapi.yaml").replace('\r', "");
-    let required = service_status_required_fields(&openapi);
-    let missing: Vec<&String> = emitted.difference(&required).collect();
+    let schemas = parse_schemas(&openapi);
+    let node = schemas
+        .get("ServiceStatus")
+        .expect("OpenAPI declares SchemaNode ServiceStatus");
+    let mut errors = Vec::new();
+    assert_conforms(&body, node, &schemas, "$", &mut errors);
     assert!(
-        missing.is_empty(),
-        "/status emits keys absent from the OpenAPI ServiceStatus schema: {missing:?}; \
-         emitted={emitted:?} declared={required:?}"
-    );
-    // The schema must also not declare a field the server never sends, or a
-    // strict client would expect a key that is always absent.
-    let phantom: Vec<&String> = required.difference(&emitted).collect();
-    assert!(
-        phantom.is_empty(),
-        "OpenAPI ServiceStatus requires keys the server never emits: {phantom:?}"
+        errors.is_empty(),
+        "/status does not conform to the OpenAPI ServiceStatus schema: {errors:?}"
     );
 }
 
-/// Extracts the `ServiceStatus.required` list from an OpenAPI document.
-fn service_status_required_fields(openapi: &str) -> std::collections::BTreeSet<String> {
+/// A node of the subset of JSON Schema this guard understands: the `required`
+/// list, a `properties` map, an `items` schema for arrays, a `$ref` to another
+/// component schema, and whether the object accepts unknown keys
+/// (`additionalProperties: true`). Enough to check the OpenAPI document this
+/// repository ships, without pulling a YAML or JSON-Schema dependency into the
+/// test build.
+#[derive(Default, Clone)]
+struct SchemaNode {
+    required: std::collections::BTreeSet<String>,
+    properties: std::collections::BTreeMap<String, SchemaNode>,
+    items: Option<Box<SchemaNode>>,
+    reference: Option<String>,
+    open: bool,
+}
+
+/// Parses the `components.schemas` section into `SchemaNode`s keyed by name.
+fn parse_schemas(openapi: &str) -> std::collections::BTreeMap<String, SchemaNode> {
     let start = openapi
-        .find("\n    ServiceStatus:")
-        .expect("OpenAPI declares ServiceStatus");
-    let rest = &openapi[start..];
-    let line = rest
-        .lines()
-        .find(|line| line.trim_start().starts_with("required:"))
-        .expect("ServiceStatus has a required list");
-    let list = line
-        .split_once('[')
-        .and_then(|(_, tail)| tail.split_once(']'))
-        .expect("required is an inline list")
-        .0;
-    list.split(',')
-        .map(|name| name.trim().to_owned())
-        .filter(|name| !name.is_empty())
-        .collect()
-}
-
-/// Extracts the inline `required:` list of a named schema from an OpenAPI
-/// document. Mirrors `service_status_required_fields` for the admin schemas
-/// that the repair typed (H-03).
-fn schema_required_fields(openapi: &str, schema: &str) -> std::collections::BTreeSet<String> {
-    // Restrict to the `schemas:` section: several names also exist as
-    // `responses:` entries, which carry no `required:` list.
-    let schemas_start = openapi
         .find("\n  schemas:")
         .expect("OpenAPI has a schemas section");
-    let section = &openapi[schemas_start..];
-    let anchor = format!("\n    {schema}:");
-    let start = section
-        .find(&anchor)
-        .unwrap_or_else(|| panic!("OpenAPI declares schema {schema}"));
-    let rest = &section[start..];
-    let line = rest
-        .lines()
-        .find(|line| line.trim_start().starts_with("required:"))
-        .unwrap_or_else(|| panic!("{schema} has a required list"));
-    let list = line
-        .split_once('[')
-        .and_then(|(_, tail)| tail.split_once(']'))
-        .expect("required is an inline list")
-        .0;
-    list.split(',')
-        .map(|name| name.trim().to_owned())
-        .filter(|name| !name.is_empty())
-        .collect()
+    // The section ends at the next key indented by exactly two spaces that is
+    // not part of `schemas:` (none here), so take the rest of the document.
+    let section = &openapi[start..];
+    let lines: Vec<&str> = section.lines().collect();
+    let mut schemas = std::collections::BTreeMap::new();
+    let mut i = 0;
+    // Skip the `  schemas:` header.
+    while i < lines.len() && !lines[i].trim_end().ends_with("schemas:") {
+        i += 1;
+    }
+    i += 1;
+    while i < lines.len() {
+        let line = lines[i];
+        // A schema name sits at four-space indentation and ends with ':'.
+        let Some(name) = line
+            .strip_prefix("    ")
+            .and_then(|rest| rest.strip_suffix(':'))
+        else {
+            i += 1;
+            continue;
+        };
+        if name.starts_with(' ') || name.is_empty() {
+            i += 1;
+            continue;
+        }
+        // Collect the block: following lines indented at least six spaces.
+        let block_start = i + 1;
+        let mut block_end = block_start;
+        while block_end < lines.len() {
+            let l = lines[block_end];
+            if l.trim().is_empty() {
+                block_end += 1;
+                continue;
+            }
+            let indent = l.len() - l.trim_start().len();
+            if indent <= 4 {
+                break;
+            }
+            block_end += 1;
+        }
+        let block = lines[block_start..block_end].join("\n");
+        schemas.insert(name.to_owned(), parse_schema_block(&block, 6));
+        i = block_end;
+    }
+    schemas
+}
+
+/// Parses one schema block (its lines indented at `base` spaces) into a
+/// `SchemaNode`. Recurses into `properties.<name>` and `items`.
+fn parse_schema_block(block: &str, base: usize) -> SchemaNode {
+    let mut node = SchemaNode::default();
+    let lines: Vec<&str> = block.lines().collect();
+    let mut i = 0;
+    while i < lines.len() {
+        let line = lines[i];
+        let indent = line.len() - line.trim_start().len();
+        let trimmed = line.trim_start();
+        if indent == base {
+            if let Some((_, tail)) = trimmed.split_once('[') {
+                if trimmed.starts_with("required:") {
+                    if let Some((list, _)) = tail.split_once(']') {
+                        node.required = list
+                            .split(',')
+                            .map(|n| n.trim().to_owned())
+                            .filter(|n| !n.is_empty())
+                            .collect();
+                    }
+                }
+            }
+            if trimmed.starts_with("additionalProperties:") {
+                node.open = trimmed.contains("true");
+            }
+            if trimmed.starts_with("$ref:") {
+                node.reference = trimmed
+                    .split_once("#/components/schemas/")
+                    .map(|(_, n)| {
+                        let n = n.trim_start().trim_start_matches(['\'', '"']);
+                        n.split(['\'', '"', ',', '}', ' '])
+                            .next()
+                            .unwrap_or("")
+                            .to_owned()
+                    })
+                    .filter(|n| !n.is_empty());
+            }
+            if trimmed.starts_with("properties:") || trimmed.starts_with("items:") {
+                let is_properties = trimmed.starts_with("properties:");
+                // Inline form: `items: { $ref: ... }` / `properties: {}`.
+                if let Some((_, rest)) = trimmed.split_once('{') {
+                    let body = rest.split('}').next().unwrap_or("");
+                    let inline = parse_inline_map(body);
+                    if is_properties {
+                        // Inline `properties` maps are not used in this document;
+                        // ignore rather than guess.
+                    } else {
+                        node.items = Some(Box::new(inline));
+                    }
+                } else {
+                    // A nested block follows; collect it.
+                    let child_base = indent + 2;
+                    let child_start = i + 1;
+                    let mut child_end = child_start;
+                    while child_end < lines.len() {
+                        let l = lines[child_end];
+                        if l.trim().is_empty() {
+                            child_end += 1;
+                            continue;
+                        }
+                        let ci = l.len() - l.trim_start().len();
+                        if ci <= indent {
+                            break;
+                        }
+                        child_end += 1;
+                    }
+                    let child = lines[child_start..child_end].join("\n");
+                    if is_properties {
+                        for (pname, pnode) in parse_properties(&child, child_base) {
+                            node.properties.insert(pname, pnode);
+                        }
+                    } else {
+                        node.items = Some(Box::new(parse_schema_block(&child, child_base)));
+                    }
+                    i = child_end;
+                    continue;
+                }
+            }
+        }
+        i += 1;
+    }
+    node
+}
+
+/// Parses a `properties:` block (its entries indented at `base` spaces) into a
+/// name → `SchemaNode` map, recursing into each property's own block.
+fn parse_properties(block: &str, base: usize) -> Vec<(String, SchemaNode)> {
+    let lines: Vec<&str> = block.lines().collect();
+    let mut out = Vec::new();
+    let mut i = 0;
+    while i < lines.len() {
+        let line = lines[i];
+        let indent = line.len() - line.trim_start().len();
+        let trimmed = line.trim_start();
+        if indent == base {
+            // `name:` with a nested block on following lines.
+            if let Some(name) = trimmed.strip_suffix(':') {
+                if !name.starts_with(' ') && !name.contains(' ') && !name.is_empty() {
+                    let child_start = i + 1;
+                    let mut child_end = child_start;
+                    while child_end < lines.len() {
+                        let l = lines[child_end];
+                        if l.trim().is_empty() {
+                            child_end += 1;
+                            continue;
+                        }
+                        let ci = l.len() - l.trim_start().len();
+                        if ci <= indent {
+                            break;
+                        }
+                        child_end += 1;
+                    }
+                    let child = lines[child_start..child_end].join("\n");
+                    out.push((name.to_owned(), parse_schema_block(&child, indent + 2)));
+                    i = child_end;
+                    continue;
+                }
+            } else if let Some((name, tail)) = trimmed.split_once(':') {
+                // `name: { ... }` inline map, or `name: <scalar>`.
+                let name = name.trim();
+                if !name.is_empty() && !name.contains(' ') && !name.contains('-') {
+                    let node = if let Some((_, rest)) = tail.split_once('{') {
+                        let body = rest.split('}').next().unwrap_or("");
+                        parse_inline_map(body)
+                    } else {
+                        SchemaNode::default()
+                    };
+                    out.push((name.to_owned(), node));
+                }
+            }
+        }
+        i += 1;
+    }
+    out
+}
+
+/// Parses the inside of a one-line `{ ... }` schema map, extracting the pieces
+/// this guard needs: `$ref`, `additionalProperties: true`, and `items: { ... }`.
+fn parse_inline_map(body: &str) -> SchemaNode {
+    let mut node = SchemaNode::default();
+    if body.contains("additionalProperties: true") {
+        node.open = true;
+    }
+    if let Some((_, tail)) = body.split_once("$ref:") {
+        let name = tail
+            .trim_start()
+            .trim_start_matches(['\'', '"'])
+            .split(['\'', '"', ',', '}', ' '])
+            .next()
+            .unwrap_or("");
+        if let Some(name) = name.rsplit('/').next() {
+            if !name.is_empty() {
+                node.reference = Some(name.to_owned());
+            }
+        }
+    }
+    if let Some((_, tail)) = body.split_once("items:") {
+        if let Some((_, rest)) = tail.split_once('{') {
+            let inner = rest.split('}').next().unwrap_or("");
+            node.items = Some(Box::new(parse_inline_map(inner)));
+        }
+    }
+    node
+}
+
+/// Recursively verifies that `value` conforms to `node`: every emitted key is
+/// declared (unless the schema is open), every required key is emitted, and
+/// nested objects/arrays recurse. `$ref` is resolved against `schemas`.
+fn assert_conforms(
+    value: &serde_json::Value,
+    node: &SchemaNode,
+    schemas: &std::collections::BTreeMap<String, SchemaNode>,
+    path: &str,
+    errors: &mut Vec<String>,
+) {
+    // Resolve a $ref, guarding against cycles.
+    if let Some(name) = &node.reference {
+        if let Some(target) = schemas.get(name) {
+            assert_conforms(value, target, schemas, path, errors);
+        }
+        return;
+    }
+    match value {
+        serde_json::Value::Object(map) => {
+            if !node.open {
+                for key in map.keys() {
+                    if !node.properties.contains_key(key) && !node.required.contains(key) {
+                        errors.push(format!("{path}.{key}: emitted but not declared"));
+                    }
+                }
+            }
+            for key in &node.required {
+                if !map.contains_key(key) {
+                    errors.push(format!("{path}.{key}: required by schema but not emitted"));
+                }
+            }
+            for (key, child) in &node.properties {
+                if let Some(v) = map.get(key) {
+                    assert_conforms(v, child, schemas, &format!("{path}.{key}"), errors);
+                }
+            }
+        }
+        serde_json::Value::Array(items) => {
+            if let (Some(schema), Some(first)) = (node.items.as_deref(), items.first()) {
+                assert_conforms(first, schema, schemas, &format!("{path}[]"), errors);
+            }
+        }
+        _ => {}
+    }
 }
 
 /// Regression for AUDIT H-03: the admin request/response bodies were typed as
 /// an intentionally open generic object (`AdminPayload`), so the published
 /// contract did not pin the fields the server actually reads or returns. They
-/// now carry concrete schemas; this test pins each admin GET response's
-/// top-level keys against its schema's `required` list, so the contract cannot
-/// silently drift from the handler again.
+/// now carry concrete schemas; this test recursively validates each admin GET
+/// response against its schema (every emitted key declared, every required key
+/// present, at any depth), so the contract cannot silently drift from the
+/// handler again — including nested drift such as `server.tls`.
 #[tokio::test]
 async fn admin_responses_match_their_openapi_schemas() {
     let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let schemas = parse_schemas(&openapi);
     // (path, schema name) for the admin read surfaces that are always 200 on a
     // default service (no persistence needed).
     let cases: &[(&str, &str)] = &[
@@ -2306,22 +2525,14 @@ async fn admin_responses_match_their_openapi_schemas() {
             .unwrap();
         assert_eq!(response.status(), StatusCode::OK, "{path} status");
         let body = json_body(response).await;
-        let emitted: std::collections::BTreeSet<String> = body
-            .as_object()
-            .unwrap_or_else(|| panic!("{path} body is not an object"))
-            .keys()
-            .cloned()
-            .collect();
-        let declared = schema_required_fields(openapi.as_str(), schema);
-        let missing: Vec<&String> = emitted.difference(&declared).collect();
-        let phantom: Vec<&String> = declared.difference(&emitted).collect();
+        let node = schemas
+            .get(*schema)
+            .unwrap_or_else(|| panic!("OpenAPI declares schema {schema}"));
+        let mut errors = Vec::new();
+        assert_conforms(&body, node, &schemas, "$", &mut errors);
         assert!(
-            missing.is_empty(),
-            "{path} emits keys absent from schema {schema}: {missing:?}"
-        );
-        assert!(
-            phantom.is_empty(),
-            "schema {schema} requires keys {path} never emits: {phantom:?}"
+            errors.is_empty(),
+            "{path} does not conform to schema {schema}: {errors:?}"
         );
     }
 }
@@ -2350,19 +2561,16 @@ async fn toggle_response_matches_the_openapi_reload_report_schema() {
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
     let body = json_body(response).await;
-    let emitted: std::collections::BTreeSet<String> =
-        body.as_object().expect("object").keys().cloned().collect();
     let openapi = include_str!("../openapi.yaml").replace('\r', "");
-    let declared = schema_required_fields(openapi.as_str(), "ReloadReport");
-    let missing: Vec<&String> = emitted.difference(&declared).collect();
-    let phantom: Vec<&String> = declared.difference(&emitted).collect();
+    let schemas = parse_schemas(&openapi);
+    let node = schemas
+        .get("ReloadReport")
+        .expect("OpenAPI declares schema ReloadReport");
+    let mut errors = Vec::new();
+    assert_conforms(&body, node, &schemas, "$", &mut errors);
     assert!(
-        missing.is_empty(),
-        "toggle response emits keys absent from ReloadReport: {missing:?}"
-    );
-    assert!(
-        phantom.is_empty(),
-        "ReloadReport requires keys the toggle never emits: {phantom:?}"
+        errors.is_empty(),
+        "toggle response does not conform to ReloadReport: {errors:?}"
     );
     let _ = std::fs::remove_file(path);
 }

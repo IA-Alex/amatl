@@ -342,6 +342,16 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- The regression guards that pin the OpenAPI contract against the live
+  service only compared top-level keys, so a nested drift — a `required` field
+  added under `server.tls`, or a field lost from a `$ref`-referenced record —
+  passed silently. The guards now validate each response recursively against
+  the schema (resolving `$ref`, `properties` and `items`) with no new
+  dependency. Making them recursive immediately exposed two real gaps: the
+  document carried a **duplicate** `ReloadReport` and `CircuitState` definition
+  (the second silently won, hiding the first), and the effective `ReloadReport`
+  schema omitted `clients`, a field `POST /reload` and every toggle already
+  return. Both are fixed and the guards fail when either is perturbed again.
 - The OpenAPI document typed every administrative request body and success
   response as one intentionally open object (`AdminPayload`,
   `additionalProperties: true`), so the published contract pinned no field for
