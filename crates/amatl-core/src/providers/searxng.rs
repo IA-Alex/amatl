@@ -272,20 +272,34 @@ fn parse_response(
     let mut results: Vec<ProviderItem> = searxng
         .results
         .into_iter()
-        .enumerate()
-        .map(|(index, result)| ProviderItem {
-            title: result.title,
-            url: result.url.unwrap_or_default(),
-            provider_rank: Rank::new((index + 1) as u32).ok(),
-            snippet: result.content,
-            result_type: None,
-            published_at: result.published_date,
-            author: None,
-            language: None,
-            file_type: None,
-            thumbnail: None,
-            metadata: Default::default(),
+        // A result with no URL is not a result the caller can open. Drop it
+        // here, exactly as the Marginalia adapter does, so it never reaches
+        // the shared pipeline — where it would be rejected item by item,
+        // recording a spurious degradation and turning a clean response into
+        // `partial_success`.
+        .filter_map(|result| {
+            let url = result.url?;
+            if url.is_empty() {
+                return None;
+            }
+            Some((result.title, url, result.content, result.published_date))
         })
+        .enumerate()
+        .map(
+            |(index, (title, url, content, published_date))| ProviderItem {
+                title,
+                url,
+                provider_rank: Rank::new((index + 1) as u32).ok(),
+                snippet: content,
+                result_type: None,
+                published_at: published_date,
+                author: None,
+                language: None,
+                file_type: None,
+                thumbnail: None,
+                metadata: Default::default(),
+            },
+        )
         .collect();
 
     // Promote answers as synthetic results at the top.
@@ -573,17 +587,38 @@ mod tests {
     }
 
     #[test]
-    fn result_missing_optional_fields_falls_back_to_an_empty_url() {
+    fn result_missing_a_url_is_dropped_like_marginalia() {
+        // A result the caller cannot open is not a result. The old behavior
+        // (`url: ""`) let the malformed item reach the pipeline, where it was
+        // rejected per item, inflating the reported count and degrading the
+        // aggregated status. The adapter now drops it, matching Marginalia.
         let response = HttpResponse {
             status: 200,
             headers: BTreeMap::new(),
-            body: br#"{"results": [{"title": "Rust"}], "answers": [], "unresponsive_engines": []}"#
+            body: br#"{"results": [{"title": "Rust"}, {"title": "Valid", "url": "https://rust-lang.org/"}], "answers": [], "unresponsive_engines": []}"#
                 .to_vec(),
         };
         let result = parse_response(response, FilterUse::default()).unwrap();
         assert_eq!(result.results.len(), 1);
-        assert_eq!(result.results[0].url, "");
-        assert_eq!(result.results[0].snippet, None);
+        assert_eq!(result.results[0].url, "https://rust-lang.org/");
+        assert_eq!(result.results[0].provider_rank, Rank::new(1).ok());
+    }
+
+    #[test]
+    fn results_with_null_or_empty_url_are_dropped() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{"results": [
+                {"title": "Null", "url": null},
+                {"title": "Empty", "url": ""},
+                {"title": "Kept", "url": "https://example.com/"}
+            ], "answers": [], "unresponsive_engines": []}"#
+                .to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(result.results.len(), 1);
+        assert_eq!(result.results[0].url, "https://example.com/");
     }
 
     #[test]
