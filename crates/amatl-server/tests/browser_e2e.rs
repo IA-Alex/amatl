@@ -435,3 +435,78 @@ async fn hidden_attribute_collapses_the_panels_it_hides() {
 
     client.close().await.unwrap();
 }
+
+/// With no strategist configured there is nothing to enable, so the whole
+/// "model" row (`#model-options`) must stay collapsed instead of presenting a
+/// dead checkbox under the search box. `spawn_server` builds the default config,
+/// where the strategist has no endpoint/model, so `/status` reports
+/// `configured: false` and the JS hides the row.
+///
+/// This runs in a real browser because only the computed style proves the hide
+/// actually engaged: the row sets `display: flex`, which beats the UA
+/// `[hidden] { display: none }` unless the author stylesheet restores it — and
+/// an element that is `hidden` but still paints is exactly the regression this
+/// guards.
+#[tokio::test]
+async fn model_toggle_is_hidden_when_the_strategist_is_not_configured() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    // `/status` resolves asynchronously after load, so poll for the JS to apply
+    // the gate rather than reading the first paint.
+    wait_for(&client, Locator::Css("#model-options[hidden]")).await;
+
+    let report = client
+        .execute(
+            "const el = document.getElementById('model-options'); \
+             const toggle = document.getElementById('strategist-enabled-toggle'); \
+             return JSON.stringify({ \
+                 hidden: el.hidden, \
+                 display: getComputedStyle(el).display, \
+                 height: el.offsetHeight, \
+                 toggleDisabled: toggle.disabled, \
+                 toggleChecked: toggle.checked \
+             });",
+            vec![],
+        )
+        .await
+        .unwrap();
+    let parsed: serde_json::Value =
+        serde_json::from_str(report.as_str().unwrap_or("{}")).unwrap_or_default();
+
+    assert_eq!(
+        parsed.get("hidden").and_then(|v| v.as_bool()),
+        Some(true),
+        "the model row stayed visible with the strategist unconfigured: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("display").and_then(|v| v.as_str()),
+        Some("none"),
+        "the model row is hidden but still paints (display: flex wins): {parsed}"
+    );
+    assert_eq!(
+        parsed.get("height").and_then(|v| v.as_i64()),
+        Some(0),
+        "the model row occupies layout space while hidden: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("toggleDisabled").and_then(|v| v.as_bool()),
+        Some(true),
+        "the toggle should be disabled with the strategist unconfigured: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("toggleChecked").and_then(|v| v.as_bool()),
+        Some(false),
+        "a disabled toggle must never read as switched on: {parsed}"
+    );
+
+    client.close().await.unwrap();
+}
