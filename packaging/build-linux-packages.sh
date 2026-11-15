@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
 # Builds the Linux native packages (.deb, .rpm, .pkg.tar.zst) for one already
-# built binary. Linux-only by design: macOS and Windows ship archives from the
-# release workflow instead, and the Chromium sandbox helper packaged here needs
+# built binary. Linux-only by design: macOS ships archives from the release
+# workflow instead, and the Chromium sandbox helper packaged here needs
 # bubblewrap user namespaces. See docs/release.md for the full support scope.
+# (Windows is not a target at all since 2026-11-15.)
 set -euo pipefail
 
 if [[ $# -ne 4 ]]; then

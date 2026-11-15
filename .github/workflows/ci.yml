@@ -66,14 +66,19 @@ jobs:
       - run: cargo check --workspace --all-targets --locked
 
   cross-platform:
-    # Release publishes macOS and Windows archives, so the workspace must keep
-    # compiling and passing tests on those hosts on every push, not only at tag
-    # time. Linux-only capabilities (Chromium sandbox, Debian packaging) stay
-    # out of this job by construction.
+    # Release publishes macOS archives, so the workspace must keep compiling and
+    # passing tests there on every push, not only at tag time. Linux-only
+    # capabilities (Chromium sandbox, Debian packaging) stay out of this job by
+    # construction.
+    #
+    # Windows is not in this matrix because it is not a published target: the
+    # workspace spawns POSIX programs (`/bin/sh`, Trafilatura, `pdftotext`) and
+    # its tests exercise that contract directly, so a Windows job could only
+    # pass by asserting less than the product does.
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
