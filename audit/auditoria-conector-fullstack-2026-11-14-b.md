@@ -1,5 +1,20 @@
 # Auditoría conector-fullstack — AMATL
 
+> **Estado de resolución (2026-11-15).** Los hallazgos de este informe ya no
+> están abiertos:
+> - **H-01** (contrato `/status`) → corregido en `cab1df6c`; guarda recursiva de
+>   conformidad en `78ecead4`.
+> - **H-02** (doc MCP "5 tools") → corregido en `cab1df6c`.
+> - **H-03** (cuerpos admin sin tipar) → corregido en `cab1df6c`; guarda de
+>   claves + enums en `a035bb79`.
+> - **H-04** (acoplamiento UI↔schema) → cubierto por H-01.
+>
+> Las filas que decían "contrato débil" (T-19, T-20, T-22) y el resumen del
+> dictamen describían el estado **en el commit `8dfa6a06`**; hoy el contrato admin
+> está tipado. El dictamen actualizado del repo es **VERIFICADO-E2E en lo
+> trazado**, con el pendiente de validación de tipos/nulabilidad anidados (ver
+> sección 6).
+
 ## 1. Alcance y contexto
 - **Objetivo:** verificar que cada operación que invocan los conectores (UI web,
   MCP, CLI) tiene contraparte real en el proveedor (servidor Axum sobre
@@ -24,14 +39,15 @@
 - **Revisado en:** `8dfa6a06` (worktree: sucio).
 
 ## 2. Dictamen
-- **Estado: FUNCIONAL-PARCIAL**
+- **Estado: FUNCIONAL-PARCIAL** *(al commit `8dfa6a06`; ver banner de resolución
+  arriba — H-01..H-04 están corregidos en `cab1df6c`, `78ecead4`, `a035bb79`)*
 - **Resumen:** el núcleo conector↔proveedor funciona y está verificado E2E
   (Search/Deep/batch/providers/status/MCP contra instancia real). No hay rutas
-  huérfanas ni desajustes de método. Hay **dos desincronizaciones de contrato
-  confirmadas** (el esquema OpenAPI no describe su propia respuesta `/status`, y
-  la doc de testing dice 5 herramientas MCP cuando hay 6) y varios cuerpos de
-  request/respuesta "sin contrato tipado" en OpenAPI (usan el genérico
-  `AdminPatch`/`AdminSuccess`), que es deuda de contrato, no rotura de flujo.
+  huérfanas ni desajustes de método. Se detectaron **dos desincronizaciones de
+  contrato** (el esquema OpenAPI no describía su propia respuesta `/status`, y la
+  doc de testing decía 5 herramientas MCP cuando hay 6) y los cuerpos de
+  request/respuesta admin usaban el genérico `AdminPatch`/`AdminSuccess`. Los
+  tres se corrigieron (ver banner).
 - **Severidad:** crítico 0 · alto 0 · medio 1 · bajo 3
 - **Cobertura:** identificados 26 rutas HTTP + 6 tools MCP + N llamadas UI ·
   trazados 22 · contratos 8 · E2E 9 · fallos 4 (0 bloqueantes) · pendientes 4

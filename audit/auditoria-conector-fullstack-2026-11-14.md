@@ -242,9 +242,13 @@ Las tres observaciones son opcionales y de higiene de trazabilidad:
 
 | Orden | Hallazgo | Dependencia | Cambio mínimo | Verificación de cierre |
 |---|---|---|---|---|
-| 1 | H-01 | ninguna | Test que afirme cobertura de `required_scope` sobre `all_routes()` | El test pasa y falla si se registra una ruta sin arm |
-| 2 | H-02 | ninguna | Validación de config: `saved_document_max_bytes <= max_body_bytes` | Test de config; error claro en vez de 413 tardío |
+| 1 | H-01 | ninguna | Test que afirme cobertura de `required_scope` sobre `all_routes()` | ✅ Hecho (`required_scope_covers_every_registered_route`, commit de la guarda de scopes) |
+| 2 | H-02 | ninguna | Validación de config: `saved_document_max_bytes <= max_body_bytes` | Pendiente (validación proactiva; ver nota) |
 | 3 | H-03 | ninguna | Ninguno (comportamiento correcto) | Regresión existente en `browser_e2e.rs` |
+
+> **Nota (2026-11-15).** H-02 sigue **pendiente**: es una validación de config
+> proactiva, no un defecto reproducido (los defaults del repo son coherentes). Se
+> deja como mejora opcional, explícita.
 
 ---
 

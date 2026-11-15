@@ -2604,6 +2604,105 @@ async fn toggle_response_matches_the_openapi_reload_report_schema() {
     let _ = std::fs::remove_file(path);
 }
 
+/// Regression for the earlier connector audit's H-01: no test asserted that
+/// every route registered by `define_public_routes!` has an explicit arm in
+/// `required_scope`. The fail-closed default protects a forgotten route (it
+/// falls through to `Admin`, never public), but that safety was untested, so a
+/// future route could reach the catch-all and no guard would notice. This table
+/// pins the expected scope for every registered operation: adding or re-scoping
+/// a route fails here until the table is updated, which is the route-to-guard
+/// traceability the audit asked for.
+#[test]
+fn required_scope_covers_every_registered_route() {
+    // (method, path, expected scope as Debug string, or None for unauthenticated)
+    let expected: &[(Method, &str, Option<&str>)] = &[
+        (Method::GET, "/health", None),
+        (Method::GET, "/ready", None),
+        (Method::GET, "/search", Some("Search")),
+        (Method::POST, "/search", Some("Search")),
+        (Method::GET, "/search/batch", Some("Search")),
+        (Method::POST, "/deep", Some("Deep")),
+        (Method::POST, "/answer", Some("Deep")),
+        (Method::PATCH, "/answer", Some("Admin")),
+        (Method::GET, "/providers", Some("Read")),
+        (Method::GET, "/status", Some("Read")),
+        (Method::GET, "/history", Some("Read")),
+        (Method::DELETE, "/history", Some("Write")),
+        (Method::DELETE, "/history/{id}", Some("Write")),
+        (Method::GET, "/saved", Some("Read")),
+        (Method::POST, "/saved", Some("Write")),
+        (Method::DELETE, "/saved/{id}", Some("Write")),
+        (Method::POST, "/reload", Some("Admin")),
+        (Method::POST, "/answer/enabled", Some("Admin")),
+        (Method::POST, "/strategist/enabled", Some("Admin")),
+        (Method::POST, "/providers/{name}/enabled", Some("Admin")),
+        (Method::POST, "/providers/{name}/credential", Some("Admin")),
+        (
+            Method::DELETE,
+            "/providers/{name}/credential",
+            Some("Admin"),
+        ),
+        (Method::GET, "/providers/{name}", Some("Read")),
+        (Method::PATCH, "/providers/{name}", Some("Admin")),
+        (Method::PATCH, "/inference", Some("Admin")),
+        (Method::GET, "/server/clients", Some("Admin")),
+        (Method::POST, "/server/clients", Some("Admin")),
+        (Method::PATCH, "/server/clients/{id}", Some("Admin")),
+        (Method::DELETE, "/server/clients/{id}", Some("Admin")),
+        (Method::POST, "/server/clients/{id}/rotate", Some("Admin")),
+        (Method::GET, "/server/pending-config", Some("Read")),
+        (Method::PATCH, "/server/pending-config", Some("Admin")),
+        (Method::POST, "/data-policy", Some("Admin")),
+        (Method::GET, "/policies", Some("Read")),
+        (Method::PATCH, "/policies/{name}", Some("Admin")),
+        (Method::GET, "/persistence", Some("Read")),
+        (Method::PATCH, "/persistence", Some("Admin")),
+        (Method::GET, "/persistence/backups", Some("Read")),
+        (Method::POST, "/persistence/backup", Some("Admin")),
+        (Method::GET, "/circuits", Some("Read")),
+        (Method::POST, "/circuits/reset", Some("Admin")),
+        (Method::GET, "/telemetry", Some("Read")),
+        (Method::PATCH, "/telemetry", Some("Admin")),
+        (Method::GET, "/deep/limits", Some("Read")),
+        (Method::PATCH, "/deep/limits", Some("Admin")),
+        (Method::PATCH, "/deep/extractor", Some("Admin")),
+        (Method::PATCH, "/deep/renderer", Some("Admin")),
+        (Method::GET, "/security-events", Some("Admin")),
+        (Method::GET, "/metrics", None),
+    ];
+
+    // Every registered operation appears exactly once in the table, and vice
+    // versa: the table cannot quietly drop a route or invent one.
+    let mut registered: Vec<(Method, String)> = crate::routes::all_routes()
+        .into_iter()
+        .flat_map(|route| {
+            route
+                .methods
+                .iter()
+                .map(move |method| (method.clone(), route.path.to_owned()))
+        })
+        .collect();
+    registered.sort();
+    let mut listed: Vec<(Method, String)> = expected
+        .iter()
+        .map(|(method, path, _)| (method.clone(), (*path).to_owned()))
+        .collect();
+    listed.sort();
+    assert_eq!(
+        registered, listed,
+        "the required_scope coverage table must list every registered route exactly once"
+    );
+
+    for (method, path, want) in expected {
+        let scope = required_scope(method, path).map(|scope| format!("{scope:?}"));
+        assert_eq!(
+            scope.as_deref(),
+            *want,
+            "{method} {path}: required_scope mismatch"
+        );
+    }
+}
+
 #[tokio::test]
 async fn history_and_saved_surfaces_fail_closed_without_persistence() {
     let app = app().await;

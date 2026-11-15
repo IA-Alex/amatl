@@ -342,6 +342,13 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- No test asserted that every route the router registers has an explicit arm in
+  `required_scope`. The fail-closed default kept a forgotten route safe (it
+  fell through to `Admin`, never public), but nothing verified that, so a new
+  route could silently reach the catch-all. A table-driven test now pins the
+  expected scope for every registered operation and fails if the router
+  registers an operation the table does not list — the route-to-guard
+  traceability the connector audit asked for.
 - The recursive OpenAPI conformance guards now also check `enum` membership for
   scalar response values, so a field pinned to a fixed set of wire values cannot
   drift to an undeclared one unnoticed. Still dependency-free. This narrows the

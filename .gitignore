@@ -30,6 +30,10 @@ AMATL_documentado.docx
 amatl.backup-*.sqlite3
 amatl.log
 amatl_logo.png~
+# AUDIT-05: browser-audit screenshots (Playwright WebDriver captures) are local
+# evidence, regenerated on demand and never source material — same treatment as
+# the runtime logs above.
+/output/
 # AUDIT-04: Python bytecode is a build artifact, never source material.
 **/__pycache__/
 *.py[co]
