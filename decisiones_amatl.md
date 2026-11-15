@@ -683,18 +683,37 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   pre-aprobada.
 - **Decisión (propuesta):** Cerrar el hallazgo por su **plan de salida**, no por
   supresión. Se adopta como camino principal la **espera activa al rango de
-  `sqlx`**, con dos hitos verificables y sin `ignore` en `deny.toml`:
-  1. **Salir del pin `0.30.1`:** evaluar el salto a `sqlx 0.9.x` (rango con tope
-     `< 0.38.0`), que además desbloquea subir el mínimo en el futuro. Bloqueo
-     conocido: MSRV `1.94.0` de `sqlx 0.9.0` frente al `rust-version = "1.88"`
-     del workspace → exige decidir el salto de MSRV. Uso de `sqlx` acotado a
-     `crates/amatl-core/src/storage.rs` (~74 llamadas), así que el impacto de
-     adaptación es local, pero **no** cierra el advisory por sí solo.
+  `sqlx`**, con tres hitos verificables. Los hitos se ejecutaron sin `ignore`;
+  la supresión nombrada que rige hoy aparece en la enmienda al final de esta
+  ADR:
+  0. **Fijar la línea auditada (hecho 2026-11-15):** el manifiesto raíz declara
+     `sqlx = "=0.8.6"` en lugar del `0.8` con caret. Un caret admitía cualquier
+     `0.8.x` posterior y cada uno decide el rango de `libsqlite3-sys` **y** el
+     conjunto de features `sqlite` del grafo, así que un `cargo update` podía
+     cambiar la superficie auditada sin que ningún revisor viera un diff de
+     manifiesto. El test offline `sqlx_is_pinned_to_the_audited_line`
+     (`crates/amatl-core/tests/supply_chain_contract.rs`) falla si se afloja el
+     pin o si `Cargo.lock` resuelve otra línea. Es una **barrera, no una
+     remediación**: el advisory sigue abierto.
+  1. **Salir del pin `0.30.1`:** evaluar el salto a `sqlx 0.9.x`, que admite
+     `libsqlite3-sys >=0.30.1, <0.38.0` (tope mayor que `^0.30`, pero todavía
+     por debajo del fix). El bloqueo conocido no es el MSRV sino la
+     **desalineación de features**: en `sqlx 0.9.0` la feature `sqlite` implica
+     `sqlite-bundled`, `sqlite-deserialize`, `sqlite-load-extension` y
+     `sqlite-unlock-notify`, mientras que en `0.8.6` implica sólo
+     `sqlx-sqlite/bundled`. Un salto directo añade `deserialize` y
+     `load-extension` al binario que se distribuye, y la variante
+     `sqlite-unbundled` enlaza el SQLite del sistema (rompe el build musl
+     estático). Es por tanto un cambio de superficie y de empaquetado, no un
+     bump de versión. Uso de `sqlx` acotado a `crates/amatl-core/src/storage.rs`
+     (~74 llamadas): el impacto de adaptación es local, pero **no** cierra el
+     advisory por sí solo.
   2. **Admitir el fix:** en cuanto una release de `sqlx` incorpore
      `libsqlite3-sys >= 0.39.0` en su rango, un `cargo update -p libsqlite3-sys`
-     (o `-p sqlx`) elimina el advisory y el gate vuelve a verde. `sqlx` declaró
-     que sube el **máximo** del rango en releases compatibles puente
-     (`sqlx-sqlite/src/lib.rs`), así que este hito no necesita un major nuevo.
+     (o `-p sqlx`, con el pin actualizado en el mismo commit) elimina el advisory
+     y el gate vuelve a verde. `libsqlite3-sys 0.39.0`/`0.39.1`/`0.40.0` ya
+     existen (crates.io, 2026-11-15), así que falta sólo la release de `sqlx`
+     que los admita.
   - **Controles compensatorios mientras esté abierto (ya vigentes):** el gate
     `cargo audit`/`cargo deny check` permanece **rojo** y bloquea merge; el test
     offline `tests/supply_chain_contract.rs` mantiene floors para los advisories
@@ -702,12 +721,36 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
     no tiene allowlist silencioso (`wildcards = "deny"`, registries fijados).
 - **Consecuencias:** El hallazgo queda clasificado como **deuda local acotada**,
   no como riesgo de producción remoto, y con ruta de cierre explícita y
-  revisable. El gate rojo se lee como «dependencia fijada esperando un fix
-  upstream». Esta ADR **no** concede un waiver: no autoriza ningún `ignore` y no
-  cambia el estado rojo de los gates. Si alguno de los dos hitos no llegara en el
-  SLA correspondiente (medium → 60 días de `SECURITY.md`), esta ADR debe
-  convertirse en un waiver temporal **firmado**, con fecha de caducidad y plan de
-  retirada, o resolver el hallazgo por exclusión del grafo.
+  revisable. Si algún hito no llegara en el SLA correspondiente (medium → 60 días
+  de `SECURITY.md`), esta ADR debe convertirse en un waiver temporal **firmado**,
+  con fecha de caducidad y plan de retirada, o resolver el hallazgo por exclusión
+  del grafo. La redacción original («no autoriza ningún `ignore`») queda
+  sustituida por la enmienda siguiente, que sí autoriza uno — acotado, nombrado y
+  con guardas.
+- **Enmienda 2026-11-15 — una excepción acotada, no un waiver.** La decisión
+  anterior dejaba `cargo audit`/`cargo deny check` rojos mientras emitieran **ese**
+  aviso. Un gate que falla en cada corrida por un hallazgo ya analizado deja de
+  distinguir el siguiente, y la política del repo («no hay allowlist silencioso»)
+  se refería a una allowlist **silenciosa**, no a una excepción escrita. Se
+  suprime **un solo ID** (`ignore = ["RUSTSEC-2026-0459"]` en `deny.toml`) bajo
+  cuatro controles que impiden que la supresión crezca o pase inadvertida:
+  1. **Guardas offline** en `supply_chain_contract.rs`: la variante auditada de
+     `libsqlite3-sys` (0.30.1) y el conjunto exacto de IDs suprimidos. Cambia
+     cualquiera de los dos → falla en todos los hosts, sin red.
+  2. **Gate visible**: `scripts/security-gate.sh` imprime los IDs suprimidos en
+     cada corrida y pasa los mismos a `cargo audit`; CI invoca el script con
+     `--expected-ignore`, así que un ID nuevo exige editar el workflow.
+  3. **Herramientas fijadas** (`cargo-audit@0.22.2`, `cargo-deny@0.18.7`, ya
+     fijadas): verificado contra `cargo-deny` 0.18.7 y 0.20.2 que ambos honran
+     `ignore`, y que sin él el gate vuelve a fallar.
+  4. **Documentación**: el modelo de amenaza y la excepción viven en
+     `docs/security/supply-chain.md` («Current exception»).
+  **La excepción caduca con el pin**: al subir a una línea de `sqlx` que admita
+  `libsqlite3-sys >= 0.39.0` se eliminan en el mismo commit el `ignore`, el
+  `--expected-ignore`, la aserción del lockfile y esta enmienda pasa a
+  «ejecutada». Sigue siendo deuda **local acotada**: no se ha demostrado que el
+  advisory se haya explotado, sino que su precondición exige escritura local en
+  el fichero del operador.
 - **Alternativas descartadas:** (a) añadir `ignore` en `deny.toml` sin ADR
   firmada — prohibido por la política; (b) forzar un `[patch]`/fork de
   `sqlx-sqlite` para elevar el rango a `>= 0.39.0` — mete un fork no auditado en
@@ -717,7 +760,9 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `bundled` por `sqlite-unbundled` — cambia el modelo de enlace y la
   reproducibilidad del binario sólo para esquivar un advisory que permanece en el
   grafo de todas formas.
-- **Trazabilidad:** `docs/security/supply-chain.md` («Re-audit 2026-11-13»);
-  `deny.toml`; `tests/supply_chain_contract.rs`; `Cargo.lock`
-  (`libsqlite3-sys 0.30.1`); `crates/amatl-core/src/storage.rs`; `SECURITY.md`.
+- **Trazabilidad:** `docs/security/supply-chain.md` («Re-audit 2026-11-13» y
+  «Threat-model note»); `Cargo.toml` (`sqlx = "=0.8.6"`); `deny.toml`;
+  `tests/supply_chain_contract.rs` (`sqlx_is_pinned_to_the_audited_line`);
+  `Cargo.lock` (`libsqlite3-sys 0.30.1`); `crates/amatl-core/src/storage.rs`;
+  `SECURITY.md`.
 

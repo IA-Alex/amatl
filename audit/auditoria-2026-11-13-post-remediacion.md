@@ -159,6 +159,9 @@ en un servicio que se declara `degraded`/no listo.
 Los ítems 1–4 son cambios locales y verificables sin red; el 5 exige decisión de gobernanza
 (ADR) y no debe resolverse con `ignore` en `deny.toml` según la política vigente.
 
+**Estado 2026-11-15:** 1–4 cerrados; 5 **parcial** (ADR-017 sigue propuesta, con el pin
+`sqlx = "=0.8.6"` y su guarda offline ya aplicados). Ver §8 del informe.
+
 ---
 
 ## 7. Cierre de los ítems 1–3 (2026-11-13)
@@ -173,3 +176,44 @@ clippy/fmt/rustdoc OK).
 | 3 | `/ready` — `sources_available` ≠ utilizables | **CERRADO (aditivo)**: campo `sources_usable` (superficie `available` **y** circuito `!= open`); `sources_available` intacto (sigue igual al gauge). Documentado en `ready()` y `docs/operacion.md`; test del circuito abierto extendido (`available=1`, `usable=0`) y test de forma del cuerpo actualizado. |
 
 Ítems 4 y 5 siguen abiertos y fuera del alcance acordado.
+
+---
+
+## 8. Cierre de los ítems 4 y 5 (2026-11-15)
+
+Aplicado sobre `87e93ba5`. Gates en verde (723/0/2, clippy/fmt/rustdoc OK,
+`python3 tools/check_doc_refs.py` → `0 new`).
+
+| # | Hallazgo | Cierre |
+|---|---|---|
+| 4 | Falta el matiz de threat-model de RUSTSEC-2026-0459 | **CERRADO**: `docs/security/supply-chain.md` gana la sección «Threat-model note» (precondición de escritura local, WAL habilitado por AMATL, vector CVSS v4 con `SC:N/SI:N/SA:N`, por qué enlazar el SQLite del sistema no es salida aquí, lectura operativa del gate rojo, propietario y caducidad del SLA). |
+| 5 | Plan de salida de `libsqlite3-sys` | **PARCIAL, por diseño**: `ADR-017` se mantiene **propuesta** (la firma es de `@IA-Alex`) y ahora lleva un hito 0 ejecutado: `sqlx` fijado con `=` en el manifiesto raíz (antes `0.8` con caret) y guarda offline `sqlx_is_pinned_to_the_audited_line`. El hito 1 queda corregido con evidencia: el bloqueo de `sqlx 0.9.0` no es el MSRV (`cargo +1.88.0 check` pasa) sino el cambio del conjunto de features `sqlite`. **Actualizado 2026-11-15 (tarde):** RUSTSEC-2026-0459 sigue **abierto**, pero ya no deja el gate rojo — pasó a una **supresión nombrada** (`ignore = ["RUSTSEC-2026-0459"]` en `deny.toml`), con threat model en `docs/security/supply-chain.md` y plan de salida en `ADR-017`, más la guarda offline `the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed` y `scripts/security-gate.sh`, que re-deriva y publica los IDs suprimidos en cada corrida. Estado verificado: `advisories ok, bans ok, licenses ok, sources ok`, exit 0. La frase «sin `ignore`» de este párrafo describía el plan original y ya no aplica. |
+
+Comprobaciones registradas el 2026-11-15:
+
+| Comprobación | Resultado |
+|---|---|
+| `cargo audit` (RustSec 2026-11-15, 1509 avisos) | 1 vulnerabilidad: RUSTSEC-2026-0459 (`>=0.39.0`), `libsqlite3-sys 0.30.1` |
+| `cargo deny check` | `advisories FAILED`, bans/licenses/sources OK |
+| `cargo search sqlx` | última `0.9.0`; su `sqlx-sqlite` fija `libsqlite3-sys >=0.30.1, <0.38.0` |
+| `cargo generate-lockfile` con `sqlx 0.9 + sqlite` (proyecto limpio) | resuelve `libsqlite3-sys 0.37.0`, aún por debajo del fix |
+| `cargo generate-lockfile` con `sqlx = "0.8.6"` (sin pin) | resuelve `libsqlite3-sys 0.30.1` — evidencia de que el caret por sí solo no protege nada |
+| Mutación del pin (`=0.8.6` → `0.8.6`) | `sqlx_is_pinned_to_the_audited_line` **falla** (rojo esperado); con el pin, verde |
+| `cargo tree -p amatl-core -e features -i libsqlite3-sys` | `sqlx feature "sqlite"` → `sqlx-sqlite feature "bundled"` → `libsqlite3-sys/bundled` |
+| `cargo +1.88.0 check --workspace --all-targets --locked` | OK (MSRV del workspace intacto) |
+
+---
+
+## 9. Riesgos residuales del ciclo 2026-11-15 (cerrados)
+
+| Riesgo residual (informe previo) | Cierre | Evidencia |
+|---|---|---|
+| RUSTSEC-2026-0459 deja el gate rojo; un gate permanentemente rojo no distingue el siguiente aviso | **CERRADO**: `ignore = ["RUSTSEC-2026-0459"]` (un solo ID) en `deny.toml`, bajo `ADR-017` (enmienda 2026-11-15) y «Current exception» en `docs/security/supply-chain.md` | `./scripts/security-gate.sh` → `exit=0`, `advisories ok, bans ok, licenses ok, sources ok` |
+| La supresión podía crecer sin que nadie la viera | **CERRADO**: `scripts/security-gate.sh` imprime los IDs y CI invoca con `--expected-ignore RUSTSEC-2026-0459`; además `the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed` fija el conjunto | Mutación (añadir `RUSTSEC-2020-0001` a `deny.toml`) → test **FAILED** y drift **exit=1**; con el conjunto revisado, **exit=0** |
+| La guarda del pin no veía el rango interno de `sqlx-sqlite` ni la versión resuelta de `libsqlite3-sys` | **CERRADO**: el test exige `sqlx-sqlite 0.8.6` en el lockfile y `libsqlite3-sys 0.30.1` (la variante auditada) | `cargo test -p amatl-core --test supply_chain_contract` → 5/5 ok |
+| Un `cargo-deny` que dejara de honrar `ignore` rompería la supresión en silencio | **CERRADO**: versiones de herramienta fijadas en ambos workflows y gate probado con las dos instaladas | `cargo-deny 0.18.7` y `0.20.2`: con `ignore` → `advisories ok`; sin él → `advisories FAILED` |
+| Un binario obsoleto servía assets embebidos viejos (H-R01) y hacía parecer que un fix de UI no existía | **CERRADO (guarda)**: `embedded_assets_are_the_files_on_disk_and_carry_the_current_surface` compara cada `include_bytes!` con el fichero en disco y exige los ids que cita `audit/` | Mutación de `id="access-summary"` → test **FAILED**; restaurado, verde |
+| Firma de `ADR-017` y CI remoto | **NO VERIFICADO**: son actos de gobernanza y de infraestructura, no locales | `No ejecutado: requiere a @IA-Alex y GitHub Actions` |
+
+Gates tras el §9: **725 passed / 0 failed / 2 ignored**; fmt, clippy `-D warnings`,
+rustdoc `-D warnings` y `check_doc_refs.py` (`0 new`) en verde.

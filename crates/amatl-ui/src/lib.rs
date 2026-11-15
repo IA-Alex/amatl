@@ -93,6 +93,51 @@ mod tests {
         String::from_utf8(asset(path).unwrap().body.to_vec()).unwrap()
     }
 
+    /// Every asset is provided by `include_bytes!`, so the bytes the tests read
+    /// here are, by construction, the bytes the binary serves: a rebuild cannot
+    /// leave one behind the other. What it *can* leave behind is the binary
+    /// itself — `target/release/amatl` older than `assets/` serves the markup and
+    /// scripts from before a UI change and makes the change look missing (the
+    /// H-R01 staleness of the 2026-11-14 re-audit). This pins the property that
+    /// makes the mistake diagnosable: the asset the binary embeds and the file on
+    /// disk are byte-identical, and the UI surface a reader of `audit/` checks by
+    /// id is really in there.
+    #[test]
+    fn embedded_assets_are_the_files_on_disk_and_carry_the_current_surface() {
+        for (name, bytes) in [
+            (
+                "index.html",
+                include_bytes!("../assets/index.html") as &[u8],
+            ),
+            ("styles.css", include_bytes!("../assets/styles.css")),
+            ("client.js", include_bytes!("../assets/client.js")),
+            ("store.js", include_bytes!("../assets/store.js")),
+            ("app.js", include_bytes!("../assets/app.js")),
+            ("i18n.js", include_bytes!("../assets/i18n.js")),
+        ] {
+            assert_eq!(
+                bytes,
+                std::fs::read(format!("{}/assets/{name}", env!("CARGO_MANIFEST_DIR")))
+                    .unwrap_or_else(|error| panic!("assets/{name} is readable: {error}")),
+                "assets/{name} changed since the embed was compiled: rebuild before \
+                 judging UI behaviour, a stale binary serves the previous markup"
+            );
+        }
+        // The ids the UI audits grep for, so a rename cannot pass silently.
+        let index = text("/");
+        for id in [
+            "id=\"model-options\"",
+            "id=\"local-token\"",
+            "id=\"access-summary\"",
+        ] {
+            assert!(
+                index.contains(id),
+                "index.html no longer carries {id}: UI audit citations in `audit/` \
+                 would point at markup that does not exist"
+            );
+        }
+    }
+
     #[test]
     fn serves_only_known_assets_with_explicit_types() {
         assert_eq!(asset("/").unwrap(), asset("/index.html").unwrap());

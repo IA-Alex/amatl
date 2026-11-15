@@ -123,7 +123,49 @@ const ADVISORY_FLOORS: &[(&str, &str, &str)] = &[
 // <0.38.0`, while the fix is `>=0.39.0`, so no released `sqlx` reaches it. It
 // is recorded in `docs/security/supply-chain.md` and the authoritative
 // `cargo audit`/`cargo deny check` gates stay red until it is remediated,
-// removed from the graph, or waived by a written ADR.
+// removed from the graph, or waived by a written ADR (`ADR-017`). Because it
+// cannot be a floor, the nearest thing a hermetic guard can do is make sure a
+// plain `cargo update` cannot resolve to a `sqlx` line whose SQLite feature set
+// differs from the audited one without a reviewer seeing the manifest change:
+// `sqlx_is_pinned_to_the_audited_line` below.
+
+/// The workspace manifest, or `None` outside a workspace checkout (same
+/// reasoning as [`workspace_lockfile`]).
+fn workspace_manifest() -> Option<String> {
+    std::fs::read_to_string(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../Cargo.toml")).ok()
+}
+
+/// The string value of `key` inside the `[workspace.dependencies]` table.
+fn workspace_dependency(manifest: &str, key: &str) -> Option<String> {
+    let parsed: toml::Value =
+        toml::from_str(manifest).expect("the workspace manifest is valid TOML");
+    let value = parsed
+        .get("workspace")
+        .and_then(|workspace| workspace.get("dependencies"))
+        .and_then(|dependencies| dependencies.get(key))?
+        .clone();
+    Some(match value {
+        toml::Value::String(version) => version,
+        toml::Value::Table(table) => table
+            .get("version")
+            .and_then(|version| version.as_str())
+            .unwrap_or_default()
+            .to_owned(),
+        _ => String::new(),
+    })
+}
+
+/// Splits a requirement into its leading operator and the rest, so a pin can be
+/// told apart from the caret form the workspace used before 2026-11-15.
+fn requirement_parts(requirement: &str) -> (&str, &str) {
+    let requirement = requirement.trim();
+    for operator in ["=", "^", "~", ">", "<"] {
+        if let Some(version) = requirement.strip_prefix(operator) {
+            return (operator, version.trim());
+        }
+    }
+    ("", requirement)
+}
 
 /// The workspace lockfile, or `None` outside a workspace checkout (a published
 /// crate has no lockfile to guard). Inside the workspace the file always
@@ -218,4 +260,119 @@ fn floor_comparison_handles_patch_boundaries_and_prereleases() {
     assert!(!version_at_least("0.23.45", "0.23.46"));
     assert!(!version_at_least("0.22.99", "0.23.46"));
     assert!(!version_at_least("0.23.46-alpha.1", "0.23.46"));
+}
+
+/// `sqlx` is pinned with `=` to the line the advisory analysis covers.
+///
+/// RUSTSEC-2026-0459 cannot be a floor (no compatible release fixes it), so a
+/// silent `cargo update` is the only way the SQLite half of the graph could
+/// change without a reviewer reading a manifest diff: the bare `0.8` requirement
+/// admits every newer `0.8.x`, and each one decides which `libsqlite3-sys`
+/// range — and which `sqlite` feature set — the workspace gets. Pinning keeps
+/// that decision where `ADR-017` records it; moving to a line whose fix is
+/// reachable is the remediation and must update this test, the ADR and the
+/// advisory documentation together.
+#[test]
+fn sqlx_is_pinned_to_the_audited_line() {
+    let Some(manifest) = workspace_manifest() else {
+        return;
+    };
+    let requirement = workspace_dependency(&manifest, "sqlx")
+        .expect("[workspace.dependencies] must keep declaring sqlx");
+    let (operator, version) = requirement_parts(&requirement);
+    assert_eq!(
+        operator, "=",
+        "sqlx must be pinned with `=` (found {requirement:?}): a caret or \
+         wildcard requirement lets `cargo update` change the libsqlite3-sys \
+         range behind RUSTSEC-2026-0459 and its sqlite feature set without a \
+         reviewed manifest change"
+    );
+    assert_eq!(
+        version, "0.8.6",
+        "the sqlx pin moved to {version}: re-check RUSTSEC-2026-0459 against \
+         that line, and if it now admits libsqlite3-sys >=0.39.0, remediate and \
+         update ADR-017, docs/security/supply-chain.md and this pin together"
+    );
+    let Some(lockfile) = workspace_lockfile() else {
+        return;
+    };
+    assert_eq!(
+        locked_versions(&lockfile, "sqlx"),
+        ["0.8.6".to_owned()],
+        "Cargo.lock must lock exactly the pinned sqlx line"
+    );
+    assert_eq!(
+        locked_versions(&lockfile, "sqlx-sqlite"),
+        ["0.8.6".to_owned()],
+        "the SQLite driver must move with `sqlx`: it is the crate that declares \
+         the libsqlite3-sys range"
+    );
+}
+
+/// The `libsqlite3-sys` version the lockfile carries is the one the advisory
+/// analysis names, and the gate that would catch a change is reachable.
+///
+/// `sqlx` is pinned, so the range `sqlx-sqlite` declares cannot move on its own;
+/// what a reviewer still has to confirm is that the *resolved* crate is the
+/// audited 0.30.1 rather than a newer release that happens to sit inside the
+/// same `^0.30`, and that `deny.toml` names the advisory the analysis covers.
+/// Neither check needs the RustSec database, so both run offline on every host.
+#[test]
+fn the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed() {
+    let Some(lockfile) = workspace_lockfile() else {
+        return;
+    };
+    assert_eq!(
+        locked_versions(&lockfile, "libsqlite3-sys"),
+        ["0.30.1".to_owned()],
+        "libsqlite3-sys moved: re-check RUSTSEC-2026-0459 against the new release \
+         (the fix is >=0.39.0), then update ADR-017, \
+         docs/security/supply-chain.md and this assertion together"
+    );
+    let deny =
+        std::fs::read_to_string(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../deny.toml"))
+            .expect("the workspace checkout carries deny.toml");
+    let advisories = toml::from_str::<toml::Value>(&deny)
+        .expect("deny.toml is valid TOML")
+        .get("advisories")
+        .cloned()
+        .expect("deny.toml declares an [advisories] table");
+    let ignored = advisories
+        .get("ignore")
+        .and_then(|value| value.as_array())
+        .expect("the [advisories] table declares its ignore list, even when empty");
+    assert_eq!(
+        ignored
+            .iter()
+            .filter_map(|value| value.as_str())
+            .collect::<Vec<_>>(),
+        ["RUSTSEC-2026-0459"],
+        "the advisory suppression set changed: every entry needs an ADR and a \
+         threat model in docs/security/supply-chain.md, and CI passes the same \
+         IDs to scripts/security-gate.sh"
+    );
+}
+
+/// The pin above is only meaningful if the manifest parser reads the shape the
+/// workspace actually uses, including the quoted table form.
+#[test]
+fn workspace_dependency_reads_both_manifest_shapes() {
+    let manifest = "[workspace.dependencies]\n\
+                    sqlx = { version = \"0.8.6\", default-features = false }\n\
+                    toml = \"0.8\"\n";
+    assert_eq!(
+        workspace_dependency(manifest, "sqlx").as_deref(),
+        Some("0.8.6")
+    );
+    assert_eq!(
+        workspace_dependency(manifest, "toml").as_deref(),
+        Some("0.8")
+    );
+    assert_eq!(workspace_dependency(manifest, "absent"), None);
+    assert_eq!(requirement_parts("0.8.6"), ("", "0.8.6"));
+    assert_eq!(requirement_parts("=0.8.6"), ("=", "0.8.6"));
+    assert_eq!(
+        requirement_parts(">=0.39.0, <0.40"),
+        (">", "=0.39.0, <0.40")
+    );
 }

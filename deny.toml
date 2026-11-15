@@ -1,6 +1,14 @@
 [advisories]
 version = 2
 yanked = "warn"
+# Exactly one advisory is suppressed, by ID, and the reason lives in three
+# places a reviewer can check: `ADR-017` (`decisiones_amatl.md`) owns the exit
+# plan, `docs/security/supply-chain.md` states the threat model, and
+# `scripts/security-gate.sh` re-derives this list on every CI run so the
+# suppression cannot grow without being seen. RUSTSEC-2026-0459
+# (`libsqlite3-sys` via C SQLite, patched in `>=0.39.0`) is reachable by no
+# released `sqlx`; every other advisory must keep failing the gate.
+ignore = ["RUSTSEC-2026-0459"]
 
 [licenses]
 version = 2

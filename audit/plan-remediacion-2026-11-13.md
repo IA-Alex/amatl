@@ -86,5 +86,11 @@ Cierre **aditivo** (no rompe el contrato con el gauge `amatl_sources_available`)
 ## Fuera de alcance
 
 - Tarea 4 (matiz threat-model RUSTSEC-2026-0459) y tarea 5 (ADR de waiver).
+
+**Actualización 2026-11-15:** ambas se trabajaron en un ciclo aparte. La 4 está cerrada
+(«Threat-model note» en `docs/security/supply-chain.md`); la 5 está aplicada sólo en su
+parte ejecutable (pin `sqlx = "=0.8.6"` + guarda `sqlx_is_pinned_to_the_audited_line`),
+sin waiver: la firma de `ADR-017` y el gate rojo de `cargo audit` siguen pendientes. Detalle
+y evidencia en §8 de `audit/auditoria-2026-11-13-post-remediacion.md`.
 - Cualquier reescritura de la historia: si un test contradice el cambio, se para y se
   pregunta.
