@@ -67,8 +67,9 @@ adapter/extractor versions are independent axes as well.
   split were found.
 - `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
   configuration keys.
-- `contract-gate` runs the workspace test suite on macOS and Windows in addition
-  to Linux, so the published Tier 2 archives cannot silently rot.
+- `contract-gate` runs the workspace test suite on macOS in addition to Linux,
+  so the published Tier 2 archives cannot silently rot. Windows was in that
+  matrix until 2026-11-15; see «Removed — the Windows target» above.
 - Governed remote inference: `data_policy.inference = "remote_explicit"` now has
   a real backend (`remote_embeddings_v1`) behind the async `EmbeddingBackend`
   contract, configured by `[inference] remote_endpoint`, `remote_model`,
@@ -226,11 +227,52 @@ adapter/extractor versions are independent axes as well.
   SQLite file plus its `-wal`), so the red gate reads as bounded local debt
   awaiting an upstream `sqlx` fix and is not paraphrased as a remotely reachable
   vulnerability.
-- `ADR-017` (`decisiones_amatl.md`): the planned exit for `libsqlite3-sys`
-  RUSTSEC-2026-0459 — wait for a `sqlx` release admitting `libsqlite3-sys >=
-  0.39.0`, evaluated first as an upgrade to `sqlx 0.9.x` (raises MSRV to 1.94).
-  Proposed and awaiting `@IA-Alex`'s signature; grants **no** waiver and adds no
-  `ignore` to `deny.toml`, so the gate stays red and merge stays blocked.
+- `ADR-017` (`decisiones_amatl.md`) gains the threat-model statement the review
+  asked for and records a new first milestone: `sqlx` is pinned with `=0.8.6`
+  in the root manifest (it was `0.8` with a caret), because a caret admits every
+  newer `0.8.x` and each one decides the `libsqlite3-sys` range and the `sqlite`
+  feature set of the audited graph. The offline contract test
+  `sqlx_is_pinned_to_the_audited_line` fails if the pin loosens or the lockfile
+  resolves another line. The ADR also corrects its own blocker: `sqlx 0.9.0`
+  does not raise the MSRV above the workspace's `1.88` (it builds on it); what
+  the jump changes is the `sqlite` feature set (`sqlite` implies
+  `sqlite-bundled`/`-deserialize`/`-load-extension`/`-unlock-notify`, and
+  `sqlite-unbundled` links a system SQLite and breaks the static musl build).
+  This is a guardrail, not a remediation: RUSTSEC-2026-0459 stays open; the gate
+  passes because `deny.toml` suppresses that one ID under `ADR-017`'s amendment,
+  with offline guards, a CI `--expected-ignore` list and a printed suppression
+  list around it.
+- The advisory gate is now `scripts/security-gate.sh`: it re-derives the
+  suppressed IDs from `deny.toml`, prints them, and passes the same IDs to
+  `cargo audit` before running `cargo deny check`. Both workflows call it with
+  `--expected-ignore RUSTSEC-2026-0459`, so the suppression set is pinned in CI
+  and a new ID cannot be added by editing `deny.toml` alone. The rule that
+  actually blocked this before — «no silent allowlist» — is now enforced
+  mechanically instead of by leaving every run red.
+- Offline guards grew with it: `supply_chain_contract.rs` asserts the locked
+  `sqlx-sqlite` line, the audited `libsqlite3-sys 0.30.1` and the exact
+  suppression set, so all three fail on any host without the RustSec database.
+- `crates/amatl-ui` asserts that every embedded asset is byte-identical to the
+  file on disk and that the ids the UI audits cite (`#model-options`,
+  `#local-token`, `#access-summary`) are still in `index.html`. Both embed
+  through `include_bytes!`, so the check is exactly the one that makes H-R01's
+  stale-binary class diagnosable instead of a mystery.
+- `docs/security/supply-chain.md` gains a **threat-model note** for
+  RUSTSEC-2026-0459: local-write precondition, WAL enabled by AMATL itself,
+  CVSS v4 blast radius (confidentiality only, `SC:N/SI:N/SA:N`), why linking the
+  system SQLite is not an exit here, and the operational reading of the red gate.
+
+### Removed — the Windows target (breaking)
+
+- Windows is no longer built or published. The `windows` job in `release.yml`
+  (which packaged `amatl-*-x86_64-pc-windows-msvc.zip`) and the `windows-latest`
+  entry of `contract-gate`'s `cross-platform` matrix are removed together, and
+  `docs/release.md` drops Windows from the Tier 2 table and states the
+  withdrawal. AMATL spawns POSIX programs (`/bin/sh`, Trafilatura,
+  `pdftotext`) and its tests assert that contract directly, so the Windows job
+  could only stay green by testing less than the product does — it was failing
+  on `child_process` and `relative_deep_program_paths_are_rejected` for exactly
+  that reason. Dropping only the job would have left an unverified download.
 
 ### Changed
 
@@ -274,8 +316,8 @@ adapter/extractor versions are independent axes as well.
 - UI copy moved out of `app.js` into the `/i18n.js` message catalog; adding a
   language means adding one entry with the same keys as `en`.
 - `docs/release.md` states the distribution scope explicitly as Tier 1 (Linux
-  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS, Windows
-  archives); everything else is out of scope.
+  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS archives);
+  everything else is out of scope. Windows left Tier 2 on 2026-11-15.
 - The provider governance record is enforced at call time, not only at startup:
   an enabled source whose approval is incomplete or expired is never built and
   the response carries a `provider_not_approved` degradation naming it.
@@ -342,6 +384,28 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- The operator runbook claimed the canary's refusals — and, by implication, the
+  canary itself — never produce outbound traffic. That is false for the case it
+  matters most in: a canary that ends in `success` **does** call the provider,
+  which is its whole purpose, and a post-call failure (`provider_rate_limit`,
+  `provider_timeout`, …) has already consumed quota. The runbook now states the
+  distinction and adds the two traps that cost an operator the most time: a
+  missing `[data_policy]` leaves egress `deny` so the canary answers
+  `provider_not_approved`, and an `isolated` profile is rejected at config load,
+  so the preflight's `egress_denied` is unreachable from the CLI. It also
+  documents that `SEARXNG_INSTANCE_URL` is not checked by the credential
+  preflight (`requires_credential() == false`) and silently falls back to
+  `127.0.0.1:8888` when unset, and carries the catalog code for each refusal.
+- `deploy/searxng/run.sh` ended by telling the operator to run a canary that
+  could not pass unless `[data_policy]` and a complete approval record already
+  existed. It now says what the canary needs and what
+  `provider_not_approved` means, and the runbook no longer implies `deploy/`
+  ships in the native packages, where it does not.
+- `packaging/amatl.1` documented 6 of the binary's 14 subcommands — `provider-canary`,
+  `benchmark`, `history`, `saved`, `db` and `mcp` were absent from the manual a
+  package installs — and carried no exit-status contract. It now lists the real
+  command set, states the canary's `[data_policy]` requirement, and documents
+  that `partial_success` still exits 0.
 - No test asserted that every route the router registers has an explicit arm in
   `required_scope`. The fail-closed default kept a forgotten route safe (it
   fell through to `Admin`, never public), but nothing verified that, so a new

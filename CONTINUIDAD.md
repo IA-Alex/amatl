@@ -1649,3 +1649,40 @@ desaparición del aviso en su salida, sólo la corrida local. Y el `include_str!
 OpenAPI sigue sin remediar en su parte real: la decisión entre duplicar el contrato y
 moverlo al crate queda abierta, como deuda de empaquetado de severidad Baja.
 
+## 2026-11-15 — `SEARXNG_INSTANCE_URL` malformada deja de ser invisible
+
+**Síntoma.** `SEARXNG_INSTANCE_URL=not-a-url` (o `192.168.1.50:8888`, sin
+esquema) producía `error_code=provider_network`, idéntico a "el servidor no
+responde". El adapter consultaba otra instancia — la de loopback — sin ninguna
+señal.
+
+**Causa raíz.** `SearXngFactory::build` hacía
+`Url::parse(value).ok().unwrap_or_else(loopback)`: el mismo `.ok()` que descarta
+una URL inválida descarta también el caso "variable ausente", que es un estado
+soportado y documentado. Ambos colapsaban en el default sin dejar rastro.
+
+**Fix.** La resolución se extrae a `resolve_searxng_instance_url(name,
+credential)`, que distingue los dos casos y emite `tracing::warn` (target
+`amatl::providers`, con el provider y el error de `url`) sólo cuando el valor
+está presente y no parsea. El fallback se conserva porque
+`ProviderFactory::build` devuelve `Arc<dyn Provider>`, no un `Result`, y cambiar
+esa firma afectaría a todas las factories: eso es una decisión de producto, no
+una reparación.
+
+**Test.** `factory_warns_only_when_the_instance_url_is_present_but_unparseable`
+captura los eventos de `tracing` con un subscriber local (sin dependencia nueva)
+y verifica los cuatro casos: inválida avisa, `host:port` avisa, ausente **no**
+avisa, válida **no** avisa. El primer intento de test no servía: aseveraba sólo
+la URL resuelta, que es idéntica con y sin el fix, y pasaba en verde tras
+revertirlo. Se reescribió contra el log, y ahora falla con `must warn: []` bajo
+el revert.
+
+**Verificado end-to-end.** Con `RUST_LOG=warn` y una URL malformada el CLI
+imprime el aviso; con una URL válida, no. `cargo test --workspace --locked` →
+**728 aprobadas, 0 fallos**; `fmt`, `clippy -- -D warnings` y `doc -D warnings`
+en verde.
+
+**Riesgo residual.** El fallback silencioso del caso *ausente* sigue siendo
+deliberado y documentado. Llevar la URL a `SourceStatus` para que `/ready` la
+muestre exigiría tocar el contrato público (`openapi.yaml` y la UI): queda como
+decisión de producto, no como deuda de esta reparación.

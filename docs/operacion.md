@@ -396,16 +396,64 @@ documento para una URL bloqueada sin invalidar Search.
 ## Canario de provider real
 
 El canario ejecuta exactamente un provider y falla antes de acceder a la red si
-el nombre no está habilitado, la ficha de gobernanza no está aprobada/vigente o
-falta la variable de credencial declarada. Para Marginalia, usa sólo una key
-genuina y vigente emitida al operador; la presencia de `MARGINALIA_API_KEY` no
-prueba que sea válida. No uses consultas sensibles: el resultado JSON se
-conserva en el log del operador.
+el nombre no está habilitado, el provider no está registrado o no admite canario
+de red, la ficha de gobernanza no está aprobada/vigente, o falta la variable de
+credencial declarada. Para Marginalia, usa sólo una key genuina y vigente
+emitida al operador; la presencia de `MARGINALIA_API_KEY` no prueba que sea
+válida. No uses consultas sensibles: el resultado JSON se conserva en el log del
+operador.
+
+**Un canario que termina en `success` sí generó tráfico saliente**: esa es su
+función (un proveedor no se valida sin una llamada real). Lo que no produce
+tráfico es el rechazo: cuando la preflight del canario o la validación de
+`amatl.toml` fallan, el comando sale con `exit=1` antes de conectar.
+
+Que el canario pueda llegar a la red lo decide **`[data_policy]`, no el
+canario**. `allows_network_egress()` es verdadero sólo con un perfil distinto de
+`isolated` **y** `egress = "governed"`. Dos consecuencias que cuestan tiempo si
+no se conocen:
+
+- **Sin `[data_policy]` no hay red.** Omitir la sección deja `egress` en `deny`
+  por defecto, así que el canario responde `provider_not_approved` y nunca llega
+  a conectar. No es un problema de ficha ni de instancia: falta la sección.
+- **`isolated` no llega a ejecutarse como canario.** `Config::load_optional()`
+  aplica `Config::validate()`, que rechaza la combinación «provider habilitado +
+  egress denegado» antes de que el subcomando corra
+  (`invalid result policy: providers cannot be enabled while network egress is
+  denied`), con `error_code=configuration_invalid` y `exit=1`. Por eso el código
+  `egress_denied` de la preflight (`validate_provider_canary_with`) no es
+  observable desde el CLI: el archivo se rechaza antes de llegar a ella. La
+  preflight sigue siendo la defensa en profundidad para cualquier llamador
+  embebido en `amatl-core` que no pase por la CLI.
 
 ```bash
 amatl --config-file amatl.toml \
   provider-canary searxng "rust programming language" --json
 ```
+
+Cada rechazo sale con `exit=1` e imprime `error_code=<código>` en stderr. Para
+distinguir por qué falló, sin leer el texto libre:
+
+| Situación | `error_code` | ¿Tráfico? |
+| --- | --- | --- |
+| Nombre no declarado en `providers.enabled` | `configuration_invalid` | no |
+| Declarado pero no habilitado | `provider_not_enabled` | no |
+| Habilitado pero no registrado en el registry | `provider_not_registered` | no |
+| Sin canario de red autorizado para ese provider | `provider_network_blocked` | no |
+| Habilitado, ficha incompleta o vencida (>90 días) | `provider_not_approved` | no |
+| Falta la variable de credencial (sólo fuentes que exigen key, como Marginalia) | `provider_credential_missing` | no |
+| Llegó al proveedor y falló (429, 503, timeout, cuerpo inválido) | el código del upstream (`provider_rate_limit`, `provider_unavailable`, `provider_timeout`, `provider_invalid_response`) | **sí** |
+
+El último renglón es la distinción operativa importante: un fallo del proveedor
+después de la llamada **ya consumió** cuota y quedó registrado en el upstream.
+
+**`SEARXNG_INSTANCE_URL` no pasa por la casilla de credencial.** Para SearXNG la
+variable sólo transporta la URL de la instancia, así que el adapter declara
+`requires_credential() == false` y la preflight no la comprueba. Si falta o está
+vacía, el adapter cae al valor por defecto `http://127.0.0.1:8888`
+(`SearXngFactory::build`) y el canario apunta allí; su resultado dependerá de si
+hay algo escuchando en ese puerto, no de un error de configuración. Comprueba la
+URL exportada antes de leer el veredicto del canario.
 
 Para Marginalia, ejecuta una sola consulta canario y comprueba que el resultado
 incluya `marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`,
@@ -441,18 +489,20 @@ Verificado el 2026-10-26 con una instancia SearXNG viva
 ~0,6 s. Los tres mensajes de rechazo son deliberadamente distintos —`provider_not_enabled`
 para una fuente declarada pero no habilitada, `provider_not_approved` para una
 habilitada cuya ficha de gobernanza está incompleta, y el error de política para
-un nombre retirado— y ninguno de ellos implica tráfico saliente.
+un nombre retirado— y **sólo el `success`** del control positivo generó tráfico;
+los tres rechazos no conectan.
 
 ### Levantar la instancia SearXNG
 
 El único requisito de SearXNG que AMATL no puede suplir desde su configuración
 es que la instancia tenga habilitada la **salida JSON**: la imagen oficial trae
 `format: json` deshabilitado y, sin él, el adapter recibe `403` y AMATL reporta
-`provider_invalid_response`. Para una instancia local de loopback:
+`provider_invalid_response`.
 
 ```bash
 deploy/searxng/run.sh 8888          # arranca + verifica la API JSON
 export SEARXNG_INSTANCE_URL=http://127.0.0.1:8888
+# con [data_policy] y la ficha ya configuradas (ver «Canario de provider real»):
 amatl --config-file amatl.toml provider-canary searxng "rust" --json
 deploy/searxng/run.sh stop          # detener
 ```
@@ -464,6 +514,16 @@ limiter* de SearXNG (bloquea clientes automatizados como el adapter), habilita
 `docs/gobernanza-providers.md`. Reemplaza `secret_key` antes de exponer la
 instancia más allá de loopback. La ficha de gobernanza del provider sigue
 necesitando aprobación en `amatl.toml`.
+
+Los motores que **no** aparecen en `settings.yml` (`general`, `brave`, …) no se
+desactivan: la lista sólo toca los nombrados, y una consulta general se reparte
+entre todos los motores habilitados por `use_default_settings: true`. Si
+necesitas un conjunto mínimo, deshabilita también los restantes por nombre.
+
+`deploy/` no forma parte de los paquetes `.deb`/`.rpm`: sólo contiene los dos
+ficheros del repositorio. Desde un paquete instalado, este runbook aplica
+únicamente si tienes el repositorio a mano o si reproduces el `docker run` del
+script con tu propio `settings.yml`.
 
 **Nota de motores.** Un `status: partial_success` con resultados es normal: la
 respuesta agrega varios motores y cualquiera de ellos puede informarse en

@@ -67,7 +67,17 @@ if printf '%s' "$probe" | grep -q '"results"'; then
   count="$(printf '%s' "$probe" | grep -o '"url"' | wc -l | tr -d ' ')"
   echo "SearXNG arriba en http://127.0.0.1:${PORT} (${count} resultados en la sonda)."
   echo "Exporta: export SEARXNG_INSTANCE_URL=http://127.0.0.1:${PORT}"
-  echo "Verifica: amatl --config-file amatl.toml provider-canary searxng \"rust\" --json"
+  echo
+  # Un canario falla antes de conectar si la instancia no está aprobada o si
+  # [data_policy] no permite egress. El mensaje por defecto garantiza además que
+  # la sección esté presente: sin ella, egress queda en "deny" y el canario
+  # responde provider_not_approved, que no dice "falta la sección".
+  echo "Para validar el adapter contra esta instancia, amatl.toml necesita:"
+  echo "  1. [data_policy] con egress = \"governed\" y un perfil distinto de \"isolated\"."
+  echo "  2. providers.enabled = [\"searxng\"] y la ficha completa aprobada"
+  echo "     (una tabla parcial reemplaza la incorporada, no la fusiona)."
+  echo "Entonces: amatl --config-file amatl.toml provider-canary searxng \"rust\" --json"
+  echo "Salir con error_code=provider_not_approved significa que falta uno de los dos."
 else
   echo "La instancia arrancó pero la API JSON no respondió resultados." >&2
   echo "Revisa: docker logs $NAME   (¿está 'format: json' habilitado en settings.yml?)" >&2

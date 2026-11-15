@@ -18,11 +18,39 @@ Run Search followed by bounded document enrichment and evidence extraction.
 .B ingest
 Extract evidence from one explicit local file.
 .TP
-.B providers, config, cache, doctor
+.B providers
+List sources, their governance record and availability.
+.TP
+.B provider-canary
+Exercise exactly one provider over the network and prove it is usable. It fails
+closed before connecting when the source is not enabled, is not registered, does
+not authorize a network canary, has an incomplete or expired governance record,
+or lacks its credential. Network access also requires a
+\fB[data_policy]\fR section whose egress is governed; omitting that section
+leaves egress denied and the canary reports \fBprovider_not_approved\fR.
+.TP
+.B config, cache, doctor
 Inspect effective configuration and local capabilities.
+.TP
+.B history, saved
+Read the local search history and the documents saved for reuse.
+.TP
+.B db
+SQLite maintenance: health, backups, restore, downgrade and circuit breakers.
+.TP
+.B benchmark
+Run the built-in ranking or operational benchmarks.
 .TP
 .B serve
 Start the loopback UI, REST API and MCP surface.
+.TP
+.B mcp
+MCP surface commands.
+.SH EXIT STATUS
+0 on success, including \fBpartial_success\fR with usable results. 1 when the
+operation fails or is refused before completing (unknown command, invalid
+configuration, every provider failing, no usable results); the failing
+\fBerror_code\fR is written to standard error.
 .SH FILES
 .TP
 .I amatl.toml
