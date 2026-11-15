@@ -447,6 +447,100 @@ mod tests {
         assert!(url.contains("pageno=1"));
     }
 
+    /// Captures `tracing` events emitted while running `f`, so a warning that is
+    /// the only observable difference can be asserted instead of assumed.
+    fn capture_warnings(f: impl FnOnce()) -> Vec<String> {
+        use std::sync::{Arc, Mutex};
+        struct Capture(Arc<Mutex<Vec<String>>>);
+        impl tracing::Subscriber for Capture {
+            fn enabled(&self, _: &tracing::Metadata<'_>) -> bool {
+                true
+            }
+            fn new_span(&self, _: &tracing::span::Attributes<'_>) -> tracing::span::Id {
+                tracing::span::Id::from_u64(1)
+            }
+            fn record(&self, _: &tracing::span::Id, _: &tracing::span::Record<'_>) {}
+            fn record_follows_from(&self, _: &tracing::span::Id, _: &tracing::span::Id) {}
+            fn event(&self, event: &tracing::Event<'_>) {
+                struct Visit<'a>(&'a mut String);
+                impl tracing::field::Visit for Visit<'_> {
+                    fn record_debug(
+                        &mut self,
+                        field: &tracing::field::Field,
+                        value: &dyn std::fmt::Debug,
+                    ) {
+                        if field.name() == "message" {
+                            self.0.push_str(&format!("{value:?}"));
+                        }
+                    }
+                }
+                let mut message = String::new();
+                event.record(&mut Visit(&mut message));
+                self.0.lock().unwrap().push(message);
+            }
+            fn enter(&self, _: &tracing::span::Id) {}
+            fn exit(&self, _: &tracing::span::Id) {}
+        }
+        let buffer = Arc::new(Mutex::new(Vec::new()));
+        let subscriber = Capture(buffer.clone());
+        tracing::subscriber::with_default(subscriber, f);
+        let captured = buffer.lock().unwrap();
+        captured.clone()
+    }
+
+    #[test]
+    fn factory_warns_only_when_the_instance_url_is_present_but_unparseable() {
+        use crate::providers::registry::resolve_searxng_instance_url;
+
+        // `SearXngFactory::build` is the only seam that turns `credential_env`
+        // (a URL, not a secret) into a provider, and `build` cannot return an
+        // error. Before this, `.ok()` discarded a malformed value exactly like
+        // a missing one, so `SEARXNG_INSTANCE_URL=not-a-url` queried a
+        // different instance and surfaced only as `provider_network` — read by
+        // an operator as "the server is down". The fallback stays; the warning
+        // is what makes the two states distinguishable, so it is the thing
+        // under test.
+        let warned = capture_warnings(|| {
+            resolve_searxng_instance_url("searxng", Some("not-a-url"));
+        });
+        assert_eq!(warned.len(), 1, "a malformed URL must warn: {warned:?}");
+        assert!(warned[0].contains("not a valid URL"), "{warned:?}");
+
+        // A scheme-less `host:port` is not a URL either and used to become the
+        // loopback default with no signal at all.
+        assert_eq!(
+            capture_warnings(|| {
+                resolve_searxng_instance_url("searxng", Some("192.168.1.50:8888"));
+            })
+            .len(),
+            1
+        );
+
+        // Neither a supported unset value nor a valid URL may warn: a noisy
+        // warning would train the operator to ignore the one that matters.
+        assert!(capture_warnings(|| {
+            resolve_searxng_instance_url("searxng", None);
+        })
+        .is_empty());
+        assert!(capture_warnings(|| {
+            resolve_searxng_instance_url("searxng", Some("http://127.0.0.1:18893"));
+        })
+        .is_empty());
+
+        // The resolution itself is unchanged: unset and malformed both land on
+        // the documented loopback default, a valid value is honoured verbatim.
+        let loopback = Url::parse("http://127.0.0.1:8888").unwrap();
+        assert_eq!(resolve_searxng_instance_url("searxng", None), loopback);
+        assert_eq!(
+            resolve_searxng_instance_url("searxng", Some("not-a-url")),
+            loopback
+        );
+        assert_eq!(
+            resolve_searxng_instance_url("searxng", Some("http://127.0.0.1:18893")),
+            Url::parse("http://127.0.0.1:18893").unwrap()
+        );
+    }
+
     #[test]
     fn passes_site_filter_as_approximated_query_term() {
         let (request, filters) = provider().request(&plan("rust site:docs.rs"), 100).unwrap();
@@ -516,6 +610,48 @@ mod tests {
             .as_deref()
             .unwrap()
             .contains("systems programming"));
+    }
+
+    #[test]
+    fn a_url_only_answer_does_not_discard_the_whole_response() {
+        // SearXNG emits answers whose only payload is a URL (infobox/entity
+        // cards): `{"url": "..."}` with no `answer` key. Verified against serde
+        // 1.0.229: a missing key yields `None` for `Option<T>` even without
+        // `#[serde(default)]`, so the whole body still deserializes. This test
+        // pins that guarantee, because it is what keeps one promotional element
+        // from costing every usable result — a `#[serde(deny_unknown_fields)]`
+        // or a switch to a non-Option field would reinstate the all-or-nothing
+        // failure with no other test noticing.
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{
+                "query": "rust",
+                "results": [{"title": "Kept", "url": "https://example.com/"}],
+                "answers": [{"url": "https://example.com/infobox"}],
+                "unresponsive_engines": []
+            }"#
+            .to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(
+            result.results.len(),
+            2,
+            "the url-only answer is promoted with a null title; the real result must survive too"
+        );
+        let promoted = result
+            .results
+            .iter()
+            .find(|item| item.url == "https://example.com/infobox")
+            .expect("the url-only answer keeps its openable URL");
+        // `title` is nullable in the public contract (`required` + `string|null`),
+        // and dedupe prefers a title-bearing representative, so a null title on a
+        // URL-only answer is tolerated, not degraded.
+        assert_eq!(promoted.title, None);
+        assert!(result
+            .results
+            .iter()
+            .any(|item| item.url == "https://example.com/"));
     }
 
     #[test]

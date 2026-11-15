@@ -115,6 +115,30 @@ impl ProviderRegistry {
 
 pub struct SearXngFactory;
 
+/// Resolve the SearXNG instance URL from its `credential_env` value.
+///
+/// An unset variable is the documented local default. A value that is present
+/// but unparseable is a configuration error the trait cannot report — `build`
+/// returns `Arc<dyn Provider>`, not a `Result` — so it keeps the same loopback
+/// fallback instead of failing closed, but the mismatch is logged. Without the
+/// log, `SEARXNG_INSTANCE_URL=not-a-url` queried a different instance and
+/// surfaced only as `provider_network`, which reads as "the server is down".
+pub(crate) fn resolve_searxng_instance_url(name: &str, credential: Option<&str>) -> url::Url {
+    let default = url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid");
+    match credential {
+        None => default,
+        Some(value) => url::Url::parse(value).unwrap_or_else(|error| {
+            tracing::warn!(
+                target: "amatl::providers",
+                provider = %name,
+                %error,
+                "SEARXNG_INSTANCE_URL is not a valid URL; falling back to the loopback default"
+            );
+            default
+        }),
+    }
+}
+
 impl ProviderFactory for SearXngFactory {
     fn name(&self) -> &str {
         "searxng"
@@ -125,13 +149,10 @@ impl ProviderFactory for SearXngFactory {
     }
 
     fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        let url = context
-            .credential
-            .as_deref()
-            .and_then(|url| url::Url::parse(url.as_str()).ok())
-            .unwrap_or_else(|| {
-                url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid")
-            });
+        let url = resolve_searxng_instance_url(
+            context.name,
+            context.credential.as_deref().map(String::as_str),
+        );
         Arc::new(SearXngProvider::new(
             url,
             context.enabled,
