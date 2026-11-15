@@ -2227,6 +2227,9 @@ struct SchemaNode {
     items: Option<Box<SchemaNode>>,
     reference: Option<String>,
     open: bool,
+    /// Allowed scalar values when the schema declares an `enum`. Empty means
+    /// "no enum constraint".
+    enum_values: Vec<String>,
 }
 
 /// Parses the `components.schemas` section into `SchemaNode`s keyed by name.
@@ -2299,6 +2302,14 @@ fn parse_schema_block(block: &str, base: usize) -> SchemaNode {
                             .split(',')
                             .map(|n| n.trim().to_owned())
                             .filter(|n| !n.is_empty())
+                            .collect();
+                    }
+                } else if trimmed.starts_with("enum:") {
+                    if let Some((list, _)) = tail.split_once(']') {
+                        node.enum_values = list
+                            .split(',')
+                            .map(|v| v.trim().trim_matches(['\'', '"']).to_owned())
+                            .filter(|v| !v.is_empty())
                             .collect();
                     }
                 }
@@ -2418,11 +2429,21 @@ fn parse_properties(block: &str, base: usize) -> Vec<(String, SchemaNode)> {
 }
 
 /// Parses the inside of a one-line `{ ... }` schema map, extracting the pieces
-/// this guard needs: `$ref`, `additionalProperties: true`, and `items: { ... }`.
+/// this guard needs: `$ref`, `enum`, `additionalProperties: true`, and
+/// `items: { ... }`.
 fn parse_inline_map(body: &str) -> SchemaNode {
     let mut node = SchemaNode::default();
     if body.contains("additionalProperties: true") {
         node.open = true;
+    }
+    if let Some((_, tail)) = body.split_once("enum:") {
+        if let Some((list, _)) = tail.split_once('[').and_then(|(_, t)| t.split_once(']')) {
+            node.enum_values = list
+                .split(',')
+                .map(|v| v.trim().trim_matches(['\'', '"']).to_owned())
+                .filter(|v| !v.is_empty())
+                .collect();
+        }
     }
     if let Some((_, tail)) = body.split_once("$ref:") {
         let name = tail
@@ -2487,6 +2508,14 @@ fn assert_conforms(
             if let (Some(schema), Some(first)) = (node.items.as_deref(), items.first()) {
                 assert_conforms(first, schema, schemas, &format!("{path}[]"), errors);
             }
+        }
+        serde_json::Value::String(text)
+            if !node.enum_values.is_empty() && !node.enum_values.iter().any(|v| v == text) =>
+        {
+            errors.push(format!(
+                "{path}: value {text:?} not in enum {:?}",
+                node.enum_values
+            ));
         }
         _ => {}
     }

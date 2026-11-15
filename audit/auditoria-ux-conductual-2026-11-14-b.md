@@ -1,5 +1,13 @@
 # Auditoría conductual / inmersión — AMATL (UI web)
 
+> **Corrección (2026-11-15).** Verificado contra `app.js` en una segunda pasada:
+> **R-3 era una falsa alarma** (el botón `AI summary` ya muestra el motivo antes
+> del clic; el informe se basó en el `hidden` del HTML estático sin trazar el JS) y
+> **la evidencia de R-1 era incorrecta** (el panel lateral nace `hidden`, no
+> "siempre presente"). R-2 y R-4 siempre fueron recomendaciones de producto, no
+> defectos. Ver la sección 7 para el detalle. Causa raíz de ambos errores: análisis
+> solo estático, sin `browser_e2e`.
+
 ## 1. Experience Objective
 La UI busca producir **orientación y confianza operativa**: que una persona
 formule una consulta y obtenga, sin fricción, *resultados que pueda abrir y
@@ -58,12 +66,15 @@ Continuation → cambiar de fuente/consulta; guardar documento
   errores costosos.
 
 ### Fricción innecesaria (candidata)
-- **F-1 — Densidad del panel lateral en la primera visita.** Fuentes, servicio,
-  historial, guardados y configuración de IA comparten columna
-  (`index.html:181-204`). Para la tarea primaria (buscar y abrir) es ruido
-  cognitivo temprano. Carga: ~6 regiones + `service-indicators` antes de que el
-  usuario tenga un resultado. Recomendación: colapsar el panel completo tras un
-  `<details>` o mostrarlo solo cuando `status !== "ok"` o bajo demanda.
+- **F-1 — Densidad del panel lateral [CORREGIDO].** Evidencia original
+  "`index.html:181-204`, panel siempre presente" — **incorrecto**: las secciones
+  nacen `hidden` (`index.html:180,186,202`) y se revelan bajo demanda. Cuando sí
+  se muestran, varias regiones coexisten en la misma columna. Se degrada a
+  observación menor, no defecto.
+- **F-4 — Botón `AI summary` [RETIRADO].** El informe afirmó que quedaba
+  "deshabilitado sin explicación". **Falso**: `app.js:1246-1268` lo mantiene
+  clicable y muestra `answer-hint` antes del clic con `aria-describedby` + `title`.
+  Era una falsa alarma.
 - **F-2 — Estados de degradación potencialmente alarmantes sin acción.**
   `partialResults`, `partialEvidence`, `unavailable` (`i18n.js:59-65,94`) son
   honestos, pero no siempre dicen **qué hacer**. "algunas fuentes no
@@ -72,10 +83,6 @@ Continuation → cambiar de fuente/consulta; guardar documento
 - **F-3 — El error de proveedor y el error de red comparten tono.** `error*`
   (`i18n.js:73-81`) son claros y distintos, lo cual es bueno; pero no siempre hay
   un CTA de recuperación adyacente (p.ej. reintentar / cambiar fuente).
-- **F-4 — `AI summary` visible pero `is-unavailable`.** Un control deshabilitado
-  persistente añade una decisión fantasma ("¿por qué no puedo?"). El `answer-hint`
-  (`index.html:108`) existe, pero nace `hidden`; conviene mostrarlo junto al
-  botón deshabilitado para cerrar el bucle.
 
 ## 5. Immersion Analysis
 
@@ -111,11 +118,26 @@ estados degradados.
 
 ## 7. UX Recommendations
 
-- **R-1 (F-1) — Separar las dos experiencias.**
-  - *Problema:* consola de operador compite con la tarea de búsqueda.
+- **R-3 (F-4) — [RETIRADO: falsa alarma, NO es un defecto.]** El informe afirmó
+  que el botón `AI summary` quedaba "deshabilitado sin explicación visible".
+  Verificado contra el código: **es incorrecto**. `app.js:1246-1268` mantiene el
+  botón siempre visible y clicable (nunca `disabled` real), y cuando
+  `answerStatus.available === false` **muestra `answer-hint` antes del clic**
+  (`answerHint.hidden = false`, línea 1265) y lo enlaza con el control vía
+  `aria-describedby` + `title` (líneas 1266-1267). El comentario en
+  `app.js:1251-1256` documenta que esto ya se corrigió antes. La premisa original
+  se basó en el atributo `hidden` del HTML estático (`index.html:108`) sin trazar
+  el JS que lo revela. **Causa del error de auditoría:** análisis solo estático,
+  sin `browser_e2e` (limitación ya declarada en la sección 10).
+
+- **R-1 (F-1) — [MATIZADO: evidencia corregida; mejora opcional, no defecto.]**
+  *Evidencia original:* "`index.html:181-204` (panel siempre presente)" —
+  **incorrecto**: las secciones del panel lateral nacen `hidden` y se revelan bajo
+  demanda (`index.html:180,186,202` + `refreshPanels()` en `app.js`), no están
+  siempre visibles.
+  - *Problema:* cuando el panel sí se muestra, coexisten dos registros en pantalla.
   - *Mecanismo:* carga cognitiva / atención selectiva.
-  - *Evidencia:* `index.html:181-204` (panel siempre presente).
-  - *Consecuencia:* menor comprensión inicial y más abandono pre-resultado.
+  - *Consecuencia:* posible menor comprensión cuando el panel aparece.
   - *Cambio:* envolver el panel en `<details>` (colapsado) y auto-expandirlo solo
     si `status !== "ok"`.
   - *Efecto esperado:* primera fijación en el campo de consulta.
@@ -124,30 +146,27 @@ estados degradados.
   - *Validación:* scroll-depth al panel en primera visita; tiempo hasta primera
     consulta.
 
-- **R-2 (F-2/F-3) — Microcopía con salida.**
-  - *Problema:* estados degradados sin acción.
+- **R-2 (F-2/F-3) — [RECOMENDACIÓN de producto, no defecto.]** Microcopía con
+  salida. El estado de resultados parciales es honesto y deliberado (ver
+  `app.js:776-788`: el estado vacío es neutro y "la nota bajo la lista lleva el
+  siguiente paso"). Añadir un CTA es una **decisión de producto**, no la
+  corrección de un fallo.
+  - *Problema:* estados degradados sin acción adyacente.
   - *Mecanismo:* reducción de incertidumbre / autoeficacia.
   - *Evidencia:* `i18n.js:59-65` (sin verbo de acción).
-  - *Cambio:* añadir a `partialResults`/`partialEvidence` un enlace o botón
-    "Probar otra fuente" que abra el selector de fuentes.
+  - *Cambio propuesto:* añadir a `partialResults`/`partialEvidence` un enlace o
+    botón "Probar otra fuente" que abra el selector de fuentes.
   - *Efecto esperado:* menos abandono ante respuesta parcial.
   - *Riesgo:* ruido si la degradación es benigna (mostrarlo solo cuando hay >1
     fuente configurada).
   - *Validación:* tasa de recuperación tras `partial_*`.
 
-- **R-3 (F-4) — Cerrar el bucle del botón deshabilitado.**
-  - *Problema:* `AI summary` deshabilitado sin explicación visible.
-  - *Evidencia:* `index.html:62` (`is-unavailable`) + `answer-hint` `hidden:108`.
-  - *Cambio:* mostrar `answer-hint` (motivo + cómo habilitarlo) cuando el botón
-    esté deshabilitado.
-  - *Mecanismo:* coherencia expectativa↔capacidad.
-  - *Riesgo:* bajo. *Validación:* clics en zona del botón y apoyo contextual.
-
-- **R-4 — Reservar "Próxima acción" tras abrir.** Añadir, tras el primer
-  resultado abierto, una sugerencia discreta (p.ej. "Guardar este documento" o
-  "Analizar evidencia de esta consulta"). *Mecanismo:* efecto goal-gradient;
-  *riesgo:* empujar acciones de coste superior sin pedirlo → mantenerlo como
-  sugerencia no intrusiva. *Validación:* uso de Deep/save tras una apertura.
+- **R-4 — [RECOMENDACIÓN de producto, no defecto.]** Reservar "Próxima acción"
+  tras abrir. Añadir, tras el primer resultado abierto, una sugerencia discreta
+  (p.ej. "Guardar este documento" o "Analizar evidencia de esta consulta").
+  *Mecanismo:* efecto goal-gradient; *riesgo:* empujar acciones de coste superior
+  sin pedirlo → mantenerlo como sugerencia no intrusiva. *Validación:* uso de
+  Deep/save tras una apertura.
 
 ## 8. Implementation Guidance
 - **Copy/CTA:** añadir claves nuevas en `i18n.js` en **ambos** catálogos (paridad
@@ -180,12 +199,16 @@ estados degradados.
   rompe tests de paridad.
 - **Sesgo de este informe:** basado en análisis estático de assets y API real, no
   en observación de usuarios ni en UI renderizada (`browser_e2e` no ejecutado).
-  Las hipótesis están marcadas como tales.
+  Las hipótesis están marcadas como tales. **Este sesgo produjo dos hallazgos
+  falsos** (R-3 y la evidencia de R-1) al no trazar el JS que revela elementos
+  `hidden`; ambos están corregidos arriba.
 
 ### Quality Gate
 - [x] Objetivo conductual explícito · [x] Contexto de usuario entendido
 - [x] Mecanismo psicológico identificado · [x] Recomendación con implementación concreta
-- [x] Evidencia e hipótesis separadas · [x] Inmersión evaluada en conjunto
+- [~] Evidencia e hipótesis separadas — **falló en la 1.ª pasada** (R-3 declarada
+  defecto con evidencia solo estática); **corregido el 2026-11-15** contra el código
+- [x] Inmersión evaluada en conjunto
 - [x] Carga cognitiva considerada · [x] Fricción clasificada
 - [x] Autonomía preservada · [x] Las promesas coinciden con el producto
 - [x] Impacto medible · [x] Efectos no deseados considerados

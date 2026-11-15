@@ -342,6 +342,11 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- The recursive OpenAPI conformance guards now also check `enum` membership for
+  scalar response values, so a field pinned to a fixed set of wire values cannot
+  drift to an undeclared one unnoticed. Still dependency-free. This narrows the
+  gap left open when the admin contract was typed; full type and nullability
+  checks would still need a JSON-Schema validator.
 - The regression guards that pin the OpenAPI contract against the live
   service only compared top-level keys, so a nested drift — a `required` field
   added under `server.tls`, or a field lost from a `$ref`-referenced record —
