@@ -4,7 +4,7 @@ use crate::model::{
 };
 use crate::security::validate_search_url;
 use std::collections::BTreeMap;
-use time::format_description::well_known::Rfc3339;
+use time::format_description::well_known::{Iso8601, Rfc3339};
 use time::macros::format_description;
 use time::{Date, OffsetDateTime, PrimitiveDateTime, Time};
 
@@ -176,6 +176,19 @@ fn normalize_date(value: &str) -> Option<String> {
     if let Ok(date_time) = OffsetDateTime::parse(value, &Rfc3339) {
         return date_time.format(&Rfc3339).ok();
     }
+    // Offset present but not in RFC 3339's `±HH:MM` shape: the compact ISO 8601
+    // forms `±HH` and `±HHMM` are what engines actually emit, and SearXNG
+    // forwards `publishedDate` verbatim. RFC 3339 rejected them above and the
+    // naive path below does not consume an offset, so before this they fell
+    // through both and produced an `invalid_published_at` degradation that
+    // demoted a clean response to `partial_success`. The offset is meaningful,
+    // so it is preserved and only its rendering is normalized to RFC 3339.
+    //
+    // `Iso8601::DEFAULT` requires the offset (a naive timestamp is rejected),
+    // so it cannot pre-empt the UTC-anchoring rule below.
+    if let Ok(date_time) = OffsetDateTime::parse(value, &Iso8601::DEFAULT) {
+        return date_time.format(&Rfc3339).ok();
+    }
     // Naive timestamp with a time component but no offset. A live SearXNG
     // instance emits `publishedDate` this way (`YYYY-MM-DDTHH:MM:SS`), so
     // rejecting it discarded a valid date and degraded an otherwise clean
@@ -303,5 +316,54 @@ mod tests {
         // Genuinely invalid values still fail closed.
         assert_eq!(normalize_date("2026-02-30"), None);
         assert_eq!(normalize_date("yesterday"), None);
+    }
+
+    #[test]
+    fn published_date_accepts_offsets_without_minutes() {
+        // Regression: the naive-timestamp path accepted `…T13:20:31`, and the
+        // RFC 3339 path required `+02:00`, so an offset in the compact ISO 8601
+        // forms engines actually emit fell through both: `None`, hence an
+        // `invalid_published_at` degradation that turned a clean response into
+        // `partial_success`. SearXNG forwards `publishedDate` verbatim, so
+        // these reach `normalize` unfiltered. The offset is preserved (it is
+        // meaningful); only its rendering is normalized to RFC 3339.
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31+02").as_deref(),
+            Some("2024-06-11T13:20:31+02:00")
+        );
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31-05").as_deref(),
+            Some("2024-06-11T13:20:31-05:00")
+        );
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31.123456+02").as_deref(),
+            Some("2024-06-11T13:20:31.123456+02:00")
+        );
+        assert_eq!(
+            normalize_date("2024-06-11T13:20:31-0530").as_deref(),
+            Some("2024-06-11T13:20:31-05:30"),
+            "a compact `±HHMM` offset keeps its minutes"
+        );
+        // Pinning the offset means the instant is unchanged, not re-anchored to
+        // UTC: the same wall-clock with `-05:30` and with `Z` are different
+        // instants and must stay different.
+        assert_ne!(
+            normalize_date("2024-06-11T13:20:31-0530"),
+            normalize_date("2024-06-11T13:20:31Z")
+        );
+
+        // A clean response must stay `success`: no degradation at all.
+        let mut value = item("https://example.com");
+        value.published_at = Some("2024-06-11T13:20:31+02".into());
+        let (items, degradations) = normalize(&[provider(vec![value])]);
+        assert!(
+            degradations.is_empty(),
+            "a valid compact offset must not degrade the pipeline: {degradations:?}"
+        );
+        assert!(items[0].degradations.is_empty());
+        assert_eq!(
+            items[0].published_at.as_deref(),
+            Some("2024-06-11T13:20:31+02:00")
+        );
     }
 }
