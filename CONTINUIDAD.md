@@ -1649,6 +1649,69 @@ desaparición del aviso en su salida, sólo la corrida local. Y el `include_str!
 OpenAPI sigue sin remediar en su parte real: la decisión entre duplicar el contrato y
 moverlo al crate queda abierta, como deuda de empaquetado de severidad Baja.
 
+## 2026-11-15 — `published_at` con offset compacto (regresión de `8dfa6a06`)
+
+**Síntoma.** Una respuesta limpia de SearXNG cuyo `publishedDate` trae el offset en
+forma ISO 8601 compacta (`2024-06-11T13:20:31+02`, `-05`, `-0530`) producía
+`status: "partial_success"` con una degradación `invalid_published_at` y
+`published_at: null` en el resultado. Es el defecto que `8dfa6a06` decía cerrar,
+parcialmente resuelto: arregló el instante naive, no el offset.
+
+**Causa raíz.** `normalize_date` tenía dos caminos y ninguno consumía esa forma: la
+vía RFC 3339 exige `±HH:MM`, y el bloque naive añadido en `8dfa6a06` no acepta
+offset. El valor caía por ambos y devolvía `None`. SearXNG retransmite
+`publishedDate` tal cual lo emite el motor, y el contrato público de `published_at`
+no lo restringe a RFC 3339, así que el valor es legítimo.
+
+**Reproducción (antes).** Mock HTTP local con forma de SearXNG servido a
+`amatl search --json`: `partial_success` + `invalid_published_at`, con la fecha
+perdida. **Después:** `success`, cero degradaciones, y
+`2024-06-11T13:20:31+02` se retiene como `2024-06-11T13:20:31+02:00`. Los fixtures
+previos (naive, microsegundos, nanosegundos, `Z`, bare date, `+02:00`) conservan su
+salida byte a byte.
+
+**Fix.** Un tercer intento, sólo para el caso con offset, con
+`Iso8601::DEFAULT` (ya presente vía `time`): acepta `±HH`, `±HHMM` y fracciones, y
+**rechaza** un instante naive, de modo que no puede adelantarse a la regla de anclaje
+UTC. El offset se preserva; sólo se normaliza su render a RFC 3339. El test
+`normalize::tests::published_date_accepts_offsets_without_minutes` es rojo antes del
+fix y cubre la ausencia de degradación en el pipeline, no sólo la función pura.
+
+**Estado verificado en esta máquina, con `--locked`.** `cargo fmt --all --check` en
+verde; `cargo test --workspace --locked` → **726 aprobadas, 0 fallos**;
+`cargo clippy --workspace --all-targets --all-features --locked -- -D warnings` sin
+avisos; `cargo check --workspace --benches --locked` sin avisos; `cargo doc
+--workspace --no-deps --locked` con `RUSTDOCFLAGS=-D warnings` sin avisos.
+
+**Lo que este cierre no puede afirmar.** La verificación end-to-end se hizo contra un
+mock local con forma de SearXNG, no contra una instancia viva; no se ejecutó
+`cargo audit`/`cargo deny` ni el browser E2E, que no tocan esta ruta. Sigue abierto,
+como riesgo separado y no corregido, que `SearXngAnswer.answer` sea
+`Option<String>`: un answer promocional sin ese campo haría fallar el `Deserialize`
+del cuerpo entero.
+
+## 2026-11-15 — `SearXngAnswer` sin `answer`: descartado como bug, cubierto por test
+
+**Lo que se sospechaba.** Que un *answer* promocional sin campo `answer` (tarjeta
+de entidad que sólo trae `url`) hiciera fallar el `Deserialize` del cuerpo entero
+y costara todos los resultados usables de la respuesta.
+
+**Lo que se midió.** Falso. Con `serde 1.0.229`, una clave ausente produce `None`
+en un campo `Option<T>` **sin** `#[serde(default)]`; el cuerpo se deserializa y la
+respuesta sobrevive. El test que se escribió para reproducirlo lo evidenció al
+fallar en `left: 2, right: 1`, no en el parseo. El `title` del answer promovido
+queda en `null`, que el contrato público admite (`title` es `required` y
+`string|null` en `openapi.yaml`), y `dedupe` prefiere al representante con título,
+así que no degrada la fusión.
+
+**Lo que queda.** El test `a_url_only_answer_does_not_discard_the_whole_response`
+fija la garantía: si alguien añade `deny_unknown_fields` o cambia el campo a un
+tipo no opcional, la regresión pasa a ser visible en vez de silenciosa.
+
+**Estado verificado.** `cargo test --workspace --locked` → **727 aprobadas, 0
+fallos**; `cargo fmt --all --check`, `cargo clippy … -- -D warnings` y `cargo doc
+… -D warnings` en verde.
+
 ## 2026-11-15 — `SEARXNG_INSTANCE_URL` malformada deja de ser invisible
 
 **Síntoma.** `SEARXNG_INSTANCE_URL=not-a-url` (o `192.168.1.50:8888`, sin

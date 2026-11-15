@@ -384,6 +384,15 @@ adapter/extractor versions are independent axes as well.
 
 ### Fixed
 
+- A malformed `SEARXNG_INSTANCE_URL` (a typo, or a scheme-less `host:port`) was
+  discarded exactly like an unset variable and fell back to the loopback
+  default, so the operator silently queried a different instance and saw only
+  `provider_network` — indistinguishable from "the server is down". URL
+  resolution is now `resolve_searxng_instance_url`, which keeps the documented
+  fallback but warns (target `amatl::providers`, with the provider and the parse
+  error) when a present value cannot be parsed. An unset variable stays silent,
+  because that is a supported state. The fallback itself is unchanged: making
+  `ProviderFactory::build` fail would change the trait for every factory.
 - The operator runbook claimed the canary's refusals — and, by implication, the
   canary itself — never produce outbound traffic. That is false for the case it
   matters most in: a canary that ends in `success` **does** call the provider,
@@ -406,6 +415,14 @@ adapter/extractor versions are independent axes as well.
   package installs — and carried no exit-status contract. It now lists the real
   command set, states the canary's `[data_policy]` requirement, and documents
   that `partial_success` still exits 0.
+- `published_at` values whose UTC offset is a compact ISO 8601 form (`+02`,
+  `-05`, `-0530`) were dropped and recorded as an `invalid_published_at`
+  degradation, demoting a clean response to `partial_success`. The RFC 3339
+  path required `±HH:MM` and the naive-timestamp path accepts no offset at all,
+  so these fell through both. SearXNG forwards `publishedDate` verbatim, so the
+  values reach `normalize` unfiltered. The offset is preserved — only its
+  rendering is normalized to RFC 3339 — and the UTC-anchoring rule for naive
+  timestamps is unchanged.
 - No test asserted that every route the router registers has an explicit arm in
   `required_scope`. The fail-closed default kept a forgotten route safe (it
   fell through to `Admin`, never public), but nothing verified that, so a new

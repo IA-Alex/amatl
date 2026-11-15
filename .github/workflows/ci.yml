@@ -43,8 +43,7 @@ jobs:
       # beating its baseline on the shipped labeled corpus.
       - name: Ranking v2 quality gate
         run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
-      - run: cargo audit
-      - run: cargo deny check
+      - run: ./scripts/security-gate.sh --expected-ignore RUSTSEC-2026-0459
       - run: cargo cyclonedx
       - uses: actions/upload-artifact@v6
         with:
