@@ -250,9 +250,9 @@ mod tests {
     /// returned error string never carries the query string either way.
     #[tokio::test]
     async fn connection_refused_is_classified_as_connect_and_never_leaks_the_query_secret() {
-        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
-        let address = listener.local_addr().unwrap();
-        drop(listener); // nothing listens on `address` anymore: refused.
+        // Same helper as `fetch`: no `bind`/`drop` race, the address is already
+        // proven to refuse.
+        let address = crate::test_support::refused_loopback_address().await;
 
         let client = reqwest::Client::new();
         let error = client

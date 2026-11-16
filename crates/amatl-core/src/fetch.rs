@@ -572,15 +572,31 @@ mod byte_limit_tests {
 mod transport_error_classification_tests {
     use super::*;
 
+    /// The helper used by the two transport-classification tests. It lives in
+    /// `crate::test_support` because `providers::http` needs the same one, and a
+    /// second copy would be a second thing to keep honest.
+    use crate::test_support::refused_loopback_address;
+
+    /// The helper above is the thing under test elsewhere, so it cannot be the
+    /// flaky part: 200 consecutive attempts must all yield a real refusal.
+    #[tokio::test]
+    async fn refused_loopback_address_is_stable() {
+        for _ in 0..200 {
+            let address = refused_loopback_address().await;
+            let error = tokio::net::TcpStream::connect(address).await.unwrap_err();
+            assert_eq!(error.kind(), std::io::ErrorKind::ConnectionRefused);
+        }
+    }
+
     /// Mirrors `providers::http`'s equivalent test: a refused connection is
     /// still reported as the single public `FetchError::Network`, but the
     /// internal classifier used for the `outbound fetch failed` log line
     /// distinguishes it from a timeout or a body-read failure.
     #[tokio::test]
     async fn classifies_a_refused_connection_as_connect() {
-        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
-        let address = listener.local_addr().unwrap();
-        drop(listener); // nothing listens on `address` anymore: refused.
+        // No `bind`/`drop` race: the address is only returned once the kernel
+        // has actually refused a connection to it.
+        let address = refused_loopback_address().await;
 
         let error = reqwest::Client::new()
             .get(format!("http://{address}/"))

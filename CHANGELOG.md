@@ -274,6 +274,26 @@ adapter/extractor versions are independent axes as well.
   on `child_process` and `relative_deep_program_paths_are_rejected` for exactly
   that reason. Dropping only the job would have left an unverified download.
 
+### Fixed
+
+- Two transport-classification tests obtained a "refused" loopback address by
+  binding an ephemeral port, dropping the listener and assuming nothing would
+  take it before the connect. Under the full suite's parallel port usage that
+  window is real: measured 2 failures in 60 runs, and 4 in 160 with only one of
+  the two sites fixed. Both now use `test_support::refused_loopback_address`,
+  which returns an address only after the kernel has actually refused it;
+  160 consecutive full-suite runs are clean. The helper has its own 200-iteration
+  test, because a flaky helper cannot be the basis for a stable one.
+- `is_relative_program_path` (`config/deep_config.rs`) decides whether a
+  configured program would be resolved through the current directory, which is
+  what stops whoever controls the working directory from choosing the binary
+  that runs. It looked only at `MAIN_SEPARATOR`, and neither `.` nor `..`
+  contains one, so both were read as a bare `PATH` name and accepted for
+  `deep.extractor.executable` and `deep.renderer.sandbox_path`. It now works over
+  path components, and `program_path_rule_covers_every_current_directory_shape`
+  builds its cases from `MAIN_SEPARATOR` so they assert something on every host
+  instead of only where `/` is the separator.
+
 ### Changed
 
 - The STEP 4D experimental local-embedding stack leaves the workspace lockfile,

@@ -43,6 +43,8 @@ pub mod service;
 pub mod storage;
 pub mod strategist;
 pub mod telemetry;
+#[cfg(test)]
+mod test_support;
 mod text;
 
 pub use answer::{Answer, AnswerError, AnswerSource, CompletionBackend, RemoteCompletionBackend};
