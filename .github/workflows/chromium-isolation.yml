@@ -33,10 +33,47 @@ jobs:
       - name: Install Chromium isolation dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes bubblewrap curl unzip
-          if sysctl kernel.apparmor_restrict_unprivileged_userns >/dev/null 2>&1; then
+          sudo apt-get install --yes bubblewrap curl unzip apparmor-utils
+          # Ubuntu 23.10+ ships an AppArmor profile that removes the
+          # `userns` permission from unprivileged binaries, and Chromium's
+          # zygote therefore cannot create its sandbox:
+          #   "No usable sandbox! ... disabled unprivileged user namespaces"
+          # The gate below is fail-closed on purpose — it must prove the
+          # sandbox works, not pass by disabling it. That leaves two levers,
+          # and both are applied: the effective sysctl (when the key exists)
+          # and the per-binary profile, which Ubuntu loads dynamically and which
+          # survives the sysctl on its own.
+          #
+          # Neither step may fail silently: the previous version ran
+          # `sudo sysctl --write …=0` under `if`, so a rejected write printed
+          # nothing and the failure surfaced 40 steps later as a bare
+          # "isolated Chromium failed".
+          if [ -w /proc/sys/kernel/apparmor_restrict_unprivileged_userns ] \
+             || [ -e /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then
+            echo "kernel.apparmor_restrict_unprivileged_userns is exposed; relaxing it"
             sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
+          else
+            echo "kernel.apparmor_restrict_unprivileged_userns is not exposed; checking profiles"
           fi
+          # The per-binary profile is what actually blocks the zygote on current
+          # runners: `userns` is denied inside the profile, not by the sysctl.
+          if command -v aa-status >/dev/null 2>&1; then
+            sudo aa-status --profiled | grep --extended-regexp '(^|/)(chrome|chromium)(-|$)' \
+              && echo "an AppArmor profile covers Chrome; it is removed below" \
+              || echo "no AppArmor profile covers Chrome"
+          fi
+          for profile in chrome chromium; do
+            if [ -e "/etc/apparmor.d/$profile" ]; then
+              sudo apparmor_parser --remove "/etc/apparmor.d/$profile" \
+                || echo "warning: could not unload the $profile profile" >&2
+            fi
+          done
+          # Prove the precondition before spending the job: an unprivileged
+          # user namespace must be creatable, which is what the zygote needs.
+          sudo sysctl --write kernel.unprivileged_userns_clone=1 >/dev/null 2>&1 || true
+          unshare --user --map-root-user --mount true \
+            && echo "unprivileged user namespaces are available" \
+            || { echo "unprivileged user namespaces are unavailable; the gate cannot run" >&2; exit 1; }
           archive="$(mktemp --suffix=.zip)"
           curl --fail --location --silent --show-error \
             https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.42/linux64/chrome-headless-shell-linux64.zip \
