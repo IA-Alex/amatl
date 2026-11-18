@@ -62,7 +62,7 @@ git commit -m "docs(ui): amend the app.js design for full IIFEs and record the p
 ### Task 2: Probe de navegador (la única red real)
 
 **Files:**
-- Create: `/tmp/user/1000/opencode/amatl-refactor/probe.py` (efímero, fuera del repo).
+- Create: un probe de navegador efímero, fuera del repo (se descartó al cerrar la tarea).
 
 **Interfaces:**
 - Produces: `python3 …/probe.py [port]` → `EXCEPTIONS: N`, `CONSOLE_ERRORS: N`, `FLOWS: {...}`. Exit 0 solo con ambos en 0. **Cada tarea 3-8 lo re-ejecuta; ninguna se cierra sin `EXCEPTIONS: 0`.**
@@ -278,8 +278,8 @@ declararse, así que consolidarlos es seguro.
 
 Mover todas las líneas `const <nodo> = document.querySelector(...)` (y los no-`querySelector`,
 p. ej. `document.querySelector("details.filters")` con comillas dobles) a un bloque único
-"DOM" justo después del núcleo, conservando su texto exacto. Verificar con `order_check.py`
-y `node --check`.
+"DOM" justo después del núcleo, conservando su texto exacto. Verificar con el verificador de
+orden y `node --check`.
 
 - [ ] **Step 2: `providers`**
 

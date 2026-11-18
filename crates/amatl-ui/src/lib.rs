@@ -553,9 +553,14 @@ mod tests {
         assert_eq!(javascript.matches("function t(key)").count(), 1);
         assert_eq!(javascript.matches("function boundedText(").count(), 1);
         assert_eq!(javascript.matches("function setStatusKey(").count(), 1);
-        assert_eq!(javascript.matches("async function refreshPanels(").count(), 1);
+        assert_eq!(
+            javascript.matches("async function refreshPanels(").count(),
+            1
+        );
         let last_domain = javascript.rfind("})();").expect("domains are IIFEs");
-        let startup = javascript.rfind("refreshPanels();").expect("startup calls refreshPanels");
+        let startup = javascript
+            .rfind("refreshPanels();")
+            .expect("startup calls refreshPanels");
         assert!(
             startup > last_domain,
             "the startup call must follow every domain"
