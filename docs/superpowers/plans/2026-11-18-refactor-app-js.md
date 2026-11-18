@@ -263,36 +263,51 @@ git commit -am "refactor(ui): encapsulate the search-deep and location domains b
 ### Task 8: Dominios `providers`, `storage-panels` y `clients`
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `providerReason`…`syncCredentialActions`; `historyLabel`…`deleteSavedDocument`; `scopeLabel`…`rotateServerClientToken`
+- Modify: `crates/amatl-ui/assets/app.js` — `providerReason`…`saveMarginaliaKey`; `historyLabel`…`saveDocument`; `scopeLabel`…`rotateServerClient`
 
 **Interfaces:**
-- Produces: `fetchProviderStatus`, `fetchServiceState`, `fetchHistory`, `fetchSavedDocuments`, `fetchServerClients` — las cinco que llama `refreshPanels` (núcleo).
+- Produces: los **7** símbolos que cruzan: `fetchProviderStatus`, `fetchServiceState`, `fetchHistory`, `fetchSavedDocuments`, `fetchServerClients` (los cinco de `refreshPanels`), `saveDocument` (usado dentro de `renderDomain`) y `scopeLabel` (usado en `applyTranslations`).
 
-- [ ] **Step 1: `providers`**
+**Complejidad medida:** dentro del rango 1004-1933 hay **48 declaraciones de nodos DOM**
+(`const x = document.querySelector(...)`) intercaladas. La regla D2 las quiere globales de
+solo lectura, así que el bloque no es un rango limpio: el script debe **clasificar línea a
+línea** y dejar los nodos fuera del IIFE. Verificado: ningún nodo se usa en carga antes de
+declararse, así que consolidarlos es seguro.
 
-IIFE que retorna `{ fetchProviderStatus, fetchServiceState, ... }`.
+- [ ] **Step 1: Consolidar los 85 nodos DOM**
 
-- [ ] **Step 2: `storage-panels`**
+Mover todas las líneas `const <nodo> = document.querySelector(...)` (y los no-`querySelector`,
+p. ej. `document.querySelector("details.filters")` con comillas dobles) a un bloque único
+"DOM" justo después del núcleo, conservando su texto exacto. Verificar con `order_check.py`
+y `node --check`.
 
-IIFE que retorna `{ fetchHistory, fetchSavedDocuments }`. **`historyLabel` conserva `countLabel(entry.total_results, "resultsCount")` exacto** (el espacio tras la coma).
+- [ ] **Step 2: `providers`**
 
-- [ ] **Step 3: `clients`**
+IIFE que retorna `{ fetchProviderStatus, fetchServiceState, providerReason, toggleProvider, … }`
+— el script decide el conjunto por los usos externos medidos.
 
-IIFE que retorna `{ fetchServerClients }`. **`MCP_TOOL_NAMES` conserva su texto literal**.
+- [ ] **Step 3: `storage-panels`**
 
-- [ ] **Step 4: Test de contrato**
+IIFE que retorna `{ fetchHistory, fetchSavedDocuments, saveDocument, purgeHistory, … }`.
+`historyLabel` conserva `countLabel(entry.total_results, "resultsCount")` exacto.
+
+- [ ] **Step 4: `clients`**
+
+IIFE que retorna `{ fetchServerClients, scopeLabel, … }`. `MCP_TOOL_NAMES` conserva su texto.
+
+- [ ] **Step 5: Test de contrato**
 
 Run: `cargo test -p amatl-ui --locked`
 Expected: `29 passed`.
 
-- [ ] **Step 5: Probe**
+- [ ] **Step 6: Probe**
 
 Expected: `EXCEPTIONS: 0`; los paneles respetan el gating de almacenamiento.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git commit -am "refactor(ui): encapsulate the providers, storage-panels and clients domains"
+git commit -am "refactor(ui): consolidate the DOM block and encapsulate the remaining domains"
 ```
 
 ---
