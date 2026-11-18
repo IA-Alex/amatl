@@ -10,23 +10,36 @@
 //   refreshPanels() · listeners · DOMContentLoaded
 
 // ── Theme ───────────────────────────────────────────────────────
-const THEME_KEY = "amatl-theme";
-function storedTheme() {
-  try {
-    const value = localStorage.getItem(THEME_KEY);
-    return value === "light" || value === "dark" ? value : null;
-  } catch {
-    return null;
+// Dominio: persistencia del tema y el atributo `data-theme`. Retorna su
+// superficie porque el arranque (más abajo) llama `applyTheme(storedTheme())`
+// y el listener del toggle usa `resolvedTheme`/`applyTheme`.
+const theme = (function () {
+  const THEME_KEY = "amatl-theme";
+  function storedTheme() {
+    try {
+      const value = localStorage.getItem(THEME_KEY);
+      return value === "light" || value === "dark" ? value : null;
+    } catch {
+      return null;
+    }
   }
-}
-function applyTheme(theme) {
-  if (theme === "light" || theme === "dark") {
-    document.documentElement.setAttribute("data-theme", theme);
-  } else {
-    document.documentElement.removeAttribute("data-theme");
+  function applyTheme(value) {
+    if (value === "light" || value === "dark") {
+      document.documentElement.setAttribute("data-theme", value);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
   }
-}
-applyTheme(storedTheme());
+  function resolvedTheme() {
+    const explicit = document.documentElement.getAttribute("data-theme");
+    if (explicit) return explicit;
+    const prefersLight =
+      typeof globalThis.matchMedia === "function" &&
+      globalThis.matchMedia("(prefers-color-scheme: light)").matches;
+    return prefersLight ? "light" : "dark";
+  }
+  return { THEME_KEY, storedTheme, applyTheme, resolvedTheme };
+})();
 
 // ── i18n ────────────────────────────────────────────────────────
 const CATALOG = globalThis.AMATL_LOCALES || { defaultLocale: "en", locales: { en: {} } };
@@ -142,13 +155,11 @@ store.subscribe((state) => {
   render(state);
 });
 
+// `resolvedTheme`/`updateThemeToggle` viven en el núcleo: `updateThemeToggle`
+// la lee `applyTranslations` (más abajo) y usa `t`, que se declara tras el
+// dominio de tema. Solo `theme` encapsula la persistencia.
 function resolvedTheme() {
-  const explicit = document.documentElement.getAttribute("data-theme");
-  if (explicit) return explicit;
-  const prefersLight =
-    typeof globalThis.matchMedia === "function" &&
-    globalThis.matchMedia("(prefers-color-scheme: light)").matches;
-  return prefersLight ? "light" : "dark";
+  return theme.resolvedTheme();
 }
 
 function updateThemeToggle() {
@@ -161,12 +172,16 @@ function updateThemeToggle() {
 
 themeToggle.addEventListener("click", () => {
   const next = resolvedTheme() === "light" ? "dark" : "light";
-  applyTheme(next);
+  theme.applyTheme(next);
   try {
-    localStorage.setItem(THEME_KEY, next);
+    localStorage.setItem(theme.THEME_KEY, next);
   } catch {}
   updateThemeToggle();
 });
+
+// El tema se aplica al cargar. Antes vivía arriba del todo; ahora el dominio
+// está cerrado y su aplicación es parte del arranque temprano.
+theme.applyTheme(theme.storedTheme());
 
 // Interface language: an explicit, persisted operator choice. Switching
 // re-applies every translation in place — no reload, no lost results — and
