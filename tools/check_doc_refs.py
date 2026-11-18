@@ -113,6 +113,15 @@ FROZEN = {
     # evidence the finding rests on, so it stays verbatim instead of being
     # rewritten into something the gate can parse.
     ("docs/security/hallazgos-2026-10-26.md", "../../README.md"),
+    # The 2026-10-26 findings report cites the SearXNG adapter while discussing
+    # `Budget::new(…, 1_000)` call sites. That adapter was later removed from the
+    # product (the retirement ADR), so the citation is dead — but the report is a
+    # dated record of what was true at the time, and rewriting its code citations
+    # would falsify that record. The reference stays verbatim.
+    (
+        "docs/security/hallazgos-2026-10-26.md",
+        "crates/amatl-core/src/providers/searxng.rs:391",
+    ),
 }
 
 

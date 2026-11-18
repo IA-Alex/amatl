@@ -76,24 +76,6 @@
           </div>
           <details class="filters">
             <summary id="filters-summary" data-i18n="filtersLabel">Opciones y filtros</summary>
-            <fieldset class="provider-selector" id="provider-selector" hidden>
-              <legend id="provider-selector-label" data-i18n="providerSelectorLabel">Fuente de búsqueda</legend>
-              <div class="provider-selector-options" id="provider-selector-options" role="radiogroup">
-                <label class="provider-selector-option">
-                  <input type="radio" name="provider-source" value="marginalia">
-                  <span>Marginalia</span>
-                </label>
-                <label class="provider-selector-option">
-                  <input type="radio" name="provider-source" value="searxng">
-                  <span>SearXNG</span>
-                </label>
-                <label class="provider-selector-option">
-                  <input type="radio" name="provider-source" value="all">
-                  <span data-i18n="providerSourceAll">Todas</span>
-                </label>
-              </div>
-              <p id="provider-selector-status" class="field-help" role="status" hidden></p>
-            </fieldset>
             <div class="deep-options">
               <label for="deep-max-fetches" data-i18n="deepMaxFetchesLabel">Máximo de recuperaciones para Deep (opcional)</label>
               <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor" data-i18n-placeholder="deepMaxFetchesPlaceholder">

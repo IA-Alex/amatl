@@ -682,9 +682,9 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        // Only the sanctioned sources ship a record, so nothing else can be
+        // Only the sanctioned source ships a record, so nothing else can be
         // enabled from a stale file without failing validation.
-        assert!(config.providers.get("searxng").is_some());
+        assert!(config.providers.get("marginalia").is_some());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -739,7 +739,9 @@ mod tests {
         assert_eq!(config.expansion.mode, ExpansionMode::Legacy);
         assert!(!config.expansion.role_model_active());
         assert_eq!(config.expansion.primary_provider, "marginalia");
-        assert_eq!(config.expansion.expansion_providers, ["searxng"]);
+        // Marginalia is the only shipped source, so no expansion source exists
+        // to name by default: the list ships empty.
+        assert!(config.expansion.expansion_providers.is_empty());
         assert!(config.validate().is_ok());
     }
 
@@ -747,7 +749,15 @@ mod tests {
     fn expansion_primary_expansion_mode_validates_declared_roles() {
         let mut config = Config::default();
         config.expansion.mode = ExpansionMode::PrimaryExpansion;
-        assert!(config.validate().is_ok());
+        // PrimaryExpansion needs a second, distinct source for the expansion
+        // role; none ships, so the operator must declare and register one. A
+        // hand-built config that names the primary as its own expansion is
+        // rejected below.
+        config.expansion.expansion_providers = vec!["marginalia".into()];
+        assert!(config.validate().is_err());
+
+        config.expansion.expansion_providers = vec!["not_a_provider".into()];
+        assert!(config.validate().is_err());
 
         config.expansion.primary_provider = "not_a_provider".into();
         assert!(config.validate().is_err());
@@ -765,9 +775,11 @@ mod tests {
         empty.expansion.expansion_providers = vec![];
         assert!(empty.validate().is_err());
 
+        // A repeated name is rejected before the "is it declared" check, so the
+        // same declared source twice is enough to exercise the duplicate path.
         let mut repeated = Config::default();
-        repeated.expansion.mode = ExpansionMode::PrimaryExpansion;
-        repeated.expansion.expansion_providers = vec!["searxng".into(), "searxng".into()];
+        repeated.expansion.primary_provider = "marginalia".into();
+        repeated.expansion.expansion_providers = vec!["marginalia".into(), "marginalia".into()];
         assert!(repeated.validate().is_err());
     }
 
@@ -775,7 +787,7 @@ mod tests {
     fn denied_egress_rejects_network_providers_and_remote_inference() {
         let mut provider = Config::default();
         provider.data_policy.egress = EgressPolicy::Deny;
-        provider.providers.enabled = vec!["searxng".into()];
+        provider.providers.enabled = vec!["marginalia".into()];
         assert!(provider.validate().is_err());
 
         let mut inference = Config::default();
@@ -844,15 +856,15 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
-    /// Locks in a policy decision, not just a paperwork gap: only the two
-    /// sanctioned sources ship a governance record, and naming any other source
-    /// in `providers.enabled` fails validation rather than silently running with
+    /// Locks in a policy decision, not just a paperwork gap: only the sanctioned
+    /// source ships a governance record, and naming any other source in
+    /// `providers.enabled` fails validation rather than silently running with
     /// fewer sources than the file appears to declare.
     #[test]
     fn unshipped_providers_are_absent_and_refused_by_validate() {
         let config = Config::default();
-        assert!(config.providers.get("searxng").is_some());
         assert!(config.providers.get("marginalia").is_some());
+        assert!(config.providers.get("searxng").is_none());
 
         // Enabling an unshipped name is refused.
         let mut enabled = Config::default();
@@ -861,14 +873,12 @@ mod tests {
         assert!(error.contains("unknown enabled provider"), "{error}");
         assert!(error.contains("not_shipped"), "{error}");
 
-        // The two sanctioned sources stay eligible for approval — only their
+        // The one sanctioned source stays eligible for approval — only its
         // operator-specific identity/date fields are missing, not the decision.
-        for name in ["searxng", "marginalia"] {
-            assert_eq!(
-                config.providers.get(name).unwrap().approval_status,
-                ApprovalStatus::Draft
-            );
-        }
+        assert_eq!(
+            config.providers.get("marginalia").unwrap().approval_status,
+            ApprovalStatus::Draft
+        );
     }
 
     #[test]
@@ -890,7 +900,7 @@ mod tests {
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec!["custom_archive", "custom_news", "marginalia", "searxng"]
+            vec!["custom_archive", "custom_news", "marginalia"]
         );
         assert_eq!(
             config
@@ -905,9 +915,9 @@ mod tests {
             config.providers.get("custom_news").unwrap().adapter_version,
             Some("custom-news-v1".into())
         );
-        // The merged records keep only the shipped sources: adding a custom
+        // The merged records keep only the shipped source: adding a custom
         // source must not resurrect anything else.
-        assert!(config.providers.is_declared("searxng"));
+        assert!(config.providers.is_declared("marginalia"));
         assert!(!config.providers.storage_rights("custom_archive"));
     }
 
@@ -916,10 +926,10 @@ mod tests {
     /// so every key the table omits falls back to `None`/`false` instead of
     /// keeping the built-in value.
     ///
-    /// This is the trap the runtime smoke test walked into: a `[providers.searxng]`
+    /// This is the trap the runtime smoke test walked into: a `[providers.marginalia]`
     /// table carrying only `approval_status`, `reviewed_at` and `reviewer` looked
-    /// approved but dropped `terms_url`, `rate_limit`, `cost_model`, … so the gate
-    /// in `ProviderRuntimeConfig::approved_on` closed and the source silently
+    /// approved but dropped `terms_url`, `credential_env`, … so the gate in
+    /// `ProviderRuntimeConfig::approved_on` closed and the source silently
     /// reported `provider_not_approved`. The fix is to restate the whole ficha,
     /// as `docs/gobernanza-providers.md` already shows.
     #[test]
@@ -936,9 +946,9 @@ mod tests {
         let partial = Config::from_toml(&format!(
             r#"
             [providers]
-            enabled = ["searxng"]
+            enabled = ["marginalia"]
 
-            [providers.searxng]
+            [providers.marginalia]
             approval_status = "approved"
             reviewed_at = "{today}"
             reviewer = "smoke"
@@ -946,10 +956,10 @@ mod tests {
         ))
         .unwrap();
         assert!(partial.validate().is_ok(), "the file is valid TOML");
-        let record = partial.providers.get("searxng").unwrap();
+        let record = partial.providers.get("marginalia").unwrap();
         assert_eq!(record.adapter_version, None, "the built-in value is gone");
         assert_eq!(record.terms_url, None, "the built-in value is gone");
-        assert_eq!(record.rate_limit, None, "the built-in value is gone");
+        assert_eq!(record.credential_env, None, "the built-in value is gone");
         assert!(
             !record.approved(),
             "an approved status without the rest of the ficha does not open the gate"
@@ -959,26 +969,26 @@ mod tests {
         let complete = Config::from_toml(&format!(
             r#"
             [providers]
-            enabled = ["searxng"]
+            enabled = ["marginalia"]
 
-            [providers.searxng]
-            adapter_version = "searxng-v1"
+            [providers.marginalia]
+            adapter_version = "marginalia-v1"
             approval_status = "approved"
             reviewed_at = "{today}"
             reviewer = "smoke"
-            terms_url = "https://docs.searxng.org/"
+            terms_url = "https://www.marginalia.nu/"
             terms_version_or_date = "self-certified"
-            allowed_access_method = "self_hosted"
-            plan_or_contract = "self-hosted"
-            rate_limit = "unlimited (self-hosted)"
+            allowed_access_method = "official_api"
+            plan_or_contract = "smoke"
+            rate_limit = "smoke"
             cost_model = "0"
             data_handling_notes = "smoke"
             operational_risk = "smoke"
             "#,
         ))
         .unwrap();
-        let record = complete.providers.get("searxng").unwrap();
-        assert_eq!(record.credential_env, None, "omitted keys are dropped too");
+        let record = complete.providers.get("marginalia").unwrap();
+        assert!(!record.storage_rights, "omitted keys are dropped too");
         assert!(
             record.approved(),
             "a complete ficha must open the gate; the smoke test observed this"
@@ -1496,7 +1506,7 @@ mod tests {
             "schema_version = \"1\"\n\n\
              # A comment an operator wrote about something unrelated.\n\
              [providers]\n\
-             enabled = [\"searxng\"]\n",
+             enabled = [\"custom_archive\"]\n",
         )
         .unwrap();
 
@@ -1506,7 +1516,7 @@ mod tests {
         let reparsed = Config::from_toml(&written).unwrap();
         assert_eq!(
             reparsed.providers.enabled,
-            vec!["searxng".to_string(), "marginalia".to_string()]
+            vec!["custom_archive".to_string(), "marginalia".to_string()]
         );
 
         // Enabling an already-enabled name does not duplicate it.
@@ -1514,10 +1524,10 @@ mod tests {
         let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
         assert_eq!(
             reparsed.providers.enabled,
-            vec!["searxng".to_string(), "marginalia".to_string()]
+            vec!["custom_archive".to_string(), "marginalia".to_string()]
         );
 
-        Config::set_provider_enabled(&path, "searxng", false).unwrap();
+        Config::set_provider_enabled(&path, "custom_archive", false).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
         let reparsed = Config::from_toml(&written).unwrap();
@@ -1532,12 +1542,12 @@ mod tests {
         ));
         std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
 
-        Config::set_provider_enabled(&path, "searxng", true).unwrap();
+        Config::set_provider_enabled(&path, "marginalia", true).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
 
         let reparsed = Config::from_toml(&written).unwrap();
-        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+        assert_eq!(reparsed.providers.enabled, vec!["marginalia".to_string()]);
     }
 
     #[test]
@@ -1876,9 +1886,9 @@ mod tests {
             "schema_version = \"1\"\n\n\
              # A comment an operator wrote about something unrelated.\n\
              [providers]\n\
-             enabled = [\"searxng\"]\n\n\
-             [providers.searxng]\n\
-             adapter_version = \"searxng-v1\"\n",
+             enabled = [\"marginalia\"]\n\n\
+             [providers.marginalia]\n\
+             adapter_version = \"marginalia-v1\"\n",
         )
         .unwrap();
 
@@ -1896,15 +1906,15 @@ mod tests {
         assert!(written.contains("# A comment an operator wrote about something unrelated."));
         let reparsed = Config::from_toml(&written).unwrap();
         // The existing provider and the `enabled` list are untouched.
-        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+        assert_eq!(reparsed.providers.enabled, vec!["marginalia".to_string()]);
         assert_eq!(
             reparsed
                 .providers
-                .get("searxng")
+                .get("marginalia")
                 .unwrap()
                 .adapter_version
                 .as_deref(),
-            Some("searxng-v1")
+            Some("marginalia-v1")
         );
         let custom = reparsed.providers.get("custom_archive").unwrap();
         assert_eq!(custom.adapter_version.as_deref(), Some("custom-v2"));

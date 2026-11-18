@@ -2267,11 +2267,11 @@ fn credential(config: &ProviderRuntimeConfig) -> Option<Zeroizing<String>> {
 /// Provenance of a source's credential, if any — never its value.
 ///
 /// A provider whose adapter does not require a credential
-/// ([`ProviderFactory::requires_credential`], e.g. searxng, whose
-/// `credential_env` is only an instance URL with a default) never reports one:
-/// an environment variable holding its URL is *configuration*, not a secret,
-/// so the surface tells the truth only for sources that actually need a key.
-/// A provider that does require a credential resolves to `Ephemeral` (an
+/// ([`ProviderFactory::requires_credential`], e.g. a factory whose
+/// `credential_env` only names an instance URL with a default) never reports
+/// one: an environment variable holding its URL is *configuration*, not a
+/// secret, so the surface tells the truth only for sources that actually need a
+/// key. A provider that does require a credential resolves to `Ephemeral` (an
 /// operator-injected in-memory key, liquidable) or `Environment` (read from
 /// `credential_env`), else `None`.
 fn credential_source_for(
@@ -2679,6 +2679,109 @@ mod tests {
         }
     }
 
+    /// A factory whose `credential_env` is configuration, not a secret: it
+    /// reports `requires_credential() == false`, so the surface must never
+    /// expose the variable as a credential even when it is set.
+    struct UrlConfiguredFactory;
+
+    impl ProviderFactory for UrlConfiguredFactory {
+        fn name(&self) -> &str {
+            "url_configured"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(CredentialGatedProvider {
+                name: context.name.into(),
+                credential: None,
+            })
+        }
+    }
+
+    /// A registered source whose availability mirrors the enabled flag, the way
+    /// the shipped adapters behave: when the operator has not enabled it, its
+    /// surface reports `provider_disabled` rather than `available`. Used to pin
+    /// that a declared-but-disabled source does not degrade readiness.
+    struct DisabledWhenNotEnabledFactory;
+
+    impl ProviderFactory for DisabledWhenNotEnabledFactory {
+        fn name(&self) -> &str {
+            "custom_archive"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(DisabledWhenNotEnabledProvider {
+                name: context.name.into(),
+                enabled: context.enabled,
+            })
+        }
+    }
+
+    struct DisabledWhenNotEnabledProvider {
+        name: String,
+        enabled: bool,
+    }
+
+    #[async_trait]
+    impl Provider for DisabledWhenNotEnabledProvider {
+        fn name(&self) -> &str {
+            &self.name
+        }
+
+        fn capabilities(&self) -> ProviderCapabilities {
+            ProviderCapabilities {
+                schema_version: SCHEMA_VERSION.into(),
+                pagination: false,
+                language: false,
+                region: false,
+                time_range: false,
+                site_filter: false,
+                file_filter: false,
+                news: false,
+                code: false,
+                docs: true,
+                academic: false,
+                authentication: false,
+                estimated_cost: Some(0),
+            }
+        }
+
+        fn availability(&self) -> ProviderAvailability {
+            if self.enabled {
+                ProviderAvailability::Available
+            } else {
+                ProviderAvailability::Unavailable {
+                    code: "provider_disabled".into(),
+                    message: "the operator did not enable this source".into(),
+                }
+            }
+        }
+
+        async fn search(
+            &self,
+            _plan: &crate::SearchPlan,
+            _context: &crate::ProviderContext,
+        ) -> Result<crate::ProviderResult, crate::ProviderError> {
+            Ok(crate::ProviderResult {
+                schema_version: SCHEMA_VERSION.into(),
+                provider: self.name.clone(),
+                status: crate::ProviderExecutionStatus::Success,
+                results: vec![],
+                accepted_filters: vec![],
+                ignored_filters: vec![],
+                approximated_filters: vec![],
+                errors: vec![],
+            })
+        }
+    }
+
     /// Governance record that satisfies the runtime approval gate today.
     fn approved_record(adapter_version: &str) -> ProviderRuntimeConfig {
         ProviderRuntimeConfig {
@@ -2937,31 +3040,40 @@ mod tests {
 
     #[tokio::test]
     async fn a_provider_that_does_not_require_a_credential_never_reports_one() {
-        // SearXNG needs no credential: its `credential_env` names the instance
-        // URL (a URL with a default), not a secret. Even when that variable is
-        // present in the environment, the surface must report `None` — the
-        // variable holds configuration, not a key. Matches the documentation
-        // and `ProviderFactory::requires_credential()` for searxng.
+        // A factory whose `requires_credential()` is false may still name a
+        // `credential_env`, but it holds *configuration* (e.g. an instance URL
+        // with a default), not a secret. Even when that variable is present in
+        // the environment, the surface must report `None`. No shipped source has
+        // this shape today, so a registered test factory stands in for the
+        // third-party adapter the contract is written for.
         let nonce = std::time::SystemTime::now()
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        let var = format!("AMATL_TEST_SEARXNG_URL_VAR_{nonce}");
-        std::env::set_var(&var, "http://127.0.0.1:8888");
+        let var = format!("AMATL_TEST_INSTANCE_URL_VAR_{nonce}");
+        std::env::set_var(&var, "http://127.0.0.1:9999");
 
         let mut config = Config::default();
-        config.providers.entry("searxng").credential_env = Some(var.clone());
-        let service = AmatlService::new(config, false).await;
+        let mut record = approved_record("url_configured-v1");
+        record.credential_env = Some(var.clone());
+        config.providers.declare("url_configured", record);
+        config.providers.enabled = vec!["url_configured".into()];
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(UrlConfiguredFactory)),
+        )
+        .await;
         let summary = service
             .provider_summaries()
             .unwrap()
             .into_iter()
-            .find(|summary| summary.name == "searxng")
+            .find(|summary| summary.name == "url_configured")
             .unwrap();
         assert_eq!(
             summary.credential_source,
             CredentialSource::None,
-            "searxng must not report a credential even when its URL variable is set"
+            "a URL-shaped credential_env must not be reported as a credential"
         );
 
         std::env::remove_var(&var);
@@ -3029,7 +3141,19 @@ mod tests {
     /// balancer drains a perfectly healthy single-source deployment.
     #[tokio::test]
     async fn status_ignores_declared_sources_the_operator_did_not_enable() {
-        let service = AmatlService::new(searxng_only_config(), false).await;
+        // One enabled source serves; a declared-but-disabled source must not
+        // make the deployment look degraded. Marginalia is enabled, and a
+        // registered custom source is declared but left out of `enabled`.
+        let mut config = marginalia_only_config();
+        config
+            .providers
+            .declare("custom_archive", approved_record("archive-v1"));
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(DisabledWhenNotEnabledFactory)),
+        )
+        .await;
         let status = service.status().await.unwrap();
         assert_eq!(
             status.status, "ok",
@@ -3046,14 +3170,17 @@ mod tests {
                 .find(|source| source.name == name)
                 .unwrap()
         };
-        assert_eq!(source("searxng").status, ProviderSurfaceStatus::Available);
-        assert_eq!(source("searxng").code, None);
         assert_eq!(
             source("marginalia").status,
+            ProviderSurfaceStatus::Available
+        );
+        assert_eq!(source("marginalia").code, None);
+        assert_eq!(
+            source("custom_archive").status,
             ProviderSurfaceStatus::Unavailable
         );
         assert_eq!(
-            source("marginalia").code.as_deref(),
+            source("custom_archive").code.as_deref(),
             Some("provider_disabled")
         );
     }
@@ -3072,16 +3199,20 @@ mod tests {
     #[tokio::test]
     async fn status_degrades_when_the_only_enabled_source_is_not_approved() {
         let mut config = Config::default();
-        config.providers.enabled = vec!["searxng".into()];
+        config.providers.enabled = vec!["marginalia".into()];
         let service = AmatlService::new(config, false).await;
         let status = service.status().await.unwrap();
         assert_eq!(status.status, "degraded");
-        let searxng = status
+        let marginalia = status
             .sources
             .iter()
-            .find(|source| source.name == "searxng")
+            .find(|source| source.name == "marginalia")
             .unwrap();
-        assert_eq!(searxng.code.as_deref(), Some("provider_not_approved"));
+        assert_eq!(
+            marginalia.code.as_deref(),
+            Some("provider_not_approved"),
+            "an enabled but unapproved source cannot serve"
+        );
     }
 
     /// The third clause of the D2 rule: an enabled and approved source that
@@ -3126,15 +3257,26 @@ mod tests {
     }
 
     /// Configuration for the deployment D2 is about: exactly one source enabled
-    /// and fully governed. The shipped SearXNG record already carries every
-    /// approval field except the three that record the human decision.
-    fn searxng_only_config() -> Config {
+    /// and fully governed. The shipped Marginalia record carries only its
+    /// adapter/credential/terms identity, so the test completes the ficha with
+    /// the fields the approval gate requires (a real operator records them when
+    /// approving the source).
+    fn marginalia_only_config() -> Config {
         let mut config = Config::default();
-        let runtime = config.providers.entry("searxng");
+        let runtime = config.providers.entry("marginalia");
+        runtime.adapter_version = Some("marginalia-v1".into());
         runtime.approval_status = crate::ApprovalStatus::Approved;
         runtime.reviewed_at = Some(today_iso());
         runtime.reviewer = Some("owner".into());
-        config.providers.enabled = vec!["searxng".into()];
+        runtime.terms_url = Some("https://www.marginalia.nu/".into());
+        runtime.terms_version_or_date = Some("2026-08-01".into());
+        runtime.allowed_access_method = Some("official_api".into());
+        runtime.plan_or_contract = Some("contract-1".into());
+        runtime.rate_limit = Some("1 qps".into());
+        runtime.cost_model = Some("0".into());
+        runtime.data_handling_notes = Some("no cache".into());
+        runtime.operational_risk = Some("network dependency".into());
+        config.providers.enabled = vec!["marginalia".into()];
         config.validate().unwrap();
         config
     }
@@ -3159,14 +3301,14 @@ mod tests {
     fn real_provider_canary_is_fail_closed_before_network_access() {
         let config = Config::default();
         assert_eq!(
-            validate_provider_canary(&config, "searxng"),
-            Err(ProviderCanaryError::NotEnabled("searxng".into()))
+            validate_provider_canary(&config, "marginalia"),
+            Err(ProviderCanaryError::NotEnabled("marginalia".into()))
         );
         let mut enabled = config;
-        enabled.providers.enabled = vec!["searxng".into()];
+        enabled.providers.enabled = vec!["marginalia".into()];
         assert_eq!(
-            validate_provider_canary(&enabled, "searxng"),
-            Err(ProviderCanaryError::Governance("searxng".into()))
+            validate_provider_canary(&enabled, "marginalia"),
+            Err(ProviderCanaryError::Governance("marginalia".into()))
         );
     }
 

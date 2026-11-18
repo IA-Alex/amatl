@@ -162,14 +162,6 @@ globalThis.AMATL_LOCALES = {
       strategistUnavailable: "Búsqueda con modelo no disponible en este momento.",
       strategistToggleFailed: "No se pudo cambiar el estado. Verifica que tu credencial tenga permiso de administrador.",
       strategistHintMissingCredential: "Búsqueda con modelo: activada, pero falta la clave del proveedor en el servidor; el modelo no participará.",
-      // Source selector (Marginalia / SearXNG / All)
-      providerSelectorLabel: "Fuente de búsqueda",
-      providerSourceMarginalia: "Marginalia",
-      providerSourceSearxng: "SearXNG",
-      providerSourceAll: "Todas",
-      providerSelectorBusy: "Aplicando fuentes…",
-      providerSelectorSynced: "Fuentes aplicadas.",
-      providerSelectorFailed: "No se pudo actualizar las fuentes. Verifica que tu credencial tenga permiso de administrador.",
       // Marginalia API key (opción A: gestión de credencial en el panel)
       marginaliaKeyButton: "Insertar clave Marginalia",
       marginaliaClearButton: "Eliminar clave",
@@ -398,14 +390,6 @@ globalThis.AMATL_LOCALES = {
       strategistUnavailable: "Search with model is unavailable right now.",
       strategistToggleFailed: "Could not change the state. Check that your credential has admin scope.",
       strategistHintMissingCredential: "Search with model: enabled, but the provider credential is missing on the server; the model will not participate.",
-      // Source selector (Marginalia / SearXNG / Both)
-      providerSelectorLabel: "Search source",
-      providerSourceMarginalia: "Marginalia",
-      providerSourceSearxng: "SearXNG",
-      providerSourceAll: "All",
-      providerSelectorBusy: "Applying sources…",
-      providerSelectorSynced: "Sources applied.",
-      providerSelectorFailed: "Could not update sources. Check that your credential has admin scope.",
       // Marginalia API key (opción A: credential management in the panel)
       marginaliaKeyButton: "Insert Marginalia key",
       marginaliaClearButton: "Remove key",

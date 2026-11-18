@@ -1,6 +1,6 @@
 //! STEP 1 — PRIMARY / EXPANSION provider roles.
 //!
-//! These tests pin the role model down: MARGINALIA is PRIMARY, SEARXNG is
+//! These tests pin the role model down: `marginalia` is PRIMARY, `expansion_source` is
 //! EXPANSION, the role dominates the adaptive score, the primary runs alone in
 //! round one, and expansion is only reached on structural triggers. They use
 //! mock providers only — no real Marginalia call is needed to validate the
@@ -156,7 +156,7 @@ impl Provider for RoleTestProvider {
 }
 
 fn marginalia_expansion() -> RoleAssignment {
-    RoleAssignment::primary_expansion("marginalia", ["searxng".to_string()])
+    RoleAssignment::primary_expansion("marginalia", ["expansion_source".to_string()])
 }
 
 fn round_one(trace: &[ProgressiveRoundTrace]) -> Vec<String> {
@@ -166,12 +166,12 @@ fn round_one(trace: &[ProgressiveRoundTrace]) -> Vec<String> {
         .unwrap_or_default()
 }
 
-/// 1. Marginalia + SearXNG both available: ROUND_1 = Marginalia only.
+/// 1. Marginalia + expansion source both available: ROUND_1 = Marginalia only.
 #[tokio::test]
 async fn primary_runs_alone_in_round_one() {
     let marginalia = RoleTestProvider::success("marginalia", items("m", 6, 3));
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
@@ -181,7 +181,7 @@ async fn primary_runs_alone_in_round_one() {
     assert_eq!(marginalia.attempts(), 1);
 }
 
-/// 2. SearXNG has a higher adaptive score, PRIMARY is still Marginalia.
+/// 2. expansion source has a higher adaptive score, PRIMARY is still Marginalia.
 #[tokio::test]
 async fn expansion_does_not_override_primary_by_score() {
     let telemetry = InMemoryTelemetry::new();
@@ -189,7 +189,7 @@ async fn expansion_does_not_override_primary_by_score() {
         telemetry
             .record(TelemetryObservation {
                 observed_at: amatl_core::telemetry::now_unix(),
-                provider: "searxng".into(),
+                provider: "expansion_source".into(),
                 category: Category::General,
                 outcome: TelemetryOutcome::Success,
                 latency_ms: 5,
@@ -228,7 +228,7 @@ async fn expansion_does_not_override_primary_by_score() {
         &classify(&query),
         &[
             ProviderDescriptor {
-                name: "searxng".into(),
+                name: "expansion_source".into(),
                 capabilities: capabilities.clone(),
                 available: true,
             },
@@ -249,15 +249,15 @@ async fn expansion_does_not_override_primary_by_score() {
     );
     assert_eq!(recommendation.first_round_providers, ["marginalia"]);
     assert_eq!(recommendation.ordered_providers[0], "marginalia");
-    assert_eq!(recommendation.expansion_providers, ["searxng"]);
+    assert_eq!(recommendation.expansion_providers, ["expansion_source"]);
 }
 
-/// 3. Marginalia fails: SearXNG can run a later round.
+/// 3. Marginalia fails: expansion source can run a later round.
 #[tokio::test]
 async fn primary_failure_triggers_expansion() {
     let marginalia = RoleTestProvider::failing("marginalia", ProviderErrorKind::Network);
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
@@ -265,34 +265,34 @@ async fn primary_failure_triggers_expansion() {
         .await;
     assert_eq!(round_one(orchestrator.routing_trace()), ["marginalia"]);
     assert!(
-        searxng.attempts() >= 1,
+        expansion_source.attempts() >= 1,
         "expansion must run after primary failure"
     );
 }
 
-/// 4. Marginalia rate-limited (429): SearXNG is used as expansion / fallback.
+/// 4. Marginalia rate-limited (429): expansion source is used as expansion / fallback.
 #[tokio::test]
 async fn primary_rate_limit_triggers_expansion() {
     let marginalia = RoleTestProvider::failing("marginalia", ProviderErrorKind::RateLimit);
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert!(
-        searxng.attempts() >= 1,
+        expansion_source.attempts() >= 1,
         "expansion must run after primary rate limit"
     );
 }
 
-/// 5. Marginalia success + zero results: SearXNG runs.
+/// 5. Marginalia success + zero results: expansion source runs.
 #[tokio::test]
 async fn primary_zero_results_triggers_expansion() {
     let marginalia = RoleTestProvider::success("marginalia", vec![]);
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
@@ -300,37 +300,37 @@ async fn primary_zero_results_triggers_expansion() {
         .await;
     assert_eq!(round_one(orchestrator.routing_trace()), ["marginalia"]);
     assert!(
-        searxng.attempts() >= 1,
+        expansion_source.attempts() >= 1,
         "expansion must run when primary returns nothing"
     );
 }
 
 /// 6. Marginalia produces some results but not enough for coverage_minimum:
-///    SearXNG runs.
+///    expansion source runs.
 #[tokio::test]
 async fn insufficient_primary_coverage_triggers_expansion() {
     // Two results / one domain is well below the default minimum (8 / 4).
     let marginalia = RoleTestProvider::success("marginalia", items("m", 2, 1));
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert!(
-        searxng.attempts() >= 1,
+        expansion_source.attempts() >= 1,
         "expansion must run when primary coverage is insufficient"
     );
 }
 
-/// 7. Marginalia reaches sufficient coverage: SearXNG does NOT run just to
+/// 7. Marginalia reaches sufficient coverage: expansion source does NOT run just to
 ///    satisfy a legacy first-round minimum.
 #[tokio::test]
 async fn sufficient_primary_coverage_does_not_force_expansion() {
     let marginalia = RoleTestProvider::success("marginalia", items("m", 14, 7));
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     orchestrator
@@ -338,33 +338,35 @@ async fn sufficient_primary_coverage_does_not_force_expansion() {
         .await;
     assert_eq!(round_one(orchestrator.routing_trace()), ["marginalia"]);
     assert_eq!(
-        searxng.attempts(),
+        expansion_source.attempts(),
         0,
         "expansion must not run once primary coverage is sufficient"
     );
 }
 
-/// 8. Marginalia unavailable + SearXNG available: the search still runs, but
+/// 8. Marginalia unavailable + expansion source available: the search still runs, but
 ///    the routing trace evidences the missing PRIMARY.
 #[tokio::test]
 async fn only_expansion_available_is_traceable() {
     let marginalia = RoleTestProvider::unavailable("marginalia");
-    let searxng = RoleTestProvider::success("searxng", items("s", 6, 3));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 6, 3));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(marginalia_expansion());
     let response = orchestrator
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert_eq!(marginalia.attempts(), 0);
-    assert!(searxng.attempts() >= 1);
+    assert!(expansion_source.attempts() >= 1);
     let first = &orchestrator.routing_trace()[0];
     assert_eq!(first.primary_available, Some(false));
     assert!(response
         .degradations
         .iter()
         .any(|degradation| degradation.code == "primary_provider_unavailable"));
-    assert!(response.providers_used.contains(&"searxng".to_string()));
+    assert!(response
+        .providers_used
+        .contains(&"expansion_source".to_string()));
 }
 
 /// 9. Legacy mode preserves the pre-STEP-1 behavior: both providers run in
@@ -372,8 +374,8 @@ async fn only_expansion_available_is_traceable() {
 #[tokio::test]
 async fn legacy_mode_preserves_existing_behavior() {
     let marginalia = RoleTestProvider::success("marginalia", items("m", 3, 2));
-    let searxng = RoleTestProvider::success("searxng", items("s", 3, 2));
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), searxng.clone()];
+    let expansion_source = RoleTestProvider::success("expansion_source", items("s", 3, 2));
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia.clone(), expansion_source.clone()];
     let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
         .with_role_assignment(RoleAssignment::legacy());
     orchestrator
@@ -381,7 +383,7 @@ async fn legacy_mode_preserves_existing_behavior() {
         .await;
     let mut first_round = round_one(orchestrator.routing_trace());
     first_round.sort();
-    assert_eq!(first_round, ["marginalia", "searxng"]);
+    assert_eq!(first_round, ["expansion_source", "marginalia"]);
     let first = &orchestrator.routing_trace()[0];
     assert_eq!(first.primary_available, None);
     assert!(first.provider_roles.is_empty());
@@ -393,7 +395,7 @@ async fn identical_inputs_produce_identical_primary_expansion_trace() {
     async fn run() -> Vec<ProgressiveRoundTrace> {
         let providers: Vec<Arc<dyn Provider>> = vec![
             RoleTestProvider::success("marginalia", items("m", 2, 1)),
-            RoleTestProvider::success("searxng", items("s", 2, 1)),
+            RoleTestProvider::success("expansion_source", items("s", 2, 1)),
         ];
         let mut orchestrator = SearchOrchestrator::new(Budget::new(3, 5_000), 500)
             .with_role_assignment(marginalia_expansion());

@@ -933,7 +933,7 @@ mod tests {
     }
 
     fn roles() -> RoleAssignment {
-        RoleAssignment::primary_expansion("marginalia", ["searxng".to_string()])
+        RoleAssignment::primary_expansion("marginalia", ["expansion_source".to_string()])
     }
 
     #[test]
@@ -952,7 +952,7 @@ mod tests {
                 "https://b.example/2",
                 Some("Independent political commentary and opinions"),
                 Some("Essays on music, gardening and travel."),
-                &["searxng"],
+                &["expansion_source"],
                 Some(1),
             ),
         ];
@@ -977,7 +977,7 @@ mod tests {
             "https://b.example/2",
             Some("Async programming in Rust"),
             Some("async and await in rust"),
-            &["searxng"],
+            &["expansion_source"],
             Some(1),
         )];
         let comp = crate::compute_complementarity_metrics(&set, &roles()).unwrap();
@@ -999,7 +999,7 @@ mod tests {
             "https://b.example/2",
             Some("Async programming in Rust"),
             Some("async and await in rust"),
-            &["marginalia", "searxng"],
+            &["marginalia", "expansion_source"],
             Some(1),
         )];
         let comp = crate::compute_complementarity_metrics(&set, &roles()).unwrap();
@@ -1025,14 +1025,14 @@ mod tests {
                 "https://b.example/2",
                 Some("Index"),
                 None,
-                &["searxng"],
+                &["expansion_source"],
                 Some(1),
             ),
             result(
                 "https://c.example/3",
                 Some("Async programming in Rust"),
                 Some("async await rust"),
-                &["searxng"],
+                &["expansion_source"],
                 Some(1),
             ),
         ];
@@ -1058,7 +1058,7 @@ mod tests {
             "https://b.example/2",
             Some("Index"),
             None,
-            &["searxng"],
+            &["expansion_source"],
             Some(1),
         )];
         let comp = crate::compute_complementarity_metrics(&set, &roles()).unwrap();

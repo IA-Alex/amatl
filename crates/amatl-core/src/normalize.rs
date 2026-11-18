@@ -177,8 +177,8 @@ fn normalize_date(value: &str) -> Option<String> {
         return date_time.format(&Rfc3339).ok();
     }
     // Offset present but not in RFC 3339's `±HH:MM` shape: the compact ISO 8601
-    // forms `±HH` and `±HHMM` are what engines actually emit, and SearXNG
-    // forwards `publishedDate` verbatim. RFC 3339 rejected them above and the
+    // forms `±HH` and `±HHMM` are what engines actually emit, and a provider
+    // may forward `publishedDate` verbatim. RFC 3339 rejected them above and the
     // naive path below does not consume an offset, so before this they fell
     // through both and produced an `invalid_published_at` degradation that
     // demoted a clean response to `partial_success`. The offset is meaningful,
@@ -189,13 +189,13 @@ fn normalize_date(value: &str) -> Option<String> {
     if let Ok(date_time) = OffsetDateTime::parse(value, &Iso8601::DEFAULT) {
         return date_time.format(&Rfc3339).ok();
     }
-    // Naive timestamp with a time component but no offset. A live SearXNG
-    // instance emits `publishedDate` this way (`YYYY-MM-DDTHH:MM:SS`), so
-    // rejecting it discarded a valid date and degraded an otherwise clean
-    // response with `invalid_published_at`. The time is already in the
-    // provider's local clock; AMATL cannot recover the true offset, so it is
-    // anchored to UTC — the same assumption already made for a bare date
-    // below. A fractional second is accepted when present.
+    // Naive timestamp with a time component but no offset. A search engine may
+    // emit `publishedDate` this way (`YYYY-MM-DDTHH:MM:SS`), so rejecting it
+    // discarded a valid date and degraded an otherwise clean response with
+    // `invalid_published_at`. The time is already in the provider's local clock;
+    // AMATL cannot recover the true offset, so it is anchored to UTC — the same
+    // assumption already made for a bare date below. A fractional second is
+    // accepted when present.
     for format in [
         format_description!("[year]-[month]-[day]T[hour]:[minute]:[second].[subsecond]"),
         format_description!("[year]-[month]-[day]T[hour]:[minute]:[second]"),
@@ -293,8 +293,8 @@ mod tests {
             normalize_date("2024-06-11T13:20:31Z").as_deref(),
             Some("2024-06-11T13:20:31Z")
         );
-        // Naive timestamp without an offset (live SearXNG `publishedDate`),
-        // anchored to UTC.
+        // Naive timestamp without an offset (a `publishedDate` shape engines
+        // emit), anchored to UTC.
         assert_eq!(
             normalize_date("2024-06-11T00:00:00").as_deref(),
             Some("2024-06-11T00:00:00Z")
@@ -324,7 +324,7 @@ mod tests {
         // RFC 3339 path required `+02:00`, so an offset in the compact ISO 8601
         // forms engines actually emit fell through both: `None`, hence an
         // `invalid_published_at` degradation that turned a clean response into
-        // `partial_success`. SearXNG forwards `publishedDate` verbatim, so
+        // `partial_success`. A provider may forward `publishedDate` verbatim, so
         // these reach `normalize` unfiltered. The offset is preserved (it is
         // meaningful); only its rendering is normalized to RFC 3339.
         assert_eq!(

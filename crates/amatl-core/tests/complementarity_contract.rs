@@ -99,17 +99,17 @@ impl Provider for UrlProvider {
 }
 
 fn roles() -> RoleAssignment {
-    RoleAssignment::primary_expansion("marginalia", ["searxng".to_string()])
+    RoleAssignment::primary_expansion("marginalia", ["expansion_source".to_string()])
 }
 
 async fn run(
     marginalia: &[&str],
-    searxng: &[&str],
+    expansion_source: &[&str],
     role_assignment: RoleAssignment,
 ) -> SearchResponse {
     let providers: Vec<Arc<dyn Provider>> = vec![
         UrlProvider::new("marginalia", marginalia),
-        UrlProvider::new("searxng", searxng),
+        UrlProvider::new("expansion_source", expansion_source),
     ];
     // Small budget for provider calls but generous time; enough to reach the
     // expansion round.
@@ -178,8 +178,8 @@ fn primary_only_metrics_are_correct() {
 #[test]
 fn expansion_only_metrics_are_correct() {
     let set = [
-        deduped("https://a.example/1", &["searxng"], &[]),
-        deduped("https://b.example/2", &["searxng"], &[]),
+        deduped("https://a.example/1", &["expansion_source"], &[]),
+        deduped("https://b.example/2", &["expansion_source"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     assert_eq!(m.found_primary, 0);
@@ -196,7 +196,7 @@ fn no_overlap_metrics_are_correct() {
     let set = [
         deduped("https://a.example/1", &["marginalia"], &[]),
         deduped("https://b.example/2", &["marginalia"], &[]),
-        deduped("https://x.example/9", &["searxng"], &[]),
+        deduped("https://x.example/9", &["expansion_source"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     assert_eq!(m.overlap_confirmed, 0);
@@ -209,8 +209,16 @@ fn no_overlap_metrics_are_correct() {
 #[test]
 fn full_overlap_metrics_are_correct() {
     let set = [
-        deduped("https://a.example/1", &["marginalia", "searxng"], &[]),
-        deduped("https://b.example/2", &["marginalia", "searxng"], &[]),
+        deduped(
+            "https://a.example/1",
+            &["marginalia", "expansion_source"],
+            &[],
+        ),
+        deduped(
+            "https://b.example/2",
+            &["marginalia", "expansion_source"],
+            &[],
+        ),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     assert_eq!(m.overlap_confirmed, m.found_primary);
@@ -223,11 +231,15 @@ fn full_overlap_metrics_are_correct() {
 #[test]
 fn partial_overlap_metrics_are_correct() {
     let set = [
-        deduped("https://a.example/1", &["marginalia", "searxng"], &[]),
+        deduped(
+            "https://a.example/1",
+            &["marginalia", "expansion_source"],
+            &[],
+        ),
         deduped("https://b.example/2", &["marginalia"], &[]),
         deduped("https://c.example/3", &["marginalia"], &[]),
-        deduped("https://x.example/9", &["searxng"], &[]),
-        deduped("https://y.example/8", &["searxng"], &[]),
+        deduped("https://x.example/9", &["expansion_source"], &[]),
+        deduped("https://y.example/8", &["expansion_source"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     assert_eq!(m.found_primary, 3);
@@ -255,7 +267,7 @@ fn possible_duplicate_is_not_confirmed_overlap() {
         ),
         deduped(
             "https://expansion.example/doc",
-            &["searxng"],
+            &["expansion_source"],
             &["https://primary.example/doc"],
         ),
     ];
@@ -269,12 +281,16 @@ fn possible_duplicate_is_not_confirmed_overlap() {
 #[test]
 fn expansion_new_domains_excludes_primary_domains() {
     let set = [
-        deduped("https://shared.example/1", &["marginalia", "searxng"], &[]),
+        deduped(
+            "https://shared.example/1",
+            &["marginalia", "expansion_source"],
+            &[],
+        ),
         deduped("https://primaryonly.example/2", &["marginalia"], &[]),
-        deduped("https://new1.example/3", &["searxng"], &[]),
-        deduped("https://new2.example/4", &["searxng"], &[]),
+        deduped("https://new1.example/3", &["expansion_source"], &[]),
+        deduped("https://new2.example/4", &["expansion_source"], &[]),
         // expansion result on a host PRIMARY also carried -> not new
-        deduped("https://shared.example/5", &["searxng"], &[]),
+        deduped("https://shared.example/5", &["expansion_source"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     // new1, new2 only
@@ -299,32 +315,39 @@ fn zero_expansion_results_do_not_produce_nan() {
 #[test]
 fn multiple_expansion_providers_preserve_provenance() {
     // Two expansion providers both find the same URL; provenance must keep both.
-    // The second label is deliberately a synthetic name: the shipped set is
-    // SearXNG plus Marginalia, and this test is about the metric, not about any
-    // particular adapter being installed.
+    // The second label is deliberately a synthetic name: this test is about the
+    // metric, not about any particular adapter being installed.
     let mut assignment = RoleAssignment::primary_expansion(
         "marginalia",
-        ["searxng".to_string(), "custom_archive".to_string()],
+        ["expansion_source".to_string(), "custom_archive".to_string()],
     );
     assignment.active = true;
     let set = [
-        deduped("https://a.example/1", &["searxng", "custom_archive"], &[]),
+        deduped(
+            "https://a.example/1",
+            &["expansion_source", "custom_archive"],
+            &[],
+        ),
         deduped("https://b.example/2", &["marginalia"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &assignment).unwrap();
     assert_eq!(m.found_expansion, 1);
     assert_eq!(m.found_primary, 1);
     assert_eq!(m.unique_expansion, 1);
-    assert_eq!(set[0].providers, ["searxng", "custom_archive"]);
+    assert_eq!(set[0].providers, ["expansion_source", "custom_archive"]);
 }
 
 #[test]
 fn metrics_are_identical_for_identical_inputs() {
     let build = || {
         [
-            deduped("https://a.example/1", &["marginalia", "searxng"], &[]),
+            deduped(
+                "https://a.example/1",
+                &["marginalia", "expansion_source"],
+                &[],
+            ),
             deduped("https://b.example/2", &["marginalia"], &[]),
-            deduped("https://x.example/9", &["searxng"], &[]),
+            deduped("https://x.example/9", &["expansion_source"], &[]),
         ]
     };
     let first = compute_complementarity_metrics(&build(), &roles()).unwrap();
@@ -335,8 +358,8 @@ fn metrics_are_identical_for_identical_inputs() {
 #[test]
 fn unique_expansion_is_not_marked_relevant() {
     let set = [
-        deduped("https://x.example/9", &["searxng"], &[]),
-        deduped("https://y.example/8", &["searxng"], &[]),
+        deduped("https://x.example/9", &["expansion_source"], &[]),
+        deduped("https://y.example/8", &["expansion_source"], &[]),
     ];
     let m = compute_complementarity_metrics(&set, &roles()).unwrap();
     assert_eq!(m.unique_expansion, 2);
@@ -359,7 +382,7 @@ fn unique_expansion_is_not_marked_relevant() {
 fn legacy_mode_does_not_break_metric_calculation() {
     let set = [
         deduped("https://a.example/1", &["marginalia"], &[]),
-        deduped("https://b.example/2", &["searxng"], &[]),
+        deduped("https://b.example/2", &["expansion_source"], &[]),
     ];
     // Legacy mode: no roles -> no complementarity, and no panic.
     assert!(compute_complementarity_metrics(&set, &RoleAssignment::legacy()).is_none());
@@ -378,7 +401,7 @@ async fn round_trace_shows_accumulated_complementarity() {
             &["https://p1.example/a", "https://p2.example/b"],
         ),
         UrlProvider::new(
-            "searxng",
+            "expansion_source",
             &[
                 "https://p1.example/a", // overlaps p1 by canonical URL
                 "https://s1.example/c",

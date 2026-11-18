@@ -830,3 +830,80 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `docs/security/supply-chain.md` («Current exception — RUSTSEC-2026-0543»);
   `Cargo.lock` (`chrono 0.4.45`, `rmcp 3.10.0`, `schemars 1.2.2`); `SECURITY.md`.
 
+## ADR-019 — Marginalia queda como única fuente; se retira SearXNG
+
+- **Fecha:** 2026-11-18
+- **Estado:** Aceptada
+- **Contexto:** ADR-016 dejó «exactamente dos fuentes: SearXNG (sin credencial) y
+  Marginalia (con credencial)». La decisión del operador es servir **una sola
+  fuente: Marginalia**. SearXNG no aporta un rol que Marginalia no cubra y su
+  presencia obliga a mantener un contrato de instancia autoalojada
+  (`SEARXNG_INSTANCE_URL`, `deploy/searxng/`, un adapter de agregación con motores
+  upstream cuyo comportamiento varía por instancia y por política de cada motor)
+  a cambio de un resultado que el propio producto ya obtiene de Marginalia. Se
+  cierra esa superficie retirando la fuente de verdad, siguiendo el patrón de
+  ADR-016: la coherencia de tener una única fuente declarada, registrada, servida
+  y documentada pesa más que conservar un adapter apagado.
+- **Decisión:** Se retira SearXNG de extremo a extremo:
+  - **Código:** se elimina `crates/amatl-core/src/providers/searxng.rs`, su
+    `SearXngFactory` en `providers/registry.rs`, su re-export en
+    `providers.rs`/`lib.rs` y su entrada en `builtin_provider_records()`
+    (`config/providers.rs`). `ProviderRegistry::builtin()` despacha exactamente
+    Marginalia.
+  - **Configuración (segunda puerta):** al desaparecer su expediente,
+    `Config::validate()` rechaza `searxng` en `providers.enabled` —o en una tabla
+    `[providers.searxng]`— con el error genérico `unknown enabled provider`
+    (el mismo mecanismo vigente tras `45559cb2`, que eliminó la lista nominal
+    `RETIRED_PROVIDERS`). Una configuración antigua falla en el arranque en vez
+    de desplegar con una fuente menos en silencio.
+  - **Rol de expansión:** `ExpansionConfig::default()` deja
+    `expansion_providers` **vacío** en lugar de `["searxng"]`. El rol de
+    expansión exige una segunda fuente y no queda ninguna; `primary_provider`
+    sigue siendo `marginalia`. Declarar y registrar una segunda fuente reactiva
+    el rol sin cambio de esquema.
+  - **UI:** desaparece el selector de fuente (Marginalia / SearXNG / Todas): con
+    una sola fuente sería un control de una opción, así que se elimina en vez de
+    dejarlo inerte. La fila de credencial de Marginalia permanece y se muestra
+    cuando la fuente está habilitada. Un test
+    (`retired_source_selector_is_gone_and_cannot_return`) impide que el selector
+    vuelva.
+  - **Deploy:** se elimina `deploy/searxng/` (el directorio `deploy/` queda
+    vacío). El runbook de operación deja de aplicarlo.
+  - **Documentación y pruebas:** `amatl.example.toml`, `docs/configuracion.md`,
+    `docs/operacion.md`, `docs/gobernanza-providers.md`,
+    `docs/security/{secrets,threat-model}.md`, `docs/README.md`,
+    `crates/amatl-core/README.md` y los suites de CLI/core/servidor/UI se
+    actualizan al inventario real.
+- **Consecuencias:** AMATL publica **una sola fuente: Marginalia**, que exige una
+  key vigente emitida al operador. **AMATL deja de tener una fuente usable sin
+  credencial**: sin `MARGINALIA_API_KEY`, la única vía de resultados es `--mock`
+  (determinista, local). Es una consecuencia aceptada por el operador, no un
+  descuido: el producto ya no promete búsqueda real sin credencial. Riesgo
+  residual: los nombres de motores de SearXNG sobreviven como **evidencia
+  histórica** (fixtures de campañas en `docs/testing/searxng-*.md`,
+  `docs/evaluation/**`, `test-results/`) y ahí se conservan tal cual — son el
+  registro de por qué se tomaron decisiones de fecha/URL, no fuentes de AMATL.
+  El manejo de fechas compactas y de timestamps naive (`normalize.rs`) se
+  conserva: es un contrato ISO 8601 general, no específico de un adapter, y
+  quitarlo cambiaría comportamiento fuera del alcance de este retiro.
+- **Alternativas descartadas:** (a) dejar SearXNG apagado con la ficha en
+  `draft` — mantiene el adapter, `deploy/`, el selector de UI y el contrato de
+  instancia como código muerto reactivable por error, el mismo riesgo que ADR-016
+  descartó para las fuentes de pago; (b) conservar sólo la comprobación de
+  configuración sin borrar el adapter — un adapter presente se reactiva al tocar
+  el registry (`UnknownProvider` como única defensa, insuficiente); (c) borrar
+  los nombres de la evidencia histórica — destruiría la trazabilidad de por qué
+  existe el manejo de fechas y de qué se observó en cada campaña.
+- **Trazabilidad:** `crates/amatl-core/src/providers/registry.rs`
+  (`builtin_registry_exposes_the_shipped_sources`),
+  `crates/amatl-core/src/config/providers.rs`,
+  `crates/amatl-core/src/config/mod.rs`
+  (`unshipped_providers_are_absent_and_refused_by_validate`),
+  `crates/amatl-core/src/config/inference.rs` (`ExpansionConfig`),
+  `crates/amatl-core/src/service.rs` (`marginalia_only_config`),
+  `crates/amatl-core/tests/providers_phase1.rs`,
+  `crates/amatl-ui/src/lib.rs`
+  (`retired_source_selector_is_gone_and_cannot_return`),
+  `crates/amatl-cli/tests/cli.rs`, `docs/gobernanza-providers.md`,
+  `docs/operacion.md`, `amatl.example.toml`; retiro de `deploy/searxng/`.
+

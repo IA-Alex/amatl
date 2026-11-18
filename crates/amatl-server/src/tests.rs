@@ -30,16 +30,25 @@ async fn isolated_app() -> Router {
 }
 
 /// A non-mock service with exactly one source enabled and governed: the
-/// single-source deployment readiness must not penalize (D2). Every other
-/// shipped source stays declared and disabled, as it is in a real deployment
-/// that runs only SearXNG.
-async fn searxng_only_app() -> Router {
+/// single-source deployment readiness must not penalize (D2). The other shipped
+/// sources stay declared and disabled, as it is in a real deployment that runs
+/// only Marginalia.
+async fn marginalia_only_app() -> Router {
     let mut config = amatl_core::Config::default();
-    let runtime = config.providers.entry("searxng");
+    let runtime = config.providers.entry("marginalia");
+    runtime.adapter_version = Some("marginalia-v1".into());
     runtime.approval_status = amatl_core::ApprovalStatus::Approved;
     runtime.reviewed_at = Some(today_iso());
     runtime.reviewer = Some("owner".into());
-    config.providers.enabled = vec!["searxng".into()];
+    runtime.terms_url = Some("https://www.marginalia.nu/".into());
+    runtime.terms_version_or_date = Some("2026-08-01".into());
+    runtime.allowed_access_method = Some("official_api".into());
+    runtime.plan_or_contract = Some("contract-1".into());
+    runtime.rate_limit = Some("1 qps".into());
+    runtime.cost_model = Some("0".into());
+    runtime.data_handling_notes = Some("no cache".into());
+    runtime.operational_risk = Some("network dependency".into());
+    config.providers.enabled = vec!["marginalia".into()];
     config.validate().unwrap();
     build_router(AmatlService::new(config, false).await, Some(TOKEN.into()))
         .await
@@ -171,7 +180,7 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
 /// serves every search correctly.
 #[tokio::test]
 async fn ready_stays_ok_when_the_only_enabled_source_is_available() {
-    let response = searxng_only_app()
+    let response = marginalia_only_app()
         .await
         .oneshot(request("/ready").body(Body::empty()).unwrap())
         .await
@@ -205,7 +214,7 @@ async fn ready_reports_unavailable_when_no_source_is_enabled() {
 /// on a service it believed was unusable.
 #[tokio::test]
 async fn status_and_ready_agree_on_a_single_source_deployment() {
-    let router = searxng_only_app().await;
+    let router = marginalia_only_app().await;
     let ready = router
         .clone()
         .oneshot(request("/ready").body(Body::empty()).unwrap())
@@ -220,7 +229,7 @@ async fn status_and_ready_agree_on_a_single_source_deployment() {
     let status_body = json_body(status).await;
     assert_eq!(ready_body["status"], status_body["status"]);
     assert_eq!(ready_body["sources_available"], 1);
-    assert_eq!(status_body["sources"].as_array().unwrap().len(), 2);
+    assert_eq!(status_body["sources"].as_array().unwrap().len(), 1);
 }
 
 #[tokio::test]
@@ -2535,7 +2544,6 @@ async fn admin_responses_match_their_openapi_schemas() {
     // (path, schema name) for the admin read surfaces that are always 200 on a
     // default service (no persistence needed).
     let cases: &[(&str, &str)] = &[
-        ("/providers/searxng", "ProviderRecordReport"),
         ("/providers/marginalia", "ProviderRecordReport"),
         ("/policies", "PoliciesReport"),
         ("/persistence", "PersistenceConfigReport"),
@@ -2984,8 +2992,8 @@ async fn reload_picks_up_a_new_source_without_restarting() {
         .unwrap()
         .iter()
         .all(|value| value != "unshipped_source"));
-    // The operating sources are present.
-    assert!(["marginalia", "searxng"]
+    // The operating source is present.
+    assert!(["marginalia"]
         .iter()
         .all(|source| report["registered_sources"]
             .as_array()
@@ -4511,7 +4519,7 @@ async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_
     let response = app
         .clone()
         .oneshot(
-            authorized("/providers/searxng")
+            authorized("/providers/marginalia")
                 .body(Body::empty())
                 .unwrap(),
         )
@@ -4519,7 +4527,7 @@ async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
     let body = json_body(response).await;
-    assert_eq!(body["name"], "searxng");
+    assert_eq!(body["name"], "marginalia");
     assert!(body["record"]["adapter_version"].is_string());
 
     let missing = app
@@ -4583,7 +4591,7 @@ async fn update_provider_record_requires_the_admin_scope() {
     let scoped = scoped_app().await;
     let response = scoped
         .oneshot(
-            as_client("/providers/searxng", SEARCH_ONLY_TOKEN)
+            as_client("/providers/marginalia", SEARCH_ONLY_TOKEN)
                 .method(Method::PATCH)
                 .header(CONTENT_TYPE, "application/json")
                 .body(Body::from(json!({"reviewer": "someone"}).to_string()))
@@ -6216,7 +6224,7 @@ impl amatl_core::ProviderFactory for FailingFactory {
 /// deployment so neither gauge can drift into the other's meaning.
 #[tokio::test]
 async fn source_gauges_count_declared_sources_while_readiness_counts_available_ones() {
-    let router = searxng_only_app().await;
+    let router = marginalia_only_app().await;
     let ready = router
         .clone()
         .oneshot(request("/ready").body(Body::empty()).unwrap())
@@ -6244,10 +6252,10 @@ async fn source_gauges_count_declared_sources_while_readiness_counts_available_o
             .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
     };
 
-    // Two sources declared, one of them enabled and available: the disabled one
-    // is declared but never available, which is why the difference is a
-    // configuration choice and not a degradation.
-    assert_eq!(gauge("amatl_sources_declared"), 2.0);
+    // One source declared (Marginalia), enabled and available: there is no
+    // disabled second source, so declared equals available and the difference is
+    // zero by configuration.
+    assert_eq!(gauge("amatl_sources_declared"), 1.0);
     assert_eq!(gauge("amatl_sources_available"), 1.0);
     assert_eq!(gauge("amatl_sources_circuit_open"), 0.0);
 }
@@ -6257,8 +6265,8 @@ async fn source_gauges_count_declared_sources_while_readiness_counts_available_o
 /// service actually searches with, while `/metrics` keeps reporting the declared
 /// ones. Measured on the isolated mock deployment below: `/ready` answers `200`
 /// with `"sources_available":2` and `/search` answers `200` — the deployment
-/// serves — while `/metrics` publishes `amatl_sources_declared 2` and
-/// `amatl_sources_available 0`, because the real sources are declared but cannot
+/// serves — while `/metrics` publishes `amatl_sources_declared 1` and
+/// `amatl_sources_available 0`, because the real source is declared but cannot
 /// serve under `egress = "deny"`.
 ///
 /// The divergence has the shape D2 removed from `/status` — a surface announcing
@@ -6310,6 +6318,6 @@ async fn mock_deployments_disagree_between_ready_and_the_source_gauges() {
             .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
     };
 
-    assert_eq!(gauge("amatl_sources_declared"), 2.0);
+    assert_eq!(gauge("amatl_sources_declared"), 1.0);
     assert_eq!(gauge("amatl_sources_available"), 0.0);
 }

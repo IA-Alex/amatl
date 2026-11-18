@@ -8,7 +8,6 @@ on:
         required: true
         type: choice
         options:
-          - searxng
           - marginalia
       query:
         description: Non-sensitive canary query
@@ -26,7 +25,6 @@ jobs:
     timeout-minutes: 10
     env:
       MARGINALIA_API_KEY: ${{ secrets.MARGINALIA_API_KEY }}
-      SEARXNG_INSTANCE_URL: ${{ secrets.SEARXNG_INSTANCE_URL }}
     steps:
       - uses: actions/checkout@v6
       - uses: dtolnay/rust-toolchain@stable

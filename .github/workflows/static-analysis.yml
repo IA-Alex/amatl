@@ -11,9 +11,9 @@ name: static-analysis
 # The documentation-reference check is also blocking and equally narrow:
 # `tools/check_doc_refs.py` fails when a `file:line` citation in `docs/` names a
 # file that does not exist or a line past the end of that file. It freezes the
-# few intentionally-external references (upstream dependency source, host-side
-# SearXNG files) and cannot see *semantic* drift, so it does not replace
-# re-checking a citation when the code it points at moves.
+# few intentionally-external references (upstream dependency source) and cannot
+# see *semantic* drift, so it does not replace re-checking a citation when the
+# code it points at moves.
 #
 # The remaining steps are advisory because their baselines are not zero yet:
 # `ruff format --check` (52 of the 54 Python files in `tools/` would be rewritten,

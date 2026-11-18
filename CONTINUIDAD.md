@@ -1,5 +1,33 @@
 # Continuidad de desarrollo — AMATL
 
+> **Nota de consolidación (2026-11-18 — supersede las notas anteriores en lo que
+> las contradiga).** Sigue siendo un historial *append-only*: las secciones con
+> fecha describen el estado de ese momento. La verdad vigente es:
+>
+> - **Marginalia es la única fuente de búsqueda que AMATL sirve.** SearXNG se
+>   retiró del producto de extremo a extremo (`ADR-019`): se eliminaron su
+>   adapter (`providers/searxng.rs`), su factory, su entrada en
+>   `builtin_provider_records()` y todo `deploy/searxng/`.
+>   `ProviderRegistry::builtin()` despacha exactamente **Marginalia**. Las
+>   notas anteriores que describen «Marginalia y SearXNG como fuentes
+>   activables» quedaron obsoletas.
+> - **Segunda puerta por sustracción:** al desaparecer su expediente,
+>   `Config::validate()` rechaza `searxng` en `providers.enabled` —o en una
+>   tabla `[providers.searxng]`— con `unknown enabled provider`, sin necesidad
+>   de una lista nominal. Una configuración antigua falla en el arranque.
+> - **La UI ya no tiene selector de fuente**: con una sola fuente sería un
+>   control de una opción, así que se eliminó (no se dejó inerte). Se conserva
+>   la fila de credencial de Marginalia. Un test lo impide volver:
+>   `retired_source_selector_is_gone_and_cannot_return`.
+> - **Sin fuente sin credencial:** Marginalia exige `MARGINALIA_API_KEY`. Sin
+>   ella, la única vía de resultados es `--mock`. Es una consecuencia aceptada
+>   por el operador, no un defecto.
+> - **Conteos de workspace:** `cargo test --workspace` → **706 aprobadas, 0
+>   fallos** (los 680/661/338 de la bitácora son históricos).
+> - Las menciones de motores de SearXNG que sobreviven lo hacen como
+>   **evidencia histórica de campañas** (`docs/testing/searxng-*.md`,
+>   `docs/evaluation/**`), no como fuentes de AMATL.
+
 > **Nota de consolidación (estado vigente de fuentes en el frontend).** Este
 > documento es un historial *append-only*; las secciones anteriores a esta nota
 > describen estados intermedios. Para evitar confusiones, la verdad vigente es:

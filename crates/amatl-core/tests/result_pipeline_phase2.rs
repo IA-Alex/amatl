@@ -44,13 +44,13 @@ async fn degraded_fields_are_public_and_do_not_discard_the_item() {
 }
 
 #[tokio::test]
-async fn searxng_naive_published_date_is_preserved_and_does_not_degrade() {
-    // A live SearXNG instance reports `publishedDate` as a *naive* local
-    // timestamp (`YYYY-MM-DDTHH:MM:SS`, no offset). `normalize_date` only
-    // accepted RFC 3339 (offset required) or a bare `YYYY-MM-DD`, so every
-    // such date was dropped and turned a clean response into a
-    // `partial_success` via `invalid_published_at`. Observed on
-    // `searxng/searxng:latest` (2026-11-14): ~11 of 35 results per query.
+async fn naive_published_date_is_preserved_and_does_not_degrade() {
+    // A search engine can report `publishedDate` as a *naive* local timestamp
+    // (`YYYY-MM-DDTHH:MM:SS`, no offset). `normalize_date` only accepted RFC 3339
+    // (offset required) or a bare `YYYY-MM-DD`, so every such date was dropped
+    // and turned a clean response into a `partial_success` via
+    // `invalid_published_at`. First observed against a live instance
+    // (2026-11-14): ~11 of 35 results per query.
     let mut value = item("https://example.com/", 1, Some("Rust"));
     value.published_at = Some("2024-06-11T00:00:00".into());
     let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MockProvider::success("p", vec![value]))];

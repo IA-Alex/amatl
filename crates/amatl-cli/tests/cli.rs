@@ -159,18 +159,18 @@ fn ingest_rejects_unknown_binary_without_echoing_content() {
 
 #[test]
 fn provider_canary_refuses_incomplete_governance_without_network() {
-    // `searxng` is declared in the shipped governance records but still
+    // `marginalia` is declared in the shipped governance records but still
     // `draft`, so it is the current builtin that is enabled-and-declared yet
     // fails the approval gate.
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));
     std::fs::create_dir_all(&base).unwrap();
     let config = base.join("amatl.toml");
-    std::fs::write(&config, "[providers]\nenabled = [\"searxng\"]\n").unwrap();
+    std::fs::write(&config, "[providers]\nenabled = [\"marginalia\"]\n").unwrap();
     let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
         .arg("--config-file")
         .arg(&config)
-        .args(["provider-canary", "searxng", "rust"])
+        .args(["provider-canary", "marginalia", "rust"])
         .output()
         .unwrap();
     assert!(!output.status.success());
@@ -432,12 +432,12 @@ fn serve_reports_the_effective_listener_before_binding() {
 #[test]
 fn cli_reports_the_same_error_catalog_codes_as_the_other_surfaces() {
     // A domain failure carries a catalog code on stderr, next to the message.
-    // The probe is `searxng`: it is declared, registered and shipped, and just
+    // The probe is `marginalia`: it is declared, registered and shipped, and just
     // not enabled by default, which is the code this assertion pins. (The
     // preflight checks enablement before declaration and registration, so the
     // name only has to be one the operator did not enable.)
     let canary = Command::new(env!("CARGO_BIN_EXE_amatl"))
-        .args(["provider-canary", "searxng", "rust"])
+        .args(["provider-canary", "marginalia", "rust"])
         .output()
         .expect("amatl binary should run");
     assert!(!canary.status.success());

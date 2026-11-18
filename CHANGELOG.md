@@ -262,6 +262,28 @@ adapter/extractor versions are independent axes as well.
   CVSS v4 blast radius (confidentiality only, `SC:N/SI:N/SA:N`), why linking the
   system SQLite is not an exit here, and the operational reading of the red gate.
 
+### Removed — SearXNG, leaving Marginalia as the only source (breaking)
+
+- SearXNG is retired from the product end to end (`ADR-019`):
+  `providers/searxng.rs`, its `SearXngFactory` and its entry in
+  `builtin_provider_records()` are gone, so `ProviderRegistry::builtin()`
+  dispatches exactly Marginalia. Removing the record is the second door:
+  `Config::validate()` now rejects `searxng` in `providers.enabled` — or in a
+  `[providers.searxng]` table — with `unknown enabled provider`, so an old
+  configuration fails at startup instead of running one source short.
+- The source selector (Marginalia / SearXNG / All) is removed: with one shipped
+  source it would be a one-option control, so it is deleted rather than left
+  inert, and `retired_source_selector_is_gone_and_cannot_return` keeps it gone.
+  The Marginalia credential row stays.
+- `deploy/searxng/` is removed (the directory `deploy/` is now empty).
+- `ExpansionConfig::default()` ships `expansion_providers = []` instead of
+  `["searxng"]`: the expansion role needs a second source and none ships, so an
+  operator declares and registers one to activate it. `primary_provider` stays
+  `marginalia`.
+- **Consequence:** AMATL no longer has a credential-free source. Without
+  `MARGINALIA_API_KEY` the only path to results is `--mock`; the product no
+  longer promises real search without a credential.
+
 ### Removed — the Windows target (breaking)
 
 - Windows is no longer built or published. The `windows` job in `release.yml`

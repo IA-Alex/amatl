@@ -125,7 +125,7 @@ pub use progressive::{
 pub use providers::{
     HttpRequest, HttpResponse, HttpTransport, MarginaliaProvider, MockBehavior, MockProvider,
     Provider, ProviderAvailability, ProviderBuildContext, ProviderContext, ProviderFactory,
-    ProviderRegistry, ReqwestTransport, SearXngProvider,
+    ProviderRegistry, ReqwestTransport,
 };
 pub use query::{parse_query, QueryParseError};
 pub use ranking::{RankingPolicyError, RankingPolicyV1};

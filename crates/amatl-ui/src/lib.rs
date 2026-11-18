@@ -292,7 +292,6 @@ mod tests {
             "the global [hidden] override is missing from styles.css"
         );
         for component in [
-            ".provider-selector {",
             ".credential-actions {",
             ".credential-group {",
             ".fragment-signals {",
@@ -597,12 +596,10 @@ mod tests {
             !javascript.contains("const body = { id, scopes, tools: [] };"),
             "the old always-empty allowlist must not come back"
         );
-        // BH-02: all three error branches read `error.status`/`error.code`
-        // (set by client.js) and keep the message check only as a fallback.
-        assert!(
-            javascript.contains("error.status === 401 || error.code === \"unauthorized\""),
-            "applyProviderSource must classify 401 on the structured fields"
-        );
+        // BH-02: the remaining error branches read `error.status`/`error.code`
+        // (set by client.js) and keep the message check only as a fallback. The
+        // `applyProviderSource` branch this originally covered is gone with the
+        // retired source selector.
         assert!(
             javascript.contains("const status = Number(error && error.status) || 0;"),
             "saveMarginaliaKey must read the HTTP status, not parse the message"
@@ -686,32 +683,25 @@ mod tests {
     }
 
     #[test]
-    fn source_selector_maps_three_choices_onto_provider_enabled() {
+    fn retired_source_selector_is_gone_and_cannot_return() {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // A single-choice segmented control (Marginalia / SearXNG / All) must
-        // exist in the search panel and resolve its copy through the catalog,
-        // not half-hardcoded.
-        assert!(html.contains("id=\"provider-selector\""));
-        assert!(html.contains("name=\"provider-source\""));
-        assert!(html.contains("value=\"marginalia\""));
-        assert!(html.contains("value=\"searxng\""));
-        assert!(html.contains("value=\"all\""));
-        assert!(catalog.contains("providerSelectorLabel"));
-        assert!(catalog.contains("providerSourceAll"));
-        assert!(javascript.contains("t(\"providerSelectorLabel\")"));
-        // The choices reduce to exactly the per-provider toggles the backend
-        // speaks (`POST /providers/{name}/enabled`), keeping both the selector
-        // and the detailed panel on the same `providers.enabled` list.
-        assert!(javascript.contains("providerSelectorOptions.addEventListener(\"change\""));
-        assert!(javascript.contains("applyProviderSource"));
-        assert!(javascript.contains("PROVIDER_SOURCE_TARGET"));
-        assert!(javascript.contains("marginalia: [\"marginalia\"]"));
-        assert!(javascript.contains("searxng: [\"searxng\"]"));
-        assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
-        assert!(javascript.contains("syncProviderSelector"));
-        assert!(javascript.contains("`/providers/${encodeURIComponent(enabled)}/enabled`"));
+        // Marginalia is the only shipped source, so a source selector would be a
+        // single-choice control with nothing to choose: it is removed entirely,
+        // not left as a dead three-way radio group.
+        assert!(!html.contains("id=\"provider-selector\""));
+        assert!(!html.contains("name=\"provider-source\""));
+        assert!(!html.contains("value=\"searxng\""));
+        assert!(!html.contains("value=\"all\""));
+        assert!(!javascript.contains("PROVIDER_SOURCE_TARGET"));
+        assert!(!javascript.contains("applyProviderSource"));
+        assert!(!javascript.contains("syncProviderSelector"));
+        assert!(!javascript.contains("PROVIDER_SOURCE_NAME"));
+        // The catalog carries no copy for a control that no longer exists.
+        assert!(!catalog.contains("providerSelectorLabel"));
+        assert!(!catalog.contains("providerSourceSearxng"));
+        assert!(!catalog.contains("providerSourceAll"));
     }
 
     #[test]
@@ -719,25 +709,12 @@ mod tests {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
-        // The source selector exposes exactly the two shipped sources plus the
-        // "all" convenience choice: no control, no key surface, and no catalog
-        // key exists for any other source.
-        for value in ["marginalia", "searxng", "all"] {
-            assert!(
-                html.contains(&format!("value=\"{value}\"")),
-                "shipped choice must exist in the UI: {value}"
-            );
-        }
-        // A segmented radio group: exactly three choices, one per shipped
-        // source plus the convenience "all".
-        let selector_values = html.matches("name=\"provider-source\"").count();
-        assert_eq!(
-            selector_values, 3,
-            "the source selector is a three-way radio group"
-        );
-        assert!(javascript.contains("marginalia: [\"marginalia\"]"));
-        assert!(javascript.contains("searxng: [\"searxng\"]"));
-        assert!(javascript.contains("all: [\"marginalia\", \"searxng\"]"));
+        // The only shipped source is Marginalia, and the UI exposes a control
+        // for it through the detailed source panel (driven by `/providers`),
+        // never a selector or a key surface for a retired source.
+        assert!(!html.contains("value=\"searxng\""));
+        assert!(!javascript.contains("searxng"));
+        assert!(!catalog.contains("SearXNG"));
         // Marginalia is the only credential-gated source, so its key surface is
         // the only one in the catalog.
         assert!(catalog.contains("marginaliaKeyButton"));

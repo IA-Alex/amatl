@@ -12,21 +12,10 @@ egress = "governed"
 inference = "disabled"
 
 # Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
-# los expedientes incorporados (searxng, marginalia). Un nombre
+# los expedientes incorporados (marginalia). Un nombre
 # en "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
 [providers]
 enabled = []
-# Ejemplo: activar SearXNG autohospedado (gratis, sin cuota).
-# La URL de la instancia se lee de SEARXNG_INSTANCE_URL (por defecto
-# http://127.0.0.1:8888). No requiere credencial. El resto de la ficha
-# (método, contrato, cuota, coste, datos y riesgo) ya viene del expediente
-# incorporado en config.rs; aquí sólo se aprueba con identidad y fecha reales.
-# enabled = ["searxng"]
-# [providers.searxng]
-# approval_status = "approved"
-# reviewed_at = "2026-08-14"
-# reviewer = "identidad verificable"
-#
 # Ejemplo: activar Marginalia. Requiere una key genuina, vigente y emitida al
 # operador por Marginalia en MARGINALIA_API_KEY; un placeholder, una key
 # compartida o una key pública de ejemplo no autoriza uso productivo.
@@ -50,10 +39,10 @@ enabled = []
 # data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
 # operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
 #
-# Sólo se sirven fuentes sin coste (SearXNG autoalojado y Marginalia). No hay
-# expediente ni adapter para ninguna otra, así que no queda ficha que aprobar;
-# además Config::validate() rechaza por nombre, así que un nombre no declarado
-# en enabled falla la validación.
+# Marginalia es la única fuente que se sirve. No hay expediente ni adapter para
+# ninguna otra, así que no queda ficha que aprobar; además Config::validate()
+# rechaza por nombre, así que un nombre no declarado en enabled falla la
+# validación.
 # Ver docs/gobernanza-providers.md.
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.

@@ -18,7 +18,7 @@ use std::collections::BTreeMap;
 use std::sync::Arc;
 
 fn roles() -> RoleAssignment {
-    RoleAssignment::primary_expansion("marginalia", ["searxng".to_string()])
+    RoleAssignment::primary_expansion("marginalia", ["expansion_source".to_string()])
 }
 
 fn deduped(
@@ -77,7 +77,7 @@ fn unique_irrelevant_expansion_is_not_unique_relevant() {
             "https://blog.example/opinions",
             Some("Political opinions and independent commentary"),
             Some("Personal essays about music, gardening and long walks."),
-            &["searxng"],
+            &["expansion_source"],
         ),
     ];
     let comp = compute_complementarity_metrics(&set, &roles()).unwrap();
@@ -100,12 +100,17 @@ fn unique_irrelevant_expansion_is_not_unique_relevant() {
 fn unknown_results_do_not_count_as_confirmed_noise() {
     let query = parse_query("rust async programming".into()).unwrap();
     let set = [
-        deduped("https://x.example/1", Some("Home"), None, &["searxng"]),
+        deduped(
+            "https://x.example/1",
+            Some("Home"),
+            None,
+            &["expansion_source"],
+        ),
         deduped(
             "https://x.example/2",
             Some("Async programming in Rust"),
             Some("async and await in rust"),
-            &["searxng"],
+            &["expansion_source"],
         ),
     ];
     let comp = compute_complementarity_metrics(&set, &roles()).unwrap();
@@ -130,7 +135,7 @@ fn identical_inputs_produce_identical_relevance() {
         "https://x.example/1",
         Some("Async programming in Rust"),
         Some("async await rust"),
-        &["searxng"],
+        &["expansion_source"],
     )];
     let comp = compute_complementarity_metrics(&set, &roles()).unwrap();
     let a = assess_relevance(
@@ -238,13 +243,13 @@ async fn run_trace(relevant_titles: bool) -> (Vec<ProgressiveRoundTrace>, Vec<St
             .map(|i| item(format!("https://d{i}.m.example/p"), title, Some(title)))
             .collect(),
     });
-    let searxng = Arc::new(ScriptedProvider {
-        name: "searxng".into(),
+    let expansion_source = Arc::new(ScriptedProvider {
+        name: "expansion_source".into(),
         items: (0..3)
             .map(|i| item(format!("https://d{i}.s.example/p"), title, Some(title)))
             .collect(),
     });
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia, searxng];
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia, expansion_source];
     let mut orchestrator =
         SearchOrchestrator::new(Budget::new(3, 5_000), 500).with_role_assignment(roles());
     let response = orchestrator
@@ -290,15 +295,15 @@ async fn search_response_serializes_relevance_additively() {
             })
             .collect(),
     });
-    let searxng = Arc::new(ScriptedProvider {
-        name: "searxng".into(),
+    let expansion_source = Arc::new(ScriptedProvider {
+        name: "expansion_source".into(),
         items: vec![item(
             "https://uniq.s.example/p".into(),
             "rust async programming deep dive",
             Some("a deep dive into async programming in rust"),
         )],
     });
-    let providers: Vec<Arc<dyn Provider>> = vec![marginalia, searxng];
+    let providers: Vec<Arc<dyn Provider>> = vec![marginalia, expansion_source];
     let mut orchestrator =
         SearchOrchestrator::new(Budget::new(3, 5_000), 500).with_role_assignment(roles());
     let response = orchestrator

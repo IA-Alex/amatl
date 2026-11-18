@@ -5,7 +5,7 @@
 //! source therefore means shipping a factory and a governance record — no
 //! `match` arm inside the service, no new field in the configuration struct.
 
-use super::{HttpTransport, MarginaliaProvider, Provider, SearXngProvider};
+use super::{HttpTransport, MarginaliaProvider, Provider};
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -60,16 +60,13 @@ impl ProviderRegistry {
 
     /// Registry with the sources AMATL ships.
     ///
-    /// Exactly two sources are registered: the self-hosted, credential-free
-    /// SearXNG and the approved key-gated Marginalia. No other source ships an
-    /// adapter or a factory, so any other name resolves to
-    /// `provider_not_registered` — it can never be selected or send traffic.
-    /// Configuration validation rejects unknown names outright (`config/mod.rs`),
-    /// so the registry is the second of two closed doors.
+    /// Exactly one source is registered: the approved, key-gated Marginalia.
+    /// No other source ships an adapter or a factory, so any other name
+    /// resolves to `provider_not_registered` — it can never be selected or send
+    /// traffic. Configuration validation rejects unknown names outright
+    /// (`config/mod.rs`), so the registry is the second of two closed doors.
     pub fn builtin() -> Self {
-        Self::empty()
-            .with(Arc::new(SearXngFactory))
-            .with(Arc::new(MarginaliaFactory))
+        Self::empty().with(Arc::new(MarginaliaFactory))
     }
 
     /// Builder-style registration, replacing any factory with the same name.
@@ -106,59 +103,6 @@ impl ProviderRegistry {
     /// Registered names in stable alphabetical order.
     pub fn names(&self) -> Vec<&str> {
         self.factories.keys().map(String::as_str).collect()
-    }
-}
-
-// ---------------------------------------------------------------------------
-// SearXNG factory
-// ---------------------------------------------------------------------------
-
-pub struct SearXngFactory;
-
-/// Resolve the SearXNG instance URL from its `credential_env` value.
-///
-/// An unset variable is the documented local default. A value that is present
-/// but unparseable is a configuration error the trait cannot report — `build`
-/// returns `Arc<dyn Provider>`, not a `Result` — so it keeps the same loopback
-/// fallback instead of failing closed, but the mismatch is logged. Without the
-/// log, `SEARXNG_INSTANCE_URL=not-a-url` queried a different instance and
-/// surfaced only as `provider_network`, which reads as "the server is down".
-pub(crate) fn resolve_searxng_instance_url(name: &str, credential: Option<&str>) -> url::Url {
-    let default = url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid");
-    match credential {
-        None => default,
-        Some(value) => url::Url::parse(value).unwrap_or_else(|error| {
-            tracing::warn!(
-                target: "amatl::providers",
-                provider = %name,
-                %error,
-                "SEARXNG_INSTANCE_URL is not a valid URL; falling back to the loopback default"
-            );
-            default
-        }),
-    }
-}
-
-impl ProviderFactory for SearXngFactory {
-    fn name(&self) -> &str {
-        "searxng"
-    }
-
-    fn requires_credential(&self) -> bool {
-        false
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        let url = resolve_searxng_instance_url(
-            context.name,
-            context.credential.as_deref().map(String::as_str),
-        );
-        Arc::new(SearXngProvider::new(
-            url,
-            context.enabled,
-            context.approved,
-            context.transport.clone(),
-        ))
     }
 }
 
@@ -253,12 +197,10 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        // Only the two sanctioned sources ship; nothing else is registered or
+        // Only the one sanctioned source ships; nothing else is registered or
         // declared, so nothing else can be selected.
-        assert_eq!(registry.names(), vec!["marginalia", "searxng"]);
-        assert!(registry.get("searxng").is_some());
+        assert_eq!(registry.names(), vec!["marginalia"]);
         assert!(registry.get("marginalia").is_some());
-        assert!(!registry.get("searxng").unwrap().requires_credential());
         assert!(registry.get("marginalia").unwrap().requires_credential());
     }
 

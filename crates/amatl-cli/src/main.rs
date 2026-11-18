@@ -997,7 +997,7 @@ mod canary_tests {
             status: amatl_core::SearchStatus::Failure,
             results: vec![],
             providers_used: vec![],
-            providers_failed: vec!["searxng".into()],
+            providers_failed: vec!["expansion_source".into()],
             providers_partial: vec![],
             errors,
             degradations: vec![],
@@ -1025,10 +1025,10 @@ mod canary_tests {
             let response = response_with_errors(vec![amatl_core::CompositeError {
                 code: kind_code.into(),
                 message: "upstream failure".into(),
-                providers: vec!["searxng".into()],
+                providers: vec!["expansion_source".into()],
                 recoverable,
             }]);
-            assert!(!canary_response_is_usable(&response, "searxng"));
+            assert!(!canary_response_is_usable(&response, "expansion_source"));
             assert_eq!(canary_error_codes(&response), vec![kind_code.to_owned()]);
         }
     }
@@ -1038,7 +1038,7 @@ mod canary_tests {
     #[test]
     fn canary_failure_without_provider_errors_yields_no_code() {
         let response = response_with_errors(vec![]);
-        assert!(!canary_response_is_usable(&response, "searxng"));
+        assert!(!canary_response_is_usable(&response, "expansion_source"));
         assert!(canary_error_codes(&response).is_empty());
     }
 }

@@ -10,12 +10,10 @@ use std::time::Duration;
 mod http;
 mod marginalia;
 mod registry;
-mod searxng;
 
 pub use http::{HttpRequest, HttpResponse, HttpTransport, ReqwestTransport};
 pub use marginalia::MarginaliaProvider;
 pub use registry::{ProviderBuildContext, ProviderFactory, ProviderRegistry};
-pub use searxng::SearXngProvider;
 
 #[derive(Clone, Debug)]
 pub struct ProviderContext {

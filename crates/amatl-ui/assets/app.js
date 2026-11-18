@@ -943,93 +943,6 @@ const providerStatus = document.querySelector(".provider-status");
 const providerList = document.querySelector("#provider-list");
 const providerStatusText = document.querySelector("#provider-status-text");
 
-// ── Source selector (Marginalia / SearXNG / All) ────────────────
-// A search-level control that drives the same `providers.enabled` list the
-// detailed source panel reflects. The radio selection is *derived* from
-// `providers.enabled` (single source of truth, `/providers`), so the two
-// surfaces can never drift; picking an option issues the ordered per-provider
-// toggles needed to reach exactly that membership.
-const providerSelector = document.querySelector("#provider-selector");
-const providerSelectorOptions = document.querySelector("#provider-selector-options");
-const providerSelectorStatus = document.querySelector("#provider-selector-status");
-const PROVIDER_SOURCE_NAME = ["marginalia", "searxng"];
-
-// Map a `providers.enabled` list to a radio value: "all" when every selector
-// provider is on, the single on one when exactly one is, and null when neither
-// is (the single-choice control cannot express "no source of the pair").
-function providerSourceValue(enabledList) {
-  const list = Array.isArray(enabledList) ? enabledList : [];
-  const on = PROVIDER_SOURCE_NAME.filter((name) => list.includes(name));
-  if (on.length === PROVIDER_SOURCE_NAME.length) return "all";
-  if (on.length === 1) return on[0];
-  return null;
-}
-
-function syncProviderSelector(enabledList) {
-  const value = providerSourceValue(enabledList);
-  for (const input of providerSelectorOptions.querySelectorAll('input[type="radio"]')) {
-    input.checked = input.value === value;
-    // A state the single-choice control cannot express (none, or a partial
-    // pair) leaves the group unchecked rather than inventing a selection.
-  }
-}
-
-// Desired `providers.enabled` for each radio value.
-const PROVIDER_SOURCE_TARGET = {
-  marginalia: ["marginalia"],
-  searxng: ["searxng"],
-  all: ["marginalia", "searxng"],
-};
-
-async function applyProviderSource(value) {
-  const target = PROVIDER_SOURCE_TARGET[value];
-  if (!target) return;
-  // Reaching the target may need more than one per-provider toggle (e.g.
-  // "SearXNG" from "Ambos" must also switch Marginalia off). Disable the whole
-  // group while any write is in flight; on failure we re-sync from the server's
-  // authoritative list instead of trusting a remembered selection.
-  providerSelectorOptions
-    .querySelectorAll('input[type="radio"]')
-    .forEach((input) => (input.disabled = true));
-  providerSelectorStatus.hidden = false;
-  providerSelectorStatus.textContent = t("providerSelectorBusy");
-  try {
-    for (const enabled of PROVIDER_SOURCE_NAME) {
-      // Reaching the target may toggle a provider on or off independently;
-      // POST each one to its boolean under `providers.enabled`. Any error
-      // below aborts and the whole selector re-syncs from the server.
-      const desired = target.includes(enabled);
-      await globalThis.api.post(`/providers/${encodeURIComponent(enabled)}/enabled`, {
-        enabled: desired,
-      });
-    }
-    await fetchProviderStatus();
-    providerSelectorStatus.textContent = t("providerSelectorSynced");
-    providerSelectorStatus.dataset.state = "success";
-  } catch (error) {
-    // Classification reads the structured `error.status`/`error.code` the
-    // shared client sets (real error bodies carry no status digits in the
-    // message); the message check remains only as a fallback.
-    providerSelectorStatus.textContent =
-      error.status === 401 || error.code === "unauthorized" || error.message.includes("401")
-        ? t("unauthorized")
-        : t("providerSelectorFailed");
-    providerSelectorStatus.dataset.state = "error";
-    // Revert to the authoritative server state.
-    await fetchProviderStatus();
-  } finally {
-    providerSelectorOptions
-      .querySelectorAll('input[type="radio"]')
-      .forEach((input) => (input.disabled = false));
-  }
-}
-
-providerSelectorOptions.addEventListener("change", (event) => {
-  if (event.target.matches('input[type="radio"]') && event.target.checked) {
-    applyProviderSource(event.target.value);
-  }
-});
-
 const PROVIDER_REASON_KEYS = {
   provider_not_approved: "providerReasonNotApproved",
   provider_disabled: "providerReasonDisabled",
@@ -1126,15 +1039,9 @@ async function fetchProviderStatus() {
       if (provider.enabled) enabledList.push(provider.name);
     }
     providerStatus.hidden = false;
-    // The source selector is valid only when the providers it drives are
-    // actually declared; otherwise keep it hidden rather than showing controls
-    // with nothing to control.
-    const hasSource = (name) => payload.providers.some((p) => p.name === name);
-    providerSelector.hidden = !(hasSource("marginalia") && hasSource("searxng"));
-    if (!providerSelector.hidden) syncProviderSelector(enabledList);
-    // The credential row follows `providers.enabled` regardless of whether the
-    // source selector is shown, so selecting Marginalia (or All) reveals its
-    // key controls and running searxng alone hides them.
+    // The credential row follows `providers.enabled`: Marginalia is the only
+    // shipped source and always takes a key, so an enabled Marginalia reveals
+    // its key controls.
     syncCredentialActions(enabledList);
     if (unavailable === 0) {
       providerStatusText.textContent = t("allAvailable");
@@ -1147,7 +1054,6 @@ async function fetchProviderStatus() {
       providerStatusText.dataset.state = "error";
     }
   } catch (_) {
-    providerSelector.hidden = true;
     // Without provider state (e.g. no token yet) the credential row must not
     // claim any source is ready to take a key: hide it until we have an
     // authoritative answer from `/providers`.
@@ -1415,10 +1321,8 @@ const credentialActions = document.querySelector("#credential-actions");
 const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
 
 // Show the Marginalia credential controls only while Marginalia is one of the
-// selected sources. With only searxng enabled (the free default) no credential
-// surface is needed, so the row stays hidden; picking Marginalia (or All)
-// reveals its insert/liquidate row. The visibility follows `providers.enabled`
-// — the same single source of truth the source selector drives — so the key
+// selected sources. The visibility follows `providers.enabled` — the same
+// single source of truth the source panel drives — so the key
 // area can never drift from the active selection. Marginalia is the only
 // credential-gated source, so it is the only one with a key row.
 function syncCredentialActions(enabledList) {
@@ -2074,9 +1978,6 @@ function applyTranslations() {
   marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
   document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
   document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");
-  // Source selector: legend and the "Todas/All" option are translatable; the
-  // provider names stay as proper nouns.
-  document.querySelector("#provider-selector-label").textContent = t("providerSelectorLabel");
   const sourceAllOption = document.querySelector(
     '.provider-selector-option input[value="all"]',
   ).closest("label");

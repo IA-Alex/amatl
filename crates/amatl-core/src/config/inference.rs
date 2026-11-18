@@ -281,12 +281,14 @@ impl ExpansionMode {
 
 /// Primary / expansion provider roles.
 ///
-/// The declarative defaults (`primary_provider = "marginalia"`,
-/// `expansion_providers = ["searxng"]`) are always present so an operator
-/// only flips `mode` to activate them, but while `mode = "legacy"` nothing
-/// in routing consults this section. `expansion_providers` is a list, not a
-/// single name, so a second specialized-expansion source can be added later
-/// without a schema change — STEP 1 simply happens to run with one.
+/// The declarative default (`primary_provider = "marginalia"`) is always
+/// present so an operator only flips `mode` to activate it, but while
+/// `mode = "legacy"` nothing in routing consults this section.
+/// `expansion_providers` ships **empty**: the expansion role needs a second
+/// source, and Marginalia is the only source AMATL ships, so no expansion
+/// source exists to name by default. It stays a list, not a single name, so an
+/// operator can declare a second source and register it there without a schema
+/// change.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(default)]
 pub struct ExpansionConfig {
@@ -300,7 +302,7 @@ impl Default for ExpansionConfig {
         Self {
             mode: ExpansionMode::Legacy,
             primary_provider: "marginalia".into(),
-            expansion_providers: vec!["searxng".into()],
+            expansion_providers: Vec::new(),
         }
     }
 }
