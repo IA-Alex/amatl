@@ -106,7 +106,14 @@ jobs:
     # fail-closed, so a missing or version-mismatched driver fails the job
     # instead of skipping green (the trap that a stale local chromedriver sets).
     # `setup-chrome` installs Chrome and a *matching* chromedriver together,
-    # which is the pairing the fail-closed check demands.
+    # which is the pairing the fail-closed check demands. The version must be
+    # pinned, not `stable`: with `stable` the action left the runner's
+    # preinstalled Chrome (157) in place while downloading the channel's
+    # chromedriver (158), and the fail-closed suite then reported
+    # "only supports Chrome version 158" for a job that never launched a page.
+    # Pinning one Chrome-for-Testing version makes both binaries come from the
+    # same release, so they cannot drift apart on a runner-image update.
+    # Bumping the pin is a reviewed change, like every other version in this file.
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -114,13 +121,31 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Install Chrome and a matching chromedriver
+        id: setup-chrome
         uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: stable
+          chrome-version: 158.0.8127.36
           install-chromedriver: true
       - name: Start WebDriver
         run: |
           set -euo pipefail
+          # Prove the pair actually matches before the suite spends a run on it:
+          # a driver that cannot drive the installed Chrome reports it once, in
+          # this step, instead of eight times from the fail-closed tests. Read the
+          # browser the action installed through its own output — the binary name
+          # is not always `chrome`, and `google-chrome` can resolve to a
+          # preinstalled copy on the runner rather than the pinned one.
+          browser_major="$( \
+            "${{ steps.setup-chrome.outputs.chrome-path }}" --version \
+            | grep --only-matching --extended-regexp '[0-9]+' | head -n1 )"
+          driver_major="$( \
+            "${{ steps.setup-chrome.outputs.chromedriver-path }}" --version \
+            | grep --only-matching --extended-regexp '[0-9]+' | head -n1 )"
+          echo "Chrome major: $browser_major; ChromeDriver major: $driver_major"
+          if [ "$browser_major" != "$driver_major" ]; then
+            echo "::error::Chrome ($browser_major) and ChromeDriver ($driver_major) major versions differ; align the chrome-version pin"
+            exit 1
+          fi
           chromedriver --port=4444 &
           for _ in $(seq 1 30); do
             curl -sf http://localhost:4444/status > /dev/null && exit 0
