@@ -1497,7 +1497,10 @@ const providers = (function () {
   }
 
 
-  return { fetchProviderStatus, fetchServiceState, toggleAnswer, toggleStrategist, openMarginaliaDialog, saveMarginaliaKey };
+  // `updateMarginaliaUi` cruza: el listener de "Eliminar clave" la llama desde
+  // el bloque de arranque. Sin ella el click lanzaba ReferenceError y caía al
+  // catch silencioso, sin que el operador viera la confirmación.
+  return { fetchProviderStatus, fetchServiceState, toggleAnswer, toggleStrategist, openMarginaliaDialog, saveMarginaliaKey, updateMarginaliaUi };
 })();
 
 const fetchProviderStatus = providers.fetchProviderStatus;
@@ -1506,207 +1509,221 @@ const toggleAnswer = providers.toggleAnswer;
 const toggleStrategist = providers.toggleStrategist;
 const openMarginaliaDialog = providers.openMarginaliaDialog;
 const saveMarginaliaKey = providers.saveMarginaliaKey;
+const updateMarginaliaUi = providers.updateMarginaliaUi;
 
-// ── History ─────────────────────────────────────────────────────
+// ── Dominio: storage-panels (historial y guardados) ──────────
+// Retorna lo que cruza: las dos de `refreshPanels`, `saveDocument`
+// (renderDomain) y las dos que reutiliza el dominio clients.
+const storagePanels = (function () {
+  // ── History ─────────────────────────────────────────────────────
 
-function historyLabel(entry) {
-  const parts = [];
-  // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
-  // "1 resultado." instead of "1 resultados." — the singular key exists in every
-  // locale and the same helper already drives the results header and per-surface
-  // status lines, so the two views of one number cannot disagree.
-  if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
-  if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
-    parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
+  function historyLabel(entry) {
+    const parts = [];
+    // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
+    // "1 resultado." instead of "1 resultados." — the singular key exists in every
+    // locale and the same helper already drives the results header and per-surface
+    // status lines, so the two views of one number cannot disagree.
+    if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
+    if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
+      parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
+    }
+    return parts.join(" · ");
   }
-  return parts.join(" · ");
-}
 
-async function fetchHistory() {
-  try {
-    const payload = await globalThis.api.get(`/history?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.entries)) {
+  async function fetchHistory() {
+    try {
+      const payload = await globalThis.api.get(`/history?limit=${LIST_LIMIT}`);
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.entries)) {
+        historyPanel.hidden = true;
+        return;
+      }
+      historyList.replaceChildren();
+      for (const entry of payload.entries.slice(0, LIST_LIMIT)) {
+        if (!entry || !Number.isSafeInteger(entry.id)) continue;
+        const item = historyTemplate.content.cloneNode(true);
+        item.querySelector(".history-query").textContent = boundedText(entry.raw_query, 300);
+        item.querySelector(".history-meta").textContent = historyLabel(entry);
+        const reuse = item.querySelector(".history-reuse");
+        reuse.textContent = t("historyReuse");
+        reuse.addEventListener("click", () => {
+          queryInput.value = boundedText(entry.raw_query, 2048);
+          queryInput.focus();
+        });
+        const remove = item.querySelector(".history-delete");
+        remove.textContent = t("historyDelete");
+        remove.addEventListener("click", () => deleteHistoryEntry(entry.id));
+        historyList.append(item);
+      }
+      historyEmpty.hidden = historyList.childElementCount > 0;
+      historyEmpty.textContent = t("historyEmpty");
+      historyPanel.hidden = false;
+    } catch (_) {
       historyPanel.hidden = true;
-      return;
     }
-    historyList.replaceChildren();
-    for (const entry of payload.entries.slice(0, LIST_LIMIT)) {
-      if (!entry || !Number.isSafeInteger(entry.id)) continue;
-      const item = historyTemplate.content.cloneNode(true);
-      item.querySelector(".history-query").textContent = boundedText(entry.raw_query, 300);
-      item.querySelector(".history-meta").textContent = historyLabel(entry);
-      const reuse = item.querySelector(".history-reuse");
-      reuse.textContent = t("historyReuse");
-      reuse.addEventListener("click", () => {
-        queryInput.value = boundedText(entry.raw_query, 2048);
-        queryInput.focus();
-      });
-      const remove = item.querySelector(".history-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteHistoryEntry(entry.id));
-      historyList.append(item);
+  }
+
+  async function deleteHistoryEntry(id) {
+    try {
+      await globalThis.api.delete(`/history/${id}`);
+      announce(historyPanelStatus, "historyDeleted", "success");
+      await fetchHistory();
+    } catch (_) {
+      announce(historyPanelStatus, "genericError", "error");
     }
-    historyEmpty.hidden = historyList.childElementCount > 0;
-    historyEmpty.textContent = t("historyEmpty");
-    historyPanel.hidden = false;
-  } catch (_) {
-    historyPanel.hidden = true;
   }
-}
 
-async function deleteHistoryEntry(id) {
-  try {
-    await globalThis.api.delete(`/history/${id}`);
-    announce(historyPanelStatus, "historyDeleted", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
+  async function purgeHistory() {
+    try {
+      await globalThis.api.delete("/history");
+      announce(historyPanelStatus, "historyPurged", "success");
+      await fetchHistory();
+    } catch (_) {
+      announce(historyPanelStatus, "genericError", "error");
+    }
   }
-}
 
-async function purgeHistory() {
-  try {
-    await globalThis.api.delete("/history");
-    announce(historyPanelStatus, "historyPurged", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
-  }
-}
+  // ── Saved documents ─────────────────────────────────────────────
 
-// ── Saved documents ─────────────────────────────────────────────
-
-async function fetchSavedDocuments() {
-  try {
-    const payload = await globalThis.api.get(`/saved?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.documents)) {
+  async function fetchSavedDocuments() {
+    try {
+      const payload = await globalThis.api.get(`/saved?limit=${LIST_LIMIT}`);
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.documents)) {
+        savedPanel.hidden = true;
+        return;
+      }
+      savedList.replaceChildren();
+      for (const saved of payload.documents.slice(0, LIST_LIMIT)) {
+        if (!saved || !Number.isSafeInteger(saved.id)) continue;
+        const url = safeHttpUrl(saved.canonical_url);
+        const item = savedTemplate.content.cloneNode(true);
+        const link = item.querySelector(".saved-title");
+        link.textContent = boundedText(saved.title, 300) || (url ? url.hostname : t("noUrl"));
+        if (url) link.href = url.href;
+        else link.removeAttribute("href");
+        item.querySelector(".saved-meta").textContent = boundedText(saved.snippet, 200);
+        const remove = item.querySelector(".saved-delete");
+        remove.textContent = t("historyDelete");
+        remove.addEventListener("click", () => deleteSavedDocument(saved.id));
+        savedList.append(item);
+      }
+      savedEmpty.hidden = savedList.childElementCount > 0;
+      savedEmpty.textContent = t("savedEmpty");
+      savedPanel.hidden = false;
+    } catch (_) {
       savedPanel.hidden = true;
+    }
+  }
+
+  async function deleteSavedDocument(id) {
+    try {
+      await globalThis.api.delete(`/saved/${id}`);
+      announce(savedPanelStatus, "savedDeleted", "success");
+      await fetchSavedDocuments();
+    } catch (_) {
+      announce(savedPanelStatus, "genericError", "error");
+    }
+  }
+
+  // ── Saved document creation ─────────────────────────────────────
+  // Persists one Deep document as a bounded whitelist of small fields. The
+  // payload deliberately never carries the document's extracted `content` (or any
+  // other bulk field): the UI posts provenance and metadata only, so saved
+  // documents stay small and never duplicate the full extraction.
+  // A save can fail for reasons the operator can act on (storage off on the
+  // server, a token without write scope) or for reasons they cannot. Collapsing
+  // every failure into one generic line — while leaving the button looking ready
+  // for another click — is what made this a High finding: the reason is now
+  // specific, it is shown next to the control that failed, and the document stays
+  // on screen so nothing the operator produced is lost.
+  function saveFailureKey(error) {
+    const code = typeof error?.code === "string" ? error.code : "";
+    if (code === "storage_unavailable" || error?.status === 503) return "savedFailedStorage";
+    if (
+      code === "unauthorized"
+      || code === "scope_denied"
+      || error?.status === 401
+      || error?.status === 403
+    ) {
+      return "savedFailedUnauthorized";
+    }
+    return "savedFailed";
+  }
+
+  // Per-surface status line: `#status` is the global live region and whatever ran
+  // last overwrites it, so a message about one card belongs next to that card. The
+  // key is kept on the node (like `announce`) so a locale switch re-renders it.
+  function setInlineStatus(node, key, state) {
+    if (!node) return;
+    if (key) {
+      node.dataset.i18nKey = key;
+      node.textContent = t(key);
+    } else {
+      node.textContent = "";
+      delete node.dataset.i18nKey;
+    }
+    node.hidden = !key;
+    if (state) node.dataset.state = state;
+    else node.removeAttribute("data-state");
+  }
+
+  async function saveDocument(documentValue, provenance, button) {
+    const inline = button.closest(".document-actions")?.querySelector(".document-save-status") || null;
+    const url = safeHttpUrl(documentValue.canonical_url);
+    if (!url || !validHash(documentValue.content_hash)) {
+      setInlineStatus(inline, "savedFailed", "error");
+      setStatusKey("savedFailed", "error");
       return;
     }
-    savedList.replaceChildren();
-    for (const saved of payload.documents.slice(0, LIST_LIMIT)) {
-      if (!saved || !Number.isSafeInteger(saved.id)) continue;
-      const url = safeHttpUrl(saved.canonical_url);
-      const item = savedTemplate.content.cloneNode(true);
-      const link = item.querySelector(".saved-title");
-      link.textContent = boundedText(saved.title, 300) || (url ? url.hostname : t("noUrl"));
-      if (url) link.href = url.href;
-      else link.removeAttribute("href");
-      item.querySelector(".saved-meta").textContent = boundedText(saved.snippet, 200);
-      const remove = item.querySelector(".saved-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteSavedDocument(saved.id));
-      savedList.append(item);
-    }
-    savedEmpty.hidden = savedList.childElementCount > 0;
-    savedEmpty.textContent = t("savedEmpty");
-    savedPanel.hidden = false;
-  } catch (_) {
-    savedPanel.hidden = true;
-  }
-}
-
-async function deleteSavedDocument(id) {
-  try {
-    await globalThis.api.delete(`/saved/${id}`);
-    announce(savedPanelStatus, "savedDeleted", "success");
-    await fetchSavedDocuments();
-  } catch (_) {
-    announce(savedPanelStatus, "genericError", "error");
-  }
-}
-
-// ── Saved document creation ─────────────────────────────────────
-// Persists one Deep document as a bounded whitelist of small fields. The
-// payload deliberately never carries the document's extracted `content` (or any
-// other bulk field): the UI posts provenance and metadata only, so saved
-// documents stay small and never duplicate the full extraction.
-// A save can fail for reasons the operator can act on (storage off on the
-// server, a token without write scope) or for reasons they cannot. Collapsing
-// every failure into one generic line — while leaving the button looking ready
-// for another click — is what made this a High finding: the reason is now
-// specific, it is shown next to the control that failed, and the document stays
-// on screen so nothing the operator produced is lost.
-function saveFailureKey(error) {
-  const code = typeof error?.code === "string" ? error.code : "";
-  if (code === "storage_unavailable" || error?.status === 503) return "savedFailedStorage";
-  if (
-    code === "unauthorized"
-    || code === "scope_denied"
-    || error?.status === 401
-    || error?.status === 403
-  ) {
-    return "savedFailedUnauthorized";
-  }
-  return "savedFailed";
-}
-
-// Per-surface status line: `#status` is the global live region and whatever ran
-// last overwrites it, so a message about one card belongs next to that card. The
-// key is kept on the node (like `announce`) so a locale switch re-renders it.
-function setInlineStatus(node, key, state) {
-  if (!node) return;
-  if (key) {
-    node.dataset.i18nKey = key;
-    node.textContent = t(key);
-  } else {
-    node.textContent = "";
-    delete node.dataset.i18nKey;
-  }
-  node.hidden = !key;
-  if (state) node.dataset.state = state;
-  else node.removeAttribute("data-state");
-}
-
-async function saveDocument(documentValue, provenance, button) {
-  const inline = button.closest(".document-actions")?.querySelector(".document-save-status") || null;
-  const url = safeHttpUrl(documentValue.canonical_url);
-  if (!url || !validHash(documentValue.content_hash)) {
-    setInlineStatus(inline, "savedFailed", "error");
-    setStatusKey("savedFailed", "error");
-    return;
-  }
-  const payload = JSON.stringify({
-    canonical_url: url.href,
-    final_url: boundedText(documentValue.final_url, 8192),
-    title: boundedText(documentValue.title, 300),
-    status: boundedText(documentValue.status, 32),
-    content_hash: documentValue.content_hash,
-    retrieved_at: boundedText(provenance.retrieved_at, 64),
-  });
-  if (new TextEncoder().encode(payload).length > MAX_SAVED_PAYLOAD_BYTES) {
-    setInlineStatus(inline, "savedFailed", "error");
-    setStatusKey("savedFailed", "error");
-    return;
-  }
-  button.disabled = true;
-  setInlineStatus(inline, "", null);
-  try {
-    await globalThis.api.post("/saved", {
+    const payload = JSON.stringify({
       canonical_url: url.href,
+      final_url: boundedText(documentValue.final_url, 8192),
       title: boundedText(documentValue.title, 300),
-      snippet: boundedText(documentValue.excerpt, 2000),
+      status: boundedText(documentValue.status, 32),
       content_hash: documentValue.content_hash,
-      extractor_version: boundedText(provenance.extractor_used, 128) || "unknown",
-      payload,
-      source_query: boundedText(queryInput.value, 2048),
-      tags: [],
+      retrieved_at: boundedText(provenance.retrieved_at, 64),
     });
-    setStatusKey("savedDone", "success");
-    button.textContent = t("savedActionDone");
-    setInlineStatus(inline, "savedDone", "success");
-    await fetchSavedDocuments();
-  } catch (error) {
-    // The button stays usable and now says what it does: the operator can save
-    // again the moment storage is back, and the reason sits next to the editor
-    // instead of only in the global status line.
-    const key = saveFailureKey(error);
-    button.disabled = false;
-    button.textContent = t("savedAgain");
-    setInlineStatus(inline, key, "error");
-    setStatusKey(key, "error");
+    if (new TextEncoder().encode(payload).length > MAX_SAVED_PAYLOAD_BYTES) {
+      setInlineStatus(inline, "savedFailed", "error");
+      setStatusKey("savedFailed", "error");
+      return;
+    }
+    button.disabled = true;
+    setInlineStatus(inline, "", null);
+    try {
+      await globalThis.api.post("/saved", {
+        canonical_url: url.href,
+        title: boundedText(documentValue.title, 300),
+        snippet: boundedText(documentValue.excerpt, 2000),
+        content_hash: documentValue.content_hash,
+        extractor_version: boundedText(provenance.extractor_used, 128) || "unknown",
+        payload,
+        source_query: boundedText(queryInput.value, 2048),
+        tags: [],
+      });
+      setStatusKey("savedDone", "success");
+      button.textContent = t("savedActionDone");
+      setInlineStatus(inline, "savedDone", "success");
+      await fetchSavedDocuments();
+    } catch (error) {
+      // The button stays usable and now says what it does: the operator can save
+      // again the moment storage is back, and the reason sits next to the editor
+      // instead of only in the global status line.
+      const key = saveFailureKey(error);
+      button.disabled = false;
+      button.textContent = t("savedAgain");
+      setInlineStatus(inline, key, "error");
+      setStatusKey(key, "error");
+    }
   }
-}
+  return { fetchHistory, fetchSavedDocuments, saveDocument, saveFailureKey, setInlineStatus, purgeHistory };
+})();
+
+const fetchHistory = storagePanels.fetchHistory;
+const fetchSavedDocuments = storagePanels.fetchSavedDocuments;
+const saveDocument = storagePanels.saveDocument;
+const saveFailureKey = storagePanels.saveFailureKey;
+const setInlineStatus = storagePanels.setInlineStatus;
+const purgeHistory = storagePanels.purgeHistory;
 
 // ── Server clients (admin) ──────────────────────────────────────
 // Only reachable with an Admin-scoped token; `fetchServerClients` hides the
