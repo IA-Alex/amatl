@@ -233,21 +233,6 @@ function validHash(value) {
   return typeof value === "string" && /^[0-9a-f]{64}$/.test(value);
 }
 
-function setBusy(busy, mode) {
-  searchButton.disabled = busy || !searchAvailable;
-  deepButton.disabled = busy;
-  searchButton.dataset.active = String(busy && mode === "search");
-  deepButton.dataset.active = String(busy && mode === "deep");
-  // `aria-busy` belongs on the region that actually changes (`#results`), not on
-  // the query input: the input is not what is being replaced. The spinner stays
-  // `aria-hidden` and the progress text goes to the `#status` live region.
-  resultsNode.setAttribute("aria-busy", String(busy));
-  loadingNode.hidden = !busy;
-  loadingNode.setAttribute("aria-hidden", String(!busy));
-  cancelButton.hidden = !busy;
-  cancelButton.setAttribute("aria-hidden", String(!busy));
-}
-
 // The status message is composed from the catalog, so it is kept as a render
 // function rather than a finished string: switching the interface language can
 // then re-render the *same* message in the new language instead of leaving the
@@ -286,14 +271,6 @@ function announce(node, key, state) {
 function addOperator(parts, name, value) {
   const clean = value.trim().replace(/[\s"]/g, "");
   if (clean) parts.push(`${name}:${clean}`);
-}
-
-function queryText() {
-  const parts = [queryInput.value.trim()];
-  addOperator(parts, "lang", languageInput.value);
-  addOperator(parts, "region", regionInput.value);
-  addOperator(parts, "filetype", fileTypeInput.value);
-  return parts.join(" ");
 }
 
 // ── Filters disclosure ──────────────────────────────────────────
@@ -656,27 +633,279 @@ const renderDomain = (function () {
 const render = renderDomain.render;
 const deepItems = renderDomain.deepItems;
 const evidenceFragments = renderDomain.evidenceFragments;
-function validatePayload(payload, mode) {
-  if (!payload || payload.schema_version !== "1") return false;
-  if (mode === "deep") {
-    return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
-  }
-  if (mode === "answer") {
-    return (
-      payload.answer
-      && typeof payload.answer.text === "string"
-      && Array.isArray(payload.answer.citations)
-      && payload.search
-      && Array.isArray(payload.search.results)
-    );
-  }
-  return Array.isArray(payload.results);
-}
 
-// A credential failure is only actionable when the field that fixes it is
-// reachable: the token lives inside its own collapsed "Server access" panel,
-// so open that one before moving focus there instead of leaving the operator
-// to hunt for it.
+// ── Dominio: search-deep (con location) ──────────────────────
+// Retorna solo lo que cruza: `run` lo llaman los botones de paginación,
+// `restoreFromLocation` lo llama DOMContentLoaded y `execute` el submit.
+// `focusTokenField` se queda en el núcleo: `reportFailure` la necesita.
+const searchDeep = (function () {
+  function setBusy(busy, mode) {
+    searchButton.disabled = busy || !searchAvailable;
+    deepButton.disabled = busy;
+    searchButton.dataset.active = String(busy && mode === "search");
+    deepButton.dataset.active = String(busy && mode === "deep");
+    // `aria-busy` belongs on the region that actually changes (`#results`), not on
+    // the query input: the input is not what is being replaced. The spinner stays
+    // `aria-hidden` and the progress text goes to the `#status` live region.
+    resultsNode.setAttribute("aria-busy", String(busy));
+    loadingNode.hidden = !busy;
+    loadingNode.setAttribute("aria-hidden", String(!busy));
+    cancelButton.hidden = !busy;
+    cancelButton.setAttribute("aria-hidden", String(!busy));
+  }
+  function queryText() {
+    const parts = [queryInput.value.trim()];
+    addOperator(parts, "lang", languageInput.value);
+    addOperator(parts, "region", regionInput.value);
+    addOperator(parts, "filetype", fileTypeInput.value);
+    return parts.join(" ");
+  }
+  function validatePayload(payload, mode) {
+    if (!payload || payload.schema_version !== "1") return false;
+    if (mode === "deep") {
+      return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
+    }
+    if (mode === "answer") {
+      return (
+        payload.answer
+        && typeof payload.answer.text === "string"
+        && Array.isArray(payload.answer.citations)
+        && payload.search
+        && Array.isArray(payload.search.results)
+      );
+    }
+    return Array.isArray(payload.results);
+  }
+  // A credential failure is only actionable when the field that fixes it is
+  // reachable: the token lives inside its own collapsed "Server access" panel,
+  // so open that one before moving focus there instead of leaving the operator
+  // to hunt for it.
+  async function run(mode, page) {
+    const state = store.get();
+    if (state.controller) state.controller.abort();
+    const controller = new AbortController();
+    const previousPage = state.page;
+    // The committed view is not reset here: `pending` suppresses the subscriber
+    // render, so the previous results stay on screen until a payload is accepted
+    // and a failed, cancelled or raced request leaves the last valid set intact
+    // instead of blanking the page (it used to `replaceChildren()` before the
+    // fetch, destroying work the operator could still use).
+    store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
+    const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
+    if (mode === "search") store.update({ selectedTargets: [] });
+    resultHeading.textContent = mode === "deep"
+      ? t("evidenceHeading")
+      : mode === "answer"
+        ? t("answerHeading")
+        : t("resultsHeading");
+    setBusy(true, mode);
+    setStatusKey(
+      mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
+      "loading",
+    );
+    try {
+      const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
+      const body = { q: queryText() };
+      if (mode === "deep") {
+        if (selectedTargets.length) body.targets = selectedTargets;
+        if (deepMaxFetchesInput.value) body.max_fetches = Number(deepMaxFetchesInput.value);
+      }
+      if (mode === "search") {
+        body.page = store.get().page;
+        body.page_size = PAGE_SIZE;
+      }
+      // Use centralized API client
+      const payload = await globalThis.api.post(endpoint, body, {
+        signal: controller.signal,
+      });
+      // Verify controller hasn't changed
+      if (store.get().controller !== controller) return;
+      if (!validatePayload(payload, mode)) throw new Error("invalid_contract");
+      if (mode === "deep") {
+        const items = deepItems(payload);
+        store.update({ pending: false, mode, page: 0, items });
+        const fragments = items.reduce(
+          (total, item) => total + evidenceFragments(item.evidence).length,
+          0,
+        );
+        if (!items.length) {
+          setStatusKey("noEvidence", "partial");
+        } else if (!fragments || (Array.isArray(payload.degradations) && payload.degradations.length)) {
+          renderStatus(() => countLabel(items.length, "partialEvidence"), "partial");
+        } else {
+          renderStatus(
+            () => `${countLabel(items.length, "evidenceCount")} ${fragments} ${t("evidenceFragments")}`,
+            "success",
+          );
+        }
+      } else if (mode === "answer") {
+        store.update({
+          pending: false,
+          mode,
+          page: 0,
+          items: payload.search.results,
+          answer: payload.answer,
+        });
+        renderStatus(
+          () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
+          "success",
+        );
+      } else {
+        const items = payload.results;
+        const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
+          ? payload.page_size
+          : PAGE_SIZE;
+        const totalResults = typeof payload.total_results === "number"
+          ? payload.total_results
+          : items.length;
+        const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
+        store.update({
+          pending: false,
+          mode,
+          items,
+          totalResults,
+          page: currentPage,
+          totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
+        });
+        if (!items.length) {
+          // An empty set is not a degradation: the amber `partial` tone means
+          // partial or degraded answers, so "no results" gets its own neutral
+          // state and the note under the list carries the next step.
+          setStatusKey("noResults", "empty");
+        } else if (payload.status === "partial_success") {
+          renderStatus(() => countLabel(items.length, "partialResults"), "partial");
+        } else {
+          renderStatus(
+            () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
+            "success",
+          );
+        }
+        syncLocation(currentPage);
+      }
+      // A keyboard operator who submitted from the query field stays there for the
+      // next refinement — `#status` already announces the outcome — so focus only
+      // moves into the results when the operator was somewhere else.
+      if (document.activeElement !== queryInput) resultsNode.focus({ preventScroll: true });
+      refreshPanels();
+    } catch (error) {
+      // Nothing was committed: drop `pending` silently (no subscriber render, so
+      // the DOM and any focus inside it survive), restore the page the operator
+      // was on, and report the reason.
+      store.updateSilent({ pending: false, page: previousPage });
+      reportFailure(error);
+    } finally {
+      if (store.get().controller === controller) {
+        store.update({ controller: null });
+        setBusy(false, mode);
+      }
+    }
+  }
+  function searchLocation(page) {
+    const parts = [`q=${encodeURIComponent(queryInput.value.trim())}`];
+    if (languageInput.value.trim()) {
+      parts.push(`lang=${encodeURIComponent(languageInput.value.trim())}`);
+    }
+    if (regionInput.value.trim()) {
+      parts.push(`region=${encodeURIComponent(regionInput.value.trim())}`);
+    }
+    if (fileTypeInput.value) parts.push(`filetype=${encodeURIComponent(fileTypeInput.value)}`);
+    if (page > 0) parts.push(`page=${page + 1}`);
+    return `${location.pathname}?${parts.join("&")}`;
+  }
+  function syncLocation(page) {
+    try {
+      history.replaceState(null, "", searchLocation(page));
+    } catch (_) {
+      // A blocked History API is not worth interrupting a successful search for.
+    }
+  }
+  function restoreFromLocation() {
+    const pairs = location.search.replace(/^\?/, "").split("&").filter(Boolean);
+    const params = new Map();
+    for (const pair of pairs) {
+      const [key, value = ""] = pair.split("=");
+      // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. `%`).
+      // A hand-edited or truncated shared link must not abort the bootstrap, so a
+      // pair that cannot be decoded is skipped rather than propagated.
+      let decodedKey;
+      let decodedValue;
+      try {
+        decodedKey = decodeURIComponent(key);
+        decodedValue = decodeURIComponent(value.replace(/\+/g, " "));
+      } catch (_) {
+        continue;
+      }
+      params.set(decodedKey, decodedValue);
+    }
+    const query = boundedText((params.get("q") || "").trim(), 2048);
+    if (!query) return;
+    queryInput.value = query;
+    languageInput.value = boundedText(params.get("lang") || "", 16);
+    regionInput.value = boundedText(params.get("region") || "", 32);
+    const fileType = params.get("filetype") || "";
+    if (["pdf", "html", "txt"].includes(fileType)) fileTypeInput.value = fileType;
+    const requested = Number.parseInt(params.get("page") || "1", 10);
+    const page = Number.isSafeInteger(requested) && requested > 1 ? requested - 1 : 0;
+    updateFiltersSummary();
+    run("search", page);
+  }
+  // The form is `novalidate`: validation runs here so the message is the app's own
+  // copy in the operator's locale (native bubbles speak the browser's language
+  // and sit outside the catalog), the offending field is marked, and the collapsed
+  // filters panel opens when the fix lives inside it.
+  function queryValidationError() {
+    if (!queryInput.value.trim()) return "errorQueryRequired";
+    if (tokenInput.value && tokenInput.value.length < 32) return "errorTokenTooShort";
+    return null;
+  }
+  function execute(event) {
+    event.preventDefault();
+    if (requestedModeIsUnavailable(event.submitter)) {
+      // The reason is already visible next to the button; repeating it in the
+      // status region keeps the click from being a dead end.
+      renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
+      return;
+    }
+    const invalid = queryValidationError();
+    if (invalid) {
+      reportValidationError(invalid);
+      return;
+    }
+    const requested = event.submitter?.dataset.mode;
+    const mode = requested === "deep" || requested === "answer" ? requested : "search";
+    run(mode, 0);
+  }
+  function requestedModeIsUnavailable(submitter) {
+    return submitter === answerButton && answerButton.classList.contains("is-unavailable");
+  }
+  form.addEventListener("submit", execute);
+  cancelButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.controller) {
+      state.controller.abort();
+      setStatusKey("cancelled", "partial");
+    }
+  });
+  window.addEventListener("pagehide", () => {
+    const state = store.get();
+    if (state.controller) state.controller.abort();
+    tokenInput.value = "";
+  });
+  previousButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.page > 0) run("search", state.page - 1);
+  });
+  nextButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.page + 1 < state.totalPages) run("search", state.page + 1);
+  });
+  return { run, execute, restoreFromLocation };
+})();
+
+const run = searchDeep.run;
+const execute = searchDeep.execute;
+const restoreFromLocation = searchDeep.restoreFromLocation;
+
 function focusTokenField() {
   accessDetails.open = true;
   tokenInput.focus();
@@ -700,203 +929,11 @@ function reportFailure(error) {
   }
 }
 
-async function run(mode, page) {
-  const state = store.get();
-  if (state.controller) state.controller.abort();
-  const controller = new AbortController();
-  const previousPage = state.page;
-
-  // The committed view is not reset here: `pending` suppresses the subscriber
-  // render, so the previous results stay on screen until a payload is accepted
-  // and a failed, cancelled or raced request leaves the last valid set intact
-  // instead of blanking the page (it used to `replaceChildren()` before the
-  // fetch, destroying work the operator could still use).
-  store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
-
-  const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
-  if (mode === "search") store.update({ selectedTargets: [] });
-
-  resultHeading.textContent = mode === "deep"
-    ? t("evidenceHeading")
-    : mode === "answer"
-      ? t("answerHeading")
-      : t("resultsHeading");
-  setBusy(true, mode);
-  setStatusKey(
-    mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
-    "loading",
-  );
-  try {
-    const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
-    const body = { q: queryText() };
-    if (mode === "deep") {
-      if (selectedTargets.length) body.targets = selectedTargets;
-      if (deepMaxFetchesInput.value) body.max_fetches = Number(deepMaxFetchesInput.value);
-    }
-    if (mode === "search") {
-      body.page = store.get().page;
-      body.page_size = PAGE_SIZE;
-    }
-    
-    // Use centralized API client
-    const payload = await globalThis.api.post(endpoint, body, {
-      signal: controller.signal,
-    });
-    
-    // Verify controller hasn't changed
-    if (store.get().controller !== controller) return;
-    if (!validatePayload(payload, mode)) throw new Error("invalid_contract");
-    
-    if (mode === "deep") {
-      const items = deepItems(payload);
-      store.update({ pending: false, mode, page: 0, items });
-      const fragments = items.reduce(
-        (total, item) => total + evidenceFragments(item.evidence).length,
-        0,
-      );
-      if (!items.length) {
-        setStatusKey("noEvidence", "partial");
-      } else if (!fragments || (Array.isArray(payload.degradations) && payload.degradations.length)) {
-        renderStatus(() => countLabel(items.length, "partialEvidence"), "partial");
-      } else {
-        renderStatus(
-          () => `${countLabel(items.length, "evidenceCount")} ${fragments} ${t("evidenceFragments")}`,
-          "success",
-        );
-      }
-    } else if (mode === "answer") {
-      store.update({
-        pending: false,
-        mode,
-        page: 0,
-        items: payload.search.results,
-        answer: payload.answer,
-      });
-      renderStatus(
-        () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
-        "success",
-      );
-    } else {
-      const items = payload.results;
-      const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
-        ? payload.page_size
-        : PAGE_SIZE;
-      const totalResults = typeof payload.total_results === "number"
-        ? payload.total_results
-        : items.length;
-      
-      const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
-
-      store.update({
-        pending: false,
-        mode,
-        items,
-        totalResults,
-        page: currentPage,
-        totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
-      });
-      
-      if (!items.length) {
-        // An empty set is not a degradation: the amber `partial` tone means
-        // partial or degraded answers, so "no results" gets its own neutral
-        // state and the note under the list carries the next step.
-        setStatusKey("noResults", "empty");
-      } else if (payload.status === "partial_success") {
-        renderStatus(() => countLabel(items.length, "partialResults"), "partial");
-      } else {
-        renderStatus(
-          () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
-          "success",
-        );
-      }
-      syncLocation(currentPage);
-    }
-    // A keyboard operator who submitted from the query field stays there for the
-    // next refinement — `#status` already announces the outcome — so focus only
-    // moves into the results when the operator was somewhere else.
-    if (document.activeElement !== queryInput) resultsNode.focus({ preventScroll: true });
-    refreshPanels();
-  } catch (error) {
-    // Nothing was committed: drop `pending` silently (no subscriber render, so
-    // the DOM and any focus inside it survive), restore the page the operator
-    // was on, and report the reason.
-    store.updateSilent({ pending: false, page: previousPage });
-    reportFailure(error);
-  } finally {
-    if (store.get().controller === controller) {
-      store.update({ controller: null });
-      setBusy(false, mode);
-    }
-  }
-}
-
 // ── Location state ──────────────────────────────────────────────
 // The last committed search lives in the URL, so a refresh or a shared link
 // reproduces it instead of losing everything. `replaceState` (not `pushState`)
 // keeps one history entry per search: Back still leaves the page, which is what
 // a single-view app should do.
-function searchLocation(page) {
-  const parts = [`q=${encodeURIComponent(queryInput.value.trim())}`];
-  if (languageInput.value.trim()) {
-    parts.push(`lang=${encodeURIComponent(languageInput.value.trim())}`);
-  }
-  if (regionInput.value.trim()) {
-    parts.push(`region=${encodeURIComponent(regionInput.value.trim())}`);
-  }
-  if (fileTypeInput.value) parts.push(`filetype=${encodeURIComponent(fileTypeInput.value)}`);
-  if (page > 0) parts.push(`page=${page + 1}`);
-  return `${location.pathname}?${parts.join("&")}`;
-}
-
-function syncLocation(page) {
-  try {
-    history.replaceState(null, "", searchLocation(page));
-  } catch (_) {
-    // A blocked History API is not worth interrupting a successful search for.
-  }
-}
-
-function restoreFromLocation() {
-  const pairs = location.search.replace(/^\?/, "").split("&").filter(Boolean);
-  const params = new Map();
-  for (const pair of pairs) {
-    const [key, value = ""] = pair.split("=");
-    // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. `%`).
-    // A hand-edited or truncated shared link must not abort the bootstrap, so a
-    // pair that cannot be decoded is skipped rather than propagated.
-    let decodedKey;
-    let decodedValue;
-    try {
-      decodedKey = decodeURIComponent(key);
-      decodedValue = decodeURIComponent(value.replace(/\+/g, " "));
-    } catch (_) {
-      continue;
-    }
-    params.set(decodedKey, decodedValue);
-  }
-  const query = boundedText((params.get("q") || "").trim(), 2048);
-  if (!query) return;
-  queryInput.value = query;
-  languageInput.value = boundedText(params.get("lang") || "", 16);
-  regionInput.value = boundedText(params.get("region") || "", 32);
-  const fileType = params.get("filetype") || "";
-  if (["pdf", "html", "txt"].includes(fileType)) fileTypeInput.value = fileType;
-  const requested = Number.parseInt(params.get("page") || "1", 10);
-  const page = Number.isSafeInteger(requested) && requested > 1 ? requested - 1 : 0;
-  updateFiltersSummary();
-  run("search", page);
-}
-
-// The form is `novalidate`: validation runs here so the message is the app's own
-// copy in the operator's locale (native bubbles speak the browser's language
-// and sit outside the catalog), the offending field is marked, and the collapsed
-// filters panel opens when the fix lives inside it.
-function queryValidationError() {
-  if (!queryInput.value.trim()) return "errorQueryRequired";
-  if (tokenInput.value && tokenInput.value.length < 32) return "errorTokenTooShort";
-  return null;
-}
-
 // ── Dominio: net (clasificación de errores de validación) ────────
 // Encapsula el mapa de códigos y las dos rutinas de validación que lo usan.
 // Retorna las tres porque el arranque registra sus listeners y `reportFailure`
@@ -949,50 +986,6 @@ const clearValidationError = net.clearValidationError;
 
 // Los listeners viajan al bloque de arranque (regla D3.3); aquí solo se
 // declaran.
-
-function execute(event) {
-  event.preventDefault();
-  if (requestedModeIsUnavailable(event.submitter)) {
-    // The reason is already visible next to the button; repeating it in the
-    // status region keeps the click from being a dead end.
-    renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
-    return;
-  }
-  const invalid = queryValidationError();
-  if (invalid) {
-    reportValidationError(invalid);
-    return;
-  }
-  const requested = event.submitter?.dataset.mode;
-  const mode = requested === "deep" || requested === "answer" ? requested : "search";
-  run(mode, 0);
-}
-
-function requestedModeIsUnavailable(submitter) {
-  return submitter === answerButton && answerButton.classList.contains("is-unavailable");
-}
-
-form.addEventListener("submit", execute);
-cancelButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.controller) {
-    state.controller.abort();
-    setStatusKey("cancelled", "partial");
-  }
-});
-window.addEventListener("pagehide", () => {
-  const state = store.get();
-  if (state.controller) state.controller.abort();
-  tokenInput.value = "";
-});
-previousButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.page > 0) run("search", state.page - 1);
-});
-nextButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.page + 1 < state.totalPages) run("search", state.page + 1);
-});
 
 // ── Source availability ─────────────────────────────────────────
 const providerStatus = document.querySelector(".provider-status");
