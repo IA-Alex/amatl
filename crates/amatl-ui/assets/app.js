@@ -1036,480 +1036,476 @@ const clearValidationError = net.clearValidationError;
 // Los listeners viajan al bloque de arranque (regla D3.3); aquí solo se
 // declaran.
 
-// ── Source availability ─────────────────────────────────────────
+// ── Dominio: providers ───────────────────────────────────────
+// Estado de fuentes, del servicio y la credencial de Marginalia. Retorna
+// lo que cruza: las dos que llama `refreshPanels`, y las cuatro que
+// llaman sus listeners, que viven en el bloque de arranque (regla D3).
+const providers = (function () {
+  // ── Source availability ─────────────────────────────────────────
 
-const PROVIDER_REASON_KEYS = {
-  provider_not_approved: "providerReasonNotApproved",
-  provider_disabled: "providerReasonDisabled",
-  provider_credential_missing: "providerReasonCredentialMissing",
-  credential_missing: "providerReasonCredentialMissing",
-  provider_circuit_open: "providerReasonCircuitOpen",
-  egress_denied: "providerReasonEgressDenied",
-};
+  const PROVIDER_REASON_KEYS = {
+    provider_not_approved: "providerReasonNotApproved",
+    provider_disabled: "providerReasonDisabled",
+    provider_credential_missing: "providerReasonCredentialMissing",
+    credential_missing: "providerReasonCredentialMissing",
+    provider_circuit_open: "providerReasonCircuitOpen",
+    egress_denied: "providerReasonEgressDenied",
+  };
 
-function providerReason(code) {
-  const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
-  return t(key ?? "providerReasonUnknown");
-}
-
-async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
-  checkbox.disabled = true;
-  if (statusNode) statusNode.hidden = true;
-  try {
-    // Centralized API client used here
-    await globalThis.api.post(endpoint, { enabled: desired });
-    await refresh();
-  } catch (error) {
-    checkbox.checked = !desired;
-    checkbox.disabled = false;
-    if (statusNode) statusNode.hidden = false;
-    statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
-      ? t(ERROR_MESSAGE_KEYS[error.code])
-      : error.status === 401 || error.message.includes("401")
-        ? t("unauthorized")
-        : t(failKey);
+  function providerReason(code) {
+    const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
+    return t(key ?? "providerReasonUnknown");
   }
-}
 
-async function toggleProvider(name, desired, checkbox, reasonNode) {
-  await toggleEnabled({
-    endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
-    desired,
-    checkbox,
-    statusNode: reasonNode,
-    refresh: fetchProviderStatus,
-    failKey: "providerToggleFailed",
-  });
-}
+  async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
+    checkbox.disabled = true;
+    if (statusNode) statusNode.hidden = true;
+    try {
+      // Centralized API client used here
+      await globalThis.api.post(endpoint, { enabled: desired });
+      await refresh();
+    } catch (error) {
+      checkbox.checked = !desired;
+      checkbox.disabled = false;
+      if (statusNode) statusNode.hidden = false;
+      statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
+        ? t(ERROR_MESSAGE_KEYS[error.code])
+        : error.status === 401 || error.message.includes("401")
+          ? t("unauthorized")
+          : t(failKey);
+    }
+  }
 
-async function fetchProviderStatus() {
-  try {
-    // Use centralized client
-    const payload = await globalThis.api.get("/providers");
-    if (!payload || !Array.isArray(payload.providers)) return;
-    providerList.replaceChildren();
-    let unavailable = 0;
-    const enabledList = [];
-    for (const provider of payload.providers) {
-      const item = document.createElement("li");
-      item.className = "provider-item";
-      const row = document.createElement("div");
-      row.className = "provider-item-row";
-      const name = document.createElement("span");
-      name.className = "provider-name";
-      name.textContent = provider.name;
-      const badge = document.createElement("span");
-      // `provider.status` is a server string; map it through an allowlist so a
-      // value outside the known vocabulary cannot inject arbitrary class tokens
-      // (the CSS only styles `--available` / `--unavailable`).
-      const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
-      badge.className = `provider-badge provider-badge--${statusClass}`;
-      badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
-      if (provider.code) badge.title = provider.code;
-      const toggleLabel = document.createElement("label");
-      toggleLabel.className = "provider-toggle";
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = Boolean(provider.enabled);
-      checkbox.disabled = provider.status !== "available";
-      checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
-      const toggleText = document.createElement("span");
-      toggleText.textContent = t("providerToggleLabel");
-      toggleLabel.append(checkbox, toggleText);
-      row.append(name, badge, toggleLabel);
-      item.append(row);
-      const reason = document.createElement("span");
-      reason.className = "provider-reason";
-      if (provider.status !== "available") {
-        reason.textContent = providerReason(provider.code);
-        unavailable += 1;
-      } else {
-        reason.hidden = true;
+  async function toggleProvider(name, desired, checkbox, reasonNode) {
+    await toggleEnabled({
+      endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
+      desired,
+      checkbox,
+      statusNode: reasonNode,
+      refresh: fetchProviderStatus,
+      failKey: "providerToggleFailed",
+    });
+  }
+
+  async function fetchProviderStatus() {
+    try {
+      // Use centralized client
+      const payload = await globalThis.api.get("/providers");
+      if (!payload || !Array.isArray(payload.providers)) return;
+      providerList.replaceChildren();
+      let unavailable = 0;
+      const enabledList = [];
+      for (const provider of payload.providers) {
+        const item = document.createElement("li");
+        item.className = "provider-item";
+        const row = document.createElement("div");
+        row.className = "provider-item-row";
+        const name = document.createElement("span");
+        name.className = "provider-name";
+        name.textContent = provider.name;
+        const badge = document.createElement("span");
+        // `provider.status` is a server string; map it through an allowlist so a
+        // value outside the known vocabulary cannot inject arbitrary class tokens
+        // (the CSS only styles `--available` / `--unavailable`).
+        const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
+        badge.className = `provider-badge provider-badge--${statusClass}`;
+        badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
+        if (provider.code) badge.title = provider.code;
+        const toggleLabel = document.createElement("label");
+        toggleLabel.className = "provider-toggle";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = Boolean(provider.enabled);
+        checkbox.disabled = provider.status !== "available";
+        checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
+        const toggleText = document.createElement("span");
+        toggleText.textContent = t("providerToggleLabel");
+        toggleLabel.append(checkbox, toggleText);
+        row.append(name, badge, toggleLabel);
+        item.append(row);
+        const reason = document.createElement("span");
+        reason.className = "provider-reason";
+        if (provider.status !== "available") {
+          reason.textContent = providerReason(provider.code);
+          unavailable += 1;
+        } else {
+          reason.hidden = true;
+        }
+        item.append(reason);
+        checkbox.addEventListener("change", () =>
+          toggleProvider(provider.name, checkbox.checked, checkbox, reason),
+        );
+        providerList.append(item);
+        if (provider.enabled) enabledList.push(provider.name);
       }
-      item.append(reason);
-      checkbox.addEventListener("change", () =>
-        toggleProvider(provider.name, checkbox.checked, checkbox, reason),
-      );
-      providerList.append(item);
-      if (provider.enabled) enabledList.push(provider.name);
+      providerStatus.hidden = false;
+      // The credential row follows `providers.enabled`: Marginalia is the only
+      // shipped source and always takes a key, so an enabled Marginalia reveals
+      // its key controls.
+      syncCredentialActions(enabledList);
+      if (unavailable === 0) {
+        providerStatusText.textContent = t("allAvailable");
+        providerStatusText.dataset.state = "success";
+      } else if (unavailable < payload.providers.length) {
+        providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
+        providerStatusText.dataset.state = "partial";
+      } else {
+        providerStatusText.textContent = t("noneAvailable");
+        providerStatusText.dataset.state = "error";
+      }
+    } catch (_) {
+      // Without provider state (e.g. no token yet) the credential row must not
+      // claim any source is ready to take a key: hide it until we have an
+      // authoritative answer from `/providers`.
+      syncCredentialActions([]);
     }
-    providerStatus.hidden = false;
-    // The credential row follows `providers.enabled`: Marginalia is the only
-    // shipped source and always takes a key, so an enabled Marginalia reveals
-    // its key controls.
-    syncCredentialActions(enabledList);
-    if (unavailable === 0) {
-      providerStatusText.textContent = t("allAvailable");
-      providerStatusText.dataset.state = "success";
-    } else if (unavailable < payload.providers.length) {
-      providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
-      providerStatusText.dataset.state = "partial";
-    } else {
-      providerStatusText.textContent = t("noneAvailable");
-      providerStatusText.dataset.state = "error";
-    }
-  } catch (_) {
-    // Without provider state (e.g. no token yet) the credential row must not
-    // claim any source is ready to take a key: hide it until we have an
-    // authoritative answer from `/providers`.
-    syncCredentialActions([]);
   }
-}
 
-// ── Service state ───────────────────────────────────────────────
+  // ── Service state ───────────────────────────────────────────────
 
-function indicator(label, value, indicatorState) {
-  const item = document.createElement("li");
-  item.className = "indicator";
-  const name = document.createElement("span");
-  name.className = "indicator-label";
-  name.textContent = label;
-  const reading = document.createElement("span");
-  reading.className = "indicator-value";
-  reading.dataset.state = indicatorState;
-  reading.textContent = value;
-  item.append(name, reading);
-  return item;
-}
+  function indicator(label, value, indicatorState) {
+    const item = document.createElement("li");
+    item.className = "indicator";
+    const name = document.createElement("span");
+    name.className = "indicator-label";
+    name.textContent = label;
+    const reading = document.createElement("span");
+    reading.className = "indicator-value";
+    reading.dataset.state = indicatorState;
+    reading.textContent = value;
+    item.append(name, reading);
+    return item;
+  }
 
-function configRow(label, value) {
-  const wrapper = document.createElement("div");
-  const dt = document.createElement("dt");
-  dt.textContent = label;
-  const dd = document.createElement("dd");
-  dd.textContent = value;
-  wrapper.append(dt, dd);
-  return wrapper;
-}
+  function configRow(label, value) {
+    const wrapper = document.createElement("div");
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    wrapper.append(dt, dd);
+    return wrapper;
+  }
 
-function percentage(value) {
-  return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
-}
+  function percentage(value) {
+    return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
+  }
 
-async function fetchServiceState() {
-  try {
-    const payload = await globalThis.api.get("/status");
-    if (!payload || payload.schema_version !== "1") {
+  async function fetchServiceState() {
+    try {
+      const payload = await globalThis.api.get("/status");
+      if (!payload || payload.schema_version !== "1") {
+        servicePanel.hidden = true;
+        return null;
+      }
+      const sources = Array.isArray(payload.sources) ? payload.sources : [];
+      const availableSources = sources.filter((source) => source.status === "available").length;
+      // Mock mode: `/status` reports the synthetic sources search actually uses
+      // (`mock-a`/`mock-b`), so the environment can be labelled instead of letting
+      // an evaluator mistake fixtures for real data. A deployment that names its
+      // own providers `mock-*` would be mislabelled; that is the price of the
+      // payload carrying no dedicated flag.
+      const mockOnly = sources.length > 0
+        && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
+      serviceMode.hidden = !mockOnly;
+      serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
+      if (mockOnly) serviceMode.dataset.state = "warning";
+      searchAvailable = availableSources > 0;
+      searchButton.disabled = !searchAvailable;
+      searchButton.setAttribute("aria-disabled", String(!searchAvailable));
+      searchButton.title = searchAvailable ? "" : t("searchUnavailable");
+      if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
+      const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
+      const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
+      serviceIndicators.replaceChildren();
+      serviceIndicators.append(
+        indicator(
+          t("sourcesLabel"),
+          `${availableSources}/${sources.length}`,
+          availableSources === sources.length && sources.length ? "success" : "partial",
+        ),
+      );
+      let storageLabel = t("storageOff");
+      let storageState = "partial";
+      if (storage.enabled && storage.available) {
+        storageLabel = t("storageOn");
+        storageState = "success";
+      } else if (storage.enabled) {
+        storageLabel = t("storageBroken");
+        storageState = "error";
+      }
+      serviceIndicators.append(indicator(t("storageLabel"), storageLabel, storageState));
+      serviceIndicators.append(
+        indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
+      );
+      const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
+      let answerLabel = t("storageOff");
+      let answerState = "partial";
+      if (answerStatus.available) {
+        answerLabel = t("storageOn");
+        answerState = "success";
+      } else if (answerStatus.enabled) {
+        answerLabel = t("storageBroken");
+        answerState = "error";
+      }
+      serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
+      // Always visible, never truly `disabled`: a disabled button gives no
+      // hover/touch feedback and no reason why. This one stays clickable —
+      // execute() intercepts the click and explains instead of submitting.
+      answerButton.classList.toggle("is-unavailable", !answerStatus.available);
+      answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
+      // Lives right by the search buttons, not just in the status panel below the
+      // fold: that panel is easy to miss, and this is the one place an operator
+      // looks when the button they expect is not there. The reason is shown
+      // *before* the click and tied to the control with `aria-describedby`, which
+      // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
+      // version only explained itself after a failed click.
+      if (answerStatus.available) {
+        answerHint.hidden = true;
+        answerButton.removeAttribute("aria-describedby");
+        answerButton.removeAttribute("title");
+      } else {
+        answerHint.textContent = answerStatus.enabled
+          ? t("answerHintMissingCredential")
+          : t("answerHintUnconfigured");
+        answerHint.hidden = false;
+        answerButton.setAttribute("aria-describedby", "answer-hint");
+        answerButton.setAttribute("title", answerHint.textContent);
+      }
+      if (answerStatus.configured) {
+        answerConfigBody.replaceChildren();
+        answerConfigBody.append(
+          configRow(t("answerConfigStateLabel"), answerLabel),
+          configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
+          configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
+        );
+        answerConfig.hidden = false;
+        answerEnabledToggle.checked = Boolean(answerStatus.enabled);
+        answerEnabledToggle.disabled = answerStatus.available === false;
+      } else {
+        answerConfig.hidden = true;
+      }
+      const strategistStatus =
+        payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
+      if (strategistStatus.configured && strategistStatus.available !== false) {
+        strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
+        strategistEnabledToggle.disabled = false;
+        if (modelOptions) modelOptions.hidden = false;
+      } else {
+        // No endpoint/model configured: the toggle has nothing to enable, so keep
+        // it off and disabled. The reason goes in the help line below it, not in
+        // the label — a control keeps a short label and states carry the sentence
+        // (`strategistToggleLabel` is applied declaratively and is no longer
+        // overwritten with a whole unavailability sentence).
+        strategistEnabledToggle.checked = false;
+        strategistEnabledToggle.disabled = true;
+        // Nothing to enable means nothing to show: hide the whole row so the
+        // search box is not preceded by a dead control. It reappears as soon as
+        // the server reports the strategist configured and usable.
+        if (modelOptions) modelOptions.hidden = true;
+      }
+      // Configured and switched on, but no usable credential: the toggle flips a
+      // real flag, yet the model will not actually run. Say so instead of leaving
+      // an operator to assume search is being refined — the same fail-loudly
+      // pattern `answerHint` uses for the AI summary button.
+      const strategistUnavailable =
+        strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
+      if (strategistUnavailable) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistHintMissingCredential");
+      } else if (strategistStatus.available === false) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistUnavailable");
+      } else if (!strategistStatus.configured) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistUnconfigured");
+      } else {
+        strategistToggleStatus.hidden = true;
+        strategistToggleStatus.textContent = "";
+      }
+      strategistEnabledToggle.title = strategistStatus.available === false
+        ? t("strategistUnavailable")
+        : "";
+      const degraded = payload.status !== "ok";
+      // "Service operating normally" beside "Local storage Disabled" read as a
+      // contradiction and made the 503 on save look like a bug: when persistence
+      // is off, say what that costs instead of claiming everything is fine.
+      const storageOff = !storage.enabled;
+      serviceSummary.textContent = storageOff
+        ? t("serviceOkStorageOff")
+        : degraded
+          ? t("serviceDegraded")
+          : t("serviceOk");
+      serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
+      servicePanel.hidden = false;
+      syncMarginaliaFromStatus(payload);
+      return payload;
+    } catch (_) {
+      searchAvailable = false;
+      searchButton.disabled = true;
+      searchButton.setAttribute("aria-disabled", "true");
+      searchButton.title = t("searchUnavailable");
       servicePanel.hidden = true;
-      return null;
-    }
-    const sources = Array.isArray(payload.sources) ? payload.sources : [];
-    const availableSources = sources.filter((source) => source.status === "available").length;
-    // Mock mode: `/status` reports the synthetic sources search actually uses
-    // (`mock-a`/`mock-b`), so the environment can be labelled instead of letting
-    // an evaluator mistake fixtures for real data. A deployment that names its
-    // own providers `mock-*` would be mislabelled; that is the price of the
-    // payload carrying no dedicated flag.
-    const mockOnly = sources.length > 0
-      && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
-    serviceMode.hidden = !mockOnly;
-    serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
-    if (mockOnly) serviceMode.dataset.state = "warning";
-    searchAvailable = availableSources > 0;
-    searchButton.disabled = !searchAvailable;
-    searchButton.setAttribute("aria-disabled", String(!searchAvailable));
-    searchButton.title = searchAvailable ? "" : t("searchUnavailable");
-    if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
-    const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
-    const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
-    serviceIndicators.replaceChildren();
-    serviceIndicators.append(
-      indicator(
-        t("sourcesLabel"),
-        `${availableSources}/${sources.length}`,
-        availableSources === sources.length && sources.length ? "success" : "partial",
-      ),
-    );
-    let storageLabel = t("storageOff");
-    let storageState = "partial";
-    if (storage.enabled && storage.available) {
-      storageLabel = t("storageOn");
-      storageState = "success";
-    } else if (storage.enabled) {
-      storageLabel = t("storageBroken");
-      storageState = "error";
-    }
-    serviceIndicators.append(indicator(t("storageLabel"), storageLabel, storageState));
-    serviceIndicators.append(
-      indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
-    );
-    const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
-    let answerLabel = t("storageOff");
-    let answerState = "partial";
-    if (answerStatus.available) {
-      answerLabel = t("storageOn");
-      answerState = "success";
-    } else if (answerStatus.enabled) {
-      answerLabel = t("storageBroken");
-      answerState = "error";
-    }
-    serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
-    // Always visible, never truly `disabled`: a disabled button gives no
-    // hover/touch feedback and no reason why. This one stays clickable —
-    // execute() intercepts the click and explains instead of submitting.
-    answerButton.classList.toggle("is-unavailable", !answerStatus.available);
-    answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
-    // Lives right by the search buttons, not just in the status panel below the
-    // fold: that panel is easy to miss, and this is the one place an operator
-    // looks when the button they expect is not there. The reason is shown
-    // *before* the click and tied to the control with `aria-describedby`, which
-    // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
-    // version only explained itself after a failed click.
-    if (answerStatus.available) {
-      answerHint.hidden = true;
-      answerButton.removeAttribute("aria-describedby");
-      answerButton.removeAttribute("title");
-    } else {
-      answerHint.textContent = answerStatus.enabled
-        ? t("answerHintMissingCredential")
-        : t("answerHintUnconfigured");
+      serviceMode.hidden = true;
+      answerEnabledToggle.checked = false;
+      answerEnabledToggle.disabled = true;
+      // The AI summary button stays visibly unavailable with its reason attached,
+      // even when the service state itself could not be read.
+      answerHint.textContent = t("answerHintUnavailable");
       answerHint.hidden = false;
       answerButton.setAttribute("aria-describedby", "answer-hint");
-      answerButton.setAttribute("title", answerHint.textContent);
-    }
-    if (answerStatus.configured) {
-      answerConfigBody.replaceChildren();
-      answerConfigBody.append(
-        configRow(t("answerConfigStateLabel"), answerLabel),
-        configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
-        configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
-      );
-      answerConfig.hidden = false;
-      answerEnabledToggle.checked = Boolean(answerStatus.enabled);
-      answerEnabledToggle.disabled = answerStatus.available === false;
-    } else {
-      answerConfig.hidden = true;
-    }
-    const strategistStatus =
-      payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
-    if (strategistStatus.configured && strategistStatus.available !== false) {
-      strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
-      strategistEnabledToggle.disabled = false;
-      if (modelOptions) modelOptions.hidden = false;
-    } else {
-      // No endpoint/model configured: the toggle has nothing to enable, so keep
-      // it off and disabled. The reason goes in the help line below it, not in
-      // the label — a control keeps a short label and states carry the sentence
-      // (`strategistToggleLabel` is applied declaratively and is no longer
-      // overwritten with a whole unavailability sentence).
+      // No usable service state (e.g. the admin token is not loaded yet): the
+      // model toggle must stay off, but it must not be silently greyed out with
+      // no reason — explain the missing authentication so the operator knows the
+      // toggle is gated on the admin token, not broken.
       strategistEnabledToggle.checked = false;
       strategistEnabledToggle.disabled = true;
-      // Nothing to enable means nothing to show: hide the whole row so the
-      // search box is not preceded by a dead control. It reappears as soon as
-      // the server reports the strategist configured and usable.
+      strategistToggleStatus.hidden = false;
+      strategistToggleStatus.textContent = t("unauthorized");
+      // Without a readable service state the row has nothing to offer either;
+      // hide it so the search box is not preceded by a dead control.
       if (modelOptions) modelOptions.hidden = true;
+      return null;
     }
-    // Configured and switched on, but no usable credential: the toggle flips a
-    // real flag, yet the model will not actually run. Say so instead of leaving
-    // an operator to assume search is being refined — the same fail-loudly
-    // pattern `answerHint` uses for the AI summary button.
-    const strategistUnavailable =
-      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
-    if (strategistUnavailable) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistHintMissingCredential");
-    } else if (strategistStatus.available === false) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnavailable");
-    } else if (!strategistStatus.configured) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnconfigured");
+  }
+
+  async function toggleAnswer() {
+    await toggleEnabled({
+      endpoint: "/answer/enabled",
+      desired: answerEnabledToggle.checked,
+      checkbox: answerEnabledToggle,
+      statusNode: answerToggleStatus,
+      refresh: fetchServiceState,
+      failKey: "answerToggleFailed",
+    });
+  }
+
+
+  // ── Search with model (strategist) toggle ───────────────────────
+  // Controls whether the LLM participates in search. When off (the default)
+  // search/deep keep running fully deterministic; when on, the strategist
+  // proposes a refined query that AMATL runs to complement the first results.
+  async function toggleStrategist() {
+    await toggleEnabled({
+      endpoint: "/strategist/enabled",
+      desired: strategistEnabledToggle.checked,
+      checkbox: strategistEnabledToggle,
+      statusNode: strategistToggleStatus,
+      refresh: fetchServiceState,
+      failKey: "strategistToggleFailed",
+    });
+  }
+
+
+  // ── Marginalia API key (option A) ───────────────────────────────
+  // Operator credential management: a key is inserted into the process's RAM
+  // (never disk, config, or logs) after a live canary validates it, or liquidated
+  // on demand. The row sits in its own secondary line so the search axis
+  // (write → search → analyze) stays visually dominant.
+
+  // Show the Marginalia credential controls only while Marginalia is one of the
+  // selected sources. The visibility follows `providers.enabled` — the same
+  // single source of truth the source panel drives — so the key
+  // area can never drift from the active selection. Marginalia is the only
+  // credential-gated source, so it is the only one with a key row.
+  function syncCredentialActions(enabledList) {
+    const list = Array.isArray(enabledList) ? enabledList : [];
+    const marginaliaOn = list.includes("marginalia");
+    if (marginaliaCredentialGroup) marginaliaCredentialGroup.hidden = !marginaliaOn;
+    if (credentialActions) credentialActions.hidden = !marginaliaOn;
+  }
+
+  function marginaliaCredentialSource(sources) {
+    const entry = (Array.isArray(sources) ? sources : []).find(
+      (source) => source && source.name === "marginalia",
+    );
+    return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
+  }
+
+  function updateMarginaliaUi(source) {
+    // Only an in-memory key can be liquidated from here: a key read from the
+    // environment variable is out of this surface's reach, so "liquidate" stays
+    // disabled and the status says where the key actually comes from.
+    marginaliaClearButton.disabled = source !== "ephemeral";
+    marginaliaStatus.hidden = false;
+    if (source === "ephemeral") {
+      marginaliaStatus.dataset.state = "success";
+      marginaliaStatus.textContent = t("marginaliaStatusPresent");
+    } else if (source === "environment") {
+      marginaliaStatus.dataset.state = "partial";
+      marginaliaStatus.textContent = t("marginaliaStatusEnvironment");
     } else {
-      strategistToggleStatus.hidden = true;
-      strategistToggleStatus.textContent = "";
+      marginaliaStatus.dataset.state = "partial";
+      marginaliaStatus.textContent = t("marginaliaStatusAbsent");
     }
-    strategistEnabledToggle.title = strategistStatus.available === false
-      ? t("strategistUnavailable")
-      : "";
-    const degraded = payload.status !== "ok";
-    // "Service operating normally" beside "Local storage Disabled" read as a
-    // contradiction and made the 503 on save look like a bug: when persistence
-    // is off, say what that costs instead of claiming everything is fine.
-    const storageOff = !storage.enabled;
-    serviceSummary.textContent = storageOff
-      ? t("serviceOkStorageOff")
-      : degraded
-        ? t("serviceDegraded")
-        : t("serviceOk");
-    serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
-    servicePanel.hidden = false;
-    syncMarginaliaFromStatus(payload);
-    return payload;
-  } catch (_) {
-    searchAvailable = false;
-    searchButton.disabled = true;
-    searchButton.setAttribute("aria-disabled", "true");
-    searchButton.title = t("searchUnavailable");
-    servicePanel.hidden = true;
-    serviceMode.hidden = true;
-    answerEnabledToggle.checked = false;
-    answerEnabledToggle.disabled = true;
-    // The AI summary button stays visibly unavailable with its reason attached,
-    // even when the service state itself could not be read.
-    answerHint.textContent = t("answerHintUnavailable");
-    answerHint.hidden = false;
-    answerButton.setAttribute("aria-describedby", "answer-hint");
-    // No usable service state (e.g. the admin token is not loaded yet): the
-    // model toggle must stay off, but it must not be silently greyed out with
-    // no reason — explain the missing authentication so the operator knows the
-    // toggle is gated on the admin token, not broken.
-    strategistEnabledToggle.checked = false;
-    strategistEnabledToggle.disabled = true;
-    strategistToggleStatus.hidden = false;
-    strategistToggleStatus.textContent = t("unauthorized");
-    // Without a readable service state the row has nothing to offer either;
-    // hide it so the search box is not preceded by a dead control.
-    if (modelOptions) modelOptions.hidden = true;
-    return null;
   }
-}
 
-async function toggleAnswer() {
-  await toggleEnabled({
-    endpoint: "/answer/enabled",
-    desired: answerEnabledToggle.checked,
-    checkbox: answerEnabledToggle,
-    statusNode: answerToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "answerToggleFailed",
-  });
-}
-
-answerEnabledToggle.addEventListener("change", toggleAnswer);
-
-// ── Search with model (strategist) toggle ───────────────────────
-// Controls whether the LLM participates in search. When off (the default)
-// search/deep keep running fully deterministic; when on, the strategist
-// proposes a refined query that AMATL runs to complement the first results.
-async function toggleStrategist() {
-  await toggleEnabled({
-    endpoint: "/strategist/enabled",
-    desired: strategistEnabledToggle.checked,
-    checkbox: strategistEnabledToggle,
-    statusNode: strategistToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "strategistToggleFailed",
-  });
-}
-
-strategistEnabledToggle.addEventListener("change", toggleStrategist);
-
-// ── Marginalia API key (option A) ───────────────────────────────
-// Operator credential management: a key is inserted into the process's RAM
-// (never disk, config, or logs) after a live canary validates it, or liquidated
-// on demand. The row sits in its own secondary line so the search axis
-// (write → search → analyze) stays visually dominant.
-
-// Show the Marginalia credential controls only while Marginalia is one of the
-// selected sources. The visibility follows `providers.enabled` — the same
-// single source of truth the source panel drives — so the key
-// area can never drift from the active selection. Marginalia is the only
-// credential-gated source, so it is the only one with a key row.
-function syncCredentialActions(enabledList) {
-  const list = Array.isArray(enabledList) ? enabledList : [];
-  const marginaliaOn = list.includes("marginalia");
-  if (marginaliaCredentialGroup) marginaliaCredentialGroup.hidden = !marginaliaOn;
-  if (credentialActions) credentialActions.hidden = !marginaliaOn;
-}
-
-function marginaliaCredentialSource(sources) {
-  const entry = (Array.isArray(sources) ? sources : []).find(
-    (source) => source && source.name === "marginalia",
-  );
-  return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
-}
-
-function updateMarginaliaUi(source) {
-  // Only an in-memory key can be liquidated from here: a key read from the
-  // environment variable is out of this surface's reach, so "liquidate" stays
-  // disabled and the status says where the key actually comes from.
-  marginaliaClearButton.disabled = source !== "ephemeral";
-  marginaliaStatus.hidden = false;
-  if (source === "ephemeral") {
-    marginaliaStatus.dataset.state = "success";
-    marginaliaStatus.textContent = t("marginaliaStatusPresent");
-  } else if (source === "environment") {
-    marginaliaStatus.dataset.state = "partial";
-    marginaliaStatus.textContent = t("marginaliaStatusEnvironment");
-  } else {
-    marginaliaStatus.dataset.state = "partial";
-    marginaliaStatus.textContent = t("marginaliaStatusAbsent");
+  // Keep the two buttons in sync with the last `/status` payload.
+  function syncMarginaliaFromStatus(payload) {
+    if (!payload) return;
+    updateMarginaliaUi(marginaliaCredentialSource(payload.sources));
   }
-}
 
-// Keep the two buttons in sync with the last `/status` payload.
-function syncMarginaliaFromStatus(payload) {
-  if (!payload) return;
-  updateMarginaliaUi(marginaliaCredentialSource(payload.sources));
-}
-
-function openMarginaliaDialog() {
-  marginaliaKeyInput.value = "";
-  marginaliaKeyError.hidden = true;
-  marginaliaDialog.showModal();
-  marginaliaKeyInput.focus();
-}
-
-marginaliaKeyButton.addEventListener("click", openMarginaliaDialog);
-marginaliaCancel.addEventListener("click", () => marginaliaDialog.close());
-// Clicking the backdrop (outside the dialog box) closes it, like a native modal.
-marginaliaDialog.addEventListener("click", (event) => {
-  if (event.target === marginaliaDialog) marginaliaDialog.close();
-});
-
-async function saveMarginaliaKey(event) {
-  event.preventDefault();
-  const key = marginaliaKeyInput.value.trim();
-  if (!key) {
-    marginaliaKeyError.hidden = false;
-    marginaliaKeyError.textContent = t("marginaliaEmpty");
-    return;
-  }
-  marginaliaSave.disabled = true;
-  marginaliaKeyError.hidden = true;
-  try {
-    const report = await globalThis.api.post("/providers/marginalia/credential", { key });
-    marginaliaDialog.close();
+  function openMarginaliaDialog() {
     marginaliaKeyInput.value = "";
-    updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
-    setStatusKey("marginaliaSaved", "success");
-    fetchServiceState();
-  } catch (error) {
-    // 401/403 means the operator token lacks admin scope; anything else means
-    // the key itself did not pass the live canary (or the source was
-    // unreachable) and nothing was stored. Classification reads the structured
-    // `error.status`/`error.code` the shared client sets — real error bodies
-    // carry a catalog message with no status digits — and the message check
-    // survives only as a fallback for non-JSON error pages.
-    const status = Number(error && error.status) || 0;
-    const code = error && typeof error.code === "string" ? error.code : "";
-    const message = String(error && error.message);
-    marginaliaKeyError.hidden = false;
-    // 401 = no valid token was sent (nothing to do with the key); 403 = the
-    // token lacks admin scope; anything else = the key failed the live canary.
-    marginaliaKeyError.textContent =
-      status === 401 || code === "unauthorized" || message.includes("401")
-        ? t("unauthorized")
-        : status === 403 || code === "scope_denied" || message.includes("403")
-          ? t("marginaliaFailed")
-          : t("marginaliaInvalid");
-  } finally {
-    marginaliaSave.disabled = false;
+    marginaliaKeyError.hidden = true;
+    marginaliaDialog.showModal();
+    marginaliaKeyInput.focus();
   }
-}
 
-marginaliaForm.addEventListener("submit", saveMarginaliaKey);
+  // Clicking the backdrop (outside the dialog box) closes it, like a native modal.
 
-marginaliaClearButton.addEventListener("click", async () => {
-  try {
-    await globalThis.api.delete("/providers/marginalia/credential");
-    updateMarginaliaUi("none");
-    setStatusKey("marginaliaCleared", "success");
-    fetchServiceState();
-  } catch (_) {
-    setStatusKey("marginaliaClearedFailed", "error");
+  async function saveMarginaliaKey(event) {
+    event.preventDefault();
+    const key = marginaliaKeyInput.value.trim();
+    if (!key) {
+      marginaliaKeyError.hidden = false;
+      marginaliaKeyError.textContent = t("marginaliaEmpty");
+      return;
+    }
+    marginaliaSave.disabled = true;
+    marginaliaKeyError.hidden = true;
+    try {
+      const report = await globalThis.api.post("/providers/marginalia/credential", { key });
+      marginaliaDialog.close();
+      marginaliaKeyInput.value = "";
+      updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
+      setStatusKey("marginaliaSaved", "success");
+      fetchServiceState();
+    } catch (error) {
+      // 401/403 means the operator token lacks admin scope; anything else means
+      // the key itself did not pass the live canary (or the source was
+      // unreachable) and nothing was stored. Classification reads the structured
+      // `error.status`/`error.code` the shared client sets — real error bodies
+      // carry a catalog message with no status digits — and the message check
+      // survives only as a fallback for non-JSON error pages.
+      const status = Number(error && error.status) || 0;
+      const code = error && typeof error.code === "string" ? error.code : "";
+      const message = String(error && error.message);
+      marginaliaKeyError.hidden = false;
+      // 401 = no valid token was sent (nothing to do with the key); 403 = the
+      // token lacks admin scope; anything else = the key failed the live canary.
+      marginaliaKeyError.textContent =
+        status === 401 || code === "unauthorized" || message.includes("401")
+          ? t("unauthorized")
+          : status === 403 || code === "scope_denied" || message.includes("403")
+            ? t("marginaliaFailed")
+            : t("marginaliaInvalid");
+    } finally {
+      marginaliaSave.disabled = false;
+    }
   }
-});
+
+
+  return { fetchProviderStatus, fetchServiceState, toggleAnswer, toggleStrategist, openMarginaliaDialog, saveMarginaliaKey };
+})();
+
+const fetchProviderStatus = providers.fetchProviderStatus;
+const fetchServiceState = providers.fetchServiceState;
+const toggleAnswer = providers.toggleAnswer;
+const toggleStrategist = providers.toggleStrategist;
+const openMarginaliaDialog = providers.openMarginaliaDialog;
+const saveMarginaliaKey = providers.saveMarginaliaKey;
 
 // ── History ─────────────────────────────────────────────────────
 
@@ -1954,6 +1950,24 @@ historyPurgeButton.addEventListener("click", purgeHistory);
 tokenInput.addEventListener("change", refreshPanels);
 queryInput.addEventListener("input", clearValidationError);
 tokenInput.addEventListener("input", clearValidationError);
+answerEnabledToggle.addEventListener("change", toggleAnswer);
+strategistEnabledToggle.addEventListener("change", toggleStrategist);
+marginaliaKeyButton.addEventListener("click", openMarginaliaDialog);
+marginaliaCancel.addEventListener("click", () => marginaliaDialog.close());
+marginaliaDialog.addEventListener("click", (event) => {
+  if (event.target === marginaliaDialog) marginaliaDialog.close();
+});
+marginaliaForm.addEventListener("submit", saveMarginaliaKey);
+marginaliaClearButton.addEventListener("click", async () => {
+  try {
+    await globalThis.api.delete("/providers/marginalia/credential");
+    updateMarginaliaUi("none");
+    setStatusKey("marginaliaCleared", "success");
+    fetchServiceState();
+  } catch (_) {
+    setStatusKey("marginaliaClearedFailed", "error");
+  }
+});
 refreshPanels();
 
 function applyDeclarativeTranslations() {
