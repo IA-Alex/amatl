@@ -336,315 +336,326 @@ for (const event of ["input", "change"]) {
   tokenInput.addEventListener(event, updateAccessSummary);
 }
 
-function searchMetadata(result) {
-  const values = [];
-  if (typeof result.published_at === "string") values.push(result.published_at.slice(0, 64));
-  if (Array.isArray(result.providers) && result.providers.length === 1) {
-    values.push(`${t("source")} ${boundedText(result.providers[0], 80)}`);
+// ── Dominio: render ─────────────────────────────────────────
+// Retorna solo los símbolos que cruzan la frontera (el resto queda
+// privado): `render` lo suscribe la store y lo lee la barra de estado;
+// `deepItems` y `evidenceFragments` los usa `run`. El contenedor se llama
+// `renderDomain` porque dentro vive una función `render`.
+const renderDomain = (function () {
+  function searchMetadata(result) {
+    const values = [];
+    if (typeof result.published_at === "string") values.push(result.published_at.slice(0, 64));
+    if (Array.isArray(result.providers) && result.providers.length === 1) {
+      values.push(`${t("source")} ${boundedText(result.providers[0], 80)}`);
+    }
+    return values.join(" · ");
   }
-  return values.join(" · ");
-}
 
-function renderSearchResult(result, citationIndex) {
-  const url = safeHttpUrl(result.canonical_url);
-  if (!url || result.status !== "visible") return;
-  const state = store.get();
-  const fragment = resultTemplate.content.cloneNode(true);
-  const selection = fragment.querySelector(".deep-target-select");
-  if (state.mode === "search") {
-    selection.querySelector("span").textContent = t("deepTargetSelect");
-    const checkbox = selection.querySelector(".deep-target-checkbox");
-    const provider = Array.isArray(result.providers) && typeof result.providers[0] === "string"
-      ? result.providers[0]
-      : "";
-    const target = {
-      url: url.href,
-      title: boundedText(result.title, 512) || null,
-      provider,
-    };
-    checkbox.checked = state.selectedTargets.some((value) => value.url === target.url);
-    checkbox.disabled = !provider;
-    checkbox.addEventListener("change", () => {
-      let selected = store.get().selectedTargets;
-      selected = selected.filter((value) => value.url !== target.url);
-      if (checkbox.checked) selected.push(target);
-      // Transient UI state: update without notifying subscribers so toggling a
-      // target neither rebuilds the whole result list nor drops keyboard focus
-      // (the store's `render` would `replaceChildren()` the list). The value
-      // stays readable via `store.get()` for `run()` (deep targets).
-      store.updateSilent({ selectedTargets: selected });
-    });
-  } else {
-    selection.remove();
-  }
-  const link = fragment.querySelector(".result-title");
-  link.href = url.href;
-  link.textContent = boundedText(result.title, 300) || boundedText(result.domain, 255) || url.hostname;
-  fragment.querySelector(".result-url").textContent = boundedText(result.domain, 255) || url.hostname;
-  const snippet = fragment.querySelector(".result-snippet");
-  snippet.textContent = boundedText(result.snippet, 2000) || t("noDescription");
-  const meta = fragment.querySelector(".result-meta");
-  meta.textContent = searchMetadata(result);
-  meta.hidden = !meta.textContent;
-  if (state.mode === "answer" && Number.isInteger(citationIndex)) {
-    const badge = fragment.querySelector(".result-index");
-    badge.textContent = `[${citationIndex}]`;
-    badge.hidden = false;
-  }
-  resultsNode.append(fragment);
-}
-
-function documentStatus(value) {
-  if (value === "enriched") return t("enriched");
-  if (value === "superficial") return t("superficial");
-  return t("unavailable");
-}
-
-function acquisitionMethod(value) {
-  if (value === "http") return t("http");
-  if (value === "rendered") return t("rendered");
-  return t("unspecified");
-}
-
-function signalLabel(value) {
-  if (value === "query_match") return t("queryMatch");
-  if (value === "citation") return t("citation");
-  if (value === "temporal") return t("temporal");
-  if (value === "numeric") return t("numeric");
-  return null;
-}
-
-function appendSafeUrl(node, value) {
-  const url = safeHttpUrl(value);
-  if (!url) {
-    node.textContent = t("unavailable");
-    return;
-  }
-  const link = document.createElement("a");
-  link.href = url.href;
-  link.rel = "noopener noreferrer";
-  link.textContent = url.href;
-  node.append(link);
-}
-
-function bytesToHex(bytes) {
-  return Array.from(new Uint8Array(bytes), (value) => value.toString(16).padStart(2, "0")).join("");
-}
-
-async function verifyFragment(fragment, sourceBytes) {
-  const start = fragment.start_byte;
-  const end = fragment.end_byte;
-  if (!sourceBytes || !Number.isSafeInteger(start) || !Number.isSafeInteger(end)) return "failed";
-  if (start < 0 || end <= start || end > sourceBytes.length) return "failed";
-  let decoded;
-  try {
-    decoded = new TextDecoder("utf-8", { fatal: true }).decode(sourceBytes.slice(start, end));
-  } catch (_) {
-    return "failed";
-  }
-  if (decoded !== fragment.text) return "failed";
-  if (!validHash(fragment.fragment_hash) || !globalThis.crypto?.subtle) return "range_only";
-  const digest = await globalThis.crypto.subtle.digest("SHA-256", sourceBytes.slice(start, end));
-  return bytesToHex(digest) === fragment.fragment_hash ? "verified" : "failed";
-}
-
-function setVerification(node, result) {
-  node.dataset.state = result;
-  if (result === "verified") node.textContent = t("verified");
-  else if (result === "range_only") node.textContent = t("rangeOnly");
-  else node.textContent = t("notVerifiable");
-}
-
-function evidenceFragments(evidence) {
-  const provenanceId = evidence?.provenance?.provenance_id;
-  if (!validHash(provenanceId) || !Array.isArray(evidence.fragments)) return [];
-  return evidence.fragments.slice(0, MAX_FRAGMENTS).filter((fragment) => {
-    if (!fragment || fragment.provenance_id !== provenanceId) return false;
-    if (typeof fragment.text !== "string" || !fragment.text || fragment.text.length > 2048) return false;
-    return new TextEncoder().encode(fragment.text).length <= MAX_FRAGMENT_BYTES;
-  });
-}
-
-function renderEvidenceFragment(fragment, sourceBytes, list) {
-  const item = fragmentTemplate.content.cloneNode(true);
-  item.querySelector("blockquote").textContent = fragment.text;
-  const signals = item.querySelector(".fragment-signals");
-  signals.setAttribute("aria-label", t("observedSignals"));
-  const observed = Array.isArray(fragment.signals) ? fragment.signals.slice(0, 8) : [];
-  for (const signal of observed) {
-    const label = signalLabel(signal);
-    if (!label) continue;
-    const chip = document.createElement("span");
-    chip.textContent = label;
-    signals.append(chip);
-  }
-  if (!signals.childElementCount) signals.hidden = true;
-  item.querySelector(".fragment-hash span").textContent = t("sha256");
-  const hash = item.querySelector(".fragment-hash code");
-  hash.textContent = validHash(fragment.fragment_hash) ? fragment.fragment_hash : t("unavailable");
-  const verification = item.querySelector(".fragment-verification");
-  verification.textContent = t("verifying");
-  list.append(item);
-  verifyFragment(fragment, sourceBytes)
-    .then((result) => {
-      if (verification.isConnected) setVerification(verification, result);
-    })
-    .catch(() => {
-      if (verification.isConnected) setVerification(verification, "failed");
-    });
-}
-
-function deepDocumentMetadata(documentValue) {
-  const values = [documentStatus(documentValue.status)];
-  if (typeof documentValue.content_type === "string") {
-    values.push(documentValue.content_type.slice(0, 120));
-  }
-  if (Number.isSafeInteger(documentValue.size) && documentValue.size >= 0) {
-    values.push(`${documentValue.size.toLocaleString(LANG)} ${t("bytes")}`);
-  }
-  return values.join(" · ");
-}
-
-function renderDeepDocument(item) {
-  const documentValue = item.document;
-  const evidence = item.evidence;
-  const url = safeHttpUrl(documentValue.final_url) || safeHttpUrl(documentValue.canonical_url);
-  const fragment = deepTemplate.content.cloneNode(true);
-  const link = fragment.querySelector(".result-title");
-  if (url) {
+  function renderSearchResult(result, citationIndex) {
+    const url = safeHttpUrl(result.canonical_url);
+    if (!url || result.status !== "visible") return;
+    const state = store.get();
+    const fragment = resultTemplate.content.cloneNode(true);
+    const selection = fragment.querySelector(".deep-target-select");
+    if (state.mode === "search") {
+      selection.querySelector("span").textContent = t("deepTargetSelect");
+      const checkbox = selection.querySelector(".deep-target-checkbox");
+      const provider = Array.isArray(result.providers) && typeof result.providers[0] === "string"
+        ? result.providers[0]
+        : "";
+      const target = {
+        url: url.href,
+        title: boundedText(result.title, 512) || null,
+        provider,
+      };
+      checkbox.checked = state.selectedTargets.some((value) => value.url === target.url);
+      checkbox.disabled = !provider;
+      checkbox.addEventListener("change", () => {
+        let selected = store.get().selectedTargets;
+        selected = selected.filter((value) => value.url !== target.url);
+        if (checkbox.checked) selected.push(target);
+        // Transient UI state: update without notifying subscribers so toggling a
+        // target neither rebuilds the whole result list nor drops keyboard focus
+        // (the store's `render` would `replaceChildren()` the list). The value
+        // stays readable via `store.get()` for `run()` (deep targets).
+        store.updateSilent({ selectedTargets: selected });
+      });
+    } else {
+      selection.remove();
+    }
+    const link = fragment.querySelector(".result-title");
     link.href = url.href;
-    link.textContent = boundedText(documentValue.title, 300) || url.hostname;
-    fragment.querySelector(".result-url").textContent = url.hostname;
-  } else {
-    link.removeAttribute("href");
-    link.textContent = boundedText(documentValue.title, 300) || t("noUrl");
-    fragment.querySelector(".result-url").textContent = t("noOrigin");
-  }
-  const status = fragment.querySelector(".document-status");
-  status.textContent = documentStatus(documentValue.status);
-  status.dataset.state = documentValue.status === "enriched" ? "success" : "partial";
-  fragment.querySelector(".document-meta").textContent = deepDocumentMetadata(documentValue);
-  fragment.querySelector(".evidence-panel").setAttribute("aria-label", t("evidenceFragmentsHeading"));
-  fragment.querySelector(".evidence-heading h4").textContent = t("evidenceFragmentsHeading");
-  fragment.querySelector(".provenance summary").textContent = t("provenanceHeading");
-  const provenanceLabels = {
-    ".provenance-original": "originalUrl",
-    ".provenance-canonical": "canonicalUrl",
-    ".provenance-final": "finalUrl",
-    ".provenance-method": "acquisition",
-    ".provenance-extractor": "extractor",
-    ".provenance-retrieved": "retrieved",
-    ".provenance-source-hash": "sourceHash",
-    ".provenance-content-hash": "extractedTextHash",
-  };
-  for (const [selector, key] of Object.entries(provenanceLabels)) {
-    const value = fragment.querySelector(selector);
-    const label = value?.closest("div")?.querySelector("dt");
-    if (label) label.textContent = t(key);
+    link.textContent = boundedText(result.title, 300) || boundedText(result.domain, 255) || url.hostname;
+    fragment.querySelector(".result-url").textContent = boundedText(result.domain, 255) || url.hostname;
+    const snippet = fragment.querySelector(".result-snippet");
+    snippet.textContent = boundedText(result.snippet, 2000) || t("noDescription");
+    const meta = fragment.querySelector(".result-meta");
+    meta.textContent = searchMetadata(result);
+    meta.hidden = !meta.textContent;
+    if (state.mode === "answer" && Number.isInteger(citationIndex)) {
+      const badge = fragment.querySelector(".result-index");
+      badge.textContent = `[${citationIndex}]`;
+      badge.hidden = false;
+    }
+    resultsNode.append(fragment);
   }
 
-  const list = fragment.querySelector(".evidence-fragments");
-  const empty = fragment.querySelector(".empty-evidence");
-  const fragments = evidenceFragments(evidence);
-  const provenance = evidence && evidence.provenance && typeof evidence.provenance === "object"
-    ? evidence.provenance
-    : {};
-  let sourceBytes = null;
-  if (typeof documentValue.content === "string" && documentValue.content.length <= MAX_DOCUMENT_BYTES) {
-    const encoded = new TextEncoder().encode(documentValue.content);
-    if (encoded.length <= MAX_DOCUMENT_BYTES) sourceBytes = encoded;
-  }
-  for (const evidenceFragment of fragments) {
-    renderEvidenceFragment(evidenceFragment, sourceBytes, list);
-  }
-  const renderedCount = list.childElementCount;
-  fragment.querySelector(".fragment-count").textContent = `${renderedCount} ${t("fragmentCount")}`;
-  if (!renderedCount) {
-    empty.hidden = false;
-    empty.textContent = documentValue.status === "superficial"
-      ? t("superficialDocument")
-      : t("noFragments");
+  function documentStatus(value) {
+    if (value === "enriched") return t("enriched");
+    if (value === "superficial") return t("superficial");
+    return t("unavailable");
   }
 
-  appendSafeUrl(fragment.querySelector(".provenance-original"), provenance.original_url);
-  appendSafeUrl(fragment.querySelector(".provenance-canonical"), provenance.canonical_url);
-  appendSafeUrl(fragment.querySelector(".provenance-final"), provenance.final_url);
-  fragment.querySelector(".provenance-method").textContent = acquisitionMethod(provenance.fetch_method);
-  fragment.querySelector(".provenance-extractor").textContent = boundedText(provenance.extractor_used, 160) || t("noExtractor");
-  fragment.querySelector(".provenance-retrieved").textContent = boundedText(provenance.retrieved_at, 64) || t("unavailable");
-  fragment.querySelector(".provenance-source-hash").textContent = validHash(provenance.source_content_hash)
-    ? provenance.source_content_hash
-    : t("unavailable");
-  fragment.querySelector(".provenance-content-hash").textContent = validHash(provenance.extracted_content_hash)
-    ? provenance.extracted_content_hash
-    : t("unavailable");
-
-  const saveButton = fragment.querySelector(".save-document");
-  saveButton.textContent = t("savedAction");
-  saveButton.addEventListener("click", () => saveDocument(documentValue, provenance, saveButton));
-
-  resultsNode.append(fragment);
-}
-
-function renderAnswerCard(answer) {
-  if (!answer || typeof answer.text !== "string") {
-    answerCard.hidden = true;
-    return;
+  function acquisitionMethod(value) {
+    if (value === "http") return t("http");
+    if (value === "rendered") return t("rendered");
+    return t("unspecified");
   }
-  answerTextNode.textContent = answer.text;
-  const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
-  answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
-  answerCard.hidden = false;
-}
 
-function render(state) {
-  // While a request is in flight the committed view stays on screen: results
-  // are only replaced once a payload has been accepted, so a failed, cancelled
-  // or raced request can no longer destroy work the operator still needs.
-  if (state.pending) return;
-  resultsNode.replaceChildren();
-  resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
-  if (state.mode !== "answer") answerCard.hidden = true;
-  if (state.mode === "deep") {
-    for (const item of state.items) renderDeepDocument(item);
-    paginationNode.hidden = true;
-    return;
+  function signalLabel(value) {
+    if (value === "query_match") return t("queryMatch");
+    if (value === "citation") return t("citation");
+    if (value === "temporal") return t("temporal");
+    if (value === "numeric") return t("numeric");
+    return null;
   }
-  if (state.mode === "answer") {
-    renderAnswerCard(state.answer);
-    state.items.forEach((result, i) => renderSearchResult(result, i + 1));
-    paginationNode.hidden = true;
-    return;
-  }
-  for (const result of state.items) renderSearchResult(result);
-  paginationNode.hidden = state.totalPages <= 1;
-  pageLabel.textContent = `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`;
-  previousButton.disabled = state.page === 0;
-  nextButton.disabled = state.page + 1 >= state.totalPages;
-}
 
-function deepItems(payload) {
-  const evidenceByDocument = new Map();
-  for (const evidence of payload.evidence_v2.slice(0, MAX_DEEP_DOCUMENTS)) {
-    if (!evidence || evidence.evidence_version !== "v2" || typeof evidence.document_id !== "string") continue;
-    const provenance = evidence.provenance;
-    if (!provenance || provenance.document_id !== evidence.document_id || !validHash(provenance.provenance_id)) continue;
-    if (!evidenceByDocument.has(evidence.document_id)) evidenceByDocument.set(evidence.document_id, evidence);
+  function appendSafeUrl(node, value) {
+    const url = safeHttpUrl(value);
+    if (!url) {
+      node.textContent = t("unavailable");
+      return;
+    }
+    const link = document.createElement("a");
+    link.href = url.href;
+    link.rel = "noopener noreferrer";
+    link.textContent = url.href;
+    node.append(link);
   }
-  return payload.documents
-    .filter((documentValue) => documentValue && typeof documentValue === "object")
-    .slice(0, MAX_DEEP_DOCUMENTS)
-    .map((documentValue) => {
-      const candidate = evidenceByDocument.get(documentValue.search_result_id) || null;
-      const provenance = candidate?.provenance;
-      const lineageMatches = provenance
-        && provenance.original_url === documentValue.original_url
-        && provenance.canonical_url === documentValue.canonical_url
-        && provenance.final_url === documentValue.final_url;
-      return { document: documentValue, evidence: lineageMatches ? candidate : null };
+
+  function bytesToHex(bytes) {
+    return Array.from(new Uint8Array(bytes), (value) => value.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function verifyFragment(fragment, sourceBytes) {
+    const start = fragment.start_byte;
+    const end = fragment.end_byte;
+    if (!sourceBytes || !Number.isSafeInteger(start) || !Number.isSafeInteger(end)) return "failed";
+    if (start < 0 || end <= start || end > sourceBytes.length) return "failed";
+    let decoded;
+    try {
+      decoded = new TextDecoder("utf-8", { fatal: true }).decode(sourceBytes.slice(start, end));
+    } catch (_) {
+      return "failed";
+    }
+    if (decoded !== fragment.text) return "failed";
+    if (!validHash(fragment.fragment_hash) || !globalThis.crypto?.subtle) return "range_only";
+    const digest = await globalThis.crypto.subtle.digest("SHA-256", sourceBytes.slice(start, end));
+    return bytesToHex(digest) === fragment.fragment_hash ? "verified" : "failed";
+  }
+
+  function setVerification(node, result) {
+    node.dataset.state = result;
+    if (result === "verified") node.textContent = t("verified");
+    else if (result === "range_only") node.textContent = t("rangeOnly");
+    else node.textContent = t("notVerifiable");
+  }
+
+  function evidenceFragments(evidence) {
+    const provenanceId = evidence?.provenance?.provenance_id;
+    if (!validHash(provenanceId) || !Array.isArray(evidence.fragments)) return [];
+    return evidence.fragments.slice(0, MAX_FRAGMENTS).filter((fragment) => {
+      if (!fragment || fragment.provenance_id !== provenanceId) return false;
+      if (typeof fragment.text !== "string" || !fragment.text || fragment.text.length > 2048) return false;
+      return new TextEncoder().encode(fragment.text).length <= MAX_FRAGMENT_BYTES;
     });
-}
+  }
 
+  function renderEvidenceFragment(fragment, sourceBytes, list) {
+    const item = fragmentTemplate.content.cloneNode(true);
+    item.querySelector("blockquote").textContent = fragment.text;
+    const signals = item.querySelector(".fragment-signals");
+    signals.setAttribute("aria-label", t("observedSignals"));
+    const observed = Array.isArray(fragment.signals) ? fragment.signals.slice(0, 8) : [];
+    for (const signal of observed) {
+      const label = signalLabel(signal);
+      if (!label) continue;
+      const chip = document.createElement("span");
+      chip.textContent = label;
+      signals.append(chip);
+    }
+    if (!signals.childElementCount) signals.hidden = true;
+    item.querySelector(".fragment-hash span").textContent = t("sha256");
+    const hash = item.querySelector(".fragment-hash code");
+    hash.textContent = validHash(fragment.fragment_hash) ? fragment.fragment_hash : t("unavailable");
+    const verification = item.querySelector(".fragment-verification");
+    verification.textContent = t("verifying");
+    list.append(item);
+    verifyFragment(fragment, sourceBytes)
+      .then((result) => {
+        if (verification.isConnected) setVerification(verification, result);
+      })
+      .catch(() => {
+        if (verification.isConnected) setVerification(verification, "failed");
+      });
+  }
+
+  function deepDocumentMetadata(documentValue) {
+    const values = [documentStatus(documentValue.status)];
+    if (typeof documentValue.content_type === "string") {
+      values.push(documentValue.content_type.slice(0, 120));
+    }
+    if (Number.isSafeInteger(documentValue.size) && documentValue.size >= 0) {
+      values.push(`${documentValue.size.toLocaleString(LANG)} ${t("bytes")}`);
+    }
+    return values.join(" · ");
+  }
+
+  function renderDeepDocument(item) {
+    const documentValue = item.document;
+    const evidence = item.evidence;
+    const url = safeHttpUrl(documentValue.final_url) || safeHttpUrl(documentValue.canonical_url);
+    const fragment = deepTemplate.content.cloneNode(true);
+    const link = fragment.querySelector(".result-title");
+    if (url) {
+      link.href = url.href;
+      link.textContent = boundedText(documentValue.title, 300) || url.hostname;
+      fragment.querySelector(".result-url").textContent = url.hostname;
+    } else {
+      link.removeAttribute("href");
+      link.textContent = boundedText(documentValue.title, 300) || t("noUrl");
+      fragment.querySelector(".result-url").textContent = t("noOrigin");
+    }
+    const status = fragment.querySelector(".document-status");
+    status.textContent = documentStatus(documentValue.status);
+    status.dataset.state = documentValue.status === "enriched" ? "success" : "partial";
+    fragment.querySelector(".document-meta").textContent = deepDocumentMetadata(documentValue);
+    fragment.querySelector(".evidence-panel").setAttribute("aria-label", t("evidenceFragmentsHeading"));
+    fragment.querySelector(".evidence-heading h4").textContent = t("evidenceFragmentsHeading");
+    fragment.querySelector(".provenance summary").textContent = t("provenanceHeading");
+    const provenanceLabels = {
+      ".provenance-original": "originalUrl",
+      ".provenance-canonical": "canonicalUrl",
+      ".provenance-final": "finalUrl",
+      ".provenance-method": "acquisition",
+      ".provenance-extractor": "extractor",
+      ".provenance-retrieved": "retrieved",
+      ".provenance-source-hash": "sourceHash",
+      ".provenance-content-hash": "extractedTextHash",
+    };
+    for (const [selector, key] of Object.entries(provenanceLabels)) {
+      const value = fragment.querySelector(selector);
+      const label = value?.closest("div")?.querySelector("dt");
+      if (label) label.textContent = t(key);
+    }
+
+    const list = fragment.querySelector(".evidence-fragments");
+    const empty = fragment.querySelector(".empty-evidence");
+    const fragments = evidenceFragments(evidence);
+    const provenance = evidence && evidence.provenance && typeof evidence.provenance === "object"
+      ? evidence.provenance
+      : {};
+    let sourceBytes = null;
+    if (typeof documentValue.content === "string" && documentValue.content.length <= MAX_DOCUMENT_BYTES) {
+      const encoded = new TextEncoder().encode(documentValue.content);
+      if (encoded.length <= MAX_DOCUMENT_BYTES) sourceBytes = encoded;
+    }
+    for (const evidenceFragment of fragments) {
+      renderEvidenceFragment(evidenceFragment, sourceBytes, list);
+    }
+    const renderedCount = list.childElementCount;
+    fragment.querySelector(".fragment-count").textContent = `${renderedCount} ${t("fragmentCount")}`;
+    if (!renderedCount) {
+      empty.hidden = false;
+      empty.textContent = documentValue.status === "superficial"
+        ? t("superficialDocument")
+        : t("noFragments");
+    }
+
+    appendSafeUrl(fragment.querySelector(".provenance-original"), provenance.original_url);
+    appendSafeUrl(fragment.querySelector(".provenance-canonical"), provenance.canonical_url);
+    appendSafeUrl(fragment.querySelector(".provenance-final"), provenance.final_url);
+    fragment.querySelector(".provenance-method").textContent = acquisitionMethod(provenance.fetch_method);
+    fragment.querySelector(".provenance-extractor").textContent = boundedText(provenance.extractor_used, 160) || t("noExtractor");
+    fragment.querySelector(".provenance-retrieved").textContent = boundedText(provenance.retrieved_at, 64) || t("unavailable");
+    fragment.querySelector(".provenance-source-hash").textContent = validHash(provenance.source_content_hash)
+      ? provenance.source_content_hash
+      : t("unavailable");
+    fragment.querySelector(".provenance-content-hash").textContent = validHash(provenance.extracted_content_hash)
+      ? provenance.extracted_content_hash
+      : t("unavailable");
+
+    const saveButton = fragment.querySelector(".save-document");
+    saveButton.textContent = t("savedAction");
+    saveButton.addEventListener("click", () => saveDocument(documentValue, provenance, saveButton));
+
+    resultsNode.append(fragment);
+  }
+
+  function renderAnswerCard(answer) {
+    if (!answer || typeof answer.text !== "string") {
+      answerCard.hidden = true;
+      return;
+    }
+    answerTextNode.textContent = answer.text;
+    const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
+    answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
+    answerCard.hidden = false;
+  }
+
+  function render(state) {
+    // While a request is in flight the committed view stays on screen: results
+    // are only replaced once a payload has been accepted, so a failed, cancelled
+    // or raced request can no longer destroy work the operator still needs.
+    if (state.pending) return;
+    resultsNode.replaceChildren();
+    resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
+    if (state.mode !== "answer") answerCard.hidden = true;
+    if (state.mode === "deep") {
+      for (const item of state.items) renderDeepDocument(item);
+      paginationNode.hidden = true;
+      return;
+    }
+    if (state.mode === "answer") {
+      renderAnswerCard(state.answer);
+      state.items.forEach((result, i) => renderSearchResult(result, i + 1));
+      paginationNode.hidden = true;
+      return;
+    }
+    for (const result of state.items) renderSearchResult(result);
+    paginationNode.hidden = state.totalPages <= 1;
+    pageLabel.textContent = `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`;
+    previousButton.disabled = state.page === 0;
+    nextButton.disabled = state.page + 1 >= state.totalPages;
+  }
+
+  function deepItems(payload) {
+    const evidenceByDocument = new Map();
+    for (const evidence of payload.evidence_v2.slice(0, MAX_DEEP_DOCUMENTS)) {
+      if (!evidence || evidence.evidence_version !== "v2" || typeof evidence.document_id !== "string") continue;
+      const provenance = evidence.provenance;
+      if (!provenance || provenance.document_id !== evidence.document_id || !validHash(provenance.provenance_id)) continue;
+      if (!evidenceByDocument.has(evidence.document_id)) evidenceByDocument.set(evidence.document_id, evidence);
+    }
+    return payload.documents
+      .filter((documentValue) => documentValue && typeof documentValue === "object")
+      .slice(0, MAX_DEEP_DOCUMENTS)
+      .map((documentValue) => {
+        const candidate = evidenceByDocument.get(documentValue.search_result_id) || null;
+        const provenance = candidate?.provenance;
+        const lineageMatches = provenance
+          && provenance.original_url === documentValue.original_url
+          && provenance.canonical_url === documentValue.canonical_url
+          && provenance.final_url === documentValue.final_url;
+        return { document: documentValue, evidence: lineageMatches ? candidate : null };
+      });
+  }
+  return { render, deepItems, evidenceFragments };
+})();
+
+const render = renderDomain.render;
+const deepItems = renderDomain.deepItems;
+const evidenceFragments = renderDomain.evidenceFragments;
 function validatePayload(payload, mode) {
   if (!payload || payload.schema_version !== "1") return false;
   if (mode === "deep") {
