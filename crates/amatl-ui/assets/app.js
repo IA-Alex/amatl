@@ -1725,230 +1725,221 @@ const saveFailureKey = storagePanels.saveFailureKey;
 const setInlineStatus = storagePanels.setInlineStatus;
 const purgeHistory = storagePanels.purgeHistory;
 
-// ── Server clients (admin) ──────────────────────────────────────
-// Only reachable with an Admin-scoped token; `fetchServerClients` hides the
-// whole panel on anything but a successful `200`, the same fail-closed
-// convention `fetchServiceState`/`fetchSavedDocuments` already use — a
-// non-admin credential simply never sees this section, rather than seeing
-// it and hitting a wall of 403s.
+// ── Dominio: clients (admin de tokens) ───────────────────────
+// Retorna lo que cruza: scopeLabel (applyTranslations),
+// fetchServerClients (refreshPanels) y las dos de sus listeners.
+const clients = (function () {
+  // ── Server clients (admin) ──────────────────────────────────────
+  // Only reachable with an Admin-scoped token; `fetchServerClients` hides the
+  // whole panel on anything but a successful `200`, the same fail-closed
+  // convention `fetchServiceState`/`fetchSavedDocuments` already use — a
+  // non-admin credential simply never sees this section, rather than seeing
+  // it and hitting a wall of 403s.
 
-const SCOPE_LABEL_KEYS = {
-  search: "scopeSearch",
-  deep: "scopeDeep",
-  read: "scopeRead",
-  write: "scopeWrite",
-  admin: "scopeAdmin",
-  mcp: "scopeMcp",
-};
+  const SCOPE_LABEL_KEYS = {
+    search: "scopeSearch",
+    deep: "scopeDeep",
+    read: "scopeRead",
+    write: "scopeWrite",
+    admin: "scopeAdmin",
+    mcp: "scopeMcp",
+  };
 
-function scopeLabel(scope) {
-  const key = SCOPE_LABEL_KEYS[scope];
-  return key ? t(key) : scope;
-}
-
-function renderClientRow(client) {
-  const item = document.createElement("li");
-  item.className = "client-item";
-  const row = document.createElement("div");
-  row.className = "client-item-row";
-  const id = document.createElement("span");
-  id.className = "client-id";
-  id.textContent = client.id;
-  const scopes = document.createElement("span");
-  scopes.className = "client-scopes-value";
-  const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
-  scopes.textContent = scopeList.length
-    ? scopeList.map(scopeLabel).join(", ")
-    : t("clientScopesEmpty");
-  row.append(id, scopes);
-  item.append(row);
-
-  const meta = document.createElement("p");
-  meta.className = "client-meta";
-  meta.textContent =
-    typeof client.expires_at === "string" && client.expires_at
-      ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
-      : t("clientNeverExpires");
-  item.append(meta);
-
-  const actions = document.createElement("div");
-  actions.className = "client-actions";
-  const rotate = document.createElement("button");
-  rotate.type = "button";
-  rotate.className = "ghost-action";
-  rotate.textContent = t("clientRotate");
-  rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
-  const remove = document.createElement("button");
-  remove.type = "button";
-  remove.className = "ghost-action";
-  remove.textContent = t("clientDelete");
-  remove.addEventListener("click", () => deleteServerClient(client.id, remove));
-  actions.append(rotate, remove);
-  item.append(actions);
-  return item;
-}
-
-async function fetchServerClients() {
-  try {
-    const payload = await globalThis.api.get("/server/clients");
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
-      clientsPanel.hidden = true;
-      return;
-    }
-    clientList.replaceChildren();
-    for (const client of payload.clients) {
-      if (!client || typeof client.id !== "string") continue;
-      clientList.append(renderClientRow(client));
-    }
-    clientListEmpty.hidden = clientList.childElementCount > 0;
-    clientListEmpty.textContent = t("clientsEmpty");
-    clientsPanel.hidden = false;
-  } catch (_) {
-    clientsPanel.hidden = true;
+  function scopeLabel(scope) {
+    const key = SCOPE_LABEL_KEYS[scope];
+    return key ? t(key) : scope;
   }
-}
 
-// The one place the plaintext token is ever visible: it never leaves this
-// dialog, never touches `localStorage`, and the field is cleared the moment
-// the operator closes it (see `client-token-close`'s listener below).
-function openClientTokenDialog(id, token) {
-  clientTokenId.textContent = id;
-  clientTokenValue.value = token;
-  clientTokenDialog.showModal();
-  clientTokenValue.focus();
-  clientTokenValue.select();
-}
+  function renderClientRow(client) {
+    const item = document.createElement("li");
+    item.className = "client-item";
+    const row = document.createElement("div");
+    row.className = "client-item-row";
+    const id = document.createElement("span");
+    id.className = "client-id";
+    id.textContent = client.id;
+    const scopes = document.createElement("span");
+    scopes.className = "client-scopes-value";
+    const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
+    scopes.textContent = scopeList.length
+      ? scopeList.map(scopeLabel).join(", ")
+      : t("clientScopesEmpty");
+    row.append(id, scopes);
+    item.append(row);
 
-clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+    const meta = document.createElement("p");
+    meta.className = "client-meta";
+    meta.textContent =
+      typeof client.expires_at === "string" && client.expires_at
+        ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
+        : t("clientNeverExpires");
+    item.append(meta);
 
-// The token is single-use: clear it whenever the dialog closes, not only when
-// the Close button is pressed, so Escape or a backdrop click cannot leave a live
-// credential sitting in the DOM.
-clientTokenDialog.addEventListener("close", () => {
-  clientTokenValue.value = "";
-  setInlineStatus(clientTokenStatus, "", null);
-});
+    const actions = document.createElement("div");
+    actions.className = "client-actions";
+    const rotate = document.createElement("button");
+    rotate.type = "button";
+    rotate.className = "ghost-action";
+    rotate.textContent = t("clientRotate");
+    rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "ghost-action";
+    remove.textContent = t("clientDelete");
+    remove.addEventListener("click", () => deleteServerClient(client.id, remove));
+    actions.append(rotate, remove);
+    item.append(actions);
+    return item;
+  }
 
-clientTokenCopy.addEventListener("click", async () => {
-  const token = clientTokenValue.value;
-  if (!token) return;
-  try {
-    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
-    await navigator.clipboard.writeText(token);
-    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
-  } catch (_) {
-    // No clipboard access (insecure context, denied permission): leave the token
-    // selected so the operator can copy it by hand, and say so.
+  async function fetchServerClients() {
+    try {
+      const payload = await globalThis.api.get("/server/clients");
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
+        clientsPanel.hidden = true;
+        return;
+      }
+      clientList.replaceChildren();
+      for (const client of payload.clients) {
+        if (!client || typeof client.id !== "string") continue;
+        clientList.append(renderClientRow(client));
+      }
+      clientListEmpty.hidden = clientList.childElementCount > 0;
+      clientListEmpty.textContent = t("clientsEmpty");
+      clientsPanel.hidden = false;
+    } catch (_) {
+      clientsPanel.hidden = true;
+    }
+  }
+
+  // The one place the plaintext token is ever visible: it never leaves this
+  // dialog, never touches `localStorage`, and the field is cleared the moment
+  // the operator closes it (see `client-token-close`'s listener below).
+  function openClientTokenDialog(id, token) {
+    clientTokenId.textContent = id;
+    clientTokenValue.value = token;
+    clientTokenDialog.showModal();
     clientTokenValue.focus();
     clientTokenValue.select();
-    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
   }
-});
 
-// The full MCP tool vocabulary, mirroring the contract-stable constant
-// `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
-// created with the `mcp` scope must be allowlisted for every MCP tool, because
-// `ClientIdentity::allows_tool` matches each call against the client's own
-// allowlist and an empty one denies every tool call while the "MCP" checkbox
-// promises access.
-const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
 
-async function createServerClient(event) {
-  event.preventDefault();
-  const id = clientIdInput.value.trim();
-  const scopes = Array.from(
-    clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
-  ).map((input) => input.value);
-  clientCreateError.hidden = true;
-  if (!id || scopes.length === 0) {
-    clientCreateError.textContent = t("clientCreateMissingFields");
-    clientCreateError.hidden = false;
-    return;
-  }
-  const submitButton = clientCreateForm.querySelector("#client-create-submit");
-  submitButton.disabled = true;
-  try {
-    // Only an MCP-scoped client gets the tool allowlist; the others keep an
-    // empty vocabulary (their scopes have no MCP surface to authorize).
-    const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
-    const body = { id, scopes, tools };
-    if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
-    const payload = await globalThis.api.post("/server/clients", body);
-    clientCreateForm.reset();
-    clientCreateDetails.open = false;
-    await fetchServerClients();
-    // Announced in the panel it happened in, not in the search flow's status
-    // region: the token dialog opens next and the operator needs to know the
-    // client really exists before copying a one-time secret.
-    announce(clientPanelStatus, "clientCreated", "success");
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
+  // The token is single-use: clear it whenever the dialog closes, not only when
+  // the Close button is pressed, so Escape or a backdrop click cannot leave a live
+  // credential sitting in the DOM.
+
+
+  // The full MCP tool vocabulary, mirroring the contract-stable constant
+  // `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
+  // created with the `mcp` scope must be allowlisted for every MCP tool, because
+  // `ClientIdentity::allows_tool` matches each call against the client's own
+  // allowlist and an empty one denies every tool call while the "MCP" checkbox
+  // promises access.
+  const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
+
+  async function createServerClient(event) {
+    event.preventDefault();
+    const id = clientIdInput.value.trim();
+    const scopes = Array.from(
+      clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
+    ).map((input) => input.value);
+    clientCreateError.hidden = true;
+    if (!id || scopes.length === 0) {
+      clientCreateError.textContent = t("clientCreateMissingFields");
+      clientCreateError.hidden = false;
+      return;
     }
-  } catch (error) {
-    // Classify on the structured fields the shared client sets — `error.status`
-    // (the HTTP status) and `error.code` (the catalog code) — never on digits
-    // inside the message text: real error bodies carry a shared catalog message
-    // with no status numbers in it. The message check survives only as a
-    // fallback for non-JSON error pages.
-    const status = Number(error && error.status) || 0;
-    const code = error && typeof error.code === "string" ? error.code : "";
-    const message = String(error && error.message);
-    clientCreateError.textContent =
-      status === 409 || message.includes("409")
-        ? t("clientCreateDuplicate")
-        : status === 401
-          || status === 403
-          || code === "unauthorized"
-          || code === "scope_denied"
-          || message.includes("401")
-          || message.includes("403")
-          ? t("unauthorized")
-          : t("clientCreateFailed");
-    clientCreateError.hidden = false;
-  } finally {
-    submitButton.disabled = false;
-  }
-}
-
-async function deleteServerClient(id, button) {
-  if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
-  button.disabled = true;
-  try {
-    await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
-    announce(clientPanelStatus, "clientDeleted", "success");
-    await fetchServerClients();
-  } catch (_) {
-    announce(clientPanelStatus, "clientDeleteFailed", "error");
-    button.disabled = false;
-  }
-}
-
-async function rotateServerClient(id, button) {
-  if (!globalThis.confirm(t("clientRotateConfirm"))) return;
-  button.disabled = true;
-  try {
-    const payload = await globalThis.api.post(
-      `/server/clients/${encodeURIComponent(id)}/rotate`,
-      {},
-    );
-    await fetchServerClients();
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
+    const submitButton = clientCreateForm.querySelector("#client-create-submit");
+    submitButton.disabled = true;
+    try {
+      // Only an MCP-scoped client gets the tool allowlist; the others keep an
+      // empty vocabulary (their scopes have no MCP surface to authorize).
+      const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
+      const body = { id, scopes, tools };
+      if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
+      const payload = await globalThis.api.post("/server/clients", body);
+      clientCreateForm.reset();
+      clientCreateDetails.open = false;
+      await fetchServerClients();
+      // Announced in the panel it happened in, not in the search flow's status
+      // region: the token dialog opens next and the operator needs to know the
+      // client really exists before copying a one-time secret.
+      announce(clientPanelStatus, "clientCreated", "success");
+      if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+        openClientTokenDialog(payload.id, payload.token);
+      }
+    } catch (error) {
+      // Classify on the structured fields the shared client sets — `error.status`
+      // (the HTTP status) and `error.code` (the catalog code) — never on digits
+      // inside the message text: real error bodies carry a shared catalog message
+      // with no status numbers in it. The message check survives only as a
+      // fallback for non-JSON error pages.
+      const status = Number(error && error.status) || 0;
+      const code = error && typeof error.code === "string" ? error.code : "";
+      const message = String(error && error.message);
+      clientCreateError.textContent =
+        status === 409 || message.includes("409")
+          ? t("clientCreateDuplicate")
+          : status === 401
+            || status === 403
+            || code === "unauthorized"
+            || code === "scope_denied"
+            || message.includes("401")
+            || message.includes("403")
+            ? t("unauthorized")
+            : t("clientCreateFailed");
+      clientCreateError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
     }
-  } catch (_) {
-    announce(clientPanelStatus, "clientRotateFailed", "error");
-    button.disabled = false;
   }
-}
 
-clientCreateForm.addEventListener("submit", createServerClient);
+  async function deleteServerClient(id, button) {
+    if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
+    button.disabled = true;
+    try {
+      await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
+      announce(clientPanelStatus, "clientDeleted", "success");
+      await fetchServerClients();
+    } catch (_) {
+      announce(clientPanelStatus, "clientDeleteFailed", "error");
+      button.disabled = false;
+    }
+  }
 
-// The storage-backed panels are only meaningful when persistence is on and
-// healthy: with storage disabled (or unreachable) `/history` and `/saved`
-// answer `503`, so requesting them on every refresh is pure noise. `/status`
-// already reports the authoritative `storage` block, so gate the two panels on
-// it and hide them otherwise — the same fail-closed convention the fetch
-// functions themselves use.
+  async function rotateServerClient(id, button) {
+    if (!globalThis.confirm(t("clientRotateConfirm"))) return;
+    button.disabled = true;
+    try {
+      const payload = await globalThis.api.post(
+        `/server/clients/${encodeURIComponent(id)}/rotate`,
+        {},
+      );
+      await fetchServerClients();
+      if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+        openClientTokenDialog(payload.id, payload.token);
+      }
+    } catch (_) {
+      announce(clientPanelStatus, "clientRotateFailed", "error");
+      button.disabled = false;
+    }
+  }
+
+
+  // The storage-backed panels are only meaningful when persistence is on and
+  // healthy: with storage disabled (or unreachable) `/history` and `/saved`
+  // answer `503`, so requesting them on every refresh is pure noise. `/status`
+  // already reports the authoritative `storage` block, so gate the two panels on
+  // it and hide them otherwise — the same fail-closed convention the fetch
+  // functions themselves use.
+  return { scopeLabel, fetchServerClients, openClientTokenDialog, createServerClient };
+})();
+
+const scopeLabel = clients.scopeLabel;
+const fetchServerClients = clients.fetchServerClients;
+const openClientTokenDialog = clients.openClientTokenDialog;
+const createServerClient = clients.createServerClient;
+
 async function refreshPanels() {
   fetchProviderStatus();
   const status = await fetchServiceState();
@@ -1985,6 +1976,27 @@ marginaliaClearButton.addEventListener("click", async () => {
     setStatusKey("marginaliaClearedFailed", "error");
   }
 });
+clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+clientTokenDialog.addEventListener("close", () => {
+  clientTokenValue.value = "";
+  setInlineStatus(clientTokenStatus, "", null);
+});
+clientTokenCopy.addEventListener("click", async () => {
+  const token = clientTokenValue.value;
+  if (!token) return;
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
+    await navigator.clipboard.writeText(token);
+    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
+  } catch (_) {
+    // No clipboard access (insecure context, denied permission): leave the token
+    // selected so the operator can copy it by hand, and say so.
+    clientTokenValue.focus();
+    clientTokenValue.select();
+    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
+  }
+});
+clientCreateForm.addEventListener("submit", createServerClient);
 refreshPanels();
 
 function applyDeclarativeTranslations() {
