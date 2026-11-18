@@ -9,6 +9,96 @@
 // Bloque de arranque (al final, en este orden):
 //   refreshPanels() · listeners · DOMContentLoaded
 
+// ── DOM ────────────────────────────────────────────────────────
+// Los 85 nodos, capturados una sola vez y de solo lectura. Ningún dominio
+// los re-consulta: tras un re-render, un `querySelector` tardío devolvería
+// un nodo distinto del que el resto de la página usa (regla D2 del spec).
+const form = document.querySelector("#search-form");
+const queryInput = document.querySelector("#query");
+const languageInput = document.querySelector("#language");
+const regionInput = document.querySelector("#region");
+const fileTypeInput = document.querySelector("#file-type");
+const tokenInput = document.querySelector("#local-token");
+const searchButton = document.querySelector("#search-button");
+const deepButton = document.querySelector("#deep-button");
+const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
+const answerCard = document.querySelector("#answer-card");
+const answerTextNode = document.querySelector("#answer-text");
+const answerMetaNode = document.querySelector("#answer-meta");
+const answerButton = document.querySelector("#answer-button");
+const answerHint = document.querySelector("#answer-hint");
+const answerConfig = document.querySelector("#answer-config");
+const answerConfigBody = document.querySelector("#answer-config-body");
+const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
+const answerToggleStatus = document.querySelector("#answer-toggle-status");
+const modelOptions = document.querySelector("#model-options");
+const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
+const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
+const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
+const resultHeading = document.querySelector("#result-heading");
+const statusNode = document.querySelector("#status");
+const loadingNode = document.querySelector("#loading");
+const resultsNode = document.querySelector("#results");
+const resultsEmpty = document.querySelector("#results-empty");
+const paginationNode = document.querySelector("#pagination");
+const previousButton = document.querySelector("#previous");
+const nextButton = document.querySelector("#next");
+const pageLabel = document.querySelector("#page-label");
+const resultTemplate = document.querySelector("#result-template");
+const deepTemplate = document.querySelector("#deep-template");
+const fragmentTemplate = document.querySelector("#fragment-template");
+const cancelButton = document.querySelector("#cancel-button");
+const themeToggle = document.querySelector("#theme-toggle");
+const uiLanguage = document.querySelector("#ui-language");
+const filtersDetails = document.querySelector("details.filters");
+const filtersSummary = document.querySelector("#filters-summary");
+const accessDetails = document.querySelector("details.access-filters");
+const accessSummary = document.querySelector("#access-summary");
+const providerStatus = document.querySelector(".provider-status");
+const providerList = document.querySelector("#provider-list");
+const providerStatusText = document.querySelector("#provider-status-text");
+const servicePanel = document.querySelector(".service-state");
+const serviceSummary = document.querySelector("#service-summary");
+const serviceIndicators = document.querySelector("#service-indicators");
+const serviceMode = document.querySelector("#service-mode");
+const marginaliaKeyButton = document.querySelector("#marginalia-key-button");
+const marginaliaClearButton = document.querySelector("#marginalia-clear-button");
+const marginaliaStatus = document.querySelector("#marginalia-status");
+const marginaliaDialog = document.querySelector("#marginalia-dialog");
+const marginaliaForm = document.querySelector("#marginalia-form");
+const marginaliaKeyInput = document.querySelector("#marginalia-key");
+const marginaliaKeyError = document.querySelector("#marginalia-key-error");
+const marginaliaSave = document.querySelector("#marginalia-save");
+const marginaliaCancel = document.querySelector("#marginalia-cancel");
+const credentialActions = document.querySelector("#credential-actions");
+const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
+const historyPanel = document.querySelector(".history-panel");
+const historyList = document.querySelector("#history-list");
+const historyEmpty = document.querySelector("#history-empty");
+const historyTemplate = document.querySelector("#history-template");
+const historyPurgeButton = document.querySelector("#history-purge");
+const historyPanelStatus = document.querySelector("#history-panel-status");
+const savedPanel = document.querySelector(".saved-panel");
+const savedList = document.querySelector("#saved-list");
+const savedEmpty = document.querySelector("#saved-empty");
+const savedTemplate = document.querySelector("#saved-template");
+const savedPanelStatus = document.querySelector("#saved-panel-status");
+const clientsPanel = document.querySelector(".clients-panel");
+const clientList = document.querySelector("#client-list");
+const clientListEmpty = document.querySelector("#client-list-empty");
+const clientCreateDetails = document.querySelector("#client-create");
+const clientCreateForm = document.querySelector("#client-create-form");
+const clientIdInput = document.querySelector("#client-id");
+const clientExpiresInput = document.querySelector("#client-expires");
+const clientCreateError = document.querySelector("#client-create-error");
+const clientTokenDialog = document.querySelector("#client-token-dialog");
+const clientTokenId = document.querySelector("#client-token-id");
+const clientTokenValue = document.querySelector("#client-token-value");
+const clientTokenClose = document.querySelector("#client-token-close");
+const clientTokenCopy = document.querySelector("#client-token-copy");
+const clientTokenStatus = document.querySelector("#client-token-status");
+const clientPanelStatus = document.querySelector("#client-panel-status");
+
 // ── Theme ───────────────────────────────────────────────────────
 // Dominio: persistencia del tema y el atributo `data-theme`. Retorna su
 // superficie porque el arranque (más abajo) llama `applyTheme(storedTheme())`
@@ -119,43 +209,6 @@ globalThis.authHeaders = (extra) => {
 };
 
 // UI Elements
-const form = document.querySelector("#search-form");
-const queryInput = document.querySelector("#query");
-const languageInput = document.querySelector("#language");
-const regionInput = document.querySelector("#region");
-const fileTypeInput = document.querySelector("#file-type");
-const tokenInput = document.querySelector("#local-token");
-const searchButton = document.querySelector("#search-button");
-const deepButton = document.querySelector("#deep-button");
-const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
-const answerCard = document.querySelector("#answer-card");
-const answerTextNode = document.querySelector("#answer-text");
-const answerMetaNode = document.querySelector("#answer-meta");
-const answerButton = document.querySelector("#answer-button");
-const answerHint = document.querySelector("#answer-hint");
-const answerConfig = document.querySelector("#answer-config");
-const answerConfigBody = document.querySelector("#answer-config-body");
-const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
-const answerToggleStatus = document.querySelector("#answer-toggle-status");
-const modelOptions = document.querySelector("#model-options");
-const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
-const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
-const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
-const resultHeading = document.querySelector("#result-heading");
-const statusNode = document.querySelector("#status");
-const loadingNode = document.querySelector("#loading");
-const resultsNode = document.querySelector("#results");
-const resultsEmpty = document.querySelector("#results-empty");
-const paginationNode = document.querySelector("#pagination");
-const previousButton = document.querySelector("#previous");
-const nextButton = document.querySelector("#next");
-const pageLabel = document.querySelector("#page-label");
-const resultTemplate = document.querySelector("#result-template");
-const deepTemplate = document.querySelector("#deep-template");
-const fragmentTemplate = document.querySelector("#fragment-template");
-const cancelButton = document.querySelector("#cancel-button");
-const themeToggle = document.querySelector("#theme-toggle");
-const uiLanguage = document.querySelector("#ui-language");
 
 // Initialize store and subscribe to changes
 store.subscribe((state) => {
@@ -277,10 +330,6 @@ function addOperator(parts, name, value) {
 // The panel is collapsed by default, so the summary carries the active state: a
 // stale region/type is visible without opening it, and a missing requirement
 // opens it (see `reportFailure`) instead of hiding the fix.
-const filtersDetails = document.querySelector("details.filters");
-const filtersSummary = document.querySelector("#filters-summary");
-const accessDetails = document.querySelector("details.access-filters");
-const accessSummary = document.querySelector("#access-summary");
 
 function updateFiltersSummary() {
   const active = [];
@@ -988,9 +1037,6 @@ const clearValidationError = net.clearValidationError;
 // declaran.
 
 // ── Source availability ─────────────────────────────────────────
-const providerStatus = document.querySelector(".provider-status");
-const providerList = document.querySelector("#provider-list");
-const providerStatusText = document.querySelector("#provider-status-text");
 
 const PROVIDER_REASON_KEYS = {
   provider_not_approved: "providerReasonNotApproved",
@@ -1111,10 +1157,6 @@ async function fetchProviderStatus() {
 }
 
 // ── Service state ───────────────────────────────────────────────
-const servicePanel = document.querySelector(".service-state");
-const serviceSummary = document.querySelector("#service-summary");
-const serviceIndicators = document.querySelector("#service-indicators");
-const serviceMode = document.querySelector("#service-mode");
 
 function indicator(label, value, indicatorState) {
   const item = document.createElement("li");
@@ -1357,17 +1399,6 @@ strategistEnabledToggle.addEventListener("change", toggleStrategist);
 // (never disk, config, or logs) after a live canary validates it, or liquidated
 // on demand. The row sits in its own secondary line so the search axis
 // (write → search → analyze) stays visually dominant.
-const marginaliaKeyButton = document.querySelector("#marginalia-key-button");
-const marginaliaClearButton = document.querySelector("#marginalia-clear-button");
-const marginaliaStatus = document.querySelector("#marginalia-status");
-const marginaliaDialog = document.querySelector("#marginalia-dialog");
-const marginaliaForm = document.querySelector("#marginalia-form");
-const marginaliaKeyInput = document.querySelector("#marginalia-key");
-const marginaliaKeyError = document.querySelector("#marginalia-key-error");
-const marginaliaSave = document.querySelector("#marginalia-save");
-const marginaliaCancel = document.querySelector("#marginalia-cancel");
-const credentialActions = document.querySelector("#credential-actions");
-const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
 
 // Show the Marginalia credential controls only while Marginalia is one of the
 // selected sources. The visibility follows `providers.enabled` — the same
@@ -1481,12 +1512,6 @@ marginaliaClearButton.addEventListener("click", async () => {
 });
 
 // ── History ─────────────────────────────────────────────────────
-const historyPanel = document.querySelector(".history-panel");
-const historyList = document.querySelector("#history-list");
-const historyEmpty = document.querySelector("#history-empty");
-const historyTemplate = document.querySelector("#history-template");
-const historyPurgeButton = document.querySelector("#history-purge");
-const historyPanelStatus = document.querySelector("#history-panel-status");
 
 function historyLabel(entry) {
   const parts = [];
@@ -1554,11 +1579,6 @@ async function purgeHistory() {
 }
 
 // ── Saved documents ─────────────────────────────────────────────
-const savedPanel = document.querySelector(".saved-panel");
-const savedList = document.querySelector("#saved-list");
-const savedEmpty = document.querySelector("#saved-empty");
-const savedTemplate = document.querySelector("#saved-template");
-const savedPanelStatus = document.querySelector("#saved-panel-status");
 
 async function fetchSavedDocuments() {
   try {
@@ -1698,21 +1718,6 @@ async function saveDocument(documentValue, provenance, button) {
 // convention `fetchServiceState`/`fetchSavedDocuments` already use — a
 // non-admin credential simply never sees this section, rather than seeing
 // it and hitting a wall of 403s.
-const clientsPanel = document.querySelector(".clients-panel");
-const clientList = document.querySelector("#client-list");
-const clientListEmpty = document.querySelector("#client-list-empty");
-const clientCreateDetails = document.querySelector("#client-create");
-const clientCreateForm = document.querySelector("#client-create-form");
-const clientIdInput = document.querySelector("#client-id");
-const clientExpiresInput = document.querySelector("#client-expires");
-const clientCreateError = document.querySelector("#client-create-error");
-const clientTokenDialog = document.querySelector("#client-token-dialog");
-const clientTokenId = document.querySelector("#client-token-id");
-const clientTokenValue = document.querySelector("#client-token-value");
-const clientTokenClose = document.querySelector("#client-token-close");
-const clientTokenCopy = document.querySelector("#client-token-copy");
-const clientTokenStatus = document.querySelector("#client-token-status");
-const clientPanelStatus = document.querySelector("#client-panel-status");
 
 const SCOPE_LABEL_KEYS = {
   search: "scopeSearch",
