@@ -1,437 +1,379 @@
-# Refactor interno de `app.js` — Plan de implementación
+# Refactor de `app.js` con IIFEs completos — Plan de implementación
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Reorganizar `crates/amatl-ui/assets/app.js` en dominios delimitados dentro del mismo archivo, encapsulando estado y reduciendo la superficie global, sin cambiar el comportamiento observable.
+**Goal:** Encerrar cada dominio de `crates/amatl-ui/assets/app.js` en un IIFE real que encapsula su estado y **retorna** los símbolos que otros dominios y el arranque consumen, bajando la superficie global de ~86 funciones a un núcleo pequeño y explícito.
 
-**Architecture:** Un solo archivo, un solo `<script defer>`. Se introduce un **núcleo transversal** de solo lectura (`t`, utilidades, barra de estado, `refreshPanels`, constantes) y luego **IIFEs de dominio** que encapsulan su propio estado y leen el núcleo. Los 85 nodos DOM permanecen globales de solo lectura. El bloque de arranque (`refreshPanels()`, listeners, `DOMContentLoaded`) queda al final, en su orden actual.
+**Architecture:** El archivo pasa de "se ejecuta de arriba a abajo" a **núcleo primero, dominios después, arranque al final**. El núcleo transversal (`t`, utilidades, barra de estado, constantes) se declara arriba y los dominios lo leen. Cada dominio es un IIFE `const { … } = (function () { … return { … }; })();` que expone solo lo que cruza su frontera. El bloque final coordina: `applyTheme(storedTheme())`, `refreshPanels()`, los listeners y `DOMContentLoaded`.
 
-**Tech Stack:** JavaScript vainilla sin build, sin dependencias, CSP `'self'`. Verificación con `cargo test -p amatl-ui` (tests de contrato por substring) y Chromium por CDP para el comportamiento.
+**Tech Stack:** JavaScript vainilla, sin build, sin dependencias, CSP `'self'`. Un solo archivo.
 
-**Spec:** `docs/superpowers/specs/2026-11-18-refactor-app-js-design.md`
+**Spec:** `docs/superpowers/specs/2026-11-18-refactor-app-js-design.md` (incluye la **Enmienda 2026-11-18** que autoriza el cambio de mecanismo de arranque).
 
 ## Global Constraints
 
-- **Un solo archivo**: `crates/amatl-ui/assets/app.js`. No se crean archivos nuevos; `asset()` en `crates/amatl-ui/src/lib.rs:25` es una allowlist de rutas exactas.
-- **Sin módulos ES**: sigue siendo `<script defer>` clásico. `index.html:18` no cambia.
-- **Sin dependencias, sin build, sin CDN**: CSP `lib.rs:7` es `script-src 'self'`.
-- **Los símbolos verificados conservan su nombre y texto exactos**: **85 aserciones** en `crates/amatl-ui/src/lib.rs` leen `text("/app.js")` y buscan substrings.
-- **El orden de ejecución observable no cambia**: `refreshPanels()` en la línea 1901 y `DOMContentLoaded` en la 1987 conservan su posición relativa.
-- **Núcleo de solo lectura**: `t`, `pluralKey`, `countLabel`, `boundedText`, `safeHttpUrl`, `validHash`, `setStatusKey` + estado asociado, `announce`, `refreshPanels`, y las constantes `PAGE_SIZE`/`LIST_LIMIT`/`MAX_*`. Ningún dominio los re-declara ni los sombrea.
-- **Los 85 nodos DOM siguen globales** (`const x = document.querySelector(...)` de nivel superior). No se re-consultan dentro de dominios.
-- **Comentarios de intención en español**; identificadores en inglés (convención del repo).
+- **Un solo archivo**: `crates/amatl-ui/assets/app.js`. `asset()` (`crates/amatl-ui/src/lib.rs:25`) es allowlist de rutas exactas: no se crean archivos.
+- **Sin módulos ES**, sin bundler, sin CDN. `index.html:18` no cambia (`<script defer>`).
+- **Los símbolos verificados conservan nombre y texto exactos**: **85 aserciones** leen `text("/app.js")` y buscan substrings.
+- **`globalThis.authHeaders` permanece global**: lo lee `client.js:8`.
+- **`function reportFailure(error) {` permanece literal**: el test lo recorta con `split_once` (`lib.rs:527`).
+- **`MCP_TOOL_NAMES` conserva su texto**: comparado con `MCP_TOOLS`.
+- **`countLabel(entry.total_results, "resultsCount")` conserva el espacio tras la coma**.
+- **Núcleo de solo lectura**: `t`, `pluralKey`, `countLabel`, `boundedText`, `safeHttpUrl`, `validHash`, `setStatusKey` (+ `statusNode`/`statusState`/`statusRenderer`/`rerenderStatus`), `announce`, `refreshPanels`, `PAGE_SIZE`/`LIST_LIMIT`/`MAX_*`.
+- **Los 85 nodos DOM siguen de nivel superior** y de solo lectura: re-consultarlos dentro de un dominio cambiaría el momento de captura tras un re-render.
+- **Comportamiento visible idéntico**: misma UI, mismos flujos, mismos textos. El *mecanismo* de arranque cambia (autorizado en la Enmienda).
 
 ## Review Focus
 
-Las cinco clases de fallo que el spec implica y que **ningún test existente atrapa**, porque las aserciones son `contains` de strings y **no ejecutan JS** (`lib.rs:533`):
+Las cinco clases de fallo que **ningún test atrapa** (las aserciones son `contains` de strings y no ejecutan JS, `lib.rs:533`), y que con IIFEs completos pasan de improbables a probables:
 
-1. **TDZ por IIFE**: un dominio lee un `const` declarado *después* de su bloque, y lanza `ReferenceError` al cargar. Los tests pasan igual.
-2. **Listener duplicado**: un `addEventListener` movido dentro de un dominio y ejecutado dos veces, de modo que un cambio de idioma o un toggle se aplica doble.
-3. **Nodo re-consultado tarde**: un dominio hace su propio `querySelector` tras un re-render y captura un nodo distinto del que el resto usa.
-4. **Símbolo transversal sombreado**: un dominio declara su propio `t`/`boundedText` y el resto de la página deja de ver el real.
-5. **Orden de arranque alterado**: `restoreFromLocation()` corre antes que `applyTranslations()`, y la pantalla restaurada queda sin traducir.
-
-Cada uno tiene su test o su verificación en la tarea que toca el código correspondiente (ver Tareas 2 y 8).
+1. **TDZ en el núcleo**: un dominio lee un símbolo del núcleo declarado *después* de él. Tarea 5 (núcleo) + test de Tarea 9.
+2. **Retorno incompleto**: un dominio no retorna un símbolo que otro consume, y el consumidor recibe `undefined`. Cada tarea 3-8 lo prueba con el probe.
+3. **Listener duplicado o ausente**: al reubicar los `addEventListener` al bloque final, uno queda fuera o se registra dos veces. Tarea 9 lo prueba.
+4. **Orden de arranque roto**: `applyTheme(storedTheme())` corre antes que los dominios, o `restoreFromLocation()` antes que `applyTranslations()`. Tareas 3 y 9.
+5. **Símbolo re-declarado**: un dominio declara su propio `t`/`boundedText`, desviando a los demás a una copia huérfana. Tarea 9 lo prueba.
 
 ---
 
-### Task 1: Andamiaje del núcleo y verificación previa
+### Task 1: Baseline y plan versionado
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js` (solo inserción de cabecera de sección)
+- Modify: ninguno de producto.
 
-**Interfaces:**
-- Consumes: nada.
-- Produces: el comentario de estructura en la cabecera del archivo, que fija el orden de bloques para las tareas siguientes.
-
-- [ ] **Step 1: Registrar el baseline**
-
-Run:
-```bash
-cargo test -p amatl-ui --locked
-```
-Expected: `test result: ok. 29 passed`.
-
-- [ ] **Step 2: Añadir el índice de bloques como comentario de cabecera**
-
-Insertar tras la primera línea de comentario del archivo, sin tocar código:
-
-```javascript
-// ── Estructura del archivo ──────────────────────────────────────
-// Núcleo transversal (SOLO LECTURA para los dominios, declarado primero):
-//   i18n · utilidades · barra de estado · orquestador de refresco · constantes
-// Captura de nodos DOM: 85 `const`, globales, de solo lectura.
-// Dominios (IIFEs, autocontenidos, leen el núcleo, no lo re-declaran):
-//   theme · net · render · search-deep · providers · storage-panels · clients
-// Bloque de arranque (al final, en este orden):
-//   refreshPanels() · listeners · DOMContentLoaded
-```
-
-- [ ] **Step 3: Verificar que nada cambió**
+- [ ] **Step 1: Registrar baseline**
 
 Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed` (un comentario no altera ninguna aserción).
+Expected: `test result: ok. 29 passed`.
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 2: Verificar la rama**
+
+Run: `git branch --show-current`
+Expected: `refactor/app-js`.
+
+- [ ] **Step 3: Commit del spec enmendado y este plan**
 
 ```bash
-git add crates/amatl-ui/assets/app.js
-git commit -m "refactor(ui): index the app.js block structure in a header comment"
+git add docs/superpowers/specs/2026-11-18-refactor-app-js-design.md docs/superpowers/plans/2026-11-18-refactor-app-js.md
+git commit -m "docs(ui): amend the app.js design for full IIFEs and record the plan"
 ```
 
 ---
 
-### Task 2: Verificación en navegador (la red que la suite no da)
+### Task 2: Probe de navegador (la única red real)
 
 **Files:**
-- Create: `/tmp/user/1000/opencode/amatl-refactor/probe.py` (efímero, fuera del repo)
+- Create: `/tmp/user/1000/opencode/amatl-refactor/probe.py` (efímero, fuera del repo).
 
 **Interfaces:**
-- Consumes: el binario `target/release/amatl` y el servidor `--mock`.
-- Produces: un script reutilizable que, dada una URL, afirma **cero excepciones no capturadas** y recorre los flujos principales. Cada tarea posterior lo re-ejecuta.
+- Produces: `python3 …/probe.py [port]` → `EXCEPTIONS: N`, `CONSOLE_ERRORS: N`, `FLOWS: {...}`. Exit 0 solo con ambos en 0. **Cada tarea 3-8 lo re-ejecuta; ninguna se cierra sin `EXCEPTIONS: 0`.**
 
 - [ ] **Step 1: Escribir el probe**
 
-Debe, con Chromium headless por CDP:
-1. Suscribirse a `Runtime.exceptionThrown` y `Runtime.consoleAPICalled` (nivel error).
-2. Cargar la página y esperar 3 s.
-3. Evaluar `window.onerror`/`unhandledrejection` acumulados.
-4. Recorrer: escribir consulta, pulsar Buscar, cambiar idioma es→en→es, pulsar el toggle de tema.
-5. Imprimir `EXCEPTIONS: N` y fallar con salida no-cero si N > 0.
+Debe: abrir Chromium headless por CDP, suscribirse a `Runtime.exceptionThrown` + `Log.entryAdded` (error), cargar `/`, instalar un acumulador `window.onerror`/`unhandledrejection`, y recorrer: (1) buscar `rust` y contar `#results li`; (2) cambiar idioma `es→en→es` y leer `documentElement.lang`; (3) pulsar el toggle de tema y leer `data-theme`. Imprime y falla con exit≠0 si hay excepciones.
 
-El script de la auditoría del 2026-11-18 (`behav.py`, en `/tmp/user/1000/opencode/amatl-audit/`) sirve de base: ya abre Chrome, habla CDP y evalúa en la página.
-
-- [ ] **Step 2: Reconstruir el binario y arrancar el servidor**
+- [ ] **Step 2: Reconstruir y arrancar**
 
 ```bash
 cargo build --release -p amatl-cli --locked
-# servidor --mock en 127.0.0.1:8955, no_auth = true, enabled = []
+# servidor --mock en 127.0.0.1:8955, no_auth=true, enabled=[]
 ```
 
-Regla del repo (`audit/embedded-asset-staleness`): los assets van con `include_bytes!`, así que **hay que reconstruir** o el binario sirve el JS previo.
+Los assets van con `include_bytes!`: sin reconstruir, el binario sirve el JS viejo (`audit/embedded-asset-staleness`).
 
-- [ ] **Step 3: Correr el probe y registrar el estado base**
+- [ ] **Step 3: Confirmar el baseline limpio**
 
-Run: `python3 /tmp/user/1000/opencode/amatl-refactor/probe.py`
-Expected: `EXCEPTIONS: 0` **antes** de cualquier refactor. Si no es 0, parar: el baseline está sucio.
+Run: `python3 /tmp/user/1000/opencode/amatl-refactor/probe.py 8955`
+Expected: `EXCEPTIONS: 0`, `CONSOLE_ERRORS: 0`, `search_results >= 1`, `lang` = `es->en->es`. Si no, **parar**: el baseline está sucio y el probe no sirve de juez.
 
-- [ ] **Step 4: No commitear** (el probe es efímero, fuera del repo).
+- [ ] **Step 4: Ledger, sin commit**
+
+Registrar el resultado del baseline en el ledger. El probe no se versiona.
 
 ---
 
-### Task 3: Dominio `theme`
+### Task 3: Spike del patrón sobre `theme` (el molde)
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js:5-20` (`storedTheme`, `applyTheme`), `:136-165` (`resolvedTheme`, `updateThemeToggle`, listener)
+- Modify: `crates/amatl-ui/assets/app.js:5-38` (constantes + `storedTheme`/`applyTheme`), `:145-179` (`resolvedTheme`/`updateThemeToggle`, listener)
 
 **Interfaces:**
-- Consumes: `themeToggle` (nodo global), `t` (núcleo).
-- Produces: `applyTheme(theme)`, `resolvedTheme()`, `updateThemeToggle()` — mismas firmas, ahora dentro de una IIFE que expone solo esas tres al resto del archivo si alguna las llama de fuera. **Antes de encapsular, comprobar quién las llama fuera del bloque**; hoy `updateThemeToggle` se llama desde `applyTranslations` (:1983) y desde su propio listener.
+- Consumes: `t` (núcleo, para `aria-label`), `themeToggle` (nodo global).
+- Produces: nada que otros dominios consuman hoy; el arranque llama `applyTheme(storedTheme())`. `updateThemeToggle` la llama `applyTranslations` → **va al núcleo**, no al IIFE.
 
-- [ ] **Step 1: Comprobar los llamadores externos**
+**Patrón que fijan las demás tareas:**
+```javascript
+const theme = (function () {
+  const THEME_KEY = "amatl-theme";
+  function storedTheme() { /* … */ }
+  function applyTheme(value) { /* … */ }
+  function resolvedTheme() { /* … */ }
+  function updateThemeToggle() { /* … */ }
+  return { storedTheme, applyTheme, resolvedTheme, updateThemeToggle };
+})();
+```
+El núcleo expone `updateThemeToggle` al resto: `const updateThemeToggle = theme.updateThemeToggle;` **antes** de `applyTranslations`.
 
-Run: `grep -n "updateThemeToggle\|resolvedTheme\|applyTheme" crates/amatl-ui/assets/app.js`
-Expected: si `updateThemeToggle` se llama desde fuera del bloque de tema, la IIFE **debe** exponerla (p. ej. `globalThis.__theme = { updateThemeToggle }` **no**: rompería CSP-idiom). En su lugar, mantenerla en el núcleo o pasar una referencia. Decidir según lo que devuelva el grep y anotarlo.
+- [ ] **Step 1: Aplicar el patrón a `theme`**
 
-- [ ] **Step 2: Envolver el bloque en una IIFE**
+`THEME_KEY`/`storedTheme`/`applyTheme`/`resolvedTheme`/`updateThemeToggle` dentro del IIFE; el IIFE **retorna los cuatro**. La llamada `applyTheme(storedTheme())` **sale** de la línea 29 y va al bloque de arranque (Tarea 9). El listener de click del tema también se reubica al arranque.
 
-Sin cambiar cuerpos ni nombres. El estado si lo hubiera queda local.
-
-- [ ] **Step 3: Test de contrato**
+- [ ] **Step 2: Test de contrato**
 
 Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed`. Las aserciones de `storedTheme`/`applyTheme` (`presentation_keeps_technical_internals_hidden`) siguen encontrando sus strings.
+Expected: `29 passed` (ninguna aserción toca símbolos de tema, pero el archivo debe seguir compilando como string).
 
-- [ ] **Step 4: Probe en navegador**
+- [ ] **Step 3: Probe**
 
-Run: reconstruir + `python3 …/probe.py`
-Expected: `EXCEPTIONS: 0`, y el toggle de tema cambia el atributo `data-theme`.
+Run: reconstruir + `python3 …/probe.py 8955`
+Expected: `EXCEPTIONS: 0`; `theme` = `None->dark` en un click.
+
+- [ ] **Step 4: Ruling y ledger**
+
+Si el patrón funciona, anotar en el ledger: `Ruling: el molde IIFE-retorna-símbolos es viable; las tareas 4-8 lo replican`. Si falla, **parar y reconsiderar** (el molde no sirve y (b) está mal planteado).
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git commit -am "refactor(ui): delimit the theme domain in an IIFE"
+git commit -am "refactor(ui): encapsulate the theme domain in an IIFE that returns its surface"
 ```
 
 ---
 
-### Task 4: Dominio `net` (envoltura de `globalThis.api` y errores)
+### Task 4: Núcleo transversal explícito
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `globalThis.authHeaders` (:86), `reportFailure` (:641), `ERROR_MESSAGE_KEYS` (:659), `reportValidationError` (:877), `clearValidationError` (:889)
+- Modify: `crates/amatl-ui/assets/app.js` — agrupar en la cabecera, en este orden, sin cambiar cuerpos: `CATALOG`/`FALLBACK`/`LANGUAGE_KEY`/`LANG`/`t`/`pluralKey`/`countLabel`, `boundedText`/`safeHttpUrl`/`validHash`, `statusRenderer`/`statusState`/`setStatusKey`/`rerenderStatus`/`announce`, `PAGE_SIZE`/`LIST_LIMIT`/`MAX_*`.
 
 **Interfaces:**
-- Consumes: `globalThis.api` (de `client.js`), `statusNode`, `t`.
-- Produces: `reportFailure(error)`, `reportValidationError(key)`, `clearValidationError()` con firmas idénticas. `authHeaders` **debe seguir en `globalThis`**: `client.js:8` lo lee por ese nombre.
+- Produces: **todo** símbolo del núcleo disponible antes de cualquier dominio. Los dominios de las tareas 5-8 lo consumen sin declararlo.
 
-- [ ] **Step 1: Test de contrato del contrato de error**
+- [ ] **Step 1: Reagrupar el núcleo arriba**
 
-El test `report_failure_reads_only_error_properties_never_a_bare_message` (:527) recorta el cuerpo de `reportFailure` por `split_once("function reportFailure(error) {")`. Ese literal **debe permanecer** exacto. Verificarlo antes de tocar:
+Mover las declaraciones a un bloque "NÚCLEO" al inicio, **conservando su texto exacto** y sin IIFE (son transversales). El DOM (85 nodos) va justo después.
 
-Run: `grep -n "function reportFailure(error) {" crates/amatl-ui/assets/app.js`
-Expected: una coincidencia exacta.
-
-- [ ] **Step 2: Encapsular el dominio**
-
-`reportFailure` y sus vecinos dentro de la IIFE; `globalThis.authHeaders` permanece como asignación de nivel superior (su contrato es el nombre global).
-
-- [ ] **Step 3: Test de contrato**
+- [ ] **Step 2: Test de contrato**
 
 Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed`, en particular `report_failure_reads_only_error_properties_never_a_bare_message` y `mcp_clients_carry_the_tool_vocabulary_and_errors_classify_on_status`.
+Expected: `29 passed`.
 
-- [ ] **Step 4: Probe**
+- [ ] **Step 3: Probe**
 
-Run: `python3 …/probe.py` tras reconstruir.
+Run: `python3 …/probe.py 8955`
 Expected: `EXCEPTIONS: 0`.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git commit -am "refactor(ui): delimit the net/error-classification domain"
+git commit -am "refactor(ui): hoist the transversal core above the domains"
 ```
 
 ---
 
-### Task 5: Dominio `render`
+### Task 5: Dominio `net`
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `renderStatus` (:226), `setStatusKey` (:234), `rerenderStatus` (:239), `announce` (:247), `renderSearchResult` (:315), `renderEvidenceFragment` (:435), `renderDeepDocument` (:475), `renderAnswerCard` (:556), `render` (:567), `deepItems` (:593), `documentStatus`, `acquisitionMethod`, `signalLabel`
+- Modify: `crates/amatl-ui/assets/app.js` — `globalThis.authHeaders` (:95), `ERROR_MESSAGE_KEYS`, `reportFailure` (:650), `reportValidationError`, `clearValidationError`
 
 **Interfaces:**
-- Consumes: nodos globales, `t`, `boundedText`, `store`.
-- Produces: `render`, `renderStatus`, `setStatusKey`, `rerenderStatus`, `announce`. **`setStatusKey` y `announce` son transversales** (20 y 12 usos, desde otros dominios y desde el arranque): van al **núcleo**, no a esta IIFE.
+- Produces: `reportFailure`, `reportValidationError`, `clearValidationError` (los consumen `search-deep` y `render`). `globalThis.authHeaders` **queda fuera del IIFE**, como asignación de nivel superior (contrato con `client.js`).
 
-- [ ] **Step 1: Separar lo transversal de lo local**
+- [ ] **Step 1: Aplicar el patrón**
 
-`setStatusKey`, `rerenderStatus`, `announce` y su estado (`statusRenderer`, `statusState`, `statusNode`) se quedan en el núcleo. El resto del render entra en la IIFE.
+IIFE que retorna `{ reportFailure, reportValidationError, clearValidationError }`. El literal `function reportFailure(error) {` **no cambia**.
 
 - [ ] **Step 2: Test de contrato**
 
 Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed` (`presentation_keeps_technical_internals_hidden`, `deep_evidence_is_bounded_traceable_and_has_no_local_file_surface`).
+Expected: `29 passed`, incl. `report_failure_reads_only_error_properties_never_a_bare_message`.
 
 - [ ] **Step 3: Probe**
 
-Expected: `EXCEPTIONS: 0`; una búsqueda mock pinta resultados y el estado se reinicia.
+Expected: `EXCEPTIONS: 0`.
 
 - [ ] **Step 4: Commit**
 
 ```bash
-git commit -am "refactor(ui): delimit the render domain, hoist the status bar to the core"
+git commit -am "refactor(ui): encapsulate the net domain behind an IIFE"
 ```
 
 ---
 
-### Task 6: Dominio `providers`
+### Task 6: Dominio `render`
 
 **Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `providerReason` (:955), `toggleEnabled` (:960), `toggleProvider` (:979), `fetchProviderStatus` (:990), `configRow`, `percentage`, `marginaliaCredentialSource`, `updateMarginaliaUi`, `syncMarginaliaFromStatus`, `openMarginaliaDialog`, `saveMarginaliaKey`, `syncCredentialActions`
+- Modify: `crates/amatl-ui/assets/app.js` — `renderStatus` (:235), `renderSearchResult` (:324), `renderEvidenceFragment` (:444), `renderDeepDocument` (:484), `renderAnswerCard` (:565), `render` (:576), `deepItems`, `documentStatus`, `acquisitionMethod`, `signalLabel`, `appendSafeUrl`, `verifyFragment`, `setVerification`
 
 **Interfaces:**
-- Consumes: `globalThis.api`, `t`, `boundedText`, `setStatusKey`.
-- Produces: `fetchProviderStatus()` (la llama `refreshPanels` en el arranque), `syncCredentialActions(enabledList)`.
+- Consumes: `t`, `boundedText`, `safeHttpUrl`, `setStatusKey` (núcleo).
+- Produces: `render` (lo llama `store.subscribe` en el arranque), `deepItems` (lo usa `validatePayload` de `search-deep`).
 
-- [ ] **Step 1: Encapsular, dejando `fetchProviderStatus` accesible al orquestador**
+- [ ] **Step 1: Aplicar el patrón**
 
-`refreshPanels` la llama desde el bloque de arranque: la IIFE debe exponerla de forma que el núcleo la vea (mantenerla en el núcleo, o devolverla y asignarla a una referencia del núcleo — decidir y anotar).
-
-- [ ] **Step 2: Test de contrato**
-
-Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed` (`marginalia_surface_copy_is_catalog_driven`, `marginalia_credential_ui_reflects_the_credential_source`).
-
-- [ ] **Step 3: Probe**
-
-Expected: `EXCEPTIONS: 0`; el panel de fuentes se pinta y el toggle responde una sola vez (cubre el fallo 2 del Review Focus).
-
-- [ ] **Step 4: Commit**
-
-```bash
-git commit -am "refactor(ui): delimit the providers domain"
-```
-
----
-
-### Task 6b: Dominio `search-deep`
-
-**Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `setBusy` (:204), `queryText` (:258), `validatePayload` (:615), `focusTokenField` (:636), `run` (:680), `execute` (:897), `requestedModeIsUnavailable` (:915)
-
-**Interfaces:**
-- Consumes: `globalThis.api`, `t`, `boundedText`, `validHash`, `setStatusKey`, `store`, `syncLocation` (Tarea 6c).
-- Produces: `run(mode, page)`, `execute(event)`. `searchAvailable` (:78) es estado de este dominio.
-
-- [ ] **Step 1: Encapsular `search-deep`**
-
-`queryText` y `setBusy` los usan otros dominios (`render`): si el grep muestra llamadas externas, se quedan en el **núcleo** en vez de en la IIFE. Verificar antes de mover.
-
-- [ ] **Step 2: Test de contrato**
-
-Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed` (`search_and_deep_use_post_contracts_and_safe_dom_apis` busca `globalThis.api.post(endpoint`, `body.page = store.get().page`, `headers.Authorization`).
-
-- [ ] **Step 3: Probe**
-
-Expected: `EXCEPTIONS: 0`; buscar y "Analizar evidencia" pintan resultados.
-
-- [ ] **Step 4: Commit**
-
-```bash
-git commit -am "refactor(ui): delimit the search-deep domain"
-```
-
----
-
-### Task 6c: Dominio `location`
-
-**Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `searchLocation` (:815), `syncLocation` (:828), `restoreFromLocation` (:836)
-
-**Interfaces:**
-- Consumes: `store`, `queryInput` y demás nodos de filtros, `run` (Tarea 6b).
-- Produces: `searchLocation(page)`, `syncLocation(page)`, `restoreFromLocation()`. El spec permite agruparlo con `search-deep` (es quien lo llama); **si se agrupa, esta tarea se funde con la 6b**.
-
-- [ ] **Step 1: Decidir agrupación**
-
-Si `search-deep` es la única llamante de las tres, fundirlas en una IIFE y saltar al Step 3. Anotar la decisión.
-
-- [ ] **Step 2: Encapsular `location`**
-
-- [ ] **Step 3: Test de contrato**
-
-Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed`.
-
-- [ ] **Step 4: Probe de restauración de URL**
-
-Cargar `/?q=rust&mode=search` en el navegador y confirmar que la consulta y los resultados se restauran **y** la interfaz queda traducida (fallo 5 del Review Focus: `restoreFromLocation` después de `applyTranslations`).
-
-Expected: `EXCEPTIONS: 0`, campo y resultados poblados, `h1` traducido.
-
-- [ ] **Step 5: Commit**
-
-```bash
-git commit -am "refactor(ui): delimit the location domain"
-```
-
----
-
-### Task 7: Dominios `storage-panels` y `clients`
-
-**Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `historyLabel` (:1442) … `deleteSavedDocument` (:1544); `scopeLabel` (:1677) … `rotateServerClientToken`
-
-**Interfaces:**
-- Consumes: `globalThis.api`, `t`, `countLabel`, nodos de historial/guardados/clientes.
-- Produces: `fetchHistory`, `fetchSavedDocuments`, `fetchServerClients` (las llama `refreshPanels`).
-
-- [ ] **Step 1: Encapsular `storage-panels`**
-
-Mantener `historyLabel` (usa `countLabel`, pluralizado) intacto: el test `history_count_uses_the_plural_aware_helper` busca `countLabel(entry.total_results, "resultsCount")` (con el espacio tras la coma).
-
-- [ ] **Step 2: Encapsular `clients`**
-
-`MCP_TOOL_NAMES` (:1787) **debe conservar su texto exacto**: el test `mcp_clients_carry_the_tool_vocabulary_and_errors_classify_on_status` lo compara con `MCP_TOOLS`.
-
-- [ ] **Step 3: Test de contrato**
-
-Run: `cargo test -p amatl-ui --locked`
-Expected: `29 passed`.
-
-- [ ] **Step 4: Probe**
-
-Expected: `EXCEPTIONS: 0`; los paneles respetan el gating de almacenamiento (`storage_backed_panels_are_gated_on_storage_availability`).
-
-- [ ] **Step 5: Commit**
-
-```bash
-git commit -am "refactor(ui): delimit the storage-panels and clients domains"
-```
-
----
-
-### Task 8: Bloque de arranque y verificación final
-
-**Files:**
-- Modify: `crates/amatl-ui/assets/app.js` — `refreshPanels` (:1885), listeners (:1899-1900), `refreshPanels()` (:1901), `applyDeclarativeTranslations` (:1903), `applyTranslations` (:1924), `DOMContentLoaded` (:1987)
-
-**Interfaces:**
-- Consumes: todos los dominios de las tareas 3-7.
-- Produces: el archivo en su forma final.
-
-- [ ] **Step 1: Fijar el orden del arranque**
-
-El bloque final conserva exactamente esta secuencia:
-1. `applyDeclarativeTranslations()` y `applyTranslations()` (i18n, en el núcleo).
-2. `refreshPanels()` (:1901).
-3. Los listeners de nivel superior (`historyPurgeButton`, `tokenInput`).
-4. `document.addEventListener("DOMContentLoaded", …)` con `uiLanguage.value = LANG` → `applyTranslations()` → `setStatusKey("initialStatus","")` → `restoreFromLocation()`.
-
-`restoreFromLocation()` **después** de `applyTranslations()` (fallo 5 del Review Focus).
+IIFE que retorna `{ render, deepItems }` (y lo que `search-deep` consuma; comprobar con grep antes de cerrar el retorno).
 
 - [ ] **Step 2: Test de contrato**
 
 Run: `cargo test -p amatl-ui --locked`
 Expected: `29 passed`.
 
-- [ ] **Step 3: Test de clase de fallo — símbolo transversal sombreado**
+- [ ] **Step 3: Probe**
+
+Expected: `EXCEPTIONS: 0`; `search_results >= 1` (el render pinta).
+
+- [ ] **Step 4: Commit**
+
+```bash
+git commit -am "refactor(ui): encapsulate the render domain behind an IIFE"
+```
+
+---
+
+### Task 7: Dominio `search-deep` (con `location`)
+
+**Files:**
+- Modify: `crates/amatl-ui/assets/app.js` — `setBusy`, `queryText`, `validatePayload`, `focusTokenField`, `run`, `execute`, `requestedModeIsUnavailable`, `searchLocation`, `syncLocation`, `restoreFromLocation`
+
+**Interfaces:**
+- Consumes: `globalThis.api`, `store`, `t`, `boundedText`, `validHash`, `reportFailure`, `render`/`deepItems`, `syncLocation`.
+- Produces: `execute` (submit del formulario), `restoreFromLocation` (arranque), `syncLocation`.
+
+Ruling del plan: `location` se **funde** con `search-deep` — `run()` es su único llamador. Se salta una tarea.
+
+- [ ] **Step 1: Aplicar el patrón**
+
+Un IIFE que retorna `{ execute, restoreFromLocation, syncLocation, queryText, setBusy }` según lo que el arranque y `render` consuman (grep antes de cerrar).
+
+- [ ] **Step 2: Test de contrato**
+
+Run: `cargo test -p amatl-ui --locked`
+Expected: `29 passed` (`search_and_deep_use_post_contracts_and_safe_dom_apis`).
+
+- [ ] **Step 3: Probe**
+
+Expected: `EXCEPTIONS: 0`; buscar pinta, y `/?q=rust&mode=search` restaura con la UI **traducida**.
+
+- [ ] **Step 4: Commit**
+
+```bash
+git commit -am "refactor(ui): encapsulate the search-deep and location domains behind one IIFE"
+```
+
+---
+
+### Task 8: Dominios `providers`, `storage-panels` y `clients`
+
+**Files:**
+- Modify: `crates/amatl-ui/assets/app.js` — `providerReason`…`syncCredentialActions`; `historyLabel`…`deleteSavedDocument`; `scopeLabel`…`rotateServerClientToken`
+
+**Interfaces:**
+- Produces: `fetchProviderStatus`, `fetchServiceState`, `fetchHistory`, `fetchSavedDocuments`, `fetchServerClients` — las cinco que llama `refreshPanels` (núcleo).
+
+- [ ] **Step 1: `providers`**
+
+IIFE que retorna `{ fetchProviderStatus, fetchServiceState, ... }`.
+
+- [ ] **Step 2: `storage-panels`**
+
+IIFE que retorna `{ fetchHistory, fetchSavedDocuments }`. **`historyLabel` conserva `countLabel(entry.total_results, "resultsCount")` exacto** (el espacio tras la coma).
+
+- [ ] **Step 3: `clients`**
+
+IIFE que retorna `{ fetchServerClients }`. **`MCP_TOOL_NAMES` conserva su texto literal**.
+
+- [ ] **Step 4: Test de contrato**
+
+Run: `cargo test -p amatl-ui --locked`
+Expected: `29 passed`.
+
+- [ ] **Step 5: Probe**
+
+Expected: `EXCEPTIONS: 0`; los paneles respetan el gating de almacenamiento.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git commit -am "refactor(ui): encapsulate the providers, storage-panels and clients domains"
+```
+
+---
+
+### Task 9: Bloque de arranque, guard de símbolos y cierre
+
+**Files:**
+- Modify: `crates/amatl-ui/assets/app.js` (bloque final; `refreshPanels` en :1894), `crates/amatl-ui/src/lib.rs` (test nuevo)
+
+**Interfaces:**
+- Consumes: todo lo retornado por las tareas 3-8.
+
+- [ ] **Step 1: Reescribir el arranque**
+
+Al final del archivo, en este orden exacto:
+1. Asignaciones de núcleo que dependen de dominios (`const updateThemeToggle = theme.updateThemeToggle;`).
+2. `applyTheme(storedTheme())` (antes vivía en la línea 29).
+3. `applyDeclarativeTranslations()` + `applyTranslations()`.
+4. `refreshPanels()`; listeners de nivel superior (`historyPurgeButton`, `tokenInput`, `store.subscribe(render)`, toggles de tema/idioma).
+5. `document.addEventListener("DOMContentLoaded", …)` con `uiLanguage.value = LANG` → `applyTranslations()` → `setStatusKey("initialStatus","")` → `restoreFromLocation()`.
+
+- [ ] **Step 2: Test de contrato**
+
+Run: `cargo test -p amatl-ui --locked`
+Expected: `29 passed`.
+
+- [ ] **Step 3: Test nuevo — símbolos del núcleo no sombreados ni ausentes**
 
 Añadir a `crates/amatl-ui/src/lib.rs`:
 
 ```rust
 #[test]
-fn domains_do_not_shadow_the_core_transversal_symbols() {
+fn core_symbols_are_declared_once_and_not_shadowed() {
     let javascript = text("/app.js");
-    // Un dominio que re-declara `t` o `boundedText` desvía el resto de la
-    // página a una copia que nadie más usa.
     assert_eq!(javascript.matches("function t(key)").count(), 1);
     assert_eq!(javascript.matches("function boundedText(").count(), 1);
     assert_eq!(javascript.matches("function setStatusKey(").count(), 1);
+    assert_eq!(javascript.matches("function refreshPanels(").count(), 1);
+    // El arranque corre al final: `refreshPanels()` no aparece antes del
+    // último dominio declarado.
+    let last_domain = javascript.rfind("})();").expect("domains are IIFEs");
+    let startup = javascript.rfind("refreshPanels();").expect("startup calls refreshPanels");
+    assert!(startup > last_domain, "startup must follow every domain");
 }
 ```
 
 - [ ] **Step 4: Correr el test nuevo**
 
-Run: `cargo test -p amatl-ui --locked domains_do_not_shadow`
+Run: `cargo test -p amatl-ui --locked core_symbols_are_declared_once`
 Expected: PASS.
 
 - [ ] **Step 5: Probe completo**
 
-Run: `python3 …/probe.py` sobre el binario reconstruido.
-Expected: `EXCEPTIONS: 0`, y los cinco flujos (buscar, deep, historial, cambio de idioma, tema) responden una sola vez.
+Run: reconstruir + `python3 …/probe.py 8955`
+Expected: `EXCEPTIONS: 0`, `CONSOLE_ERRORS: 0`, los cinco flujos responden **una sola vez**.
 
 - [ ] **Step 6: Suite completa**
 
 Run: `cargo test --workspace --locked`
-Expected: todas verdes (el refactor no toca Rust de producto, así que el recuento no baja).
+Expected: verde, con 30 tests en `amatl-ui` (29 + 1 nuevo).
 
 - [ ] **Step 7: Commit**
 
 ```bash
 git add crates/amatl-ui/assets/app.js crates/amatl-ui/src/lib.rs
-git commit -m "refactor(ui): fix the app.js startup order and guard the core symbols"
+git commit -m "refactor(ui): coordinate the domains from a final startup block"
 ```
 
 ---
 
-### Task 9: Cierre — comparación contra el baseline
+### Task 10: Cierre — comparación contra baseline
 
-**Files:**
-- Modify: ninguno.
+- [ ] **Step 1: Comparar con el baseline de la Tarea 2**
 
-**Interfaces:**
-- Consumes: el baseline de la Tarea 1 y los probes de cada tarea.
-- Produces: la evidencia de que el refactor no cambió comportamiento.
+Mismos valores esperados: `EXCEPTIONS: 0`, `CONSOLE_ERRORS: 0`, `search_results` igual, `lang` = `es->en->es`, tema cambia en un click.
 
-- [ ] **Step 1: Diff de comportamiento**
+- [ ] **Step 2: Reducción de superficie global**
 
-Comparar la salida del probe final con la del baseline de la Tarea 2. Deben coincidir en: número de excepciones (0), textos principales (`h1`, botones), y el estado del DOM tras una búsqueda mock.
-
-- [ ] **Step 2: Confirmar que ningún símbolo verificado se movió de archivo**
-
-Run: `grep -c "" crates/amatl-ui/assets/app.js` y comparar el recuento de funciones top-level con el baseline (86, menos las que quedaron dentro de IIFEs — anotar la diferencia y que sea solo por encapsulamiento).
+Run: `grep -cE "^(async )?function [a-zA-Z]" crates/amatl-ui/assets/app.js`
+Expected: muchas menos de las 86 iniciales (las que entraron en IIFEs). Anotar el número exacto y la diferencia.
 
 - [ ] **Step 3: Dictamen en pantalla**
 
-Reportar: tareas completadas, excepciones en navegador (debe ser 0), tests (29 + 1 nuevo), y cualquier desviación del spec con su motivo.
+Reportar: tareas completadas, excepciones en navegador, tests, reducción de superficie, y cualquier desviación del plan con su ruling.
