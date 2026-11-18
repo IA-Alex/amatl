@@ -15,6 +15,20 @@ that file. It cannot detect *semantic* drift -- a reference that still resolves
 but now points at unrelated code -- so a reference must still be re-checked
 whenever the code it cites moves.
 
+The same drift hits the *commands* the guides tell an operator to run. A
+`amatl <subcommand>` written in a fenced code block is an instruction, and when
+the CLI renames or drops the subcommand the guide keeps telling the operator to
+run something that no longer exists -- the reader finds out by typing it and
+reading the error. This gate closes that half too: every `amatl …` invocation
+inside a code block must name a subcommand the CLI declares, checked against
+`CLI_SUBCOMMANDS` below. Only fenced code blocks are inspected: `amatl` in prose
+("AMATL ships…", "the amatl binary…") is not an instruction and stays out.
+
+Like the reference half, it is *declaration* checking, not execution: the table
+below mirrors the `clap` definitions by hand, the gate runs no binary and needs
+no build. Renaming a subcommand means updating this table in the same change --
+which is the point, because that is the moment the guides drift.
+
 Bare names (`fetch.rs`, `config/mod.rs`) are resolved by suffix, because the
 documents write them relative to the crate or module that owns them; a reference
 that matches several files is accepted when at least one of them satisfies the
@@ -30,6 +44,8 @@ Run from anywhere:
 
     python3 tools/check_doc_refs.py           # non-zero on new dead references
     python3 tools/check_doc_refs.py --list    # also list the frozen baseline
+
+Both halves run together; either failing returns non-zero.
 """
 
 import re
@@ -65,6 +81,50 @@ REFERENCE = re.compile(
     + "|".join(EXTENSIONS)
     + r"))((?::[0-9]+(?:-[0-9]+)?(?:,[0-9]+(?:-[0-9]+)?)*))?`"
 )
+
+# The subcommands the CLI declares, as `{name: ()}` for a leaf command and
+# `{name: (child, …)}` for one that has subcommands. A hand-kept mirror of the
+# `clap` definitions in `crates/amatl-cli/src/main.rs`; keeping it beside the
+# gate is what turns "rename a subcommand" into a change the reviewer sees next
+# to the guide update. Top-level entries come from `amatl --help`; nested
+# entries from `<command> --help`. `help` is clap's implicit subcommand and is
+# present on every level, so it is not listed.
+CLI_SUBCOMMANDS = {
+    "search": (),
+    "deep": (),
+    "ingest": (),
+    "providers": (),
+    "provider-canary": (),
+    "config": (),
+    "cache": (),
+    "doctor": (),
+    "benchmark": (),
+    "history": ("list", "delete", "purge"),
+    "saved": ("list", "show", "delete"),
+    "db": (
+        "health",
+        "backups",
+        "restore",
+        "downgrade",
+        "security-events",
+        "circuits",
+    ),
+    "serve": (),
+    "mcp": ("serve",),
+}
+
+# An `amatl …` invocation inside a fenced code block. Leading shell noise is
+# allowed (`$`, a prompt, or `VAR=value` assignments) so the common
+# `AMATL_SERVER_TOKEN=… amatl serve` form still matches. Captures the first bare
+# word after `amatl`, which is the subcommand position.
+CLI_INVOCATION = re.compile(
+    r"^\s*(?:[A-Za-z_][A-Za-z0-9_]*=\S+\s+|\$\s+|#\s+|>\s+)*amatl\s+([a-z][a-z0-9-]*)"
+)
+
+# A second word that is a nested subcommand or a leaf argument. Lowercase words
+# are compared against the parent's children; anything else (a path, a quoted
+# string, a flag) is an argument and is not a subcommand position.
+CLI_SECOND_WORD = re.compile(r"^\s*amatl\s+[a-z][a-z0-9-]*\s+([a-z][a-z0-9-]*)\b")
 
 # References that are intentionally dead, as `(document, reference)` pairs. Each
 # entry is a debt note with a reason; the gate fails on anything else.
@@ -158,6 +218,58 @@ def spans(suffix):
         yield int(start), int(end) if end else int(start)
 
 
+def code_blocks(document):
+    """`(line_number, text)` for every line inside a fenced code block."""
+    inside = False
+    for number, line in enumerate(
+        document.read_text(encoding="utf-8", errors="replace").splitlines(), start=1
+    ):
+        if line.strip().startswith("```"):
+            inside = not inside
+            continue
+        if inside:
+            yield number, line
+
+
+def command_violations():
+    """`(document, where, reason)` for every `amatl <sub>` the CLI does not declare."""
+    found = []
+    for document in scanned_documents():
+        relative = str(document.relative_to(REPOSITORY_ROOT))
+        for number, line in code_blocks(document):
+            first = CLI_INVOCATION.match(line)
+            if not first:
+                continue
+            subcommand = first.group(1)
+            if subcommand not in CLI_SUBCOMMANDS:
+                found.append(
+                    (
+                        relative,
+                        f"{relative}:{number}: amatl {subcommand}",
+                        f"no such subcommand: amatl {subcommand}",
+                    )
+                )
+                continue
+            children = CLI_SUBCOMMANDS[subcommand]
+            if not children:
+                continue
+            second = CLI_SECOND_WORD.match(line)
+            # A lowercase second word under a command that has children is read
+            # as a subcommand; an argument (path, id, quoted text) is not
+            # lowercase-word shaped, so it never lands here. `help` is clap's
+            # implicit subcommand and is valid everywhere.
+            if second and second.group(1) not in children and second.group(1) != "help":
+                nested = second.group(1)
+                found.append(
+                    (
+                        relative,
+                        f"{relative}:{number}: amatl {subcommand} {nested}",
+                        f"no such subcommand: amatl {subcommand} {nested}",
+                    )
+                )
+    return found
+
+
 # References written under a name the repository does not carry. The documents
 # cite the operator's configuration file as `amatl.toml`, which is the name it
 # has once the operator copies the template into place -- and `.gitignore` keeps
@@ -227,21 +339,34 @@ def main(argv):
     index = repository_files()
     found = violations(index)
     new = [entry for entry in found if (entry[0], entry[1]) not in FROZEN]
+    dead_commands = command_violations()
 
     for _, _, where, reason in new:
         print(f"dead reference {where} ({reason})")
+    for _, where, reason in dead_commands:
+        print(f"dead command {where} ({reason})")
     if "--list" in argv:
         for document, reference in sorted(FROZEN):
             print(f"frozen: {document}: {reference}")
 
+    failed = False
     if new:
         print(
             f"{len(new)} dead reference(s). Fix the path or the line, or freeze "
             "the pair in FROZEN with a reason if the document deliberately "
             "cites something that no longer exists."
         )
+        failed = True
+    if dead_commands:
+        print(
+            f"{len(dead_commands)} dead command(s). Fix the `amatl <subcommand>` "
+            "in the guide, or update CLI_SUBCOMMANDS if the CLI itself changed."
+        )
+        failed = True
+    if failed:
         return 1
     print(f"doc references: {len(found)} known-dead, {len(new)} new")
+    print(f"doc commands: {len(dead_commands)} dead")
     return 0
 
 
