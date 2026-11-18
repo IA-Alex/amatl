@@ -449,6 +449,8 @@ mod tests {
             "serviceHeading",
             "storageLabel",
             "cacheLabel",
+            "uiLanguageNameEn",
+            "uiLanguageNameEs",
         ] {
             assert!(catalog.contains(key), "missing catalog key: {key}");
         }
@@ -505,6 +507,37 @@ mod tests {
         assert!(html.contains("aria-describedby=\"search-mode-help\""));
         assert!(!html.contains("AMATL — Búsqueda y evidencia"));
         assert!(!html.contains(">Busquemos</h1>"));
+    }
+
+    /// The language picker names each locale in its own language (`English`,
+    /// `Español`) and the names live in the catalog, not the markup. Before
+    /// this the options were hardcoded `English`/`Spanish`, so a visitor whose
+    /// interface had resolved to Spanish still read "Spanish" in the picker --
+    /// an English name under a Spanish UI.
+    #[test]
+    fn language_options_name_each_locale_in_its_own_language_from_the_catalog() {
+        let html = text("/index.html");
+        let catalog = text("/i18n.js");
+        // The options carry a catalog key instead of a literal label.
+        assert!(html.contains("id=\"ui-language\""));
+        assert!(html.contains("data-i18n=\"uiLanguageNameEn\""));
+        assert!(html.contains("data-i18n=\"uiLanguageNameEs\""));
+        // The old hardcoded English name for the Spanish locale is gone.
+        assert!(!html.contains(">Spanish</option>"));
+        // Both catalog blocks carry the names, and Spanish's own name is
+        // Spanish, not the English word for it.
+        assert!(catalog.contains("uiLanguageNameEn: \"English\""));
+        assert!(catalog.contains("uiLanguageNameEs: \"Español\""));
+    }
+
+    /// The empty-source note must point somewhere. It used to end at
+    /// "Ninguna fuente disponible." -- a dead end that named the problem and
+    /// offered no next step.
+    #[test]
+    fn empty_source_note_says_what_to_do_next() {
+        let catalog = text("/i18n.js");
+        assert!(catalog.contains("Habilita una para poder buscar."));
+        assert!(catalog.contains("Enable one to be able to search."));
     }
 
     #[test]
