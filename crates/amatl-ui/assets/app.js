@@ -41,6 +41,13 @@ const theme = (function () {
   return { THEME_KEY, storedTheme, applyTheme, resolvedTheme };
 })();
 
+// ── NÚCLEO TRANSVERSAL ──────────────────────────────────────────
+// Solo lectura para los dominios: ninguno de estos símbolos se re-declara ni
+// se sombrea dentro de un IIFE. Están declarados aquí arriba, antes que
+// cualquier dominio, y su presencia se verifica con
+// `core_symbols_are_declared_once_and_not_shadowed` (amatl-ui/src/lib.rs).
+//
+//   i18n · utilidades · barra de estado · constantes
 // ── i18n ────────────────────────────────────────────────────────
 const CATALOG = globalThis.AMATL_LOCALES || { defaultLocale: "en", locales: { en: {} } };
 const FALLBACK = CATALOG.locales[CATALOG.defaultLocale] || {};
@@ -206,6 +213,7 @@ function setLocale(next) {
 
 uiLanguage.addEventListener("change", () => setLocale(uiLanguage.value));
 
+// ── NÚCLEO · utilidades ─────────────────────────────────────────
 function safeHttpUrl(value) {
   if (typeof value !== "string" || value.length > 8192) return null;
   try {
@@ -244,6 +252,7 @@ function setBusy(busy, mode) {
 // function rather than a finished string: switching the interface language can
 // then re-render the *same* message in the new language instead of leaving the
 // previous one on screen until the next action.
+// ── NÚCLEO · barra de estado ────────────────────────────────────
 let statusRenderer = null;
 let statusState = "";
 
