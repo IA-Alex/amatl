@@ -113,6 +113,50 @@ CLI_SUBCOMMANDS = {
     "mcp": ("serve",),
 }
 
+# The long flags each command declares, keyed by the same path the invocation
+# uses: a bare command (`"deep"`), a nested one (`"db downgrade"`). A hand-kept
+# mirror of the `clap` definitions, same reasoning as CLI_SUBCOMMANDS -- a
+# guide that tells the operator to pass `--to` to a command that dropped it is
+# the same class of rot. `--config-file` is on every command and `--help`/
+# `--version` are clap built-ins, so none is listed; a cited `--flag` must
+# appear in the entry for the command it is attached to.
+CLI_FLAGS = {
+    "search": ("json",),
+    "deep": ("json", "max-fetches"),
+    "ingest": ("query", "json"),
+    "providers": (),
+    "provider-canary": ("json",),
+    "config": (),
+    "cache": ("purge",),
+    "doctor": (),
+    "benchmark": ("json", "iterations", "concurrency"),
+    "history": (),
+    "history list": ("limit", "offset", "json"),
+    "history delete": (),
+    "history purge": (),
+    "saved": (),
+    "saved list": ("limit", "offset", "json"),
+    "saved show": (),
+    "saved delete": (),
+    "db": (),
+    "db health": ("json",),
+    "db backups": (),
+    "db restore": (),
+    "db downgrade": ("to",),
+    "db security-events": ("limit", "offset", "json"),
+    "db circuits": ("reset", "json"),
+    "serve": ("bind", "port", "json"),
+    "mcp": (),
+    "mcp serve": ("bind", "port", "json"),
+}
+
+# Long flags that clap provides on every command, so citing them is never rot.
+CLI_UNIVERSAL_FLAGS = ("config-file", "help", "version")
+
+# A `--long-flag` in an invocation line, excluding the `--` separator and
+# `--flag=value` (the name is captured either way).
+CLI_FLAG = re.compile(r"(?<![\w-])--([a-z][a-z0-9-]*)")
+
 # An `amatl …` invocation inside a fenced code block. Leading shell noise is
 # allowed (`$`, a prompt, or `VAR=value` assignments) so the common
 # `AMATL_SERVER_TOKEN=… amatl serve` form still matches. Captures the first bare
@@ -232,7 +276,12 @@ def code_blocks(document):
 
 
 def command_violations():
-    """`(document, where, reason)` for every `amatl <sub>` the CLI does not declare."""
+    """`(document, where, reason)` for every `amatl …` invocation the CLI rejects.
+
+    Two classes: a subcommand the CLI does not declare, and a long flag the
+    command it is attached to does not declare. Both are read from fenced code
+    blocks only -- an `amatl …` in prose is not an instruction.
+    """
     found = []
     for document in scanned_documents():
         relative = str(document.relative_to(REPOSITORY_ROOT))
@@ -250,21 +299,36 @@ def command_violations():
                     )
                 )
                 continue
+            # Resolve the command path (`db downgrade` vs `deep`) and the flag
+            # set it is checked against.
+            path = subcommand
             children = CLI_SUBCOMMANDS[subcommand]
-            if not children:
-                continue
             second = CLI_SECOND_WORD.match(line)
-            # A lowercase second word under a command that has children is read
-            # as a subcommand; an argument (path, id, quoted text) is not
-            # lowercase-word shaped, so it never lands here. `help` is clap's
-            # implicit subcommand and is valid everywhere.
-            if second and second.group(1) not in children and second.group(1) != "help":
+            if children and second and second.group(1) in children:
+                path = f"{subcommand} {second.group(1)}"
+            elif children and second and second.group(1) != "help":
                 nested = second.group(1)
                 found.append(
                     (
                         relative,
                         f"{relative}:{number}: amatl {subcommand} {nested}",
                         f"no such subcommand: amatl {subcommand} {nested}",
+                    )
+                )
+                continue
+            elif children and not second:
+                # A command with children cited bare (`amatl db`): clap prints
+                # help, which is not rot, so nothing more to check.
+                continue
+            declared = CLI_FLAGS.get(path, ())
+            for flag in CLI_FLAG.findall(line):
+                if flag in CLI_UNIVERSAL_FLAGS or flag in declared:
+                    continue
+                found.append(
+                    (
+                        relative,
+                        f"{relative}:{number}: amatl {path} --{flag}",
+                        f"no such flag: --{flag} on amatl {path}",
                     )
                 )
     return found
