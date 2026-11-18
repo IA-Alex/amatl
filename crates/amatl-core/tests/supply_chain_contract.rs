@@ -118,13 +118,20 @@ const ADVISORY_FLOORS: &[(&str, &str, &str)] = &[
 
 // Advisories whose fix no compatible release in the locked graph can reach are
 // NOT floors (asserting one would redden every host without remediating
-// anything). `libsqlite3-sys` RUSTSEC-2026-0459 is that case today: `sqlx`
-// 0.8.6 caps it at `^0.30` and even `sqlx 0.9.0` caps it at `>=0.30.1,
-// <0.38.0`, while the fix is `>=0.39.0`, so no released `sqlx` reaches it. It
-// is recorded in `docs/security/supply-chain.md` and the authoritative
-// `cargo audit`/`cargo deny check` gates stay red until it is remediated,
-// removed from the graph, or waived by a written ADR (`ADR-017`). Because it
-// cannot be a floor, the nearest thing a hermetic guard can do is make sure a
+// anything). Two are that case today:
+//
+// - `libsqlite3-sys` RUSTSEC-2026-0459: `sqlx` 0.8.6 caps it at `^0.30` and
+//   even `sqlx 0.9.0` caps it at `>=0.30.1, <0.38.0`, while the fix is
+//   `>=0.39.0`, so no released `sqlx` reaches it. See `ADR-017`.
+// - `chrono` RUSTSEC-2026-0543 (unmaintained, every version): reached only
+//   through `rmcp` and `schemars`, which expose no `chrono` use to AMATL code.
+//   The advisory names no fixed release, so there is nothing to upgrade to.
+//   See `ADR-018`.
+//
+// Both are recorded in `docs/security/supply-chain.md` and the authoritative
+// `cargo audit`/`cargo deny check` gates stay red until each is remediated,
+// removed from the graph, or waived by a written ADR. Because they cannot be
+// floors, the nearest thing a hermetic guard can do is make sure a
 // plain `cargo update` cannot resolve to a `sqlx` line whose SQLite feature set
 // differs from the audited one without a reviewer seeing the manifest change:
 // `sqlx_is_pinned_to_the_audited_line` below.
@@ -315,8 +322,10 @@ fn sqlx_is_pinned_to_the_audited_line() {
 /// `sqlx` is pinned, so the range `sqlx-sqlite` declares cannot move on its own;
 /// what a reviewer still has to confirm is that the *resolved* crate is the
 /// audited 0.30.1 rather than a newer release that happens to sit inside the
-/// same `^0.30`, and that `deny.toml` names the advisory the analysis covers.
-/// Neither check needs the RustSec database, so both run offline on every host.
+/// same `^0.30`, and that `deny.toml` names exactly the advisories the analysis
+/// covers — the `libsqlite3-sys` one above and the `chrono` unmaintained one
+/// (`RUSTSEC-2026-0543`, `ADR-018`). Neither check needs the RustSec database,
+/// so both run offline on every host.
 #[test]
 fn the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed() {
     let Some(lockfile) = workspace_lockfile() else {
@@ -346,7 +355,7 @@ fn the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed() 
             .iter()
             .filter_map(|value| value.as_str())
             .collect::<Vec<_>>(),
-        ["RUSTSEC-2026-0459"],
+        ["RUSTSEC-2026-0459", "RUSTSEC-2026-0543"],
         "the advisory suppression set changed: every entry needs an ADR and a \
          threat model in docs/security/supply-chain.md, and CI passes the same \
          IDs to scripts/security-gate.sh"

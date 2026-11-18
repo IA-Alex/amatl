@@ -132,7 +132,7 @@ is recorded below, on the same terms.
 
 ### Current exception — RUSTSEC-2026-0459
 
-The workspace suppresses **one** advisory, by ID, in `deny.toml`
+The workspace suppresses **two** advisories, each by ID, in `deny.toml`
 (`ignore = ["RUSTSEC-2026-0459"]`), because no released `sqlx` reaches the fix and
 a permanently red gate cannot distinguish it from the next finding. The exception
 is deliberately narrow:
@@ -154,7 +154,35 @@ is deliberately narrow:
 
 Adding a second ID to that list is a policy change, not maintenance: it needs its
 own ADR and its own threat model, and CI fails until its `--expected-ignore`
-argument matches.
+argument matches. That is exactly what `ADR-018` did on 2026-11-18 for the second
+exception recorded below.
+
+### Current exception — RUSTSEC-2026-0543
+
+The workspace also suppresses **RUSTSEC-2026-0543** (`chrono` is unmaintained;
+every version is affected), published 2026-09-14, reached only through
+`rmcp 3.10.0` and `schemars 1.2.2 → rmcp → chrono`. It is an **unmaintained**
+notice, not a vulnerability: no CVE, no CVSS vector, no confidentiality,
+integrity or availability impact. The exception is deliberately narrow:
+
+- **Advisory and path:** RUSTSEC-2026-0543, `chrono 0.4.45`, reached via
+  `amatl-server → rmcp → chrono` and `amatl-server → rmcp → schemars → chrono`.
+  No crate in the workspace declares `chrono` directly; AMATL's own date handling
+  uses `time`.
+- **Exploitability:** none in AMATL. The advisory carries no vulnerability, and
+  no AMATL code path executes `chrono`; it is a transitive, third-party
+  maintenance notice. There is no surface to harden and nothing for an attacker
+  to reach.
+- **Compensating controls:** the offline assertion on the suppressed set
+  (`supply_chain_contract.rs`), `scripts/security-gate.sh` printing both
+  suppressed IDs on every CI run, and both scanners pinned to exact versions.
+- **Owner:** `@IA-Alex`.
+- **Expiration and removal:** `ADR-018` is the plan. The exception lapses when
+  `rmcp`/`schemars` depend on a maintained date crate (or `chrono` resumes
+  maintenance), at which point the `ignore` entry, the CI `--expected-ignore`
+  argument and the offline assertion are removed together. There is no fix to
+  wait for inside the graph, so this is a `chrono`-side or `rmcp`-side event, not
+  a `cargo update`.
 
 ## Findings closed by exclusion
 
@@ -216,7 +244,7 @@ which was its only path. With `chacha20 0.10.2` locked, `cargo audit` reports no
 yanked package in the dependency graph it scans, and no `yanked` warning is open
 today. This paragraph describes the state on 2026-10-26; the 2026-11-13 re-audit
 and the 2026-11-15 exception above supersede its claim that `cargo deny check` is
-clean — that check now passes with exactly one suppressed
+clean — that check now passes with two suppressed
 `libsqlite3-sys` advisory (RUSTSEC-2026-0459), which is unrelated to the
 yanked-package class discussed here.
 

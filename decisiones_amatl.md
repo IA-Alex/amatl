@@ -766,3 +766,67 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `Cargo.lock` (`libsqlite3-sys 0.30.1`); `crates/amatl-core/src/storage.rs`;
   `SECURITY.md`.
 
+## ADR-018 — Excepción por `chrono` no mantenido (RUSTSEC-2026-0543)
+
+- **Fecha:** 2026-11-18
+- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`
+- **Contexto:** La base RustSec publicó el 2026-09-14 el advisory
+  **RUSTSEC-2026-0543** («`chrono` is unmaintained», anuncio
+  `chronotope/chrono#1768`), que marca **todas** las versiones de `chrono` como
+  no mantenidas. El `contract-gate` lleva el advisory desde entonces: la corrida
+  de `bf9f7e00` (2026-11-16) era verde y la de `d19d3fd9` (2026-11-18) falla en
+  `scripts/security-gate.sh` con `advisories FAILED` por este único ID. No es una
+  vulnerabilidad (`informational: unmaintained`, sin CVSS ni CVE): es un aviso de
+  mantenimiento del crate.
+  - **Camino en el grafo:** `chrono 0.4.45` llega por dos rutas, ambas de
+    terceros: `rmcp 3.10.0 → chrono` y `schemars 1.2.2 → rmcp 3.10.0 → chrono`.
+    Ningún crate del workspace declara `chrono` directamente. `amatl-core` hace
+    su manejo de fechas con `time` (`time = { version = "0.3", … }` en el
+    manifiesto raíz), no con `chrono`.
+  - **Sin upgrade posible:** el advisory no nombra una release corregida («all
+    versions are affected», «No safe upgrade is available»). No hay a qué subir
+    dentro del grafo bloqueado.
+- **Decisión (propuesta):** Suprimir **un solo ID** adicional
+  (`ignore = ["RUSTSEC-2026-0459", "RUSTSEC-2026-0543"]` en `deny.toml`) bajo los
+  mismos cuatro controles que el ADR-017 estableció para el primero, porque el
+  problema es idéntico en forma: un gate que falla en cada corrida por un hallazgo
+  ya analizado deja de distinguir el siguiente.
+  1. **Guardas offline** en `supply_chain_contract.rs`: el test que fija el
+     conjunto exacto de IDs suprimidos falla en todos los hosts, sin red, si la
+     lista cambia sin actualizar la aserción.
+  2. **Gate visible**: `scripts/security-gate.sh` imprime ambos IDs en cada
+     corrida y pasa los mismos a `cargo audit`; CI invoca el script con
+     `--expected-ignore RUSTSEC-2026-0459 --expected-ignore RUSTSEC-2026-0543`,
+     así que un ID nuevo exige editar los dos workflows.
+  3. **Herramientas fijadas** (`cargo-audit@0.22.2`, `cargo-deny@0.18.7`): ya en
+     vigor por el ADR-017.
+  4. **Documentación**: el modelo de amenaza y la excepción viven en
+     `docs/security/supply-chain.md` («Current exception — RUSTSEC-2026-0543»).
+  - **Barrera frente al siguiente aviso:** la supresión se limita a este ID. Como
+    el advisory no tiene release corregida, **no se puede convertir en un floor**
+    (`supply_chain_contract.rs` documenta por qué); la única salida es que
+    `rmcp`/`schemars` migren a otro crate de fechas, o que `chrono` recupere
+    mantenimiento. `chrono` no tiene ruta de ejecución en AMATL: nada del
+    workspace lo llama, así que no hay superficie que endurecer.
+- **Consecuencias:** El hallazgo queda clasificado como **deuda de mantenimiento
+  de terceros**, no como vulnerabilidad: no hay CVE, no hay impacto de confidencialidad,
+  integridad ni disponibilidad, y el crate no está en ninguna ruta de ejecución
+  propia. El gate vuelve a verde con la supresión **visible** (impresa por el
+  script) y acotada a dos IDs nombrados. Si `@IA-Alex` prefiere no suprimir, la
+  alternativa es dejar el `contract-gate` rojo de forma indefinida por un aviso
+  que ninguna acción del proyecto puede cerrar, lo que anula su señal para el
+  resto del grafo.
+- **Alternativas descartadas:** (a) fijar `chrono` a una versión concreta — el
+  advisory afecta **todas** las versiones, no hay versión sana; (b) forzar
+  `[patch]`/fork — mete un crate no auditado para esquivar un aviso informativo,
+  peor que el propio aviso; (c) sacar `rmcp`/`schemars` del grafo — son
+  dependencias de producción del servidor MCP y del contrato HTTP, coste
+  desproporcionado; (d) dejar el gate rojo sin supresión — confirma el problema
+  que motiva la enmienda del ADR-017 (un gate permanentemente rojo deja de
+  distinguir el siguiente aviso).
+- **Trazabilidad:** `deny.toml`; `.github/workflows/ci.yml` y
+  `.github/workflows/release.yml` (`--expected-ignore`);
+  `crates/amatl-core/tests/supply_chain_contract.rs`;
+  `docs/security/supply-chain.md` («Current exception — RUSTSEC-2026-0543»);
+  `Cargo.lock` (`chrono 0.4.45`, `rmcp 3.10.0`, `schemars 1.2.2`); `SECURITY.md`.
+
