@@ -698,6 +698,14 @@ mod tests {
         assert!(!javascript.contains("applyProviderSource"));
         assert!(!javascript.contains("syncProviderSelector"));
         assert!(!javascript.contains("PROVIDER_SOURCE_NAME"));
+        // No JS may query an element that no longer renders: a `querySelector`
+        // for the removed class returns null and the chained `.closest(...)`
+        // throws, aborting the rest of the handler. This is the defect the
+        // 2026-11-18 connector audit caught (H-01): the HTML was removed but a
+        // translation line still queried `.provider-selector-option`.
+        assert!(!javascript.contains("provider-selector"));
+        assert!(!javascript.contains("providerSelector"));
+        assert!(!javascript.contains("provider-source"));
         // The catalog carries no copy for a control that no longer exists.
         assert!(!catalog.contains("providerSelectorLabel"));
         assert!(!catalog.contains("providerSourceSearxng"));

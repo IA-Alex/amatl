@@ -1978,10 +1978,6 @@ function applyTranslations() {
   marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
   document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
   document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");
-  const sourceAllOption = document.querySelector(
-    '.provider-selector-option input[value="all"]',
-  ).closest("label");
-  sourceAllOption.querySelector("span").textContent = t("providerSourceAll");
   updateFiltersSummary();
   updateAccessSummary();
   updateThemeToggle();
