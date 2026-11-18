@@ -121,6 +121,33 @@ jobs:
           # Last command decides the exit code, so this is the gate.
           python3 tools/check_doc_refs.py
 
+  app-js-structure:
+    name: app.js structure (blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      # The asset tests assert on string presence and never execute JS, so a
+      # temporal-dead-zone read or a name private to an IIFE referenced from
+      # outside a domain passes `cargo test` and breaks the page at load. This
+      # check runs no browser and no binary: standard library only.
+      - name: No load-time use before definition, no private leaks
+        run: |
+          set -euo pipefail
+          {
+            echo '### app.js structure'
+            echo
+            echo '```'
+            python3 tools/check_app_js_structure.py || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # The checker must be able to fail, or the gate is decoration.
+          python3 tools/test_check_app_js_structure.py
+          python3 tools/check_app_js_structure.py
+
   semgrep:
     name: Semgrep (advisory)
     runs-on: ubuntu-latest

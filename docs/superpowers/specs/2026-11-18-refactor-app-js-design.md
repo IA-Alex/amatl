@@ -36,9 +36,34 @@ endpoints).
 
 - Romper alguna de las **85 aserciones** que leen `text("/app.js")` y buscan
   substrings literales.
-- Alterar el orden de ejecución observable (carga, `DOMContentLoaded`,
-  `restoreFromLocation`).
 - Introducir estado compartido nuevo entre dominios.
+
+## Enmienda 2026-11-18 — ejecución con IIFEs completos (decisión del operador)
+
+El diseño original exigía, a la vez, "encapsular cada dominio en un IIFE" y "no
+alterar el orden de ejecución observable". Al ejecutar la primera tarea se
+comprobó que **son incompatibles en este archivo**: `applyTheme(storedTheme())`
+corre en la línea 29, a nivel superior, antes de cualquier bloque; si `applyTheme`
+vive dentro de una IIFE, esa llamada lanza `ReferenceError` y **la página no
+carga**. Lo mismo se repite en ~215 puntos de llamada entre niveles.
+
+El operador eligió **IIFEs completos** (approach b), asumiendo el cambio. Esto
+enmienda el diseño en dos puntos:
+
+1. **Se elimina** el anti-objetivo "alterar el orden de ejecución observable".
+   El arranque se reescribe: cada IIFE de dominio se evalúa, y el bloque final
+   las **coordina** en lugar de que el archivo se ejecute de arriba a abajo.
+   El comportamiento *visible* (misma UI, mismos flujos) se conserva; el
+   *mecanismo* de arranque cambia.
+2. **El núcleo transversal se declara primero** y los dominios lo leen; el
+   arranque (`applyTheme(storedTheme())`, `refreshPanels()`, listeners,
+   `DOMContentLoaded`) se reubica al final y llama a lo que cada IIFE devuelve.
+
+**Consecuencia de riesgo (aceptada):** las 85 aserciones hacen `contains` de
+strings y no ejecutan JS, así que **no detectan** un `ReferenceError`, un TDZ,
+un listener duplicado ni un orden de arranque roto. La **única** red es el probe
+de navegador real (Tarea 2 del plan), que debe dar `EXCEPTIONS: 0` tras cada
+tarea. Sin él, este cambio no es verificable.
 
 ## Restricciones (verificadas)
 
@@ -155,17 +180,24 @@ presence rather than JS semantics and the CI pipeline ships no JS linter"). Un
 `ReferenceError` por zona muerta temporal (TDZ), una IIFE que atrapa mal una
 referencia o un doble `addEventListener` **pasarían `cargo test` igual**.
 
-Reglas obligatorias del refactor:
+Reglas obligatorias del refactor (**actualizadas para IIFEs completos**, ver
+Enmienda arriba):
 
-1. **Todo dominio se auto-contiene**: una IIFE solo puede leer símbolos
-   **declarados antes** que ella. Nada de capturar `const` declarados después.
-2. **Los `addEventListener` viven en un único bloque de arranque**, al final
-   del archivo (donde hoy están los últimos, `app.js:1899-1901`). No se
-   registran listeners dentro de las IIFEs de dominio.
-3. **El orden de los bloques preserva el actual**: núcleo/i18n → DOM →
-   constantes → dominios → arranque (`refreshPanels()` + `DOMContentLoaded`).
-4. **`refreshPanels` y `refreshPanels`-style orquestadores** se declaran en el
-   núcleo o en un bloque explícito del que todos puedan leerlos.
+1. **El núcleo transversal va primero**: `t`, `pluralKey`, `countLabel`,
+   `boundedText`, `safeHttpUrl`, `validHash`, `setStatusKey` (+ su estado),
+   `announce`, `refreshPanels` y las constantes se declaran **antes** que
+   cualquier dominio, y los dominios solo los **leen**.
+2. **Cada dominio devuelve lo que otros necesitan**: un IIFE que otro dominio o
+   el arranque consumen **retorna** ese símbolo (p. ej.
+   `const { fetchProviderStatus } = (function () { … return { fetchProviderStatus }; })();`).
+   No se expone nada por `globalThis` salvo los contratos que ya lo exigen
+   (`globalThis.authHeaders`, que lee `client.js`).
+3. **El arranque vive al final y coordina**: `applyTheme(storedTheme())`,
+   `refreshPanels()`, los listeners y `DOMContentLoaded` se reubican al final
+   del archivo y llaman a lo devuelto por los dominios.
+4. **`DOMContentLoaded` conserva el orden interno**:
+   `uiLanguage.value = LANG` → `applyTranslations()` →
+   `setStatusKey("initialStatus","")` → `restoreFromLocation()`.
 
 Verificación **real** (obligatoria, además de la suite):
 

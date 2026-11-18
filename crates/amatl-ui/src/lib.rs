@@ -540,6 +540,33 @@ mod tests {
         assert!(catalog.contains("Enable one to be able to search."));
     }
 
+    /// El núcleo transversal se declara exactamente una vez, y el arranque
+    /// (`refreshPanels()`) corre después de todos los dominios.
+    ///
+    /// Los dominios pasaron a ser IIFEs que retornan su superficie; el riesgo
+    /// que esta prueba fija es el contrario: un dominio que re-declare `t` o
+    /// `boundedText` desvía a una copia huérfana al resto de la página, y una
+    /// llamada de arranque que corra antes del último dominio lee `undefined`.
+    #[test]
+    fn core_symbols_are_declared_once_and_not_shadowed() {
+        let javascript = text("/app.js");
+        assert_eq!(javascript.matches("function t(key)").count(), 1);
+        assert_eq!(javascript.matches("function boundedText(").count(), 1);
+        assert_eq!(javascript.matches("function setStatusKey(").count(), 1);
+        assert_eq!(
+            javascript.matches("async function refreshPanels(").count(),
+            1
+        );
+        let last_domain = javascript.rfind("})();").expect("domains are IIFEs");
+        let startup = javascript
+            .rfind("refreshPanels();")
+            .expect("startup calls refreshPanels");
+        assert!(
+            startup > last_domain,
+            "the startup call must follow every domain"
+        );
+    }
+
     #[test]
     fn unavailable_backend_states_are_fail_closed_in_the_ui() {
         let html = text("/index.html");

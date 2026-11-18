@@ -1,24 +1,143 @@
 "use strict";
 
-// ── Theme ───────────────────────────────────────────────────────
-const THEME_KEY = "amatl-theme";
-function storedTheme() {
-  try {
-    const value = localStorage.getItem(THEME_KEY);
-    return value === "light" || value === "dark" ? value : null;
-  } catch {
-    return null;
-  }
-}
-function applyTheme(theme) {
-  if (theme === "light" || theme === "dark") {
-    document.documentElement.setAttribute("data-theme", theme);
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-  }
-}
-applyTheme(storedTheme());
+// ── Estructura del archivo ──────────────────────────────────────
+// Núcleo transversal (SOLO LECTURA para los dominios, declarado primero):
+//   i18n · utilidades · barra de estado · orquestador de refresco · constantes
+// Captura de nodos DOM: 85 `const`, globales, de solo lectura.
+// Dominios (IIFEs, autocontenidos, leen el núcleo, no lo re-declaran):
+//   theme · net · render · search-deep · location · providers · storage-panels · clients
+// Bloque de arranque (al final, en este orden):
+//   refreshPanels() · listeners · DOMContentLoaded
 
+// ── DOM ────────────────────────────────────────────────────────
+// Los 85 nodos, capturados una sola vez y de solo lectura. Ningún dominio
+// los re-consulta: tras un re-render, un `querySelector` tardío devolvería
+// un nodo distinto del que el resto de la página usa (regla D2 del spec).
+const form = document.querySelector("#search-form");
+const queryInput = document.querySelector("#query");
+const languageInput = document.querySelector("#language");
+const regionInput = document.querySelector("#region");
+const fileTypeInput = document.querySelector("#file-type");
+const tokenInput = document.querySelector("#local-token");
+const searchButton = document.querySelector("#search-button");
+const deepButton = document.querySelector("#deep-button");
+const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
+const answerCard = document.querySelector("#answer-card");
+const answerTextNode = document.querySelector("#answer-text");
+const answerMetaNode = document.querySelector("#answer-meta");
+const answerButton = document.querySelector("#answer-button");
+const answerHint = document.querySelector("#answer-hint");
+const answerConfig = document.querySelector("#answer-config");
+const answerConfigBody = document.querySelector("#answer-config-body");
+const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
+const answerToggleStatus = document.querySelector("#answer-toggle-status");
+const modelOptions = document.querySelector("#model-options");
+const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
+const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
+const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
+const resultHeading = document.querySelector("#result-heading");
+const statusNode = document.querySelector("#status");
+const loadingNode = document.querySelector("#loading");
+const resultsNode = document.querySelector("#results");
+const resultsEmpty = document.querySelector("#results-empty");
+const paginationNode = document.querySelector("#pagination");
+const previousButton = document.querySelector("#previous");
+const nextButton = document.querySelector("#next");
+const pageLabel = document.querySelector("#page-label");
+const resultTemplate = document.querySelector("#result-template");
+const deepTemplate = document.querySelector("#deep-template");
+const fragmentTemplate = document.querySelector("#fragment-template");
+const cancelButton = document.querySelector("#cancel-button");
+const themeToggle = document.querySelector("#theme-toggle");
+const uiLanguage = document.querySelector("#ui-language");
+const filtersDetails = document.querySelector("details.filters");
+const filtersSummary = document.querySelector("#filters-summary");
+const accessDetails = document.querySelector("details.access-filters");
+const accessSummary = document.querySelector("#access-summary");
+const providerStatus = document.querySelector(".provider-status");
+const providerList = document.querySelector("#provider-list");
+const providerStatusText = document.querySelector("#provider-status-text");
+const servicePanel = document.querySelector(".service-state");
+const serviceSummary = document.querySelector("#service-summary");
+const serviceIndicators = document.querySelector("#service-indicators");
+const serviceMode = document.querySelector("#service-mode");
+const marginaliaKeyButton = document.querySelector("#marginalia-key-button");
+const marginaliaClearButton = document.querySelector("#marginalia-clear-button");
+const marginaliaStatus = document.querySelector("#marginalia-status");
+const marginaliaDialog = document.querySelector("#marginalia-dialog");
+const marginaliaForm = document.querySelector("#marginalia-form");
+const marginaliaKeyInput = document.querySelector("#marginalia-key");
+const marginaliaKeyError = document.querySelector("#marginalia-key-error");
+const marginaliaSave = document.querySelector("#marginalia-save");
+const marginaliaCancel = document.querySelector("#marginalia-cancel");
+const credentialActions = document.querySelector("#credential-actions");
+const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
+const historyPanel = document.querySelector(".history-panel");
+const historyList = document.querySelector("#history-list");
+const historyEmpty = document.querySelector("#history-empty");
+const historyTemplate = document.querySelector("#history-template");
+const historyPurgeButton = document.querySelector("#history-purge");
+const historyPanelStatus = document.querySelector("#history-panel-status");
+const savedPanel = document.querySelector(".saved-panel");
+const savedList = document.querySelector("#saved-list");
+const savedEmpty = document.querySelector("#saved-empty");
+const savedTemplate = document.querySelector("#saved-template");
+const savedPanelStatus = document.querySelector("#saved-panel-status");
+const clientsPanel = document.querySelector(".clients-panel");
+const clientList = document.querySelector("#client-list");
+const clientListEmpty = document.querySelector("#client-list-empty");
+const clientCreateDetails = document.querySelector("#client-create");
+const clientCreateForm = document.querySelector("#client-create-form");
+const clientIdInput = document.querySelector("#client-id");
+const clientExpiresInput = document.querySelector("#client-expires");
+const clientCreateError = document.querySelector("#client-create-error");
+const clientTokenDialog = document.querySelector("#client-token-dialog");
+const clientTokenId = document.querySelector("#client-token-id");
+const clientTokenValue = document.querySelector("#client-token-value");
+const clientTokenClose = document.querySelector("#client-token-close");
+const clientTokenCopy = document.querySelector("#client-token-copy");
+const clientTokenStatus = document.querySelector("#client-token-status");
+const clientPanelStatus = document.querySelector("#client-panel-status");
+
+// ── Theme ───────────────────────────────────────────────────────
+// Dominio: persistencia del tema y el atributo `data-theme`. Retorna su
+// superficie porque el arranque (más abajo) llama `applyTheme(storedTheme())`
+// y el listener del toggle usa `resolvedTheme`/`applyTheme`.
+const theme = (function () {
+  const THEME_KEY = "amatl-theme";
+  function storedTheme() {
+    try {
+      const value = localStorage.getItem(THEME_KEY);
+      return value === "light" || value === "dark" ? value : null;
+    } catch {
+      return null;
+    }
+  }
+  function applyTheme(value) {
+    if (value === "light" || value === "dark") {
+      document.documentElement.setAttribute("data-theme", value);
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }
+  function resolvedTheme() {
+    const explicit = document.documentElement.getAttribute("data-theme");
+    if (explicit) return explicit;
+    const prefersLight =
+      typeof globalThis.matchMedia === "function" &&
+      globalThis.matchMedia("(prefers-color-scheme: light)").matches;
+    return prefersLight ? "light" : "dark";
+  }
+  return { THEME_KEY, storedTheme, applyTheme, resolvedTheme };
+})();
+
+// ── NÚCLEO TRANSVERSAL ──────────────────────────────────────────
+// Solo lectura para los dominios: ninguno de estos símbolos se re-declara ni
+// se sombrea dentro de un IIFE. Están declarados aquí arriba, antes que
+// cualquier dominio, y su presencia se verifica con
+// `core_symbols_are_declared_once_and_not_shadowed` (amatl-ui/src/lib.rs).
+//
+//   i18n · utilidades · barra de estado · constantes
 // ── i18n ────────────────────────────────────────────────────────
 const CATALOG = globalThis.AMATL_LOCALES || { defaultLocale: "en", locales: { en: {} } };
 const FALLBACK = CATALOG.locales[CATALOG.defaultLocale] || {};
@@ -90,56 +209,17 @@ globalThis.authHeaders = (extra) => {
 };
 
 // UI Elements
-const form = document.querySelector("#search-form");
-const queryInput = document.querySelector("#query");
-const languageInput = document.querySelector("#language");
-const regionInput = document.querySelector("#region");
-const fileTypeInput = document.querySelector("#file-type");
-const tokenInput = document.querySelector("#local-token");
-const searchButton = document.querySelector("#search-button");
-const deepButton = document.querySelector("#deep-button");
-const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
-const answerCard = document.querySelector("#answer-card");
-const answerTextNode = document.querySelector("#answer-text");
-const answerMetaNode = document.querySelector("#answer-meta");
-const answerButton = document.querySelector("#answer-button");
-const answerHint = document.querySelector("#answer-hint");
-const answerConfig = document.querySelector("#answer-config");
-const answerConfigBody = document.querySelector("#answer-config-body");
-const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
-const answerToggleStatus = document.querySelector("#answer-toggle-status");
-const modelOptions = document.querySelector("#model-options");
-const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
-const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
-const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
-const resultHeading = document.querySelector("#result-heading");
-const statusNode = document.querySelector("#status");
-const loadingNode = document.querySelector("#loading");
-const resultsNode = document.querySelector("#results");
-const resultsEmpty = document.querySelector("#results-empty");
-const paginationNode = document.querySelector("#pagination");
-const previousButton = document.querySelector("#previous");
-const nextButton = document.querySelector("#next");
-const pageLabel = document.querySelector("#page-label");
-const resultTemplate = document.querySelector("#result-template");
-const deepTemplate = document.querySelector("#deep-template");
-const fragmentTemplate = document.querySelector("#fragment-template");
-const cancelButton = document.querySelector("#cancel-button");
-const themeToggle = document.querySelector("#theme-toggle");
-const uiLanguage = document.querySelector("#ui-language");
 
 // Initialize store and subscribe to changes
 store.subscribe((state) => {
   render(state);
 });
 
+// `resolvedTheme`/`updateThemeToggle` viven en el núcleo: `updateThemeToggle`
+// la lee `applyTranslations` (más abajo) y usa `t`, que se declara tras el
+// dominio de tema. Solo `theme` encapsula la persistencia.
 function resolvedTheme() {
-  const explicit = document.documentElement.getAttribute("data-theme");
-  if (explicit) return explicit;
-  const prefersLight =
-    typeof globalThis.matchMedia === "function" &&
-    globalThis.matchMedia("(prefers-color-scheme: light)").matches;
-  return prefersLight ? "light" : "dark";
+  return theme.resolvedTheme();
 }
 
 function updateThemeToggle() {
@@ -152,12 +232,16 @@ function updateThemeToggle() {
 
 themeToggle.addEventListener("click", () => {
   const next = resolvedTheme() === "light" ? "dark" : "light";
-  applyTheme(next);
+  theme.applyTheme(next);
   try {
-    localStorage.setItem(THEME_KEY, next);
+    localStorage.setItem(theme.THEME_KEY, next);
   } catch {}
   updateThemeToggle();
 });
+
+// El tema se aplica al cargar. Antes vivía arriba del todo; ahora el dominio
+// está cerrado y su aplicación es parte del arranque temprano.
+theme.applyTheme(theme.storedTheme());
 
 // Interface language: an explicit, persisted operator choice. Switching
 // re-applies every translation in place — no reload, no lost results — and
@@ -182,6 +266,7 @@ function setLocale(next) {
 
 uiLanguage.addEventListener("change", () => setLocale(uiLanguage.value));
 
+// ── NÚCLEO · utilidades ─────────────────────────────────────────
 function safeHttpUrl(value) {
   if (typeof value !== "string" || value.length > 8192) return null;
   try {
@@ -201,25 +286,11 @@ function validHash(value) {
   return typeof value === "string" && /^[0-9a-f]{64}$/.test(value);
 }
 
-function setBusy(busy, mode) {
-  searchButton.disabled = busy || !searchAvailable;
-  deepButton.disabled = busy;
-  searchButton.dataset.active = String(busy && mode === "search");
-  deepButton.dataset.active = String(busy && mode === "deep");
-  // `aria-busy` belongs on the region that actually changes (`#results`), not on
-  // the query input: the input is not what is being replaced. The spinner stays
-  // `aria-hidden` and the progress text goes to the `#status` live region.
-  resultsNode.setAttribute("aria-busy", String(busy));
-  loadingNode.hidden = !busy;
-  loadingNode.setAttribute("aria-hidden", String(!busy));
-  cancelButton.hidden = !busy;
-  cancelButton.setAttribute("aria-hidden", String(!busy));
-}
-
 // The status message is composed from the catalog, so it is kept as a render
 // function rather than a finished string: switching the interface language can
 // then re-render the *same* message in the new language instead of leaving the
 // previous one on screen until the next action.
+// ── NÚCLEO · barra de estado ────────────────────────────────────
 let statusRenderer = null;
 let statusState = "";
 
@@ -255,22 +326,10 @@ function addOperator(parts, name, value) {
   if (clean) parts.push(`${name}:${clean}`);
 }
 
-function queryText() {
-  const parts = [queryInput.value.trim()];
-  addOperator(parts, "lang", languageInput.value);
-  addOperator(parts, "region", regionInput.value);
-  addOperator(parts, "filetype", fileTypeInput.value);
-  return parts.join(" ");
-}
-
 // ── Filters disclosure ──────────────────────────────────────────
 // The panel is collapsed by default, so the summary carries the active state: a
 // stale region/type is visible without opening it, and a missing requirement
 // opens it (see `reportFailure`) instead of hiding the fix.
-const filtersDetails = document.querySelector("details.filters");
-const filtersSummary = document.querySelector("#filters-summary");
-const accessDetails = document.querySelector("details.access-filters");
-const accessSummary = document.querySelector("#access-summary");
 
 function updateFiltersSummary() {
   const active = [];
@@ -303,336 +362,599 @@ for (const event of ["input", "change"]) {
   tokenInput.addEventListener(event, updateAccessSummary);
 }
 
-function searchMetadata(result) {
-  const values = [];
-  if (typeof result.published_at === "string") values.push(result.published_at.slice(0, 64));
-  if (Array.isArray(result.providers) && result.providers.length === 1) {
-    values.push(`${t("source")} ${boundedText(result.providers[0], 80)}`);
+// ── Dominio: render ─────────────────────────────────────────
+// Retorna solo los símbolos que cruzan la frontera (el resto queda
+// privado): `render` lo suscribe la store y lo lee la barra de estado;
+// `deepItems` y `evidenceFragments` los usa `run`. El contenedor se llama
+// `renderDomain` porque dentro vive una función `render`.
+const renderDomain = (function () {
+  function searchMetadata(result) {
+    const values = [];
+    if (typeof result.published_at === "string") values.push(result.published_at.slice(0, 64));
+    if (Array.isArray(result.providers) && result.providers.length === 1) {
+      values.push(`${t("source")} ${boundedText(result.providers[0], 80)}`);
+    }
+    return values.join(" · ");
   }
-  return values.join(" · ");
-}
 
-function renderSearchResult(result, citationIndex) {
-  const url = safeHttpUrl(result.canonical_url);
-  if (!url || result.status !== "visible") return;
-  const state = store.get();
-  const fragment = resultTemplate.content.cloneNode(true);
-  const selection = fragment.querySelector(".deep-target-select");
-  if (state.mode === "search") {
-    selection.querySelector("span").textContent = t("deepTargetSelect");
-    const checkbox = selection.querySelector(".deep-target-checkbox");
-    const provider = Array.isArray(result.providers) && typeof result.providers[0] === "string"
-      ? result.providers[0]
-      : "";
-    const target = {
-      url: url.href,
-      title: boundedText(result.title, 512) || null,
-      provider,
-    };
-    checkbox.checked = state.selectedTargets.some((value) => value.url === target.url);
-    checkbox.disabled = !provider;
-    checkbox.addEventListener("change", () => {
-      let selected = store.get().selectedTargets;
-      selected = selected.filter((value) => value.url !== target.url);
-      if (checkbox.checked) selected.push(target);
-      // Transient UI state: update without notifying subscribers so toggling a
-      // target neither rebuilds the whole result list nor drops keyboard focus
-      // (the store's `render` would `replaceChildren()` the list). The value
-      // stays readable via `store.get()` for `run()` (deep targets).
-      store.updateSilent({ selectedTargets: selected });
-    });
-  } else {
-    selection.remove();
-  }
-  const link = fragment.querySelector(".result-title");
-  link.href = url.href;
-  link.textContent = boundedText(result.title, 300) || boundedText(result.domain, 255) || url.hostname;
-  fragment.querySelector(".result-url").textContent = boundedText(result.domain, 255) || url.hostname;
-  const snippet = fragment.querySelector(".result-snippet");
-  snippet.textContent = boundedText(result.snippet, 2000) || t("noDescription");
-  const meta = fragment.querySelector(".result-meta");
-  meta.textContent = searchMetadata(result);
-  meta.hidden = !meta.textContent;
-  if (state.mode === "answer" && Number.isInteger(citationIndex)) {
-    const badge = fragment.querySelector(".result-index");
-    badge.textContent = `[${citationIndex}]`;
-    badge.hidden = false;
-  }
-  resultsNode.append(fragment);
-}
-
-function documentStatus(value) {
-  if (value === "enriched") return t("enriched");
-  if (value === "superficial") return t("superficial");
-  return t("unavailable");
-}
-
-function acquisitionMethod(value) {
-  if (value === "http") return t("http");
-  if (value === "rendered") return t("rendered");
-  return t("unspecified");
-}
-
-function signalLabel(value) {
-  if (value === "query_match") return t("queryMatch");
-  if (value === "citation") return t("citation");
-  if (value === "temporal") return t("temporal");
-  if (value === "numeric") return t("numeric");
-  return null;
-}
-
-function appendSafeUrl(node, value) {
-  const url = safeHttpUrl(value);
-  if (!url) {
-    node.textContent = t("unavailable");
-    return;
-  }
-  const link = document.createElement("a");
-  link.href = url.href;
-  link.rel = "noopener noreferrer";
-  link.textContent = url.href;
-  node.append(link);
-}
-
-function bytesToHex(bytes) {
-  return Array.from(new Uint8Array(bytes), (value) => value.toString(16).padStart(2, "0")).join("");
-}
-
-async function verifyFragment(fragment, sourceBytes) {
-  const start = fragment.start_byte;
-  const end = fragment.end_byte;
-  if (!sourceBytes || !Number.isSafeInteger(start) || !Number.isSafeInteger(end)) return "failed";
-  if (start < 0 || end <= start || end > sourceBytes.length) return "failed";
-  let decoded;
-  try {
-    decoded = new TextDecoder("utf-8", { fatal: true }).decode(sourceBytes.slice(start, end));
-  } catch (_) {
-    return "failed";
-  }
-  if (decoded !== fragment.text) return "failed";
-  if (!validHash(fragment.fragment_hash) || !globalThis.crypto?.subtle) return "range_only";
-  const digest = await globalThis.crypto.subtle.digest("SHA-256", sourceBytes.slice(start, end));
-  return bytesToHex(digest) === fragment.fragment_hash ? "verified" : "failed";
-}
-
-function setVerification(node, result) {
-  node.dataset.state = result;
-  if (result === "verified") node.textContent = t("verified");
-  else if (result === "range_only") node.textContent = t("rangeOnly");
-  else node.textContent = t("notVerifiable");
-}
-
-function evidenceFragments(evidence) {
-  const provenanceId = evidence?.provenance?.provenance_id;
-  if (!validHash(provenanceId) || !Array.isArray(evidence.fragments)) return [];
-  return evidence.fragments.slice(0, MAX_FRAGMENTS).filter((fragment) => {
-    if (!fragment || fragment.provenance_id !== provenanceId) return false;
-    if (typeof fragment.text !== "string" || !fragment.text || fragment.text.length > 2048) return false;
-    return new TextEncoder().encode(fragment.text).length <= MAX_FRAGMENT_BYTES;
-  });
-}
-
-function renderEvidenceFragment(fragment, sourceBytes, list) {
-  const item = fragmentTemplate.content.cloneNode(true);
-  item.querySelector("blockquote").textContent = fragment.text;
-  const signals = item.querySelector(".fragment-signals");
-  signals.setAttribute("aria-label", t("observedSignals"));
-  const observed = Array.isArray(fragment.signals) ? fragment.signals.slice(0, 8) : [];
-  for (const signal of observed) {
-    const label = signalLabel(signal);
-    if (!label) continue;
-    const chip = document.createElement("span");
-    chip.textContent = label;
-    signals.append(chip);
-  }
-  if (!signals.childElementCount) signals.hidden = true;
-  item.querySelector(".fragment-hash span").textContent = t("sha256");
-  const hash = item.querySelector(".fragment-hash code");
-  hash.textContent = validHash(fragment.fragment_hash) ? fragment.fragment_hash : t("unavailable");
-  const verification = item.querySelector(".fragment-verification");
-  verification.textContent = t("verifying");
-  list.append(item);
-  verifyFragment(fragment, sourceBytes)
-    .then((result) => {
-      if (verification.isConnected) setVerification(verification, result);
-    })
-    .catch(() => {
-      if (verification.isConnected) setVerification(verification, "failed");
-    });
-}
-
-function deepDocumentMetadata(documentValue) {
-  const values = [documentStatus(documentValue.status)];
-  if (typeof documentValue.content_type === "string") {
-    values.push(documentValue.content_type.slice(0, 120));
-  }
-  if (Number.isSafeInteger(documentValue.size) && documentValue.size >= 0) {
-    values.push(`${documentValue.size.toLocaleString(LANG)} ${t("bytes")}`);
-  }
-  return values.join(" · ");
-}
-
-function renderDeepDocument(item) {
-  const documentValue = item.document;
-  const evidence = item.evidence;
-  const url = safeHttpUrl(documentValue.final_url) || safeHttpUrl(documentValue.canonical_url);
-  const fragment = deepTemplate.content.cloneNode(true);
-  const link = fragment.querySelector(".result-title");
-  if (url) {
+  function renderSearchResult(result, citationIndex) {
+    const url = safeHttpUrl(result.canonical_url);
+    if (!url || result.status !== "visible") return;
+    const state = store.get();
+    const fragment = resultTemplate.content.cloneNode(true);
+    const selection = fragment.querySelector(".deep-target-select");
+    if (state.mode === "search") {
+      selection.querySelector("span").textContent = t("deepTargetSelect");
+      const checkbox = selection.querySelector(".deep-target-checkbox");
+      const provider = Array.isArray(result.providers) && typeof result.providers[0] === "string"
+        ? result.providers[0]
+        : "";
+      const target = {
+        url: url.href,
+        title: boundedText(result.title, 512) || null,
+        provider,
+      };
+      checkbox.checked = state.selectedTargets.some((value) => value.url === target.url);
+      checkbox.disabled = !provider;
+      checkbox.addEventListener("change", () => {
+        let selected = store.get().selectedTargets;
+        selected = selected.filter((value) => value.url !== target.url);
+        if (checkbox.checked) selected.push(target);
+        // Transient UI state: update without notifying subscribers so toggling a
+        // target neither rebuilds the whole result list nor drops keyboard focus
+        // (the store's `render` would `replaceChildren()` the list). The value
+        // stays readable via `store.get()` for `run()` (deep targets).
+        store.updateSilent({ selectedTargets: selected });
+      });
+    } else {
+      selection.remove();
+    }
+    const link = fragment.querySelector(".result-title");
     link.href = url.href;
-    link.textContent = boundedText(documentValue.title, 300) || url.hostname;
-    fragment.querySelector(".result-url").textContent = url.hostname;
-  } else {
-    link.removeAttribute("href");
-    link.textContent = boundedText(documentValue.title, 300) || t("noUrl");
-    fragment.querySelector(".result-url").textContent = t("noOrigin");
-  }
-  const status = fragment.querySelector(".document-status");
-  status.textContent = documentStatus(documentValue.status);
-  status.dataset.state = documentValue.status === "enriched" ? "success" : "partial";
-  fragment.querySelector(".document-meta").textContent = deepDocumentMetadata(documentValue);
-  fragment.querySelector(".evidence-panel").setAttribute("aria-label", t("evidenceFragmentsHeading"));
-  fragment.querySelector(".evidence-heading h4").textContent = t("evidenceFragmentsHeading");
-  fragment.querySelector(".provenance summary").textContent = t("provenanceHeading");
-  const provenanceLabels = {
-    ".provenance-original": "originalUrl",
-    ".provenance-canonical": "canonicalUrl",
-    ".provenance-final": "finalUrl",
-    ".provenance-method": "acquisition",
-    ".provenance-extractor": "extractor",
-    ".provenance-retrieved": "retrieved",
-    ".provenance-source-hash": "sourceHash",
-    ".provenance-content-hash": "extractedTextHash",
-  };
-  for (const [selector, key] of Object.entries(provenanceLabels)) {
-    const value = fragment.querySelector(selector);
-    const label = value?.closest("div")?.querySelector("dt");
-    if (label) label.textContent = t(key);
+    link.textContent = boundedText(result.title, 300) || boundedText(result.domain, 255) || url.hostname;
+    fragment.querySelector(".result-url").textContent = boundedText(result.domain, 255) || url.hostname;
+    const snippet = fragment.querySelector(".result-snippet");
+    snippet.textContent = boundedText(result.snippet, 2000) || t("noDescription");
+    const meta = fragment.querySelector(".result-meta");
+    meta.textContent = searchMetadata(result);
+    meta.hidden = !meta.textContent;
+    if (state.mode === "answer" && Number.isInteger(citationIndex)) {
+      const badge = fragment.querySelector(".result-index");
+      badge.textContent = `[${citationIndex}]`;
+      badge.hidden = false;
+    }
+    resultsNode.append(fragment);
   }
 
-  const list = fragment.querySelector(".evidence-fragments");
-  const empty = fragment.querySelector(".empty-evidence");
-  const fragments = evidenceFragments(evidence);
-  const provenance = evidence && evidence.provenance && typeof evidence.provenance === "object"
-    ? evidence.provenance
-    : {};
-  let sourceBytes = null;
-  if (typeof documentValue.content === "string" && documentValue.content.length <= MAX_DOCUMENT_BYTES) {
-    const encoded = new TextEncoder().encode(documentValue.content);
-    if (encoded.length <= MAX_DOCUMENT_BYTES) sourceBytes = encoded;
-  }
-  for (const evidenceFragment of fragments) {
-    renderEvidenceFragment(evidenceFragment, sourceBytes, list);
-  }
-  const renderedCount = list.childElementCount;
-  fragment.querySelector(".fragment-count").textContent = `${renderedCount} ${t("fragmentCount")}`;
-  if (!renderedCount) {
-    empty.hidden = false;
-    empty.textContent = documentValue.status === "superficial"
-      ? t("superficialDocument")
-      : t("noFragments");
+  function documentStatus(value) {
+    if (value === "enriched") return t("enriched");
+    if (value === "superficial") return t("superficial");
+    return t("unavailable");
   }
 
-  appendSafeUrl(fragment.querySelector(".provenance-original"), provenance.original_url);
-  appendSafeUrl(fragment.querySelector(".provenance-canonical"), provenance.canonical_url);
-  appendSafeUrl(fragment.querySelector(".provenance-final"), provenance.final_url);
-  fragment.querySelector(".provenance-method").textContent = acquisitionMethod(provenance.fetch_method);
-  fragment.querySelector(".provenance-extractor").textContent = boundedText(provenance.extractor_used, 160) || t("noExtractor");
-  fragment.querySelector(".provenance-retrieved").textContent = boundedText(provenance.retrieved_at, 64) || t("unavailable");
-  fragment.querySelector(".provenance-source-hash").textContent = validHash(provenance.source_content_hash)
-    ? provenance.source_content_hash
-    : t("unavailable");
-  fragment.querySelector(".provenance-content-hash").textContent = validHash(provenance.extracted_content_hash)
-    ? provenance.extracted_content_hash
-    : t("unavailable");
-
-  const saveButton = fragment.querySelector(".save-document");
-  saveButton.textContent = t("savedAction");
-  saveButton.addEventListener("click", () => saveDocument(documentValue, provenance, saveButton));
-
-  resultsNode.append(fragment);
-}
-
-function renderAnswerCard(answer) {
-  if (!answer || typeof answer.text !== "string") {
-    answerCard.hidden = true;
-    return;
+  function acquisitionMethod(value) {
+    if (value === "http") return t("http");
+    if (value === "rendered") return t("rendered");
+    return t("unspecified");
   }
-  answerTextNode.textContent = answer.text;
-  const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
-  answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
-  answerCard.hidden = false;
-}
 
-function render(state) {
-  // While a request is in flight the committed view stays on screen: results
-  // are only replaced once a payload has been accepted, so a failed, cancelled
-  // or raced request can no longer destroy work the operator still needs.
-  if (state.pending) return;
-  resultsNode.replaceChildren();
-  resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
-  if (state.mode !== "answer") answerCard.hidden = true;
-  if (state.mode === "deep") {
-    for (const item of state.items) renderDeepDocument(item);
-    paginationNode.hidden = true;
-    return;
+  function signalLabel(value) {
+    if (value === "query_match") return t("queryMatch");
+    if (value === "citation") return t("citation");
+    if (value === "temporal") return t("temporal");
+    if (value === "numeric") return t("numeric");
+    return null;
   }
-  if (state.mode === "answer") {
-    renderAnswerCard(state.answer);
-    state.items.forEach((result, i) => renderSearchResult(result, i + 1));
-    paginationNode.hidden = true;
-    return;
-  }
-  for (const result of state.items) renderSearchResult(result);
-  paginationNode.hidden = state.totalPages <= 1;
-  pageLabel.textContent = `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`;
-  previousButton.disabled = state.page === 0;
-  nextButton.disabled = state.page + 1 >= state.totalPages;
-}
 
-function deepItems(payload) {
-  const evidenceByDocument = new Map();
-  for (const evidence of payload.evidence_v2.slice(0, MAX_DEEP_DOCUMENTS)) {
-    if (!evidence || evidence.evidence_version !== "v2" || typeof evidence.document_id !== "string") continue;
-    const provenance = evidence.provenance;
-    if (!provenance || provenance.document_id !== evidence.document_id || !validHash(provenance.provenance_id)) continue;
-    if (!evidenceByDocument.has(evidence.document_id)) evidenceByDocument.set(evidence.document_id, evidence);
+  function appendSafeUrl(node, value) {
+    const url = safeHttpUrl(value);
+    if (!url) {
+      node.textContent = t("unavailable");
+      return;
+    }
+    const link = document.createElement("a");
+    link.href = url.href;
+    link.rel = "noopener noreferrer";
+    link.textContent = url.href;
+    node.append(link);
   }
-  return payload.documents
-    .filter((documentValue) => documentValue && typeof documentValue === "object")
-    .slice(0, MAX_DEEP_DOCUMENTS)
-    .map((documentValue) => {
-      const candidate = evidenceByDocument.get(documentValue.search_result_id) || null;
-      const provenance = candidate?.provenance;
-      const lineageMatches = provenance
-        && provenance.original_url === documentValue.original_url
-        && provenance.canonical_url === documentValue.canonical_url
-        && provenance.final_url === documentValue.final_url;
-      return { document: documentValue, evidence: lineageMatches ? candidate : null };
+
+  function bytesToHex(bytes) {
+    return Array.from(new Uint8Array(bytes), (value) => value.toString(16).padStart(2, "0")).join("");
+  }
+
+  async function verifyFragment(fragment, sourceBytes) {
+    const start = fragment.start_byte;
+    const end = fragment.end_byte;
+    if (!sourceBytes || !Number.isSafeInteger(start) || !Number.isSafeInteger(end)) return "failed";
+    if (start < 0 || end <= start || end > sourceBytes.length) return "failed";
+    let decoded;
+    try {
+      decoded = new TextDecoder("utf-8", { fatal: true }).decode(sourceBytes.slice(start, end));
+    } catch (_) {
+      return "failed";
+    }
+    if (decoded !== fragment.text) return "failed";
+    if (!validHash(fragment.fragment_hash) || !globalThis.crypto?.subtle) return "range_only";
+    const digest = await globalThis.crypto.subtle.digest("SHA-256", sourceBytes.slice(start, end));
+    return bytesToHex(digest) === fragment.fragment_hash ? "verified" : "failed";
+  }
+
+  function setVerification(node, result) {
+    node.dataset.state = result;
+    if (result === "verified") node.textContent = t("verified");
+    else if (result === "range_only") node.textContent = t("rangeOnly");
+    else node.textContent = t("notVerifiable");
+  }
+
+  function evidenceFragments(evidence) {
+    const provenanceId = evidence?.provenance?.provenance_id;
+    if (!validHash(provenanceId) || !Array.isArray(evidence.fragments)) return [];
+    return evidence.fragments.slice(0, MAX_FRAGMENTS).filter((fragment) => {
+      if (!fragment || fragment.provenance_id !== provenanceId) return false;
+      if (typeof fragment.text !== "string" || !fragment.text || fragment.text.length > 2048) return false;
+      return new TextEncoder().encode(fragment.text).length <= MAX_FRAGMENT_BYTES;
     });
-}
-
-function validatePayload(payload, mode) {
-  if (!payload || payload.schema_version !== "1") return false;
-  if (mode === "deep") {
-    return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
   }
-  if (mode === "answer") {
-    return (
-      payload.answer
-      && typeof payload.answer.text === "string"
-      && Array.isArray(payload.answer.citations)
-      && payload.search
-      && Array.isArray(payload.search.results)
+
+  function renderEvidenceFragment(fragment, sourceBytes, list) {
+    const item = fragmentTemplate.content.cloneNode(true);
+    item.querySelector("blockquote").textContent = fragment.text;
+    const signals = item.querySelector(".fragment-signals");
+    signals.setAttribute("aria-label", t("observedSignals"));
+    const observed = Array.isArray(fragment.signals) ? fragment.signals.slice(0, 8) : [];
+    for (const signal of observed) {
+      const label = signalLabel(signal);
+      if (!label) continue;
+      const chip = document.createElement("span");
+      chip.textContent = label;
+      signals.append(chip);
+    }
+    if (!signals.childElementCount) signals.hidden = true;
+    item.querySelector(".fragment-hash span").textContent = t("sha256");
+    const hash = item.querySelector(".fragment-hash code");
+    hash.textContent = validHash(fragment.fragment_hash) ? fragment.fragment_hash : t("unavailable");
+    const verification = item.querySelector(".fragment-verification");
+    verification.textContent = t("verifying");
+    list.append(item);
+    verifyFragment(fragment, sourceBytes)
+      .then((result) => {
+        if (verification.isConnected) setVerification(verification, result);
+      })
+      .catch(() => {
+        if (verification.isConnected) setVerification(verification, "failed");
+      });
+  }
+
+  function deepDocumentMetadata(documentValue) {
+    const values = [documentStatus(documentValue.status)];
+    if (typeof documentValue.content_type === "string") {
+      values.push(documentValue.content_type.slice(0, 120));
+    }
+    if (Number.isSafeInteger(documentValue.size) && documentValue.size >= 0) {
+      values.push(`${documentValue.size.toLocaleString(LANG)} ${t("bytes")}`);
+    }
+    return values.join(" · ");
+  }
+
+  function renderDeepDocument(item) {
+    const documentValue = item.document;
+    const evidence = item.evidence;
+    const url = safeHttpUrl(documentValue.final_url) || safeHttpUrl(documentValue.canonical_url);
+    const fragment = deepTemplate.content.cloneNode(true);
+    const link = fragment.querySelector(".result-title");
+    if (url) {
+      link.href = url.href;
+      link.textContent = boundedText(documentValue.title, 300) || url.hostname;
+      fragment.querySelector(".result-url").textContent = url.hostname;
+    } else {
+      link.removeAttribute("href");
+      link.textContent = boundedText(documentValue.title, 300) || t("noUrl");
+      fragment.querySelector(".result-url").textContent = t("noOrigin");
+    }
+    const status = fragment.querySelector(".document-status");
+    status.textContent = documentStatus(documentValue.status);
+    status.dataset.state = documentValue.status === "enriched" ? "success" : "partial";
+    fragment.querySelector(".document-meta").textContent = deepDocumentMetadata(documentValue);
+    fragment.querySelector(".evidence-panel").setAttribute("aria-label", t("evidenceFragmentsHeading"));
+    fragment.querySelector(".evidence-heading h4").textContent = t("evidenceFragmentsHeading");
+    fragment.querySelector(".provenance summary").textContent = t("provenanceHeading");
+    const provenanceLabels = {
+      ".provenance-original": "originalUrl",
+      ".provenance-canonical": "canonicalUrl",
+      ".provenance-final": "finalUrl",
+      ".provenance-method": "acquisition",
+      ".provenance-extractor": "extractor",
+      ".provenance-retrieved": "retrieved",
+      ".provenance-source-hash": "sourceHash",
+      ".provenance-content-hash": "extractedTextHash",
+    };
+    for (const [selector, key] of Object.entries(provenanceLabels)) {
+      const value = fragment.querySelector(selector);
+      const label = value?.closest("div")?.querySelector("dt");
+      if (label) label.textContent = t(key);
+    }
+
+    const list = fragment.querySelector(".evidence-fragments");
+    const empty = fragment.querySelector(".empty-evidence");
+    const fragments = evidenceFragments(evidence);
+    const provenance = evidence && evidence.provenance && typeof evidence.provenance === "object"
+      ? evidence.provenance
+      : {};
+    let sourceBytes = null;
+    if (typeof documentValue.content === "string" && documentValue.content.length <= MAX_DOCUMENT_BYTES) {
+      const encoded = new TextEncoder().encode(documentValue.content);
+      if (encoded.length <= MAX_DOCUMENT_BYTES) sourceBytes = encoded;
+    }
+    for (const evidenceFragment of fragments) {
+      renderEvidenceFragment(evidenceFragment, sourceBytes, list);
+    }
+    const renderedCount = list.childElementCount;
+    fragment.querySelector(".fragment-count").textContent = `${renderedCount} ${t("fragmentCount")}`;
+    if (!renderedCount) {
+      empty.hidden = false;
+      empty.textContent = documentValue.status === "superficial"
+        ? t("superficialDocument")
+        : t("noFragments");
+    }
+
+    appendSafeUrl(fragment.querySelector(".provenance-original"), provenance.original_url);
+    appendSafeUrl(fragment.querySelector(".provenance-canonical"), provenance.canonical_url);
+    appendSafeUrl(fragment.querySelector(".provenance-final"), provenance.final_url);
+    fragment.querySelector(".provenance-method").textContent = acquisitionMethod(provenance.fetch_method);
+    fragment.querySelector(".provenance-extractor").textContent = boundedText(provenance.extractor_used, 160) || t("noExtractor");
+    fragment.querySelector(".provenance-retrieved").textContent = boundedText(provenance.retrieved_at, 64) || t("unavailable");
+    fragment.querySelector(".provenance-source-hash").textContent = validHash(provenance.source_content_hash)
+      ? provenance.source_content_hash
+      : t("unavailable");
+    fragment.querySelector(".provenance-content-hash").textContent = validHash(provenance.extracted_content_hash)
+      ? provenance.extracted_content_hash
+      : t("unavailable");
+
+    const saveButton = fragment.querySelector(".save-document");
+    saveButton.textContent = t("savedAction");
+    saveButton.addEventListener("click", () => saveDocument(documentValue, provenance, saveButton));
+
+    resultsNode.append(fragment);
+  }
+
+  function renderAnswerCard(answer) {
+    if (!answer || typeof answer.text !== "string") {
+      answerCard.hidden = true;
+      return;
+    }
+    answerTextNode.textContent = answer.text;
+    const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
+    answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
+    answerCard.hidden = false;
+  }
+
+  function render(state) {
+    // While a request is in flight the committed view stays on screen: results
+    // are only replaced once a payload has been accepted, so a failed, cancelled
+    // or raced request can no longer destroy work the operator still needs.
+    if (state.pending) return;
+    resultsNode.replaceChildren();
+    resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
+    if (state.mode !== "answer") answerCard.hidden = true;
+    if (state.mode === "deep") {
+      for (const item of state.items) renderDeepDocument(item);
+      paginationNode.hidden = true;
+      return;
+    }
+    if (state.mode === "answer") {
+      renderAnswerCard(state.answer);
+      state.items.forEach((result, i) => renderSearchResult(result, i + 1));
+      paginationNode.hidden = true;
+      return;
+    }
+    for (const result of state.items) renderSearchResult(result);
+    paginationNode.hidden = state.totalPages <= 1;
+    pageLabel.textContent = `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`;
+    previousButton.disabled = state.page === 0;
+    nextButton.disabled = state.page + 1 >= state.totalPages;
+  }
+
+  function deepItems(payload) {
+    const evidenceByDocument = new Map();
+    for (const evidence of payload.evidence_v2.slice(0, MAX_DEEP_DOCUMENTS)) {
+      if (!evidence || evidence.evidence_version !== "v2" || typeof evidence.document_id !== "string") continue;
+      const provenance = evidence.provenance;
+      if (!provenance || provenance.document_id !== evidence.document_id || !validHash(provenance.provenance_id)) continue;
+      if (!evidenceByDocument.has(evidence.document_id)) evidenceByDocument.set(evidence.document_id, evidence);
+    }
+    return payload.documents
+      .filter((documentValue) => documentValue && typeof documentValue === "object")
+      .slice(0, MAX_DEEP_DOCUMENTS)
+      .map((documentValue) => {
+        const candidate = evidenceByDocument.get(documentValue.search_result_id) || null;
+        const provenance = candidate?.provenance;
+        const lineageMatches = provenance
+          && provenance.original_url === documentValue.original_url
+          && provenance.canonical_url === documentValue.canonical_url
+          && provenance.final_url === documentValue.final_url;
+        return { document: documentValue, evidence: lineageMatches ? candidate : null };
+      });
+  }
+  return { render, deepItems, evidenceFragments };
+})();
+
+const render = renderDomain.render;
+const deepItems = renderDomain.deepItems;
+const evidenceFragments = renderDomain.evidenceFragments;
+
+// ── Dominio: search-deep (con location) ──────────────────────
+// Retorna solo lo que cruza: `run` lo llaman los botones de paginación,
+// `restoreFromLocation` lo llama DOMContentLoaded y `execute` el submit.
+// `focusTokenField` se queda en el núcleo: `reportFailure` la necesita.
+const searchDeep = (function () {
+  function setBusy(busy, mode) {
+    searchButton.disabled = busy || !searchAvailable;
+    deepButton.disabled = busy;
+    searchButton.dataset.active = String(busy && mode === "search");
+    deepButton.dataset.active = String(busy && mode === "deep");
+    // `aria-busy` belongs on the region that actually changes (`#results`), not on
+    // the query input: the input is not what is being replaced. The spinner stays
+    // `aria-hidden` and the progress text goes to the `#status` live region.
+    resultsNode.setAttribute("aria-busy", String(busy));
+    loadingNode.hidden = !busy;
+    loadingNode.setAttribute("aria-hidden", String(!busy));
+    cancelButton.hidden = !busy;
+    cancelButton.setAttribute("aria-hidden", String(!busy));
+  }
+  function queryText() {
+    const parts = [queryInput.value.trim()];
+    addOperator(parts, "lang", languageInput.value);
+    addOperator(parts, "region", regionInput.value);
+    addOperator(parts, "filetype", fileTypeInput.value);
+    return parts.join(" ");
+  }
+  function validatePayload(payload, mode) {
+    if (!payload || payload.schema_version !== "1") return false;
+    if (mode === "deep") {
+      return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
+    }
+    if (mode === "answer") {
+      return (
+        payload.answer
+        && typeof payload.answer.text === "string"
+        && Array.isArray(payload.answer.citations)
+        && payload.search
+        && Array.isArray(payload.search.results)
+      );
+    }
+    return Array.isArray(payload.results);
+  }
+  // A credential failure is only actionable when the field that fixes it is
+  // reachable: the token lives inside its own collapsed "Server access" panel,
+  // so open that one before moving focus there instead of leaving the operator
+  // to hunt for it.
+  async function run(mode, page) {
+    const state = store.get();
+    if (state.controller) state.controller.abort();
+    const controller = new AbortController();
+    const previousPage = state.page;
+    // The committed view is not reset here: `pending` suppresses the subscriber
+    // render, so the previous results stay on screen until a payload is accepted
+    // and a failed, cancelled or raced request leaves the last valid set intact
+    // instead of blanking the page (it used to `replaceChildren()` before the
+    // fetch, destroying work the operator could still use).
+    store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
+    const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
+    if (mode === "search") store.update({ selectedTargets: [] });
+    resultHeading.textContent = mode === "deep"
+      ? t("evidenceHeading")
+      : mode === "answer"
+        ? t("answerHeading")
+        : t("resultsHeading");
+    setBusy(true, mode);
+    setStatusKey(
+      mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
+      "loading",
     );
+    try {
+      const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
+      const body = { q: queryText() };
+      if (mode === "deep") {
+        if (selectedTargets.length) body.targets = selectedTargets;
+        if (deepMaxFetchesInput.value) body.max_fetches = Number(deepMaxFetchesInput.value);
+      }
+      if (mode === "search") {
+        body.page = store.get().page;
+        body.page_size = PAGE_SIZE;
+      }
+      // Use centralized API client
+      const payload = await globalThis.api.post(endpoint, body, {
+        signal: controller.signal,
+      });
+      // Verify controller hasn't changed
+      if (store.get().controller !== controller) return;
+      if (!validatePayload(payload, mode)) throw new Error("invalid_contract");
+      if (mode === "deep") {
+        const items = deepItems(payload);
+        store.update({ pending: false, mode, page: 0, items });
+        const fragments = items.reduce(
+          (total, item) => total + evidenceFragments(item.evidence).length,
+          0,
+        );
+        if (!items.length) {
+          setStatusKey("noEvidence", "partial");
+        } else if (!fragments || (Array.isArray(payload.degradations) && payload.degradations.length)) {
+          renderStatus(() => countLabel(items.length, "partialEvidence"), "partial");
+        } else {
+          renderStatus(
+            () => `${countLabel(items.length, "evidenceCount")} ${fragments} ${t("evidenceFragments")}`,
+            "success",
+          );
+        }
+      } else if (mode === "answer") {
+        store.update({
+          pending: false,
+          mode,
+          page: 0,
+          items: payload.search.results,
+          answer: payload.answer,
+        });
+        renderStatus(
+          () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
+          "success",
+        );
+      } else {
+        const items = payload.results;
+        const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
+          ? payload.page_size
+          : PAGE_SIZE;
+        const totalResults = typeof payload.total_results === "number"
+          ? payload.total_results
+          : items.length;
+        const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
+        store.update({
+          pending: false,
+          mode,
+          items,
+          totalResults,
+          page: currentPage,
+          totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
+        });
+        if (!items.length) {
+          // An empty set is not a degradation: the amber `partial` tone means
+          // partial or degraded answers, so "no results" gets its own neutral
+          // state and the note under the list carries the next step.
+          setStatusKey("noResults", "empty");
+        } else if (payload.status === "partial_success") {
+          renderStatus(() => countLabel(items.length, "partialResults"), "partial");
+        } else {
+          renderStatus(
+            () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
+            "success",
+          );
+        }
+        syncLocation(currentPage);
+      }
+      // A keyboard operator who submitted from the query field stays there for the
+      // next refinement — `#status` already announces the outcome — so focus only
+      // moves into the results when the operator was somewhere else.
+      if (document.activeElement !== queryInput) resultsNode.focus({ preventScroll: true });
+      refreshPanels();
+    } catch (error) {
+      // Nothing was committed: drop `pending` silently (no subscriber render, so
+      // the DOM and any focus inside it survive), restore the page the operator
+      // was on, and report the reason.
+      store.updateSilent({ pending: false, page: previousPage });
+      reportFailure(error);
+    } finally {
+      if (store.get().controller === controller) {
+        store.update({ controller: null });
+        setBusy(false, mode);
+      }
+    }
   }
-  return Array.isArray(payload.results);
-}
+  function searchLocation(page) {
+    const parts = [`q=${encodeURIComponent(queryInput.value.trim())}`];
+    if (languageInput.value.trim()) {
+      parts.push(`lang=${encodeURIComponent(languageInput.value.trim())}`);
+    }
+    if (regionInput.value.trim()) {
+      parts.push(`region=${encodeURIComponent(regionInput.value.trim())}`);
+    }
+    if (fileTypeInput.value) parts.push(`filetype=${encodeURIComponent(fileTypeInput.value)}`);
+    if (page > 0) parts.push(`page=${page + 1}`);
+    return `${location.pathname}?${parts.join("&")}`;
+  }
+  function syncLocation(page) {
+    try {
+      history.replaceState(null, "", searchLocation(page));
+    } catch (_) {
+      // A blocked History API is not worth interrupting a successful search for.
+    }
+  }
+  function restoreFromLocation() {
+    const pairs = location.search.replace(/^\?/, "").split("&").filter(Boolean);
+    const params = new Map();
+    for (const pair of pairs) {
+      const [key, value = ""] = pair.split("=");
+      // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. `%`).
+      // A hand-edited or truncated shared link must not abort the bootstrap, so a
+      // pair that cannot be decoded is skipped rather than propagated.
+      let decodedKey;
+      let decodedValue;
+      try {
+        decodedKey = decodeURIComponent(key);
+        decodedValue = decodeURIComponent(value.replace(/\+/g, " "));
+      } catch (_) {
+        continue;
+      }
+      params.set(decodedKey, decodedValue);
+    }
+    const query = boundedText((params.get("q") || "").trim(), 2048);
+    if (!query) return;
+    queryInput.value = query;
+    languageInput.value = boundedText(params.get("lang") || "", 16);
+    regionInput.value = boundedText(params.get("region") || "", 32);
+    const fileType = params.get("filetype") || "";
+    if (["pdf", "html", "txt"].includes(fileType)) fileTypeInput.value = fileType;
+    const requested = Number.parseInt(params.get("page") || "1", 10);
+    const page = Number.isSafeInteger(requested) && requested > 1 ? requested - 1 : 0;
+    updateFiltersSummary();
+    run("search", page);
+  }
+  // The form is `novalidate`: validation runs here so the message is the app's own
+  // copy in the operator's locale (native bubbles speak the browser's language
+  // and sit outside the catalog), the offending field is marked, and the collapsed
+  // filters panel opens when the fix lives inside it.
+  function queryValidationError() {
+    if (!queryInput.value.trim()) return "errorQueryRequired";
+    if (tokenInput.value && tokenInput.value.length < 32) return "errorTokenTooShort";
+    return null;
+  }
+  function execute(event) {
+    event.preventDefault();
+    if (requestedModeIsUnavailable(event.submitter)) {
+      // The reason is already visible next to the button; repeating it in the
+      // status region keeps the click from being a dead end.
+      renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
+      return;
+    }
+    const invalid = queryValidationError();
+    if (invalid) {
+      reportValidationError(invalid);
+      return;
+    }
+    const requested = event.submitter?.dataset.mode;
+    const mode = requested === "deep" || requested === "answer" ? requested : "search";
+    run(mode, 0);
+  }
+  function requestedModeIsUnavailable(submitter) {
+    return submitter === answerButton && answerButton.classList.contains("is-unavailable");
+  }
+  form.addEventListener("submit", execute);
+  cancelButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.controller) {
+      state.controller.abort();
+      setStatusKey("cancelled", "partial");
+    }
+  });
+  window.addEventListener("pagehide", () => {
+    const state = store.get();
+    if (state.controller) state.controller.abort();
+    tokenInput.value = "";
+  });
+  previousButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.page > 0) run("search", state.page - 1);
+  });
+  nextButton.addEventListener("click", () => {
+    const state = store.get();
+    if (state.page + 1 < state.totalPages) run("search", state.page + 1);
+  });
+  return { run, execute, restoreFromLocation };
+})();
 
-// A credential failure is only actionable when the field that fixes it is
-// reachable: the token lives inside its own collapsed "Server access" panel,
-// so open that one before moving focus there instead of leaving the operator
-// to hunt for it.
+const run = searchDeep.run;
+const execute = searchDeep.execute;
+const restoreFromLocation = searchDeep.restoreFromLocation;
+
 function focusTokenField() {
   accessDetails.open = true;
   tokenInput.focus();
@@ -656,1232 +978,968 @@ function reportFailure(error) {
   }
 }
 
-const ERROR_MESSAGE_KEYS = {
-  invalid_request: "errorInvalidRequest",
-  invalid_query: "errorInvalidQuery",
-  unauthorized: "unauthorized",
-  rate_limited: "rateLimited",
-  request_timeout: "timeout",
-  egress_denied: "errorEgressDenied",
-  provider_not_declared: "errorProviderUnavailable",
-  provider_not_registered: "errorProviderUnavailable",
-  provider_not_enabled: "errorProviderUnavailable",
-  provider_not_approved: "errorProviderUnavailable",
-  provider_credential_missing: "errorProviderUnavailable",
-  provider_network_blocked: "errorProviderUnavailable",
-  search_planning_failed: "errorSearchUnavailable",
-  inference_unavailable: "errorSearchUnavailable",
-  ranking_backend_unavailable: "errorSearchUnavailable",
-  storage_unavailable: "errorStorageUnavailable",
-  answer_unavailable: "answerHintMissingCredential",
-  scope_denied: "scopeDenied",
-};
-
-async function run(mode, page) {
-  const state = store.get();
-  if (state.controller) state.controller.abort();
-  const controller = new AbortController();
-  const previousPage = state.page;
-
-  // The committed view is not reset here: `pending` suppresses the subscriber
-  // render, so the previous results stay on screen until a payload is accepted
-  // and a failed, cancelled or raced request leaves the last valid set intact
-  // instead of blanking the page (it used to `replaceChildren()` before the
-  // fetch, destroying work the operator could still use).
-  store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
-
-  const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
-  if (mode === "search") store.update({ selectedTargets: [] });
-
-  resultHeading.textContent = mode === "deep"
-    ? t("evidenceHeading")
-    : mode === "answer"
-      ? t("answerHeading")
-      : t("resultsHeading");
-  setBusy(true, mode);
-  setStatusKey(
-    mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
-    "loading",
-  );
-  try {
-    const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
-    const body = { q: queryText() };
-    if (mode === "deep") {
-      if (selectedTargets.length) body.targets = selectedTargets;
-      if (deepMaxFetchesInput.value) body.max_fetches = Number(deepMaxFetchesInput.value);
-    }
-    if (mode === "search") {
-      body.page = store.get().page;
-      body.page_size = PAGE_SIZE;
-    }
-    
-    // Use centralized API client
-    const payload = await globalThis.api.post(endpoint, body, {
-      signal: controller.signal,
-    });
-    
-    // Verify controller hasn't changed
-    if (store.get().controller !== controller) return;
-    if (!validatePayload(payload, mode)) throw new Error("invalid_contract");
-    
-    if (mode === "deep") {
-      const items = deepItems(payload);
-      store.update({ pending: false, mode, page: 0, items });
-      const fragments = items.reduce(
-        (total, item) => total + evidenceFragments(item.evidence).length,
-        0,
-      );
-      if (!items.length) {
-        setStatusKey("noEvidence", "partial");
-      } else if (!fragments || (Array.isArray(payload.degradations) && payload.degradations.length)) {
-        renderStatus(() => countLabel(items.length, "partialEvidence"), "partial");
-      } else {
-        renderStatus(
-          () => `${countLabel(items.length, "evidenceCount")} ${fragments} ${t("evidenceFragments")}`,
-          "success",
-        );
-      }
-    } else if (mode === "answer") {
-      store.update({
-        pending: false,
-        mode,
-        page: 0,
-        items: payload.search.results,
-        answer: payload.answer,
-      });
-      renderStatus(
-        () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
-        "success",
-      );
-    } else {
-      const items = payload.results;
-      const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
-        ? payload.page_size
-        : PAGE_SIZE;
-      const totalResults = typeof payload.total_results === "number"
-        ? payload.total_results
-        : items.length;
-      
-      const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
-
-      store.update({
-        pending: false,
-        mode,
-        items,
-        totalResults,
-        page: currentPage,
-        totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
-      });
-      
-      if (!items.length) {
-        // An empty set is not a degradation: the amber `partial` tone means
-        // partial or degraded answers, so "no results" gets its own neutral
-        // state and the note under the list carries the next step.
-        setStatusKey("noResults", "empty");
-      } else if (payload.status === "partial_success") {
-        renderStatus(() => countLabel(items.length, "partialResults"), "partial");
-      } else {
-        renderStatus(
-          () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
-          "success",
-        );
-      }
-      syncLocation(currentPage);
-    }
-    // A keyboard operator who submitted from the query field stays there for the
-    // next refinement — `#status` already announces the outcome — so focus only
-    // moves into the results when the operator was somewhere else.
-    if (document.activeElement !== queryInput) resultsNode.focus({ preventScroll: true });
-    refreshPanels();
-  } catch (error) {
-    // Nothing was committed: drop `pending` silently (no subscriber render, so
-    // the DOM and any focus inside it survive), restore the page the operator
-    // was on, and report the reason.
-    store.updateSilent({ pending: false, page: previousPage });
-    reportFailure(error);
-  } finally {
-    if (store.get().controller === controller) {
-      store.update({ controller: null });
-      setBusy(false, mode);
-    }
-  }
-}
-
 // ── Location state ──────────────────────────────────────────────
 // The last committed search lives in the URL, so a refresh or a shared link
 // reproduces it instead of losing everything. `replaceState` (not `pushState`)
 // keeps one history entry per search: Back still leaves the page, which is what
 // a single-view app should do.
-function searchLocation(page) {
-  const parts = [`q=${encodeURIComponent(queryInput.value.trim())}`];
-  if (languageInput.value.trim()) {
-    parts.push(`lang=${encodeURIComponent(languageInput.value.trim())}`);
-  }
-  if (regionInput.value.trim()) {
-    parts.push(`region=${encodeURIComponent(regionInput.value.trim())}`);
-  }
-  if (fileTypeInput.value) parts.push(`filetype=${encodeURIComponent(fileTypeInput.value)}`);
-  if (page > 0) parts.push(`page=${page + 1}`);
-  return `${location.pathname}?${parts.join("&")}`;
-}
+// ── Dominio: net (clasificación de errores de validación) ────────
+// Encapsula el mapa de códigos y las dos rutinas de validación que lo usan.
+// Retorna las tres porque el arranque registra sus listeners y `reportFailure`
+// (en el núcleo, por su test de contrato) lee el mapa.
+const net = (function () {
+  const ERROR_MESSAGE_KEYS = {
+    invalid_request: "errorInvalidRequest",
+    invalid_query: "errorInvalidQuery",
+    unauthorized: "unauthorized",
+    rate_limited: "rateLimited",
+    request_timeout: "timeout",
+    egress_denied: "errorEgressDenied",
+    provider_not_declared: "errorProviderUnavailable",
+    provider_not_registered: "errorProviderUnavailable",
+    provider_not_enabled: "errorProviderUnavailable",
+    provider_not_approved: "errorProviderUnavailable",
+    provider_credential_missing: "errorProviderUnavailable",
+    provider_network_blocked: "errorProviderUnavailable",
+    search_planning_failed: "errorSearchUnavailable",
+    inference_unavailable: "errorSearchUnavailable",
+    ranking_backend_unavailable: "errorSearchUnavailable",
+    storage_unavailable: "errorStorageUnavailable",
+    answer_unavailable: "answerHintMissingCredential",
+    scope_denied: "scopeDenied",
+  };
 
-function syncLocation(page) {
-  try {
-    history.replaceState(null, "", searchLocation(page));
-  } catch (_) {
-    // A blocked History API is not worth interrupting a successful search for.
+  function reportValidationError(key) {
+    const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
+    setStatusKey(key, "error");
+    field.setAttribute("aria-invalid", "true");
+    // Open the disclosure that actually holds the offending field: the token's
+    // panel and the filter panel are separate, so a fixed `filtersDetails.open`
+    // would leave a token error focused inside a still-collapsed panel.
+    if (filtersDetails.contains(field)) filtersDetails.open = true;
+    if (accessDetails.contains(field)) accessDetails.open = true;
+    field.focus();
   }
-}
 
-function restoreFromLocation() {
-  const pairs = location.search.replace(/^\?/, "").split("&").filter(Boolean);
-  const params = new Map();
-  for (const pair of pairs) {
-    const [key, value = ""] = pair.split("=");
-    // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. `%`).
-    // A hand-edited or truncated shared link must not abort the bootstrap, so a
-    // pair that cannot be decoded is skipped rather than propagated.
-    let decodedKey;
-    let decodedValue;
+  function clearValidationError() {
+    queryInput.removeAttribute("aria-invalid");
+    tokenInput.removeAttribute("aria-invalid");
+  }
+
+  return { ERROR_MESSAGE_KEYS, reportValidationError, clearValidationError };
+})();
+
+const ERROR_MESSAGE_KEYS = net.ERROR_MESSAGE_KEYS;
+const reportValidationError = net.reportValidationError;
+const clearValidationError = net.clearValidationError;
+
+// Los listeners viajan al bloque de arranque (regla D3.3); aquí solo se
+// declaran.
+
+// ── Dominio: providers ───────────────────────────────────────
+// Estado de fuentes, del servicio y la credencial de Marginalia. Retorna
+// lo que cruza: las dos que llama `refreshPanels`, y las cuatro que
+// llaman sus listeners, que viven en el bloque de arranque (regla D3).
+const providers = (function () {
+  // ── Source availability ─────────────────────────────────────────
+
+  const PROVIDER_REASON_KEYS = {
+    provider_not_approved: "providerReasonNotApproved",
+    provider_disabled: "providerReasonDisabled",
+    provider_credential_missing: "providerReasonCredentialMissing",
+    credential_missing: "providerReasonCredentialMissing",
+    provider_circuit_open: "providerReasonCircuitOpen",
+    egress_denied: "providerReasonEgressDenied",
+  };
+
+  function providerReason(code) {
+    const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
+    return t(key ?? "providerReasonUnknown");
+  }
+
+  async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
+    checkbox.disabled = true;
+    if (statusNode) statusNode.hidden = true;
     try {
-      decodedKey = decodeURIComponent(key);
-      decodedValue = decodeURIComponent(value.replace(/\+/g, " "));
-    } catch (_) {
-      continue;
+      // Centralized API client used here
+      await globalThis.api.post(endpoint, { enabled: desired });
+      await refresh();
+    } catch (error) {
+      checkbox.checked = !desired;
+      checkbox.disabled = false;
+      if (statusNode) statusNode.hidden = false;
+      statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
+        ? t(ERROR_MESSAGE_KEYS[error.code])
+        : error.status === 401 || error.message.includes("401")
+          ? t("unauthorized")
+          : t(failKey);
     }
-    params.set(decodedKey, decodedValue);
   }
-  const query = boundedText((params.get("q") || "").trim(), 2048);
-  if (!query) return;
-  queryInput.value = query;
-  languageInput.value = boundedText(params.get("lang") || "", 16);
-  regionInput.value = boundedText(params.get("region") || "", 32);
-  const fileType = params.get("filetype") || "";
-  if (["pdf", "html", "txt"].includes(fileType)) fileTypeInput.value = fileType;
-  const requested = Number.parseInt(params.get("page") || "1", 10);
-  const page = Number.isSafeInteger(requested) && requested > 1 ? requested - 1 : 0;
-  updateFiltersSummary();
-  run("search", page);
-}
 
-// The form is `novalidate`: validation runs here so the message is the app's own
-// copy in the operator's locale (native bubbles speak the browser's language
-// and sit outside the catalog), the offending field is marked, and the collapsed
-// filters panel opens when the fix lives inside it.
-function queryValidationError() {
-  if (!queryInput.value.trim()) return "errorQueryRequired";
-  if (tokenInput.value && tokenInput.value.length < 32) return "errorTokenTooShort";
-  return null;
-}
-
-function reportValidationError(key) {
-  const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
-  setStatusKey(key, "error");
-  field.setAttribute("aria-invalid", "true");
-  // Open the disclosure that actually holds the offending field: the token's
-  // panel and the filter panel are separate, so a fixed `filtersDetails.open`
-  // would leave a token error focused inside a still-collapsed panel.
-  if (filtersDetails.contains(field)) filtersDetails.open = true;
-  if (accessDetails.contains(field)) accessDetails.open = true;
-  field.focus();
-}
-
-function clearValidationError() {
-  queryInput.removeAttribute("aria-invalid");
-  tokenInput.removeAttribute("aria-invalid");
-}
-
-queryInput.addEventListener("input", clearValidationError);
-tokenInput.addEventListener("input", clearValidationError);
-
-function execute(event) {
-  event.preventDefault();
-  if (requestedModeIsUnavailable(event.submitter)) {
-    // The reason is already visible next to the button; repeating it in the
-    // status region keeps the click from being a dead end.
-    renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
-    return;
+  async function toggleProvider(name, desired, checkbox, reasonNode) {
+    await toggleEnabled({
+      endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
+      desired,
+      checkbox,
+      statusNode: reasonNode,
+      refresh: fetchProviderStatus,
+      failKey: "providerToggleFailed",
+    });
   }
-  const invalid = queryValidationError();
-  if (invalid) {
-    reportValidationError(invalid);
-    return;
-  }
-  const requested = event.submitter?.dataset.mode;
-  const mode = requested === "deep" || requested === "answer" ? requested : "search";
-  run(mode, 0);
-}
 
-function requestedModeIsUnavailable(submitter) {
-  return submitter === answerButton && answerButton.classList.contains("is-unavailable");
-}
-
-form.addEventListener("submit", execute);
-cancelButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.controller) {
-    state.controller.abort();
-    setStatusKey("cancelled", "partial");
-  }
-});
-window.addEventListener("pagehide", () => {
-  const state = store.get();
-  if (state.controller) state.controller.abort();
-  tokenInput.value = "";
-});
-previousButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.page > 0) run("search", state.page - 1);
-});
-nextButton.addEventListener("click", () => {
-  const state = store.get();
-  if (state.page + 1 < state.totalPages) run("search", state.page + 1);
-});
-
-// ── Source availability ─────────────────────────────────────────
-const providerStatus = document.querySelector(".provider-status");
-const providerList = document.querySelector("#provider-list");
-const providerStatusText = document.querySelector("#provider-status-text");
-
-const PROVIDER_REASON_KEYS = {
-  provider_not_approved: "providerReasonNotApproved",
-  provider_disabled: "providerReasonDisabled",
-  provider_credential_missing: "providerReasonCredentialMissing",
-  credential_missing: "providerReasonCredentialMissing",
-  provider_circuit_open: "providerReasonCircuitOpen",
-  egress_denied: "providerReasonEgressDenied",
-};
-
-function providerReason(code) {
-  const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
-  return t(key ?? "providerReasonUnknown");
-}
-
-async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
-  checkbox.disabled = true;
-  if (statusNode) statusNode.hidden = true;
-  try {
-    // Centralized API client used here
-    await globalThis.api.post(endpoint, { enabled: desired });
-    await refresh();
-  } catch (error) {
-    checkbox.checked = !desired;
-    checkbox.disabled = false;
-    if (statusNode) statusNode.hidden = false;
-    statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
-      ? t(ERROR_MESSAGE_KEYS[error.code])
-      : error.status === 401 || error.message.includes("401")
-        ? t("unauthorized")
-        : t(failKey);
-  }
-}
-
-async function toggleProvider(name, desired, checkbox, reasonNode) {
-  await toggleEnabled({
-    endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
-    desired,
-    checkbox,
-    statusNode: reasonNode,
-    refresh: fetchProviderStatus,
-    failKey: "providerToggleFailed",
-  });
-}
-
-async function fetchProviderStatus() {
-  try {
-    // Use centralized client
-    const payload = await globalThis.api.get("/providers");
-    if (!payload || !Array.isArray(payload.providers)) return;
-    providerList.replaceChildren();
-    let unavailable = 0;
-    const enabledList = [];
-    for (const provider of payload.providers) {
-      const item = document.createElement("li");
-      item.className = "provider-item";
-      const row = document.createElement("div");
-      row.className = "provider-item-row";
-      const name = document.createElement("span");
-      name.className = "provider-name";
-      name.textContent = provider.name;
-      const badge = document.createElement("span");
-      // `provider.status` is a server string; map it through an allowlist so a
-      // value outside the known vocabulary cannot inject arbitrary class tokens
-      // (the CSS only styles `--available` / `--unavailable`).
-      const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
-      badge.className = `provider-badge provider-badge--${statusClass}`;
-      badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
-      if (provider.code) badge.title = provider.code;
-      const toggleLabel = document.createElement("label");
-      toggleLabel.className = "provider-toggle";
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = Boolean(provider.enabled);
-      checkbox.disabled = provider.status !== "available";
-      checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
-      const toggleText = document.createElement("span");
-      toggleText.textContent = t("providerToggleLabel");
-      toggleLabel.append(checkbox, toggleText);
-      row.append(name, badge, toggleLabel);
-      item.append(row);
-      const reason = document.createElement("span");
-      reason.className = "provider-reason";
-      if (provider.status !== "available") {
-        reason.textContent = providerReason(provider.code);
-        unavailable += 1;
-      } else {
-        reason.hidden = true;
+  async function fetchProviderStatus() {
+    try {
+      // Use centralized client
+      const payload = await globalThis.api.get("/providers");
+      if (!payload || !Array.isArray(payload.providers)) return;
+      providerList.replaceChildren();
+      let unavailable = 0;
+      const enabledList = [];
+      for (const provider of payload.providers) {
+        const item = document.createElement("li");
+        item.className = "provider-item";
+        const row = document.createElement("div");
+        row.className = "provider-item-row";
+        const name = document.createElement("span");
+        name.className = "provider-name";
+        name.textContent = provider.name;
+        const badge = document.createElement("span");
+        // `provider.status` is a server string; map it through an allowlist so a
+        // value outside the known vocabulary cannot inject arbitrary class tokens
+        // (the CSS only styles `--available` / `--unavailable`).
+        const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
+        badge.className = `provider-badge provider-badge--${statusClass}`;
+        badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
+        if (provider.code) badge.title = provider.code;
+        const toggleLabel = document.createElement("label");
+        toggleLabel.className = "provider-toggle";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = Boolean(provider.enabled);
+        checkbox.disabled = provider.status !== "available";
+        checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
+        const toggleText = document.createElement("span");
+        toggleText.textContent = t("providerToggleLabel");
+        toggleLabel.append(checkbox, toggleText);
+        row.append(name, badge, toggleLabel);
+        item.append(row);
+        const reason = document.createElement("span");
+        reason.className = "provider-reason";
+        if (provider.status !== "available") {
+          reason.textContent = providerReason(provider.code);
+          unavailable += 1;
+        } else {
+          reason.hidden = true;
+        }
+        item.append(reason);
+        checkbox.addEventListener("change", () =>
+          toggleProvider(provider.name, checkbox.checked, checkbox, reason),
+        );
+        providerList.append(item);
+        if (provider.enabled) enabledList.push(provider.name);
       }
-      item.append(reason);
-      checkbox.addEventListener("change", () =>
-        toggleProvider(provider.name, checkbox.checked, checkbox, reason),
-      );
-      providerList.append(item);
-      if (provider.enabled) enabledList.push(provider.name);
+      providerStatus.hidden = false;
+      // The credential row follows `providers.enabled`: Marginalia is the only
+      // shipped source and always takes a key, so an enabled Marginalia reveals
+      // its key controls.
+      syncCredentialActions(enabledList);
+      if (unavailable === 0) {
+        providerStatusText.textContent = t("allAvailable");
+        providerStatusText.dataset.state = "success";
+      } else if (unavailable < payload.providers.length) {
+        providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
+        providerStatusText.dataset.state = "partial";
+      } else {
+        providerStatusText.textContent = t("noneAvailable");
+        providerStatusText.dataset.state = "error";
+      }
+    } catch (_) {
+      // Without provider state (e.g. no token yet) the credential row must not
+      // claim any source is ready to take a key: hide it until we have an
+      // authoritative answer from `/providers`.
+      syncCredentialActions([]);
     }
-    providerStatus.hidden = false;
-    // The credential row follows `providers.enabled`: Marginalia is the only
-    // shipped source and always takes a key, so an enabled Marginalia reveals
-    // its key controls.
-    syncCredentialActions(enabledList);
-    if (unavailable === 0) {
-      providerStatusText.textContent = t("allAvailable");
-      providerStatusText.dataset.state = "success";
-    } else if (unavailable < payload.providers.length) {
-      providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
-      providerStatusText.dataset.state = "partial";
-    } else {
-      providerStatusText.textContent = t("noneAvailable");
-      providerStatusText.dataset.state = "error";
-    }
-  } catch (_) {
-    // Without provider state (e.g. no token yet) the credential row must not
-    // claim any source is ready to take a key: hide it until we have an
-    // authoritative answer from `/providers`.
-    syncCredentialActions([]);
   }
-}
 
-// ── Service state ───────────────────────────────────────────────
-const servicePanel = document.querySelector(".service-state");
-const serviceSummary = document.querySelector("#service-summary");
-const serviceIndicators = document.querySelector("#service-indicators");
-const serviceMode = document.querySelector("#service-mode");
+  // ── Service state ───────────────────────────────────────────────
 
-function indicator(label, value, indicatorState) {
-  const item = document.createElement("li");
-  item.className = "indicator";
-  const name = document.createElement("span");
-  name.className = "indicator-label";
-  name.textContent = label;
-  const reading = document.createElement("span");
-  reading.className = "indicator-value";
-  reading.dataset.state = indicatorState;
-  reading.textContent = value;
-  item.append(name, reading);
-  return item;
-}
+  function indicator(label, value, indicatorState) {
+    const item = document.createElement("li");
+    item.className = "indicator";
+    const name = document.createElement("span");
+    name.className = "indicator-label";
+    name.textContent = label;
+    const reading = document.createElement("span");
+    reading.className = "indicator-value";
+    reading.dataset.state = indicatorState;
+    reading.textContent = value;
+    item.append(name, reading);
+    return item;
+  }
 
-function configRow(label, value) {
-  const wrapper = document.createElement("div");
-  const dt = document.createElement("dt");
-  dt.textContent = label;
-  const dd = document.createElement("dd");
-  dd.textContent = value;
-  wrapper.append(dt, dd);
-  return wrapper;
-}
+  function configRow(label, value) {
+    const wrapper = document.createElement("div");
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    wrapper.append(dt, dd);
+    return wrapper;
+  }
 
-function percentage(value) {
-  return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
-}
+  function percentage(value) {
+    return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
+  }
 
-async function fetchServiceState() {
-  try {
-    const payload = await globalThis.api.get("/status");
-    if (!payload || payload.schema_version !== "1") {
+  async function fetchServiceState() {
+    try {
+      const payload = await globalThis.api.get("/status");
+      if (!payload || payload.schema_version !== "1") {
+        servicePanel.hidden = true;
+        return null;
+      }
+      const sources = Array.isArray(payload.sources) ? payload.sources : [];
+      const availableSources = sources.filter((source) => source.status === "available").length;
+      // Mock mode: `/status` reports the synthetic sources search actually uses
+      // (`mock-a`/`mock-b`), so the environment can be labelled instead of letting
+      // an evaluator mistake fixtures for real data. A deployment that names its
+      // own providers `mock-*` would be mislabelled; that is the price of the
+      // payload carrying no dedicated flag.
+      const mockOnly = sources.length > 0
+        && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
+      serviceMode.hidden = !mockOnly;
+      serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
+      if (mockOnly) serviceMode.dataset.state = "warning";
+      searchAvailable = availableSources > 0;
+      searchButton.disabled = !searchAvailable;
+      searchButton.setAttribute("aria-disabled", String(!searchAvailable));
+      searchButton.title = searchAvailable ? "" : t("searchUnavailable");
+      if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
+      const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
+      const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
+      serviceIndicators.replaceChildren();
+      serviceIndicators.append(
+        indicator(
+          t("sourcesLabel"),
+          `${availableSources}/${sources.length}`,
+          availableSources === sources.length && sources.length ? "success" : "partial",
+        ),
+      );
+      let storageLabel = t("storageOff");
+      let storageState = "partial";
+      if (storage.enabled && storage.available) {
+        storageLabel = t("storageOn");
+        storageState = "success";
+      } else if (storage.enabled) {
+        storageLabel = t("storageBroken");
+        storageState = "error";
+      }
+      serviceIndicators.append(indicator(t("storageLabel"), storageLabel, storageState));
+      serviceIndicators.append(
+        indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
+      );
+      const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
+      let answerLabel = t("storageOff");
+      let answerState = "partial";
+      if (answerStatus.available) {
+        answerLabel = t("storageOn");
+        answerState = "success";
+      } else if (answerStatus.enabled) {
+        answerLabel = t("storageBroken");
+        answerState = "error";
+      }
+      serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
+      // Always visible, never truly `disabled`: a disabled button gives no
+      // hover/touch feedback and no reason why. This one stays clickable —
+      // execute() intercepts the click and explains instead of submitting.
+      answerButton.classList.toggle("is-unavailable", !answerStatus.available);
+      answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
+      // Lives right by the search buttons, not just in the status panel below the
+      // fold: that panel is easy to miss, and this is the one place an operator
+      // looks when the button they expect is not there. The reason is shown
+      // *before* the click and tied to the control with `aria-describedby`, which
+      // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
+      // version only explained itself after a failed click.
+      if (answerStatus.available) {
+        answerHint.hidden = true;
+        answerButton.removeAttribute("aria-describedby");
+        answerButton.removeAttribute("title");
+      } else {
+        answerHint.textContent = answerStatus.enabled
+          ? t("answerHintMissingCredential")
+          : t("answerHintUnconfigured");
+        answerHint.hidden = false;
+        answerButton.setAttribute("aria-describedby", "answer-hint");
+        answerButton.setAttribute("title", answerHint.textContent);
+      }
+      if (answerStatus.configured) {
+        answerConfigBody.replaceChildren();
+        answerConfigBody.append(
+          configRow(t("answerConfigStateLabel"), answerLabel),
+          configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
+          configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
+        );
+        answerConfig.hidden = false;
+        answerEnabledToggle.checked = Boolean(answerStatus.enabled);
+        answerEnabledToggle.disabled = answerStatus.available === false;
+      } else {
+        answerConfig.hidden = true;
+      }
+      const strategistStatus =
+        payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
+      if (strategistStatus.configured && strategistStatus.available !== false) {
+        strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
+        strategistEnabledToggle.disabled = false;
+        if (modelOptions) modelOptions.hidden = false;
+      } else {
+        // No endpoint/model configured: the toggle has nothing to enable, so keep
+        // it off and disabled. The reason goes in the help line below it, not in
+        // the label — a control keeps a short label and states carry the sentence
+        // (`strategistToggleLabel` is applied declaratively and is no longer
+        // overwritten with a whole unavailability sentence).
+        strategistEnabledToggle.checked = false;
+        strategistEnabledToggle.disabled = true;
+        // Nothing to enable means nothing to show: hide the whole row so the
+        // search box is not preceded by a dead control. It reappears as soon as
+        // the server reports the strategist configured and usable.
+        if (modelOptions) modelOptions.hidden = true;
+      }
+      // Configured and switched on, but no usable credential: the toggle flips a
+      // real flag, yet the model will not actually run. Say so instead of leaving
+      // an operator to assume search is being refined — the same fail-loudly
+      // pattern `answerHint` uses for the AI summary button.
+      const strategistUnavailable =
+        strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
+      if (strategistUnavailable) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistHintMissingCredential");
+      } else if (strategistStatus.available === false) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistUnavailable");
+      } else if (!strategistStatus.configured) {
+        strategistToggleStatus.hidden = false;
+        strategistToggleStatus.textContent = t("strategistUnconfigured");
+      } else {
+        strategistToggleStatus.hidden = true;
+        strategistToggleStatus.textContent = "";
+      }
+      strategistEnabledToggle.title = strategistStatus.available === false
+        ? t("strategistUnavailable")
+        : "";
+      const degraded = payload.status !== "ok";
+      // "Service operating normally" beside "Local storage Disabled" read as a
+      // contradiction and made the 503 on save look like a bug: when persistence
+      // is off, say what that costs instead of claiming everything is fine.
+      const storageOff = !storage.enabled;
+      serviceSummary.textContent = storageOff
+        ? t("serviceOkStorageOff")
+        : degraded
+          ? t("serviceDegraded")
+          : t("serviceOk");
+      serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
+      servicePanel.hidden = false;
+      syncMarginaliaFromStatus(payload);
+      return payload;
+    } catch (_) {
+      searchAvailable = false;
+      searchButton.disabled = true;
+      searchButton.setAttribute("aria-disabled", "true");
+      searchButton.title = t("searchUnavailable");
       servicePanel.hidden = true;
-      return null;
-    }
-    const sources = Array.isArray(payload.sources) ? payload.sources : [];
-    const availableSources = sources.filter((source) => source.status === "available").length;
-    // Mock mode: `/status` reports the synthetic sources search actually uses
-    // (`mock-a`/`mock-b`), so the environment can be labelled instead of letting
-    // an evaluator mistake fixtures for real data. A deployment that names its
-    // own providers `mock-*` would be mislabelled; that is the price of the
-    // payload carrying no dedicated flag.
-    const mockOnly = sources.length > 0
-      && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
-    serviceMode.hidden = !mockOnly;
-    serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
-    if (mockOnly) serviceMode.dataset.state = "warning";
-    searchAvailable = availableSources > 0;
-    searchButton.disabled = !searchAvailable;
-    searchButton.setAttribute("aria-disabled", String(!searchAvailable));
-    searchButton.title = searchAvailable ? "" : t("searchUnavailable");
-    if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
-    const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
-    const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
-    serviceIndicators.replaceChildren();
-    serviceIndicators.append(
-      indicator(
-        t("sourcesLabel"),
-        `${availableSources}/${sources.length}`,
-        availableSources === sources.length && sources.length ? "success" : "partial",
-      ),
-    );
-    let storageLabel = t("storageOff");
-    let storageState = "partial";
-    if (storage.enabled && storage.available) {
-      storageLabel = t("storageOn");
-      storageState = "success";
-    } else if (storage.enabled) {
-      storageLabel = t("storageBroken");
-      storageState = "error";
-    }
-    serviceIndicators.append(indicator(t("storageLabel"), storageLabel, storageState));
-    serviceIndicators.append(
-      indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
-    );
-    const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
-    let answerLabel = t("storageOff");
-    let answerState = "partial";
-    if (answerStatus.available) {
-      answerLabel = t("storageOn");
-      answerState = "success";
-    } else if (answerStatus.enabled) {
-      answerLabel = t("storageBroken");
-      answerState = "error";
-    }
-    serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
-    // Always visible, never truly `disabled`: a disabled button gives no
-    // hover/touch feedback and no reason why. This one stays clickable —
-    // execute() intercepts the click and explains instead of submitting.
-    answerButton.classList.toggle("is-unavailable", !answerStatus.available);
-    answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
-    // Lives right by the search buttons, not just in the status panel below the
-    // fold: that panel is easy to miss, and this is the one place an operator
-    // looks when the button they expect is not there. The reason is shown
-    // *before* the click and tied to the control with `aria-describedby`, which
-    // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
-    // version only explained itself after a failed click.
-    if (answerStatus.available) {
-      answerHint.hidden = true;
-      answerButton.removeAttribute("aria-describedby");
-      answerButton.removeAttribute("title");
-    } else {
-      answerHint.textContent = answerStatus.enabled
-        ? t("answerHintMissingCredential")
-        : t("answerHintUnconfigured");
+      serviceMode.hidden = true;
+      answerEnabledToggle.checked = false;
+      answerEnabledToggle.disabled = true;
+      // The AI summary button stays visibly unavailable with its reason attached,
+      // even when the service state itself could not be read.
+      answerHint.textContent = t("answerHintUnavailable");
       answerHint.hidden = false;
       answerButton.setAttribute("aria-describedby", "answer-hint");
-      answerButton.setAttribute("title", answerHint.textContent);
-    }
-    if (answerStatus.configured) {
-      answerConfigBody.replaceChildren();
-      answerConfigBody.append(
-        configRow(t("answerConfigStateLabel"), answerLabel),
-        configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
-        configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
-      );
-      answerConfig.hidden = false;
-      answerEnabledToggle.checked = Boolean(answerStatus.enabled);
-      answerEnabledToggle.disabled = answerStatus.available === false;
-    } else {
-      answerConfig.hidden = true;
-    }
-    const strategistStatus =
-      payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
-    if (strategistStatus.configured && strategistStatus.available !== false) {
-      strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
-      strategistEnabledToggle.disabled = false;
-      if (modelOptions) modelOptions.hidden = false;
-    } else {
-      // No endpoint/model configured: the toggle has nothing to enable, so keep
-      // it off and disabled. The reason goes in the help line below it, not in
-      // the label — a control keeps a short label and states carry the sentence
-      // (`strategistToggleLabel` is applied declaratively and is no longer
-      // overwritten with a whole unavailability sentence).
+      // No usable service state (e.g. the admin token is not loaded yet): the
+      // model toggle must stay off, but it must not be silently greyed out with
+      // no reason — explain the missing authentication so the operator knows the
+      // toggle is gated on the admin token, not broken.
       strategistEnabledToggle.checked = false;
       strategistEnabledToggle.disabled = true;
-      // Nothing to enable means nothing to show: hide the whole row so the
-      // search box is not preceded by a dead control. It reappears as soon as
-      // the server reports the strategist configured and usable.
+      strategistToggleStatus.hidden = false;
+      strategistToggleStatus.textContent = t("unauthorized");
+      // Without a readable service state the row has nothing to offer either;
+      // hide it so the search box is not preceded by a dead control.
       if (modelOptions) modelOptions.hidden = true;
+      return null;
     }
-    // Configured and switched on, but no usable credential: the toggle flips a
-    // real flag, yet the model will not actually run. Say so instead of leaving
-    // an operator to assume search is being refined — the same fail-loudly
-    // pattern `answerHint` uses for the AI summary button.
-    const strategistUnavailable =
-      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
-    if (strategistUnavailable) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistHintMissingCredential");
-    } else if (strategistStatus.available === false) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnavailable");
-    } else if (!strategistStatus.configured) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnconfigured");
-    } else {
-      strategistToggleStatus.hidden = true;
-      strategistToggleStatus.textContent = "";
-    }
-    strategistEnabledToggle.title = strategistStatus.available === false
-      ? t("strategistUnavailable")
-      : "";
-    const degraded = payload.status !== "ok";
-    // "Service operating normally" beside "Local storage Disabled" read as a
-    // contradiction and made the 503 on save look like a bug: when persistence
-    // is off, say what that costs instead of claiming everything is fine.
-    const storageOff = !storage.enabled;
-    serviceSummary.textContent = storageOff
-      ? t("serviceOkStorageOff")
-      : degraded
-        ? t("serviceDegraded")
-        : t("serviceOk");
-    serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
-    servicePanel.hidden = false;
-    syncMarginaliaFromStatus(payload);
-    return payload;
-  } catch (_) {
-    searchAvailable = false;
-    searchButton.disabled = true;
-    searchButton.setAttribute("aria-disabled", "true");
-    searchButton.title = t("searchUnavailable");
-    servicePanel.hidden = true;
-    serviceMode.hidden = true;
-    answerEnabledToggle.checked = false;
-    answerEnabledToggle.disabled = true;
-    // The AI summary button stays visibly unavailable with its reason attached,
-    // even when the service state itself could not be read.
-    answerHint.textContent = t("answerHintUnavailable");
-    answerHint.hidden = false;
-    answerButton.setAttribute("aria-describedby", "answer-hint");
-    // No usable service state (e.g. the admin token is not loaded yet): the
-    // model toggle must stay off, but it must not be silently greyed out with
-    // no reason — explain the missing authentication so the operator knows the
-    // toggle is gated on the admin token, not broken.
-    strategistEnabledToggle.checked = false;
-    strategistEnabledToggle.disabled = true;
-    strategistToggleStatus.hidden = false;
-    strategistToggleStatus.textContent = t("unauthorized");
-    // Without a readable service state the row has nothing to offer either;
-    // hide it so the search box is not preceded by a dead control.
-    if (modelOptions) modelOptions.hidden = true;
-    return null;
   }
-}
 
-async function toggleAnswer() {
-  await toggleEnabled({
-    endpoint: "/answer/enabled",
-    desired: answerEnabledToggle.checked,
-    checkbox: answerEnabledToggle,
-    statusNode: answerToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "answerToggleFailed",
-  });
-}
-
-answerEnabledToggle.addEventListener("change", toggleAnswer);
-
-// ── Search with model (strategist) toggle ───────────────────────
-// Controls whether the LLM participates in search. When off (the default)
-// search/deep keep running fully deterministic; when on, the strategist
-// proposes a refined query that AMATL runs to complement the first results.
-async function toggleStrategist() {
-  await toggleEnabled({
-    endpoint: "/strategist/enabled",
-    desired: strategistEnabledToggle.checked,
-    checkbox: strategistEnabledToggle,
-    statusNode: strategistToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "strategistToggleFailed",
-  });
-}
-
-strategistEnabledToggle.addEventListener("change", toggleStrategist);
-
-// ── Marginalia API key (option A) ───────────────────────────────
-// Operator credential management: a key is inserted into the process's RAM
-// (never disk, config, or logs) after a live canary validates it, or liquidated
-// on demand. The row sits in its own secondary line so the search axis
-// (write → search → analyze) stays visually dominant.
-const marginaliaKeyButton = document.querySelector("#marginalia-key-button");
-const marginaliaClearButton = document.querySelector("#marginalia-clear-button");
-const marginaliaStatus = document.querySelector("#marginalia-status");
-const marginaliaDialog = document.querySelector("#marginalia-dialog");
-const marginaliaForm = document.querySelector("#marginalia-form");
-const marginaliaKeyInput = document.querySelector("#marginalia-key");
-const marginaliaKeyError = document.querySelector("#marginalia-key-error");
-const marginaliaSave = document.querySelector("#marginalia-save");
-const marginaliaCancel = document.querySelector("#marginalia-cancel");
-const credentialActions = document.querySelector("#credential-actions");
-const marginaliaCredentialGroup = document.querySelector("#marginalia-credential-group");
-
-// Show the Marginalia credential controls only while Marginalia is one of the
-// selected sources. The visibility follows `providers.enabled` — the same
-// single source of truth the source panel drives — so the key
-// area can never drift from the active selection. Marginalia is the only
-// credential-gated source, so it is the only one with a key row.
-function syncCredentialActions(enabledList) {
-  const list = Array.isArray(enabledList) ? enabledList : [];
-  const marginaliaOn = list.includes("marginalia");
-  if (marginaliaCredentialGroup) marginaliaCredentialGroup.hidden = !marginaliaOn;
-  if (credentialActions) credentialActions.hidden = !marginaliaOn;
-}
-
-function marginaliaCredentialSource(sources) {
-  const entry = (Array.isArray(sources) ? sources : []).find(
-    (source) => source && source.name === "marginalia",
-  );
-  return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
-}
-
-function updateMarginaliaUi(source) {
-  // Only an in-memory key can be liquidated from here: a key read from the
-  // environment variable is out of this surface's reach, so "liquidate" stays
-  // disabled and the status says where the key actually comes from.
-  marginaliaClearButton.disabled = source !== "ephemeral";
-  marginaliaStatus.hidden = false;
-  if (source === "ephemeral") {
-    marginaliaStatus.dataset.state = "success";
-    marginaliaStatus.textContent = t("marginaliaStatusPresent");
-  } else if (source === "environment") {
-    marginaliaStatus.dataset.state = "partial";
-    marginaliaStatus.textContent = t("marginaliaStatusEnvironment");
-  } else {
-    marginaliaStatus.dataset.state = "partial";
-    marginaliaStatus.textContent = t("marginaliaStatusAbsent");
-  }
-}
-
-// Keep the two buttons in sync with the last `/status` payload.
-function syncMarginaliaFromStatus(payload) {
-  if (!payload) return;
-  updateMarginaliaUi(marginaliaCredentialSource(payload.sources));
-}
-
-function openMarginaliaDialog() {
-  marginaliaKeyInput.value = "";
-  marginaliaKeyError.hidden = true;
-  marginaliaDialog.showModal();
-  marginaliaKeyInput.focus();
-}
-
-marginaliaKeyButton.addEventListener("click", openMarginaliaDialog);
-marginaliaCancel.addEventListener("click", () => marginaliaDialog.close());
-// Clicking the backdrop (outside the dialog box) closes it, like a native modal.
-marginaliaDialog.addEventListener("click", (event) => {
-  if (event.target === marginaliaDialog) marginaliaDialog.close();
-});
-
-async function saveMarginaliaKey(event) {
-  event.preventDefault();
-  const key = marginaliaKeyInput.value.trim();
-  if (!key) {
-    marginaliaKeyError.hidden = false;
-    marginaliaKeyError.textContent = t("marginaliaEmpty");
-    return;
-  }
-  marginaliaSave.disabled = true;
-  marginaliaKeyError.hidden = true;
-  try {
-    const report = await globalThis.api.post("/providers/marginalia/credential", { key });
-    marginaliaDialog.close();
-    marginaliaKeyInput.value = "";
-    updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
-    setStatusKey("marginaliaSaved", "success");
-    fetchServiceState();
-  } catch (error) {
-    // 401/403 means the operator token lacks admin scope; anything else means
-    // the key itself did not pass the live canary (or the source was
-    // unreachable) and nothing was stored. Classification reads the structured
-    // `error.status`/`error.code` the shared client sets — real error bodies
-    // carry a catalog message with no status digits — and the message check
-    // survives only as a fallback for non-JSON error pages.
-    const status = Number(error && error.status) || 0;
-    const code = error && typeof error.code === "string" ? error.code : "";
-    const message = String(error && error.message);
-    marginaliaKeyError.hidden = false;
-    // 401 = no valid token was sent (nothing to do with the key); 403 = the
-    // token lacks admin scope; anything else = the key failed the live canary.
-    marginaliaKeyError.textContent =
-      status === 401 || code === "unauthorized" || message.includes("401")
-        ? t("unauthorized")
-        : status === 403 || code === "scope_denied" || message.includes("403")
-          ? t("marginaliaFailed")
-          : t("marginaliaInvalid");
-  } finally {
-    marginaliaSave.disabled = false;
-  }
-}
-
-marginaliaForm.addEventListener("submit", saveMarginaliaKey);
-
-marginaliaClearButton.addEventListener("click", async () => {
-  try {
-    await globalThis.api.delete("/providers/marginalia/credential");
-    updateMarginaliaUi("none");
-    setStatusKey("marginaliaCleared", "success");
-    fetchServiceState();
-  } catch (_) {
-    setStatusKey("marginaliaClearedFailed", "error");
-  }
-});
-
-// ── History ─────────────────────────────────────────────────────
-const historyPanel = document.querySelector(".history-panel");
-const historyList = document.querySelector("#history-list");
-const historyEmpty = document.querySelector("#history-empty");
-const historyTemplate = document.querySelector("#history-template");
-const historyPurgeButton = document.querySelector("#history-purge");
-const historyPanelStatus = document.querySelector("#history-panel-status");
-
-function historyLabel(entry) {
-  const parts = [];
-  // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
-  // "1 resultado." instead of "1 resultados." — the singular key exists in every
-  // locale and the same helper already drives the results header and per-surface
-  // status lines, so the two views of one number cannot disagree.
-  if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
-  if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
-    parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
-  }
-  return parts.join(" · ");
-}
-
-async function fetchHistory() {
-  try {
-    const payload = await globalThis.api.get(`/history?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.entries)) {
-      historyPanel.hidden = true;
-      return;
-    }
-    historyList.replaceChildren();
-    for (const entry of payload.entries.slice(0, LIST_LIMIT)) {
-      if (!entry || !Number.isSafeInteger(entry.id)) continue;
-      const item = historyTemplate.content.cloneNode(true);
-      item.querySelector(".history-query").textContent = boundedText(entry.raw_query, 300);
-      item.querySelector(".history-meta").textContent = historyLabel(entry);
-      const reuse = item.querySelector(".history-reuse");
-      reuse.textContent = t("historyReuse");
-      reuse.addEventListener("click", () => {
-        queryInput.value = boundedText(entry.raw_query, 2048);
-        queryInput.focus();
-      });
-      const remove = item.querySelector(".history-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteHistoryEntry(entry.id));
-      historyList.append(item);
-    }
-    historyEmpty.hidden = historyList.childElementCount > 0;
-    historyEmpty.textContent = t("historyEmpty");
-    historyPanel.hidden = false;
-  } catch (_) {
-    historyPanel.hidden = true;
-  }
-}
-
-async function deleteHistoryEntry(id) {
-  try {
-    await globalThis.api.delete(`/history/${id}`);
-    announce(historyPanelStatus, "historyDeleted", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
-  }
-}
-
-async function purgeHistory() {
-  try {
-    await globalThis.api.delete("/history");
-    announce(historyPanelStatus, "historyPurged", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
-  }
-}
-
-// ── Saved documents ─────────────────────────────────────────────
-const savedPanel = document.querySelector(".saved-panel");
-const savedList = document.querySelector("#saved-list");
-const savedEmpty = document.querySelector("#saved-empty");
-const savedTemplate = document.querySelector("#saved-template");
-const savedPanelStatus = document.querySelector("#saved-panel-status");
-
-async function fetchSavedDocuments() {
-  try {
-    const payload = await globalThis.api.get(`/saved?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.documents)) {
-      savedPanel.hidden = true;
-      return;
-    }
-    savedList.replaceChildren();
-    for (const saved of payload.documents.slice(0, LIST_LIMIT)) {
-      if (!saved || !Number.isSafeInteger(saved.id)) continue;
-      const url = safeHttpUrl(saved.canonical_url);
-      const item = savedTemplate.content.cloneNode(true);
-      const link = item.querySelector(".saved-title");
-      link.textContent = boundedText(saved.title, 300) || (url ? url.hostname : t("noUrl"));
-      if (url) link.href = url.href;
-      else link.removeAttribute("href");
-      item.querySelector(".saved-meta").textContent = boundedText(saved.snippet, 200);
-      const remove = item.querySelector(".saved-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteSavedDocument(saved.id));
-      savedList.append(item);
-    }
-    savedEmpty.hidden = savedList.childElementCount > 0;
-    savedEmpty.textContent = t("savedEmpty");
-    savedPanel.hidden = false;
-  } catch (_) {
-    savedPanel.hidden = true;
-  }
-}
-
-async function deleteSavedDocument(id) {
-  try {
-    await globalThis.api.delete(`/saved/${id}`);
-    announce(savedPanelStatus, "savedDeleted", "success");
-    await fetchSavedDocuments();
-  } catch (_) {
-    announce(savedPanelStatus, "genericError", "error");
-  }
-}
-
-// ── Saved document creation ─────────────────────────────────────
-// Persists one Deep document as a bounded whitelist of small fields. The
-// payload deliberately never carries the document's extracted `content` (or any
-// other bulk field): the UI posts provenance and metadata only, so saved
-// documents stay small and never duplicate the full extraction.
-// A save can fail for reasons the operator can act on (storage off on the
-// server, a token without write scope) or for reasons they cannot. Collapsing
-// every failure into one generic line — while leaving the button looking ready
-// for another click — is what made this a High finding: the reason is now
-// specific, it is shown next to the control that failed, and the document stays
-// on screen so nothing the operator produced is lost.
-function saveFailureKey(error) {
-  const code = typeof error?.code === "string" ? error.code : "";
-  if (code === "storage_unavailable" || error?.status === 503) return "savedFailedStorage";
-  if (
-    code === "unauthorized"
-    || code === "scope_denied"
-    || error?.status === 401
-    || error?.status === 403
-  ) {
-    return "savedFailedUnauthorized";
-  }
-  return "savedFailed";
-}
-
-// Per-surface status line: `#status` is the global live region and whatever ran
-// last overwrites it, so a message about one card belongs next to that card. The
-// key is kept on the node (like `announce`) so a locale switch re-renders it.
-function setInlineStatus(node, key, state) {
-  if (!node) return;
-  if (key) {
-    node.dataset.i18nKey = key;
-    node.textContent = t(key);
-  } else {
-    node.textContent = "";
-    delete node.dataset.i18nKey;
-  }
-  node.hidden = !key;
-  if (state) node.dataset.state = state;
-  else node.removeAttribute("data-state");
-}
-
-async function saveDocument(documentValue, provenance, button) {
-  const inline = button.closest(".document-actions")?.querySelector(".document-save-status") || null;
-  const url = safeHttpUrl(documentValue.canonical_url);
-  if (!url || !validHash(documentValue.content_hash)) {
-    setInlineStatus(inline, "savedFailed", "error");
-    setStatusKey("savedFailed", "error");
-    return;
-  }
-  const payload = JSON.stringify({
-    canonical_url: url.href,
-    final_url: boundedText(documentValue.final_url, 8192),
-    title: boundedText(documentValue.title, 300),
-    status: boundedText(documentValue.status, 32),
-    content_hash: documentValue.content_hash,
-    retrieved_at: boundedText(provenance.retrieved_at, 64),
-  });
-  if (new TextEncoder().encode(payload).length > MAX_SAVED_PAYLOAD_BYTES) {
-    setInlineStatus(inline, "savedFailed", "error");
-    setStatusKey("savedFailed", "error");
-    return;
-  }
-  button.disabled = true;
-  setInlineStatus(inline, "", null);
-  try {
-    await globalThis.api.post("/saved", {
-      canonical_url: url.href,
-      title: boundedText(documentValue.title, 300),
-      snippet: boundedText(documentValue.excerpt, 2000),
-      content_hash: documentValue.content_hash,
-      extractor_version: boundedText(provenance.extractor_used, 128) || "unknown",
-      payload,
-      source_query: boundedText(queryInput.value, 2048),
-      tags: [],
+  async function toggleAnswer() {
+    await toggleEnabled({
+      endpoint: "/answer/enabled",
+      desired: answerEnabledToggle.checked,
+      checkbox: answerEnabledToggle,
+      statusNode: answerToggleStatus,
+      refresh: fetchServiceState,
+      failKey: "answerToggleFailed",
     });
-    setStatusKey("savedDone", "success");
-    button.textContent = t("savedActionDone");
-    setInlineStatus(inline, "savedDone", "success");
-    await fetchSavedDocuments();
-  } catch (error) {
-    // The button stays usable and now says what it does: the operator can save
-    // again the moment storage is back, and the reason sits next to the editor
-    // instead of only in the global status line.
-    const key = saveFailureKey(error);
-    button.disabled = false;
-    button.textContent = t("savedAgain");
-    setInlineStatus(inline, key, "error");
-    setStatusKey(key, "error");
   }
-}
 
-// ── Server clients (admin) ──────────────────────────────────────
-// Only reachable with an Admin-scoped token; `fetchServerClients` hides the
-// whole panel on anything but a successful `200`, the same fail-closed
-// convention `fetchServiceState`/`fetchSavedDocuments` already use — a
-// non-admin credential simply never sees this section, rather than seeing
-// it and hitting a wall of 403s.
-const clientsPanel = document.querySelector(".clients-panel");
-const clientList = document.querySelector("#client-list");
-const clientListEmpty = document.querySelector("#client-list-empty");
-const clientCreateDetails = document.querySelector("#client-create");
-const clientCreateForm = document.querySelector("#client-create-form");
-const clientIdInput = document.querySelector("#client-id");
-const clientExpiresInput = document.querySelector("#client-expires");
-const clientCreateError = document.querySelector("#client-create-error");
-const clientTokenDialog = document.querySelector("#client-token-dialog");
-const clientTokenId = document.querySelector("#client-token-id");
-const clientTokenValue = document.querySelector("#client-token-value");
-const clientTokenClose = document.querySelector("#client-token-close");
-const clientTokenCopy = document.querySelector("#client-token-copy");
-const clientTokenStatus = document.querySelector("#client-token-status");
-const clientPanelStatus = document.querySelector("#client-panel-status");
 
-const SCOPE_LABEL_KEYS = {
-  search: "scopeSearch",
-  deep: "scopeDeep",
-  read: "scopeRead",
-  write: "scopeWrite",
-  admin: "scopeAdmin",
-  mcp: "scopeMcp",
-};
+  // ── Search with model (strategist) toggle ───────────────────────
+  // Controls whether the LLM participates in search. When off (the default)
+  // search/deep keep running fully deterministic; when on, the strategist
+  // proposes a refined query that AMATL runs to complement the first results.
+  async function toggleStrategist() {
+    await toggleEnabled({
+      endpoint: "/strategist/enabled",
+      desired: strategistEnabledToggle.checked,
+      checkbox: strategistEnabledToggle,
+      statusNode: strategistToggleStatus,
+      refresh: fetchServiceState,
+      failKey: "strategistToggleFailed",
+    });
+  }
 
-function scopeLabel(scope) {
-  const key = SCOPE_LABEL_KEYS[scope];
-  return key ? t(key) : scope;
-}
 
-function renderClientRow(client) {
-  const item = document.createElement("li");
-  item.className = "client-item";
-  const row = document.createElement("div");
-  row.className = "client-item-row";
-  const id = document.createElement("span");
-  id.className = "client-id";
-  id.textContent = client.id;
-  const scopes = document.createElement("span");
-  scopes.className = "client-scopes-value";
-  const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
-  scopes.textContent = scopeList.length
-    ? scopeList.map(scopeLabel).join(", ")
-    : t("clientScopesEmpty");
-  row.append(id, scopes);
-  item.append(row);
+  // ── Marginalia API key (option A) ───────────────────────────────
+  // Operator credential management: a key is inserted into the process's RAM
+  // (never disk, config, or logs) after a live canary validates it, or liquidated
+  // on demand. The row sits in its own secondary line so the search axis
+  // (write → search → analyze) stays visually dominant.
 
-  const meta = document.createElement("p");
-  meta.className = "client-meta";
-  meta.textContent =
-    typeof client.expires_at === "string" && client.expires_at
-      ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
-      : t("clientNeverExpires");
-  item.append(meta);
+  // Show the Marginalia credential controls only while Marginalia is one of the
+  // selected sources. The visibility follows `providers.enabled` — the same
+  // single source of truth the source panel drives — so the key
+  // area can never drift from the active selection. Marginalia is the only
+  // credential-gated source, so it is the only one with a key row.
+  function syncCredentialActions(enabledList) {
+    const list = Array.isArray(enabledList) ? enabledList : [];
+    const marginaliaOn = list.includes("marginalia");
+    if (marginaliaCredentialGroup) marginaliaCredentialGroup.hidden = !marginaliaOn;
+    if (credentialActions) credentialActions.hidden = !marginaliaOn;
+  }
 
-  const actions = document.createElement("div");
-  actions.className = "client-actions";
-  const rotate = document.createElement("button");
-  rotate.type = "button";
-  rotate.className = "ghost-action";
-  rotate.textContent = t("clientRotate");
-  rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
-  const remove = document.createElement("button");
-  remove.type = "button";
-  remove.className = "ghost-action";
-  remove.textContent = t("clientDelete");
-  remove.addEventListener("click", () => deleteServerClient(client.id, remove));
-  actions.append(rotate, remove);
-  item.append(actions);
-  return item;
-}
+  function marginaliaCredentialSource(sources) {
+    const entry = (Array.isArray(sources) ? sources : []).find(
+      (source) => source && source.name === "marginalia",
+    );
+    return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
+  }
 
-async function fetchServerClients() {
-  try {
-    const payload = await globalThis.api.get("/server/clients");
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
-      clientsPanel.hidden = true;
+  function updateMarginaliaUi(source) {
+    // Only an in-memory key can be liquidated from here: a key read from the
+    // environment variable is out of this surface's reach, so "liquidate" stays
+    // disabled and the status says where the key actually comes from.
+    marginaliaClearButton.disabled = source !== "ephemeral";
+    marginaliaStatus.hidden = false;
+    if (source === "ephemeral") {
+      marginaliaStatus.dataset.state = "success";
+      marginaliaStatus.textContent = t("marginaliaStatusPresent");
+    } else if (source === "environment") {
+      marginaliaStatus.dataset.state = "partial";
+      marginaliaStatus.textContent = t("marginaliaStatusEnvironment");
+    } else {
+      marginaliaStatus.dataset.state = "partial";
+      marginaliaStatus.textContent = t("marginaliaStatusAbsent");
+    }
+  }
+
+  // Keep the two buttons in sync with the last `/status` payload.
+  function syncMarginaliaFromStatus(payload) {
+    if (!payload) return;
+    updateMarginaliaUi(marginaliaCredentialSource(payload.sources));
+  }
+
+  function openMarginaliaDialog() {
+    marginaliaKeyInput.value = "";
+    marginaliaKeyError.hidden = true;
+    marginaliaDialog.showModal();
+    marginaliaKeyInput.focus();
+  }
+
+  // Clicking the backdrop (outside the dialog box) closes it, like a native modal.
+
+  async function saveMarginaliaKey(event) {
+    event.preventDefault();
+    const key = marginaliaKeyInput.value.trim();
+    if (!key) {
+      marginaliaKeyError.hidden = false;
+      marginaliaKeyError.textContent = t("marginaliaEmpty");
       return;
     }
-    clientList.replaceChildren();
-    for (const client of payload.clients) {
-      if (!client || typeof client.id !== "string") continue;
-      clientList.append(renderClientRow(client));
+    marginaliaSave.disabled = true;
+    marginaliaKeyError.hidden = true;
+    try {
+      const report = await globalThis.api.post("/providers/marginalia/credential", { key });
+      marginaliaDialog.close();
+      marginaliaKeyInput.value = "";
+      updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
+      setStatusKey("marginaliaSaved", "success");
+      fetchServiceState();
+    } catch (error) {
+      // 401/403 means the operator token lacks admin scope; anything else means
+      // the key itself did not pass the live canary (or the source was
+      // unreachable) and nothing was stored. Classification reads the structured
+      // `error.status`/`error.code` the shared client sets — real error bodies
+      // carry a catalog message with no status digits — and the message check
+      // survives only as a fallback for non-JSON error pages.
+      const status = Number(error && error.status) || 0;
+      const code = error && typeof error.code === "string" ? error.code : "";
+      const message = String(error && error.message);
+      marginaliaKeyError.hidden = false;
+      // 401 = no valid token was sent (nothing to do with the key); 403 = the
+      // token lacks admin scope; anything else = the key failed the live canary.
+      marginaliaKeyError.textContent =
+        status === 401 || code === "unauthorized" || message.includes("401")
+          ? t("unauthorized")
+          : status === 403 || code === "scope_denied" || message.includes("403")
+            ? t("marginaliaFailed")
+            : t("marginaliaInvalid");
+    } finally {
+      marginaliaSave.disabled = false;
     }
-    clientListEmpty.hidden = clientList.childElementCount > 0;
-    clientListEmpty.textContent = t("clientsEmpty");
-    clientsPanel.hidden = false;
-  } catch (_) {
-    clientsPanel.hidden = true;
   }
-}
 
-// The one place the plaintext token is ever visible: it never leaves this
-// dialog, never touches `localStorage`, and the field is cleared the moment
-// the operator closes it (see `client-token-close`'s listener below).
-function openClientTokenDialog(id, token) {
-  clientTokenId.textContent = id;
-  clientTokenValue.value = token;
-  clientTokenDialog.showModal();
-  clientTokenValue.focus();
-  clientTokenValue.select();
-}
 
-clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+  // `updateMarginaliaUi` cruza: el listener de "Eliminar clave" la llama desde
+  // el bloque de arranque. Sin ella el click lanzaba ReferenceError y caía al
+  // catch silencioso, sin que el operador viera la confirmación.
+  return { fetchProviderStatus, fetchServiceState, toggleAnswer, toggleStrategist, openMarginaliaDialog, saveMarginaliaKey, updateMarginaliaUi };
+})();
 
-// The token is single-use: clear it whenever the dialog closes, not only when
-// the Close button is pressed, so Escape or a backdrop click cannot leave a live
-// credential sitting in the DOM.
-clientTokenDialog.addEventListener("close", () => {
-  clientTokenValue.value = "";
-  setInlineStatus(clientTokenStatus, "", null);
-});
+const fetchProviderStatus = providers.fetchProviderStatus;
+const fetchServiceState = providers.fetchServiceState;
+const toggleAnswer = providers.toggleAnswer;
+const toggleStrategist = providers.toggleStrategist;
+const openMarginaliaDialog = providers.openMarginaliaDialog;
+const saveMarginaliaKey = providers.saveMarginaliaKey;
+const updateMarginaliaUi = providers.updateMarginaliaUi;
 
-clientTokenCopy.addEventListener("click", async () => {
-  const token = clientTokenValue.value;
-  if (!token) return;
-  try {
-    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
-    await navigator.clipboard.writeText(token);
-    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
-  } catch (_) {
-    // No clipboard access (insecure context, denied permission): leave the token
-    // selected so the operator can copy it by hand, and say so.
+// ── Dominio: storage-panels (historial y guardados) ──────────
+// Retorna lo que cruza: las dos de `refreshPanels`, `saveDocument`
+// (renderDomain) y las dos que reutiliza el dominio clients.
+const storagePanels = (function () {
+  // ── History ─────────────────────────────────────────────────────
+
+  function historyLabel(entry) {
+    const parts = [];
+    // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
+    // "1 resultado." instead of "1 resultados." — the singular key exists in every
+    // locale and the same helper already drives the results header and per-surface
+    // status lines, so the two views of one number cannot disagree.
+    if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
+    if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
+      parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
+    }
+    return parts.join(" · ");
+  }
+
+  async function fetchHistory() {
+    try {
+      const payload = await globalThis.api.get(`/history?limit=${LIST_LIMIT}`);
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.entries)) {
+        historyPanel.hidden = true;
+        return;
+      }
+      historyList.replaceChildren();
+      for (const entry of payload.entries.slice(0, LIST_LIMIT)) {
+        if (!entry || !Number.isSafeInteger(entry.id)) continue;
+        const item = historyTemplate.content.cloneNode(true);
+        item.querySelector(".history-query").textContent = boundedText(entry.raw_query, 300);
+        item.querySelector(".history-meta").textContent = historyLabel(entry);
+        const reuse = item.querySelector(".history-reuse");
+        reuse.textContent = t("historyReuse");
+        reuse.addEventListener("click", () => {
+          queryInput.value = boundedText(entry.raw_query, 2048);
+          queryInput.focus();
+        });
+        const remove = item.querySelector(".history-delete");
+        remove.textContent = t("historyDelete");
+        remove.addEventListener("click", () => deleteHistoryEntry(entry.id));
+        historyList.append(item);
+      }
+      historyEmpty.hidden = historyList.childElementCount > 0;
+      historyEmpty.textContent = t("historyEmpty");
+      historyPanel.hidden = false;
+    } catch (_) {
+      historyPanel.hidden = true;
+    }
+  }
+
+  async function deleteHistoryEntry(id) {
+    try {
+      await globalThis.api.delete(`/history/${id}`);
+      announce(historyPanelStatus, "historyDeleted", "success");
+      await fetchHistory();
+    } catch (_) {
+      announce(historyPanelStatus, "genericError", "error");
+    }
+  }
+
+  async function purgeHistory() {
+    try {
+      await globalThis.api.delete("/history");
+      announce(historyPanelStatus, "historyPurged", "success");
+      await fetchHistory();
+    } catch (_) {
+      announce(historyPanelStatus, "genericError", "error");
+    }
+  }
+
+  // ── Saved documents ─────────────────────────────────────────────
+
+  async function fetchSavedDocuments() {
+    try {
+      const payload = await globalThis.api.get(`/saved?limit=${LIST_LIMIT}`);
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.documents)) {
+        savedPanel.hidden = true;
+        return;
+      }
+      savedList.replaceChildren();
+      for (const saved of payload.documents.slice(0, LIST_LIMIT)) {
+        if (!saved || !Number.isSafeInteger(saved.id)) continue;
+        const url = safeHttpUrl(saved.canonical_url);
+        const item = savedTemplate.content.cloneNode(true);
+        const link = item.querySelector(".saved-title");
+        link.textContent = boundedText(saved.title, 300) || (url ? url.hostname : t("noUrl"));
+        if (url) link.href = url.href;
+        else link.removeAttribute("href");
+        item.querySelector(".saved-meta").textContent = boundedText(saved.snippet, 200);
+        const remove = item.querySelector(".saved-delete");
+        remove.textContent = t("historyDelete");
+        remove.addEventListener("click", () => deleteSavedDocument(saved.id));
+        savedList.append(item);
+      }
+      savedEmpty.hidden = savedList.childElementCount > 0;
+      savedEmpty.textContent = t("savedEmpty");
+      savedPanel.hidden = false;
+    } catch (_) {
+      savedPanel.hidden = true;
+    }
+  }
+
+  async function deleteSavedDocument(id) {
+    try {
+      await globalThis.api.delete(`/saved/${id}`);
+      announce(savedPanelStatus, "savedDeleted", "success");
+      await fetchSavedDocuments();
+    } catch (_) {
+      announce(savedPanelStatus, "genericError", "error");
+    }
+  }
+
+  // ── Saved document creation ─────────────────────────────────────
+  // Persists one Deep document as a bounded whitelist of small fields. The
+  // payload deliberately never carries the document's extracted `content` (or any
+  // other bulk field): the UI posts provenance and metadata only, so saved
+  // documents stay small and never duplicate the full extraction.
+  // A save can fail for reasons the operator can act on (storage off on the
+  // server, a token without write scope) or for reasons they cannot. Collapsing
+  // every failure into one generic line — while leaving the button looking ready
+  // for another click — is what made this a High finding: the reason is now
+  // specific, it is shown next to the control that failed, and the document stays
+  // on screen so nothing the operator produced is lost.
+  function saveFailureKey(error) {
+    const code = typeof error?.code === "string" ? error.code : "";
+    if (code === "storage_unavailable" || error?.status === 503) return "savedFailedStorage";
+    if (
+      code === "unauthorized"
+      || code === "scope_denied"
+      || error?.status === 401
+      || error?.status === 403
+    ) {
+      return "savedFailedUnauthorized";
+    }
+    return "savedFailed";
+  }
+
+  // Per-surface status line: `#status` is the global live region and whatever ran
+  // last overwrites it, so a message about one card belongs next to that card. The
+  // key is kept on the node (like `announce`) so a locale switch re-renders it.
+  function setInlineStatus(node, key, state) {
+    if (!node) return;
+    if (key) {
+      node.dataset.i18nKey = key;
+      node.textContent = t(key);
+    } else {
+      node.textContent = "";
+      delete node.dataset.i18nKey;
+    }
+    node.hidden = !key;
+    if (state) node.dataset.state = state;
+    else node.removeAttribute("data-state");
+  }
+
+  async function saveDocument(documentValue, provenance, button) {
+    const inline = button.closest(".document-actions")?.querySelector(".document-save-status") || null;
+    const url = safeHttpUrl(documentValue.canonical_url);
+    if (!url || !validHash(documentValue.content_hash)) {
+      setInlineStatus(inline, "savedFailed", "error");
+      setStatusKey("savedFailed", "error");
+      return;
+    }
+    const payload = JSON.stringify({
+      canonical_url: url.href,
+      final_url: boundedText(documentValue.final_url, 8192),
+      title: boundedText(documentValue.title, 300),
+      status: boundedText(documentValue.status, 32),
+      content_hash: documentValue.content_hash,
+      retrieved_at: boundedText(provenance.retrieved_at, 64),
+    });
+    if (new TextEncoder().encode(payload).length > MAX_SAVED_PAYLOAD_BYTES) {
+      setInlineStatus(inline, "savedFailed", "error");
+      setStatusKey("savedFailed", "error");
+      return;
+    }
+    button.disabled = true;
+    setInlineStatus(inline, "", null);
+    try {
+      await globalThis.api.post("/saved", {
+        canonical_url: url.href,
+        title: boundedText(documentValue.title, 300),
+        snippet: boundedText(documentValue.excerpt, 2000),
+        content_hash: documentValue.content_hash,
+        extractor_version: boundedText(provenance.extractor_used, 128) || "unknown",
+        payload,
+        source_query: boundedText(queryInput.value, 2048),
+        tags: [],
+      });
+      setStatusKey("savedDone", "success");
+      button.textContent = t("savedActionDone");
+      setInlineStatus(inline, "savedDone", "success");
+      await fetchSavedDocuments();
+    } catch (error) {
+      // The button stays usable and now says what it does: the operator can save
+      // again the moment storage is back, and the reason sits next to the editor
+      // instead of only in the global status line.
+      const key = saveFailureKey(error);
+      button.disabled = false;
+      button.textContent = t("savedAgain");
+      setInlineStatus(inline, key, "error");
+      setStatusKey(key, "error");
+    }
+  }
+  return { fetchHistory, fetchSavedDocuments, saveDocument, saveFailureKey, setInlineStatus, purgeHistory };
+})();
+
+const fetchHistory = storagePanels.fetchHistory;
+const fetchSavedDocuments = storagePanels.fetchSavedDocuments;
+const saveDocument = storagePanels.saveDocument;
+const saveFailureKey = storagePanels.saveFailureKey;
+const setInlineStatus = storagePanels.setInlineStatus;
+const purgeHistory = storagePanels.purgeHistory;
+
+// ── Dominio: clients (admin de tokens) ───────────────────────
+// Retorna lo que cruza: scopeLabel (applyTranslations),
+// fetchServerClients (refreshPanels) y las dos de sus listeners.
+const clients = (function () {
+  // ── Server clients (admin) ──────────────────────────────────────
+  // Only reachable with an Admin-scoped token; `fetchServerClients` hides the
+  // whole panel on anything but a successful `200`, the same fail-closed
+  // convention `fetchServiceState`/`fetchSavedDocuments` already use — a
+  // non-admin credential simply never sees this section, rather than seeing
+  // it and hitting a wall of 403s.
+
+  const SCOPE_LABEL_KEYS = {
+    search: "scopeSearch",
+    deep: "scopeDeep",
+    read: "scopeRead",
+    write: "scopeWrite",
+    admin: "scopeAdmin",
+    mcp: "scopeMcp",
+  };
+
+  function scopeLabel(scope) {
+    const key = SCOPE_LABEL_KEYS[scope];
+    return key ? t(key) : scope;
+  }
+
+  function renderClientRow(client) {
+    const item = document.createElement("li");
+    item.className = "client-item";
+    const row = document.createElement("div");
+    row.className = "client-item-row";
+    const id = document.createElement("span");
+    id.className = "client-id";
+    id.textContent = client.id;
+    const scopes = document.createElement("span");
+    scopes.className = "client-scopes-value";
+    const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
+    scopes.textContent = scopeList.length
+      ? scopeList.map(scopeLabel).join(", ")
+      : t("clientScopesEmpty");
+    row.append(id, scopes);
+    item.append(row);
+
+    const meta = document.createElement("p");
+    meta.className = "client-meta";
+    meta.textContent =
+      typeof client.expires_at === "string" && client.expires_at
+        ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
+        : t("clientNeverExpires");
+    item.append(meta);
+
+    const actions = document.createElement("div");
+    actions.className = "client-actions";
+    const rotate = document.createElement("button");
+    rotate.type = "button";
+    rotate.className = "ghost-action";
+    rotate.textContent = t("clientRotate");
+    rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "ghost-action";
+    remove.textContent = t("clientDelete");
+    remove.addEventListener("click", () => deleteServerClient(client.id, remove));
+    actions.append(rotate, remove);
+    item.append(actions);
+    return item;
+  }
+
+  async function fetchServerClients() {
+    try {
+      const payload = await globalThis.api.get("/server/clients");
+      if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
+        clientsPanel.hidden = true;
+        return;
+      }
+      clientList.replaceChildren();
+      for (const client of payload.clients) {
+        if (!client || typeof client.id !== "string") continue;
+        clientList.append(renderClientRow(client));
+      }
+      clientListEmpty.hidden = clientList.childElementCount > 0;
+      clientListEmpty.textContent = t("clientsEmpty");
+      clientsPanel.hidden = false;
+    } catch (_) {
+      clientsPanel.hidden = true;
+    }
+  }
+
+  // The one place the plaintext token is ever visible: it never leaves this
+  // dialog, never touches `localStorage`, and the field is cleared the moment
+  // the operator closes it (see `client-token-close`'s listener below).
+  function openClientTokenDialog(id, token) {
+    clientTokenId.textContent = id;
+    clientTokenValue.value = token;
+    clientTokenDialog.showModal();
     clientTokenValue.focus();
     clientTokenValue.select();
-    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
   }
-});
 
-// The full MCP tool vocabulary, mirroring the contract-stable constant
-// `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
-// created with the `mcp` scope must be allowlisted for every MCP tool, because
-// `ClientIdentity::allows_tool` matches each call against the client's own
-// allowlist and an empty one denies every tool call while the "MCP" checkbox
-// promises access.
-const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
 
-async function createServerClient(event) {
-  event.preventDefault();
-  const id = clientIdInput.value.trim();
-  const scopes = Array.from(
-    clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
-  ).map((input) => input.value);
-  clientCreateError.hidden = true;
-  if (!id || scopes.length === 0) {
-    clientCreateError.textContent = t("clientCreateMissingFields");
-    clientCreateError.hidden = false;
-    return;
-  }
-  const submitButton = clientCreateForm.querySelector("#client-create-submit");
-  submitButton.disabled = true;
-  try {
-    // Only an MCP-scoped client gets the tool allowlist; the others keep an
-    // empty vocabulary (their scopes have no MCP surface to authorize).
-    const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
-    const body = { id, scopes, tools };
-    if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
-    const payload = await globalThis.api.post("/server/clients", body);
-    clientCreateForm.reset();
-    clientCreateDetails.open = false;
-    await fetchServerClients();
-    // Announced in the panel it happened in, not in the search flow's status
-    // region: the token dialog opens next and the operator needs to know the
-    // client really exists before copying a one-time secret.
-    announce(clientPanelStatus, "clientCreated", "success");
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
+  // The token is single-use: clear it whenever the dialog closes, not only when
+  // the Close button is pressed, so Escape or a backdrop click cannot leave a live
+  // credential sitting in the DOM.
+
+
+  // The full MCP tool vocabulary, mirroring the contract-stable constant
+  // `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
+  // created with the `mcp` scope must be allowlisted for every MCP tool, because
+  // `ClientIdentity::allows_tool` matches each call against the client's own
+  // allowlist and an empty one denies every tool call while the "MCP" checkbox
+  // promises access.
+  const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
+
+  async function createServerClient(event) {
+    event.preventDefault();
+    const id = clientIdInput.value.trim();
+    const scopes = Array.from(
+      clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
+    ).map((input) => input.value);
+    clientCreateError.hidden = true;
+    if (!id || scopes.length === 0) {
+      clientCreateError.textContent = t("clientCreateMissingFields");
+      clientCreateError.hidden = false;
+      return;
     }
-  } catch (error) {
-    // Classify on the structured fields the shared client sets — `error.status`
-    // (the HTTP status) and `error.code` (the catalog code) — never on digits
-    // inside the message text: real error bodies carry a shared catalog message
-    // with no status numbers in it. The message check survives only as a
-    // fallback for non-JSON error pages.
-    const status = Number(error && error.status) || 0;
-    const code = error && typeof error.code === "string" ? error.code : "";
-    const message = String(error && error.message);
-    clientCreateError.textContent =
-      status === 409 || message.includes("409")
-        ? t("clientCreateDuplicate")
-        : status === 401
-          || status === 403
-          || code === "unauthorized"
-          || code === "scope_denied"
-          || message.includes("401")
-          || message.includes("403")
-          ? t("unauthorized")
-          : t("clientCreateFailed");
-    clientCreateError.hidden = false;
-  } finally {
-    submitButton.disabled = false;
-  }
-}
-
-async function deleteServerClient(id, button) {
-  if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
-  button.disabled = true;
-  try {
-    await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
-    announce(clientPanelStatus, "clientDeleted", "success");
-    await fetchServerClients();
-  } catch (_) {
-    announce(clientPanelStatus, "clientDeleteFailed", "error");
-    button.disabled = false;
-  }
-}
-
-async function rotateServerClient(id, button) {
-  if (!globalThis.confirm(t("clientRotateConfirm"))) return;
-  button.disabled = true;
-  try {
-    const payload = await globalThis.api.post(
-      `/server/clients/${encodeURIComponent(id)}/rotate`,
-      {},
-    );
-    await fetchServerClients();
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
+    const submitButton = clientCreateForm.querySelector("#client-create-submit");
+    submitButton.disabled = true;
+    try {
+      // Only an MCP-scoped client gets the tool allowlist; the others keep an
+      // empty vocabulary (their scopes have no MCP surface to authorize).
+      const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
+      const body = { id, scopes, tools };
+      if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
+      const payload = await globalThis.api.post("/server/clients", body);
+      clientCreateForm.reset();
+      clientCreateDetails.open = false;
+      await fetchServerClients();
+      // Announced in the panel it happened in, not in the search flow's status
+      // region: the token dialog opens next and the operator needs to know the
+      // client really exists before copying a one-time secret.
+      announce(clientPanelStatus, "clientCreated", "success");
+      if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+        openClientTokenDialog(payload.id, payload.token);
+      }
+    } catch (error) {
+      // Classify on the structured fields the shared client sets — `error.status`
+      // (the HTTP status) and `error.code` (the catalog code) — never on digits
+      // inside the message text: real error bodies carry a shared catalog message
+      // with no status numbers in it. The message check survives only as a
+      // fallback for non-JSON error pages.
+      const status = Number(error && error.status) || 0;
+      const code = error && typeof error.code === "string" ? error.code : "";
+      const message = String(error && error.message);
+      clientCreateError.textContent =
+        status === 409 || message.includes("409")
+          ? t("clientCreateDuplicate")
+          : status === 401
+            || status === 403
+            || code === "unauthorized"
+            || code === "scope_denied"
+            || message.includes("401")
+            || message.includes("403")
+            ? t("unauthorized")
+            : t("clientCreateFailed");
+      clientCreateError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
     }
-  } catch (_) {
-    announce(clientPanelStatus, "clientRotateFailed", "error");
-    button.disabled = false;
   }
-}
 
-clientCreateForm.addEventListener("submit", createServerClient);
+  async function deleteServerClient(id, button) {
+    if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
+    button.disabled = true;
+    try {
+      await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
+      announce(clientPanelStatus, "clientDeleted", "success");
+      await fetchServerClients();
+    } catch (_) {
+      announce(clientPanelStatus, "clientDeleteFailed", "error");
+      button.disabled = false;
+    }
+  }
 
-// The storage-backed panels are only meaningful when persistence is on and
-// healthy: with storage disabled (or unreachable) `/history` and `/saved`
-// answer `503`, so requesting them on every refresh is pure noise. `/status`
-// already reports the authoritative `storage` block, so gate the two panels on
-// it and hide them otherwise — the same fail-closed convention the fetch
-// functions themselves use.
+  async function rotateServerClient(id, button) {
+    if (!globalThis.confirm(t("clientRotateConfirm"))) return;
+    button.disabled = true;
+    try {
+      const payload = await globalThis.api.post(
+        `/server/clients/${encodeURIComponent(id)}/rotate`,
+        {},
+      );
+      await fetchServerClients();
+      if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+        openClientTokenDialog(payload.id, payload.token);
+      }
+    } catch (_) {
+      announce(clientPanelStatus, "clientRotateFailed", "error");
+      button.disabled = false;
+    }
+  }
+
+
+  // The storage-backed panels are only meaningful when persistence is on and
+  // healthy: with storage disabled (or unreachable) `/history` and `/saved`
+  // answer `503`, so requesting them on every refresh is pure noise. `/status`
+  // already reports the authoritative `storage` block, so gate the two panels on
+  // it and hide them otherwise — the same fail-closed convention the fetch
+  // functions themselves use.
+  return { scopeLabel, fetchServerClients, openClientTokenDialog, createServerClient };
+})();
+
+const scopeLabel = clients.scopeLabel;
+const fetchServerClients = clients.fetchServerClients;
+const openClientTokenDialog = clients.openClientTokenDialog;
+const createServerClient = clients.createServerClient;
+
 async function refreshPanels() {
   fetchProviderStatus();
   const status = await fetchServiceState();
@@ -1898,6 +1956,47 @@ async function refreshPanels() {
 
 historyPurgeButton.addEventListener("click", purgeHistory);
 tokenInput.addEventListener("change", refreshPanels);
+queryInput.addEventListener("input", clearValidationError);
+tokenInput.addEventListener("input", clearValidationError);
+answerEnabledToggle.addEventListener("change", toggleAnswer);
+strategistEnabledToggle.addEventListener("change", toggleStrategist);
+marginaliaKeyButton.addEventListener("click", openMarginaliaDialog);
+marginaliaCancel.addEventListener("click", () => marginaliaDialog.close());
+marginaliaDialog.addEventListener("click", (event) => {
+  if (event.target === marginaliaDialog) marginaliaDialog.close();
+});
+marginaliaForm.addEventListener("submit", saveMarginaliaKey);
+marginaliaClearButton.addEventListener("click", async () => {
+  try {
+    await globalThis.api.delete("/providers/marginalia/credential");
+    updateMarginaliaUi("none");
+    setStatusKey("marginaliaCleared", "success");
+    fetchServiceState();
+  } catch (_) {
+    setStatusKey("marginaliaClearedFailed", "error");
+  }
+});
+clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+clientTokenDialog.addEventListener("close", () => {
+  clientTokenValue.value = "";
+  setInlineStatus(clientTokenStatus, "", null);
+});
+clientTokenCopy.addEventListener("click", async () => {
+  const token = clientTokenValue.value;
+  if (!token) return;
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
+    await navigator.clipboard.writeText(token);
+    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
+  } catch (_) {
+    // No clipboard access (insecure context, denied permission): leave the token
+    // selected so the operator can copy it by hand, and say so.
+    clientTokenValue.focus();
+    clientTokenValue.select();
+    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
+  }
+});
+clientCreateForm.addEventListener("submit", createServerClient);
 refreshPanels();
 
 function applyDeclarativeTranslations() {
