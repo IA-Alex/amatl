@@ -45,8 +45,11 @@ Full measured numbers, the musl cross-build proof, and the decision:
 ## STEP 4C — release path, E2E latency, model distribution
 
 STEP 4C moved the *integration boundary* into the workspace (behind the
-`amatl-core` feature `experimental-local-embeddings`, **no** Candle deps
-added) and measured the real end-to-end search-path cost:
+`amatl-core` feature `experimental-local-embeddings`, **no** Candle deps added at
+the time) and measured the real end-to-end search-path cost. That boundary has
+since been quarantined out of the workspace — Candle dependencies included — into
+`../local-embeddings-boundary/`, so neither this crate nor the workspace lockfile
+carries it any more. See `../../docs/security/supply-chain.md`.
 
 - `../../docs/experiments/candle-e2e-4c.md` — full musl build attempt
   (`BLOCKED_BY_ENVIRONMENT` by pre-existing `ring`/`libsqlite3-sys`, not

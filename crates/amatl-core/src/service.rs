@@ -17,8 +17,9 @@ use crate::{
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
-use std::sync::Arc;
+use std::sync::{Arc, RwLock};
 use thiserror::Error;
+use zeroize::Zeroizing;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ServiceSurface {
@@ -73,12 +74,19 @@ pub struct ExecutionLimits {
     pub deep_timeout_ms: u64,
     pub deep_max_subqueries: u32,
     pub deep_max_subquery_cost: u64,
-    /// Deadline for one single-URL fetch exposed to a surface.
+    /// Redirect ceiling for one single-URL fetch exposed to a surface.
     pub fetch_timeout_ms: u64,
     /// Byte ceiling for one single-URL fetch exposed to a surface.
     pub fetch_max_bytes: u64,
     /// Redirect ceiling for one single-URL fetch exposed to a surface.
     pub fetch_max_redirects: u32,
+    /// Redirect ceiling for one Deep document fetch (the crawl's own path,
+    /// distinct from the standalone single-URL fetch above).
+    pub deep_max_redirects: u32,
+    /// Browser-render budget a surface may spend on one Deep request. The
+    /// unsandboxed renderer is the most expensive resource Deep can touch, so a
+    /// constrained surface (MCP) must not inherit the CLI's allowance.
+    pub deep_max_browser_calls: u32,
     /// Largest page a surface may request in one search.
     pub max_page_size: u32,
 }
@@ -100,6 +108,8 @@ impl ExecutionLimits {
             fetch_max_bytes: (config.deep.max_bytes / u64::from(config.deep.max_fetches.max(1)))
                 .max(1),
             fetch_max_redirects: config.deep.max_redirects,
+            deep_max_redirects: config.deep.max_redirects,
+            deep_max_browser_calls: config.deep.renderer.max_browser_calls,
             max_page_size: 100,
         };
         match surface.kind {
@@ -116,6 +126,8 @@ impl ExecutionLimits {
                 fetch_timeout_ms: base.fetch_timeout_ms.min(3_000),
                 fetch_max_bytes: base.fetch_max_bytes.min(256 * 1024),
                 fetch_max_redirects: base.fetch_max_redirects.min(2),
+                deep_max_redirects: base.deep_max_redirects.min(2),
+                deep_max_browser_calls: base.deep_max_browser_calls.min(1),
                 max_page_size: base.max_page_size.min(25),
             },
         }
@@ -134,6 +146,21 @@ pub struct SearchExecution {
     pub query: Query,
     pub plan: SearchPlan,
     pub response: SearchResponse,
+}
+
+/// One query's outcome in a `search_batch` call.
+///
+/// Items are independent: a query that fails validation or execution yields an
+/// `error` while the rest of the batch still completes, so an orchestrator can
+/// consume the usable rows and treat the failed one separately instead of the
+/// whole batch collapsing. `response` and `error` are mutually exclusive.
+#[derive(Clone, Debug, Serialize)]
+pub struct SearchBatchItem {
+    pub query: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub response: Option<SearchResponse>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub error: Option<ErrorCode>,
 }
 
 /// One Search result explicitly selected by a Deep caller.
@@ -166,6 +193,24 @@ pub enum ProviderSurfaceStatus {
     Unavailable,
 }
 
+/// Where a source's credential comes from, if any.
+///
+/// Exposed so an operator surface can tell an in-memory key (liquidable from
+/// the UI, never persisted) apart from one supplied by the environment variable
+/// named in `credential_env` (which the UI cannot erase). It never carries the
+/// value itself, only its provenance.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum CredentialSource {
+    /// No credential is available for this source.
+    None,
+    /// An operator injected the key in memory; it is liquidable at runtime and
+    /// dies with the process.
+    Ephemeral,
+    /// The key was read from the environment variable named by `credential_env`.
+    Environment,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct ProviderSummary {
     pub schema_version: String,
@@ -179,6 +224,9 @@ pub struct ProviderSummary {
     /// `Unavailable` regardless of how complete its ficha is. Surfaces
     /// exist to flip this without also claiming they approved anything.
     pub enabled: bool,
+    /// Provenance of the credential in force, never its value. Lets a settings
+    /// screen enable "liquidate" only for a key it can actually erase.
+    pub credential_source: CredentialSource,
 }
 
 /// Domain failures a surface can receive from the service.
@@ -263,8 +311,11 @@ pub struct SaveDocumentInput {
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct ServiceStatus {
     pub schema_version: String,
-    /// `ok` when every declared source is available and persistence is healthy
-    /// (or disabled by configuration); `degraded` otherwise.
+    /// `ok` when at least one enabled source is usable and persistence is
+    /// healthy (or disabled by configuration); `degraded` otherwise.
+    ///
+    /// Declared-but-disabled sources never degrade this field: they are a
+    /// configuration choice, not an incident. They stay visible in `sources`.
     pub status: String,
     pub sources: Vec<SourceStatus>,
     pub storage: StorageStatus,
@@ -274,6 +325,11 @@ pub struct ServiceStatus {
     /// credential, only what a settings screen needs to explain *why* the
     /// feature is or isn't available right now.
     pub answer: AnswerStatus,
+    /// Read-only view of the search-strategist configuration: whether the LLM
+    /// is allowed to participate in search (refining the query between
+    /// rounds). Never the credential — only what a settings screen needs to
+    /// explain why the "search with model" toggle is or isn't usable.
+    pub strategist: StrategistStatus,
     /// Read-only view of `data_policy` — the profile, egress and inference
     /// gate every other capability in this status checks against. Exposed
     /// so a settings screen can explain *why* a source, remote embedding or
@@ -311,6 +367,35 @@ pub struct AnswerStatus {
     pub endpoint: Option<String>,
 }
 
+/// Read-only status of the search strategist — the optional LLM that, when
+/// enabled, participates in a search by proposing a refined query that AMATL
+/// then runs to complement the first result set (see `service.rs`:
+/// `search_inner` and the `[strategist]` config section).
+///
+/// Mirrors [`AnswerStatus`]: it reports the operator's on/off intent, whether
+/// there is a real model/endpoint configured, and whether a call would
+/// actually work right now (enabled + configured + credential present). It
+/// never exposes the credential.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct StrategistStatus {
+    /// `strategist.enabled` in configuration — exactly what the web toggle
+    /// flips. Independent of `configured`: an operator can turn it off
+    /// without erasing `endpoint`/`model`, and the settings screen needs to
+    /// keep showing those for the toggle to mean anything when it's off.
+    pub enabled: bool,
+    /// Whether `endpoint` and `model` are both present, regardless of
+    /// `enabled` — "is there a real configuration on disk to toggle".
+    pub configured: bool,
+    /// Whether calling the strategist would work right now: `enabled` AND
+    /// `configured` AND the credential environment variable was present.
+    pub available: bool,
+    /// Model identifier, shown whenever set on disk, independent of
+    /// `enabled`.
+    pub model: Option<String>,
+    /// Endpoint, shown whenever set on disk, independent of `enabled`.
+    pub endpoint: Option<String>,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct SourceStatus {
     pub name: String,
@@ -323,6 +408,8 @@ pub struct SourceStatus {
     pub success_rate: Option<f64>,
     pub average_latency_ms: Option<f64>,
     pub observations: u64,
+    /// Provenance of the credential in force for this source, never its value.
+    pub credential_source: CredentialSource,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -399,14 +486,30 @@ pub struct AmatlService {
     cache_counters: Arc<CacheCounters>,
     /// Persistent breaker that removes a currently failing source from a round.
     circuit: ProviderCircuit,
+    /// Process-wide cap on simultaneous outbound provider calls, shared by
+    /// every orchestrator this service builds so concurrent searches cannot
+    /// each open their own concurrency window (see
+    /// [`crate::SearchOrchestrator::with_egress_gate`]).
+    egress_gate: Arc<tokio::sync::Semaphore>,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
+    strategist: Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
     /// Parsed operator Optics document (`[ranking.optics]`). Loaded and parsed
     /// exactly once here -- on first build and again on every `reloaded()`,
     /// which rebuilds the whole service -- never per search. `None` when
     /// Optics is disabled, unconfigured, or its file was missing/unparsable
     /// (a warning is logged in the last case; a search never fails for it).
     optics: Option<Arc<crate::optics::OpticsDocument>>,
+    /// Operator-supplied provider credentials kept only in RAM (never on disk,
+    /// never in `amatl.toml`, never in logs). Keyed by provider name and
+    /// consulted before the `credential_env` environment variable, so an admin
+    /// can insert/liquidate a source's key at runtime (e.g. Marginalia) without
+    /// touching the environment or restarting. Killed with the process.
+    /// `Arc<RwLock>` so changes take effect for subsequent requests without a
+    /// service rebuild, and survive `reloaded()` by being shared in. Values are
+    /// `Zeroizing` so replacing or liquidating a key wipes its bytes from the
+    /// heap instead of leaving them for the allocator to reuse.
+    ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>,
     /// Stops the background maintenance task when the service is dropped.
     ///
     /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
@@ -414,6 +517,23 @@ pub struct AmatlService {
     /// connection pool and the advisory file lock alive forever. `Arc` because
     /// the service is `Clone`; the task stops when the last clone is dropped.
     _maintenance_cancel: Option<Arc<tokio_util::sync::DropGuard>>,
+}
+
+/// How an [`AmatlService`] build obtains its SQLite persistence.
+///
+/// Splitting this out is what lets a reload share process-scoped resources
+/// (pool, advisory file lock, maintenance task) with the service it replaces
+/// instead of opening a second of each — see [`AmatlService::reloaded`].
+enum ExistingStorage {
+    /// Open (and migrate) the database named by the configuration.
+    Open,
+    /// Adopt the persistence of a service being replaced, carrying its
+    /// degradation marker and maintenance-task guard forward unchanged.
+    Reuse {
+        storage: Option<SqliteStorage>,
+        degradation: Option<crate::Degradation>,
+        maintenance_cancel: Option<Arc<tokio_util::sync::DropGuard>>,
+    },
 }
 
 impl AmatlService {
@@ -425,50 +545,83 @@ impl AmatlService {
     /// Service backed by a caller-supplied registry, so an embedder can add or
     /// remove sources without changing the core.
     pub async fn with_registry(config: Config, mock: bool, registry: ProviderRegistry) -> Self {
-        let (storage, storage_degradation) = if config.persistence.enabled {
-            match SqliteStorage::open(
-                std::path::PathBuf::from(&config.persistence.path),
-                config.persistence.locking_mode,
-            )
-            .await
-            {
-                Ok(storage) => (Some(storage), None),
-                Err(error) => {
-                    let message = storage_failure_message(&error);
-                    tracing::warn!(
-                        target: "amatl::storage",
-                        error = %error,
-                        path = %config.persistence.path,
-                        quarantine_path = error.quarantine_path().map(|path| path.display().to_string()),
-                        "SQLite persistence is unavailable; continuing without persistent cache or telemetry"
-                    );
-                    (
-                        None,
-                        Some(crate::Degradation {
-                            code: ErrorCode::StorageUnavailable.as_str().into(),
-                            component: "sqlite".into(),
-                            message,
-                        }),
+        Self::build(config, mock, registry, ExistingStorage::Open).await
+    }
+
+    /// Build a service, deciding how persistence is obtained.
+    ///
+    /// [`ExistingStorage::Open`] opens (and migrates) the configured database.
+    /// [`ExistingStorage::Reuse`] adopts the storage handle of a service being
+    /// replaced, so a reload shares one connection pool, one advisory file
+    /// lock, and one background maintenance task for the life of the process
+    /// instead of opening a second of each against the same file — and, in
+    /// `exclusive` locking mode, instead of deadlocking on the file lock the
+    /// outgoing service still holds.
+    async fn build(
+        config: Config,
+        mock: bool,
+        registry: ProviderRegistry,
+        storage_source: ExistingStorage,
+    ) -> Self {
+        let (storage, storage_degradation, reuse_maintenance) = match storage_source {
+            ExistingStorage::Reuse {
+                storage,
+                degradation,
+                maintenance_cancel,
+            } => (storage, degradation, maintenance_cancel),
+            ExistingStorage::Open => {
+                let (storage, storage_degradation) = if config.persistence.enabled {
+                    match SqliteStorage::open(
+                        std::path::PathBuf::from(&config.persistence.path),
+                        config.persistence.locking_mode,
                     )
-                }
+                    .await
+                    {
+                        Ok(storage) => (Some(storage), None),
+                        Err(error) => {
+                            let message = storage_failure_message(&error);
+                            tracing::warn!(
+                                target: "amatl::storage",
+                                error = %error,
+                                path = %config.persistence.path,
+                                quarantine_path = error.quarantine_path().map(|path| path.display().to_string()),
+                                "SQLite persistence is unavailable; continuing without persistent cache or telemetry"
+                            );
+                            (
+                                None,
+                                Some(crate::Degradation {
+                                    code: ErrorCode::StorageUnavailable.as_str().into(),
+                                    component: "sqlite".into(),
+                                    message,
+                                }),
+                            )
+                        }
+                    }
+                } else {
+                    (None, None)
+                };
+                // Spawn background maintenance if persistence is enabled and
+                // either purging or automatic backups are configured. A reused
+                // storage already has a task; only a freshly opened one starts
+                // one here.
+                let maintenance_wanted = config.persistence.purge_interval_seconds > 0
+                    || config.persistence.auto_backup_enabled;
+                let maintenance_cancel = match (&storage, maintenance_wanted) {
+                    (Some(storage), true) => {
+                        let storage_arc = Arc::new(storage.clone());
+                        Some(Arc::new(
+                            storage_arc
+                                .spawn_maintenance(
+                                    &config.persistence,
+                                    config.telemetry.retention_days,
+                                )
+                                .drop_guard(),
+                        ))
+                    }
+                    _ => None,
+                };
+                (storage, storage_degradation, maintenance_cancel)
             }
-        } else {
-            (None, None)
-        };
-        // Spawn background maintenance if persistence is enabled and either
-        // purging or automatic backups are configured.
-        let maintenance_wanted =
-            config.persistence.purge_interval_seconds > 0 || config.persistence.auto_backup_enabled;
-        let maintenance_cancel = match (&storage, maintenance_wanted) {
-            (Some(storage), true) => {
-                let storage_arc = Arc::new(storage.clone());
-                Some(Arc::new(
-                    storage_arc
-                        .spawn_maintenance(&config.persistence, config.telemetry.retention_days)
-                        .drop_guard(),
-                ))
-            }
-            _ => None,
         };
 
         let config_circuit_policy = config.circuit_breaker;
@@ -484,6 +637,7 @@ impl AmatlService {
             config.telemetry.retention_days,
         )
         .await;
+
         let transport: Option<Arc<dyn crate::HttpTransport>> =
             if config.data_policy.allows_network_egress() {
                 ReqwestTransport::new(2 * 1024 * 1024)
@@ -544,7 +698,7 @@ impl AmatlService {
             RendererPool::new(renderer, config.deep.renderer.max_browser_calls as usize);
         let optics = load_optics(&config.ranking.optics);
         Self {
-            config: Arc::new(config),
+            config: Arc::new(config.clone()),
             registry: Arc::new(registry),
             storage,
             storage_degradation,
@@ -558,8 +712,28 @@ impl AmatlService {
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
             circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
+            egress_gate: Arc::new(tokio::sync::Semaphore::new(
+                config.execution.global_concurrency.max(1),
+            )),
             audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
-            _maintenance_cancel: maintenance_cancel,
+            ephemeral_credentials: Arc::new(RwLock::new(BTreeMap::new())),
+            strategist: if config.strategist.enabled {
+                match crate::strategist::llm::LlmStrategist::new(config.strategist.clone()) {
+                    Ok(strategist) => Arc::new(strategist)
+                        as Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
+                    Err(error) => {
+                        tracing::warn!(
+                            target: "amatl::strategist",
+                            error = %error,
+                            "strategist backend is unavailable; falling back to no-op"
+                        );
+                        Arc::new(crate::strategist::NoOpStrategist)
+                    }
+                }
+            } else {
+                Arc::new(crate::strategist::NoOpStrategist)
+            },
+            _maintenance_cancel: reuse_maintenance,
         }
     }
 
@@ -569,26 +743,53 @@ impl AmatlService {
     }
 
     /// Build a replacement service from a new configuration, reusing this
-    /// service's provider registry and mock flag.
+    /// service's provider registry, mock flag, connection pool and background
+    /// maintenance task.
     ///
     /// Nothing is mutated in place: the caller swaps the handle it hands to new
     /// requests, so in-flight work finishes against the configuration it
     /// started with. An invalid configuration is rejected before anything is
     /// rebuilt, so a bad reload leaves the running service untouched.
+    ///
+    /// Persistence is *reused*, never reopened: the replacement adopts this
+    /// service's `SqliteStorage` (same pool, same advisory file lock, same
+    /// maintenance task). Reopening would momentarily run two pools and two
+    /// maintenance tasks against one file, and — with `locking_mode =
+    /// "exclusive"` — would fail outright on the file lock this very service
+    /// still holds, making every reload impossible.
     pub async fn reloaded(self, config: Config) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
-        Ok(Self::with_registry(config, self.mock, (*self.registry).clone()).await)
+        let registry = (*self.registry).clone();
+        self.rebuilt(config, registry).await
+    }
+
+    /// Shared reload body: carry the process-scoped resources (storage pool,
+    /// file lock, maintenance task, in-memory credentials) into a service built
+    /// from the new configuration.
+    async fn rebuilt(
+        mut self,
+        config: Config,
+        registry: ProviderRegistry,
+    ) -> Result<Self, ServiceError> {
+        let ephemeral = self.ephemeral_credentials.clone();
+        let storage_source = ExistingStorage::Reuse {
+            storage: self.storage.clone(),
+            degradation: self.storage_degradation.clone(),
+            maintenance_cancel: self._maintenance_cancel.take(),
+        };
+        let mut replacement = Self::build(config, self.mock, registry, storage_source).await;
+        // Keep operator-injected in-memory credentials across a reload so a
+        // provider key survives config rotation without a restart.
+        replacement.ephemeral_credentials = ephemeral;
+        Ok(replacement)
     }
 
     /// [`Self::reloaded`], runnable from a generic async position.
     ///
-    /// Opening SQLite runs migrations through `sqlx`, whose executor bound is
-    /// not provably `Send` when the resulting future is awaited from a generic
-    /// caller such as an HTTP handler. Driving that future on a blocking thread
-    /// of the *current* runtime sidesteps the bound without detaching the
-    /// connection pool from the runtime it belongs to. Reload is a rare,
-    /// operator-triggered action, so the extra thread hop costs nothing that
-    /// matters.
+    /// The reload reuses the running service's connection pool rather than
+    /// reopening SQLite (see [`Self::reloaded`]), so the `Send`-bound rationale
+    /// here applies to the rest of the rebuild (registry, inference runtime,
+    /// strategist); the storage handle is simply moved across.
     pub async fn reloaded_detached(self, config: Config) -> Result<Self, ServiceError> {
         let handle = tokio::runtime::Handle::current();
         tokio::task::spawn_blocking(move || handle.block_on(self.reloaded(config)))
@@ -597,14 +798,16 @@ impl AmatlService {
     }
 
     /// Build a replacement service with a different provider registry, for an
-    /// embedder that adds or removes a source implementation at runtime.
+    /// embedder that adds or removes a source implementation at runtime. Like
+    /// [`Self::reloaded`], it reuses the running service's persistence rather
+    /// than reopening the database.
     pub async fn reloaded_with_registry(
         self,
         config: Config,
         registry: ProviderRegistry,
     ) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
-        Ok(Self::with_registry(config, self.mock, registry).await)
+        self.rebuilt(config, registry).await
     }
 
     /// Identifier of the active inference backend, when one is available.
@@ -640,6 +843,44 @@ impl AmatlService {
         self.search_paginated(raw_query, surface, None, None).await
     }
 
+    /// Run several independent searches in order and return one outcome per
+    /// query.
+    ///
+    /// Each query executes exactly like a `/search` call (its own fresh
+    /// orchestrator and budget, with circuit outcomes and history recorded per
+    /// query against [`ServiceSurface::api`] semantics), but a failure in one
+    /// query never aborts the rest: the batch is only as unavailable as its
+    /// usable rows, and the fault is isolated to the failing item. The caller
+    /// is responsible for bounding the batch size up front; per-query cost is
+    /// already bounded by [`ExecutionLimits`], so `n` queries cost at most
+    /// `n × budget`.
+    pub async fn search_batch(
+        &self,
+        raw_queries: Vec<String>,
+        surface: ServiceSurface,
+    ) -> Vec<SearchBatchItem> {
+        let mut items = Vec::with_capacity(raw_queries.len());
+        for raw in raw_queries {
+            let item = match self
+                .search_paginated(raw.clone(), surface.clone(), None, None)
+                .await
+            {
+                Ok(execution) => SearchBatchItem {
+                    query: raw,
+                    response: Some(execution.response),
+                    error: None,
+                },
+                Err(error) => SearchBatchItem {
+                    query: raw,
+                    response: None,
+                    error: Some(error.code()),
+                },
+            };
+            items.push(item);
+        }
+        items
+    }
+
     /// Search with optional server-side pagination.
     ///
     /// Every page is served from a full execution, so `page` selects a window
@@ -671,27 +912,80 @@ impl AmatlService {
         let selection = self.select_providers()?;
         let refusals = selection.degradations;
         let providers = selection.providers;
-        let mut orchestrator = SearchOrchestrator::new(
-            Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
-            limits.provider_timeout_ms,
-        )
-        .with_execution_limits(
-            self.config.execution.global_concurrency,
-            self.config.execution.per_provider_concurrency,
-            self.config.execution.max_retries,
-            self.config.execution.retry_jitter_ms,
-        )
-        .with_result_policies(
-            self.config.ranking_policy.clone(),
-            self.config.diversity_policy.clone(),
-        )
-        .with_optics(self.optics.clone())
-        .with_search_policy(self.config.search_policy.clone())
-        .with_role_assignment(role_assignment_from_config(&self.config))
-        .with_telemetry(self.telemetry.clone())
-        .with_request_id(surface.request_id.clone());
-        let mut response = orchestrator.search(query.clone(), providers).await;
-        self.record_circuit_outcomes(&response).await;
+        // Fresh orchestrator per search: a search mutates its internal budget,
+        // so the refined (second) search must run on its own orchestrator with
+        // its own budget rather than reusing the first, already-exhausted one.
+        let build_orchestrator = || {
+            SearchOrchestrator::new(
+                Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
+                limits.provider_timeout_ms,
+            )
+            .with_execution_limits(
+                self.config.execution.global_concurrency,
+                self.config.execution.per_provider_concurrency,
+                self.config.execution.max_retries,
+                self.config.execution.retry_jitter_ms,
+            )
+            .with_egress_gate(self.egress_gate.clone())
+            .with_result_policies(
+                self.config.ranking_policy.clone(),
+                self.config.diversity_policy.clone(),
+            )
+            .with_optics(self.optics.clone())
+            .with_search_policy(self.config.search_policy.clone())
+            .with_role_assignment(role_assignment_from_config(&self.config))
+            .with_telemetry(self.telemetry.clone())
+            .with_request_id(surface.request_id.clone())
+        };
+        let mut orchestrator = build_orchestrator();
+        let mut response = orchestrator.search(query.clone(), providers.clone()).await;
+        // Names admitted into this round, for releasing unused probe claims.
+        // Computed once; both the primary and the refined round draw from the
+        // same selection.
+        let selected_names: Vec<String> = providers
+            .iter()
+            .map(|provider| provider.name().to_string())
+            .collect();
+        // Record the primary round's outcomes now, before the refined round can
+        // merge its own providers into `response`. Recording after the merge
+        // would double-count the refined round's failures and open the breaker
+        // faster than `failure_threshold` promises.
+        self.record_circuit_outcomes(&selected_names, &response)
+            .await;
+
+        if self.config.strategist.enabled {
+            if let Ok(Ok(Some(new_query))) = tokio::time::timeout(
+                std::time::Duration::from_millis(self.config.strategist.timeout_ms),
+                self.strategist
+                    .generate_strategy(&query.raw_query, &response),
+            )
+            .await
+            {
+                if let Ok(refined_query) = crate::parse_query(new_query) {
+                    // The refined query is a different, narrower query. If it
+                    // normalizes to the same query the user already sent, the
+                    // follow-up would add nothing: skip the redundant search.
+                    if refined_query.normalized_query != query.normalized_query {
+                        let mut refined_orchestrator = build_orchestrator();
+                        let refined_response =
+                            refined_orchestrator.search(refined_query, providers).await;
+                        // Record the refined round's outcomes against its own,
+                        // un-merged response — once, not again after the merge.
+                        self.record_circuit_outcomes(&selected_names, &refined_response)
+                            .await;
+                        // Complement, never re-order: keep the original set as
+                        // ranked and append only results the original search did
+                        // not already return, deduplicating by canonical URL
+                        // (both against the original set and within the refined
+                        // set itself). The refined round's provenance is merged
+                        // too, so a refined round that recovered from a primary
+                        // failure is not reported as `Failure`.
+                        Self::merge_refined_response(&mut response, refined_response);
+                    }
+                }
+            }
+        }
+
         if !refusals.is_empty() {
             response.degradations.extend(refusals);
             if response.status == crate::SearchStatus::Success {
@@ -704,7 +998,18 @@ impl AmatlService {
                 response.status = crate::SearchStatus::PartialSuccess;
             }
         }
-        // Apply server-side pagination when requested.
+        // Apply server-side pagination when requested. A lone `page` defaults
+        // `page_size` to the surface maximum, and a lone `page_size` defaults
+        // `page` to the first page: otherwise a client that sent one bound
+        // would silently receive the full result set with no pagination
+        // metadata.
+        let (page, page_size) = match (page, page_size) {
+            (None, None) => (None, None),
+            (page, page_size) => (
+                Some(page.unwrap_or(0)),
+                Some(page_size.unwrap_or(limits.max_page_size)),
+            ),
+        };
         if let (Some(p), Some(ps)) = (page, page_size) {
             let ps = ps.clamp(1, limits.max_page_size);
             let total = response.results.len() as u64;
@@ -730,6 +1035,78 @@ impl AmatlService {
             plan,
             response,
         })
+    }
+
+    /// Append results from a refined (second) search to the primary result set,
+    /// keeping the primary set as-ranked and adding only hits the primary
+    /// search did not already return — deduplicating by canonical URL both
+    /// against the primary set and within the refined set itself.
+    ///
+    /// `refined` is consumed. The primary set is mutated in place.
+    fn append_complementary(primary: &mut Vec<SearchResult>, refined: Vec<SearchResult>) {
+        let mut seen: BTreeSet<CanonicalUrl> = primary
+            .iter()
+            .map(|result| result.canonical_url.clone())
+            .collect();
+        primary.extend(
+            refined
+                .into_iter()
+                .filter(|result| seen.insert(result.canonical_url.clone())),
+        );
+    }
+
+    /// Fold a refined (strategist) response into `primary`: append its
+    /// complementary results, merge its provenance, and recompute `status`
+    /// from the combined set. Without this a refined round that recovered from
+    /// a primary failure would leave `status: failure` alongside real results,
+    /// and consumers keying off `status` would discard them.
+    fn merge_refined_response(primary: &mut SearchResponse, refined: SearchResponse) {
+        let SearchResponse {
+            providers_used,
+            providers_failed,
+            providers_partial,
+            errors,
+            degradations,
+            results,
+            ..
+        } = refined;
+        Self::append_complementary(&mut primary.results, results);
+        for provider in providers_used {
+            if !primary.providers_used.contains(&provider) {
+                primary.providers_used.push(provider);
+            }
+        }
+        for provider in providers_failed {
+            if !primary.providers_failed.contains(&provider) {
+                primary.providers_failed.push(provider);
+            }
+        }
+        for provider in providers_partial {
+            if !primary.providers_partial.contains(&provider) {
+                primary.providers_partial.push(provider);
+            }
+        }
+        primary.errors.extend(errors);
+        primary.degradations.extend(degradations);
+        // Recompute status from the combined result set, mirroring the rule the
+        // orchestrator applies before the strategist runs.
+        if primary.results.is_empty() {
+            primary.status = crate::SearchStatus::Failure;
+        } else {
+            // A `no_usable_results` error from a primary round that the refined
+            // round recovered from is now stale.
+            primary
+                .errors
+                .retain(|error| error.code != "no_usable_results");
+            primary.status = if primary.degradations.is_empty()
+                && primary.providers_failed.is_empty()
+                && primary.providers_partial.is_empty()
+            {
+                crate::SearchStatus::Success
+            } else {
+                crate::SearchStatus::PartialSuccess
+            };
+        }
     }
 
     /// Run a search and synthesize a grounded, cited answer from its results.
@@ -974,8 +1351,8 @@ impl AmatlService {
         let deep_budget = DeepBudget::new(
             effective_max_fetches,
             limits.deep_max_bytes,
-            self.config.deep.max_redirects,
-            self.config.deep.renderer.max_browser_calls,
+            limits.deep_max_redirects,
+            limits.deep_max_browser_calls,
             self.config.deep.max_crawl_urls,
             remaining_deep_ms,
         )
@@ -997,7 +1374,7 @@ impl AmatlService {
             document_cache,
             remaining_deep_ms,
             (limits.deep_max_bytes / u64::from(effective_max_fetches)).max(1),
-            self.config.deep.max_redirects,
+            limits.deep_max_redirects,
             self.config.deep.top_k as usize,
             self.config.deep.max_depth,
         )
@@ -1281,35 +1658,107 @@ impl AmatlService {
 
     /// Operator status: source availability, persistence and cache state.
     pub async fn status(&self) -> Result<ServiceStatus, ServiceError> {
-        let summaries = self.provider_summaries()?;
         let snapshots = self.source_snapshots();
         let circuits = self.circuit_snapshots();
-        let sources = summaries
-            .into_iter()
-            .map(|summary| {
-                let snapshot = snapshots
-                    .iter()
-                    .find(|snapshot| snapshot.provider == summary.name);
-                let circuit = circuits
-                    .iter()
-                    .find(|snapshot| snapshot.provider == summary.name)
-                    .map(|snapshot| snapshot.state)
-                    .unwrap_or(crate::circuit::CircuitState::Closed);
-                SourceStatus {
-                    name: summary.name,
-                    status: summary.status,
-                    code: summary.code,
-                    circuit,
-                    success_rate: snapshot
-                        .filter(|snapshot| snapshot.sample > 0)
-                        .map(|snapshot| snapshot.success_rate),
-                    average_latency_ms: snapshot
-                        .filter(|snapshot| snapshot.sample > 0)
-                        .map(|snapshot| snapshot.average_latency_ms),
-                    observations: snapshot.map(|snapshot| snapshot.sample).unwrap_or(0),
-                }
-            })
-            .collect::<Vec<_>>();
+        // Mock mode answers `/search` from `mock_providers()` (see
+        // `select_providers`), so the operator view must report those same
+        // sources. Reporting the declared — but disabled — real providers here
+        // made the two halves of the service contradict each other: `/search`
+        // kept succeeding while `/status` announced that no source could be
+        // called, and every fail-closed consumer — the UI's availability gate
+        // above all — concluded the service was unusable.
+        let summaries = if self.mock {
+            Ok(mock_provider_summaries())
+        } else {
+            self.provider_summaries()
+        };
+        let (sources, summaries_unavailable, enabled_usable) = match summaries {
+            Ok(summaries) => {
+                let mut enabled_usable = false;
+                let sources = summaries
+                    .into_iter()
+                    .map(|summary| {
+                        let snapshot = snapshots
+                            .iter()
+                            .find(|snapshot| snapshot.provider == summary.name);
+                        let circuit = circuits
+                            .iter()
+                            .find(|snapshot| snapshot.provider == summary.name)
+                            .map(|snapshot| snapshot.state)
+                            .unwrap_or(crate::circuit::CircuitState::Closed);
+                        // Readiness follows the deployment the operator asked
+                        // for. A source that is declared but not enabled is a
+                        // configuration choice, not an incident, so it cannot
+                        // degrade the service on its own. Only an enabled source
+                        // that is usable — approved and reporting `Available`,
+                        // with its circuit closed — keeps the service ready.
+                        if summary.enabled
+                            && summary.status == ProviderSurfaceStatus::Available
+                            && circuit == crate::circuit::CircuitState::Closed
+                        {
+                            enabled_usable = true;
+                        }
+                        SourceStatus {
+                            name: summary.name,
+                            status: summary.status,
+                            code: summary.code,
+                            circuit,
+                            success_rate: snapshot
+                                .filter(|snapshot| snapshot.sample > 0)
+                                .map(|snapshot| snapshot.success_rate),
+                            average_latency_ms: snapshot
+                                .filter(|snapshot| snapshot.sample > 0)
+                                .map(|snapshot| snapshot.average_latency_ms),
+                            observations: snapshot.map(|snapshot| snapshot.sample).unwrap_or(0),
+                            credential_source: summary.credential_source,
+                        }
+                    })
+                    .collect::<Vec<_>>();
+                (sources, false, enabled_usable)
+            }
+            Err(error) => {
+                // Diagnostics must survive the failure they are meant to
+                // diagnose: when the HTTP transport failed to initialize,
+                // report every declared source as unavailable instead of
+                // failing the whole status call.
+                tracing::warn!(
+                    target: "amatl::service",
+                    error = %error,
+                    "provider summaries unavailable; reporting declared sources as unavailable"
+                );
+                let sources = self
+                    .config
+                    .providers
+                    .declared()
+                    .map(|(name, runtime)| {
+                        let circuit = circuits
+                            .iter()
+                            .find(|snapshot| snapshot.provider == *name)
+                            .map(|snapshot| snapshot.state)
+                            .unwrap_or(crate::circuit::CircuitState::Closed);
+                        let credential_source = credential_source_for(
+                            self.registry
+                                .get(name)
+                                .map(|factory| factory.requires_credential())
+                                .unwrap_or(true),
+                            self.ephemeral_credential_present(name),
+                            runtime,
+                        );
+                        SourceStatus {
+                            name: name.to_owned(),
+                            status: ProviderSurfaceStatus::Unavailable,
+                            code: Some("transport_unavailable".into()),
+                            circuit,
+                            success_rate: None,
+                            average_latency_ms: None,
+                            observations: 0,
+                            credential_source,
+                        }
+                    })
+                    .collect::<Vec<_>>();
+                (sources, true, false)
+            }
+        };
         let storage = self.storage_status().await;
         let (provider_search_stats, document_stats) = self.cache_stats().await;
         let cache = CacheStatus {
@@ -1321,11 +1770,11 @@ impl AmatlService {
             document_bytes: document_stats.size_bytes,
             effectiveness: self.cache_effectiveness(),
         };
-        let degraded = storage.enabled && !storage.available
-            || sources.iter().any(|source| {
-                source.status != ProviderSurfaceStatus::Available
-                    || source.circuit != crate::circuit::CircuitState::Closed
-            });
+        // Degraded means "this instance cannot serve useful traffic". Persistence
+        // is optional by design, but an instance with no usable enabled source
+        // cannot search, so it is degraded — and never ready.
+        let degraded =
+            summaries_unavailable || storage.enabled && !storage.available || !enabled_usable;
         Ok(ServiceStatus {
             schema_version: SCHEMA_VERSION.into(),
             status: if degraded { "degraded" } else { "ok" }.into(),
@@ -1340,6 +1789,22 @@ impl AmatlService {
                 available: self.answer_backend.is_some(),
                 model: self.config.answer.model.clone(),
                 endpoint: self.config.answer.endpoint.clone(),
+            },
+            strategist: StrategistStatus {
+                enabled: self.config.strategist.enabled,
+                configured: self.config.strategist.endpoint.is_some()
+                    && self.config.strategist.model.is_some(),
+                available: self.config.strategist.enabled
+                    && self.config.strategist.endpoint.is_some()
+                    && self.config.strategist.model.is_some()
+                    && self
+                        .config
+                        .strategist
+                        .credential_env
+                        .as_ref()
+                        .is_some_and(|name| std::env::var_os(name).is_some_and(|v| !v.is_empty())),
+                model: self.config.strategist.model.clone(),
+                endpoint: self.config.strategist.endpoint.clone(),
             },
             data_policy: DataPolicyStatus {
                 profile: self.config.data_policy.profile,
@@ -1406,25 +1871,33 @@ impl AmatlService {
     /// Availability of every declared provider that has an implementation.
     pub fn provider_summaries(&self) -> Result<Vec<ProviderSummary>, ServiceError> {
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
-        let providers = self
+        let entries = self
             .config
             .providers
             .declared()
             .filter_map(|(name, runtime)| {
                 let factory = self.registry.get(name)?;
-                Some(factory.build(&ProviderBuildContext {
-                    name,
+                let credential_source = credential_source_for(
+                    factory.requires_credential(),
+                    self.ephemeral_credential_present(name),
                     runtime,
-                    enabled: self.config.providers.enabled.contains(name),
-                    approved: runtime.approved(),
-                    credential: credential(runtime),
-                    transport: transport.clone(),
-                }))
+                );
+                Some((
+                    factory.build(&ProviderBuildContext {
+                        name,
+                        runtime,
+                        enabled: self.config.providers.enabled.contains(name),
+                        approved: runtime.approved(),
+                        credential: self.resolved_credential(name, runtime),
+                        transport: transport.clone(),
+                    }),
+                    credential_source,
+                ))
             })
-            .collect::<Vec<Arc<dyn Provider>>>();
-        Ok(providers
+            .collect::<Vec<(Arc<dyn Provider>, CredentialSource)>>();
+        Ok(entries
             .into_iter()
-            .map(|provider| {
+            .map(|(provider, credential_source)| {
                 let (status, code) = if !self.config.data_policy.allows_network_egress() {
                     (
                         ProviderSurfaceStatus::Unavailable,
@@ -1450,9 +1923,122 @@ impl AmatlService {
                         .enabled
                         .iter()
                         .any(|name| name == provider.name()),
+                    credential_source,
                 }
             })
             .collect())
+    }
+
+    /// Resolve a provider's credential: an operator-supplied ephemeral
+    /// (RAM-only) value takes precedence; otherwise fall back to the
+    /// `credential_env` environment variable. Never logs the secret. The value
+    /// is `Zeroizing`, so the per-build copy handed to a provider is wiped from
+    /// the heap when that provider is dropped.
+    fn resolved_credential(
+        &self,
+        name: &str,
+        runtime: &ProviderRuntimeConfig,
+    ) -> Option<Zeroizing<String>> {
+        if let Ok(guard) = self.ephemeral_credentials.read() {
+            if let Some(value) = guard.get(name) {
+                if !value.is_empty() {
+                    return Some(value.clone());
+                }
+            }
+        }
+        credential(runtime)
+    }
+
+    /// Whether an operator has injected an in-memory credential for `name`.
+    /// Read-only; never exposes the secret, only its presence — and it checks
+    /// presence without cloning the key.
+    pub fn ephemeral_credential_present(&self, name: &str) -> bool {
+        self.ephemeral_credentials
+            .read()
+            .map(|guard| guard.get(name).is_some_and(|value| !value.is_empty()))
+            .unwrap_or(false)
+    }
+
+    /// Set an operator-supplied provider credential in memory only.
+    ///
+    /// Nothing is written to disk, to `amatl.toml`, the environment, or logs:
+    /// the value lives in RAM and dies with the process. A generous upper bound
+    /// rejects a runaway value; an empty value is rejected too.
+    pub fn set_provider_credential(&self, name: &str, value: &str) -> Result<(), ServiceError> {
+        if self.registry.get(name).is_none() {
+            return Err(ServiceError::ProviderNotRegistered(name.into()));
+        }
+        if value.is_empty() || value.len() > 512 {
+            return Err(ServiceError::InvalidInput);
+        }
+        self.ephemeral_credentials
+            .write()
+            .map_err(|_| ServiceError::ProviderNotRegistered(name.into()))?
+            .insert(name.to_string(), Zeroizing::new(value.to_owned()));
+        Ok(())
+    }
+
+    /// Remove an operator-supplied provider credential from memory. Idempotent.
+    ///
+    /// `remove` drops the `Zeroizing` value, which wipes its bytes before the
+    /// allocation is released, so the liquidated key does not linger in the
+    /// heap for a later allocation (or a core dump) to expose.
+    pub fn clear_provider_credential(&self, name: &str) {
+        if let Ok(mut guard) = self.ephemeral_credentials.write() {
+            drop(guard.remove(name));
+        }
+    }
+
+    /// Live, bounded probe of a candidate provider credential.
+    ///
+    /// Builds an isolated service with only `name` enabled and the candidate
+    /// key injected in-memory, then runs one search. Returns `true` only when
+    /// the source actually produced at least one usable result, so an operator
+    /// never accepts (or "burns") a bogus, expired, or mis-scoped key. Fails
+    /// closed (`false`) when egress is denied. The key is never logged.
+    pub async fn probe_provider_credential(
+        &self,
+        name: &str,
+        value: &str,
+        query: &str,
+    ) -> Result<bool, ServiceError> {
+        if !self.config.data_policy.allows_network_egress() {
+            return Ok(false);
+        }
+        let mut isolated_config = (*self.config).clone();
+        isolated_config.providers.enabled = vec![name.to_string()];
+        let registry = (*self.registry).clone();
+        let name = name.to_string();
+        let value = Zeroizing::new(value.to_owned());
+        let query = query.to_string();
+        // Opening SQLite runs migrations through sqlx, whose executor bound is
+        // not provably `Send`; build the isolated service on a blocking thread
+        // (same reason `reloaded_detached` does) so this method's future stays
+        // `Send` and callable from an HTTP handler.
+        let handle = tokio::runtime::Handle::current();
+        let service = tokio::task::spawn_blocking(move || {
+            handle.block_on(AmatlService::with_registry(
+                isolated_config,
+                false,
+                registry,
+            ))
+        })
+        .await
+        .map_err(|_| ServiceError::Configuration)?;
+        service
+            .set_provider_credential(&name, &value)
+            .map_err(|_| ServiceError::ProviderNotRegistered(name.clone()))?;
+        let execution = service.search(query.clone(), ServiceSurface::cli()).await?;
+        let used = execution
+            .response
+            .providers_used
+            .iter()
+            .any(|used| used == &name);
+        Ok(
+            !matches!(execution.response.status, crate::SearchStatus::Failure)
+                && used
+                && !execution.response.results.is_empty(),
+        )
     }
 
     /// Providers admitted into one search round, with the reasons for any
@@ -1472,7 +2058,16 @@ impl AmatlService {
             });
         }
         if !self.config.data_policy.allows_network_egress() {
-            return Ok(ProviderSelection::default());
+            return Ok(ProviderSelection {
+                providers: vec![],
+                degradations: vec![crate::Degradation {
+                    code: ErrorCode::EgressDenied.as_str().into(),
+                    component: "data_policy".into(),
+                    message:
+                        "outbound network access is denied by data policy; no source was called"
+                            .into(),
+                }],
+            });
         }
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
         let now = now_unix();
@@ -1503,8 +2098,11 @@ impl AmatlService {
                 );
                 continue;
             }
-            let circuit = self.circuit.state(name, now);
-            if !circuit.allows_call() {
+            // Admissibility is a pure query: a source in cooldown with an
+            // in-flight probe is skipped here without touching the probe state.
+            // The single half-open probe is claimed later, only for providers
+            // that actually reach a call (see `record_circuit_outcomes`).
+            if !self.circuit.allows_call(name, now) {
                 selection.degradations.push(crate::Degradation {
                     code: "provider_circuit_open".into(),
                     component: name.clone(),
@@ -1520,9 +2118,15 @@ impl AmatlService {
                 runtime,
                 enabled: true,
                 approved: true,
-                credential: credential(runtime),
+                credential: self.resolved_credential(name, runtime),
                 transport: transport.clone(),
             });
+            // Admitted into this round: claim the single half-open probe so a
+            // concurrent search does not also admit one. If this provider ends
+            // up never actually attempted (the router drops it), `search_inner`
+            // releases the claim so it cannot wedge the source — see
+            // `record_circuit_outcomes`.
+            self.circuit.claim_probe(name, now);
             selection.providers.push(self.with_cache(provider, runtime));
         }
         Ok(selection)
@@ -1548,15 +2152,50 @@ impl AmatlService {
         self.circuit.reset().await;
     }
 
-    /// Feed one search outcome into the breaker, one entry per attempted
-    /// source. A partial provider still counts as a success: it answered.
-    async fn record_circuit_outcomes(&self, response: &SearchResponse) {
+    /// Feed one search round's outcome into the breaker — exactly once per
+    /// round — and release any half-open probe that was claimed for a provider
+    /// the round did not actually attempt.
+    ///
+    /// `selected` is the set of providers admitted into the round
+    /// (`select_providers`, which claims the probe). Providers in `selected`
+    /// that are neither used nor failed were dropped by the router, so their
+    /// claim is released here; otherwise the unused claim would refuse the
+    /// source for a whole cooldown.
+    ///
+    /// `response` must be the *un-merged* response for the round being
+    /// recorded: recording a merged response would double-count the refined
+    /// round's failures against its own providers and trip the breaker faster
+    /// than `failure_threshold` promises.
+    async fn record_circuit_outcomes(&self, selected: &[String], response: &SearchResponse) {
         let now = now_unix();
+        let attempted: BTreeSet<&String> = response
+            .providers_used
+            .iter()
+            .chain(response.providers_failed.iter())
+            .chain(response.providers_partial.iter())
+            .collect();
         for provider in &response.providers_used {
             self.circuit.record(provider, true, now).await;
         }
         for provider in &response.providers_failed {
+            // A provider that was never called because the local concurrency
+            // deadline expired is not a provider failure: recording it would
+            // open the breaker on a healthy source after a few busy searches.
+            let locally_skipped = response.errors.iter().any(|error| {
+                error.message == crate::execution::CONCURRENCY_DEADLINE_MESSAGE
+                    && error.providers.iter().any(|name| name == provider)
+            });
+            if locally_skipped {
+                continue;
+            }
             self.circuit.record(provider, false, now).await;
+        }
+        // Release the probe for any admitted provider that never reached a
+        // call, keeping the claim symmetric and the source usable.
+        for name in selected {
+            if !attempted.contains(name) {
+                self.circuit.release_probe(name);
+            }
         }
     }
 
@@ -1616,12 +2255,40 @@ fn bounded(value: &str, maximum: usize) -> String {
     value.chars().take(maximum).collect()
 }
 
-fn credential(config: &ProviderRuntimeConfig) -> Option<String> {
+fn credential(config: &ProviderRuntimeConfig) -> Option<Zeroizing<String>> {
     config
         .credential_env
         .as_deref()
         .and_then(|name| std::env::var(name).ok())
         .filter(|value| !value.is_empty())
+        .map(Zeroizing::new)
+}
+
+/// Provenance of a source's credential, if any — never its value.
+///
+/// A provider whose adapter does not require a credential
+/// ([`ProviderFactory::requires_credential`], e.g. a factory whose
+/// `credential_env` only names an instance URL with a default) never reports
+/// one: an environment variable holding its URL is *configuration*, not a
+/// secret, so the surface tells the truth only for sources that actually need a
+/// key. A provider that does require a credential resolves to `Ephemeral` (an
+/// operator-injected in-memory key, liquidable) or `Environment` (read from
+/// `credential_env`), else `None`.
+fn credential_source_for(
+    requires_credential: bool,
+    ephemeral_present: bool,
+    config: &ProviderRuntimeConfig,
+) -> CredentialSource {
+    if !requires_credential {
+        return CredentialSource::None;
+    }
+    if ephemeral_present {
+        CredentialSource::Ephemeral
+    } else if credential(config).is_some() {
+        CredentialSource::Environment
+    } else {
+        CredentialSource::None
+    }
 }
 
 /// Build the router's [`RoleAssignment`] from `[expansion]` config.
@@ -1795,6 +2462,27 @@ fn mock_providers() -> Vec<Arc<dyn Provider>> {
     ]
 }
 
+/// Operator-view summaries for the sources mock mode actually searches with.
+///
+/// `/search` answers from `mock_providers()`, so `/status` must report exactly
+/// those names as available; otherwise the two halves of the same service
+/// disagree and every fail-closed consumer — the UI search gate above all —
+/// locks up in mock mode.
+fn mock_provider_summaries() -> Vec<ProviderSummary> {
+    mock_providers()
+        .iter()
+        .map(|provider| ProviderSummary {
+            schema_version: SCHEMA_VERSION.into(),
+            name: provider.name().into(),
+            status: ProviderSurfaceStatus::Available,
+            code: None,
+            capabilities: provider.capabilities(),
+            enabled: true,
+            credential_source: CredentialSource::None,
+        })
+        .collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1812,6 +2500,49 @@ mod tests {
         assert_eq!(
             validate_deep_fetch_cap(Some(0), 10),
             Err(ServiceError::InvalidInput)
+        );
+    }
+
+    #[test]
+    fn append_complementary_dedupes_and_preserves_primary_order() {
+        use crate::{CanonicalUrl, OriginalUrl, Rank, ResultStatus, SearchResult};
+        use url::Url;
+        let result = |index: u32, host: &str, path: &str| SearchResult {
+            schema_version: SCHEMA_VERSION.into(),
+            rank: Rank::new(index).unwrap(),
+            title: None,
+            original_url: OriginalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
+            canonical_url: CanonicalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
+            domain: host.to_owned(),
+            snippet: None,
+            providers: vec!["mock".into()],
+            published_at: None,
+            status: ResultStatus::Visible,
+        };
+        // Primary set, already ranked.
+        let mut primary = vec![result(1, "a.example", "one"), result(2, "b.example", "two")];
+        // Refined set: one duplicate of the primary, one duplicate within the
+        // refined set itself, and one genuinely new result.
+        let refined = vec![
+            result(1, "a.example", "one"),
+            result(9, "c.example", "new-a"),
+            result(9, "c.example", "new-a"),
+            result(9, "d.example", "new-b"),
+        ];
+        AmatlService::append_complementary(&mut primary, refined);
+        let urls = primary
+            .iter()
+            .map(|item| item.canonical_url.0.as_str().to_owned())
+            .collect::<Vec<_>>();
+        assert_eq!(
+            urls,
+            [
+                "http://a.example/one",
+                "http://b.example/two",
+                "http://c.example/new-a",
+                "http://d.example/new-b",
+            ],
+            "primary order is preserved, duplicates are dropped, new hits are appended"
         );
     }
 
@@ -1892,7 +2623,7 @@ mod tests {
 
     struct CredentialGatedProvider {
         name: String,
-        credential: Option<String>,
+        credential: Option<Zeroizing<String>>,
     }
 
     #[async_trait]
@@ -1927,6 +2658,109 @@ mod tests {
                 }
             } else {
                 ProviderAvailability::Available
+            }
+        }
+
+        async fn search(
+            &self,
+            _plan: &crate::SearchPlan,
+            _context: &crate::ProviderContext,
+        ) -> Result<crate::ProviderResult, crate::ProviderError> {
+            Ok(crate::ProviderResult {
+                schema_version: SCHEMA_VERSION.into(),
+                provider: self.name.clone(),
+                status: crate::ProviderExecutionStatus::Success,
+                results: vec![],
+                accepted_filters: vec![],
+                ignored_filters: vec![],
+                approximated_filters: vec![],
+                errors: vec![],
+            })
+        }
+    }
+
+    /// A factory whose `credential_env` is configuration, not a secret: it
+    /// reports `requires_credential() == false`, so the surface must never
+    /// expose the variable as a credential even when it is set.
+    struct UrlConfiguredFactory;
+
+    impl ProviderFactory for UrlConfiguredFactory {
+        fn name(&self) -> &str {
+            "url_configured"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(CredentialGatedProvider {
+                name: context.name.into(),
+                credential: None,
+            })
+        }
+    }
+
+    /// A registered source whose availability mirrors the enabled flag, the way
+    /// the shipped adapters behave: when the operator has not enabled it, its
+    /// surface reports `provider_disabled` rather than `available`. Used to pin
+    /// that a declared-but-disabled source does not degrade readiness.
+    struct DisabledWhenNotEnabledFactory;
+
+    impl ProviderFactory for DisabledWhenNotEnabledFactory {
+        fn name(&self) -> &str {
+            "custom_archive"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(DisabledWhenNotEnabledProvider {
+                name: context.name.into(),
+                enabled: context.enabled,
+            })
+        }
+    }
+
+    struct DisabledWhenNotEnabledProvider {
+        name: String,
+        enabled: bool,
+    }
+
+    #[async_trait]
+    impl Provider for DisabledWhenNotEnabledProvider {
+        fn name(&self) -> &str {
+            &self.name
+        }
+
+        fn capabilities(&self) -> ProviderCapabilities {
+            ProviderCapabilities {
+                schema_version: SCHEMA_VERSION.into(),
+                pagination: false,
+                language: false,
+                region: false,
+                time_range: false,
+                site_filter: false,
+                file_filter: false,
+                news: false,
+                code: false,
+                docs: true,
+                academic: false,
+                authentication: false,
+                estimated_cost: Some(0),
+            }
+        }
+
+        fn availability(&self) -> ProviderAvailability {
+            if self.enabled {
+                ProviderAvailability::Available
+            } else {
+                ProviderAvailability::Unavailable {
+                    code: "provider_disabled".into(),
+                    message: "the operator did not enable this source".into(),
+                }
             }
         }
 
@@ -1994,6 +2828,35 @@ mod tests {
         assert!(mcp.deep_max_fetches < cli.deep_max_fetches);
         assert!(mcp.deep_max_bytes < cli.deep_max_bytes);
         assert!(mcp.deep_max_subqueries < cli.deep_max_subqueries);
+        // The Deep-scoped per-fetch and renderer ceilings must tighten too; they
+        // are read by `deep_from_search`, not just advertised.
+        assert!(mcp.deep_max_redirects <= cli.deep_max_redirects);
+        assert!(mcp.deep_max_browser_calls < cli.deep_max_browser_calls);
+    }
+
+    #[tokio::test]
+    async fn deep_uses_the_surface_redirect_and_browser_ceilings() {
+        // A Deep run must honor the surface's per-fetch ceilings, not the raw
+        // CLI-scale config: the same config on MCP and CLI yields different
+        // Deep limits, and the service consumes the surface value.
+        let config = Config::default();
+        let mcp = ExecutionLimits::for_surface(&config, ServiceSurface::mcp());
+        assert_eq!(
+            mcp.deep_max_redirects,
+            config.deep.max_redirects.min(2),
+            "MCP deep redirects are clamped"
+        );
+        assert_eq!(
+            mcp.deep_max_browser_calls,
+            config.deep.renderer.max_browser_calls.min(1),
+            "MCP browser calls are clamped"
+        );
+        let cli = ExecutionLimits::for_surface(&config, ServiceSurface::cli());
+        assert_eq!(cli.deep_max_redirects, config.deep.max_redirects);
+        assert_eq!(
+            cli.deep_max_browser_calls,
+            config.deep.renderer.max_browser_calls
+        );
     }
 
     #[tokio::test]
@@ -2063,8 +2926,381 @@ mod tests {
                 && summary.code.as_deref() == Some("egress_denied")
         }));
         assert_eq!(
-            validate_provider_canary(service.config(), "brave"),
+            validate_provider_canary(service.config(), "marginalia"),
             Err(ProviderCanaryError::EgressDenied)
+        );
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_lives_in_memory_until_liquidated() {
+        let service = AmatlService::new(Config::default(), false).await;
+        assert!(!service.ephemeral_credential_present("marginalia"));
+
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        assert!(service.ephemeral_credential_present("marginalia"));
+
+        service.clear_provider_credential("marginalia");
+        assert!(!service.ephemeral_credential_present("marginalia"));
+
+        // Idempotent: liquidating an absent key is not an error.
+        service.clear_provider_credential("marginalia");
+        assert!(!service.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_is_never_serialized_into_the_config() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        // The key must never reach a serialized form of the configuration — the
+        // same shape a config file or a `/config` view would carry.
+        let serialized = serde_json::to_string(service.config()).unwrap();
+        assert!(!serialized.contains("marginalia-secret-key"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_rejects_unregistered_empty_and_oversized_values() {
+        let service = AmatlService::new(Config::default(), false).await;
+        assert!(service
+            .set_provider_credential("not_registered", "k")
+            .is_err());
+        assert!(service.set_provider_credential("marginalia", "").is_err());
+        assert!(service
+            .set_provider_credential("marginalia", &"x".repeat(513))
+            .is_err());
+        // None of the rejected values were committed.
+        assert!(!service.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_survives_reload_without_a_restart() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        let reloaded = service.reloaded(Config::default()).await.unwrap();
+        assert!(reloaded.ephemeral_credential_present("marginalia"));
+    }
+
+    #[tokio::test]
+    async fn credential_source_reports_none_then_ephemeral() {
+        let mut config = Config::default();
+        // Point marginalia at a variable that is not set, so the baseline is
+        // `none` regardless of the host environment (an operator shell may have
+        // MARGINALIA_API_KEY exported).
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        config.providers.entry("marginalia").credential_env =
+            Some(format!("AMATL_TEST_UNSET_{nonce}"));
+        let service = AmatlService::new(config, false).await;
+        let source = |service: &AmatlService| {
+            service
+                .provider_summaries()
+                .unwrap()
+                .into_iter()
+                .find(|summary| summary.name == "marginalia")
+                .unwrap()
+                .credential_source
+        };
+        assert_eq!(source(&service), CredentialSource::None);
+
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        assert_eq!(source(&service), CredentialSource::Ephemeral);
+    }
+
+    #[tokio::test]
+    async fn credential_source_reports_environment_when_only_the_variable_is_set() {
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let var = format!("AMATL_TEST_MARGINALIA_KEY_{nonce}");
+        std::env::set_var(&var, "environment-supplied-key");
+
+        let mut config = Config::default();
+        config.providers.entry("marginalia").credential_env = Some(var.clone());
+        let service = AmatlService::new(config, false).await;
+        let summary = service
+            .provider_summaries()
+            .unwrap()
+            .into_iter()
+            .find(|summary| summary.name == "marginalia")
+            .unwrap();
+        assert_eq!(summary.credential_source, CredentialSource::Environment);
+
+        std::env::remove_var(&var);
+    }
+
+    #[tokio::test]
+    async fn a_provider_that_does_not_require_a_credential_never_reports_one() {
+        // A factory whose `requires_credential()` is false may still name a
+        // `credential_env`, but it holds *configuration* (e.g. an instance URL
+        // with a default), not a secret. Even when that variable is present in
+        // the environment, the surface must report `None`. No shipped source has
+        // this shape today, so a registered test factory stands in for the
+        // third-party adapter the contract is written for.
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let var = format!("AMATL_TEST_INSTANCE_URL_VAR_{nonce}");
+        std::env::set_var(&var, "http://127.0.0.1:9999");
+
+        let mut config = Config::default();
+        let mut record = approved_record("url_configured-v1");
+        record.credential_env = Some(var.clone());
+        config.providers.declare("url_configured", record);
+        config.providers.enabled = vec!["url_configured".into()];
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(UrlConfiguredFactory)),
+        )
+        .await;
+        let summary = service
+            .provider_summaries()
+            .unwrap()
+            .into_iter()
+            .find(|summary| summary.name == "url_configured")
+            .unwrap();
+        assert_eq!(
+            summary.credential_source,
+            CredentialSource::None,
+            "a URL-shaped credential_env must not be reported as a credential"
+        );
+
+        std::env::remove_var(&var);
+    }
+
+    #[tokio::test]
+    async fn status_sources_expose_credential_provenance_but_not_the_value() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .unwrap();
+        let status = service.status().await.unwrap();
+        let marginalia = status
+            .sources
+            .iter()
+            .find(|source| source.name == "marginalia")
+            .unwrap();
+        assert_eq!(marginalia.credential_source, CredentialSource::Ephemeral);
+        // The operator view names the provenance, never the key.
+        let serialized = serde_json::to_string(&status).unwrap();
+        assert!(!serialized.contains("marginalia-secret-key"));
+    }
+
+    #[tokio::test]
+    async fn status_reports_the_mock_sources_search_actually_uses() {
+        let service = AmatlService::new(Config::default(), true).await;
+        let status = service.status().await.unwrap();
+        let available = status
+            .sources
+            .iter()
+            .filter(|source| source.status == ProviderSurfaceStatus::Available)
+            .count();
+        let expected = mock_providers()
+            .iter()
+            .map(|provider| provider.name().to_string())
+            .collect::<Vec<_>>();
+        // The UI gates its search button on this exact predicate
+        // (`availableSources > 0` in `assets/app.js`). A zero here means the
+        // UI can never submit a search that `/search` would happily answer.
+        assert!(
+            available > 0,
+            "mock mode must expose at least one available source, got {:?}",
+            status.sources
+        );
+        assert_eq!(available, expected.len());
+        assert_eq!(
+            status.status, "ok",
+            "mock search is always available, so readiness must not degrade it"
+        );
+        assert_eq!(
+            status
+                .sources
+                .iter()
+                .map(|source| source.name.clone())
+                .collect::<Vec<_>>(),
+            expected,
+            "the operator view must name the sources mock search uses"
+        );
+    }
+
+    /// D2: readiness must follow the deployment the operator asked for. A source
+    /// that is declared but not enabled is a configuration choice, not an
+    /// incident, so it cannot make the instance look degraded while an enabled
+    /// source is serving traffic — otherwise `/ready` answers 503 and a load
+    /// balancer drains a perfectly healthy single-source deployment.
+    #[tokio::test]
+    async fn status_ignores_declared_sources_the_operator_did_not_enable() {
+        // One enabled source serves; a declared-but-disabled source must not
+        // make the deployment look degraded. Marginalia is enabled, and a
+        // registered custom source is declared but left out of `enabled`.
+        let mut config = marginalia_only_config();
+        config
+            .providers
+            .declare("custom_archive", approved_record("archive-v1"));
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(DisabledWhenNotEnabledFactory)),
+        )
+        .await;
+        // Marginalia is key-gated, so it only reports `Available` with a
+        // credential present. Inject one through the supported operator path
+        // rather than relying on the host environment, so the test asserts the
+        // same thing on a clean CI runner as on an operator shell.
+        service
+            .set_provider_credential("marginalia", "marginalia-test-key")
+            .unwrap();
+        let status = service.status().await.unwrap();
+        assert_eq!(
+            status.status, "ok",
+            "a declared-but-disabled source must not degrade a serving deployment: {:?}",
+            status.sources
+        );
+        // The declared sources stay visible where they belong: `/status` still
+        // names them and their blocking code, it just no longer treats them as
+        // incidents of this deployment.
+        let source = |name: &str| {
+            status
+                .sources
+                .iter()
+                .find(|source| source.name == name)
+                .unwrap()
+        };
+        assert_eq!(
+            source("marginalia").status,
+            ProviderSurfaceStatus::Available
+        );
+        assert_eq!(source("marginalia").code, None);
+        assert_eq!(
+            source("custom_archive").status,
+            ProviderSurfaceStatus::Unavailable
+        );
+        assert_eq!(
+            source("custom_archive").code.as_deref(),
+            Some("provider_disabled")
+        );
+    }
+
+    /// The other half of the D2 rule: ignoring disabled sources must not make a
+    /// deployment with no enabled source look ready. It cannot search at all.
+    #[tokio::test]
+    async fn status_degrades_when_no_source_is_enabled() {
+        let service = AmatlService::new(Config::default(), false).await;
+        let status = service.status().await.unwrap();
+        assert_eq!(status.status, "degraded");
+    }
+
+    /// Enabled is not enough: the governance gate still blocks traffic, so the
+    /// deployment has no usable source and readiness must say so.
+    #[tokio::test]
+    async fn status_degrades_when_the_only_enabled_source_is_not_approved() {
+        let mut config = Config::default();
+        config.providers.enabled = vec!["marginalia".into()];
+        let service = AmatlService::new(config, false).await;
+        let status = service.status().await.unwrap();
+        assert_eq!(status.status, "degraded");
+        let marginalia = status
+            .sources
+            .iter()
+            .find(|source| source.name == "marginalia")
+            .unwrap();
+        assert_eq!(
+            marginalia.code.as_deref(),
+            Some("provider_not_approved"),
+            "an enabled but unapproved source cannot serve"
+        );
+    }
+
+    /// The third clause of the D2 rule: an enabled and approved source that
+    /// still reports `Available` cannot serve once its circuit is open, so
+    /// readiness must degrade — the breaker is the only evidence that traffic is
+    /// no longer reaching it, and `/status` keeps naming it available.
+    #[tokio::test]
+    async fn status_degrades_when_the_only_enabled_source_circuit_is_open() {
+        let mut config = archive_config();
+        config.circuit_breaker.failure_threshold = 1;
+        config.circuit_breaker.open_seconds = 600;
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await;
+        // Before the first failure the same deployment is ready, so the
+        // assertion below isolates the circuit and nothing else.
+        let before = service.status().await.unwrap();
+        assert_eq!(before.status, "ok", "{:?}", before.sources);
+
+        let failure = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(failure.response.providers_failed, vec!["custom_archive"]);
+
+        let after = service.status().await.unwrap();
+        let source = after
+            .sources
+            .iter()
+            .find(|source| source.name == "custom_archive")
+            .unwrap();
+        assert_eq!(source.status, ProviderSurfaceStatus::Available);
+        assert_eq!(source.circuit, crate::CircuitState::Open);
+        assert_eq!(
+            after.status, "degraded",
+            "an open circuit means the enabled source cannot serve: {:?}",
+            after.sources
+        );
+    }
+
+    /// Configuration for the deployment D2 is about: exactly one source enabled
+    /// and fully governed. The shipped Marginalia record carries only its
+    /// adapter/credential/terms identity, so the test completes the ficha with
+    /// the fields the approval gate requires (a real operator records them when
+    /// approving the source).
+    fn marginalia_only_config() -> Config {
+        let mut config = Config::default();
+        let runtime = config.providers.entry("marginalia");
+        runtime.adapter_version = Some("marginalia-v1".into());
+        runtime.approval_status = crate::ApprovalStatus::Approved;
+        runtime.reviewed_at = Some(today_iso());
+        runtime.reviewer = Some("owner".into());
+        runtime.terms_url = Some("https://www.marginalia.nu/".into());
+        runtime.terms_version_or_date = Some("2026-08-01".into());
+        runtime.allowed_access_method = Some("official_api".into());
+        runtime.plan_or_contract = Some("contract-1".into());
+        runtime.rate_limit = Some("1 qps".into());
+        runtime.cost_model = Some("0".into());
+        runtime.data_handling_notes = Some("no cache".into());
+        runtime.operational_risk = Some("network dependency".into());
+        config.providers.enabled = vec!["marginalia".into()];
+        config.validate().unwrap();
+        config
+    }
+
+    #[test]
+    fn credential_source_serializes_to_the_contracted_wire_values() {
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::None).unwrap(),
+            "\"none\""
+        );
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::Ephemeral).unwrap(),
+            "\"ephemeral\""
+        );
+        assert_eq!(
+            serde_json::to_string(&CredentialSource::Environment).unwrap(),
+            "\"environment\""
         );
     }
 
@@ -2072,14 +3308,36 @@ mod tests {
     fn real_provider_canary_is_fail_closed_before_network_access() {
         let config = Config::default();
         assert_eq!(
-            validate_provider_canary(&config, "brave"),
-            Err(ProviderCanaryError::NotEnabled("brave".into()))
+            validate_provider_canary(&config, "marginalia"),
+            Err(ProviderCanaryError::NotEnabled("marginalia".into()))
         );
         let mut enabled = config;
-        enabled.providers.enabled = vec!["brave".into()];
+        enabled.providers.enabled = vec!["marginalia".into()];
         assert_eq!(
-            validate_provider_canary(&enabled, "brave"),
-            Err(ProviderCanaryError::Governance("brave".into()))
+            validate_provider_canary(&enabled, "marginalia"),
+            Err(ProviderCanaryError::Governance("marginalia".into()))
+        );
+    }
+
+    #[test]
+    fn undeclared_provider_canary_stops_at_the_registry_door() {
+        // Configuration validation refuses undeclared names first, so this test
+        // bypasses it on purpose: it declares a source with a governance record
+        // and enables it by hand. Even then the canary cannot reach the network,
+        // because the builtin registry ships no factory for it.
+        let mut config = Config::default();
+        config
+            .providers
+            .declare("unshipped_source", approved_record("unshipped-v1"));
+        config.providers.enabled = vec!["unshipped_source".into()];
+        // The declared source passes the governance-record lookup (declared,
+        // enabled) and still stops at the registry, which carries no factory
+        // for it — a typed error, never a network attempt.
+        assert_eq!(
+            validate_provider_canary(&config, "unshipped_source"),
+            Err(ProviderCanaryError::UnknownProvider(
+                "unshipped_source".into()
+            ))
         );
     }
 
@@ -2150,7 +3408,6 @@ mod tests {
         assert!(summaries
             .iter()
             .any(|summary| summary.name == "custom_archive"));
-        assert!(summaries.iter().any(|summary| summary.name == "brave"));
     }
 
     #[tokio::test]
@@ -2264,6 +3521,78 @@ mod tests {
         // An operator that fixed the cause can close it without a restart.
         service.reset_circuits().await;
         assert!(service.circuit_snapshots().is_empty());
+    }
+
+    #[tokio::test]
+    async fn a_single_search_records_each_provider_outcome_once() {
+        // Regression guard for the double-recording bug: with a threshold of 2,
+        // one failing search must leave the breaker closed. Recording the same
+        // round twice (as the post-merge pass used to) would open it after a
+        // single search, making the breaker eager beyond its configuration.
+        let mut config = archive_config();
+        config.circuit_breaker.failure_threshold = 2;
+        config.circuit_breaker.open_seconds = 600;
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await;
+
+        service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(
+            service.circuit_snapshots()[0].state,
+            crate::CircuitState::Closed,
+            "one failed search must count as one failure, not two"
+        );
+
+        // The second failed search crosses the threshold exactly once.
+        service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(
+            service.circuit_snapshots()[0].state,
+            crate::CircuitState::Open
+        );
+    }
+
+    #[tokio::test]
+    async fn reload_reuses_storage_so_exclusive_locking_survives_a_reload() {
+        // With `locking_mode = "exclusive"` the running service holds the
+        // advisory file lock. A reload that reopened SQLite would deadlock on
+        // that very lock; reusing the running pool must make it succeed.
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!("amatl-reload-{nonce}.sqlite3"));
+        let mut config = Config::default();
+        config.persistence.enabled = true;
+        config.persistence.path = path.display().to_string();
+        config.persistence.locking_mode = crate::config::SqliteLockingMode::Exclusive;
+
+        let service = AmatlService::new(config.clone(), true).await;
+        assert!(service.storage().is_some(), "persistence must be active");
+
+        let reloaded = service
+            .reloaded(config)
+            .await
+            .expect("reload must succeed in exclusive locking mode");
+        assert!(reloaded.storage().is_some());
+
+        // The reloaded service still works against the same database.
+        reloaded
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+
+        drop(reloaded);
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(format!("{}.lock", path.display()));
     }
 
     fn today_iso() -> String {

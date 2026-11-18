@@ -132,13 +132,68 @@ provider esté alcanzable.
 degradada, de modo que un balanceador pueda drenarla sin interpretar el cuerpo:
 
 ```json
-{"schema_version":"1","status":"ok","storage_ok":true,"sources_available":1}
+{"schema_version":"1","status":"ok","storage_ok":true,"sources_available":1,"sources_usable":1}
 ```
 
 El cuerpo es agregado a propósito. Nombres de fuentes, códigos de error y rutas
 describen el despliegue y sólo aparecen en `GET /status`, que exige el scope
 `read`. La persistencia desactivada cuenta como sana; habilitada pero no
-disponible, no.
+disponible, no. Una fuente declarada pero no habilitada es una decisión de
+configuración, no una incidencia: sólo una fuente **habilitada** que esté
+aprobada, disponible y con el circuito cerrado mantiene la instancia lista.
+
+La regla completa, porque el caso ambiguo es justamente el de los orígenes
+declarados y deshabilitados:
+
+| Orígenes **habilitados** | Estado de ésos | `/ready` |
+|---|---|---|
+| Uno o más | Al menos uno aprobado, disponible y con el circuito cerrado | `200` |
+| Uno o más | Ninguno utilizable (no aprobado, no disponible o circuito abierto) | `503` |
+| Ninguno —sólo declarados y deshabilitados— | — | `503` |
+
+Dicho de otro modo: «un origen habilitado y utilizable, con el resto declarado
+y deshabilitado» responde `200`; «ningún origen habilitado» responde `503`,
+porque la instancia no puede buscar. Declarar y deshabilitar orígenes no es una
+incidencia, y tampoco es capacidad.
+
+`sources_available` cuenta los orígenes cuyo estado de superficie es
+`available` —el mismo valor que `GET /status` publica por fuente— y **no** es el
+predicado de readiness: un origen habilitado con el circuito abierto sigue
+contando ahí mientras la instancia responde `503`, de modo que el campo puede
+valer `1` en una respuesta degradada. Automatice sobre el código HTTP o sobre
+`status`, nunca sobre ese contador; cambiar su significado exige revisar los
+consumidores y versionar el contrato.
+
+`sources_usable` es el contador que sí responde «¿puede este origen servir
+ahora mismo?»: aplica el mismo filtro de superficie que `sources_available` y
+además descarta los orígenes con el circuito **abierto** (en cooldown). Nunca
+supera a `sources_available`, así que `sources_available - sources_usable` es
+exactamente cuántos orígenes está saltando un breaker abierto. Es un campo
+aditivo: no cambia `sources_available`, que sigue siendo la misma cantidad que
+publica el gauge `amatl_sources_available`. Una automatización que quiera evitar
+el falso positivo de `sources_available` debe leer `sources_usable`; la sonda de
+readiness sigue siendo el código HTTP o `status`.
+
+Ese contador y el gauge `amatl_sources_available` de `/metrics` son la misma
+cantidad publicada en dos superficies **en un despliegue real**.
+`amatl_sources_declared` cuenta además las fuentes **deshabilitadas**, que
+reportan `unavailable` con `provider_disabled`: por eso `declared − available` no
+es un conteo de incidentes —en un despliegue de un solo origen vale uno por
+configuración— y alertar sobre esa diferencia avisa de una decisión del operador,
+no de una avería. Para incidentes use `amatl_sources_circuit_open` y los gauges de
+peor caso.
+
+Con `amatl serve --mock` las dos superficies **discrepan**, y hay que saber cuál
+mirar: `/ready` informa las fuentes simuladas con las que el servicio busca de
+verdad —en el despliegue mock aislado, `200` con `"sources_available":2`— mientras
+`/metrics` sigue describiendo las fuentes declaradas reales, que en ese modo no
+sirven tráfico (`amatl_sources_declared 2`, `amatl_sources_available 0`). Un
+despliegue mock sano puede por tanto publicar `amatl_sources_available 0`, así que
+no automatice una alerta de caída sobre ese gauge sin excluir el modo mock. La
+divergencia está fijada por
+`mock_deployments_disagree_between_ready_and_the_source_gauges`; alinearla exige
+cambiar el valor de una métrica publicada, y es una decisión del propietario, no
+un arreglo de documentación.
 
 `GET /status` y la herramienta MCP `status` reportan además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
@@ -176,8 +231,8 @@ de un solo operador. Declarar clientes con nombre reparte capacidad:
 
 | Scope | Rutas |
 |---|---|
-| `search` | `POST/GET /search` |
-| `deep` | `POST/GET /deep` |
+| `search` | `POST/GET /search`, `GET /search/batch` |
+| `deep` | `POST /deep` |
 | `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
 | `write` | escritura y borrado en `/history` y `/saved` |
 | `admin` | `/reload`, `/security-events` |
@@ -263,6 +318,40 @@ Es la única vía soportada para operar el interruptor en caliente; editar
 con IA` en la UI web llama a esta misma ruta. Detalle completo del feature en
 `docs/resumen-con-ia.md`.
 
+### Activar o desactivar la búsqueda con modelo (strategist)
+
+`POST /strategist/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) opera
+el mismo patrón exacto que `/answer/enabled`: valida un candidato con el flag
+ya volteado *antes* de escribir, escribe sólo `strategist.enabled` en el
+archivo con `toml_edit` (preserva comentarios) y aplica el cambio con el mismo
+`reload()` atómico sin reiniciar.
+
+Este toggle controla si **el LLM participa en la búsqueda**. Con él apagado
+(el default) `search`/`deep` corren 100% determinísticos — el modelo no
+interviene en absoluto. Con él encendido, el strategist analiza los resultados
+de la primera búsqueda y propone una query refinada que AMATL ejecuta contra
+los providers reales y fusiona por URL canónica (complementa, nunca reordena y
+nunca inventa resultados). El botón `Búsqueda con modelo` en la UI web llama a
+esta misma ruta.
+
+Encenderlo exige una config real y **falla cerrado** si no la hay: `Config`
+rechaza `strategist.enabled = true` sin `endpoint`, `model` y `credential_env`
+válidos, y sin egress de red (perfil standard + `egress = "governed"`). El
+strategist es una capacidad LLM independiente de los embeddings de ranking que
+gobierna `[data_policy].inference`, así que **no requiere** cambiar
+`inference` a `remote_explicit`. La credencial se lee de la variable nombrada
+en `credential_env` en el momento de la llamada; su presencia se reporta en
+`/status` (`strategist.available`) sin exponer el valor.
+
+```toml
+[strategist]
+enabled = false
+endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+model = "deepseek-ai/DeepSeek-V3"
+credential_env = "DEEPINFRA_API_KEY"
+timeout_ms = 800
+```
+
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición
@@ -275,16 +364,22 @@ Prometheus 0.0.4:
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
 | `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
 | `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
-| `amatl_source_available{source}` | gauge | 1 si la fuente declarada está disponible |
-| `amatl_source_success_rate{source}`, `amatl_source_latency_ms{source}` | gauge | valor observado por fuente; sólo aparecen con muestras |
+| `amatl_sources_declared` | gauge | fuentes que declara el despliegue, **incluidas** las deshabilitadas |
+| `amatl_sources_available` | gauge | fuentes declaradas con superficie `available`; es la misma cantidad que `sources_available` en `/ready` |
+| `amatl_sources_circuit_open` | gauge | fuentes declaradas en cooldown de circuito |
+| `amatl_sources_success_rate_min`, `amatl_sources_latency_ms_max` | gauge | peor valor observado entre las fuentes con muestras; sólo aparecen con muestras |
 | `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |
 | `amatl_storage_available` | gauge | 1 si la persistencia local es usable |
-| `amatl_source_circuit_open{source}` | gauge | 1 mientras el circuito de esa fuente está abierto |
 
 Los contadores son monótonos y se reinician con el proceso; las cuantías de
-latencia describen sólo la ventana retenida. Los nombres de fuente aparecen
-como valores de etiqueta: si esos nombres son sensibles en tu despliegue, no
-expongas el puerto fuera del host.
+latencia describen sólo la ventana retenida. `/metrics` es público, así que es
+deliberadamente agregado, igual que `/ready`: **los nombres de fuente no
+aparecen como etiquetas**. Qué fuentes declara y cuáles fallan es información
+interna del despliegue y vive en `/status`, que exige el scope `read`. Las
+etiquetas `cache` restantes son clases internas de caché
+(`provider_search`/`document`), no configuración del operador. El perfil de
+tráfico y latencia sí queda visible sin credencial: si eso importa en tu
+despliegue, no expongas el puerto fuera del host.
 
 ## Estados y degradaciones
 
@@ -301,26 +396,117 @@ documento para una URL bloqueada sin invalidar Search.
 ## Canario de provider real
 
 El canario ejecuta exactamente un provider y falla antes de acceder a la red si
-el nombre no está habilitado, la ficha de gobernanza no está aprobada/vigente o
-falta la variable de credencial declarada. Para Marginalia, usa sólo una key
-genuina y vigente emitida al operador; la presencia de `MARGINALIA_API_KEY` no
-prueba que sea válida. No uses consultas sensibles: el resultado JSON se
-conserva en el log del operador.
+el nombre no está habilitado, el provider no está registrado o no admite canario
+de red, la ficha de gobernanza no está aprobada/vigente, o falta la variable de
+credencial declarada. Para Marginalia, usa sólo una key genuina y vigente
+emitida al operador; la presencia de `MARGINALIA_API_KEY` no prueba que sea
+válida. No uses consultas sensibles: el resultado JSON se conserva en el log del
+operador.
+
+**Un canario que termina en `success` sí generó tráfico saliente**: esa es su
+función (un proveedor no se valida sin una llamada real). Lo que no produce
+tráfico es el rechazo: cuando la preflight del canario o la validación de
+`amatl.toml` fallan, el comando sale con `exit=1` antes de conectar.
+
+Que el canario pueda llegar a la red lo decide **`[data_policy]`, no el
+canario**. `allows_network_egress()` es verdadero sólo con un perfil distinto de
+`isolated` **y** `egress = "governed"`. Dos consecuencias que cuestan tiempo si
+no se conocen:
+
+- **Sin `[data_policy]` no hay red.** Omitir la sección deja `egress` en `deny`
+  por defecto, así que el canario responde `provider_not_approved` y nunca llega
+  a conectar. No es un problema de ficha ni de instancia: falta la sección.
+- **`isolated` no llega a ejecutarse como canario.** `Config::load_optional()`
+  aplica `Config::validate()`, que rechaza la combinación «provider habilitado +
+  egress denegado» antes de que el subcomando corra
+  (`invalid result policy: providers cannot be enabled while network egress is
+  denied`), con `error_code=configuration_invalid` y `exit=1`. Por eso el código
+  `egress_denied` de la preflight (`validate_provider_canary_with`) no es
+  observable desde el CLI: el archivo se rechaza antes de llegar a ella. La
+  preflight sigue siendo la defensa en profundidad para cualquier llamador
+  embebido en `amatl-core` que no pase por la CLI.
 
 ```bash
 amatl --config-file amatl.toml \
-  provider-canary brave "rust programming language" --json
+  provider-canary marginalia "rust" --json
 ```
 
-Para Marginalia, ejecuta una sola consulta canario y comprueba que el resultado
-incluya `marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`,
-detén reintentos, espera la ventana de cuota y revisa el plan o la key en el
-portal del provider; ese estado no confirma autenticación.
+Cada rechazo sale con `exit=1` e imprime `error_code=<código>` en stderr. Para
+distinguir por qué falló, sin leer el texto libre:
+
+| Situación | `error_code` | ¿Tráfico? |
+| --- | --- | --- |
+| Nombre no declarado en `providers.enabled` | `configuration_invalid` | no |
+| Declarado pero no habilitado | `provider_not_enabled` | no |
+| Habilitado pero no registrado en el registry | `provider_not_registered` | no |
+| Sin canario de red autorizado para ese provider | `provider_network_blocked` | no |
+| Habilitado, ficha incompleta o vencida (>90 días) | `provider_not_approved` | no |
+| Falta la variable de credencial (sólo fuentes que exigen key, como Marginalia) | `provider_credential_missing` | no |
+| Llegó al proveedor y falló (429, 503, timeout, cuerpo inválido) | el código del upstream (`provider_rate_limit`, `provider_unavailable`, `provider_timeout`, `provider_invalid_response`) | **sí** |
+
+El último renglón es la distinción operativa importante: un fallo del proveedor
+después de la llamada **ya consumió** cuota y quedó registrado en el upstream.
+
+**Marginalia es la única fuente servida.** El canario comprueba que la ficha
+está aprobada y vigente, que la fuente está registrada y que existe el valor de
+`MARGINALIA_API_KEY`; la presencia de la variable no prueba que la key sea
+válida. Ejecuta una sola consulta canario y comprueba que el resultado incluya
+`marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`, detén
+reintentos, espera la ventana de cuota y revisa el plan o la key en el portal del
+provider; ese estado no confirma autenticación.
 
 En GitHub, el workflow manual `provider-canary` usa el environment homónimo para
 aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML completo
-ya aprobado y `BRAVE_API_KEY` o `MOJEEK_API_KEY`; nunca se ejecuta en `push` ni
-en pull requests.
+ya aprobado y el secreto `MARGINALIA_API_KEY`; nunca se ejecuta en `push` ni en
+pull requests.
+
+### Comprobar que los nombres retirados siguen cerrados
+
+Con el registro reducido a Marginalia (ver ADR-016, ADR-019 y
+`docs/gobernanza-providers.md`), el canario sirve además para verificar que
+ningún nombre retirado vuelve por configuración. Los dos casos fallan **antes de
+cualquier intento de red**, con `exit=1` y `error_code=configuration_invalid`:
+
+```bash
+# providers.enabled = ["unshipped_source"], sin tabla declarada
+$ amatl --config-file retired.toml provider-canary unshipped_source rust
+invalid result policy: unknown enabled provider 'unshipped_source'
+
+# [providers.unshipped_source] completo y aprobado declarado a mano
+$ amatl --config-file retired-declared.toml provider-canary unshipped_source rust
+invalid result policy: unknown enabled provider 'unshipped_source'
+```
+
+Verificado el 2026-10-26 con una instancia SearXNG viva como control positivo del
+mecanismo de retiro (la fuente se retiró después; el registro de gobernanza, ver
+`docs/gobernanza-providers.md`). Los tres mensajes de rechazo son deliberadamente
+distintos —`provider_not_enabled` para una fuente declarada pero no habilitada,
+`provider_not_approved` para una habilitada cuya ficha de gobernanza está
+incompleta, y el error de política para un nombre retirado— y **sólo el
+`success`** del control positivo generó tráfico; los tres rechazos no conectan.
+
+### Canario de Marginalia en un despliegue real
+
+La única fuente servida exige una key **genuina, vigente y emitida para el
+operador** por Marginalia. No uses consultas sensibles: el resultado JSON se
+conserva en el log del operador.
+
+```bash
+export MARGINALIA_API_KEY=...
+# con [data_policy] y la ficha ya configuradas (ver «Canario de provider real»):
+amatl --config-file amatl.toml provider-canary marginalia "rust" --json
+```
+
+La ficha de gobernanza del provider sigue necesitando aprobación en
+`amatl.toml`; un `status: success` con resultados utilizables es la única señal
+de que la key y la cuota funcionan.
+
+En el mismo despliegue, `/ready` responde `200` con `"sources_available":1`,
+`/status` responde `ok` listando **exactamente una fuente** (`marginalia`), y
+`/metrics` publica `amatl_sources_declared 1` / `amatl_sources_available 1`. Al
+escribir la tabla `[providers.<nombre>]` hay que reescribir la ficha completa: la
+tabla reemplaza el expediente incorporado entero en vez de fusionarse campo a
+campo (ver `docs/configuracion.md`).
 
 ## SQLite y caché
 

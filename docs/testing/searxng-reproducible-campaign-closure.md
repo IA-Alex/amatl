@@ -51,16 +51,16 @@ anteriores eran atribuibles a un defecto en AMATL o en el runner.
 
 - SearXNG local operativo y accesible en `127.0.0.1:8888` (contenedor
   `searxng`, red `host`, `HTTP 200` en raíz).
-- Los motores web generales estaban deshabilitados salvo `duckduckgo`, que
+- Los motores web generales estaban deshabilitados salvo `engine-a`, que
   ya venía habilitado en producción desde el 2026-08-18 (ver comentario en
   `settings.yml`, no fue una activación introducida por esta investigación).
-- Se realizó una consulta directa contra SearXNG con `duckduckgo`
+- Se realizó una consulta directa contra SearXNG con `engine-a`
   habilitado: `HTTP 200`, `results=0`, motor reportando `access denied`.
 - No se ejecutó AMATL después de esa consulta directa fallida.
 - No se ejecutó una segunda campaña tras el diagnóstico.
 - No se demostró defecto en AMATL ni en el runner: el comportamiento
   observado es consistente con bloqueo/denegación de acceso en el motor
-  externo (`duckduckgo`), no con un error de construcción de solicitud,
+  externo (`engine-a`), no con un error de construcción de solicitud,
   parseo o ejecución por parte de AMATL o del runner.
 
 ## E. Interpretación
@@ -90,13 +90,13 @@ trabajo independiente, fuera de esta fase.
 
 ## Rollback aplicado al cierre
 
-Se revirtió exclusivamente la línea `disabled` del motor `duckduckgo` en el
+Se revirtió exclusivamente la línea `disabled` del motor `engine-a` en el
 `settings.yml` efectivo del contenedor `searxng` (`false → true`), restaurando
 byte a byte el estado capturado en `/tmp/settings_now.yml`
 (sha256 `3eae24fa315f4f4b06b769ee582c56d7ea4c2fd0f85d6ef70f2c489e7c916a63`,
 verificado exacto tras el rollback). Se reinició el contenedor para aplicar
 el cambio. Tras el reinicio: contenedor `Up`, `HTTP 200` en raíz,
-`/config` reporta `duckduckgo.enabled=false`. No se ejecutó `/search` ni
+`/config` reporta `engine-a.enabled=false`. No se ejecutó `/search` ni
 ninguna otra consulta después del rollback.
 
 ## Preservación de evidencia

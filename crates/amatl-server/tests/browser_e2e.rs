@@ -5,9 +5,12 @@
 //! keyboard-navigable, that the empty and degraded states are reachable — is
 //! only observable in a real browser. Nothing below stubs the DOM.
 //!
-//! These tests are gated exactly like `trafilatura_integration`: they are inert
-//! unless `AMATL_BROWSER_E2E=1` and a WebDriver endpoint are both present, so a
-//! checkout without a driver still passes `cargo test --workspace`.
+//! These tests are gated exactly like `trafilatura_integration`: without
+//! `AMATL_BROWSER_E2E=1` they are inert, so a checkout without a driver still
+//! passes `cargo test --workspace`. Once opted in, they are **fail-closed**: a
+//! missing, unreachable, or version-mismatched WebDriver fails the run instead
+//! of skipping green — a mismatch (e.g. a chromedriver that cannot drive the
+//! installed Chrome) must never look like a pass.
 //!
 //! Running them locally:
 //!
@@ -61,14 +64,35 @@ async fn spawn_server() -> u16 {
     panic!("server did not start on port {port}");
 }
 
-/// Connect a headless browser, or skip when no driver is reachable.
-async fn browser() -> Option<Client> {
+/// Connect a headless browser for an opted-in run.
+///
+/// Only called once [`enabled`] is true, i.e. the run declared it wants real
+/// browser coverage. At that point a missing or unusable driver is a **hard
+/// failure**, not a skip: an absent driver, a driver that fails to create a
+/// session, or — the case this guards — a driver whose version cannot drive the
+/// installed browser, must fail the run instead of reporting a green skip while
+/// testing nothing. A driver-less checkout stays green by never opting in
+/// (no `AMATL_BROWSER_E2E=1`), which is the only legitimate skip.
+async fn browser() -> Client {
+    let mut options = serde_json::Map::new();
+    options.insert(
+        "args".into(),
+        serde_json::json!(["--headless=new", "--no-sandbox", "--disable-gpu"]),
+    );
+    // Chromedriver discovers the browser through the platform's default path,
+    // which on a CI runner is the *preinstalled* Chrome — not necessarily the
+    // version the job pinned. When the workflow installs a specific Chrome and
+    // points `AMATL_BROWSER_BIN` at it, launch that binary so the pair the job
+    // verified is the pair the tests drive.
+    if let Ok(binary) = std::env::var("AMATL_BROWSER_BIN") {
+        if !binary.is_empty() {
+            options.insert("binary".into(), serde_json::Value::String(binary));
+        }
+    }
     let mut capabilities = serde_json::Map::new();
     capabilities.insert(
         "goog:chromeOptions".into(),
-        serde_json::json!({
-            "args": ["--headless=new", "--no-sandbox", "--disable-gpu"]
-        }),
+        serde_json::Value::Object(options),
     );
     // A plain HTTP connector, not a TLS one: WebDriver runs on loopback, and
     // `ClientBuilder::rustls()` would additionally require a process-wide
@@ -80,11 +104,14 @@ async fn browser() -> Option<Client> {
         .connect(&webdriver_url())
         .await
     {
-        Ok(client) => Some(client),
-        Err(error) => {
-            eprintln!("skipping: no WebDriver at {}: {error}", webdriver_url());
-            None
-        }
+        Ok(client) => client,
+        Err(error) => panic!(
+            "AMATL_BROWSER_E2E=1 was set but no usable WebDriver could be reached at {}: {error}. \
+             Start a chromedriver matching the installed Chrome (a version mismatch reports \
+             'cannot find Chrome binary' / 'only supports Chrome version N'), or unset \
+             AMATL_BROWSER_E2E to skip the browser suite entirely.",
+            webdriver_url()
+        ),
     }
 }
 
@@ -105,9 +132,7 @@ async fn search_renders_results_in_a_real_browser() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -149,9 +174,7 @@ async fn the_search_flow_is_reachable_by_keyboard_alone() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -176,9 +199,7 @@ async fn an_empty_result_set_renders_its_own_state() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -219,9 +240,7 @@ async fn the_ui_has_no_automatically_detectable_accessibility_violations() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client
         .goto(&format!("http://127.0.0.1:{port}/"))
@@ -284,9 +303,7 @@ async fn the_layout_holds_at_a_narrow_viewport() {
         return;
     }
     let port = spawn_server().await;
-    let Some(client) = browser().await else {
-        return;
-    };
+    let client = browser().await;
 
     client.set_window_size(360, 720).await.unwrap();
     client
@@ -305,6 +322,198 @@ async fn the_layout_holds_at_a_narrow_viewport() {
         .as_bool()
         .unwrap_or(true);
     assert!(!overflows, "the page scrolls horizontally at 360px");
+
+    client.close().await.unwrap();
+}
+
+#[tokio::test]
+async fn switching_interface_language_updates_language_and_primary_copy() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    client
+        .execute(
+            "const select = document.getElementById('ui-language'); \
+             select.value = 'es'; \
+             select.dispatchEvent(new Event('change', { bubbles: true }));",
+            vec![],
+        )
+        .await
+        .unwrap();
+
+    let language = client
+        .execute("return document.documentElement.lang;", vec![])
+        .await
+        .unwrap();
+    assert_eq!(language.as_str(), Some("es"));
+
+    let heading = client
+        .find(Locator::Id("search-heading"))
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    assert_eq!(heading, "Busquemos");
+
+    let mode_help = client
+        .find(Locator::Id("search-mode-help"))
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    assert!(mode_help.contains("Buscar"));
+
+    client.close().await.unwrap();
+}
+
+/// The `hidden` attribute is the single mechanism the JS uses to show and hide
+/// panels, but a component that sets its own `display:` (flex / inline-flex /
+/// inline-block) beats the UA `[hidden] { display: none }` unless the author
+/// stylesheet restores `hidden`. The source selector, the Marginalia credential
+/// row, and a fragment's signal chips are all toggled this way, so each must
+/// compute to `display: none` the instant `element.hidden` is true. This runs in
+/// a real browser because only the computed style reveals the cascade winner.
+#[tokio::test]
+async fn hidden_attribute_collapses_the_panels_it_hides() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    // Open the collapsed filter `<details>` and force-render a Deep fragment so
+    // every probed element exists in the live DOM (fragment chips start inside
+    // a `<template>`, which is not a rendered node).
+    client
+        .execute(
+            "document.querySelector('details.filters').open = true; \
+             const tpl = document.getElementById('fragment-template').content.cloneNode(true); \
+             document.body.appendChild(tpl);",
+            vec![],
+        )
+        .await
+        .unwrap();
+
+    let report = client
+        .execute(
+            "const selectors = { \
+                 credentialActions: '#credential-actions', \
+                 marginaliaGroup: '#marginalia-credential-group', \
+                 fragmentSignals: '.fragment-signals' \
+             }; \
+             const out = {}; \
+             for (const [name, sel] of Object.entries(selectors)) { \
+                 const el = document.querySelector(sel); \
+                 if (!el) { out[name] = 'missing'; continue; } \
+                 const before = el.hidden; \
+                 el.hidden = true; \
+                 out[name] = getComputedStyle(el).display; \
+                 el.hidden = before; \
+             } \
+             return JSON.stringify(out);",
+            vec![],
+        )
+        .await
+        .unwrap();
+    let computed = report.as_str().unwrap_or("{}");
+    let parsed: serde_json::Value = serde_json::from_str(computed).unwrap_or_default();
+    for name in ["credentialActions", "marginaliaGroup", "fragmentSignals"] {
+        assert_eq!(
+            parsed.get(name).and_then(|value| value.as_str()),
+            Some("none"),
+            "{name} stayed visible while hidden=true (computed: {computed})"
+        );
+    }
+
+    client.close().await.unwrap();
+}
+
+/// With no strategist configured there is nothing to enable, so the whole
+/// "model" row (`#model-options`) must stay collapsed instead of presenting a
+/// dead checkbox under the search box. `spawn_server` builds the default config,
+/// where the strategist has no endpoint/model, so `/status` reports
+/// `configured: false` and the JS hides the row.
+///
+/// This runs in a real browser because only the computed style proves the hide
+/// actually engaged: the row sets `display: flex`, which beats the UA
+/// `[hidden] { display: none }` unless the author stylesheet restores it — and
+/// an element that is `hidden` but still paints is exactly the regression this
+/// guards.
+#[tokio::test]
+async fn model_toggle_is_hidden_when_the_strategist_is_not_configured() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    // `/status` resolves asynchronously after load, so poll for the JS to apply
+    // the gate rather than reading the first paint.
+    wait_for(&client, Locator::Css("#model-options[hidden]")).await;
+
+    let report = client
+        .execute(
+            "const el = document.getElementById('model-options'); \
+             const toggle = document.getElementById('strategist-enabled-toggle'); \
+             return JSON.stringify({ \
+                 hidden: el.hidden, \
+                 display: getComputedStyle(el).display, \
+                 height: el.offsetHeight, \
+                 toggleDisabled: toggle.disabled, \
+                 toggleChecked: toggle.checked \
+             });",
+            vec![],
+        )
+        .await
+        .unwrap();
+    let parsed: serde_json::Value =
+        serde_json::from_str(report.as_str().unwrap_or("{}")).unwrap_or_default();
+
+    assert_eq!(
+        parsed.get("hidden").and_then(|v| v.as_bool()),
+        Some(true),
+        "the model row stayed visible with the strategist unconfigured: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("display").and_then(|v| v.as_str()),
+        Some("none"),
+        "the model row is hidden but still paints (display: flex wins): {parsed}"
+    );
+    assert_eq!(
+        parsed.get("height").and_then(|v| v.as_i64()),
+        Some(0),
+        "the model row occupies layout space while hidden: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("toggleDisabled").and_then(|v| v.as_bool()),
+        Some(true),
+        "the toggle should be disabled with the strategist unconfigured: {parsed}"
+    );
+    assert_eq!(
+        parsed.get("toggleChecked").and_then(|v| v.as_bool()),
+        Some(false),
+        "a disabled toggle must never read as switched on: {parsed}"
+    );
 
     client.close().await.unwrap();
 }

@@ -11,6 +11,17 @@ failure. Everything else in the phase completed.
 
 All numbers below come from executed commands / tests on this machine.
 
+> **Status update — 2026-10-25: quarantined.** The stack this document describes
+> no longer lives in `crates/amatl-core/src/experimental_embeddings/`. It moved
+> unchanged to `experiments/local-embeddings-boundary/`, a crate excluded from
+> the workspace with its own `Cargo.lock`, because `candle-core 0.9.2` depends on
+> `zip ^7.2.0` and `zip < 9.0.0` carries RUSTSEC-2026-0367/-0368/-0369. The
+> measurements below are historical and unchanged. The
+> `cargo ... -p amatl-core --features experimental-local-embeddings` commands
+> were valid while the stack was in the workspace; run them today from
+> `experiments/local-embeddings-boundary` without the feature flag. See
+> `docs/security/supply-chain.md`.
+
 ---
 
 ## 1. Precheck
@@ -95,7 +106,7 @@ thing standing between "full amatl musl + Candle" and a green build is the
 
 `EXPERIMENTAL_FEATURE_OR_BOUNDARY` =
 `amatl-core` cargo feature **`experimental-local-embeddings`** (off by
-default) → `crates/amatl-core/src/experimental_embeddings.rs`.
+default) → `crates/amatl-core/src/experimental_embeddings/mod.rs`.
 
 | invariant | how it holds |
 |---|---|
@@ -197,7 +208,7 @@ why the decision below is **`_WITH_OPTIMIZATION`**, not plain acceptable.
 `LATENCY_BUDGET_SOURCE`: **AMATL defines no latency/SLO target.**
 `docs/benchmarks.md` states its numbers are "evidence for one controlled
 machine, not a production SLA". The only hard bound is the **30 000 ms request
-deadline** (`docs/api/openapi.yaml`, `config` `request_timeout_ms`), which is a
+deadline** (`crates/amatl-server/openapi.yaml`, `config` `request_timeout_ms`), which is a
 timeout ceiling, not a budget.
 
 `LATENCY_DECISION` = **`LATENCY_COST_ACCEPTABLE_WITH_OPTIMIZATION`**
@@ -268,7 +279,7 @@ All three hashes are identical to `candle-musl-feasibility.md` §3.
 
 ## 8. Failure tests
 
-`crates/amatl-core/src/experimental_embeddings.rs` unit tests +
+`crates/amatl-core/src/experimental_embeddings/` unit tests +
 `experimental_embedding_latency::seam_failure_modes_fall_back_to_bounded_semantic`
 (runs in the default, non-ignored feature build):
 

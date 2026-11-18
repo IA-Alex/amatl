@@ -16,6 +16,7 @@ mod persistence;
 mod providers;
 mod ranking;
 mod server;
+mod strategist;
 mod telemetry;
 
 pub use data_policy::*;
@@ -26,6 +27,7 @@ pub use persistence::*;
 pub use providers::*;
 pub use ranking::*;
 pub use server::*;
+pub use strategist::*;
 pub use telemetry::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -39,6 +41,7 @@ pub struct Config {
     pub data_policy: DataPolicyConfig,
     pub inference: InferenceConfig,
     pub answer: AnswerConfig,
+    pub strategist: StrategistConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -202,10 +205,73 @@ impl Default for Config {
             circuit_breaker: crate::circuit::CircuitPolicy::default(),
             cache: CacheConfig::default(),
             telemetry: TelemetryConfig::default(),
+            strategist: StrategistConfig::default(),
             deep: DeepConfig::default(),
             server: ServerConfig::default(),
         }
     }
+}
+
+/// Render and write a configuration document atomically.
+///
+/// Writes to a sibling temp file, fsyncs, then renames over the target. A
+/// reader — including a concurrent `POST /reload` — therefore never observes a
+/// truncated file, and a crash mid-write cannot corrupt the only copy the way a
+/// truncating `std::fs::write` can.
+///
+/// The rename publishes the *temp* file's permissions, so this also carries the
+/// target's own mode across: an operator who hardened the file (`chmod 600
+/// amatl.toml`) must not have it widened back to the umask default — typically
+/// `0644` — just because an admin endpoint flipped one field. The temp file is
+/// created private and only takes that mode immediately before the rename, so
+/// configuration is never group- or world-readable while it is being written.
+/// A target that does not exist yet stays private (`0600`).
+pub(crate) fn write_config_document(
+    path: &Path,
+    document: &toml_edit::DocumentMut,
+) -> Result<(), ConfigError> {
+    use std::io::Write;
+    let temp = path.with_extension(format!("tmp.{}", std::process::id()));
+    let mut file = std::fs::File::create(&temp)?;
+    set_private_mode(&temp)?;
+    file.write_all(document.to_string().as_bytes())?;
+    file.sync_all()?;
+    copy_target_mode(path, &temp)?;
+    std::fs::rename(&temp, path)?;
+    Ok(())
+}
+
+/// Restrict `path` to owner-only access.
+#[cfg(unix)]
+fn set_private_mode(path: &Path) -> Result<(), ConfigError> {
+    use std::os::unix::fs::PermissionsExt;
+    std::fs::set_permissions(path, std::fs::Permissions::from_mode(0o600))?;
+    Ok(())
+}
+
+#[cfg(not(unix))]
+fn set_private_mode(_path: &Path) -> Result<(), ConfigError> {
+    Ok(())
+}
+
+/// Give `temp` the mode `target` already has, so the rename that publishes it
+/// is not also a permission change. A target that does not exist yet keeps
+/// `temp`'s private mode.
+#[cfg(unix)]
+fn copy_target_mode(target: &Path, temp: &Path) -> Result<(), ConfigError> {
+    use std::os::unix::fs::PermissionsExt;
+    let mode = match std::fs::metadata(target) {
+        Ok(metadata) => metadata.permissions().mode() & 0o7777,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => 0o600,
+        Err(error) => return Err(error.into()),
+    };
+    std::fs::set_permissions(temp, std::fs::Permissions::from_mode(mode))?;
+    Ok(())
+}
+
+#[cfg(not(unix))]
+fn copy_target_mode(_target: &Path, _temp: &Path) -> Result<(), ConfigError> {
+    Ok(())
 }
 
 impl Config {
@@ -253,7 +319,7 @@ impl Config {
             document[section] = toml_edit::Item::Table(toml_edit::Table::new());
         }
         document[section][key] = toml_edit::value(value);
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -298,7 +364,7 @@ impl Config {
                 .expect("already_present implies a match");
             array.remove(index);
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -372,7 +438,7 @@ impl Config {
             *table.decor_mut() = existing.decor().clone();
         }
         current.insert(leaf, toml_edit::Item::Table(table));
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -414,6 +480,7 @@ impl Config {
         }
         self.validate_inference()?;
         self.validate_answer()?;
+        self.validate_strategist()?;
         self.validate_execution()?;
         self.validate_persistence()?;
         self.validate_ranking_policies()?;
@@ -496,6 +563,24 @@ impl Config {
 
         self.validate_server(bind)?;
         Ok(())
+    }
+
+    /// Validate the HTTP server section against the address this process is
+    /// actually listening on, rather than the one the document declares.
+    ///
+    /// [`Self::validate`] can only see `server.bind` as written in the file,
+    /// but `--bind`/`--port` override the file at startup and are never written
+    /// back to it: the process then serves an address the document does not
+    /// mention, and the document is free to describe a listener that does not
+    /// exist. Checking a would-be configuration against the effective address
+    /// closes that gap — a document declaring `127.0.0.1` while the process
+    /// serves `0.0.0.0` can no longer carry `no_auth = true` (or drop the TLS
+    /// pair) and be applied as an unauthenticated service on every interface.
+    ///
+    /// Used by `amatl-server` wherever a configuration is about to be accepted
+    /// into a running process: `AppState::reload` and the `[server]` patch.
+    pub fn validate_server_for_listener(&self, bind: std::net::IpAddr) -> Result<(), ConfigError> {
+        self.validate_server(bind)
     }
 }
 
@@ -597,7 +682,9 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        assert!(!config.providers.get("brave").unwrap().approved());
+        // Only the sanctioned source ships a record, so nothing else can be
+        // enabled from a stale file without failing validation.
+        assert!(config.providers.get("marginalia").is_some());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -652,7 +739,9 @@ mod tests {
         assert_eq!(config.expansion.mode, ExpansionMode::Legacy);
         assert!(!config.expansion.role_model_active());
         assert_eq!(config.expansion.primary_provider, "marginalia");
-        assert_eq!(config.expansion.expansion_providers, ["searxng"]);
+        // Marginalia is the only shipped source, so no expansion source exists
+        // to name by default: the list ships empty.
+        assert!(config.expansion.expansion_providers.is_empty());
         assert!(config.validate().is_ok());
     }
 
@@ -660,7 +749,15 @@ mod tests {
     fn expansion_primary_expansion_mode_validates_declared_roles() {
         let mut config = Config::default();
         config.expansion.mode = ExpansionMode::PrimaryExpansion;
-        assert!(config.validate().is_ok());
+        // PrimaryExpansion needs a second, distinct source for the expansion
+        // role; none ships, so the operator must declare and register one. A
+        // hand-built config that names the primary as its own expansion is
+        // rejected below.
+        config.expansion.expansion_providers = vec!["marginalia".into()];
+        assert!(config.validate().is_err());
+
+        config.expansion.expansion_providers = vec!["not_a_provider".into()];
+        assert!(config.validate().is_err());
 
         config.expansion.primary_provider = "not_a_provider".into();
         assert!(config.validate().is_err());
@@ -678,9 +775,11 @@ mod tests {
         empty.expansion.expansion_providers = vec![];
         assert!(empty.validate().is_err());
 
+        // A repeated name is rejected before the "is it declared" check, so the
+        // same declared source twice is enough to exercise the duplicate path.
         let mut repeated = Config::default();
-        repeated.expansion.mode = ExpansionMode::PrimaryExpansion;
-        repeated.expansion.expansion_providers = vec!["searxng".into(), "searxng".into()];
+        repeated.expansion.primary_provider = "marginalia".into();
+        repeated.expansion.expansion_providers = vec!["marginalia".into(), "marginalia".into()];
         assert!(repeated.validate().is_err());
     }
 
@@ -688,7 +787,7 @@ mod tests {
     fn denied_egress_rejects_network_providers_and_remote_inference() {
         let mut provider = Config::default();
         provider.data_policy.egress = EgressPolicy::Deny;
-        provider.providers.enabled = vec!["brave".into()];
+        provider.providers.enabled = vec!["marginalia".into()];
         assert!(provider.validate().is_err());
 
         let mut inference = Config::default();
@@ -700,7 +799,7 @@ mod tests {
 
     #[test]
     fn rejects_unknown_provider_names_including_case_and_whitespace_typos() {
-        for unknown in ["Brave", "brave ", "custom"] {
+        for unknown in ["SearXNG", "searxng ", "custom"] {
             let mut config = Config::default();
             config.providers.enabled = vec![unknown.into()];
             let error = config.validate().unwrap_err().to_string();
@@ -757,44 +856,29 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
-    /// Locks in a policy decision, not just a paperwork gap: Brave and
-    /// Mojeek are `Rejected`, with the reason stated in `cost_model`/
-    /// `operational_risk`, precisely so a future review — human or
-    /// automated — reads a closed "no" instead of an incomplete dossier
-    /// inviting completion. If this regresses to `Draft`, that decision was
-    /// silently lost.
+    /// Locks in a policy decision, not just a paperwork gap: only the sanctioned
+    /// source ships a governance record, and naming any other source in
+    /// `providers.enabled` fails validation rather than silently running with
+    /// fewer sources than the file appears to declare.
     #[test]
-    fn paid_providers_are_rejected_by_default_not_merely_draft() {
+    fn unshipped_providers_are_absent_and_refused_by_validate() {
         let config = Config::default();
-        for name in ["brave", "mojeek"] {
-            let record = config.providers.get(name).unwrap();
-            assert_eq!(
-                record.approval_status,
-                ApprovalStatus::Rejected,
-                "{name} must stay Rejected, not Draft: it requires a paid plan and \
-                 operator policy excludes paid providers"
-            );
-            assert!(
-                !record.approved(),
-                "{name} must never pass the approval gate"
-            );
-            assert!(
-                record
-                    .operational_risk
-                    .as_deref()
-                    .is_some_and(|value| value.contains("operator policy")),
-                "{name}'s rejection reason must stay explicit, not silently blanked"
-            );
-        }
-        // The two free sources stay eligible for approval — only their
-        // operator-specific identity/date fields are missing, not the
-        // decision itself.
-        for name in ["searxng", "marginalia"] {
-            assert_eq!(
-                config.providers.get(name).unwrap().approval_status,
-                ApprovalStatus::Draft
-            );
-        }
+        assert!(config.providers.get("marginalia").is_some());
+        assert!(config.providers.get("searxng").is_none());
+
+        // Enabling an unshipped name is refused.
+        let mut enabled = Config::default();
+        enabled.providers.enabled = vec!["not_shipped".into()];
+        let error = enabled.validate().unwrap_err().to_string();
+        assert!(error.contains("unknown enabled provider"), "{error}");
+        assert!(error.contains("not_shipped"), "{error}");
+
+        // The one sanctioned source stays eligible for approval — only its
+        // operator-specific identity/date fields are missing, not the decision.
+        assert_eq!(
+            config.providers.get("marginalia").unwrap().approval_status,
+            ApprovalStatus::Draft
+        );
     }
 
     #[test]
@@ -808,15 +892,15 @@ mod tests {
             adapter_version = "custom-v1"
             credential_env = "CUSTOM_ARCHIVE_TOKEN"
 
-            [providers.brave]
-            adapter_version = "brave-pinned"
+            [providers.custom_news]
+            adapter_version = "custom-news-v1"
             "#,
         )
         .unwrap();
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec!["brave", "custom_archive", "marginalia", "mojeek", "searxng"]
+            vec!["custom_archive", "custom_news", "marginalia"]
         );
         assert_eq!(
             config
@@ -828,11 +912,99 @@ mod tests {
             Some("CUSTOM_ARCHIVE_TOKEN")
         );
         assert_eq!(
-            config.providers.get("brave").unwrap().adapter_version,
-            Some("brave-pinned".into())
+            config.providers.get("custom_news").unwrap().adapter_version,
+            Some("custom-news-v1".into())
         );
-        assert!(config.providers.is_declared("mojeek"));
+        // The merged records keep only the shipped source: adding a custom
+        // source must not resurrect anything else.
+        assert!(config.providers.is_declared("marginalia"));
         assert!(!config.providers.storage_rights("custom_archive"));
+    }
+
+    /// Declaring a table for an already-declared source **replaces** its record,
+    /// it does not merge field by field: the wire struct is `#[serde(default)]`,
+    /// so every key the table omits falls back to `None`/`false` instead of
+    /// keeping the built-in value.
+    ///
+    /// This is the trap the runtime smoke test walked into: a `[providers.marginalia]`
+    /// table carrying only `approval_status`, `reviewed_at` and `reviewer` looked
+    /// approved but dropped `terms_url`, `credential_env`, … so the gate in
+    /// `ProviderRuntimeConfig::approved_on` closed and the source silently
+    /// reported `provider_not_approved`. The fix is to restate the whole ficha,
+    /// as `docs/gobernanza-providers.md` already shows.
+    #[test]
+    fn declaring_a_table_replaces_the_builtin_record_instead_of_merging_it() {
+        // The gate is date-bounded (≤ 90 days), so the ficha is built against
+        // today instead of a literal that would rot.
+        let today = time::OffsetDateTime::now_utc().date();
+        let today = format!(
+            "{:04}-{:02}-{:02}",
+            today.year(),
+            u8::from(today.month()),
+            today.day()
+        );
+        let partial = Config::from_toml(&format!(
+            r#"
+            [providers]
+            enabled = ["marginalia"]
+
+            [providers.marginalia]
+            approval_status = "approved"
+            reviewed_at = "{today}"
+            reviewer = "smoke"
+            "#,
+        ))
+        .unwrap();
+        assert!(partial.validate().is_ok(), "the file is valid TOML");
+        let record = partial.providers.get("marginalia").unwrap();
+        assert_eq!(record.adapter_version, None, "the built-in value is gone");
+        assert_eq!(record.terms_url, None, "the built-in value is gone");
+        assert_eq!(record.credential_env, None, "the built-in value is gone");
+        assert!(
+            !record.approved(),
+            "an approved status without the rest of the ficha does not open the gate"
+        );
+
+        // Restating the whole ficha — the documented recipe — does approve.
+        let complete = Config::from_toml(&format!(
+            r#"
+            [providers]
+            enabled = ["marginalia"]
+
+            [providers.marginalia]
+            adapter_version = "marginalia-v1"
+            approval_status = "approved"
+            reviewed_at = "{today}"
+            reviewer = "smoke"
+            terms_url = "https://www.marginalia.nu/"
+            terms_version_or_date = "self-certified"
+            allowed_access_method = "official_api"
+            plan_or_contract = "smoke"
+            rate_limit = "smoke"
+            cost_model = "0"
+            data_handling_notes = "smoke"
+            operational_risk = "smoke"
+            "#,
+        ))
+        .unwrap();
+        let record = complete.providers.get("marginalia").unwrap();
+        assert!(!record.storage_rights, "omitted keys are dropped too");
+        assert!(
+            record.approved(),
+            "a complete ficha must open the gate; the smoke test observed this"
+        );
+
+        // A table for another source must not disturb this one: the map still
+        // merges, only the per-name record is replaced.
+        assert_eq!(
+            complete
+                .providers
+                .get("marginalia")
+                .unwrap()
+                .adapter_version
+                .as_deref(),
+            Some("marginalia-v1")
+        );
     }
 
     #[test]
@@ -840,7 +1012,7 @@ mod tests {
         let mut config = Config::default();
         config
             .providers
-            .declare("Brave Search", ProviderRuntimeConfig::default());
+            .declare("SearXNG Mirror", ProviderRuntimeConfig::default());
         let error = config.validate().unwrap_err().to_string();
         assert!(error.contains("invalid provider name"), "{error}");
     }
@@ -1016,6 +1188,35 @@ mod tests {
         let mut rate_limit = Config::default();
         rate_limit.server.rate_limit_per_minute = u32::MAX;
         assert!(rate_limit.validate().is_err());
+    }
+
+    #[test]
+    fn relative_deep_program_paths_are_rejected() {
+        // `./trafilatura` and `packaging/...` are resolved against the
+        // process's working directory, so the binary that gets executed would
+        // be chosen by whoever can write there, not by the operator.
+        let mut relative_extractor = Config::default();
+        relative_extractor.deep.extractor.executable = "./trafilatura".into();
+        assert!(relative_extractor.validate().is_err());
+
+        let mut relative_harness = Config::default();
+        relative_harness.deep.renderer.enabled = true;
+        relative_harness.deep.renderer.sandbox_path = "packaging/amatl-chromium-sandbox".into();
+        assert!(relative_harness.validate().is_err());
+
+        // A disabled renderer never launches the harness, so the path is not
+        // rejected until it can matter; enabling it re-validates.
+        let mut disabled = Config::default();
+        disabled.deep.renderer.sandbox_path = "packaging/amatl-chromium-sandbox".into();
+        assert!(disabled.validate().is_ok());
+
+        // The two accepted shapes: a bare name resolved through PATH (the
+        // default) and an absolute path.
+        let mut accepted = Config::default();
+        accepted.deep.extractor.executable = "trafilatura".into();
+        accepted.deep.renderer.enabled = true;
+        accepted.deep.renderer.sandbox_path = "/usr/lib/amatl/amatl-chromium-sandbox".into();
+        assert!(accepted.validate().is_ok());
     }
 
     #[test]
@@ -1201,6 +1402,99 @@ mod tests {
         assert!(reparsed.answer.enabled);
     }
 
+    /// The atomic replace publishes the temp file's permissions, so a file the
+    /// operator hardened must survive every toggle an admin endpoint can flip.
+    /// Before this was carried across, the first write reset the mode to the
+    /// umask default (`0644`), silently widening a `0600` configuration.
+    #[cfg(unix)]
+    #[test]
+    fn config_write_preserves_the_operator_file_mode() {
+        use std::os::unix::fs::PermissionsExt;
+
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-mode-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n[answer]\nenabled = false\n").unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
+
+        Config::set_answer_enabled(&path, true).unwrap();
+
+        let mode = std::fs::metadata(&path).unwrap().permissions().mode() & 0o777;
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert_eq!(mode, 0o600, "the write must keep the operator's mode");
+        assert!(written.contains("enabled = true"));
+    }
+
+    #[test]
+    fn set_strategist_enabled_flips_only_that_key_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-strategist-toggle-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [server]\n\
+             port = 8080\n\n\
+             [strategist]\n\
+             enabled = false\n\
+             model = \"deepseek-ai/DeepSeek-V3\"\n",
+        )
+        .unwrap();
+
+        Config::set_strategist_enabled(&path, true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("enabled = true"));
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        assert!(written.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+        assert!(written.contains("port = 8080"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.strategist.enabled);
+        assert_eq!(reparsed.server.port, 8080);
+    }
+
+    #[test]
+    fn strategist_enabled_requires_endpoint_model_credential_and_egress() {
+        // A default (disabled) strategist validates fine even incomplete.
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint = None;
+        // No endpoint -> must fail closed, not silently accept a no-op enable.
+        assert!(config.validate().is_err(), "missing endpoint must fail");
+
+        // With endpoint + model but no credential -> must fail.
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint =
+            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
+        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
+        assert!(
+            config.validate().is_err(),
+            "enabled without credential must fail"
+        );
+
+        // Fully configured with network egress -> validates, and does NOT need
+        // remote_explicit (the strategist is a chat call independent of the
+        // ranking-embeddings mode, so `inference` can stay disabled).
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint =
+            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
+        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
+        config.strategist.credential_env = Some("AMATL_TEST_KEY".into());
+        assert_eq!(
+            config.data_policy.inference,
+            crate::config::InferenceMode::Disabled
+        );
+        assert!(config.validate().is_ok(), "{:?}", config.validate().err());
+    }
+
     #[test]
     fn set_provider_enabled_adds_and_removes_the_name_only() {
         let path = std::env::temp_dir().join(format!(
@@ -1212,7 +1506,7 @@ mod tests {
             "schema_version = \"1\"\n\n\
              # A comment an operator wrote about something unrelated.\n\
              [providers]\n\
-             enabled = [\"searxng\"]\n",
+             enabled = [\"custom_archive\"]\n",
         )
         .unwrap();
 
@@ -1222,7 +1516,7 @@ mod tests {
         let reparsed = Config::from_toml(&written).unwrap();
         assert_eq!(
             reparsed.providers.enabled,
-            vec!["searxng".to_string(), "marginalia".to_string()]
+            vec!["custom_archive".to_string(), "marginalia".to_string()]
         );
 
         // Enabling an already-enabled name does not duplicate it.
@@ -1230,10 +1524,10 @@ mod tests {
         let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
         assert_eq!(
             reparsed.providers.enabled,
-            vec!["searxng".to_string(), "marginalia".to_string()]
+            vec!["custom_archive".to_string(), "marginalia".to_string()]
         );
 
-        Config::set_provider_enabled(&path, "searxng", false).unwrap();
+        Config::set_provider_enabled(&path, "custom_archive", false).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
         let reparsed = Config::from_toml(&written).unwrap();
@@ -1248,12 +1542,12 @@ mod tests {
         ));
         std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
 
-        Config::set_provider_enabled(&path, "searxng", true).unwrap();
+        Config::set_provider_enabled(&path, "marginalia", true).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
 
         let reparsed = Config::from_toml(&written).unwrap();
-        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+        assert_eq!(reparsed.providers.enabled, vec!["marginalia".to_string()]);
     }
 
     #[test]
@@ -1592,9 +1886,9 @@ mod tests {
             "schema_version = \"1\"\n\n\
              # A comment an operator wrote about something unrelated.\n\
              [providers]\n\
-             enabled = [\"searxng\"]\n\n\
-             [providers.searxng]\n\
-             adapter_version = \"searxng-v1\"\n",
+             enabled = [\"marginalia\"]\n\n\
+             [providers.marginalia]\n\
+             adapter_version = \"marginalia-v1\"\n",
         )
         .unwrap();
 
@@ -1612,15 +1906,15 @@ mod tests {
         assert!(written.contains("# A comment an operator wrote about something unrelated."));
         let reparsed = Config::from_toml(&written).unwrap();
         // The existing provider and the `enabled` list are untouched.
-        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+        assert_eq!(reparsed.providers.enabled, vec!["marginalia".to_string()]);
         assert_eq!(
             reparsed
                 .providers
-                .get("searxng")
+                .get("marginalia")
                 .unwrap()
                 .adapter_version
                 .as_deref(),
-            Some("searxng-v1")
+            Some("marginalia-v1")
         );
         let custom = reparsed.providers.get("custom_archive").unwrap();
         assert_eq!(custom.adapter_version.as_deref(), Some("custom-v2"));
@@ -2121,6 +2415,7 @@ mod tests {
         let patch = PersistenceConfigPatch {
             history_enabled: Some(false),
             saved_document_max_bytes: Some(2_097_152),
+            saved_documents_retention_days: Some(365),
             audit_retention_days: Some(30),
             history_retention_days: Some(14),
             cache_retention_days: Some(14),
@@ -2136,6 +2431,7 @@ mod tests {
         let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
         assert!(!reloaded.persistence.history_enabled);
         assert_eq!(reloaded.persistence.saved_document_max_bytes, 2_097_152);
+        assert_eq!(reloaded.persistence.saved_documents_retention_days, 365);
         assert_eq!(reloaded.persistence.audit_retention_days, 30);
         assert_eq!(reloaded.persistence.history_retention_days, 14);
         assert_eq!(reloaded.persistence.cache_retention_days, 14);

@@ -38,3 +38,4 @@ sobre sistemas de terceros.
 - [Gestión de secretos](security/secrets.md)
 - [Cadena de suministro](security/supply-chain.md)
 - [Retención de datos](security/data-retention.md)
+- [Hallazgos y remediación (2026-10-26)](security/hallazgos-2026-10-26.md)

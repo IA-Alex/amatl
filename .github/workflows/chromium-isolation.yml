@@ -33,10 +33,47 @@ jobs:
       - name: Install Chromium isolation dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes bubblewrap curl unzip
-          if sysctl kernel.apparmor_restrict_unprivileged_userns >/dev/null 2>&1; then
+          sudo apt-get install --yes bubblewrap curl unzip apparmor-utils
+          # Ubuntu 23.10+ ships an AppArmor profile that removes the
+          # `userns` permission from unprivileged binaries, and Chromium's
+          # zygote therefore cannot create its sandbox:
+          #   "No usable sandbox! ... disabled unprivileged user namespaces"
+          # The gate below is fail-closed on purpose — it must prove the
+          # sandbox works, not pass by disabling it. That leaves two levers,
+          # and both are applied: the effective sysctl (when the key exists)
+          # and the per-binary profile, which Ubuntu loads dynamically and which
+          # survives the sysctl on its own.
+          #
+          # Neither step may fail silently: the previous version ran
+          # `sudo sysctl --write …=0` under `if`, so a rejected write printed
+          # nothing and the failure surfaced 40 steps later as a bare
+          # "isolated Chromium failed".
+          if [ -w /proc/sys/kernel/apparmor_restrict_unprivileged_userns ] \
+             || [ -e /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]; then
+            echo "kernel.apparmor_restrict_unprivileged_userns is exposed; relaxing it"
             sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
+          else
+            echo "kernel.apparmor_restrict_unprivileged_userns is not exposed; checking profiles"
           fi
+          # The per-binary profile is what actually blocks the zygote on current
+          # runners: `userns` is denied inside the profile, not by the sysctl.
+          if command -v aa-status >/dev/null 2>&1; then
+            sudo aa-status --profiled | grep --extended-regexp '(^|/)(chrome|chromium)(-|$)' \
+              && echo "an AppArmor profile covers Chrome; it is removed below" \
+              || echo "no AppArmor profile covers Chrome"
+          fi
+          for profile in chrome chromium; do
+            if [ -e "/etc/apparmor.d/$profile" ]; then
+              sudo apparmor_parser --remove "/etc/apparmor.d/$profile" \
+                || echo "warning: could not unload the $profile profile" >&2
+            fi
+          done
+          # Prove the precondition before spending the job: an unprivileged
+          # user namespace must be creatable, which is what the zygote needs.
+          sudo sysctl --write kernel.unprivileged_userns_clone=1 >/dev/null 2>&1 || true
+          unshare --user --map-root-user --mount true \
+            && echo "unprivileged user namespaces are available" \
+            || { echo "unprivileged user namespaces are unavailable; the gate cannot run" >&2; exit 1; }
           archive="$(mktemp --suffix=.zip)"
           curl --fail --location --silent --show-error \
             https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.42/linux64/chrome-headless-shell-linux64.zip \
@@ -96,6 +133,30 @@ jobs:
           printf '%s' '<!doctype html><p id="state">pending</p><script>try{var x=new XMLHttpRequest();x.open("GET","http://127.0.0.1:8765/",false);x.send();document.querySelector("#state").textContent="network-leak"}catch(e){document.querySelector("#state").textContent="blocked"}</script>' > "$fixture"
           packaging/amatl-chromium-sandbox "$fixture" "$output" 60
           grep --fixed-strings --quiet '>blocked<' "$output"
+      - name: Prove the browser does not inherit the service environment
+        # Chromium has no API to read its own environment, so the proof swaps
+        # in a stand-in "Chromium" that dumps `env` to stdout — which the
+        # harness captures as the DOM. The harness accepts any executable under
+        # /usr or /opt, so this drives the real `--clearenv` path rather than a
+        # reimplementation of it.
+        env:
+          AMATL_CHROMIUM_BIN: /opt/amatl-env-probe/chromium
+          AMATL_ENV_PROBE_CANARY: service-environment-canary
+        run: |
+          sudo install --directory --mode 0755 /opt/amatl-env-probe
+          printf '%s\n' '#!/bin/sh' '/usr/bin/env' \
+            | sudo tee /opt/amatl-env-probe/chromium >/dev/null
+          sudo chmod 0755 /opt/amatl-env-probe/chromium
+          fixture="$(mktemp --suffix=.html)"
+          output="$(mktemp --suffix=.html)"
+          printf '%s' '<!doctype html><p>probe</p>' > "$fixture"
+          packaging/amatl-chromium-sandbox "$fixture" "$output" 60
+          if grep --fixed-strings --quiet 'AMATL_ENV_PROBE_CANARY' "$output"; then
+            echo "the sandboxed browser inherited the service environment" >&2
+            exit 1
+          fi
+          # `--clearenv` must clear what the harness did not set, and only that.
+          grep --fixed-strings --quiet 'HOME=/tmp/home' "$output"
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Drive the harness through ChromiumRenderer

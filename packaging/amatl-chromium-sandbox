@@ -70,6 +70,7 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
   -p "TasksMax=$tasks_max" \
   -- bwrap \
     --die-with-parent --new-session --unshare-all \
+    --clearenv \
     --tmpfs / --ro-bind /usr /usr --symlink usr/bin /bin \
     --symlink usr/lib /lib --symlink usr/lib64 /lib64 \
     "${chromium_mounts[@]}" \

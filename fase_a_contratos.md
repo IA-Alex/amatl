@@ -427,7 +427,7 @@ Reservation {
 
 `BudgetStage` es `search`, `fetch`, `render`, `extract`, `crawl` o
 `gap_expansion`. `ReservationOwner` identifica una operación concreta, por
-ejemplo `provider:brave:round:1`; no contiene secretos. `CostUnits` usa una
+ejemplo `provider:searxng:round:1`; no contiene secretos. `CostUnits` usa una
 unidad interna entera de coste para evitar errores de coma flotante.
 
 Estados:
@@ -1384,69 +1384,26 @@ el provider. Todo adapter debe usar secretos sólo desde entorno, respetar cuota
 y `Retry-After`, identificarse honestamente y mantener cache/retención apagadas
 salvo derechos contractuales explícitos.
 
-## 52. Brave Search API (`stable`)
+## 52. Fuentes de pago retiradas (historial)
 
-| Campo | Decisión |
-|---|---|
-| Método | API oficial autenticada; prohibido scraping de resultados web. |
-| Credencial | `X-Subscription-Token` desde variable de entorno. |
-| Capacidades verificadas | Web search, `country`, `search_lang`, conteo y offset. |
-| Coste/capacidad observada | USD 5/1,000 requests y 50 QPS publicados; confirmar al contratar. |
-| Términos | Search API Terms of Use, actualizados 2026-02-11. |
-| Riesgo clave | Los términos restringen almacenar/cachear resultados salvo almacenamiento transitorio o derechos explícitos. |
+> **Retiradas del producto por política del operador (ADR-016, 2026-10-26).**
+> Las fuentes de búsqueda de pago que en su día se evaluaron como candidatas
+> quedaron descartadas: sus adapters y fichas de gobernanza se eliminaron y sus
+> nombres se rechazan en `Config::validate()`. No hay ningún plan de
+> contratación que las reactive. Este apartado conserva únicamente el hecho
+> histórico de la decisión; ya no describe ninguna fuente de AMATL.
 
-`ProviderSearchCache` de Brave queda **deshabilitada por defecto**. Sólo puede
-activarse con evidencia de derechos de almacenamiento para el plan contratado,
-TTL y borrado definidos. La política de privacidad publicada indica retención
-de consultas hasta 90 días para facturación/troubleshooting: debe informarse en
-la evaluación de privacidad de cualquier superficie expuesta.
-
-Fuentes oficiales: [API y precios](https://brave.com/search/api/),
-[términos](https://api-dashboard.search.brave.com/documentation/resources/terms-of-service),
-[restricciones](https://api-dashboard.search.brave.com/app/documentation/general/terms-of-service)
-y [privacidad](https://api-dashboard.search.brave.com/privacy-policy).
-
-## 53. Mojeek Search API (`stable`)
-
-| Campo | Decisión |
-|---|---|
-| Método | API oficial JSON/XML; no scraping de interfaz de búsqueda. |
-| Capacidades verificadas | Site search, country/language boosting, clustering, SafeSearch y límites de resultados, sujetos a plan. |
-| Coste/capacidad observada | GBP 2/3 CPM para planes Startup/Business, 5/10 QPS publicados; confirmar cotización y contrato. |
-| Retención | La página comercial declara storage rights; el entitlement efectivo debe constar en contrato. |
-| Riesgo clave | Capacidades, precio y cache dependen del plan; el uso de contenido tercero exige respetar derechos de sus editores. |
-
-`ProviderCapabilities` se construye desde una matriz versionada por plan, no
-desde supuestos del parser. Cache sólo se activa cuando `storage_rights` sea
-afirmativo y se documente la retención aplicable.
-
-Fuentes oficiales: [documentación](https://www.mojeek.com/support/api/),
-[Search API](https://www.mojeek.com/support/api/search/) y
-[planes/capacidades](https://www.mojeek.com/services/search/web-search-api/).
-
-## 54. DuckDuckGo HTML (`best_effort`)
-
-| Campo | Decisión |
-|---|---|
-| Método | HTML no autenticado, experimental; no es API oficial aprobada. |
-| Coste/cuota | No hay plan API oficial verificado en esta revisión. |
-| Autorización de scraping | No se encontró permiso oficial específico en las fuentes revisadas. |
-| Riesgo | Fragilidad, bloqueos y cumplimiento por automatizar una interfaz de usuario. |
-| Estado inicial | `disabled_pending_explicit_approval`. |
-
-No puede habilitarse sin autorización verificable para ese método, revisión
-legal aplicable y límites documentados. Aun aprobado, su fallo aislado nunca
-causa fallo global si otro provider entrega resultados. La
-[política de privacidad](https://duckduckgo.com/privacy) no constituye permiso
-de automatización y no se interpreta como tal.
+La política del operador ejecuta sólo fuentes sin coste: SearXNG autoalojado
+(sin credencial) y Marginalia (con key). Cualquier otro nombre enviado en
+`providers.enabled`, o una tabla `[providers.<nombre>]` para un nombre no
+declarado, falla la validación de configuración en vez de construir una fuente.
 
 ## 55. Matriz operativa de Fase 1
 
 | Provider | Default runtime | Cache | Acción ante fallo |
 |---|---|---|---|
-| Brave | Habilitable sólo con aprobación y token | Apagada sin entitlement | Continuar. |
-| Mojeek | Habilitable sólo con aprobación/credenciales | Sólo con derecho contractual | Continuar. |
-| DuckDuckGo HTML | Deshabilitado hasta aprobación explícita | Apagada | Continuar; `best_effort`. |
+| SearXNG (autoalojado) | Habilitable con aprobación de gobernanza | Según política de cache | Continuar. |
+| Marginalia | Habilitable con aprobación y credencial | Sólo con derecho contractual | Continuar. |
 
 Un provider sin aprobación, credenciales o cuota se omite con degradación
 explícita; no se hace fallback no autorizado.
@@ -1461,12 +1418,12 @@ revisión.
 
 | ID | Escenario | Resultado esperado |
 |---|---|---|
-| G-01 | Brave sin storage rights aprobado | Cache deshabilitada. |
-| G-02 | Brave sin token | Provider omitido, sin red ni secreto en logs. |
-| G-03 | Mojeek sin capacidad contratada | Filtro `ignored`/`approximated`, no simulado. |
+| G-01 | Provider sin storage rights aprobado | Cache deshabilitada. |
+| G-02 | Provider sin token | Provider omitido, sin red ni secreto en logs. |
+| G-03 | Provider sin capacidad contratada | Filtro `ignored`/`approximated`, no simulado. |
 | G-04 | Ficha vencida | Provider fuera de `selected_providers`. |
-| G-05 | DuckDuckGo sin aprobación | Adapter deshabilitado. |
-| G-06 | DuckDuckGo aprobado falla | Search continúa con otros providers. |
+| G-05 | Provider sin aprobación de gobernanza | Adapter deshabilitado. |
+| G-06 | Provider aprobado falla | Search continúa con otros providers. |
 | G-07 | 429 con `Retry-After` | Retry sujeto a Budget. |
 | G-08 | Cambio de términos/endpoint | Ficha vuelve a `draft`. |
 
@@ -1474,9 +1431,9 @@ revisión.
 
 - [ ] Cada provider tiene ficha vigente, fuente oficial y responsable.
 - [ ] ToS, cuota, coste, acceso y cache se aprueban por provider.
-- [ ] Brave no cachea resultados sin entitlement explícito.
-- [ ] Mojeek refleja capacidades y contrato reales.
-- [ ] DuckDuckGo HTML no se habilita sin permiso verificable.
+- [ ] Ningún provider cachea resultados sin entitlement explícito.
+- [ ] Cada provider refleja capacidades y contrato reales.
+- [ ] Ningún provider se habilita sin permiso verificable.
 - [ ] G-01 a G-08 existen como pruebas de configuración/contrato.
 
 ---
@@ -1617,7 +1574,7 @@ ni query strings sensibles.
 | H-04 | Deadline vence durante render | Proceso y perfil se limpian; Search persiste. |
 | H-05 | SQLite bloqueada/corrupta | Cache miss/degradación; Search continúa. |
 | H-06 | Falla telemetría persistida | Métricas en memoria continúan. |
-| H-07 | Brave sin storage rights | Cache de provider no lee/escribe. |
+| H-07 | Provider sin storage rights | Cache de provider no lee/escribe. |
 | H-08 | Cambia adapter/extractor version | Cache anterior no se reutiliza. |
 | H-09 | Cache documental alcanza cuota | Evicción LRU; no afecta documento actual. |
 | H-10 | Purga solicitada | Acción explícita; Search activo no se afecta. |

@@ -1,6 +1,6 @@
 use amatl_core::{
-    parse_query, BraveProvider, Budget, HttpRequest, HttpResponse, HttpTransport, MockProvider,
-    Provider, ProviderItem, Rank, SearchOrchestrator, SearchStatus,
+    parse_query, Budget, HttpRequest, HttpResponse, HttpTransport, MarginaliaProvider,
+    MockProvider, Provider, ProviderItem, Rank, SearchOrchestrator, SearchStatus,
 };
 use async_trait::async_trait;
 use std::collections::BTreeMap;
@@ -49,11 +49,15 @@ fn item() -> ProviderItem {
     }
 }
 
+/// The one shipped source that needs a credential is Marginalia, so it carries
+/// the end-to-end coverage for the whole key-gated path: credential handling,
+/// response parsing through the global pipeline, and bounded retry. The retired
+/// paid and self-hosted sources no longer ship an adapter to test.
 #[tokio::test]
-async fn brave_without_token_is_omitted_without_network_access() {
+async fn key_gated_provider_without_credential_is_omitted_without_network_access() {
     let transport = Arc::new(FixtureTransport::new(200, BTreeMap::new(), b"{}"));
     let providers: Vec<Arc<dyn Provider>> = vec![
-        Arc::new(BraveProvider::new(None, true, true, transport.clone())),
+        Arc::new(MarginaliaProvider::new(None, true, true, transport.clone())),
         Arc::new(MockProvider::success("local", vec![item()])),
     ];
     let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
@@ -68,19 +72,21 @@ async fn brave_without_token_is_omitted_without_network_access() {
 }
 
 #[tokio::test]
-async fn brave_fixture_crosses_provider_and_global_pipeline() {
+async fn marginalia_fixture_crosses_provider_and_global_pipeline() {
     let transport = Arc::new(FixtureTransport::new(
         200,
         BTreeMap::new(),
-        br#"{"web":{"results":[{"title":"Rust","url":"https://example.com/?utm_source=brave","description":"Guide"}]}}"#,
+        br#"{"results":[{"title":"Rust","url":"https://example.com/?utm_source=marginalia","description":"Guide"}]}"#,
     ));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
-        Some("fixture-token".into()),
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
+        Some("fixture-token".to_owned().into()),
         true,
         true,
         transport.clone(),
     ))];
-    let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+    // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+    // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert_eq!(response.status, SearchStatus::Success);
@@ -94,8 +100,8 @@ async fn brave_fixture_crosses_provider_and_global_pipeline() {
 #[tokio::test]
 async fn real_adapter_rate_limit_uses_bounded_retry_policy() {
     let transport = Arc::new(FixtureTransport::new(429, BTreeMap::new(), b"private body"));
-    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(BraveProvider::new(
-        Some("fixture-token".into()),
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
+        Some("fixture-token".to_owned().into()),
         true,
         true,
         transport.clone(),

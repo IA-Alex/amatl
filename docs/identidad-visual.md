@@ -41,7 +41,8 @@ preferencia de sistema.
 | `--border` | `#2A2F35` | Líneas divisorias, bordes de tarjeta |
 | `--text` | `#E7E9EC` | Texto principal |
 | `--secondary` | `#9DA5AE` | Texto secundario, etiquetas |
-| `--muted` | `#6F7780` | Texto terciario, ayuda de campo |
+| `--muted` | `#878F99` | Texto terciario, ayuda de campo |
+| `--on-accent` | `#FFFFFF` | Texto sobre controles con fondo de acento |
 | `--accent` | `#4F8CFF` | Enlaces, acento de marca |
 | `--accent-strong` | `#3D6DC6` | Fondo de botón primario (texto blanco encima) |
 | `--cyan` | `#48B8C7` | Acento secundario, foco de teclado |
@@ -65,14 +66,25 @@ sobre `--background`/`--surface`, igual que el tema oscuro.
 | `--border` | `#D8DEE5` |
 | `--text` | `#14181C` |
 | `--secondary` | `#4B5560` |
-| `--muted` | `#737D87` |
-| `--accent` | `#2F6FE0` |
+| `--muted` | `#5E6873` |
+| `--accent` | `#2B66D6` |
 | `--accent-strong` | `#2757B8` |
+| `--on-accent` | `#FFFFFF` |
 | `--cyan` | `#157A8A` |
 | `--success` | `#21804A` |
 | `--warning` | `#92660F` |
 | `--error` | `#B3342F` |
 | `--error-on-tint` | `#7A231F` |
+
+## Límite de controles (WCAG 1.4.11)
+
+`--border` es una línea divisoria: sobre `--surface` mide ~1,26:1, por debajo del
+3:1 que WCAG 2.2 (AA, 1.4.11) exige para el límite visual de un control de
+formulario. Los campos de texto (`input`, `select`) y el selector de idioma de la
+interfaz usan `--border-control`, que **no es un color nuevo**: es un alias
+semántico de `--muted` (5,20:1 sobre `--surface` en tema oscuro, 5,60:1 sobre
+blanco en claro), ya presente en las dos tablas de arriba. `--border` sigue siendo
+el valor de divisores, bordes de tarjeta y controles secundarios.
 
 ## Regla no negociable
 
@@ -96,6 +108,25 @@ Ninguna de las dos se sirve como webfont: dependen de lo que ya tenga
 instalado el sistema del visitante, con esa pila de reemplazo. No agregar
 `@font-face` ni CDN de fuentes — rompería la CSP (`script-src 'self'`,
 `style-src 'self'`, sin orígenes externos).
+
+## Escala de geometría de controles
+
+La paleta y la tipografía son obligatorias; la **geometría** de los controles
+también tiene una única fuente de verdad en `styles.css`, para que botones que
+hacen el mismo trabajo no diverjan:
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--radius-sm` | `0.375rem` | chips y controles compactos en línea |
+| `--radius-md` | `0.5rem` | tarjetas, inputs y controles primarios |
+| `--radius-pill` | `999px` | badges de estado |
+| `--control-h` | `2.75rem` | botones primarios/secundarios e inputs de texto |
+| `--control-h-sm` | `2rem` | acciones de fila compactas (botones *ghost*) |
+
+Regla: un control nuevo toma su radio y su alto de estos tokens, no de un valor
+inventado. La única excepción es el círculo del indicador de carga (`50%`). Si
+un control necesita otra altura, se agrega un token a la escala en el mismo
+cambio — no un `min-height` suelto.
 
 ## Cómo usarla en un documento nuevo
 

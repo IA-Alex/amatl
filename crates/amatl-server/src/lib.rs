@@ -12,7 +12,7 @@ use axum::{
     body::Body,
     extract::{
         rejection::{JsonRejection, QueryRejection},
-        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, Request, State,
+        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, RawQuery, Request, State,
     },
     http::{
         header::{
@@ -51,6 +51,26 @@ use tracing::Instrument;
 const REQUEST_ID_HEADER: &str = "x-request-id";
 /// Shortest bearer token accepted from configuration or the environment.
 const MINIMUM_TOKEN_BYTES: usize = 32;
+/// Upper bound on one `GET /search/batch` request. It bounds the total work
+/// a single call can request (each query runs its own full search), so the
+/// surface cannot be used to fan out an unbounded number of provider calls.
+const MAX_BATCH_QUERIES: usize = 5;
+/// Request header a client sends to make an on-demand backup safe to retry.
+const IDEMPOTENCY_KEY_HEADER: &str = "idempotency-key";
+/// Longest `Idempotency-Key` accepted. A longer value is a malformed request
+/// rather than something to hash or truncate.
+const MAX_IDEMPOTENCY_KEY_BYTES: usize = 128;
+/// How long a completed on-demand backup stays replayable for a retry carrying
+/// the same key: long enough to cover a client's retry budget after a request
+/// deadline, short enough that a key is not remembered indefinitely.
+const BACKUP_IDEMPOTENCY_TTL: Duration = Duration::from_secs(600);
+/// Upper bound on remembered keys, so a client that sends a fresh key per
+/// request cannot grow the map without bound. Expired entries go first.
+const BACKUP_IDEMPOTENCY_CAPACITY: usize = 256;
+/// Upper bound on source-IP windows retained by the in-process rate limiter.
+/// A remote client can rotate source addresses, so time-based cleanup alone
+/// must not allow the map to grow without bound between cleanup passes.
+const RATE_LIMITER_CAPACITY: usize = 4096;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 /// Wrapper so handlers can extract the request-id injected by the security
@@ -73,6 +93,74 @@ impl RequestId {
 /// Swappable service shared by every surface in one process.
 pub(crate) type ServiceHandle = Arc<RwLock<AmatlService>>;
 
+/// One remembered on-demand backup, keyed by a client-supplied
+/// `Idempotency-Key`.
+struct BackupAttempt {
+    /// Holds the written path once the backup succeeded, and is locked for the
+    /// whole `VACUUM INTO`: a duplicate that arrives while the first attempt is
+    /// still running waits here and then replays it, instead of starting a
+    /// second write.
+    cell: Arc<AsyncMutex<Option<PathBuf>>>,
+    /// When this key stops being replayable.
+    expires: Instant,
+}
+
+/// Replays on-demand backups for a repeated `Idempotency-Key`.
+///
+/// `create_backup` deliberately runs the write on a detached task so a request
+/// deadline cannot interrupt `VACUUM INTO` and leave a partial file beside the
+/// live database. The consequence is that a client which times out and retries
+/// would otherwise write a second backup and, once `auto_backup_max_count` is
+/// reached, rotate an older one away. This map is what lets a client that sends
+/// `Idempotency-Key` treat that retry as safe; a client that omits the header
+/// keeps the previous behaviour, where every accepted call writes a backup.
+#[derive(Default)]
+struct BackupIdempotency {
+    attempts: Mutex<BTreeMap<String, BackupAttempt>>,
+}
+
+impl BackupIdempotency {
+    /// Cell for `key`, created on first use and refreshed on every later use.
+    ///
+    /// Expired entries are dropped, but never one whose write is still running:
+    /// evicting it would let a retry start a second backup for the same key.
+    fn attempt(&self, key: &str) -> Arc<AsyncMutex<Option<PathBuf>>> {
+        let mut attempts = self
+            .attempts
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        let now = Instant::now();
+        attempts.retain(|_, attempt| attempt.expires > now || attempt.cell.try_lock().is_err());
+        if let Some(existing) = attempts.get_mut(key) {
+            existing.expires = now + BACKUP_IDEMPOTENCY_TTL;
+            return Arc::clone(&existing.cell);
+        }
+        if attempts.len() >= BACKUP_IDEMPOTENCY_CAPACITY {
+            // Evict the key closest to expiring among those not currently
+            // running: evicting a key whose write is in flight would let a retry
+            // start a second backup for it, which is the one thing this map
+            // exists to prevent.
+            if let Some(oldest) = attempts
+                .iter()
+                .filter(|(_, attempt)| attempt.cell.try_lock().is_ok())
+                .min_by_key(|(_, attempt)| attempt.expires)
+                .map(|(key, _)| key.clone())
+            {
+                attempts.remove(&oldest);
+            }
+        }
+        let cell = Arc::new(AsyncMutex::new(None));
+        attempts.insert(
+            key.to_owned(),
+            BackupAttempt {
+                cell: Arc::clone(&cell),
+                expires: now + BACKUP_IDEMPOTENCY_TTL,
+            },
+        );
+        cell
+    }
+}
+
 #[derive(Clone)]
 struct AppState {
     service: ServiceHandle,
@@ -87,6 +175,15 @@ struct AppState {
     /// one. Without it a reload revalidates and rebuilds from the running
     /// configuration, which still resets provider construction and breakers.
     config_path: Option<PathBuf>,
+    /// Address this process is actually listening on, captured when the router
+    /// was built. `--bind`/`--port` override the configuration file and are
+    /// never written back to it, so a document re-read later can declare a
+    /// `bind` that is not the socket serving traffic. Every configuration
+    /// accepted into the running process — a reload, or a `[server]` patch —
+    /// is validated against this address instead of the declared one.
+    effective_bind: IpAddr,
+    /// Port this process is actually listening on; see `effective_bind`.
+    effective_port: u16,
     /// Serializes every config-file write in this process. Two concurrent
     /// admin PATCHes would otherwise read the same file text and each write
     /// back their own version, silently dropping the other's change (a lost
@@ -94,6 +191,9 @@ struct AppState {
     /// config-mutating handler, so a reload always observes the file the
     /// request just wrote.
     config_write_lock: Arc<AsyncMutex<()>>,
+    /// Survives reloads like the rate limiter: a retry that arrives after a
+    /// reload must still be recognised as a repeat of the same backup request.
+    backup_idempotency: Arc<BackupIdempotency>,
     metrics: Arc<RequestMetrics>,
 }
 
@@ -123,10 +223,52 @@ impl AppState {
         let current = self.service();
         let config = match &self.config_path {
             Some(path) => {
+                if !path.exists() {
+                    tracing::warn!(
+                        target: "amatl::http",
+                        event = "reload_missing_config",
+                        config_file = %path.display(),
+                        "configuration file is missing; refusing to reload so the running service is unchanged"
+                    );
+                    return Err(ServiceError::Configuration);
+                }
                 amatl_core::Config::load_optional(path).map_err(|_| ServiceError::Configuration)?
             }
             None => current.config().clone(),
         };
+        // The listening address is fixed at startup, so the reloaded document
+        // is checked against the socket that is actually serving, never against
+        // the `bind` it declares. `Config::load_optional` has already accepted
+        // the document as written; without this second check a file declaring
+        // loopback could flip `no_auth` on a process listening on every
+        // interface, and the reload would publish an unauthenticated service.
+        if let Err(error) = config.validate_server_for_listener(self.effective_bind) {
+            tracing::warn!(
+                target: "amatl::http",
+                event = "reload_listener_policy_rejected",
+                effective_bind = %self.effective_bind,
+                declared_bind = %config.server.bind,
+                error = %error,
+                "configuration is invalid for the listening address; refusing to reload so the running service is unchanged"
+            );
+            return Err(ServiceError::Configuration);
+        }
+        // A reload cannot move the listener, so a document that declares a
+        // different bind/port is applied everywhere except there. Say so,
+        // rather than letting the running configuration look like it moved.
+        if config.server.bind.parse::<IpAddr>().ok() != Some(self.effective_bind)
+            || config.server.port != self.effective_port
+        {
+            tracing::warn!(
+                target: "amatl::http",
+                event = "reload_listener_address_ignored",
+                effective_bind = %self.effective_bind,
+                effective_port = self.effective_port,
+                declared_bind = %config.server.bind,
+                declared_port = config.server.port,
+                "the listening address is fixed at startup; restart the process to apply the declared bind and port"
+            );
+        }
         // Credentials are part of the reloaded configuration: rotating a token
         // or retiring a client must not need a restart either. Rebuilt before
         // the swap so a bad credential set changes nothing.
@@ -331,9 +473,10 @@ fn resolve_clients(
         .or_else(|| std::env::var(&server.token_env).ok())
         .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
     {
+        let digest = token_digest(&token);
         clients.push(AuthorizedClient {
             id: "default".into(),
-            digest: token_digest(&token),
+            digest,
             expires_at: None,
             scopes: Scope::ALL.to_vec(),
             tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
@@ -362,6 +505,17 @@ fn resolve_clients(
             },
             (None, None) => continue,
         };
+        if clients
+            .iter()
+            .any(|client| constant_time_eq(&client.digest, &digest))
+        {
+            return Err(ServerError::Configuration(Box::new(ConfigError::Policy(
+                format!(
+                    "duplicate server credential digest for client {}",
+                    declared.id
+                ),
+            ))));
+        }
         clients.push(AuthorizedClient {
             id: declared.id.clone(),
             digest,
@@ -404,16 +558,33 @@ fn digest_from_hex(value: &str) -> Option<[u8; 32]> {
 /// Public surfaces are therefore explicit, so the list below is the complete
 /// set of paths reachable without a credential.
 fn required_scope(method: &Method, path: &str) -> Option<Scope> {
-    let mutating = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    // `PATCH` mutates as surely as `POST`/`PUT`/`DELETE`. Listing it keeps the
+    // `/history`/`/saved` arm below from granting a read scope to a method that
+    // edits state, should one ever be registered on those paths.
+    let mutating = matches!(
+        *method,
+        Method::POST | Method::PUT | Method::PATCH | Method::DELETE
+    );
     // Public surfaces, explicitly listed so the fail-closed default below
     // cannot silently lock them down: liveness probes, the metrics scrape,
     // and the UI assets served by the fallback handler. `amatl_ui::asset` is
     // the same table `static_asset` serves, so the two cannot drift.
-    if matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some() {
+    //
+    // Read-only methods only. These paths are registered as GETs and the
+    // fallback serves static bytes, so a mutating method on one of them has no
+    // handler today — but the exemption is decided *before* routing, so
+    // exempting by path alone would silently publish a future `POST /health`
+    // (or any state-changing route added under an asset path) as
+    // unauthenticated. Restricting the exemption to GET/HEAD leaves every other
+    // method with the same fail-closed default as an undeclared path.
+    if matches!(*method, Method::GET | Method::HEAD)
+        && (matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some())
+    {
         return None;
     }
     match path {
         "/search" => Some(Scope::Search),
+        "/search/batch" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
         // `PATCH /answer` edits the endpoint/model/limits — a config write,
         // admin scoped like every other one. `POST /answer` (below) is the
@@ -430,11 +601,16 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         // The answer toggle is admin too, same tier as /reload: it rewrites
         // the running configuration file, even though the field it touches
         // is narrow (see `Config::set_answer_enabled`).
-        "/security-events" | "/reload" | "/answer/enabled" => Some(Scope::Admin),
+        "/security-events" | "/reload" | "/answer/enabled" | "/strategist/enabled" => {
+            Some(Scope::Admin)
+        }
         // Same tier and the same reasoning as `/answer/enabled`: it rewrites
         // the running configuration file, narrowly (see
         // `Config::set_provider_enabled`).
         _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
+        // Operator-injected provider credentials (e.g. Marginalia) are inserted
+        // and liquidated here: same admin tier as the governance writes below.
+        _ if path.starts_with("/providers/") && path.ends_with("/credential") => Some(Scope::Admin),
         // `GET /providers/{name}` reads the full governance ficha (still no
         // secret in it); `PATCH /providers/{name}` edits it, admin scoped
         // like every other config write.
@@ -583,6 +759,16 @@ pub async fn build_router_with_reload(
 ) -> Result<(Router, ReloadHandle), ServerError> {
     service.config().validate()?;
     let server = service.config().server.clone();
+    // The address this process was actually built for, captured before the
+    // service is moved behind its handle. `--bind`/`--port` override the file
+    // and are never written back to it, so this is the only address a later
+    // configuration can be trusted against (see `AppState::reload` and
+    // `update_server_pending_config`).
+    let effective_bind = server
+        .bind
+        .parse::<IpAddr>()
+        .map_err(|error| ServerError::Configuration(Box::new(error)))?;
+    let effective_port = server.port;
     let https = server.tls.cert_path.is_some();
     let clients = resolve_clients(service.config(), explicit_token.clone())?;
     let allowed_origins = effective_origins(service.config(), https);
@@ -606,11 +792,14 @@ pub async fn build_router_with_reload(
         .with_stateless_protocol_metadata_required(true);
     // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
     let handle: ServiceHandle = Arc::new(RwLock::new(service));
+    // Shared metrics so `/metrics` reports MCP tool traffic too.
+    let metrics = Arc::new(RequestMetrics::default());
     let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
         StreamableHttpService::new(
             {
                 let handle = handle.clone();
-                move || Ok(mcp::McpSurface::new(handle.clone()))
+                let metrics = metrics.clone();
+                move || Ok(mcp::McpSurface::new(handle.clone(), metrics.clone()))
             },
             Default::default(),
             mcp_config,
@@ -618,6 +807,8 @@ pub async fn build_router_with_reload(
     let state = AppState {
         service: handle,
         config_path,
+        effective_bind,
+        effective_port,
         security: Arc::new(RwLock::new(security)),
         rate_limiter: Arc::new(Mutex::new(RateLimiter {
             windows: BTreeMap::new(),
@@ -625,7 +816,8 @@ pub async fn build_router_with_reload(
         })),
         explicit_token,
         config_write_lock: Arc::new(AsyncMutex::new(())),
-        metrics: Arc::new(RequestMetrics::default()),
+        backup_idempotency: Arc::new(BackupIdempotency::default()),
+        metrics,
     };
     let cors = cors_layer(&allowed_origins)?;
     let reload_handle = ReloadHandle {
@@ -633,9 +825,13 @@ pub async fn build_router_with_reload(
     };
     let router = routes::register_public_routes(Router::new())
         .nest_service("/mcp", mcp_service)
+        // Apply the request concurrency limit to the work-bearing routes only,
+        // then merge the probes so they stay reachable while the limit is
+        // saturated (see `register_probe_routes`).
+        .layer(ConcurrencyLimitLayer::new(server.max_connections))
+        .merge(routes::register_probe_routes(Router::new()))
         .fallback(static_asset)
         .with_state(state.clone())
-        .layer(ConcurrencyLimitLayer::new(server.max_connections))
         .layer(DefaultBodyLimit::max(server.max_body_bytes))
         .layer(cors)
         .layer(middleware::from_fn_with_state(state, security_middleware));
@@ -784,45 +980,13 @@ async fn search(
         .metrics
         .search_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones, so
+    // errors / total is a real error rate.
+    state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
-            Json(value.response).into_response()
-        }
+        Ok(value) => Json(value.response).into_response(),
         Err(error) => {
             state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
-            service_error(error)
-        }
-    }
-}
-
-async fn deep(
-    State(state): State<AppState>,
-    Extension(request_id): Extension<RequestId>,
-    params: Result<Query<SearchParams>, QueryRejection>,
-) -> Response {
-    let Ok(Query(params)) = params else {
-        return api_error(ErrorCode::InvalidRequest);
-    };
-    if !valid_query(&params.q) {
-        return api_error(ErrorCode::InvalidQuery);
-    }
-    let started = Instant::now();
-    let outcome = state
-        .service()
-        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
-        .await;
-    state
-        .metrics
-        .deep_latency
-        .record(started.elapsed().as_millis() as u64);
-    match outcome {
-        Ok(value) => {
-            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
-        Err(error) => {
-            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
         }
     }
@@ -856,16 +1020,56 @@ async fn search_post(
         .metrics
         .search_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones, so
+    // errors / total is a real error rate.
+    state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
-            Json(value.response).into_response()
-        }
+        Ok(value) => Json(value.response).into_response(),
         Err(error) => {
             state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
         }
     }
+}
+
+/// Runs several independent searches in a single request and returns each
+/// query's outcome separately, without pagination.
+///
+/// Unlike `/search` (a single query that fails closed), this is a batch: the
+/// envelope is validated first (at least one `q`, at most [`MAX_BATCH_QUERIES`]),
+/// then every query runs independently and a failure in one is reported as
+/// that item's `error` while the usable rows still return. Items preserve the
+/// caller's order. Reads the `search` results a caller could obtain one
+/// call at a time, so it reuses the `Search` scope.
+async fn search_batch(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    RawQuery(raw): RawQuery,
+) -> Response {
+    // Repeated `q` parameters are parsed straight from the raw query string:
+    // serde_urlencoded (used by axum's `Query`) cannot deserialize repeated
+    // keys into a `Vec` field, so this avoids that limitation and is explicit
+    // about which values belong to `q`.
+    let queries = raw
+        .as_deref()
+        .map(|raw| {
+            url::form_urlencoded::parse(raw.as_bytes())
+                .filter_map(|(key, value)| (key == "q").then(|| value.into_owned()))
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_default();
+    let count = queries.len();
+    if count == 0 || count > MAX_BATCH_QUERIES {
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    let surface = ServiceSurface::api(Some(request_id.into_inner()));
+    let items = state.service().search_batch(queries, surface).await;
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "count": items.len(),
+        "batches": items,
+    }))
+    .into_response()
 }
 
 async fn deep_post(
@@ -901,11 +1105,10 @@ async fn deep_post(
         .metrics
         .deep_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones.
+    state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
+        Ok(value) => Json(value).into_response(),
         Err(error) => {
             state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -941,11 +1144,10 @@ async fn answer_post(
         .metrics
         .answer_latency
         .record(started.elapsed().as_millis() as u64);
+    // Count every request received, not just successful ones.
+    state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
     match outcome {
-        Ok(value) => {
-            state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
-            Json(value).into_response()
-        }
+        Ok(value) => Json(value).into_response(),
         Err(error) => {
             state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
             service_error(error)
@@ -974,6 +1176,12 @@ struct PageParams {
 }
 
 impl PageParams {
+    /// Window for the local panels (`/history`, `/saved`): bounded to 200/off.
+    ///
+    /// Note: this is deliberately a *different* limit from `/search`'s
+    /// `max_page_size` (100, or 25 under MCP). These are local read surfaces,
+    /// not the retrieval hot path, so a more generous cap is acceptable — the
+    /// two contracts are not intended to match.
     fn window(&self) -> (u32, u32) {
         (
             self.limit.unwrap_or(50).clamp(1, 200),
@@ -1024,9 +1232,57 @@ async fn answer_toggle(
     let mut candidate = state.service().config().clone();
     candidate.answer.enabled = params.enabled;
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct StrategistToggleParams {
+    enabled: bool,
+}
+
+/// Flip `strategist.enabled` and nothing else — admin scoped, same trust tier
+/// as `/answer/enabled` and `/reload`, whose pattern this copies exactly.
+///
+/// Toggling the strategist on wires the LLM into search (a refined second
+/// query complementing the first result set). This is the web button
+/// "search with model": with it off, the LLM does not participate in search
+/// at all and `search`/`deep` stay fully deterministic.
+///
+/// Validates a would-be config with the flag flipped *before* writing: if
+/// turning it on would leave the strategist without a usable `endpoint` /
+/// `model` (an operator never finished configuring it), it fails closed
+/// (`configuration_invalid`) without ever touching the file or the
+/// credential. The credential itself is checked lazily at call time, not
+/// here — presence of the environment variable is surfaced read-only in
+/// `/status` (`strategist.available`).
+async fn strategist_toggle(
+    State(state): State<AppState>,
+    params: Result<Json<StrategistToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    candidate.strategist.enabled = params.enabled;
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigRejected);
+    }
+    if amatl_core::Config::set_strategist_enabled(&path, params.enabled).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     match state.clone().reload().await {
@@ -1075,7 +1331,7 @@ async fn provider_toggle(
         enabled.retain(|existing| existing != &name);
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_provider_enabled(&path, &name, params.enabled).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1084,6 +1340,153 @@ async fn provider_toggle(
         Ok(report) => Json(report).into_response(),
         Err(error) => service_error(error),
     }
+}
+
+/// Body of `POST /providers/{name}/credential`: the operator-supplied key.
+///
+/// The key is wrapped so its heap allocation is wiped when the deserialized
+/// body is dropped, instead of lingering for the allocator to reuse.
+#[derive(Deserialize)]
+struct ProviderCredentialParams {
+    key: SecretKey,
+}
+
+/// A secret string that zeroizes its buffer on drop.
+#[derive(Deserialize)]
+#[serde(transparent)]
+struct SecretKey(String);
+
+impl std::ops::Deref for SecretKey {
+    type Target = str;
+
+    fn deref(&self) -> &str {
+        &self.0
+    }
+}
+
+impl Drop for SecretKey {
+    fn drop(&mut self) {
+        use zeroize::Zeroize;
+        self.0.zeroize();
+    }
+}
+
+/// Response shape for a provider-credential write. Never echoes the secret:
+/// only presence and the resulting availability.
+#[derive(Debug, Serialize)]
+struct ProviderCredentialReport {
+    schema_version: String,
+    name: String,
+    set: bool,
+    /// Whether the source is usable right now with the current credential.
+    available: bool,
+}
+
+/// Insert (or replace) an operator-supplied provider credential in memory
+/// only — admin scoped, same trust tier as `/reload`.
+///
+/// The key is never written to disk, to `amatl.toml`, to the environment, or
+/// to logs: it lives in the running process's RAM and dies with it. It is
+/// validated live (a bounded canary against the provider) *before* it is
+/// accepted, so a bogus, expired, or mis-scoped key is rejected without being
+/// committed — important for a scarce credential such as the single Marginalia
+/// key. On success a `POST /reload` is not required: the in-memory value is
+/// picked up by the next search.
+async fn provider_credential_put(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    Extension(identity): Extension<ClientIdentity>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderCredentialParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let service = state.service();
+    // Live validation before accepting: a failed probe changes nothing.
+    let valid = match validate_provider_credential(&service, &name, &params.key).await {
+        Ok(valid) => valid,
+        Err(error) => return service_error(error),
+    };
+    if !valid {
+        audit_credential_action(
+            &state,
+            "provider_credential_rejected",
+            &request_id.0,
+            &identity.id,
+            &name,
+        );
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    if service.set_provider_credential(&name, &params.key).is_err() {
+        audit_credential_action(
+            &state,
+            "provider_credential_rejected",
+            &request_id.0,
+            &identity.id,
+            &name,
+        );
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    audit_credential_action(
+        &state,
+        "provider_credential_inserted",
+        &request_id.0,
+        &identity.id,
+        &name,
+    );
+    let available = service.ephemeral_credential_present(&name);
+    Json(ProviderCredentialReport {
+        schema_version: SCHEMA_VERSION.into(),
+        name,
+        set: true,
+        available,
+    })
+    .into_response()
+}
+
+/// Live-validate a candidate provider key against its source before it is
+/// accepted, so a bogus, expired, or mis-scoped key is never committed.
+/// Runs one bounded canary through the core.
+async fn validate_provider_credential(
+    service: &amatl_core::AmatlService,
+    name: &str,
+    key: &str,
+) -> Result<bool, ServiceError> {
+    service
+        .probe_provider_credential(name, key, "web search test")
+        .await
+}
+
+/// Liquidate (remove) an operator-supplied provider credential from memory —
+/// admin scoped, idempotent: removing an absent credential still succeeds.
+/// The key is dropped from RAM immediately; the next search sees the source
+/// without it (failing closed on `credential_missing` if it is required).
+async fn provider_credential_delete(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    Extension(identity): Extension<ClientIdentity>,
+    Path(name): Path<String>,
+) -> Response {
+    let service = state.service();
+    service.clear_provider_credential(&name);
+    audit_credential_action(
+        &state,
+        "provider_credential_liquidated",
+        &request_id.0,
+        &identity.id,
+        &name,
+    );
+    Json(ProviderCredentialReport {
+        schema_version: SCHEMA_VERSION.into(),
+        name,
+        set: false,
+        available: false,
+    })
+    .into_response()
 }
 
 /// Read the full governance ficha for one declared provider — read scoped,
@@ -1205,7 +1608,7 @@ async fn update_provider_record(
     let updated = apply_provider_record_params(existing, &params);
     candidate.providers.declare(name.clone(), updated.clone());
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_provider_record(&path, &name, &updated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1340,12 +1743,16 @@ async fn create_server_client(
     let mut candidate = state.service().config().clone();
     candidate.server.clients.push(client.clone());
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &client).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     if let Err(error) = state.clone().reload().await {
+        // The entry is already persisted, but the credential never reached the
+        // caller. Roll the file back so a later reload cannot activate an
+        // orphan token nobody possesses.
+        let _ = amatl_core::Config::remove_server_client(&path, &client.id);
         return service_error(error);
     }
     Json(CreatedServerClient {
@@ -1410,7 +1817,7 @@ async fn update_server_client(
         }
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &updated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1478,7 +1885,7 @@ async fn rotate_server_client_token(
     let rotated = amatl_core::ServerClient {
         token_env: None,
         token_sha256: Some(digest_to_hex(token_digest(&token))),
-        ..existing
+        ..existing.clone()
     };
     let mut candidate = state.service().config().clone();
     for client in &mut candidate.server.clients {
@@ -1487,12 +1894,15 @@ async fn rotate_server_client_token(
         }
     }
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::upsert_server_client(&path, &rotated).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     if let Err(error) = state.clone().reload().await {
+        // Restore the previous credential so the file never keeps a digest for
+        // a token that was not revealed to anyone.
+        let _ = amatl_core::Config::upsert_server_client(&path, &existing);
         return service_error(error);
     }
     Json(CreatedServerClient {
@@ -1567,7 +1977,7 @@ async fn data_policy_update(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.data_policy);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_data_policy_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1599,7 +2009,7 @@ async fn update_inference(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.inference);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1630,7 +2040,7 @@ async fn update_answer_fields(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.answer);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1691,7 +2101,7 @@ async fn update_policy(
             };
             candidate.ranking_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_ranking_policy(&path, &policy)
         }
@@ -1701,7 +2111,7 @@ async fn update_policy(
             };
             candidate.diversity_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_diversity_policy(&path, &policy)
         }
@@ -1711,7 +2121,7 @@ async fn update_policy(
             };
             candidate.search_policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_search_policy(&path, &policy)
         }
@@ -1721,7 +2131,7 @@ async fn update_policy(
             };
             candidate.deep.ranking_v2.policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_ranking_v2_policy(&path, &policy)
         }
@@ -1731,7 +2141,7 @@ async fn update_policy(
             };
             candidate.deep.gaps.policy = policy.clone();
             if candidate.validate().is_err() {
-                return api_error(ErrorCode::ConfigurationInvalid);
+                return api_error(ErrorCode::ConfigRejected);
             }
             amatl_core::Config::set_gap_policy(&path, &policy)
         }
@@ -1778,7 +2188,7 @@ async fn update_persistence(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.persistence);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_persistence_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1810,15 +2220,70 @@ async fn list_backups(State(state): State<AppState>) -> Response {
 /// filesystem and competes with the periodic maintenance task's rotation.
 /// Identical in every way to what that task writes; see
 /// [`amatl_core::AmatlService::trigger_backup`].
-async fn create_backup(State(state): State<AppState>) -> Response {
-    match state.service().trigger_backup().await {
-        Ok(path) => Json(json!({
+///
+/// A client may send `Idempotency-Key` to make a retry safe: the first accepted
+/// request with a key performs the write, and that key replays its outcome for
+/// [`BACKUP_IDEMPOTENCY_TTL`] — including while the first request is still
+/// running, so a retry after a 504 waits for it rather than writing a second
+/// backup. Without the header every accepted call writes a new backup, which is
+/// what an operator asking twice on purpose expects.
+async fn create_backup(State(state): State<AppState>, headers: HeaderMap) -> Response {
+    let attempt = match idempotency_key(&headers) {
+        Ok(Some(key)) => Some(state.backup_idempotency.attempt(&key)),
+        Ok(None) => None,
+        // A client that sends the header is asking for a retry guarantee;
+        // ignoring a key we cannot honour would silently deny it.
+        Err(()) => return api_error(ErrorCode::InvalidRequest),
+    };
+    let service = state.service();
+    // Run the backup on its own task: if the request deadline fires, the task
+    // keeps running to completion instead of being dropped mid-`VACUUM INTO`
+    // and leaving a partial file next to the live database.
+    let handle = tokio::spawn(async move {
+        let Some(cell) = attempt else {
+            return service.trigger_backup().await.map_err(service_error_code);
+        };
+        // Held for the whole write, so a duplicate that arrives while the first
+        // attempt is still running waits here and then replays it.
+        let mut completed = cell.lock().await;
+        if let Some(path) = completed.as_ref() {
+            return Ok(path.clone());
+        }
+        let outcome = service.trigger_backup().await.map_err(service_error_code);
+        // Only a success is remembered: replaying a transient storage failure
+        // for the whole window would turn one bad minute into ten.
+        if let Ok(path) = &outcome {
+            *completed = Some(path.clone());
+        }
+        outcome
+    });
+    match handle.await {
+        Ok(Ok(path)) => Json(json!({
             "schema_version": SCHEMA_VERSION,
             "path": path.display().to_string(),
         }))
         .into_response(),
-        Err(error) => service_error(error),
+        Ok(Err(code)) => api_error(code),
+        Err(_) => api_error(ErrorCode::InternalError),
     }
+}
+
+/// `Idempotency-Key` from the request, `Ok(None)` when it is absent.
+///
+/// An empty, over-long or non-ASCII value is rejected instead of ignored,
+/// because a caller that sent a key is relying on the retry guarantee.
+fn idempotency_key(headers: &HeaderMap) -> Result<Option<String>, ()> {
+    let Some(value) = headers.get(IDEMPOTENCY_KEY_HEADER) else {
+        return Ok(None);
+    };
+    let value = value.to_str().map_err(|_| ())?;
+    let usable = !value.is_empty()
+        && value.len() <= MAX_IDEMPOTENCY_KEY_BYTES
+        && value.chars().all(|character| character.is_ascii_graphic());
+    if !usable {
+        return Err(());
+    }
+    Ok(Some(value.to_owned()))
 }
 
 /// Current breaker state for every provider the process has observed —
@@ -1873,7 +2338,7 @@ async fn update_telemetry(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.telemetry);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_telemetry_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1916,7 +2381,7 @@ async fn update_deep(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1945,7 +2410,7 @@ async fn update_deep_extractor(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep.extractor);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_extractor_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1978,7 +2443,7 @@ async fn update_deep_renderer(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.deep.renderer);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_deep_renderer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -1993,7 +2458,16 @@ async fn update_deep_renderer(
 /// `/server/clients*`) — read scoped. `token_env` names an environment
 /// variable, `tls` paths name files; neither is a secret value itself.
 async fn server_pending_config(State(state): State<AppState>) -> Response {
-    let server = state.service().config().server.clone();
+    // Read the file the PATCH writes to, not the running config: after a
+    // `PATCH /server/pending-config` (which deliberately does not reload) the
+    // two differ, and the caller needs to read back what was written.
+    let server = match &state.config_path {
+        Some(path) if path.exists() => match amatl_core::Config::load_optional(path) {
+            Ok(config) => config.server,
+            Err(_) => state.service().config().server.clone(),
+        },
+        _ => state.service().config().server.clone(),
+    };
     Json(json!({
         "schema_version": SCHEMA_VERSION,
         "server": {
@@ -2073,7 +2547,17 @@ async fn update_server_pending_config(
     let mut candidate = state.service().config().clone();
     patch.apply(&mut candidate.server);
     if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
+        return api_error(ErrorCode::ConfigRejected);
+    }
+    // `candidate.validate` reads the document's own `bind`; the pending change
+    // must also be safe for the address this process is really serving, or a
+    // file declaring loopback would let `no_auth` be staged under a listener
+    // that is on every interface.
+    if candidate
+        .validate_server_for_listener(state.effective_bind)
+        .is_err()
+    {
+        return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_server_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
@@ -2228,6 +2712,23 @@ async fn health() -> Json<serde_json::Value> {
 ///
 /// Returns `503` when degraded so a load balancer can drain the instance
 /// without parsing the body.
+///
+/// `sources_available` is a *surface* count, not the readiness predicate: it
+/// counts the sources whose [`amatl_core::ProviderSurfaceStatus`] is
+/// `Available`, exactly the field `/status` reports per source. An enabled
+/// source whose circuit breaker is open still reports `Available` there while
+/// the service degrades, so a `503` response can carry
+/// `"sources_available":1`. The authoritative signal is the HTTP status code
+/// (or `status`), never this count; the divergence is deliberate and pinned by
+/// `ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit`.
+///
+/// `sources_usable` is the count an automation that needs "can this source
+/// actually serve right now" should read: the same surface filter **minus** the
+/// sources whose circuit is `open` (in cooldown). It is additive — it does not
+/// change `sources_available`, which stays the one quantity `/ready` and the
+/// `amatl_sources_available` gauge publish together. `sources_usable` never
+/// exceeds `sources_available`, so `available - usable` is exactly the number
+/// of sources skipped by an open breaker.
 async fn ready(State(state): State<AppState>) -> Response {
     let Ok(status) = state.service().status().await else {
         return (
@@ -2237,6 +2738,7 @@ async fn ready(State(state): State<AppState>) -> Response {
                 "status": "degraded",
                 "storage_ok": false,
                 "sources_available": 0,
+                "sources_usable": 0,
             })),
         )
             .into_response();
@@ -2248,6 +2750,16 @@ async fn ready(State(state): State<AppState>) -> Response {
         .sources
         .iter()
         .filter(|source| source.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    // "Usable now" excludes the sources whose breaker is open: `available` is a
+    // surface status, `usable` is that status with the cooldown folded in.
+    let sources_usable = status
+        .sources
+        .iter()
+        .filter(|source| {
+            source.status == amatl_core::ProviderSurfaceStatus::Available
+                && source.circuit != amatl_core::CircuitState::Open
+        })
         .count();
     let ready = status.status == "ok";
     let code = if ready {
@@ -2262,6 +2774,7 @@ async fn ready(State(state): State<AppState>) -> Response {
             "status": if ready { "ok" } else { "degraded" },
             "storage_ok": storage_ok,
             "sources_available": sources_available,
+            "sources_usable": sources_usable,
         })),
     )
         .into_response()
@@ -2344,69 +2857,83 @@ fn latency_metrics(surface: &str, window: &LatencyWindow) -> String {
     )
 }
 
-/// Per-source availability and observed value, labelled by source name.
+/// Aggregate source health, deliberately without source names.
+///
+/// `/metrics` is public like `/ready`, and `/ready` is coarse for exactly this
+/// reason: which sources a deployment declares, and which of them are failing,
+/// names its internals and stays behind `/status`, which requires the `read`
+/// scope. Per-source labels would hand that inventory to an unauthenticated
+/// scraper, so this publishes counts plus the worst observed value: enough to
+/// alert on "a source is down or degraded" without naming it.
 fn source_metrics(service: &AmatlService) -> String {
     let Ok(summaries) = service.provider_summaries() else {
         return String::new();
     };
     let snapshots = service.source_snapshots();
     let circuits = service.circuit_snapshots();
-    let mut body = String::from(
-        "# HELP amatl_source_available Whether a declared source is available (1) or not (0).\n\
-         # TYPE amatl_source_available gauge\n",
+    let declared = summaries.len();
+    let available = summaries
+        .iter()
+        .filter(|summary| summary.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    let circuit_open = summaries
+        .iter()
+        .filter(|summary| {
+            circuits.iter().any(|snapshot| {
+                snapshot.provider == summary.name
+                    && snapshot.state == amatl_core::CircuitState::Open
+            })
+        })
+        .count();
+    // Worst case across the sources that have observations. Absent when no
+    // source has any, rather than publishing a fabricated zero — the same rule
+    // the per-source series used.
+    let worst_success = snapshots
+        .iter()
+        .filter(|snapshot| snapshot.sample > 0)
+        .map(|snapshot| snapshot.success_rate)
+        .reduce(f64::min);
+    let worst_latency = snapshots
+        .iter()
+        .filter(|snapshot| snapshot.sample > 0)
+        .map(|snapshot| snapshot.average_latency_ms)
+        .reduce(f64::max);
+    let mut body = format!(
+        "# HELP amatl_sources_declared Number of sources this deployment declares.\n\
+         # TYPE amatl_sources_declared gauge\n\
+         amatl_sources_declared {declared}\n\
+         # HELP amatl_sources_available Declared sources currently available.\n\
+         # TYPE amatl_sources_available gauge\n\
+         amatl_sources_available {available}\n\
+         # HELP amatl_sources_circuit_open Declared sources currently in circuit cooldown.\n\
+         # TYPE amatl_sources_circuit_open gauge\n\
+         amatl_sources_circuit_open {circuit_open}\n\
+         # HELP amatl_sources_success_rate_min Worst observed success ratio across sources with observations in the telemetry window.\n\
+         # TYPE amatl_sources_success_rate_min gauge\n\
+         # HELP amatl_sources_latency_ms_max Worst observed average latency across sources with observations in the telemetry window.\n\
+         # TYPE amatl_sources_latency_ms_max gauge\n"
     );
-    let mut value_block = String::from(
-        "# HELP amatl_source_success_rate Observed success ratio per source in the telemetry window.\n\
-         # TYPE amatl_source_success_rate gauge\n",
-    );
-    let mut latency_block = String::from(
-        "# HELP amatl_source_latency_ms Observed average latency per source in the telemetry window.\n\
-         # TYPE amatl_source_latency_ms gauge\n",
-    );
-    let mut circuit_block = String::from(
-        "# HELP amatl_source_circuit_open Whether a source is currently in circuit cooldown.\n\
-         # TYPE amatl_source_circuit_open gauge\n",
-    );
-    for summary in summaries {
-        let label = escape_label(&summary.name);
-        let available = u8::from(summary.status == amatl_core::ProviderSurfaceStatus::Available);
+    if let Some(success_rate) = worst_success {
         body.push_str(&format!(
-            "amatl_source_available{{source=\"{label}\"}} {available}\n"
+            "amatl_sources_success_rate_min {success_rate:.4}\n"
         ));
-        let open = u8::from(
-            circuits
-                .iter()
-                .find(|snapshot| snapshot.provider == summary.name)
-                .is_some_and(|snapshot| snapshot.state == amatl_core::CircuitState::Open),
-        );
-        circuit_block.push_str(&format!(
-            "amatl_source_circuit_open{{source=\"{label}\"}} {open}\n"
-        ));
-        if let Some(snapshot) = snapshots
-            .iter()
-            .find(|snapshot| snapshot.provider == summary.name)
-            .filter(|snapshot| snapshot.sample > 0)
-        {
-            value_block.push_str(&format!(
-                "amatl_source_success_rate{{source=\"{label}\"}} {:.4}\n",
-                snapshot.success_rate
-            ));
-            latency_block.push_str(&format!(
-                "amatl_source_latency_ms{{source=\"{label}\"}} {:.1}\n",
-                snapshot.average_latency_ms
-            ));
-        }
     }
-    body.push_str(&circuit_block);
-    body.push_str(&value_block);
-    body.push_str(&latency_block);
+    if let Some(latency) = worst_latency {
+        body.push_str(&format!("amatl_sources_latency_ms_max {latency:.1}\n"));
+    }
     body
 }
 
 /// Cache effectiveness and persistence gauges.
 async fn cache_metrics(service: &AmatlService) -> String {
     let cache = service.cache_effectiveness();
-    let storage_available = u8::from(service.storage().is_some());
+    // "Available" means enabled-and-usable, not merely that a handle exists: a
+    // handle pointing at a broken DB must not report 1. Same source `/ready`
+    // uses, so the two cannot disagree.
+    let storage_available = match service.status().await {
+        Ok(status) => u8::from(!status.storage.enabled || status.storage.available),
+        Err(_) => 0,
+    };
     let audit_dropped = service.audit().dropped();
     let telemetry = service.telemetry_status();
     format!(
@@ -2443,20 +2970,6 @@ async fn cache_metrics(service: &AmatlService) -> String {
         telemetry.persistence_failures,
         telemetry.in_memory_observations,
     )
-}
-
-/// Escape a Prometheus label value; source names are configuration-controlled
-/// but the exposition format must stay parseable regardless.
-fn escape_label(value: &str) -> String {
-    value
-        .chars()
-        .flat_map(|character| match character {
-            '\\' => vec!['\\', '\\'],
-            '"' => vec!['\\', '"'],
-            '\n' => vec!['\\', 'n'],
-            other => vec![other],
-        })
-        .collect()
 }
 
 async fn static_asset(uri: Uri) -> Response {
@@ -2503,7 +3016,7 @@ async fn security_middleware(
             &request_id,
         );
     }
-    if !valid_host(request.headers(), &security.allowed_hosts) {
+    if !valid_host(request.headers(), request.uri(), &security.allowed_hosts) {
         audit_security_event(&state, "invalid_host", &request_id, &request);
         return secured(
             api_error(ErrorCode::InvalidHost),
@@ -2708,6 +3221,38 @@ fn audit_security_event_context(
         });
 }
 
+/// Record an operator action on a provider credential — insertion,
+/// liquidation or rejection — in the security audit trail. Only the action,
+/// the provider and the authenticated identity are stored; the key itself never
+/// reaches the log line or the audit row.
+fn audit_credential_action(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    client_id: &str,
+    provider: &str,
+) {
+    let path = format!("/providers/{provider}/credential");
+    tracing::warn!(
+        target: "amatl::security",
+        security_event = event,
+        request_id,
+        path = %path,
+        client_id,
+        "operator provider-credential action"
+    );
+    state
+        .service()
+        .audit()
+        .record(amatl_core::SecurityEventInput {
+            event: event.to_owned(),
+            request_id: Some(request_id.to_owned()),
+            client_id: Some(client_id.to_owned()),
+            path: Some(path),
+            client_ip: None,
+        });
+}
+
 pub(crate) fn next_request_id() -> String {
     let epoch_nanos = SystemTime::now()
         .duration_since(UNIX_EPOCH)
@@ -2717,6 +3262,13 @@ pub(crate) fn next_request_id() -> String {
     format!("{epoch_nanos:032x}-{sequence:016x}")
 }
 
+/// Best-effort peer address used for rate limiting.
+///
+/// Deliberately ignores `X-Forwarded-For`: honoring it without a trusted-proxy
+/// allowlist would let any client spoof its identity and bypass the per-client
+/// budget. The trade-off is that behind a reverse proxy every external client
+/// collapses onto the proxy's address and shares one window, so either raise
+/// `server.rate_limit_per_minute` or terminate rate limiting at the proxy.
 fn request_client_ip(request: &Request) -> IpAddr {
     request
         .extensions()
@@ -2727,18 +3279,15 @@ fn request_client_ip(request: &Request) -> IpAddr {
 
 fn secured(mut response: Response, https: bool, request_id: &str) -> Response {
     for (name, value) in security_headers(https) {
-        response.headers_mut().insert(
-            HeaderName::from_static(match name {
-                "Content-Security-Policy" => "content-security-policy",
-                "X-Content-Type-Options" => "x-content-type-options",
-                "Referrer-Policy" => "referrer-policy",
-                "Permissions-Policy" => "permissions-policy",
-                "X-Frame-Options" => "x-frame-options",
-                "Strict-Transport-Security" => "strict-transport-security",
-                _ => continue,
-            }),
-            HeaderValue::from_static(value),
-        );
+        // Derive the header name from the shared table instead of a hardcoded
+        // match, so a header added to `amatl_ui::security_headers` cannot be
+        // silently dropped here.
+        let Ok(name) = HeaderName::from_bytes(name.as_bytes()) else {
+            continue;
+        };
+        response
+            .headers_mut()
+            .insert(name, HeaderValue::from_static(value));
     }
     if !response.headers().contains_key(CACHE_CONTROL) {
         response
@@ -2849,8 +3398,15 @@ fn constant_time_eq(left: &[u8], right: &[u8]) -> bool {
     difference == 0
 }
 
-fn valid_host(headers: &HeaderMap, allowed: &[String]) -> bool {
-    let Some(authority) = headers.get(HOST).and_then(|value| value.to_str().ok()) else {
+fn valid_host(headers: &HeaderMap, uri: &Uri, allowed: &[String]) -> bool {
+    // HTTP/1.1 carries the authority in the `Host` header; HTTP/2 carries it in
+    // the request URI (`:authority`) and may omit `Host` entirely, so fall back
+    // to the URI authority before failing closed.
+    let authority = headers
+        .get(HOST)
+        .and_then(|value| value.to_str().ok())
+        .or_else(|| uri.authority().map(|authority| authority.as_str()));
+    let Some(authority) = authority else {
         return false;
     };
     let Ok(parsed) = authority.parse::<axum::http::uri::Authority>() else {
@@ -2896,6 +3452,16 @@ fn within_rate_limit(
             .retain(|_, window| now.duration_since(window.started) < Duration::from_secs(60));
         limiter.last_cleanup = now;
     }
+    if !limiter.windows.contains_key(&ip) && limiter.windows.len() >= RATE_LIMITER_CAPACITY {
+        if let Some(oldest_ip) = limiter
+            .windows
+            .iter()
+            .min_by_key(|(_, window)| window.started)
+            .map(|(ip, _)| *ip)
+        {
+            limiter.windows.remove(&oldest_ip);
+        }
+    }
     let window = limiter.windows.entry(ip).or_insert(RateWindow {
         started: now,
         count: 0,
@@ -2929,13 +3495,27 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
         .collect::<Result<Vec<_>, _>>()?;
     Ok(CorsLayer::new()
         .allow_origin(origins)
-        .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
+        .allow_methods([
+            Method::GET,
+            Method::POST,
+            Method::PATCH,
+            Method::DELETE,
+            Method::OPTIONS,
+        ])
         .allow_headers([AUTHORIZATION, CONTENT_TYPE, axum::http::header::ACCEPT])
         .expose_headers([HeaderName::from_static(REQUEST_ID_HEADER)]))
 }
 
 /// Render a domain failure with its catalog code and status.
 fn service_error(error: ServiceError) -> Response {
+    api_error(service_error_code(error))
+}
+
+/// Catalog code for a service failure, with the same server-side log
+/// `service_error` emits. Split out so a handler that has to carry the failure
+/// across a task boundary — `create_backup` remembers the outcome of the task
+/// it spawned — keeps the log and the mapping identical.
+fn service_error_code(error: ServiceError) -> ErrorCode {
     let code = error.code();
     if code.http_status() >= 500 {
         tracing::warn!(
@@ -2945,7 +3525,7 @@ fn service_error(error: ServiceError) -> Response {
             "request failed"
         );
     }
-    api_error(code)
+    code
 }
 
 /// Error body for a catalog code, using the code's own transport status.

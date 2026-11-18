@@ -11,6 +11,10 @@ pub struct TimeoutConfig {
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(default)]
 pub struct BudgetConfig {
+    /// Maximum number of provider *slots* one search may occupy, not raw
+    /// outbound requests: a slot that is retried (bounded by
+    /// `execution.max_retries`) may issue more than one HTTP request. To bound
+    /// raw egress, cap `execution.max_retries` as well.
     pub max_provider_calls: u32,
 }
 

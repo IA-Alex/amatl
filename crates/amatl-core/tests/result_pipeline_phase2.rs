@@ -44,6 +44,34 @@ async fn degraded_fields_are_public_and_do_not_discard_the_item() {
 }
 
 #[tokio::test]
+async fn naive_published_date_is_preserved_and_does_not_degrade() {
+    // A search engine can report `publishedDate` as a *naive* local timestamp
+    // (`YYYY-MM-DDTHH:MM:SS`, no offset). `normalize_date` only accepted RFC 3339
+    // (offset required) or a bare `YYYY-MM-DD`, so every such date was dropped
+    // and turned a clean response into a `partial_success` via
+    // `invalid_published_at`. First observed against a live instance
+    // (2026-11-14): ~11 of 35 results per query.
+    let mut value = item("https://example.com/", 1, Some("Rust"));
+    value.published_at = Some("2024-06-11T00:00:00".into());
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MockProvider::success("p", vec![value]))];
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+        .search(parse_query("rust".into()).unwrap(), providers)
+        .await;
+
+    assert_eq!(response.status, SearchStatus::Success);
+    assert_eq!(response.results.len(), 1);
+    assert_eq!(
+        response.results[0].published_at.as_deref(),
+        Some("2024-06-11T00:00:00Z"),
+        "a naive timestamp must be preserved as UTC, not discarded"
+    );
+    assert!(!response
+        .degradations
+        .iter()
+        .any(|item| item.code == "invalid_published_at"));
+}
+
+#[tokio::test]
 async fn confirmed_duplicate_keeps_all_contributing_providers() {
     let providers: Vec<Arc<dyn Provider>> = vec![
         Arc::new(MockProvider::success(
@@ -63,7 +91,9 @@ async fn confirmed_duplicate_keeps_all_contributing_providers() {
             )],
         )),
     ];
-    let response = SearchOrchestrator::new(Budget::new(2, 1_000), 100)
+    // 8 000 ms keeps the deadline far above `minimum_remaining_deadline_ms`
+    // (750 ms): a `DeadlineNear` stop would degrade this `Success` status.
+    let response = SearchOrchestrator::new(Budget::new(2, 8_000), 100)
         .search(parse_query("rust".into()).unwrap(), providers)
         .await;
     assert_eq!(response.status, SearchStatus::Success);

@@ -4,7 +4,19 @@ members = ["crates/amatl-core", "crates/amatl-cli", "crates/amatl-ui", "crates/a
 # lockfile and heavy ML dependencies (fastembed/ort). Deliberately excluded from
 # the workspace so `cargo {check,clippy,test} --workspace` and production builds
 # never see it. See experiments/embedding-relevance/README.md.
-exclude = ["experiments/embedding-relevance"]
+#
+# STEP 4D local-embedding integration boundary. Same treatment for the same
+# reason, plus one more: its Candle stack (`candle-core 0.9.2` -> `zip ^7.2.0`)
+# carries RUSTSEC-2026-0367/-0368/-0369, patched only from `zip 9.0.0`, which no
+# candle release reaches. Keeping the stack in this excluded crate with its own
+# lockfile is what closes that finding without a waiver: the workspace
+# `Cargo.lock` — and therefore `cargo audit` — no longer contains it. See
+# experiments/local-embeddings-boundary/README.md and
+# docs/security/supply-chain.md.
+exclude = [
+    "experiments/embedding-relevance",
+    "experiments/local-embeddings-boundary",
+]
 resolver = "2"
 
 [workspace.package]
@@ -32,7 +44,22 @@ rmcp = { version = "3.1.2", features = ["server", "transport-streamable-http-ser
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"
-sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "sqlite"] }
+sqlx = { version = "=0.8.6", default-features = false, features = ["runtime-tokio", "sqlite"] }
+# RUSTSEC-2026-0459 (`libsqlite3-sys` via C SQLite, patched in `>=0.39.0`) is the
+# one advisory no released `sqlx` can reach: 0.8.6 caps the crate at `^0.30` and
+# even 0.9.0 caps it below the fix. `cargo audit` and `cargo deny check` scan the
+# whole lockfile and cannot be told to fail on everything else, so without an
+# `ignore` entry the gate stays red for every future advisory and a fixed `404`
+# in CI carries no signal about the rest of the graph. The suppression is
+# therefore scoped to that single ID and justified: `ADR-017` in
+# `decisiones_amatl.md` owns the exit plan, `docs/security/supply-chain.md`
+# carries the threat model, and the gate script below keeps the omission visible
+# by reporting the suppressed IDs on every run.
+#
+# Pinning both tools to exact, reviewed versions is the guard that the red gate
+# was standing in for: an advisory database that reads an `ignore` differently,
+# or a checker that folds it into a different config section, would silently
+# stop reporting. Bumping either version is a reviewed change, not a refresh.
 thiserror = "2"
 time = { version = "0.3", features = ["formatting", "macros", "parsing"] }
 tokio-util = { version = "0.7", default-features = false }
@@ -46,6 +73,7 @@ tower-http = { version = "0.7.0", features = ["cors", "limit", "timeout"] }
 url = { version = "2", features = ["serde"] }
 unicode-normalization = "0.1"
 fs2 = "0.4"
+zeroize = "1"
 
 [workspace.metadata.release]
 primary-target = "x86_64-unknown-linux-musl"

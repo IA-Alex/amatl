@@ -28,10 +28,22 @@ macro_rules! define_public_routes {
         /// Returns the route inventory generated from the router declarations.
         #[cfg(test)]
         pub fn all_routes() -> Vec<Route> {
-            vec![$(Route {
+            let mut routes = vec![$(Route {
                 path: $path,
                 methods: &[$(define_public_routes!(@method $method)),+],
-            }),+]
+            }),+];
+            // Probe routes are registered separately (see `register_probe_routes`)
+            // but stay in the inventory so the OpenAPI coverage guard still
+            // sees them.
+            routes.push(Route {
+                path: "/health",
+                methods: &[Method::GET],
+            });
+            routes.push(Route {
+                path: "/ready",
+                methods: &[Method::GET],
+            });
+            routes
         }
     };
     (@method get) => { Method::GET };
@@ -40,9 +52,20 @@ macro_rules! define_public_routes {
     (@method delete) => { Method::DELETE };
 }
 
+/// Liveness/readiness probes are registered on their own router so the request
+/// concurrency limit cannot make them queue behind saturated work. A liveness
+/// probe that blocks on the same semaphore as long in-flight requests can time
+/// out and make a supervisor restart a perfectly healthy process.
+pub(super) fn register_probe_routes(router: Router<AppState>) -> Router<AppState> {
+    router
+        .route("/health", axum::routing::get(health))
+        .route("/ready", axum::routing::get(ready))
+}
+
 define_public_routes! {
     "/search" => [get(search), post(search_post)],
-    "/deep" => [get(deep), post(deep_post)],
+    "/search/batch" => [get(search_batch)],
+    "/deep" => [post(deep_post)],
     "/answer" => [post(answer_post), patch(update_answer_fields)],
     "/providers" => [get(providers)],
     "/status" => [get(status)],
@@ -52,7 +75,9 @@ define_public_routes! {
     "/saved/{id}" => [delete(delete_saved_document)],
     "/reload" => [post(reload)],
     "/answer/enabled" => [post(answer_toggle)],
+    "/strategist/enabled" => [post(strategist_toggle)],
     "/providers/{name}/enabled" => [post(provider_toggle)],
+    "/providers/{name}/credential" => [post(provider_credential_put), delete(provider_credential_delete)],
     "/providers/{name}" => [get(provider_record), patch(update_provider_record)],
     "/inference" => [patch(update_inference)],
     "/server/clients" => [get(list_server_clients), post(create_server_client)],
@@ -73,8 +98,6 @@ define_public_routes! {
     "/deep/extractor" => [patch(update_deep_extractor)],
     "/deep/renderer" => [patch(update_deep_renderer)],
     "/security-events" => [get(security_events)],
-    "/health" => [get(health)],
-    "/ready" => [get(ready)],
     "/metrics" => [get(metrics)],
 }
 

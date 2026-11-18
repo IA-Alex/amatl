@@ -1,3 +1,4 @@
+use crate::child_process::{scrub_environment, spawn_with_busy_retry};
 use crate::evidence::analyze_evidence_bundle_optional;
 use crate::{
     CanonicalUrl, DataPolicyConfig, Document, DocumentStatus, Evidence, EvidenceV2, FetchMethod,
@@ -9,16 +10,19 @@ use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 use std::process::Stdio;
+use std::sync::Arc;
 use std::time::{Duration, Instant};
 use thiserror::Error;
 use time::format_description::well_known::Rfc3339;
 use time::OffsetDateTime;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::process::Command;
+use tokio::sync::Semaphore;
 
 pub const LOCAL_INGEST_MAX_INPUT_BYTES: u64 = 20 * 1024 * 1024;
 pub const LOCAL_INGEST_MAX_OUTPUT_BYTES: u64 = 8 * 1024 * 1024;
 pub const LOCAL_INGEST_PDF_TIMEOUT_MS: u64 = 8_000;
+pub const LOCAL_INGEST_PARSE_TIMEOUT_MS: u64 = 5_000;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -111,6 +115,8 @@ pub enum LocalIngestError {
     PdfExtractorTimeout,
     #[error("PDF extraction failed")]
     PdfExtractorFailed,
+    #[error("local parsing timed out")]
+    ParseTimeout,
     #[error("local source cannot be represented as a file URI")]
     InvalidSourceUri,
 }
@@ -120,8 +126,13 @@ pub struct LocalIngestor {
     max_input_bytes: u64,
     max_output_bytes: u64,
     pdf_timeout_ms: u64,
+    parse_timeout_ms: u64,
     pdf_executable: PathBuf,
     allow_external_processes: bool,
+    /// Serializes synchronous parser work for one ingestor. The permit is
+    /// owned by the blocking task, so a timed-out caller cannot immediately
+    /// create another CPU-heavy parser task.
+    cpu_gate: Arc<Semaphore>,
 }
 
 impl LocalIngestor {
@@ -130,8 +141,10 @@ impl LocalIngestor {
             max_input_bytes: LOCAL_INGEST_MAX_INPUT_BYTES,
             max_output_bytes: LOCAL_INGEST_MAX_OUTPUT_BYTES,
             pdf_timeout_ms: LOCAL_INGEST_PDF_TIMEOUT_MS,
+            parse_timeout_ms: LOCAL_INGEST_PARSE_TIMEOUT_MS,
             pdf_executable: PathBuf::from("pdftotext"),
             allow_external_processes: data_policy.allows_network_egress(),
+            cpu_gate: Arc::new(Semaphore::new(1)),
         }
     }
 
@@ -140,6 +153,7 @@ impl LocalIngestor {
         max_input_bytes: u64,
         max_output_bytes: u64,
         pdf_timeout_ms: u64,
+        parse_timeout_ms: u64,
         pdf_executable: PathBuf,
         allow_external_processes: bool,
     ) -> Self {
@@ -147,8 +161,10 @@ impl LocalIngestor {
             max_input_bytes,
             max_output_bytes,
             pdf_timeout_ms,
+            parse_timeout_ms,
             pdf_executable,
             allow_external_processes,
+            cpu_gate: Arc::new(Semaphore::new(1)),
         }
     }
 
@@ -249,15 +265,25 @@ impl LocalIngestor {
     ) -> Result<(String, Option<&'static str>), LocalIngestError> {
         match document_type {
             LocalDocumentType::Pdf => self.extract_pdf(bytes).await,
-            LocalDocumentType::Html => extract_html(bytes).map(|content| (content, None)),
-            LocalDocumentType::Json => extract_json(bytes).map(|content| (content, None)),
-            LocalDocumentType::JsonLines => {
-                extract_json_lines(bytes).map(|content| (content, None))
+            _ => {
+                let permit = tokio::time::timeout(
+                    Duration::from_millis(self.parse_timeout_ms),
+                    self.cpu_gate.clone().acquire_owned(),
+                )
+                .await
+                .map_err(|_| LocalIngestError::ParseTimeout)?
+                .map_err(|_| LocalIngestError::ParseTimeout)?;
+                let document_type = document_type.clone();
+                let input = bytes.to_vec();
+                let parse = tokio::task::spawn_blocking(move || {
+                    let _permit = permit;
+                    extract_sync(&document_type, &input)
+                });
+                tokio::time::timeout(Duration::from_millis(self.parse_timeout_ms), parse)
+                    .await
+                    .map_err(|_| LocalIngestError::ParseTimeout)?
+                    .map_err(|_| LocalIngestError::ParseTimeout)?
             }
-            LocalDocumentType::PlainText
-            | LocalDocumentType::Markdown
-            | LocalDocumentType::Csv
-            | LocalDocumentType::SourceCode => utf8_text(bytes).map(|content| (content, None)),
         }
     }
 
@@ -297,20 +323,21 @@ impl LocalIngestor {
             return Err(LocalIngestError::ExternalExtractorDenied);
         }
         let operation = async {
-            let mut child = Command::new(&self.pdf_executable)
+            let mut command = Command::new(&self.pdf_executable);
+            scrub_environment(&mut command);
+            command
                 .args(["-", "-"])
                 .stdin(Stdio::piped())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::null())
-                .kill_on_drop(true)
-                .spawn()
-                .map_err(|error| {
-                    if error.kind() == std::io::ErrorKind::NotFound {
-                        LocalIngestError::PdfExtractorUnavailable
-                    } else {
-                        LocalIngestError::PdfExtractorFailed
-                    }
-                })?;
+                .kill_on_drop(true);
+            let mut child = spawn_with_busy_retry(&mut command).await.map_err(|error| {
+                if error.kind() == std::io::ErrorKind::NotFound {
+                    LocalIngestError::PdfExtractorUnavailable
+                } else {
+                    LocalIngestError::PdfExtractorFailed
+                }
+            })?;
             let mut stdin = child
                 .stdin
                 .take()
@@ -366,6 +393,22 @@ impl LocalIngestor {
             return Err(LocalIngestError::EmptyDocument);
         }
         Ok(content)
+    }
+}
+
+fn extract_sync(
+    document_type: &LocalDocumentType,
+    bytes: &[u8],
+) -> Result<(String, Option<&'static str>), LocalIngestError> {
+    match document_type {
+        LocalDocumentType::Html => extract_html(bytes).map(|content| (content, None)),
+        LocalDocumentType::Json => extract_json(bytes).map(|content| (content, None)),
+        LocalDocumentType::JsonLines => extract_json_lines(bytes).map(|content| (content, None)),
+        LocalDocumentType::PlainText
+        | LocalDocumentType::Markdown
+        | LocalDocumentType::Csv
+        | LocalDocumentType::SourceCode => utf8_text(bytes).map(|content| (content, None)),
+        LocalDocumentType::Pdf => unreachable!("PDF extraction is handled separately"),
     }
 }
 
@@ -907,7 +950,7 @@ mod tests {
     #[tokio::test]
     async fn both_metadata_and_stream_enforce_the_input_limit() {
         let path = temp_file("txt", b"12345");
-        let ingestor = LocalIngestor::with_test_limits(4, 16, 100, "missing".into(), false);
+        let ingestor = LocalIngestor::with_test_limits(4, 16, 100, 5_000, "missing".into(), false);
         let error = ingestor.ingest(&path, None).await.unwrap_err();
         std::fs::remove_file(path).unwrap();
         assert_eq!(error, LocalIngestError::InputLimit);
@@ -938,7 +981,8 @@ mod tests {
         );
         std::fs::set_permissions(&executable, std::fs::Permissions::from_mode(0o700)).unwrap();
         let pdf = temp_file("pdf", b"%PDF-1.7\nfixture");
-        let ingestor = LocalIngestor::with_test_limits(1024, 1024, 2_000, executable.clone(), true);
+        let ingestor =
+            LocalIngestor::with_test_limits(1024, 1024, 2_000, 5_000, executable.clone(), true);
         let response = ingestor.ingest(&pdf, None).await.unwrap();
         std::fs::remove_file(executable).unwrap();
         std::fs::remove_file(pdf).unwrap();
@@ -951,6 +995,33 @@ mod tests {
         assert_eq!(
             response.document.extractor_used.as_deref(),
             Some("local-pdftotext-v1")
+        );
+    }
+
+    /// `pdftotext` parses hostile files, so the process must not be able to
+    /// read the server's credentials out of its own environment either.
+    #[cfg(unix)]
+    #[tokio::test]
+    async fn pdf_extractor_child_does_not_inherit_server_credentials() {
+        const CANARY: &str = "AMATL_PDF_ENV_CANARY_1a37";
+        let executable = temp_file(
+            "sh",
+            b"#!/bin/sh\ncat >/dev/null\nif [ -n \"${AMATL_PDF_ENV_CANARY_1a37:-}\" ]; then\n  printf 'leaked'\nelse\n  printf 'clean'\nfi\n",
+        );
+        std::fs::set_permissions(&executable, std::fs::Permissions::from_mode(0o700)).unwrap();
+        let pdf = temp_file("pdf", b"%PDF-1.7\nfixture");
+        std::env::set_var(CANARY, "server-token-canary");
+        let ingestor =
+            LocalIngestor::with_test_limits(1024, 1024, 2_000, 5_000, executable.clone(), true);
+        let response = ingestor.ingest(&pdf, None).await;
+        std::env::remove_var(CANARY);
+        std::fs::remove_file(executable).unwrap();
+        std::fs::remove_file(pdf).unwrap();
+
+        assert_eq!(
+            response.unwrap().document.content.as_deref(),
+            Some("clean"),
+            "the PDF extractor read a credential out of its environment"
         );
     }
 
@@ -991,6 +1062,7 @@ mod tests {
             1024,
             1024,
             2_000,
+            5_000,
             "definitely-missing-pdftotext".into(),
             true,
         );

@@ -1,0 +1,22 @@
+# CodeQL pack with AMATL's own invariant queries.
+#
+# These are not the standard security queries: they encode invariants of *this*
+# codebase that no general rule can know, and they exist because a regression in
+# one of them is a security regression rather than a style one. Each query is
+# written as a *violation* query, so a gate passes when it selects nothing.
+#
+# Run them locally the same way CI does:
+#
+#     codeql pack install tools/codeql
+#     codeql database create /tmp/amatl-db --language=rust \
+#       --source-root=. --command="cargo build --workspace --locked"
+#     codeql database analyze /tmp/amatl-db tools/codeql \
+#       --format=sarif-latest --output=/tmp/amatl.sarif
+#
+# The pinned dependency is the version the queries were validated against
+# (CodeQL CLI 2.27.3); bump it together with the CLI in the workflow.
+name: amatl/security-queries
+version: 0.0.1
+description: AMATL invariants that general CodeQL rules cannot express
+dependencies:
+  codeql/rust-all: 0.2.24

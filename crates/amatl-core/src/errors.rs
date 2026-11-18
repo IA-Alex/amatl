@@ -58,6 +58,10 @@ pub enum ErrorCode {
     SearchPlanningFailed,
     /// Configuration is internally inconsistent for the requested operation.
     ConfigurationInvalid,
+    /// A configuration change was rejected because the caller's input would
+    /// leave the configuration invalid. Distinct from `ConfigurationInvalid`
+    /// (a server-side fault): this is the caller's request to fix.
+    ConfigRejected,
     /// Ranking policy requires an inference backend that is not available.
     InferenceUnavailable,
     /// Optional ranking backend rejected or failed the request.
@@ -101,6 +105,7 @@ pub const ERROR_CATALOG: &[ErrorCode] = &[
     ErrorCode::ProviderNetworkBlocked,
     ErrorCode::SearchPlanningFailed,
     ErrorCode::ConfigurationInvalid,
+    ErrorCode::ConfigRejected,
     ErrorCode::InferenceUnavailable,
     ErrorCode::RankingBackendUnavailable,
     ErrorCode::StorageUnavailable,
@@ -137,6 +142,7 @@ impl ErrorCode {
             Self::ProviderNetworkBlocked => "provider_network_blocked",
             Self::SearchPlanningFailed => "search_planning_failed",
             Self::ConfigurationInvalid => "configuration_invalid",
+            Self::ConfigRejected => "config_rejected",
             Self::InferenceUnavailable => "inference_unavailable",
             Self::RankingBackendUnavailable => "ranking_backend_unavailable",
             Self::StorageUnavailable => "storage_unavailable",
@@ -152,6 +158,9 @@ impl ErrorCode {
     pub const fn http_status(self) -> u16 {
         match self {
             Self::InvalidRequest | Self::InvalidQuery | Self::InvalidUrl | Self::InvalidHost => 400,
+            // A rejected configuration patch is caller input, not a server
+            // fault: 4xx so clients do not retry it as if the server broke.
+            Self::ConfigRejected => 400,
             Self::Unauthorized => 401,
             Self::InvalidOrigin
             | Self::EgressDenied
@@ -208,6 +217,7 @@ impl ErrorCode {
             Self::ProviderNetworkBlocked => "provider has no authorized real-network canary",
             Self::SearchPlanningFailed => "search planning produced no plan",
             Self::ConfigurationInvalid => "configuration is invalid for this operation",
+            Self::ConfigRejected => "the configuration change was rejected as invalid",
             Self::InferenceUnavailable => "required inference backend is unavailable",
             Self::RankingBackendUnavailable => "optional ranking backend is unavailable",
             Self::StorageUnavailable => "persistent storage is unavailable",

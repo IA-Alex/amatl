@@ -240,8 +240,10 @@ pub fn evaluate_coverage(
     }
 }
 
-/// Count of results in `current` whose canonical URL was not already in
-/// `previous`.
+/// Fraction of `current` whose canonical URL was not already in `previous`
+/// (new unique URLs / current size), a ratio in `[0, 1]` so it is directly
+/// comparable to [`SearchPolicyV1::minimum_marginal_gain`], which is validated
+/// as a ratio. `0.0` when `current` is empty.
 ///
 /// FRONTIER CONTRACT — this measures RAW / STRUCTURAL UNIQUE GAIN, never
 /// SEMANTIC RELEVANCE GAIN. A result that is new here is only VALID +
@@ -249,18 +251,22 @@ pub fn evaluate_coverage(
 /// those imply RELEVANT. STEP 2's [`crate::ComplementarityMetrics`] measures the
 /// same structural layer, in more detail, and is likewise not a relevance
 /// signal. Adaptive learning must be fed a relevance-filtered signal — designed
-/// in the phase after STEP 2 — never this raw unique count as if it were
+/// in the phase after STEP 2 — never this raw structural ratio as if it were
 /// utility. Today this stays a purely structural progressive stop/continue
 /// input and nothing in STEP 2 changed that.
 pub fn observed_marginal_gain(previous: &[SearchResult], current: &[SearchResult]) -> f64 {
+    if current.is_empty() {
+        return 0.0;
+    }
     let before = previous
         .iter()
         .map(|result| result.canonical_url.0.as_str())
         .collect::<BTreeSet<_>>();
-    current
+    let new = current
         .iter()
         .filter(|result| !before.contains(result.canonical_url.0.as_str()))
-        .count() as f64
+        .count();
+    new as f64 / current.len() as f64
 }
 
 #[cfg(test)]

@@ -81,23 +81,32 @@ AMATL.
 | `.data_handling_notes` | string opcional | No vacío requerido |
 | `.operational_risk` | string opcional | No vacío requerido |
 
-Defaults específicos: Brave usa `brave-v1`, `BRAVE_API_KEY`, API oficial, URL
-de términos, fecha de términos `2026-02-11` y filtros site/filetype/language/
-region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL de
-soporte. **Ambos están `rejected` por defecto**, no `draft`: ambos requieren un
-plan de pago (Brave eliminó su tier gratuito en 2026-02; Mojeek no tiene tier
-gratuito) y la política del operador excluye providers de pago. No es papeleo
-pendiente — reactivarlos exige revertir esa decisión explícitamente, no sólo
-completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
-Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) sí están `draft` con adapter
-completo y ficha aprobable; sólo falta `reviewer`/`reviewed_at`/
-`approval_status` con identidad real. `duckduckgo_html` se retiró del
-registro: DuckDuckGo no ofrece API de búsqueda web. Antes de elegir fuente,
-consulta la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
+Defaults específicos: Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) está
+`draft` con adapter completo y ficha
+aprobable; sólo falta `reviewer`/`reviewed_at`/`approval_status` con identidad
+real. Los adaptadores sin API de búsqueda web disponible, las fuentes de pago y
+el agregador autohospedado SearXNG **se retiraron del producto**: no están declarados en los expedientes incorporados, no están
+registrados en el `ProviderRegistry`, sus adapters se eliminaron de `providers/`
+y, al desaparecer su expediente, `Config::validate()` rechaza esos nombres
+(`unknown enabled provider`), de modo que aparecer en
+`providers.enabled` o declarar `[providers.<nombre>]` para un nombre retirado es un
+error de configuración, no una fuente omitida en silencio. Antes de elegir
+fuente, consulta la sección «Viabilidad y coste» de
+`docs/gobernanza-providers.md`.
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
-fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
-no elimina los demás. El nombre debe ser una clave estable (minúsculas ASCII,
+fuente, y la sustitución es **por nombre de fuente, no por campo**. Declarar
+`[providers.marginalia]` reemplaza esa ficha pero deja intactas las demás, así que
+ajustar una fuente no elimina las otras; en cambio, dentro de la ficha, la
+tabla **reemplaza** el expediente incorporado completo (el wire struct usa
+`#[serde(default)]`, sin fusión campo a campo): una tabla que sólo traiga
+`approval_status`, `reviewed_at` y `reviewer` descarta `terms_url`, `rate_limit`,
+`cost_model` y el resto, y la puerta de `approved_on` vuelve a cerrarse en
+silencio (`provider_not_approved`). Para aprobar una fuente incorporada hay que
+reescribir la ficha entera, como muestran los ejemplos de
+`docs/gobernanza-providers.md`; el test
+`declaring_a_table_replaces_the_builtin_record_instead_of_merging_it` fija esa
+semántica. El nombre debe ser una clave estable (minúsculas ASCII,
 dígitos y `_`). Declarar una fuente no la implementa: el servicio la construye
 sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
 (ver `docs/arquitectura.md`).
@@ -279,7 +288,7 @@ disponibles.
 
 | Clave | Tipo/default | Rango validado |
 |---|---:|---|
-| `deep.extractor.executable` | string / `trafilatura` | sin validación de contenido; ausencia degrada |
+| `deep.extractor.executable` | string / `trafilatura` | ruta absoluta o nombre simple; una ruta relativa con separador se rechaza; ausencia degrada |
 | `.version` | string / `trafilatura-2.2.0-cli-json-v1` | contrato fijado; participa en caché |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.max_output_bytes` | u64 / 4194304 | >0 |
@@ -293,7 +302,7 @@ disponibles.
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.shutdown_grace_ms` | u64 / 500 | >0 |
 | `.max_memory_mb` | u64 / 512 | >0; se propaga al harness como `AMATL_CHROMIUM_MEMORY_MB` |
-| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
+| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; ruta absoluta o nombre simple (una ruta relativa con separador se rechaza) y se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
 | `.max_dom_bytes` | u64 / 8388608 | Tope del DOM devuelto; se propaga como `AMATL_CHROMIUM_MAX_DOM_BYTES` |
 | `.max_redirects` | u32 / 5 | cualquier u32 |
 

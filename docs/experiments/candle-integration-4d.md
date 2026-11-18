@@ -7,6 +7,16 @@ All numbers below come from executed runs on this machine (glibc host for the
 latency/functional runs; user-space musl toolchain for the hard gate — see
 below). No estimated or fixture-calibrated latency.
 
+> **Status update — 2026-10-25: quarantined.** The files in the table below no
+> longer live in `crates/amatl-core/src/experimental_embeddings/`, and
+> `amatl-core` no longer declares the `experimental-local-embeddings` feature.
+> The whole stack moved unchanged to `experiments/local-embeddings-boundary/`, a
+> crate excluded from the workspace with its own `Cargo.lock`, because
+> `candle-core 0.9.2` depends on `zip ^7.2.0` and `zip < 9.0.0` carries
+> RUSTSEC-2026-0367/-0368/-0369. Every measurement below stands; the feature-on
+> commands now run inside that crate without a feature flag. See
+> `docs/security/supply-chain.md`.
+
 ## What moved into the workspace
 
 The real pure-Rust Candle backend now lives **inside `amatl-core`**, behind the

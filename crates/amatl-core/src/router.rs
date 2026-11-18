@@ -411,12 +411,10 @@ impl StaticRouter {
         let selected: Vec<_> = providers
             .iter()
             .filter(|provider| provider.available)
-            .filter(|provider| {
-                (query.domains.is_empty() || provider.capabilities.site_filter)
-                    && (query.file_types.is_empty() || provider.capabilities.file_filter)
-                    && (query.language.is_none() || provider.capabilities.language)
-                    && (query.region.is_none() || provider.capabilities.region)
-            })
+            // Same eligibility rule as the adaptive router, so the two cannot
+            // disagree on whether a provider can honor the query's filters
+            // (notably `time_range`).
+            .filter(|provider| supports_required_filters(query, &provider.capabilities))
             .take(3)
             .map(|provider| provider.name.clone())
             .collect();

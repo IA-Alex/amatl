@@ -19,6 +19,10 @@ pub struct ServerConfig {
     pub clients: Vec<ServerClient>,
     pub allowed_hosts: Vec<String>,
     pub allowed_origins: Vec<String>,
+    /// Maximum request body size accepted by the HTTP/MCP transport. This must
+    /// be at least `persistence.saved_document_max_bytes` (plus JSON envelope
+    /// overhead) or `POST /saved` will reject a payload the service itself
+    /// considers valid with `413 body_too_large`.
     pub max_body_bytes: usize,
     pub max_header_bytes: usize,
     pub request_timeout_ms: u64,
@@ -301,7 +305,7 @@ impl Config {
             Some(existing) => *existing = table,
             None => clients.push(table),
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -322,7 +326,7 @@ impl Config {
         {
             clients.retain(|table| table.get("id").and_then(|item| item.as_str()) != Some(id));
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
     /// Write every field `patch` sets to `[server]` (and `[server.tls]` for
@@ -407,7 +411,7 @@ impl Config {
             set_clearable_string(table, "cert_path", patch.tls_cert_path.as_deref());
             set_clearable_string(table, "key_path", patch.tls_key_path.as_deref());
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
     /// HTTP server safety limits, TLS pairing, the named-client set (via

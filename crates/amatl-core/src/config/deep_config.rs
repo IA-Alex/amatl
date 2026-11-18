@@ -314,7 +314,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.timeout_ms")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -347,7 +347,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.extractor.max_output_bytes")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -406,7 +406,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "deep.renderer.max_dom_bytes")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -464,6 +464,93 @@ impl Config {
                 "invalid Gap Analyzer safety limit".into(),
             ));
         }
+        // Program paths: a *relative* path that contains a separator
+        // (`./trafilatura`, `bin/extract`) is resolved against the process's
+        // working directory, so whoever can write there decides which binary
+        // the server executes — the extractor and the harness are the two
+        // spawn sites where that turns into code execution as the service
+        // user. A bare name (resolved through `PATH`, which is how the
+        // defaults work) and an absolute path are the only unambiguous shapes.
+        // The harness path is only checked while the renderer is enabled,
+        // because that is when it can actually be launched; enabling it later
+        // re-validates, so the check cannot be skipped by ordering.
+        if !self.deep.extractor.executable.is_empty()
+            && is_relative_program_path(&self.deep.extractor.executable)
+        {
+            return Err(ConfigError::Policy(
+                "deep.extractor.executable must be an absolute path or a bare program name".into(),
+            ));
+        }
+        if self.deep.renderer.enabled
+            && !self.deep.renderer.sandbox_path.is_empty()
+            && is_relative_program_path(&self.deep.renderer.sandbox_path)
+        {
+            return Err(ConfigError::Policy(
+                "deep.renderer.sandbox_path must be an absolute path or a bare program name".into(),
+            ));
+        }
         Ok(())
+    }
+}
+
+/// Whether `value` names a program through the current directory — the shape
+/// `Command::new` resolves against the process CWD rather than `PATH`.
+///
+/// A containment check against the separator alone misses the two shapes that
+/// are *entirely* the current directory, `.` and `..`: neither contains a
+/// separator, so both used to pass as "a bare program name" and reached
+/// `Command::new` as a CWD-controlled binary. Working over components also makes
+/// the rule platform-independent, so a POSIX literal cannot silently assert
+/// nothing elsewhere.
+fn is_relative_program_path(value: &str) -> bool {
+    let path = Path::new(value);
+    if path.is_absolute() {
+        return false;
+    }
+    // `.`/`..` in any position mean "through the CWD", as does any separator.
+    path.components().any(|component| {
+        matches!(
+            component,
+            std::path::Component::CurDir | std::path::Component::ParentDir
+        )
+    }) || value.contains(std::path::MAIN_SEPARATOR)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// The rule exists so a configured program cannot be resolved through the
+    /// process CWD, where whoever can write there would choose the binary. The
+    /// separator-only check let `.` and `..` through: neither contains a
+    /// separator, so both were read as a bare `PATH` name.
+    #[test]
+    fn program_path_rule_covers_every_current_directory_shape() {
+        for value in [".", "..", "./trafilatura", "../bin/trafilatura"] {
+            assert!(
+                is_relative_program_path(value),
+                "{value:?} reaches the CWD and must be rejected"
+            );
+        }
+        // Built from the platform separator so the case is real on every host
+        // instead of only where `/` happens to be the separator.
+        let sep = std::path::MAIN_SEPARATOR;
+        for value in [format!("..{sep}trafilatura"), format!(".{sep}trafilatura")] {
+            assert!(
+                is_relative_program_path(&value),
+                "{value:?} reaches the CWD and must be rejected"
+            );
+        }
+        // A bare NAME is resolved through `PATH`, and an absolute path names
+        // exactly one file: both stay allowed.
+        for value in ["trafilatura", "pdftotext"] {
+            assert!(!is_relative_program_path(value), "{value:?} is a PATH name");
+        }
+        let absolute = std::path::Path::new(if cfg!(windows) {
+            r"C:\tools\x.exe"
+        } else {
+            "/usr/bin/x"
+        });
+        assert!(!is_relative_program_path(&absolute.to_string_lossy()));
     }
 }

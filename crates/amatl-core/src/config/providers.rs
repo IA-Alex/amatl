@@ -134,87 +134,11 @@ impl Default for ProviderConfig {
 /// Governance records shipped with AMATL, used as the base every configuration
 /// file extends or overrides.
 ///
-/// Brave and Mojeek are declared `Rejected`, not `Draft`: both adapters are
-/// implemented and tested, but both sources require a paid plan (Brave
-/// dropped its free tier in 2026-02; Mojeek has none), and operator policy is
-/// to run only no-cost sources. This is a deliberate, closed decision, not an
-/// incomplete governance filing — `approved()` treats `Rejected` the same as
-/// `Draft` (neither passes the gate), so the distinction changes nothing at
-/// runtime; it exists so a future review (human or automated) reads the
-/// status and finds a closed "no", not an invitation to fill in the paperwork
-/// and enable a paid source. Re-approving either requires an explicit policy
-/// change, not just completing the dossier. See «Viabilidad y coste» in
-/// `docs/gobernanza-providers.md`.
+/// Exactly one record ships: the key-gated Marginalia. No other source ships a
+/// record or an adapter, so a configuration file that names an unshipped source
+/// fails validation rather than running with fewer sources than it appears to
+/// declare. See «Viabilidad y coste» in `docs/gobernanza-providers.md`.
 fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRuntimeConfig> {
-    let brave = ProviderRuntimeConfig {
-        adapter_version: Some("brave-v1".into()),
-        approval_status: ApprovalStatus::Rejected,
-        credential_env: Some("BRAVE_API_KEY".into()),
-        terms_url: Some(
-            "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
-                .into(),
-        ),
-        terms_version_or_date: Some("2026-02-11".into()),
-        allowed_access_method: Some("official_api".into()),
-        cost_model: Some(
-            "Paid since 2026-02 (card required at signup; ~5 USD/mo credit, \
-             usage billed beyond it)."
-                .into(),
-        ),
-        operational_risk: Some(
-            "Rejected by operator policy: no paid search providers. Do not \
-             enable without an explicit policy change; see «Viabilidad y \
-             coste» in docs/gobernanza-providers.md."
-                .into(),
-        ),
-        supported_filters: vec![
-            "site".into(),
-            "filetype".into(),
-            "language".into(),
-            "region".into(),
-            "time_range".into(),
-        ],
-        ..ProviderRuntimeConfig::default()
-    };
-    let mojeek = ProviderRuntimeConfig {
-        adapter_version: Some("mojeek-v1".into()),
-        approval_status: ApprovalStatus::Rejected,
-        credential_env: Some("MOJEEK_API_KEY".into()),
-        terms_url: Some("https://www.mojeek.com/support/api/".into()),
-        allowed_access_method: Some("official_api".into()),
-        cost_model: Some("Paid; no free tier.".into()),
-        operational_risk: Some(
-            "Rejected by operator policy: no paid search providers. Do not \
-             enable without an explicit policy change; see «Viabilidad y \
-             coste» in docs/gobernanza-providers.md."
-                .into(),
-        ),
-        ..ProviderRuntimeConfig::default()
-    };
-    let searxng = ProviderRuntimeConfig {
-        adapter_version: Some("searxng-v1".into()),
-        credential_env: Some("SEARXNG_INSTANCE_URL".into()),
-        terms_url: Some("https://docs.searxng.org/".into()),
-        terms_version_or_date: Some("self-certified".into()),
-        allowed_access_method: Some("self_hosted".into()),
-        plan_or_contract: Some("self-hosted".into()),
-        rate_limit: Some("unlimited (self-hosted)".into()),
-        cost_model: Some("0".into()),
-        storage_rights: false,
-        data_handling_notes: Some(
-            "Self-hosted SearXNG instance; no external terms. \
-             Upstream engines have their own terms — operator must verify \
-             compliance. No data stored by AMATL."
-                .into(),
-        ),
-        operational_risk: Some(
-            "Depends on upstream search engines that may block automated \
-             access. IP reputation risk at volume. Operator should configure \
-             only permissive engines."
-                .into(),
-        ),
-        ..ProviderRuntimeConfig::default()
-    };
     let marginalia = ProviderRuntimeConfig {
         adapter_version: Some("marginalia-v1".into()),
         credential_env: Some("MARGINALIA_API_KEY".into()),
@@ -222,12 +146,7 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
         allowed_access_method: Some("official_api".into()),
         ..ProviderRuntimeConfig::default()
     };
-    std::collections::BTreeMap::from([
-        ("brave".to_string(), brave),
-        ("mojeek".to_string(), mojeek),
-        ("searxng".to_string(), searxng),
-        ("marginalia".to_string(), marginalia),
-    ])
+    std::collections::BTreeMap::from([("marginalia".to_string(), marginalia)])
 }
 
 impl Config {
@@ -281,7 +200,7 @@ impl Config {
             name,
             toml_edit::Item::Table(provider_record_to_table(record)),
         );
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 }

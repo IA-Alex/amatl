@@ -5,12 +5,11 @@
 //! source therefore means shipping a factory and a governance record — no
 //! `match` arm inside the service, no new field in the configuration struct.
 
-use super::{
-    BraveProvider, HttpTransport, MarginaliaProvider, MojeekProvider, Provider, SearXngProvider,
-};
+use super::{HttpTransport, MarginaliaProvider, Provider};
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
+use zeroize::Zeroizing;
 
 /// Everything a factory may use to build one provider instance.
 pub struct ProviderBuildContext<'a> {
@@ -22,8 +21,10 @@ pub struct ProviderBuildContext<'a> {
     pub enabled: bool,
     /// Whether the governance record is complete and unexpired.
     pub approved: bool,
-    /// Credential resolved from `credential_env`, when present and non-empty.
-    pub credential: Option<String>,
+    /// Credential resolved from an operator-injected in-memory value or from
+    /// `credential_env`, when present and non-empty. `Zeroizing` so the copy a
+    /// provider keeps is wiped from the heap when the provider is dropped.
+    pub credential: Option<Zeroizing<String>>,
     /// Shared outbound transport, already subject to the data policy.
     pub transport: Arc<dyn HttpTransport>,
 }
@@ -58,12 +59,14 @@ impl ProviderRegistry {
     }
 
     /// Registry with the sources AMATL ships.
+    ///
+    /// Exactly one source is registered: the approved, key-gated Marginalia.
+    /// No other source ships an adapter or a factory, so any other name
+    /// resolves to `provider_not_registered` — it can never be selected or send
+    /// traffic. Configuration validation rejects unknown names outright
+    /// (`config/mod.rs`), so the registry is the second of two closed doors.
     pub fn builtin() -> Self {
-        Self::empty()
-            .with(Arc::new(BraveFactory))
-            .with(Arc::new(MojeekFactory))
-            .with(Arc::new(SearXngFactory))
-            .with(Arc::new(MarginaliaFactory))
+        Self::empty().with(Arc::new(MarginaliaFactory))
     }
 
     /// Builder-style registration, replacing any factory with the same name.
@@ -100,73 +103,6 @@ impl ProviderRegistry {
     /// Registered names in stable alphabetical order.
     pub fn names(&self) -> Vec<&str> {
         self.factories.keys().map(String::as_str).collect()
-    }
-}
-
-struct BraveFactory;
-
-impl ProviderFactory for BraveFactory {
-    fn name(&self) -> &str {
-        "brave"
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        Arc::new(BraveProvider::new(
-            context.credential.clone(),
-            context.enabled,
-            context.approved,
-            context.transport.clone(),
-        ))
-    }
-}
-
-struct MojeekFactory;
-
-impl ProviderFactory for MojeekFactory {
-    fn name(&self) -> &str {
-        "mojeek"
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        Arc::new(MojeekProvider::new(
-            context.credential.clone(),
-            context.enabled,
-            context.approved,
-            context.runtime.supported_filters.clone(),
-            context.transport.clone(),
-        ))
-    }
-}
-
-// ---------------------------------------------------------------------------
-// SearXNG factory
-// ---------------------------------------------------------------------------
-
-pub struct SearXngFactory;
-
-impl ProviderFactory for SearXngFactory {
-    fn name(&self) -> &str {
-        "searxng"
-    }
-
-    fn requires_credential(&self) -> bool {
-        false
-    }
-
-    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        let url = context
-            .credential
-            .as_deref()
-            .and_then(|url| url::Url::parse(url).ok())
-            .unwrap_or_else(|| {
-                url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid")
-            });
-        Arc::new(SearXngProvider::new(
-            url,
-            context.enabled,
-            context.approved,
-            context.transport.clone(),
-        ))
     }
 }
 
@@ -261,12 +197,10 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        assert_eq!(
-            registry.names(),
-            vec!["brave", "marginalia", "mojeek", "searxng"]
-        );
-        assert!(registry.get("brave").unwrap().requires_credential());
-        assert!(!registry.get("searxng").unwrap().requires_credential());
+        // Only the one sanctioned source ships; nothing else is registered or
+        // declared, so nothing else can be selected.
+        assert_eq!(registry.names(), vec!["marginalia"]);
+        assert!(registry.get("marginalia").is_some());
         assert!(registry.get("marginalia").unwrap().requires_credential());
     }
 
@@ -274,7 +208,6 @@ mod tests {
     fn third_party_sources_register_without_touching_the_builtin_set() {
         let registry = ProviderRegistry::builtin().with(Arc::new(CustomFactory));
         assert!(registry.contains("custom_archive"));
-        assert!(registry.contains("brave"));
         assert!(ProviderRegistry::empty().names().is_empty());
 
         // A source can also be withdrawn without rebuilding the registry.
@@ -282,6 +215,5 @@ mod tests {
         assert!(registry.unregister("custom_archive").is_some());
         assert!(!registry.contains("custom_archive"));
         assert!(registry.unregister("custom_archive").is_none());
-        assert!(registry.contains("brave"));
     }
 }

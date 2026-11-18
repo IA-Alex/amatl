@@ -12,7 +12,6 @@ workspace version, for example `v0.1.0-rc.1`.
 | Linux aarch64 | `aarch64-unknown-linux-musl` | `.tar.gz` |
 | macOS x86_64 | `x86_64-apple-darwin` | `.tar.gz` |
 | macOS aarch64 (Apple Silicon) | `aarch64-apple-darwin` | `.tar.gz` |
-| Windows x86_64 | `x86_64-pc-windows-msvc` | `.zip` |
 
 ### Support scope
 
@@ -21,24 +20,30 @@ The table above is the whole distribution scope; nothing else is published.
 - **Tier 1 — Linux x86_64 (`x86_64-unknown-linux-musl`).** Static binary plus
   native packages, reproducible archive, SBOMs, checksums and build
   attestations. This is the target the release workflow validates end to end.
-- **Tier 2 — Linux aarch64, macOS x86_64/aarch64, Windows x86_64.** Signed-off
-  `.tar.gz`/`.zip` archives built from the same tag with checksums, without
-  native packages and without renderer isolation.
+- **Tier 2 — Linux aarch64, macOS x86_64/aarch64.** Signed-off `.tar.gz`
+  archives built from the same tag with checksums, without native packages and
+  without renderer isolation.
 - **Out of scope.** Any other target, and every form of self-managed
-  distribution channel (Homebrew, winget, AUR, distro repositories). Building
-  from source on an unlisted platform is supported as source code, not as a
+  distribution channel (Homebrew, AUR, distro repositories). Building from
+  source on an unlisted platform is supported as source code, not as a
   published artifact.
+- **Windows is not a target.** It was published as a Tier 2 `.zip` until
+  2026-11-15 and is withdrawn: AMATL spawns POSIX programs (`/bin/sh`,
+  Trafilatura, `pdftotext`) and its test suite asserts that contract directly,
+  so a Windows job could only stay green by testing less than the product does.
+  The `windows` release job and the `windows-latest` CI matrix entry were
+  removed together rather than kept as an unverified artifact.
 
 Every listed target is compiled and tested on each push: `contract-gate` runs
-the workspace test suite on Linux, macOS and Windows, so a platform regression
-fails CI instead of appearing at tag time.
+the workspace test suite on Linux and macOS, so a platform regression fails CI
+instead of appearing at tag time.
 
 The Chromium sandbox (`packaging/amatl-chromium-sandbox`) is Linux-only: it
 requires bubblewrap user namespaces and is only packaged in `.deb` and `.rpm`.
-On macOS and Windows the binary runs without renderer isolation; the
-`AMATL_CHROMIUM_BIN` capability is unavailable on those platforms. Native
-packaging (`packaging/build-linux-packages.sh`) is likewise Linux-only by
-design and is never invoked from the macOS or Windows jobs.
+On macOS the binary runs without renderer isolation; the `AMATL_CHROMIUM_BIN`
+capability is unavailable there. Native packaging
+(`packaging/build-linux-packages.sh`) is likewise Linux-only by design and is
+never invoked from the macOS job.
 
 ## Owner release procedure
 
@@ -60,6 +65,40 @@ design and is never invoked from the macOS or Windows jobs.
 The generated binary is static musl. Native packages intentionally install the
 same verified binary, README, licenses and manual page; Trafilatura and Chromium
 remain optional runtime capabilities and are not package dependencies.
+
+## What each event runs, and what a local gate does not accredit
+
+A branch push, a pull request and an annotated tag are not equivalent events, and
+these workflows are not interchangeable triggers for one another:
+
+| Workflow | Runs on | Notes |
+|---|---|---|
+| `contract-gate` (`ci.yml`) | push, pull request, nightly cron at 03:00, manual | the workspace suite on Linux and macOS, plus `msrv`, `browser-e2e` and `trafilatura-integration`; `soak` runs only on cron or manual, because it is `#[ignore]`d in the per-push gate |
+| `static-analysis` | push/PR touching `tools/**`, `crates/**`, `docs/**`, `README.md`, `SECURITY.md`, plus a weekly cron and manual | Ruff over `tools/` and the `file:line` citation check are blocking; formatting and semgrep are advisory |
+| `codeql-invariants` | push/PR touching `crates/**` or `tools/codeql/**`, plus a weekly cron | path-filtered, so a `docs/`-only change never runs it |
+| `chromium-isolation` | push/PR touching `packaging/amatl-chromium-sandbox`, `crates/amatl-core/src/render.rs`, `crates/amatl-core/src/fetch.rs`, its own document or workflow, plus manual | Linux-only contract |
+| `provider-canary` | manual only | live provider calls are never made on push |
+| `release-candidate` | manual, push to `main` limited to `packaging/**` and the workflow file, tags matching `v*-rc.*` | builds and uploads a candidate artifact without publishing |
+| `publish-crates`, `publish-aur` | push of a stable tag matching `v[0-9]+.[0-9]+.[0-9]+`, plus manual dispatch | release candidates are excluded on purpose |
+
+Two consequences the procedure above depends on:
+
+- **A local green gate is not remote CI.** `cargo test --workspace` on one Linux
+  host runs none of the macOS job, Chrome WebDriver, MSRV, CodeQL or the
+  soak job. Each of those can be reproduced individually by running that job's own
+  commands — `CONTINUIDAD.md` records the exact commands, the pinned versions they
+  need and their results — but reproducing a command is not reproducing the run:
+  another runner, another cache and, on a Linux host, no macOS at all,
+  which leaves `cross-platform` as the one job no local command can accredit. The
+  evidence that a commit is releasable is the green `contract-gate` run for *that*
+  SHA on GitHub; a local transcript is a precondition, not a substitute.
+- **A tag is a publication, not a marker.** `publish-crates.yml` uploads to
+  crates.io, where a version can be yanked but never removed, and
+  `publish-aur.yml` replaces the package every Arch user installs once the AUR
+  package exists (`packaging/PKGBUILD` is the recipe, and the repository does not
+  claim the package until that submission happens). Neither is reversible, so
+  both stay behind an explicit owner decision; the manual dispatch path exists
+  for candidates, not as a shortcut around that decision.
 
 ## Native package validation
 

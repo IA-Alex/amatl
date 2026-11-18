@@ -7,19 +7,13 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Arc;
 use std::time::Duration;
 
-mod brave;
 mod http;
 mod marginalia;
-mod mojeek;
 mod registry;
-mod searxng;
 
-pub use brave::BraveProvider;
 pub use http::{HttpRequest, HttpResponse, HttpTransport, ReqwestTransport};
 pub use marginalia::MarginaliaProvider;
-pub use mojeek::MojeekProvider;
 pub use registry::{ProviderBuildContext, ProviderFactory, ProviderRegistry};
-pub use searxng::SearXngProvider;
 
 #[derive(Clone, Debug)]
 pub struct ProviderContext {

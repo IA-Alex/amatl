@@ -1,0 +1,59 @@
+%% C4 Nivel 2 — Contenedores de AMATL (UML-like, C4)
+%% Fuente: mapa de crates (lib.rs de cada crate), memorias Serena (core, server/http-mcp, ui/frontend).
+flowchart TB
+    subgraph externos["Externos"]
+        proveedores["Proveedores de búsqueda<br/>[HTTP APIs]"]
+        web["Web pública<br/>[HTTP(S)]"]
+        completado["Completado remoto opcional<br/>[API de inferencia]"]
+    end
+
+    subgraph amatl["AMATL (un solo listener serve = UI + API + MCP)"]
+        cli["amatl-cli<br/>[Binario Rust]<br/>search · deep · config · providers<br/>cache · doctor · serve · benchmark"]
+        ui["amatl-ui<br/>[Assets estáticos embebidos]<br/>JS vanilla, CSP estricta,<br/>i18n es/en, paginación server-side"]
+        server["amatl-server<br/>[Axum, Rust]<br/>routes.rs: rutas HTTP/JSON<br/>mcp.rs: MCP Streamable HTTP<br/>security_middleware: Host/Origin,<br/>bearer digest, scopes, rate, límites"]
+
+        subgraph core["amatl-core — única lógica de producto"]
+            orchestr["service / execution<br/>[SearchOrchestrator]<br/>Dueño único del Budget y deadline"]
+            deeporch["deep<br/>[DeepOrchestrator]"]
+            fetcher["fetch<br/>[SafeFetcher]<br/>SSRF: resolve-and-pin, redirects, límites"]
+            providers_reg["providers/registry<br/>[ProviderRegistry + factories]"]
+            pipeline["normalize → canonical → dedupe<br/>→ ranking_v2 → diversity<br/>[run_pipeline]"]
+            answer["answer / inference<br/>[Respuesta citada, opcional]"]
+            errs["errors<br/>[ErrorCode / ERROR_CATALOG]"]
+            config["config<br/>[data_policy, server, providers…]"]
+            secsec["security<br/>[Validación SSRF de URLs]"]
+        end
+
+        storage["storage / cache / document_cache<br/>[SQLite sqlx + cachés]<br/>Sin SQLite, Search sigue correcto"]
+    end
+
+    operador_ext["Operador / Cliente MCP / Navegador"]
+
+    operador_ext --> cli
+    operador_ext --> ui
+    operador_ext --> server
+
+    ui --> server
+    cli --> orchestr
+    server --> orchestr
+    server --> deeporch
+    server --> answer
+
+    orchestr --> providers_reg
+    orchestr --> pipeline
+    deeporch --> fetcher
+    deeporch --> pipeline
+    answer --> orchestr
+    providers_reg --> proveedores
+    fetcher --> web
+    answer --> completado
+    orchestr --> storage
+    deeporch --> storage
+    secsec -.-> fetcher
+    config -.-> orchestr
+    errs -.-> server
+
+    classDef box fill:#f6f8fb,stroke:#5b6b8c,color:#152238
+    classDef ext fill:#eef4ff,stroke:#4563a8,color:#12203c
+    class cli,ui,server,orchestr,deeporch,fetcher,providers_reg,pipeline,answer,errs,config,secsec,storage box
+    class proveedores,web,completado ext

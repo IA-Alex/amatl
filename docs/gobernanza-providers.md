@@ -10,7 +10,7 @@ Una ficha es aprobada sólo cuando `approval_status = "approved"`, `reviewed_at`
 es una fecha ISO válida con antigüedad máxima de 90 días y existen valores no
 vacíos para adapter version, reviewer, terms URL y versión/fecha, método de
 acceso, plan/contrato, rate limit, coste, notas de datos y riesgo operativo
-(`config.rs`). Además, el adapter real exige habilitación y credencial
+(`config/mod.rs:114-137`). Además, el adapter real exige habilitación y credencial
 cuando corresponda. Una ficha expirada o incompleta produce provider no
 disponible; no existe fallback que omita la puerta.
 
@@ -56,76 +56,57 @@ repositorio si contienen información privada.
 
 | Provider | Nivel de diseño | Adapter | Config default | Estado efectivo | Datos pendientes |
 |---|---|---|---|---|---|
-| Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
-| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config.rs`; ver «Fichas de aprobación» |
-| Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en «Fichas de aprobación» |
-| Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
+| Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config/providers.rs`; ver «Fichas de aprobación» |
+| Fuentes retiradas (pago y sin API web) | **retiradas del producto** | adapters y fichas eliminados de `providers/` | no declaradas, no registradas | **Retiradas por política del operador** (fuentes de pago y fuentes sin API de búsqueda web; no es papeleo pendiente) | Ninguno — esos nombres se rechazan en `Config::validate()` salvo cambio explícito de política |
 
-**Brave y Mojeek están descartados, no pendientes.** `builtin_provider_records()`
-(`config.rs`) fija `approval_status = "rejected"` para ambos por defecto, con el
-motivo explícito en `cost_model`/`operational_risk` ("Rejected by operator
-policy: no paid search providers"). Un test dedicado
-(`paid_providers_are_rejected_by_default_not_merely_draft`) falla si esto
-regresa silenciosamente a `draft`. Reactivarlos exige una decisión explícita de
-política, no simplemente completar `reviewer`/`reviewed_at` — a diferencia de
-SearXNG y Marginalia, que sí son papeleo pendiente sobre una decisión ya
-tomada (usarlas).
+**Marginalia es la única fuente que se sirve.** AMATL publica exactamente una
+fuente: `marginalia`, que exige `MARGINALIA_API_KEY`. El registro
+(`ProviderRegistry::builtin()`) despacha sólo `marginalia-v1`.
 
-`duckduckgo_html` se retiró del registro y de `providers/`: era un stub de 73
-líneas sin endpoint, cliente HTTP ni parseo, y DuckDuckGo no ofrece API de
-búsqueda web (sólo Instant Answer, que no devuelve resultados web). Mantenerlo
-listado como provider era engañoso; ver «Viabilidad y coste» más abajo.
+**Las fuentes de pago se retiraron del producto.** La política
+del operador ejecuta sólo fuentes sin coste, así que no se declaran en los
+expedientes incorporados, no están
+registradas en `ProviderRegistry` y sus módulos de adapter se eliminaron de
+`providers/`. Además, al desaparecer su expediente, `Config::validate()` los
+rechaza **por nombre**: un nombre retirado en `providers.enabled` —o una tabla
+`[providers.<nombre>]`— produce un error de configuración explícito
+(`unknown enabled provider`) en lugar de una fuente omitida en silencio. No queda
+ficha que completar ni que descartar; ver «Viabilidad y coste» para el motivo de
+mercado.
 
-La fecha `2026-02-11` existente en el default de Brave es
-`terms_version_or_date`; **no** es `reviewed_at`. No se registra como revisión.
-Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún
-revisor está definido para ninguno de los dos, pero eso ya no es lo que los
-bloquea: `approval_status = "rejected"` los bloquea por decisión de política,
-con o sin revisor. Ambos quedan bloqueados para tráfico real aunque existan
-adapters (`config.rs`, `service.rs:277-353`).
+**Dos puertas cerradas, verificadas por tests.** La retirada es de extremo a
+extremo, no sólo de registro: `retired_providers_are_absent_and_refused_by_validate`
+y `retired_provider_canary_stops_at_the_registry_door` comprueban que ni siquiera
+una configuración construida a mano que liste un nombre retirado llega a
+construir una fuente (`UnknownProvider`), y la superficie de UI ya no expone
+selector, diálogo de key ni claves retiradas en el catálogo de mensajes.
 
-## Fichas de aprobación: SearXNG y Marginalia
+El adaptador HTML se retiró del registro y de `providers/`: era un stub de 73
+líneas sin endpoint, cliente HTTP ni parseo, y no hay API de búsqueda web
+disponible (sólo una Instant Answer API, que no devuelve resultados web). SearXNG
+autohospedado también se retiró: era agregador de motores upstream, no una fuente
+con API oficial propia, y quedaba fuera de la política de fuentes que AMATL sirve
+de fábrica. Mantenerlos listados como providers era engañoso; ver «Viabilidad y
+coste» más abajo.
 
-Esta sección fija las fichas de gobernanza para las dos fuentes gratuitas
-verificadas. La puerta de activación (`config.rs:603-626`, `approved_on`) exige,
+La redacción de credenciales en URLs sigue cubierta por el adapter que queda con
+credencial: `sanitized_url()` se prueba en `providers/marginalia.rs:495-496`
+sobre una URL con `API-Key` en query, de modo que retirar las fuentes de pago no dejó esa
+propiedad sin cobertura. La selección de fuentes exige `approved()` y, al
+fallar, registra `provider_not_approved` y no llama a la fuente
+(`config/providers.rs`, `service.rs:2086-2094`).
+
+## Ficha de aprobación: Marginalia
+
+Esta sección fija la ficha de gobernanza para la única fuente gratuita
+verificada. La puerta de activación (`config/mod.rs:108-138`, `approved_on`) exige,
 además de `approval_status = "approved"` y un `reviewed_at` vigente (≤ 90 días),
 valores no vacíos para `adapter_version`, `reviewer`, `terms_url`,
 `terms_version_or_date`, `allowed_access_method`, `plan_or_contract`,
 `rate_limit`, `cost_model`, `data_handling_notes` y `operational_risk`. Una
 ficha que omita `plan_or_contract` o `rate_limit` **no aprueba**, aunque el
 resto esté completo. `adapter_version` debe coincidir con el valor registrado en
-`ProviderRegistry` (`searxng-v1`, `marginalia-v1`), no un literal genérico.
-
-### SearXNG (autohospedado) — aprobable
-
-El adapter está implementado y probado (`providers/searxng.rs`); la ficha
-incorporada en `config.rs` ya declara método, contrato, cuota, coste, derechos,
-notas de datos y riesgo. Sólo faltan `reviewer`, `reviewed_at` y
-`approval_status`, que son específicos del operador:
-
-```toml
-[providers.searxng]
-adapter_version = "searxng-v1"
-approval_status = "approved"
-reviewed_at = "2026-08-14"         # fecha real de la revisión, ≤ 90 días
-reviewer = "identidad verificable" # identidad real, no un rol
-terms_url = "https://docs.searxng.org/"
-terms_version_or_date = "self-certified"
-allowed_access_method = "self_hosted"
-plan_or_contract = "self-hosted"
-rate_limit = "unlimited (self-hosted)"
-cost_model = "0"
-credential_env = "SEARXNG_INSTANCE_URL"
-storage_rights = false
-supported_regions = []
-supported_filters = []
-data_handling_notes = "Instancia SearXNG autohospedada; sin términos externos. Los motores upstream tienen sus propios términos — el operador debe verificar cumplimiento. AMATL no almacena datos."
-operational_risk = "Depende de motores de búsqueda upstream que pueden bloquear el acceso automatizado. Riesgo de reputación de IP a volumen. El operador debe configurar sólo motores permisivos."
-```
-
-`terms_url` apunta a la documentación de la instancia, no a una revisión externa
-que no existe: es una autocertificación y así se declara en
-`terms_version_or_date = "self-certified"` y en `data_handling_notes`.
+`ProviderRegistry` (`marginalia-v1`), no un literal genérico.
 
 ### Marginalia — aprobable
 
@@ -185,11 +166,9 @@ el coste esté **declarado**, sea cual sea.
 
 | Fuente | Coste real | Clave | API de búsqueda web | Cobertura |
 |---|---|---|---|---|
-| Brave Search API | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
-| Mojeek Search API | De pago | Sí | Sí, oficial | Índice propio, medio |
-| Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí; para producción requiere una key genuina emitida al operador y una cuota verificable. Una key pública/de ejemplo no es una credencial productiva. | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
-| SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, DuckDuckGo y otros |
-| DuckDuckGo | 0 | No | **No existe.** Sólo Instant Answer API, que devuelve definiciones y resúmenes, no resultados web | — |
+| Fuentes de pago (**retiradas del producto**) | De pago; no se contratan por política del operador | Sí | Sí, oficial | Índice propio |
+| SearXNG autohospedado (**retirado del producto**) | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, engine-a y otros |
+| Marginalia (la única servida) | **0** para uso no comercial (CC-BY-NC-SA) | Sí; para producción requiere una key genuina emitida al operador y una cuota verificable. Una key pública/de ejemplo no es una credencial productiva. | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
 
 Consecuencia práctica: **gratuito, amplio y con términos permisivos no coexisten
 en una sola fuente.** Toda elección sacrifica una de las tres.
@@ -205,36 +184,24 @@ forma permanente en lugar de transitoria.
 Por eso `operational_risk` debe recoger esa exposición explícitamente y no
 tratarse como un trámite.
 
-### SearXNG como fuente
+### Por qué se retiró SearXNG
 
-Es la única opción gratuita con cobertura amplia, y traslada un problema en lugar
-de eliminarlo: no tiene índice propio, sino que consulta motores cuyos términos
-pueden prohibir el acceso automatizado. La ficha debe declararlo:
-
-- `terms_url` y `terms_version_or_date` apuntan a **tu** instancia, que no tiene
-  términos propios; se trata de una autocertificación y conviene decirlo en
-  `data_handling_notes` en lugar de dejar el campo aparentando una revisión
-  externa que no existe.
-- `allowed_access_method = "self_hosted"`, `cost_model = "0"`,
-  `plan_or_contract = "self-hosted"`.
-- `operational_risk` debe nombrar la dependencia de los motores upstream y la
-  posibilidad de bloqueo por reputación de IP a volumen alto.
-
-Configurar la instancia con sólo motores de términos permisivos reduce ese riesgo
-a costa de cobertura. Es una decisión del operador, no del core.
-
-Nota de implementación: `ProviderRuntimeConfig` no tiene campo para la URL de la
-instancia ni mapa libre, de modo que una factory de SearXNG debe resolver su
-dirección por variable de entorno o requiere ampliar la configuración.
+SearXNG no tiene índice propio: agrega motores cuyos términos pueden prohibir el
+acceso automatizado, así que traslada un problema en lugar de eliminarlo. La
+retirada sigue el mismo criterio que la de las fuentes de pago: el producto
+publica sólo fuentes con API de búsqueda web propia y gobernables, en vez de
+mantener como seleccionable un agregador cuyos términos dependen de cada motor
+upstream que el operador elija. `SEARXNG_INSTANCE_URL` y `deploy/searxng/` ya no
+forman parte del repositorio ni de la configuración.
 
 ### Alcance de red de los providers
 
 El guard anti-SSRF (`validate_resolved_addresses`) protege **Deep**, no el
 transporte de providers, que usa `ReqwestTransport` sin validación de dirección.
-Una fuente autohospedada en `127.0.0.1` o en la red local es por tanto
-alcanzable, lo que hace viable SearXNG. La contrapartida es que una ficha
-aprobada puede apuntar a infraestructura interna: es coherente con el modelo —los
-providers los configura el operador— pero debe ser una decisión consciente.
+Una ficha aprobada que apunte a una fuente autohospedada en `127.0.0.1` o en la
+red local es por tanto alcanzable. Es coherente con el modelo —los providers los
+configura el operador— pero debe ser una decisión consciente: una ficha
+aprobada puede apuntar a infraestructura interna.
 
 ## Alta o renovación
 

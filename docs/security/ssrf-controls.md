@@ -62,7 +62,7 @@ IPv6 blocks (`security.rs:66-77`): loopback `::1`, unspecified `::`, multicast
 - A single absolute deadline covers DNS, redirects, and body transfer
   (`fetch.rs:98-120`).
 - Deep defaults: 20 MiB global bytes, 10 fetches, five redirects, 10 crawl URLs,
-  depth one, 20 s (`config.rs:414-429`). MCP `fetch`: 256 KiB, two redirects,
+  depth one, 20 s (`config/deep_config.rs:60-80`). MCP `fetch`: 256 KiB, two redirects,
   three seconds (`amatl-server/src/mcp.rs:60-72`).
 
 ## Verification and gaps

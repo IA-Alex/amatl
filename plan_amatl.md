@@ -547,8 +547,8 @@ Evaluación por provider individual; no es política global.
 
 Clasificación por nivel de servicio:
 
-- `stable` (base): **Brave Search API** y **Mojeek** — columna vertebral de la Fase 1.
-- `best_effort`: **DuckDuckGo (HTML)** — experimental; su caída **MUST NOT** afectar el estado global si existen resultados de otros providers.
+- `stable` (base): fuentes sin coste aprobadas por gobernanza (SearXNG autoalojado y Marginalia) — columna vertebral de la Fase 1.
+- `best_effort`: agregadores experimentales sin coste sujetos a la política de gobernanza; su caída **MUST NOT** afectar el estado global si existen resultados de otros providers.
 
 ---
 
@@ -823,7 +823,7 @@ Métricas operativas Deep: fetch success, extraction success, enriched results, 
 
 **Fase 0 — Contratos.** Cerrar y contract-testear: ciclo de vida de entidades, clasificación (heurística léxica), normalización degradada, Provider Value (estados, inputs, outputs e invariantes), Gap Analyzer (sólo stub/interfaz/frontera), Budget, ranking/diversidad, degradación. Además: `schema_version`, semántica `error/warning/degradation`, ownership del Budget. La telemetría real, la calibración y el comportamiento adaptativo de Provider Value se implementan en Fases 3–4; la implementación y el comportamiento funcional de Gap Analyzer permanecen en Fase 7.
 
-**Fase 1 — Core MVP.** Rust, Tokio, Reqwest, Serde, Clap, Query, Classification, SearchPlan, Provider interface, Budget, Parallel Search. Providers Fase 1: **Brave Search API** y **Mojeek** (`stable`), **DuckDuckGo HTML** (`best_effort`).
+**Fase 1 — Core MVP.** Rust, Tokio, Reqwest, Serde, Clap, Query, Classification, SearchPlan, Provider interface, Budget, Parallel Search. Providers Fase 1: las fuentes sin coste aprobadas por gobernanza (SearXNG autoalojado como `stable`, más agregadores `best_effort` sujetos a política).
 
 **Fase 2 — Result Pipeline.** Normalization, Canonicalization, Deduplication, RRF, Diversity, JSON, CLI. Objetivo: `amatl search`.
 

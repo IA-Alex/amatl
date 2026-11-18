@@ -649,6 +649,69 @@ async fn chromium_renderer_executes_scripts_through_the_isolation_harness() {
     assert!(!dom.contains(">before<"), "the pre-script DOM was returned");
 }
 
+/// The renderer's environment handling, proven on the production code path.
+///
+/// `scrub_environment` is unit-tested, but the finding was about *wiring*: a
+/// spawn site that simply forgets to call it. This drives the real
+/// `ChromiumRenderer::render` with a stand-in harness that dumps the
+/// environment it was given into the DOM it returns, so both halves of the
+/// contract are checked where they matter: the service's credentials are gone,
+/// and the variables the harness legitimately needs (a `PATH` for its own
+/// tools, the `AMATL_CHROMIUM_*` limits) are still there.
+#[cfg(unix)]
+#[tokio::test]
+async fn the_renderer_hands_the_harness_a_scrubbed_environment() {
+    if std::env::var("AMATL_CHROMIUM_INTEGRATION").as_deref() != Ok("1") {
+        return;
+    }
+    use amatl_core::{ChromiumRenderer, RendererConfig};
+    use std::os::unix::fs::PermissionsExt;
+
+    const CANARY: &str = "AMATL_RENDER_ENV_CANARY_4d19";
+    let directory = std::env::temp_dir().join(format!("amatl-fake-harness-{}", std::process::id()));
+    std::fs::create_dir_all(&directory).expect("scratch directory");
+    let harness = directory.join("amatl-chromium-sandbox");
+    std::fs::write(
+        &harness,
+        b"#!/bin/sh\ncat \"$1\" >/dev/null\nenv > \"$2\"\n",
+    )
+    .expect("harness");
+    std::fs::set_permissions(&harness, std::fs::Permissions::from_mode(0o700)).unwrap();
+
+    std::env::set_var(CANARY, "server-token-canary");
+    let config = RendererConfig {
+        enabled: true,
+        sandbox_path: harness.to_string_lossy().into_owned(),
+        timeout_ms: 5_000,
+        ..RendererConfig::default()
+    };
+    let renderer = ChromiumRenderer::detect(&config);
+    let rendered = renderer.render(b"<p>x</p>").await;
+    std::env::remove_var(CANARY);
+    let _ = std::fs::remove_dir_all(&directory);
+
+    assert!(
+        renderer.available(),
+        "harness prerequisites missing: {}",
+        renderer.unavailable_reason()
+    );
+    let dom =
+        String::from_utf8_lossy(&rendered.expect("the stand-in harness succeeds").dom).into_owned();
+    assert!(
+        !dom.contains(CANARY),
+        "the harness inherited a credential: {dom}"
+    );
+    assert!(
+        dom.lines().any(|line| line.starts_with("PATH=")),
+        "the harness lost PATH and cannot run its own tools: {dom}"
+    );
+    assert!(
+        dom.lines()
+            .any(|line| line.starts_with("AMATL_CHROMIUM_MAX_DOM_BYTES=")),
+        "the harness lost the limits the renderer passes it: {dom}"
+    );
+}
+
 /// The renderer must not be able to reach the network, including loopback.
 ///
 /// This is the invariant the whole design rests on: `SafeFetcher` stays the

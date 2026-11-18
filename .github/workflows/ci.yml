@@ -43,8 +43,7 @@ jobs:
       # beating its baseline on the shipped labeled corpus.
       - name: Ranking v2 quality gate
         run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
-      - run: cargo audit
-      - run: cargo deny check
+      - run: ./scripts/security-gate.sh --expected-ignore RUSTSEC-2026-0459 --expected-ignore RUSTSEC-2026-0543
       - run: cargo cyclonedx
       - uses: actions/upload-artifact@v6
         with:
@@ -66,14 +65,19 @@ jobs:
       - run: cargo check --workspace --all-targets --locked
 
   cross-platform:
-    # Release publishes macOS and Windows archives, so the workspace must keep
-    # compiling and passing tests on those hosts on every push, not only at tag
-    # time. Linux-only capabilities (Chromium sandbox, Debian packaging) stay
-    # out of this job by construction.
+    # Release publishes macOS archives, so the workspace must keep compiling and
+    # passing tests there on every push, not only at tag time. Linux-only
+    # capabilities (Chromium sandbox, Debian packaging) stay out of this job by
+    # construction.
+    #
+    # Windows is not in this matrix because it is not a published target: the
+    # workspace spawns POSIX programs (`/bin/sh`, Trafilatura, `pdftotext`) and
+    # its tests exercise that contract directly, so a Windows job could only
+    # pass by asserting less than the product does.
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
@@ -97,8 +101,20 @@ jobs:
 
   browser-e2e:
     # The UI's behaviour lives in 32 KB of vanilla JavaScript, so it is only
-    # observable in a real browser. The tests are inert without
-    # AMATL_BROWSER_E2E, which keeps a driver-less checkout green.
+    # observable in a real browser. The tests only run with AMATL_BROWSER_E2E=1,
+    # which keeps a driver-less checkout green; once opted in they are
+    # fail-closed, so a missing or version-mismatched driver fails the job
+    # instead of skipping green (the trap that a stale local chromedriver sets).
+    # `setup-chrome` installs Chrome and a matching chromedriver, but chromedriver
+    # discovers the browser through the platform's default path — the runner's
+    # *preinstalled* Chrome, not the one the action installed. With the action's
+    # driver (158) against that preinstalled Chrome (157) the fail-closed suite
+    # reported "only supports Chrome version 158" for a job that never launched a
+    # page. So the version is pinned (not `stable`, which drifts with the runner
+    # image) and the tests are pointed at the installed binary through
+    # `AMATL_BROWSER_BIN`, which `browser_e2e.rs` passes as
+    # `goog:chromeOptions.binary`. Chromedriver then drives the same Chrome this
+    # job verifies. Bumping the pin is a reviewed change.
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -106,13 +122,33 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Install Chrome and a matching chromedriver
+        id: setup-chrome
         uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: stable
+          chrome-version: 158.0.8127.36
           install-chromedriver: true
       - name: Start WebDriver
         run: |
           set -euo pipefail
+          # Pin the browser the tests launch, and prove the pair the *tests* will
+          # use actually matches before spending a run on it. The binary name the
+          # action installs is not always `chrome`, so its own output is the
+          # source of truth.
+          browser_bin="${{ steps.setup-chrome.outputs.chrome-path }}"
+          echo "AMATL_BROWSER_BIN=$browser_bin" >> "$GITHUB_ENV"
+          browser_major="$( \
+            "$browser_bin" --version \
+            | grep --only-matching --extended-regexp '[0-9]+' | head -n1 )"
+          # The driver is whatever lands on PATH; assert the effective one, not
+          # the action's output, because that is what the suite will reach.
+          driver_major="$( \
+            chromedriver --version \
+            | grep --only-matching --extended-regexp '[0-9]+' | head -n1 )"
+          echo "Chrome major: $browser_major; ChromeDriver major: $driver_major"
+          if [ "$browser_major" != "$driver_major" ]; then
+            echo "::error::Chrome ($browser_major) and ChromeDriver ($driver_major) major versions differ; align the chrome-version pin"
+            exit 1
+          fi
           chromedriver --port=4444 &
           for _ in $(seq 1 30); do
             curl -sf http://localhost:4444/status > /dev/null && exit 0

@@ -281,12 +281,14 @@ impl ExpansionMode {
 
 /// Primary / expansion provider roles.
 ///
-/// The declarative defaults (`primary_provider = "marginalia"`,
-/// `expansion_providers = ["searxng"]`) are always present so an operator
-/// only flips `mode` to activate them, but while `mode = "legacy"` nothing
-/// in routing consults this section. `expansion_providers` is a list, not a
-/// single name, so a second specialized-expansion source can be added later
-/// without a schema change — STEP 1 simply happens to run with one.
+/// The declarative default (`primary_provider = "marginalia"`) is always
+/// present so an operator only flips `mode` to activate it, but while
+/// `mode = "legacy"` nothing in routing consults this section.
+/// `expansion_providers` ships **empty**: the expansion role needs a second
+/// source, and Marginalia is the only source AMATL ships, so no expansion
+/// source exists to name by default. It stays a list, not a single name, so an
+/// operator can declare a second source and register it there without a schema
+/// change.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(default)]
 pub struct ExpansionConfig {
@@ -300,7 +302,7 @@ impl Default for ExpansionConfig {
         Self {
             mode: ExpansionMode::Legacy,
             primary_provider: "marginalia".into(),
-            expansion_providers: vec!["searxng".into()],
+            expansion_providers: Vec::new(),
         }
     }
 }
@@ -324,6 +326,18 @@ impl Config {
     /// validates first).
     pub fn set_answer_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
         Self::set_scalar_field(path, "answer", "enabled", enabled)
+    }
+    /// Flip `[strategist].enabled` on disk and nothing else.
+    ///
+    /// The web UI's admin-scoped toggle for **whether the LLM participates in
+    /// search** (refinement of the query between rounds) reuses the exact same
+    /// narrow write primitive as `set_answer_enabled`: only the scalar
+    /// `enabled` field under the `strategist` section is touched, comments
+    /// survive, and the caller must validate a candidate config before writing
+    /// (so turning it on without a usable `endpoint`/`model`/credential fails
+    /// closed and never leaves a half-configured file behind).
+    pub fn set_strategist_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "strategist", "enabled", enabled)
     }
     /// Write every field `patch` sets to `[inference]`, and nothing else.
     ///
@@ -395,7 +409,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "inference.remote_max_batch")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
 
@@ -440,7 +454,7 @@ impl Config {
                 toml_edit::value(signed_integer(value, "answer.max_answer_tokens")?),
             );
         }
-        std::fs::write(path, document.to_string())?;
+        write_config_document(path, &document)?;
         Ok(())
     }
     /// Replace `[expansion]` wholesale. The caller must have validated a

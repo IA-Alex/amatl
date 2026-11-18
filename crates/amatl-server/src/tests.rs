@@ -29,6 +29,46 @@ async fn isolated_app() -> Router {
         .unwrap()
 }
 
+/// A non-mock service with exactly one source enabled and governed: the
+/// single-source deployment readiness must not penalize (D2). The other shipped
+/// sources stay declared and disabled, as it is in a real deployment that runs
+/// only Marginalia.
+async fn marginalia_only_app() -> Router {
+    let mut config = amatl_core::Config::default();
+    let runtime = config.providers.entry("marginalia");
+    runtime.adapter_version = Some("marginalia-v1".into());
+    runtime.approval_status = amatl_core::ApprovalStatus::Approved;
+    runtime.reviewed_at = Some(today_iso());
+    runtime.reviewer = Some("owner".into());
+    runtime.terms_url = Some("https://www.marginalia.nu/".into());
+    runtime.terms_version_or_date = Some("2026-08-01".into());
+    runtime.allowed_access_method = Some("official_api".into());
+    runtime.plan_or_contract = Some("contract-1".into());
+    runtime.rate_limit = Some("1 qps".into());
+    runtime.cost_model = Some("0".into());
+    runtime.data_handling_notes = Some("no cache".into());
+    runtime.operational_risk = Some("network dependency".into());
+    config.providers.enabled = vec!["marginalia".into()];
+    config.validate().unwrap();
+    let service = AmatlService::new(config, false).await;
+    // Marginalia is key-gated: it only reports `Available` with a credential.
+    // Inject one through the supported operator path so the test does not depend
+    // on the host environment (a clean CI runner has no MARGINALIA_API_KEY).
+    service
+        .set_provider_credential("marginalia", "marginalia-test-key")
+        .unwrap();
+    build_router(service, Some(TOKEN.into())).await.unwrap()
+}
+
+/// A non-mock service with nothing enabled: no source can be called at all.
+async fn no_source_app() -> Router {
+    let config = amatl_core::Config::default();
+    config.validate().unwrap();
+    build_router(AmatlService::new(config, false).await, Some(TOKEN.into()))
+        .await
+        .unwrap()
+}
+
 fn request(path: &str) -> axum::http::request::Builder {
     Request::builder().uri(path).header(HOST, "localhost:8080")
 }
@@ -121,6 +161,7 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
         [
             "schema_version",
             "sources_available",
+            "sources_usable",
             "status",
             "storage_ok"
         ]
@@ -129,6 +170,7 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
     assert_eq!(body["schema_version"], "1");
     assert!(body["storage_ok"].is_boolean());
     assert!(body["sources_available"].is_u64());
+    assert!(body["sources_usable"].is_u64());
     let rendered = body.to_string();
     for internal in ["provider_", "mock", "sqlite", "/", "path"] {
         assert!(
@@ -136,6 +178,63 @@ async fn ready_reports_readiness_without_leaking_deployment_internals() {
             "readiness body leaked {internal:?}: {rendered}"
         );
     }
+}
+/// D2: a deployment that enables exactly one governed source is ready. The
+/// shipped sources it left disabled are a configuration choice, so `/ready`
+/// must not answer 503 — a load balancer would otherwise drain an instance that
+/// serves every search correctly.
+#[tokio::test]
+async fn ready_stays_ok_when_the_only_enabled_source_is_available() {
+    let response = marginalia_only_app()
+        .await
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["status"], "ok");
+    assert_eq!(body["storage_ok"], true);
+    // Readiness counts what is available, not what is declared.
+    assert_eq!(body["sources_available"], 1);
+}
+
+/// The other half of the same rule: ignoring disabled sources must not make an
+/// instance with nothing enabled look ready. It cannot search at all.
+#[tokio::test]
+async fn ready_reports_unavailable_when_no_source_is_enabled() {
+    let response = no_source_app()
+        .await
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let body = json_body(response).await;
+    assert_eq!(body["status"], "degraded");
+    assert_eq!(body["sources_available"], 0);
+}
+
+/// `/status` and `/ready` are two views of one decision: the operator view
+/// names the disabled sources, and readiness — the same `status` field — still
+/// says the instance is serving. Diverging here is what made the UI gate search
+/// on a service it believed was unusable.
+#[tokio::test]
+async fn status_and_ready_agree_on_a_single_source_deployment() {
+    let router = marginalia_only_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let ready_body = json_body(ready).await;
+    let status = router
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(status.status(), StatusCode::OK);
+    let status_body = json_body(status).await;
+    assert_eq!(ready_body["status"], status_body["status"]);
+    assert_eq!(ready_body["sources_available"], 1);
+    assert_eq!(status_body["sources"].as_array().unwrap().len(), 1);
 }
 
 #[tokio::test]
@@ -213,6 +312,104 @@ async fn protected_api_requires_bearer_and_preserves_search_contract() {
         json_body(malformed).await["error"]["code"],
         "invalid_request"
     );
+}
+
+#[tokio::test]
+async fn search_batch_runs_queries_independently_with_a_bounded_envelope() {
+    // Auth required, like every protected domain surface.
+    let unauthorized = app()
+        .await
+        .oneshot(request("/search/batch?q=rust").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(unauthorized.status(), StatusCode::UNAUTHORIZED);
+
+    // Envelope validation: at least one query.
+    let empty = app()
+        .await
+        .oneshot(authorized("/search/batch").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(empty.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(json_body(empty).await["error"]["code"], "invalid_request");
+
+    // Envelope validation: at most MAX_BATCH_QUERIES.
+    let too_many = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=a&q=b&q=c&q=d&q=e&q=f")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(too_many.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(too_many).await["error"]["code"],
+        "invalid_request"
+    );
+
+    // A valid batch returns one outcome per query, in order, each with its
+    // own full SearchResponse.
+    let response = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=rust&q=async")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let status = response.status();
+    let body = json_body(response).await;
+    assert_eq!(
+        status,
+        StatusCode::OK,
+        "valid batch should be 200; body={body}"
+    );
+    assert_eq!(body["schema_version"], "1");
+    assert_eq!(body["count"], 2);
+    let batches = body["batches"].as_array().unwrap();
+    assert_eq!(batches.len(), 2);
+    assert_eq!(batches[0]["query"], "rust");
+    assert_eq!(batches[0]["response"]["status"], "success");
+    assert_eq!(
+        batches[0]["response"]["results"][0]["canonical_url"],
+        "https://example.com/rust"
+    );
+    assert_eq!(batches[1]["query"], "async");
+    // Mutual exclusivity: successful items carry a response and no error.
+    assert!(batches[0].get("error").is_none());
+    assert!(batches[0]["response"].is_object());
+}
+
+#[tokio::test]
+async fn search_batch_isolates_a_failed_query_without_dropping_the_rest() {
+    // Empty query text is invalid; that item reports an error while the
+    // neighbouring valid query still returns its response.
+    let response = app()
+        .await
+        .oneshot(
+            authorized("/search/batch?q=rust&q=&q=async")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(
+        response.status(),
+        StatusCode::OK,
+        "batch envelope stays 200"
+    );
+    let body = json_body(response).await;
+    assert_eq!(body["count"], 3);
+    let batch = &body["batches"][1];
+    assert_eq!(batch["query"], "");
+    assert_eq!(batch["error"], "invalid_query");
+    assert!(batch.get("response").is_none());
+    // The other two succeeded independently.
+    assert_eq!(body["batches"][0]["response"]["status"], "success");
+    assert_eq!(body["batches"][2]["response"]["status"], "success");
 }
 
 #[tokio::test]
@@ -710,6 +907,12 @@ async fn request_timeout_cancels_a_slow_handler() {
     let state = AppState {
         service: Arc::new(RwLock::new(service)),
         config_path: None,
+        effective_bind: config
+            .server
+            .bind
+            .parse()
+            .expect("the default bind is a literal IP"),
+        effective_port: config.server.port,
         security: Arc::new(RwLock::new(security)),
         rate_limiter: Arc::new(Mutex::new(RateLimiter {
             windows: BTreeMap::new(),
@@ -717,6 +920,7 @@ async fn request_timeout_cancels_a_slow_handler() {
         })),
         explicit_token: Some(TOKEN.into()),
         config_write_lock: Arc::new(AsyncMutex::new(())),
+        backup_idempotency: Arc::new(BackupIdempotency::default()),
         metrics: Arc::new(RequestMetrics::default()),
     };
     let app = Router::new()
@@ -994,7 +1198,12 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
         initialized["result"]["serverInfo"]["version"],
         env!("CARGO_PKG_VERSION")
     );
-    assert_eq!(initialized["result"]["protocolVersion"], "2026-07-28");
+    // Since SEP-2567 the newest revision (`2026-07-28`) carries its lifecycle in
+    // per-request `_meta` and has no `initialize` handshake, so an `initialize`
+    // request is answered with the newest revision that still has one
+    // (`2025-11-25`). The stateless `2026-07-28` path is exercised separately by
+    // the `tools/list` call below, which names `2026-07-28` in its `_meta`.
+    assert_eq!(initialized["result"]["protocolVersion"], "2025-11-25");
 
     let list = json!({
         "jsonrpc": "2.0",
@@ -1344,9 +1553,8 @@ async fn request_id_header_is_present_on_all_api_responses() {
         ("GET", "/providers"),
         ("GET", "/metrics"),
         ("GET", "/search?q=test"),
-        ("GET", "/deep?q=test"),
     ] {
-        let builder = if path == "/search?q=test" || path == "/deep?q=test" {
+        let builder = if path == "/search?q=test" {
             authorized(path)
         } else {
             request(path)
@@ -1361,6 +1569,43 @@ async fn request_id_header_is_present_on_all_api_responses() {
             "{method} {path} missing X-Request-Id header"
         );
     }
+}
+
+/// Deep is a network-retrieval surface and its contract is POST-only: the
+/// authenticated `GET /deep` that once coexisted with `POST /deep` is retired.
+/// This pins the invariant so a future router edit cannot silently republish a
+/// GET recovery path that no test, doc or OpenAPI entry describes.
+#[tokio::test]
+async fn deep_is_post_only_and_get_is_method_not_allowed() {
+    let app = app().await;
+
+    let get = app
+        .clone()
+        .oneshot(authorized("/deep?q=test").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(
+        get.status(),
+        StatusCode::METHOD_NOT_ALLOWED,
+        "GET /deep must no longer be routed"
+    );
+
+    // The POST surface stays available: the endpoint itself did not disappear.
+    let post = app
+        .oneshot(
+            authorized("/deep")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({ "query": "test" }).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_ne!(
+        post.status(),
+        StatusCode::METHOD_NOT_ALLOWED,
+        "POST /deep must remain routed"
+    );
 }
 
 // ── MCP protocol conformance tests ──────────────────────────────────────────
@@ -1758,31 +2003,35 @@ async fn mcp_initialize_returns_correct_server_info() {
         body["result"]["serverInfo"]["version"],
         env!("CARGO_PKG_VERSION")
     );
-    assert_eq!(body["result"]["protocolVersion"], "2026-07-28");
+    // An `initialize` handshake is answered with the newest revision that still
+    // has one; `2026-07-28` moved the lifecycle into per-request `_meta`
+    // (SEP-2567), so it can no longer be named by `initialize`.
+    assert_eq!(body["result"]["protocolVersion"], "2025-11-25");
     assert!(body["result"]["capabilities"]["tools"].is_object());
 }
 
 #[tokio::test]
-async fn mcp_initialize_rejects_unsupported_protocol_version() {
+async fn mcp_initialize_never_echoes_a_version_newer_than_supported() {
     let app = app().await;
     let call = json!({
         "jsonrpc": "2.0",
         "id": 1,
         "method": "initialize",
         "params": {
-            "protocolVersion": "2024-11-05",
+            // A revision newer than every version this server advertises: the
+            // negotiated answer must be one of the server's own versions, never
+            // the unsupported request echoed back.
+            "protocolVersion": "2099-01-01",
             "capabilities": {},
             "clientInfo": { "name": "conformance-test", "version": "1" }
         }
     });
     let (status, body) = mcp_post(&app, call).await;
     assert_eq!(status, StatusCode::OK);
-    // rmcp negotiates down to the highest mutually supported version.
-    // The negotiated version must differ from the requested unsupported one.
     let negotiated = body["result"]["protocolVersion"].as_str().unwrap_or("");
     assert_ne!(
-        negotiated, "2024-11-05",
-        "server should not accept unsupported protocol version, got: {body}"
+        negotiated, "2099-01-01",
+        "server must not echo an unsupported protocol version, got: {body}"
     );
     assert!(
         !negotiated.is_empty(),
@@ -1945,6 +2194,526 @@ async fn status_reports_sources_storage_and_cache() {
     assert_eq!(body["data_policy"]["profile"], "standard");
     assert_eq!(body["data_policy"]["egress"], "governed");
     assert_eq!(body["data_policy"]["inference"], "disabled");
+}
+
+/// Regression for AUDIT H-01: the OpenAPI `ServiceStatus` schema declared
+/// `additionalProperties: false` but omitted `strategist` and `data_policy`,
+/// which the server emits. A client validating `/status` against the published
+/// contract therefore rejected a response the server considered valid. Nothing
+/// asserted the response shape before, so the schema silently drifted.
+///
+/// This test parses the live `/status` body and recursively validates it
+/// against the schema: every emitted key (at any depth) must be declared and
+/// every required key must be present. It needs no new dependency.
+#[tokio::test]
+async fn status_response_matches_the_openapi_service_status_schema() {
+    let response = app()
+        .await
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let schemas = parse_schemas(&openapi);
+    let node = schemas
+        .get("ServiceStatus")
+        .expect("OpenAPI declares SchemaNode ServiceStatus");
+    let mut errors = Vec::new();
+    assert_conforms(&body, node, &schemas, "$", &mut errors);
+    assert!(
+        errors.is_empty(),
+        "/status does not conform to the OpenAPI ServiceStatus schema: {errors:?}"
+    );
+}
+
+/// A node of the subset of JSON Schema this guard understands: the `required`
+/// list, a `properties` map, an `items` schema for arrays, a `$ref` to another
+/// component schema, and whether the object accepts unknown keys
+/// (`additionalProperties: true`). Enough to check the OpenAPI document this
+/// repository ships, without pulling a YAML or JSON-Schema dependency into the
+/// test build.
+#[derive(Default, Clone)]
+struct SchemaNode {
+    required: std::collections::BTreeSet<String>,
+    properties: std::collections::BTreeMap<String, SchemaNode>,
+    items: Option<Box<SchemaNode>>,
+    reference: Option<String>,
+    open: bool,
+    /// Allowed scalar values when the schema declares an `enum`. Empty means
+    /// "no enum constraint".
+    enum_values: Vec<String>,
+}
+
+/// Parses the `components.schemas` section into `SchemaNode`s keyed by name.
+fn parse_schemas(openapi: &str) -> std::collections::BTreeMap<String, SchemaNode> {
+    let start = openapi
+        .find("\n  schemas:")
+        .expect("OpenAPI has a schemas section");
+    // The section ends at the next key indented by exactly two spaces that is
+    // not part of `schemas:` (none here), so take the rest of the document.
+    let section = &openapi[start..];
+    let lines: Vec<&str> = section.lines().collect();
+    let mut schemas = std::collections::BTreeMap::new();
+    let mut i = 0;
+    // Skip the `  schemas:` header.
+    while i < lines.len() && !lines[i].trim_end().ends_with("schemas:") {
+        i += 1;
+    }
+    i += 1;
+    while i < lines.len() {
+        let line = lines[i];
+        // A schema name sits at four-space indentation and ends with ':'.
+        let Some(name) = line
+            .strip_prefix("    ")
+            .and_then(|rest| rest.strip_suffix(':'))
+        else {
+            i += 1;
+            continue;
+        };
+        if name.starts_with(' ') || name.is_empty() {
+            i += 1;
+            continue;
+        }
+        // Collect the block: following lines indented at least six spaces.
+        let block_start = i + 1;
+        let mut block_end = block_start;
+        while block_end < lines.len() {
+            let l = lines[block_end];
+            if l.trim().is_empty() {
+                block_end += 1;
+                continue;
+            }
+            let indent = l.len() - l.trim_start().len();
+            if indent <= 4 {
+                break;
+            }
+            block_end += 1;
+        }
+        let block = lines[block_start..block_end].join("\n");
+        schemas.insert(name.to_owned(), parse_schema_block(&block, 6));
+        i = block_end;
+    }
+    schemas
+}
+
+/// Parses one schema block (its lines indented at `base` spaces) into a
+/// `SchemaNode`. Recurses into `properties.<name>` and `items`.
+fn parse_schema_block(block: &str, base: usize) -> SchemaNode {
+    let mut node = SchemaNode::default();
+    let lines: Vec<&str> = block.lines().collect();
+    let mut i = 0;
+    while i < lines.len() {
+        let line = lines[i];
+        let indent = line.len() - line.trim_start().len();
+        let trimmed = line.trim_start();
+        if indent == base {
+            if let Some((_, tail)) = trimmed.split_once('[') {
+                if trimmed.starts_with("required:") {
+                    if let Some((list, _)) = tail.split_once(']') {
+                        node.required = list
+                            .split(',')
+                            .map(|n| n.trim().to_owned())
+                            .filter(|n| !n.is_empty())
+                            .collect();
+                    }
+                } else if trimmed.starts_with("enum:") {
+                    if let Some((list, _)) = tail.split_once(']') {
+                        node.enum_values = list
+                            .split(',')
+                            .map(|v| v.trim().trim_matches(['\'', '"']).to_owned())
+                            .filter(|v| !v.is_empty())
+                            .collect();
+                    }
+                }
+            }
+            if trimmed.starts_with("additionalProperties:") {
+                node.open = trimmed.contains("true");
+            }
+            if trimmed.starts_with("$ref:") {
+                node.reference = trimmed
+                    .split_once("#/components/schemas/")
+                    .map(|(_, n)| {
+                        let n = n.trim_start().trim_start_matches(['\'', '"']);
+                        n.split(['\'', '"', ',', '}', ' '])
+                            .next()
+                            .unwrap_or("")
+                            .to_owned()
+                    })
+                    .filter(|n| !n.is_empty());
+            }
+            if trimmed.starts_with("properties:") || trimmed.starts_with("items:") {
+                let is_properties = trimmed.starts_with("properties:");
+                // Inline form: `items: { $ref: ... }` / `properties: {}`.
+                if let Some((_, rest)) = trimmed.split_once('{') {
+                    let body = rest.split('}').next().unwrap_or("");
+                    let inline = parse_inline_map(body);
+                    if is_properties {
+                        // Inline `properties` maps are not used in this document;
+                        // ignore rather than guess.
+                    } else {
+                        node.items = Some(Box::new(inline));
+                    }
+                } else {
+                    // A nested block follows; collect it.
+                    let child_base = indent + 2;
+                    let child_start = i + 1;
+                    let mut child_end = child_start;
+                    while child_end < lines.len() {
+                        let l = lines[child_end];
+                        if l.trim().is_empty() {
+                            child_end += 1;
+                            continue;
+                        }
+                        let ci = l.len() - l.trim_start().len();
+                        if ci <= indent {
+                            break;
+                        }
+                        child_end += 1;
+                    }
+                    let child = lines[child_start..child_end].join("\n");
+                    if is_properties {
+                        for (pname, pnode) in parse_properties(&child, child_base) {
+                            node.properties.insert(pname, pnode);
+                        }
+                    } else {
+                        node.items = Some(Box::new(parse_schema_block(&child, child_base)));
+                    }
+                    i = child_end;
+                    continue;
+                }
+            }
+        }
+        i += 1;
+    }
+    node
+}
+
+/// Parses a `properties:` block (its entries indented at `base` spaces) into a
+/// name → `SchemaNode` map, recursing into each property's own block.
+fn parse_properties(block: &str, base: usize) -> Vec<(String, SchemaNode)> {
+    let lines: Vec<&str> = block.lines().collect();
+    let mut out = Vec::new();
+    let mut i = 0;
+    while i < lines.len() {
+        let line = lines[i];
+        let indent = line.len() - line.trim_start().len();
+        let trimmed = line.trim_start();
+        if indent == base {
+            // `name:` with a nested block on following lines.
+            if let Some(name) = trimmed.strip_suffix(':') {
+                if !name.starts_with(' ') && !name.contains(' ') && !name.is_empty() {
+                    let child_start = i + 1;
+                    let mut child_end = child_start;
+                    while child_end < lines.len() {
+                        let l = lines[child_end];
+                        if l.trim().is_empty() {
+                            child_end += 1;
+                            continue;
+                        }
+                        let ci = l.len() - l.trim_start().len();
+                        if ci <= indent {
+                            break;
+                        }
+                        child_end += 1;
+                    }
+                    let child = lines[child_start..child_end].join("\n");
+                    out.push((name.to_owned(), parse_schema_block(&child, indent + 2)));
+                    i = child_end;
+                    continue;
+                }
+            } else if let Some((name, tail)) = trimmed.split_once(':') {
+                // `name: { ... }` inline map, or `name: <scalar>`.
+                let name = name.trim();
+                if !name.is_empty() && !name.contains(' ') && !name.contains('-') {
+                    let node = if let Some((_, rest)) = tail.split_once('{') {
+                        let body = rest.split('}').next().unwrap_or("");
+                        parse_inline_map(body)
+                    } else {
+                        SchemaNode::default()
+                    };
+                    out.push((name.to_owned(), node));
+                }
+            }
+        }
+        i += 1;
+    }
+    out
+}
+
+/// Parses the inside of a one-line `{ ... }` schema map, extracting the pieces
+/// this guard needs: `$ref`, `enum`, `additionalProperties: true`, and
+/// `items: { ... }`.
+fn parse_inline_map(body: &str) -> SchemaNode {
+    let mut node = SchemaNode::default();
+    if body.contains("additionalProperties: true") {
+        node.open = true;
+    }
+    if let Some((_, tail)) = body.split_once("enum:") {
+        if let Some((list, _)) = tail.split_once('[').and_then(|(_, t)| t.split_once(']')) {
+            node.enum_values = list
+                .split(',')
+                .map(|v| v.trim().trim_matches(['\'', '"']).to_owned())
+                .filter(|v| !v.is_empty())
+                .collect();
+        }
+    }
+    if let Some((_, tail)) = body.split_once("$ref:") {
+        let name = tail
+            .trim_start()
+            .trim_start_matches(['\'', '"'])
+            .split(['\'', '"', ',', '}', ' '])
+            .next()
+            .unwrap_or("");
+        if let Some(name) = name.rsplit('/').next() {
+            if !name.is_empty() {
+                node.reference = Some(name.to_owned());
+            }
+        }
+    }
+    if let Some((_, tail)) = body.split_once("items:") {
+        if let Some((_, rest)) = tail.split_once('{') {
+            let inner = rest.split('}').next().unwrap_or("");
+            node.items = Some(Box::new(parse_inline_map(inner)));
+        }
+    }
+    node
+}
+
+/// Recursively verifies that `value` conforms to `node`: every emitted key is
+/// declared (unless the schema is open), every required key is emitted, and
+/// nested objects/arrays recurse. `$ref` is resolved against `schemas`.
+fn assert_conforms(
+    value: &serde_json::Value,
+    node: &SchemaNode,
+    schemas: &std::collections::BTreeMap<String, SchemaNode>,
+    path: &str,
+    errors: &mut Vec<String>,
+) {
+    // Resolve a $ref, guarding against cycles.
+    if let Some(name) = &node.reference {
+        if let Some(target) = schemas.get(name) {
+            assert_conforms(value, target, schemas, path, errors);
+        }
+        return;
+    }
+    match value {
+        serde_json::Value::Object(map) => {
+            if !node.open {
+                for key in map.keys() {
+                    if !node.properties.contains_key(key) && !node.required.contains(key) {
+                        errors.push(format!("{path}.{key}: emitted but not declared"));
+                    }
+                }
+            }
+            for key in &node.required {
+                if !map.contains_key(key) {
+                    errors.push(format!("{path}.{key}: required by schema but not emitted"));
+                }
+            }
+            for (key, child) in &node.properties {
+                if let Some(v) = map.get(key) {
+                    assert_conforms(v, child, schemas, &format!("{path}.{key}"), errors);
+                }
+            }
+        }
+        serde_json::Value::Array(items) => {
+            if let (Some(schema), Some(first)) = (node.items.as_deref(), items.first()) {
+                assert_conforms(first, schema, schemas, &format!("{path}[]"), errors);
+            }
+        }
+        serde_json::Value::String(text)
+            if !node.enum_values.is_empty() && !node.enum_values.iter().any(|v| v == text) =>
+        {
+            errors.push(format!(
+                "{path}: value {text:?} not in enum {:?}",
+                node.enum_values
+            ));
+        }
+        _ => {}
+    }
+}
+
+/// Regression for AUDIT H-03: the admin request/response bodies were typed as
+/// an intentionally open generic object (`AdminPayload`), so the published
+/// contract did not pin the fields the server actually reads or returns. They
+/// now carry concrete schemas; this test recursively validates each admin GET
+/// response against its schema (every emitted key declared, every required key
+/// present, at any depth), so the contract cannot silently drift from the
+/// handler again — including nested drift such as `server.tls`.
+#[tokio::test]
+async fn admin_responses_match_their_openapi_schemas() {
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let schemas = parse_schemas(&openapi);
+    // (path, schema name) for the admin read surfaces that are always 200 on a
+    // default service (no persistence needed).
+    let cases: &[(&str, &str)] = &[
+        ("/providers/marginalia", "ProviderRecordReport"),
+        ("/policies", "PoliciesReport"),
+        ("/persistence", "PersistenceConfigReport"),
+        ("/telemetry", "TelemetryConfigReport"),
+        ("/deep/limits", "DeepConfigReport"),
+        ("/circuits", "CircuitList"),
+        ("/server/pending-config", "ServerConfigReport"),
+        ("/server/clients", "ServerClientList"),
+    ];
+    let app = app().await;
+    for (path, schema) in cases {
+        let response = app
+            .clone()
+            .oneshot(authorized(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK, "{path} status");
+        let body = json_body(response).await;
+        let node = schemas
+            .get(*schema)
+            .unwrap_or_else(|| panic!("OpenAPI declares schema {schema}"));
+        let mut errors = Vec::new();
+        assert_conforms(&body, node, &schemas, "$", &mut errors);
+        assert!(
+            errors.is_empty(),
+            "{path} does not conform to schema {schema}: {errors:?}"
+        );
+    }
+}
+
+/// A toggle uses the shared `ToggleInput` schema, and its success response uses
+/// the typed `ReloadReport` rather than the old generic object (H-03).
+#[tokio::test]
+async fn toggle_response_matches_the_openapi_reload_report_schema() {
+    // A reloadable app flips a real flag and returns ReloadReport; the default
+    // test app has no configuration file and would fail closed with 500.
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"deepseek-ai/DeepSeek-V3\"\n\
+                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+    let response = app
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"enabled":true}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let schemas = parse_schemas(&openapi);
+    let node = schemas
+        .get("ReloadReport")
+        .expect("OpenAPI declares schema ReloadReport");
+    let mut errors = Vec::new();
+    assert_conforms(&body, node, &schemas, "$", &mut errors);
+    assert!(
+        errors.is_empty(),
+        "toggle response does not conform to ReloadReport: {errors:?}"
+    );
+    let _ = std::fs::remove_file(path);
+}
+
+/// Regression for the earlier connector audit's H-01: no test asserted that
+/// every route registered by `define_public_routes!` has an explicit arm in
+/// `required_scope`. The fail-closed default protects a forgotten route (it
+/// falls through to `Admin`, never public), but that safety was untested, so a
+/// future route could reach the catch-all and no guard would notice. This table
+/// pins the expected scope for every registered operation: adding or re-scoping
+/// a route fails here until the table is updated, which is the route-to-guard
+/// traceability the audit asked for.
+#[test]
+fn required_scope_covers_every_registered_route() {
+    // (method, path, expected scope as Debug string, or None for unauthenticated)
+    let expected: &[(Method, &str, Option<&str>)] = &[
+        (Method::GET, "/health", None),
+        (Method::GET, "/ready", None),
+        (Method::GET, "/search", Some("Search")),
+        (Method::POST, "/search", Some("Search")),
+        (Method::GET, "/search/batch", Some("Search")),
+        (Method::POST, "/deep", Some("Deep")),
+        (Method::POST, "/answer", Some("Deep")),
+        (Method::PATCH, "/answer", Some("Admin")),
+        (Method::GET, "/providers", Some("Read")),
+        (Method::GET, "/status", Some("Read")),
+        (Method::GET, "/history", Some("Read")),
+        (Method::DELETE, "/history", Some("Write")),
+        (Method::DELETE, "/history/{id}", Some("Write")),
+        (Method::GET, "/saved", Some("Read")),
+        (Method::POST, "/saved", Some("Write")),
+        (Method::DELETE, "/saved/{id}", Some("Write")),
+        (Method::POST, "/reload", Some("Admin")),
+        (Method::POST, "/answer/enabled", Some("Admin")),
+        (Method::POST, "/strategist/enabled", Some("Admin")),
+        (Method::POST, "/providers/{name}/enabled", Some("Admin")),
+        (Method::POST, "/providers/{name}/credential", Some("Admin")),
+        (
+            Method::DELETE,
+            "/providers/{name}/credential",
+            Some("Admin"),
+        ),
+        (Method::GET, "/providers/{name}", Some("Read")),
+        (Method::PATCH, "/providers/{name}", Some("Admin")),
+        (Method::PATCH, "/inference", Some("Admin")),
+        (Method::GET, "/server/clients", Some("Admin")),
+        (Method::POST, "/server/clients", Some("Admin")),
+        (Method::PATCH, "/server/clients/{id}", Some("Admin")),
+        (Method::DELETE, "/server/clients/{id}", Some("Admin")),
+        (Method::POST, "/server/clients/{id}/rotate", Some("Admin")),
+        (Method::GET, "/server/pending-config", Some("Read")),
+        (Method::PATCH, "/server/pending-config", Some("Admin")),
+        (Method::POST, "/data-policy", Some("Admin")),
+        (Method::GET, "/policies", Some("Read")),
+        (Method::PATCH, "/policies/{name}", Some("Admin")),
+        (Method::GET, "/persistence", Some("Read")),
+        (Method::PATCH, "/persistence", Some("Admin")),
+        (Method::GET, "/persistence/backups", Some("Read")),
+        (Method::POST, "/persistence/backup", Some("Admin")),
+        (Method::GET, "/circuits", Some("Read")),
+        (Method::POST, "/circuits/reset", Some("Admin")),
+        (Method::GET, "/telemetry", Some("Read")),
+        (Method::PATCH, "/telemetry", Some("Admin")),
+        (Method::GET, "/deep/limits", Some("Read")),
+        (Method::PATCH, "/deep/limits", Some("Admin")),
+        (Method::PATCH, "/deep/extractor", Some("Admin")),
+        (Method::PATCH, "/deep/renderer", Some("Admin")),
+        (Method::GET, "/security-events", Some("Admin")),
+        (Method::GET, "/metrics", None),
+    ];
+
+    // Every registered operation appears exactly once in the table, and vice
+    // versa: the table cannot quietly drop a route or invent one.
+    let mut registered: Vec<(Method, String)> = crate::routes::all_routes()
+        .into_iter()
+        .flat_map(|route| {
+            route
+                .methods
+                .iter()
+                .map(move |method| (method.clone(), route.path.to_owned()))
+        })
+        .collect();
+    registered.sort();
+    let mut listed: Vec<(Method, String)> = expected
+        .iter()
+        .map(|(method, path, _)| (method.clone(), (*path).to_owned()))
+        .collect();
+    listed.sort();
+    assert_eq!(
+        registered, listed,
+        "the required_scope coverage table must list every registered route exactly once"
+    );
+
+    for (method, path, want) in expected {
+        let scope = required_scope(method, path).map(|scope| format!("{scope:?}"));
+        assert_eq!(
+            scope.as_deref(),
+            *want,
+            "{method} {path}: required_scope mismatch"
+        );
+    }
 }
 
 #[tokio::test]
@@ -2114,8 +2883,9 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
         "amatl_search_latency_ms",
         "amatl_deep_latency_ms",
         "amatl_search_latency_samples",
-        "amatl_source_available",
-        "amatl_source_circuit_open",
+        "amatl_sources_declared",
+        "amatl_sources_available",
+        "amatl_sources_circuit_open",
         "amatl_cache_hits_total",
         "amatl_cache_misses_total",
         "amatl_cache_hit_rate",
@@ -2127,8 +2897,24 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
             "missing sample line for {name}"
         );
     }
+    // The worst-case source gauges are declared unconditionally but only
+    // sampled once a source has observations, so only their header is
+    // guaranteed here.
+    for name in [
+        "amatl_sources_success_rate_min",
+        "amatl_sources_latency_ms_max",
+    ] {
+        assert!(body.contains(&format!("# HELP {name} ")), "missing {name}");
+    }
     assert!(body.contains("amatl_search_latency_ms{quantile=\"0.95\"}"));
     assert!(body.contains("amatl_cache_hit_rate{cache=\"document\"}"));
+    // `/metrics` is public like `/ready`, so it must not name the sources this
+    // deployment declares — that inventory is what `/status` (read scope) is
+    // for.
+    assert!(
+        !body.contains("source=\""),
+        "public metrics must not label a series with a source name"
+    );
     assert!(body.ends_with('\n'));
 }
 
@@ -2210,7 +2996,15 @@ async fn reload_picks_up_a_new_source_without_restarting() {
         .as_array()
         .unwrap()
         .iter()
-        .any(|value| value == "brave"));
+        .all(|value| value != "unshipped_source"));
+    // The operating source is present.
+    assert!(["marginalia"]
+        .iter()
+        .all(|source| report["registered_sources"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .any(|value| value == source)));
 
     // The service really was replaced: the new limit is in force.
     let after = app
@@ -2247,6 +3041,138 @@ async fn a_rejected_reload_leaves_the_running_service_in_place() {
         .await
         .unwrap();
     assert_eq!(still_serving.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+/// A process started with a listener override: the running service was built
+/// for `0.0.0.0` with TLS, while the file on disk declares `127.0.0.1`.
+///
+/// This is the shape `amatl serve --bind 0.0.0.0` produces, because the
+/// override is applied to the running configuration and never written back to
+/// the file. Every check that trusts the document's declared `bind` is
+/// therefore checking an address this process is not listening on.
+async fn listener_override_app(body: &str) -> (Router, std::path::PathBuf) {
+    let nonce = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let path = std::env::temp_dir().join(format!(
+        "amatl-server-listener-{}-{nonce}.toml",
+        std::process::id()
+    ));
+    std::fs::write(&path, body).unwrap();
+    let mut config = amatl_core::Config::default();
+    config.server.bind = "0.0.0.0".into();
+    config.server.tls.cert_path = Some("cert.pem".into());
+    config.server.tls.key_path = Some("key.pem".into());
+    config.validate().unwrap();
+    let router = build_router_with_config_path(
+        AmatlService::new(config, true).await,
+        Some(TOKEN.into()),
+        Some(path.clone()),
+    )
+    .await
+    .unwrap();
+    (router, path)
+}
+
+#[tokio::test]
+async fn reload_refuses_a_document_that_is_unsafe_for_the_effective_listener() {
+    // The file declares loopback, which is all `Config::validate` can see, but
+    // the process serves every interface. Flipping `no_auth` on must be
+    // refused: accepting it would publish an unauthenticated service.
+    let base = "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\n";
+    let (app, path) = listener_override_app(base).await;
+    assert_eq!(
+        app.clone()
+            .oneshot(request("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::UNAUTHORIZED
+    );
+
+    std::fs::write(
+        &path,
+        "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\nno_auth = true\n",
+    )
+    .unwrap();
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+
+    // Unchanged on both counts: still refusing anonymous callers, still
+    // serving authenticated requests.
+    assert_eq!(
+        app.clone()
+            .oneshot(request("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::UNAUTHORIZED
+    );
+    assert_eq!(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::OK
+    );
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn pending_server_patch_cannot_weaken_the_effective_listener() {
+    // The same divergence, reached the way an operator reaches it: a reload of
+    // a document that declares loopback with TLS and authentication is
+    // accepted, and leaves the running configuration disagreeing with the
+    // socket. The `[server]` patch must still be judged against the socket.
+    let base = "schema_version = \"1\"\n\n[server]\nbind = \"127.0.0.1\"\n\n\
+                [server.tls]\ncert_path = \"cert.pem\"\nkey_path = \"key.pem\"\n";
+    let (app, path) = listener_override_app(base).await;
+    let reloaded = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(reloaded.status(), StatusCode::OK);
+
+    let response = app
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"no_auth": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "config_rejected"
+    );
+
+    // Nothing was staged for the next restart either.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains("no_auth"));
     let _ = std::fs::remove_file(path);
 }
 
@@ -2332,10 +3258,78 @@ async fn answer_toggle_refuses_to_enable_an_incomplete_config_without_writing() 
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
+    );
+    // Fails closed before ever writing: the file on disk is untouched.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = false"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn strategist_toggle_flips_the_flag_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"deepseek-ai/DeepSeek-V3\"\n\
+                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    // Persisted: a fresh read of the file shows the flag flipped, and the
+    // toggle never wrote near the credential or model.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = true"));
+    assert!(on_disk.contains("credential_env = \"AMATL_TEST_STRATEGIST_KEY\""));
+    assert!(on_disk.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+
+    let status = json_body(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["strategist"]["enabled"], true);
+    assert_eq!(status["strategist"]["configured"], true);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing() {
+    // No endpoint/model: enabling this would fail Config::validate.
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "config_rejected"
     );
     // Fails closed before ever writing: the file on disk is untouched.
     let on_disk = std::fs::read_to_string(&path).unwrap();
@@ -2541,6 +3535,51 @@ async fn several_credentials_are_accepted_and_scoped_independently() {
     assert_eq!(unknown.status(), StatusCode::UNAUTHORIZED);
 }
 
+#[test]
+fn duplicate_resolved_credentials_fail_closed() {
+    let mut config = scoped_config();
+    config.server.clients[0].token_sha256 = Some(sha256_hex(SEARCH_ONLY_TOKEN));
+    config.validate().unwrap();
+
+    let result = resolve_clients(&config, Some(SEARCH_ONLY_TOKEN.into()));
+    assert!(
+        matches!(result, Err(ServerError::Configuration(_))),
+        "a token must not resolve to multiple identities"
+    );
+}
+
+#[test]
+fn rate_limiter_windows_are_bounded() {
+    let config = amatl_core::Config::default();
+    let security = SecurityState {
+        clients: resolve_clients(&config, Some(TOKEN.into())).unwrap(),
+        allowed_hosts: config.server.allowed_hosts.clone(),
+        allowed_origins: effective_origins(&config, false),
+        max_header_bytes: config.server.max_header_bytes,
+        max_body_bytes: config.server.max_body_bytes,
+        timeout: Duration::from_millis(config.server.request_timeout_ms),
+        rate_limit_per_minute: config.server.rate_limit_per_minute,
+        https: false,
+    };
+    let limiter = Mutex::new(RateLimiter {
+        windows: BTreeMap::new(),
+        last_cleanup: Instant::now(),
+    });
+
+    for index in 0..=RATE_LIMITER_CAPACITY {
+        let ip = IpAddr::V6(std::net::Ipv6Addr::from(index as u128 + 1));
+        let mut request = Request::builder()
+            .uri("/health")
+            .body(Body::empty())
+            .unwrap();
+        request
+            .extensions_mut()
+            .insert(ConnectInfo(std::net::SocketAddr::new(ip, 8080)));
+        assert!(within_rate_limit(&request, &security, &limiter));
+    }
+    assert_eq!(limiter.lock().unwrap().windows.len(), RATE_LIMITER_CAPACITY);
+}
+
 #[tokio::test]
 async fn an_expired_credential_stops_being_accepted() {
     let mut config = scoped_config();
@@ -2558,6 +3597,112 @@ async fn an_expired_credential_stops_being_accepted() {
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn provider_credential_requires_admin_scope() {
+    let app = scoped_app().await;
+    for method in [Method::POST, Method::DELETE] {
+        let body = if method == Method::POST {
+            Body::from(r#"{"key":"candidate-key"}"#)
+        } else {
+            Body::empty()
+        };
+        let response = app
+            .clone()
+            .oneshot(
+                as_client("/providers/marginalia/credential", SEARCH_ONLY_TOKEN)
+                    .method(method)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(body)
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::FORBIDDEN);
+        assert_eq!(json_body(response).await["error"]["code"], "scope_denied");
+    }
+}
+
+#[tokio::test]
+async fn provider_credential_put_is_fail_closed_under_isolated() {
+    let app = isolated_app().await;
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/providers/marginalia/credential")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"key":"candidate-key"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    // Egress is denied, so the live canary fails closed and nothing is stored.
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "invalid_request"
+    );
+
+    // The credential provenance of the *declared* providers belongs to
+    // `/providers`; in mock mode `/status` names the mock sources that
+    // `/search` actually answers with, so `marginalia` is asserted there.
+    let providers = app
+        .clone()
+        .oneshot(authorized("/providers").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(providers.status(), StatusCode::OK);
+    let body = json_body(providers).await;
+    let marginalia = body["providers"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|provider| provider["name"] == "marginalia")
+        .expect("marginalia source is reported");
+    // Never "ephemeral": the rejected key was not committed.
+    assert_ne!(marginalia["credential_source"], "ephemeral");
+
+    // Whichever sources `/status` reports, none of them may claim a credential
+    // that the canary rejected.
+    let status = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(status.status(), StatusCode::OK);
+    let body = json_body(status).await;
+    assert!(
+        body["sources"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .all(|source| source["credential_source"] != "ephemeral"),
+        "no source may report a credential the canary rejected: {}",
+        body["sources"]
+    );
+}
+
+#[tokio::test]
+async fn provider_credential_delete_is_idempotent_and_reports_absent() {
+    let app = app().await;
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/providers/marginalia/credential")
+                    .method(Method::DELETE)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        let body = json_body(response).await;
+        assert_eq!(body["name"], "marginalia");
+        assert_eq!(body["set"], false);
+        assert_eq!(body["available"], false);
+    }
 }
 
 #[tokio::test]
@@ -2872,10 +4017,10 @@ async fn create_server_client_refuses_a_scopeless_client_without_writing() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("dashboard"));
@@ -3214,10 +4359,10 @@ async fn data_policy_update_refuses_a_contradictory_combination_without_writing(
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(on_disk.contains("profile = \"standard\""));
@@ -3243,10 +4388,10 @@ async fn patch_endpoint_rejects_a_value_that_cannot_be_stored() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     assert_eq!(
         json_body(response).await["error"]["code"],
-        "configuration_invalid"
+        "config_rejected"
     );
 
     // The file is byte-for-byte untouched; in particular it never gains a
@@ -3324,6 +4469,52 @@ async fn unknown_paths_are_admin_protected_and_public_surfaces_stay_public() {
         .unwrap();
     assert_eq!(admin.status(), StatusCode::NOT_FOUND);
 }
+/// The public-surface exemption is read-only. It is decided *before* routing,
+/// so exempting a path by itself would publish a future `POST` on one of those
+/// paths — or any state-changing route added under an asset path — as
+/// unauthenticated. A mutating method now falls through to the same fail-closed
+/// default as an undeclared path, while the read-only methods those routes
+/// actually serve stay public.
+#[tokio::test]
+async fn mutating_methods_do_not_inherit_the_public_surface_exemption() {
+    let app = app().await;
+
+    for path in ["/health", "/metrics", "/app.js"] {
+        let response = app
+            .clone()
+            .oneshot(request(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::OK,
+            "GET {path} must stay public"
+        );
+    }
+
+    for (method, path) in [
+        (Method::POST, "/health"),
+        (Method::DELETE, "/metrics"),
+        (Method::POST, "/"),
+        (Method::PATCH, "/app.js"),
+    ] {
+        let response = app
+            .clone()
+            .oneshot(
+                request(path)
+                    .method(method.clone())
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::UNAUTHORIZED,
+            "{method} {path} must not be public"
+        );
+    }
+}
 
 // ── Provider governance ficha, inference and answer advanced fields ───
 
@@ -3333,7 +4524,7 @@ async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_
     let response = app
         .clone()
         .oneshot(
-            authorized("/providers/searxng")
+            authorized("/providers/marginalia")
                 .body(Body::empty())
                 .unwrap(),
         )
@@ -3341,7 +4532,7 @@ async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
     let body = json_body(response).await;
-    assert_eq!(body["name"], "searxng");
+    assert_eq!(body["name"], "marginalia");
     assert!(body["record"]["adapter_version"].is_string());
 
     let missing = app
@@ -3405,7 +4596,7 @@ async fn update_provider_record_requires_the_admin_scope() {
     let scoped = scoped_app().await;
     let response = scoped
         .oneshot(
-            as_client("/providers/searxng", SEARCH_ONLY_TOKEN)
+            as_client("/providers/marginalia", SEARCH_ONLY_TOKEN)
                 .method(Method::PATCH)
                 .header(CONTENT_TYPE, "application/json")
                 .body(Body::from(json!({"reviewer": "someone"}).to_string()))
@@ -3481,7 +4672,7 @@ async fn update_inference_refuses_clearing_the_endpoint_out_from_under_remote_ex
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(on_disk.contains("https://old.example/embeddings"));
     let _ = std::fs::remove_file(path);
@@ -3696,7 +4887,7 @@ async fn update_policy_diversity_alone_can_fail_the_search_policy_cross_check() 
     // `diversity_policy.max_visible_per_domain` now disagrees with
     // `search_policy.maximum_results_per_domain` — Config::validate refuses
     // the pair, so the write never happens.
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let _ = std::fs::remove_file(path);
 }
 
@@ -3859,6 +5050,231 @@ async fn create_backup_requires_the_admin_scope() {
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+/// Paths `GET /persistence/backups` reports, newest first.
+async fn list_backups(app: &Router) -> Vec<String> {
+    let listed = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/persistence/backups")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    listed["backups"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .map(|entry| entry.as_str().unwrap().to_owned())
+        .collect()
+}
+
+#[tokio::test]
+async fn create_backup_replays_a_repeated_idempotency_key() {
+    // `create_backup` runs the write on a task that survives the request
+    // deadline, so a client that timed out on a 504 and retries is doing the
+    // normal thing — and used to get a second backup file, which rotation can
+    // then use to evict an older one the operator wanted to keep.
+    let (app, path) = persistent_app().await;
+    // Opening the store already wrote a migration backup, so the assertions
+    // below compare against that baseline instead of an absolute count.
+    let before = list_backups(&app).await;
+    let mut paths = Vec::new();
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .header("idempotency-key", "before-migration")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        paths.push(
+            json_body(response).await["path"]
+                .as_str()
+                .unwrap()
+                .to_owned(),
+        );
+    }
+    assert_eq!(
+        paths[0], paths[1],
+        "a repeated key must replay the backup it already wrote"
+    );
+
+    let after = list_backups(&app).await;
+    assert_eq!(
+        after.len(),
+        before.len() + 1,
+        "a repeated key must not write a second file: {after:?}"
+    );
+    assert!(
+        after.contains(&paths[0]),
+        "the replay must point at the file the first call wrote: {after:?}"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    let _ = std::fs::remove_file(&paths[0]);
+}
+
+#[tokio::test]
+async fn concurrent_backups_with_one_key_write_one_backup() {
+    // The case the header exists for: the retry arrives while the first attempt
+    // is still running, which is exactly what a client does once its deadline
+    // fired. The second request must wait for the in-flight write and replay it
+    // rather than start a competing `VACUUM INTO`.
+    let (app, path) = persistent_app().await;
+    let before = list_backups(&app).await;
+    let request = || {
+        authorized("/persistence/backup")
+            .method(Method::POST)
+            .header("idempotency-key", "concurrent")
+            .body(Body::empty())
+            .unwrap()
+    };
+    let (first, second) = tokio::join!(
+        app.clone().oneshot(request()),
+        app.clone().oneshot(request())
+    );
+    let first = json_body(first.unwrap()).await;
+    let second = json_body(second.unwrap()).await;
+    assert_eq!(
+        first["path"], second["path"],
+        "the in-flight attempt must be replayed, not raced"
+    );
+
+    let after = list_backups(&app).await;
+    assert_eq!(
+        after.len(),
+        before.len() + 1,
+        "two concurrent requests with one key must write one file: {after:?}"
+    );
+    assert!(
+        after
+            .iter()
+            .any(|entry| entry == first["path"].as_str().unwrap()),
+        "the replay must point at the file the first call wrote: {after:?}"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    let _ = std::fs::remove_file(first["path"].as_str().unwrap());
+}
+
+#[tokio::test]
+async fn create_backup_without_a_key_writes_a_new_backup_each_time() {
+    // The header is what buys the replay guarantee, so an operator asking twice
+    // on purpose must still get two backups.
+    let (app, path) = persistent_app().await;
+    let mut paths = Vec::new();
+    for _ in 0..2 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        paths.push(
+            json_body(response).await["path"]
+                .as_str()
+                .unwrap()
+                .to_owned(),
+        );
+    }
+    assert_ne!(
+        paths[0], paths[1],
+        "calls without a key must not be replayed"
+    );
+
+    let _ = std::fs::remove_file(&path);
+    for entry in paths {
+        let _ = std::fs::remove_file(entry);
+    }
+}
+
+#[tokio::test]
+async fn create_backup_rejects_an_unusable_idempotency_key() {
+    // A caller that sends the header is relying on the retry guarantee, so a key
+    // the server cannot honour is refused instead of silently ignored: a
+    // silently ignored key leaves the caller believing a retry was safe.
+    let (app, path) = persistent_app().await;
+    let too_long = "x".repeat(MAX_IDEMPOTENCY_KEY_BYTES + 1);
+    for key in ["", "with space", too_long.as_str()] {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/persistence/backup")
+                    .method(Method::POST)
+                    .header("idempotency-key", key)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::BAD_REQUEST,
+            "key {key:?} must be rejected"
+        );
+        assert_eq!(
+            json_body(response).await["error"]["code"],
+            "invalid_request",
+            "key {key:?} must report a malformed request"
+        );
+    }
+    let _ = std::fs::remove_file(&path);
+}
+
+#[test]
+fn backup_idempotency_bounds_the_keys_it_remembers() {
+    // A client that sends a fresh key per request must not be able to grow the
+    // map without bound.
+    let attempts = BackupIdempotency::default();
+    for index in 0..(BACKUP_IDEMPOTENCY_CAPACITY + 16) {
+        let _ = attempts.attempt(&format!("key-{index}"));
+    }
+    assert!(
+        attempts.attempts.lock().unwrap().len() <= BACKUP_IDEMPOTENCY_CAPACITY,
+        "remembered keys must stay bounded"
+    );
+}
+
+#[tokio::test]
+async fn backup_idempotency_keeps_a_key_whose_backup_is_still_running() {
+    // An entry past its window must still survive while its write is in flight:
+    // evicting it would let a retry start a second backup for a key that is
+    // already being written.
+    let attempts = BackupIdempotency::default();
+    let running = attempts.attempt("in-flight");
+    let guard = running.lock().await;
+    attempts
+        .attempts
+        .lock()
+        .unwrap()
+        .get_mut("in-flight")
+        .unwrap()
+        .expires = Instant::now();
+
+    for index in 0..(BACKUP_IDEMPOTENCY_CAPACITY + 1) {
+        let _ = attempts.attempt(&format!("other-{index}"));
+    }
+
+    assert!(
+        Arc::ptr_eq(&running, &attempts.attempt("in-flight")),
+        "an in-flight key must survive eviction"
+    );
+    drop(guard);
 }
 
 #[tokio::test]
@@ -4073,7 +5489,7 @@ async fn update_deep_renderer_refuses_enabling_under_the_isolated_profile() {
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("[deep.renderer]"));
     let _ = std::fs::remove_file(path);
@@ -4275,7 +5691,7 @@ async fn update_server_pending_config_refuses_an_invalid_candidate_without_writi
         )
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("0.0.0.0"));
     let _ = std::fs::remove_file(path);
@@ -4289,9 +5705,13 @@ fn openapi_covers_every_router_operation() {
     // from being omitted altogether.
     use crate::routes::all_routes;
 
+    // The contract ships inside the crate, next to the code that serves it:
+    // Cargo refuses a path that escapes the package, so an `include_str!` of
+    // `docs/` compiles in a clone and breaks `cargo test` on the extracted
+    // tarball (C1 in docs/security/hallazgos-2026-10-26.md).
     // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
     // that rewrote the fixture's line endings (see .gitattributes).
-    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
     let openapi = openapi.as_str();
     let routes = all_routes();
 
@@ -4308,6 +5728,342 @@ fn openapi_covers_every_router_operation() {
                 "OpenAPI omite {} {}",
                 method_str,
                 route.path
+            );
+        }
+    }
+}
+
+#[test]
+fn openapi_error_catalog_matches_shared_catalog() {
+    // The `ErrorResponse.code` enum is the client-visible half of the shared
+    // catalog in `amatl-core/src/errors.rs`. A code the server can emit but
+    // the contract omits makes a strictly-validating client reject a
+    // legitimate response, so both lists are asserted equal in each direction
+    // rather than merely "documented somewhere".
+    use amatl_core::ERROR_CATALOG;
+
+    // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
+    // that rewrote the fixture's line endings (see .gitattributes).
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let (_, after) = openapi
+        .split_once("    ErrorResponse:\n")
+        .expect("OpenAPI declares the ErrorResponse schema");
+    // Bound the search to this schema so an enum added to a later one cannot
+    // be picked up by mistake. A sibling schema starts at exactly four spaces
+    // of indentation, so stop at the first line that is indented by exactly
+    // four (deeper lines still belong to ErrorResponse).
+    let section: String = after
+        .split_inclusive('\n')
+        .take_while(|line| !line.starts_with("    ") || line.starts_with("     "))
+        .collect();
+    let enum_line = section
+        .lines()
+        .find(|line| line.trim_start().starts_with("enum: ["))
+        .expect("ErrorResponse.code declares an enum");
+    let documented: Vec<&str> = enum_line
+        .trim()
+        .trim_start_matches("enum: [")
+        .trim_end_matches(']')
+        .split(',')
+        .map(str::trim)
+        .filter(|value| !value.is_empty())
+        .collect();
+
+    for code in ERROR_CATALOG {
+        assert!(
+            documented.contains(&code.as_str()),
+            "OpenAPI ErrorResponse omits catalog code {}",
+            code.as_str()
+        );
+    }
+    for code in &documented {
+        assert!(
+            ERROR_CATALOG.iter().any(|entry| entry.as_str() == *code),
+            "OpenAPI ErrorResponse documents unknown code {code}"
+        );
+    }
+}
+
+/// One operation documented in `crates/amatl-server/openapi.yaml`.
+///
+/// Every contract guard below needs the same three facts about an operation —
+/// the status codes it documents, whether it is public (`security: []`) and
+/// whether it carries a request body — so they share one parser instead of
+/// each re-slicing the YAML with its own assumptions.
+struct DocumentedOperation {
+    path: String,
+    method: String,
+    statuses: Vec<String>,
+    public: bool,
+    has_request_body: bool,
+}
+
+impl DocumentedOperation {
+    fn documents(&self, status: &str) -> bool {
+        self.statuses.iter().any(|documented| documented == status)
+    }
+
+    fn label(&self) -> String {
+        format!("{} {}", self.method.to_uppercase(), self.path)
+    }
+}
+
+/// Collect the quoted three-digit keys of one line.
+///
+/// The contract writes response keys in both the block form (`'200':`) and the
+/// compact form (`responses: { '200': ..., '404': ... }`). No description,
+/// `$ref` or other value in the file contains a quoted three-digit string, so
+/// scanning for quoted triplets is exact rather than a heuristic.
+fn status_codes_in(line: &str) -> Vec<String> {
+    let mut codes = Vec::new();
+    let mut rest = line;
+    while let Some(open) = rest.find('\'') {
+        let after = &rest[open + 1..];
+        let Some(close) = after.find('\'') else { break };
+        let candidate = &after[..close];
+        if candidate.len() == 3 && candidate.chars().all(|c| c.is_ascii_digit()) {
+            codes.push(candidate.to_owned());
+        }
+        rest = &after[close + 1..];
+    }
+    codes
+}
+
+/// Parse every operation documented under `paths:` in the checked-in contract.
+fn documented_operations() -> Vec<DocumentedOperation> {
+    // Strip CR so the indentation-anchored matches below hold on a Windows
+    // checkout that rewrote the fixture's line endings (see .gitattributes).
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    const METHODS: [&str; 5] = ["get", "post", "patch", "delete", "put"];
+
+    let mut operations: Vec<DocumentedOperation> = Vec::new();
+    let mut in_paths = false;
+    let mut path = String::new();
+    let mut in_responses = false;
+
+    for line in openapi.lines() {
+        // Only `paths:` holds operations; `components:` reuses the same
+        // indentation for schemas, so bound the scan explicitly.
+        if line == "paths:" {
+            in_paths = true;
+            continue;
+        }
+        if !line.starts_with(' ') {
+            in_paths = false;
+            continue;
+        }
+        if !in_paths {
+            continue;
+        }
+        // A path key is indented by exactly two spaces.
+        if let Some(rest) = line.strip_prefix("  /") {
+            if line.ends_with(':') {
+                path = format!("/{}", rest.trim_end_matches(':'));
+                continue;
+            }
+        }
+        // A method key is indented by exactly four spaces.
+        if let Some(rest) = line.strip_prefix("    ") {
+            if !rest.starts_with(' ') {
+                let method = rest.trim_end_matches(':');
+                if METHODS.contains(&method) {
+                    operations.push(DocumentedOperation {
+                        path: path.clone(),
+                        method: method.to_owned(),
+                        statuses: Vec::new(),
+                        public: false,
+                        has_request_body: false,
+                    });
+                    in_responses = false;
+                    continue;
+                }
+            }
+        }
+        let Some(operation) = operations.last_mut() else {
+            continue;
+        };
+        let trimmed = line.trim_start();
+        if trimmed.starts_with("security:") {
+            operation.public = trimmed.contains("[]");
+        }
+        if trimmed.starts_with("requestBody:") {
+            operation.has_request_body = true;
+        }
+        if trimmed.starts_with("responses:") {
+            in_responses = true;
+        } else if in_responses && line.starts_with("      ") && !line.starts_with("       ") {
+            // A key at exactly six spaces is a sibling of `responses:`, so the
+            // block ended. Deeper lines are still part of a response.
+            in_responses = false;
+        }
+        if in_responses {
+            operation.statuses.extend(status_codes_in(line));
+        }
+    }
+    operations
+}
+
+#[test]
+fn openapi_operations_match_router_inventory() {
+    // Every contract guard below reads the shared parser, so this one proves the
+    // parser sees exactly the router's operations. Without it, a parser that
+    // silently dropped an operation would make each of those assertions
+    // vacuous.
+    use crate::routes::all_routes;
+
+    let mut documented: Vec<String> = documented_operations()
+        .iter()
+        .map(|operation| format!("{} {}", operation.method, operation.path))
+        .collect();
+    let mut routed: Vec<String> = all_routes()
+        .iter()
+        .flat_map(|route| {
+            route
+                .methods
+                .iter()
+                .map(|method| format!("{} {}", format!("{method:?}").to_lowercase(), route.path))
+        })
+        .collect();
+    documented.sort();
+    routed.sort();
+    assert_eq!(
+        documented, routed,
+        "el inventario OpenAPI diverge del router de Axum"
+    );
+}
+
+#[test]
+fn openapi_documents_transport_level_rejections() {
+    // `security_middleware` (lib.rs) wraps every route in the router, so these
+    // rejections are reachable on any operation and not only on the domain
+    // ones. Each status is traceable to an emitter and to the catalog entry
+    // that maps it:
+    //   400 invalid_host        `valid_host`
+    //   403 invalid_origin      `valid_origin`; scope_denied on protected routes
+    //   429 rate_limited        the per-client window
+    //   431 headers_too_large   the header budget
+    //   504 request_timeout     the request deadline
+    //   401 unauthorized        missing or expired credential (protected only)
+    //   413 body_too_large      the Content-Length pre-check, then DefaultBodyLimit
+    // A client generated from a contract that omits them cannot recover from an
+    // expired token or a throttled admin call, which is the drift this guard
+    // exists to prevent.
+    const UNIVERSAL: [&str; 5] = ["400", "403", "429", "431", "504"];
+
+    for operation in documented_operations() {
+        for status in UNIVERSAL {
+            assert!(
+                operation.documents(status),
+                "OpenAPI omite {status} en {}",
+                operation.label()
+            );
+        }
+        if !operation.public {
+            assert!(
+                operation.documents("401"),
+                "OpenAPI omite 401 en la ruta protegida {}",
+                operation.label()
+            );
+        }
+        if operation.has_request_body {
+            assert!(
+                operation.documents("413"),
+                "OpenAPI omite 413 en {} aunque declara requestBody",
+                operation.label()
+            );
+        }
+    }
+}
+
+#[test]
+fn openapi_component_refs_resolve() {
+    // A dangling `$ref` is invisible to every other guard and to a reader, yet
+    // it makes the document unrenderable for tooling. Both directions matter:
+    // every `#/components/...` target must exist, and every declared response
+    // or parameter must be referenced by at least one operation, because a
+    // component nothing points at is contract text that no longer describes the
+    // server. Security schemes are exempt: the top-level `security` block
+    // references them by bare name, not by `$ref`.
+    let openapi = include_str!("../openapi.yaml").replace('\r', "");
+    let openapi = openapi.as_str();
+
+    let mut sections: Vec<(String, Vec<String>)> = Vec::new();
+    let mut in_components = false;
+    for line in openapi.lines() {
+        if line == "components:" {
+            in_components = true;
+            continue;
+        }
+        if !line.starts_with(' ') {
+            in_components = false;
+            continue;
+        }
+        if !in_components {
+            continue;
+        }
+        // A section key is indented by exactly two spaces, its entries by four.
+        for (indent, is_entry) in [("  ", false), ("    ", true)] {
+            if let Some(rest) = line.strip_prefix(indent) {
+                if rest.starts_with(' ') {
+                    continue;
+                }
+                let Some(name) = rest.strip_suffix(':') else {
+                    continue;
+                };
+                if is_entry {
+                    if let Some((_, names)) = sections.last_mut() {
+                        names.push(name.to_owned());
+                    }
+                } else {
+                    sections.push((name.to_owned(), Vec::new()));
+                }
+            }
+        }
+    }
+    assert!(
+        !sections.is_empty(),
+        "no se pudo leer `components:` de crates/amatl-server/openapi.yaml"
+    );
+
+    let mut referenced: Vec<(String, String)> = Vec::new();
+    let mut rest = openapi;
+    while let Some(index) = rest.find("#/components/") {
+        let tail = &rest[index + "#/components/".len()..];
+        let end = tail
+            .find(|character: char| {
+                !(character.is_ascii_alphanumeric() || character == '_' || character == '/')
+            })
+            .unwrap_or(tail.len());
+        if let Some((section, name)) = tail[..end].split_once('/') {
+            referenced.push((section.to_owned(), name.to_owned()));
+        }
+        // `end` is zero only if the target is empty, in which case stepping one
+        // byte keeps the scan moving instead of looping forever.
+        rest = &tail[end.max(1)..];
+    }
+    assert!(
+        !referenced.is_empty(),
+        "crates/amatl-server/openapi.yaml no referencia ningún componente"
+    );
+
+    for (section, name) in &referenced {
+        assert!(
+            sections.iter().any(|(declared, names)| {
+                declared == section && names.iter().any(|candidate| candidate == name)
+            }),
+            "OpenAPI tiene un $ref roto: #/components/{section}/{name}"
+        );
+    }
+    for (section, names) in &sections {
+        if !matches!(section.as_str(), "responses" | "parameters") {
+            continue;
+        }
+        for name in names {
+            assert!(
+                referenced
+                    .iter()
+                    .any(|(target, entry)| target == section && entry == name),
+                "OpenAPI declara {section}/{name} sin referenciarlo desde ninguna operación"
             );
         }
     }
@@ -4338,4 +6094,235 @@ fn server_error_configuration_preserves_the_source() {
     let message = wrapped.to_string();
     assert!(message.contains("bad config"), "message was: {message}");
     assert!(std::error::Error::source(&wrapped).is_some());
+}
+
+/// Readiness counts *available* sources, not usable ones, and the difference is
+/// observable: a single-source deployment whose only source is `available` but
+/// has its circuit open answers `503` with `sources_available` still at `1`.
+/// `docs/operacion.md` states the rule for operators, and this test pins it so a
+/// later "cleanup" of the count cannot silently change what the field means.
+///
+/// The helpers stay next to the only test that uses them — and at the end of the
+/// file, like `FailingFactory` in `amatl-core` — so the line ranges cited by
+/// `docs/security/threat-model.md` and `docs/security/asvs-checklist.md` keep
+/// resolving to the tests they name.
+#[tokio::test]
+async fn ready_reports_degraded_while_counting_an_available_source_with_an_open_circuit() {
+    let router = failing_archive_app().await;
+    // The same deployment is ready before the first failure, so the assertions
+    // below isolate the circuit breaker and nothing else.
+    let before = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(before.status(), StatusCode::OK);
+    let before_body = json_body(before).await;
+    assert_eq!(before_body["sources_available"], 1);
+    // With the breaker closed the source is both advertised and usable.
+    assert_eq!(before_body["sources_usable"], 1);
+    let search = router
+        .clone()
+        .oneshot(authorized("/search?q=rust").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(search.status(), StatusCode::OK);
+    assert_eq!(
+        json_body(search).await["providers_failed"],
+        json!(["custom_archive"])
+    );
+
+    let after = router
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(after.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let body = json_body(after).await;
+    assert_eq!(body["status"], "degraded");
+    // The count still reports the surface status `/status` shows for the source,
+    // so it is deliberately *not* the readiness predicate: gate on the status
+    // code, or on `status`, never on this field.
+    assert_eq!(body["sources_available"], 1);
+    // `sources_usable` folds the open breaker in: the source is advertised but
+    // cannot serve right now, which is the count an automation should gate on.
+    assert_eq!(body["sources_usable"], 0);
+}
+
+/// A deployment with exactly one enabled source, governed, and always failing.
+/// It is registered under a name no shipped factory claims, so the search never
+/// leaves the process — it only has to trip the circuit breaker.
+async fn failing_archive_app() -> Router {
+    let mut config = amatl_core::Config::default();
+    config
+        .providers
+        .declare("custom_archive", approved_archive_record());
+    config.providers.enabled = vec!["custom_archive".into()];
+    config.circuit_breaker.failure_threshold = 1;
+    config.circuit_breaker.open_seconds = 600;
+    config.validate().unwrap();
+    build_router(
+        AmatlService::with_registry(
+            config,
+            false,
+            amatl_core::ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await,
+        Some(TOKEN.into()),
+    )
+    .await
+    .unwrap()
+}
+
+/// Governance record that satisfies the runtime approval gate today.
+fn approved_archive_record() -> amatl_core::ProviderRuntimeConfig {
+    amatl_core::ProviderRuntimeConfig {
+        adapter_version: Some("archive-v1".into()),
+        approval_status: amatl_core::ApprovalStatus::Approved,
+        reviewed_at: Some(today_iso()),
+        reviewer: Some("owner".into()),
+        terms_url: Some("https://archive.invalid/terms".into()),
+        terms_version_or_date: Some("2026-08-01".into()),
+        allowed_access_method: Some("official_api".into()),
+        plan_or_contract: Some("contract-1".into()),
+        rate_limit: Some("1 qps".into()),
+        cost_model: Some("free".into()),
+        data_handling_notes: Some("no cache".into()),
+        operational_risk: Some("none".into()),
+        ..amatl_core::ProviderRuntimeConfig::default()
+    }
+}
+
+/// Same name as the record above, but every search fails.
+struct FailingFactory;
+
+impl amatl_core::ProviderFactory for FailingFactory {
+    fn name(&self) -> &str {
+        "custom_archive"
+    }
+
+    fn requires_credential(&self) -> bool {
+        false
+    }
+
+    fn build(
+        &self,
+        context: &amatl_core::ProviderBuildContext<'_>,
+    ) -> Arc<dyn amatl_core::Provider> {
+        Arc::new(amatl_core::MockProvider::new(
+            context.name,
+            amatl_core::MockBehavior::Failure(amatl_core::ProviderErrorKind::Unavailable),
+        ))
+    }
+}
+
+/// `amatl_sources_available` and `/ready`'s `sources_available` are one quantity
+/// published on two surfaces, and the relation to `amatl_sources_declared` is
+/// what an alert has to get right: the *declared* gauge counts every source the
+/// deployment declares — including the ones the operator left disabled, which
+/// report `Unavailable` with `provider_disabled` — while the *available* gauge
+/// counts only those whose surface status is `available`.
+///
+/// So `declared - available` is not an incident count. On a single-source
+/// deployment it is one by configuration, and alerting on the difference pages
+/// the operator for a decision they made on purpose. `docs/operacion.md` states
+/// the relation for operators; this test pins both numbers against one
+/// deployment so neither gauge can drift into the other's meaning.
+#[tokio::test]
+async fn source_gauges_count_declared_sources_while_readiness_counts_available_ones() {
+    let router = marginalia_only_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(ready.status(), StatusCode::OK);
+    assert_eq!(json_body(ready).await["sources_available"], 1);
+
+    let response = router
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let gauge = |name: &str| -> f64 {
+        body.lines()
+            .find_map(|line| line.strip_prefix(&format!("{name} ")))
+            .and_then(|value| value.trim().parse::<f64>().ok())
+            .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
+    };
+
+    // One source declared (Marginalia), enabled and available: there is no
+    // disabled second source, so declared equals available and the difference is
+    // zero by configuration.
+    assert_eq!(gauge("amatl_sources_declared"), 1.0);
+    assert_eq!(gauge("amatl_sources_available"), 1.0);
+    assert_eq!(gauge("amatl_sources_circuit_open"), 0.0);
+}
+
+/// `--mock` is a deployment the CLI ships, and it is the one place where the two
+/// surfaces of the source count disagree: `/ready` reports the mock sources the
+/// service actually searches with, while `/metrics` keeps reporting the declared
+/// ones. Measured on the isolated mock deployment below: `/ready` answers `200`
+/// with `"sources_available":2` and `/search` answers `200` — the deployment
+/// serves — while `/metrics` publishes `amatl_sources_declared 1` and
+/// `amatl_sources_available 0`, because the real source is declared but cannot
+/// serve under `egress = "deny"`.
+///
+/// The divergence has the shape D2 removed from `/status` — a surface announcing
+/// that nothing can serve while `/search` succeeds — so it is pinned rather than
+/// fixed unilaterally: making `/metrics` mock-aware changes the value of a
+/// published metric, which needs an owner decision and its own consumer review.
+/// `docs/operacion.md` documents the case for operators.
+#[tokio::test]
+async fn mock_deployments_disagree_between_ready_and_the_source_gauges() {
+    let router = isolated_app().await;
+    let ready = router
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(ready.status(), StatusCode::OK);
+    assert_eq!(json_body(ready).await["sources_available"], 2);
+
+    // The deployment really serves: the mock sources answer, which is what makes
+    // the zero published below a trap rather than a harmless default.
+    let search = router
+        .clone()
+        .oneshot(
+            authorized("/search")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"q":"rust"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(search.status(), StatusCode::OK);
+
+    let response = router
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 512 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let gauge = |name: &str| -> f64 {
+        body.lines()
+            .find_map(|line| line.strip_prefix(&format!("{name} ")))
+            .and_then(|value| value.trim().parse::<f64>().ok())
+            .unwrap_or_else(|| panic!("missing {name} sample in: {body}"))
+    };
+
+    assert_eq!(gauge("amatl_sources_declared"), 1.0);
+    assert_eq!(gauge("amatl_sources_available"), 0.0);
 }

@@ -33,6 +33,11 @@ use tracing::Instrument;
 
 static JITTER_COUNTER: AtomicU64 = AtomicU64::new(0);
 
+/// Message on the synthetic error produced when a provider was never called
+/// because the local concurrency deadline expired. The breaker must not treat
+/// this as a provider failure (see `AmatlService::record_circuit_outcomes`).
+pub(crate) const CONCURRENCY_DEADLINE_MESSAGE: &str = "provider concurrency deadline exceeded";
+
 #[derive(Clone, Debug)]
 pub struct ParallelSearchOutput {
     pub provider_results: Vec<ProviderResult>,
@@ -64,6 +69,15 @@ pub struct SearchOrchestrator {
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
     request_id: Option<String>,
+    /// Process-wide cap on simultaneous outbound provider calls.
+    ///
+    /// The router bounds how many providers one search may select, but without
+    /// a shared gate N concurrent searches would each open their own
+    /// `global_concurrency` window and multiply egress by the number of
+    /// in-flight requests — enough to trip a keyed provider's rate limit. The
+    /// service owns one gate and shares it with every orchestrator it builds;
+    /// absent one (standalone use, tests) each call falls back to its own.
+    egress_gate: Option<Arc<Semaphore>>,
 }
 
 impl SearchOrchestrator {
@@ -84,6 +98,7 @@ impl SearchOrchestrator {
             routing_trace: vec![],
             last_plan: None,
             request_id: None,
+            egress_gate: None,
         }
     }
 
@@ -98,6 +113,15 @@ impl SearchOrchestrator {
         self.per_provider_concurrency = per_provider_concurrency.max(1);
         self.max_retries = max_retries.min(2);
         self.retry_jitter_ms = retry_jitter_ms;
+        self
+    }
+
+    /// Share a process-wide egress gate so concurrent searches cannot each
+    /// open their own `global_concurrency` window. The gate must be sized to
+    /// `global_concurrency`; the service builds it once and hands the same
+    /// handle to every orchestrator it constructs.
+    pub fn with_egress_gate(mut self, gate: Arc<Semaphore>) -> Self {
+        self.egress_gate = Some(gate);
         self
     }
 
@@ -509,7 +533,10 @@ impl SearchOrchestrator {
             .into_iter()
             .map(|provider| (provider.name().to_string(), provider))
             .collect();
-        let global_semaphore = Arc::new(Semaphore::new(self.global_concurrency));
+        let global_semaphore = self
+            .egress_gate
+            .clone()
+            .unwrap_or_else(|| Arc::new(Semaphore::new(self.global_concurrency)));
         let provider_semaphores = plan
             .selected_providers
             .iter()
@@ -562,7 +589,7 @@ impl SearchOrchestrator {
                                     schema_version: SCHEMA_VERSION.into(),
                                     provider: name,
                                     kind: ProviderErrorKind::Timeout,
-                                    message: "provider concurrency deadline exceeded".into(),
+                                    message: CONCURRENCY_DEADLINE_MESSAGE.into(),
                                     retry_after_ms: None,
                                 }),
                                 provider_started.elapsed().as_millis() as u64,
@@ -707,7 +734,19 @@ impl SearchOrchestrator {
                     output.providers_failed.push(name);
                     output.errors.push(error);
                 }
-                Err(_) => {}
+                Err(join_err) => {
+                    // A task panicked (or was cancelled) rather than returning its
+                    // tuple. The provider's name is unrecoverable from a JoinError,
+                    // but the `missing` fill below still marks it as failed; surface
+                    // the panic here instead of dropping it silently so an operator
+                    // can tell such an in-task crash apart from a normal timeout or
+                    // provider error.
+                    tracing::error!(
+                        target: "amatl::orchestration",
+                        request_id = self.request_id.as_deref().unwrap_or("-"),
+                        "provider task panicked or was cancelled while parallel search joined: {join_err}"
+                    );
+                }
             }
         }
         for missing in selected.difference(
@@ -1137,6 +1176,63 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn a_shared_egress_gate_caps_concurrent_outbound_calls_across_searches() {
+        // Two searches running at once must not each open their own
+        // `global_concurrency` window: the shared gate holds the process-wide
+        // cap. With one permit, the two outbound provider calls cannot overlap.
+        let concurrent = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+        let peak = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+
+        struct GatedProvider {
+            concurrent: Arc<std::sync::atomic::AtomicUsize>,
+            peak: Arc<std::sync::atomic::AtomicUsize>,
+        }
+        #[async_trait::async_trait]
+        impl Provider for GatedProvider {
+            fn name(&self) -> &str {
+                "gated"
+            }
+            fn capabilities(&self) -> crate::ProviderCapabilities {
+                MockProvider::success("gated", vec![]).capabilities()
+            }
+            async fn search(
+                &self,
+                plan: &SearchPlan,
+                context: &ProviderContext,
+            ) -> Result<ProviderResult, ProviderError> {
+                let now = self.concurrent.fetch_add(1, Ordering::SeqCst) + 1;
+                self.peak.fetch_max(now, Ordering::SeqCst);
+                tokio::time::sleep(Duration::from_millis(30)).await;
+                self.concurrent.fetch_sub(1, Ordering::SeqCst);
+                MockProvider::success("gated", vec![item("https://example.com/gated")])
+                    .search(plan, context)
+                    .await
+            }
+        }
+
+        let gate = Arc::new(Semaphore::new(1));
+        let run = || {
+            let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(GatedProvider {
+                concurrent: concurrent.clone(),
+                peak: peak.clone(),
+            })];
+            let gate = gate.clone();
+            async move {
+                SearchOrchestrator::new(Budget::new(1, 8_000), 1_000)
+                    .with_egress_gate(gate)
+                    .search(parse_query("rust".into()).unwrap(), providers)
+                    .await
+            }
+        };
+        tokio::join!(run(), run());
+        assert_eq!(
+            peak.load(Ordering::SeqCst),
+            1,
+            "the shared gate must serialize outbound calls across searches"
+        );
+    }
+
+    #[tokio::test]
     async fn partial_failure_keeps_useful_results() {
         let providers: Vec<Arc<dyn Provider>> = vec![
             Arc::new(MockProvider::success(
@@ -1188,7 +1284,11 @@ mod tests {
         ));
         let providers: Vec<Arc<dyn Provider>> = vec![retry.clone(), auth.clone()];
         let query = parse_query("rust".into()).unwrap();
-        SearchOrchestrator::new(Budget::new(2, 1_000), 100)
+        // Same deadline reasoning as `success_serializes_an_empty_error_list`:
+        // a near-deadline round also shrinks the per-provider timeout to
+        // `provider_timeout_ms.min(remaining_ms)`, which can cut the one
+        // recoverable retry this test counts.
+        SearchOrchestrator::new(Budget::new(2, 8_000), 100)
             .search(query, providers)
             .await;
         assert_eq!(retry.attempts(), 2);
@@ -1201,7 +1301,13 @@ mod tests {
             "ok",
             vec![item("https://example.com/")],
         ))];
-        let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+        // The deadline must stay far above `minimum_remaining_deadline_ms`
+        // (750 ms, the production `search_policy_v1` value): with a 1 000 ms
+        // budget the second round is one scheduling hiccup away from
+        // `DeadlineNear`, which appends a `deadline_near` degradation and
+        // downgrades the status to `PartialSuccess`. 8 000 ms is the production
+        // default (`timeouts.global_ms`), so the slack here matches real use.
+        let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
             .search(parse_query("rust".into()).unwrap(), providers)
             .await;
         assert_eq!(response.status, SearchStatus::Success);
@@ -1221,7 +1327,7 @@ mod tests {
             )),
         ];
         let started = Instant::now();
-        let response = SearchOrchestrator::new(Budget::new(2, 1_000), 200)
+        let response = SearchOrchestrator::new(Budget::new(2, 8_000), 200)
             .with_execution_limits(1, 1, 0, 0)
             .search(parse_query("rust".into()).unwrap(), providers)
             .await;

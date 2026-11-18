@@ -17,10 +17,11 @@ MCP; ninguna superficie replica reglas de negocio.
 | deep/fetch/render/extract | `deep.rs`, `fetch.rs`, `render.rs`, `extract.rs` | Enriquecimiento opcional y capacidades aisladas |
 | ingestión local | `ingest.rs` | lectura acotada, detección de tipo, despacho y conversión a `Document` |
 | evidence/ranking v2/gaps | `evidence.rs`, `ranking_v2.rs`, `gaps.rs` | Señales Deep, gate de calidad y expansión acotada |
-| cache/storage/telemetry | `cache.rs`, `document_cache.rs`, `storage.rs`, `telemetry.rs` | Estado opcional y tolerante a fallos |
+| cache/storage | `cache.rs`, `document_cache.rs`, `storage.rs` | Estado opcional y tolerante a fallos |
+| telemetry | `telemetry.rs` | Emisión asíncrona, enrutamiento y diagnóstico |
 | inferencia | `inference.rs` | Contrato de embeddings/reranker y backend local offline para Ranking v2 |
 | errores | `errors.rs` | Catálogo único de códigos, estado HTTP y mensaje para todas las superficies |
-| security/data policy | `config.rs`, `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
+| security/data policy | `config/` (el módulo dividido: `server.rs`, `data_policy.rs`, `providers.rs`, …), `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
 | superficies | `amatl-cli`, `amatl-ui`, `amatl-server` | Entrada/salida y transporte, sin lógica duplicada |
 
 El core no contiene marcadores de superficie: la implementación de transporte
@@ -119,7 +120,12 @@ reutilizar artefactos de otro espacio.
 La autorización es una propiedad del borde, no de cada handler: una tabla
 única (`required_scope`) decide qué capacidad exige cada ruta y método, y de
 ella se deriva qué está protegido, de modo que añadir una ruta sin declarar su
-scope la deja protegida por defecto. La identidad autenticada viaja en las
+scope la deja protegida por defecto. La superficie pública es una excepción
+declarada —`/health`, `/ready`, `/metrics` y los assets de la UI— y cubre sólo
+métodos de lectura (`GET`/`HEAD`): un método mutante sobre una de esas rutas no
+hereda la exención, porque la decisión se toma antes del enrutado y un
+`POST /health` futuro debe fallar cerrado, no publicarse sin credencial. La
+identidad autenticada viaja en las
 extensiones de la solicitud y llega hasta las herramientas MCP, que aplican su
 propia lista por herramienta. Los rechazos se registran y, con persistencia, se
 guardan en `security_events`.
@@ -138,17 +144,33 @@ Antes de construir capacidades de red, `data_policy` resuelve el perfil
 efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza
 egress gobernado, inferencia remota, providers, renderer o bind no-loopback.
 Esto mantiene el control en core para todas las superficies. Las extensiones de
-inferencia siguen siendo opcionales y deberán consultar el permiso central; no
-existe un backend LLM en el workspace actual.
+inferencia siguen siendo opcionales y deberán consultar el permiso central; el
+único backend LLM del workspace es el *strategist* opcional de búsqueda
+(`[strategist]`, apagado por defecto; ver ADR-015), que sólo envía el texto de
+la consulta y respeta `data_policy` vía el permiso de egress.
 
-## Persistencia y degradación
+## Persistencia y Degradación
 
-SQLite almacena cachés y telemetría opcionales; nunca decide correctness. Si no
-abre, `AmatlService` continúa sin storage. Search conserva resultados válidos de
-providers parciales, separa errores y degradaciones y emite `success`,
-`partial_success` o `failure`. Deep conserva documentos superficiales cuando la
-extracción opcional falla. Chromium permanece fail-closed en core; su harness
-Linux sin red se valida por separado antes de implementar el bridge CDP.
+SQLite almacena cachés opcionales; nunca decide correctness. Si no abre,
+AmatlService continúa sin persistencia. La telemetría, en cambio, utiliza un
+mecanismo de emisión asíncrono y no bloqueante (`TelemetryDispatcher`): sigue
+funcionando en memoria y reportando métricas incluso si el almacenamiento
+persistente falla. Search conserva resultados válidos de providers parciales,
+separa errores y degradaciones y emite `success`, `partial_success` o `failure`.
+Deep conserva documentos superficiales cuando la extracción opcional falla.
+Chromium permanece fail-closed en core; su harness Linux sin red se valida por
+separado antes de implementar el bridge CDP.
+
+## Telemetría Asíncrona
+
+AMATL emplea un patrón de emisor unificado para observaciones operacionales. Los
+componentes envían eventos (`TelemetryEvent`) a través de un canal mpsc no
+bloqueante. Un trabajador de fondo (`run_telemetry_worker`) consume estos eventos
+y los procesa para actualizar las métricas en memoria (usadas por el enrutador)
+y persistirlos opcionalmente en SQLite. Este diseño garantiza que la
+instrumentación no impacte la latencia del camino crítico de búsqueda ni
+bloquee el bucle principal ante picos de carga.
+
 
 ## Invariantes de revisión
 

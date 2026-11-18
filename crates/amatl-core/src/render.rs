@@ -13,6 +13,7 @@
 //! scope bounding memory, task count and wall-clock time. The harness is
 //! verified independently by the `chromium-isolation` workflow.
 
+use crate::child_process::{forward_environment, scrub_environment};
 use crate::config::RendererConfig;
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -197,6 +198,22 @@ impl Renderer for ChromiumRenderer {
         // `RuntimeMaxSec`; the outer timeout below is the backstop.
         let harness_timeout_secs = self.timeout_ms.div_ceil(1_000).max(1);
         let mut command = tokio::process::Command::new(&self.sandbox);
+        // The harness exists to run hostile markup through a browser, so it
+        // starts from an empty environment and gets back only what it needs:
+        // the `AMATL_CHROMIUM_*` overrides an operator may set and the systemd
+        // user-bus pair that `systemd-run --user` cannot work without. The
+        // browser inside the sandbox gets an empty environment again from the
+        // harness's own `--clearenv`.
+        scrub_environment(&mut command);
+        forward_environment(
+            &mut command,
+            &[
+                "AMATL_CHROMIUM_BIN",
+                "AMATL_CHROMIUM_TASKS_MAX",
+                "XDG_RUNTIME_DIR",
+                "DBUS_SESSION_BUS_ADDRESS",
+            ],
+        );
         command
             .arg(&input)
             .arg(&output)
@@ -291,6 +308,52 @@ impl RendererPool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// The harness is the only thing that can give Chromium an empty network
+    /// namespace, so how it treats the *environment* is a contract too, not an
+    /// implementation detail: `bwrap` applies its options in order, so
+    /// `--clearenv` must precede every `--setenv` or the browser inherits the
+    /// service environment — bearer token and provider credentials included.
+    /// The Rust side scrubs first (`child_process`); this asserts the second,
+    /// independent scrub inside the sandbox.
+    ///
+    /// The harness is read at run time rather than through `include_str!`,
+    /// because it lives outside this crate: cargo does not put it in the
+    /// published `.crate`, so a compile-time include would break
+    /// `cargo publish -p amatl-core`. Whenever the repository tree is present
+    /// — which is where CI and every developer run this — the file must exist
+    /// and satisfy the contract; only a packaged crate, which has no harness
+    /// to check, skips it.
+    #[test]
+    fn the_isolation_harness_clears_the_browser_environment() {
+        let repository = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        if !repository.join("packaging").is_dir() {
+            return;
+        }
+        let harness = std::fs::read_to_string(repository.join("packaging/amatl-chromium-sandbox"))
+            .expect("the isolation harness is part of the repository");
+        let cleared = harness
+            .find("--clearenv")
+            .expect("the harness must clear the environment Chromium is launched with");
+        let first_setenv = harness
+            .find("--setenv")
+            .expect("the harness must set the variables Chromium needs");
+        assert!(
+            cleared < first_setenv,
+            "--clearenv must come before the first --setenv, or it clears nothing"
+        );
+        for line in harness.lines().filter(|line| line.contains("--setenv")) {
+            let upper = line.to_ascii_uppercase();
+            assert!(
+                !upper.contains("TOKEN")
+                    && !upper.contains("SECRET")
+                    && !upper.contains("KEY")
+                    && !upper.contains("PASSWORD")
+                    && !upper.contains("CREDENTIAL"),
+                "the sandboxed browser must never be handed a credential: {line}"
+            );
+        }
+    }
 
     /// Enabling the renderer must never be enough on its own: without the
     /// isolation harness present, Chromium stays unlaunched.

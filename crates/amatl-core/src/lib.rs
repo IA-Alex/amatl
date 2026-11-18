@@ -5,6 +5,7 @@ pub mod audit;
 pub mod budget;
 pub mod cache;
 pub mod canonical;
+pub mod child_process;
 pub mod circuit;
 pub mod classify;
 pub mod complementarity;
@@ -16,13 +17,6 @@ pub mod document_cache;
 pub mod errors;
 pub mod evidence;
 pub mod execution;
-/// STEP 4D experimental local-embedding integration: the typed seam, the real
-/// pure-Rust Candle backend, the optional model-package config, and the
-/// optimized bounded-K semantic pipeline. Compiled only under
-/// `--features experimental-local-embeddings`; never on the default path, and
-/// even then only active when a valid model package is present.
-#[cfg(feature = "experimental-local-embeddings")]
-pub mod experimental_embeddings;
 pub mod extract;
 pub mod fetch;
 pub mod gaps;
@@ -47,7 +41,10 @@ pub mod router;
 pub mod security;
 pub mod service;
 pub mod storage;
+pub mod strategist;
 pub mod telemetry;
+#[cfg(test)]
+mod test_support;
 mod text;
 
 pub use answer::{Answer, AnswerError, AnswerSource, CompletionBackend, RemoteCompletionBackend};
@@ -126,9 +123,9 @@ pub use progressive::{
     SearchPolicyV1, SearchStopReason,
 };
 pub use providers::{
-    BraveProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior, MockProvider,
-    MojeekProvider, Provider, ProviderAvailability, ProviderBuildContext, ProviderContext,
-    ProviderFactory, ProviderRegistry, ReqwestTransport, SearXngProvider,
+    HttpRequest, HttpResponse, HttpTransport, MarginaliaProvider, MockBehavior, MockProvider,
+    Provider, ProviderAvailability, ProviderBuildContext, ProviderContext, ProviderFactory,
+    ProviderRegistry, ReqwestTransport,
 };
 pub use query::{parse_query, QueryParseError};
 pub use ranking::{RankingPolicyError, RankingPolicyV1};
@@ -152,9 +149,10 @@ pub use router::{
 };
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
-    AnswerStatus, CacheStatus, DataPolicyStatus, DeepTarget, ExecutionLimits, ProviderCanaryError,
-    ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError,
-    ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
+    AnswerStatus, CacheStatus, CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits,
+    ProviderCanaryError, ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput,
+    SearchExecution, ServiceError, ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus,
+    StorageStatus,
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,

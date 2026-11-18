@@ -12,21 +12,10 @@ egress = "governed"
 inference = "disabled"
 
 # Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
-# los expedientes incorporados (brave, mojeek, searxng, marginalia). Un nombre
+# los expedientes incorporados (marginalia). Un nombre
 # en "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
 [providers]
 enabled = []
-# Ejemplo: activar SearXNG autohospedado (gratis, sin cuota).
-# La URL de la instancia se lee de SEARXNG_INSTANCE_URL (por defecto
-# http://127.0.0.1:8888). No requiere credencial. El resto de la ficha
-# (método, contrato, cuota, coste, datos y riesgo) ya viene del expediente
-# incorporado en config.rs; aquí sólo se aprueba con identidad y fecha reales.
-# enabled = ["searxng"]
-# [providers.searxng]
-# approval_status = "approved"
-# reviewed_at = "2026-08-14"
-# reviewer = "identidad verificable"
-#
 # Ejemplo: activar Marginalia. Requiere una key genuina, vigente y emitida al
 # operador por Marginalia en MARGINALIA_API_KEY; un placeholder, una key
 # compartida o una key pública de ejemplo no autoriza uso productivo.
@@ -49,6 +38,12 @@ enabled = []
 # storage_rights = false
 # data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
 # operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
+#
+# Marginalia es la única fuente que se sirve. No hay expediente ni adapter para
+# ninguna otra, así que no queda ficha que aprobar; además Config::validate()
+# rechaza por nombre, así que un nombre no declarado en enabled falla la
+# validación.
+# Ver docs/gobernanza-providers.md.
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
 # Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".
@@ -95,6 +90,22 @@ reranker_prior_weight = 0.5
 # max_source_chars = 1200
 # max_answer_tokens = 700
 
+# ── Búsqueda con modelo (strategist) ─────────────────────────────
+# Optional. With it enabled, after the first search the LLM proposes a refined
+# query that AMATL runs as a second round against the same providers and merges
+# (by canonical URL, never re-ordering and never inventing results) with the
+# first set. Off by default: search/deep stay fully deterministic and the model
+# does not participate at all. Unlike [answer], it does not require
+# data_policy.inference = "remote_explicit": it only sends the query text (never
+# retrieved content), so it is gated by network egress plus this flag. Enabling
+# it requires a real endpoint, model and credential_env, or it fails closed.
+# [strategist]
+# enabled = false
+# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+# model = "deepseek-ai/DeepSeek-V3"
+# credential_env = "DEEPINFRA_API_KEY"
+# timeout_ms = 800
+
 [timeouts]
 provider_ms = 3000
 global_ms = 8000
@@ -114,7 +125,11 @@ path = "amatl.sqlite3"
 # Record every executed search in the local history table (requires enabled).
 history_enabled = true
 # Upper bound for one saved document payload, in bytes (1 MiB, max 16 MiB).
+# Must fit within server.max_body_bytes or POST /saved returns 413.
 saved_document_max_bytes = 1048576
+# Days saved documents are kept (0 = unlimited, the default: they are explicit
+# user data). Set a window to bound the table's growth.
+saved_documents_retention_days = 0
 # Days a persisted security rejection is kept (1..=365).
 audit_retention_days = 90
 # Days search history entries are kept (0 = unlimited).

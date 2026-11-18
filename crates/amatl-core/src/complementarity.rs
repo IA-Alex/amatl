@@ -27,9 +27,9 @@
 //! ## Role source
 //!
 //! Roles come from [`RoleAssignment::role_of`]. Provider names
-//! ("marginalia" / "searxng" / …) are configuration, never constants in this
-//! module. Multiple EXPANSION providers are supported: any EXPANSION-role name
-//! in `providers` puts the result in the EXPANSION set.
+//! ("marginalia" / "expansion_source" / …) are configuration, never constants in
+//! this module. Multiple EXPANSION providers are supported: any EXPANSION-role
+//! name in `providers` puts the result in the EXPANSION set.
 
 use crate::model::{ComplementarityMetrics, DeduplicatedResult, RelevanceMetrics, SCHEMA_VERSION};
 use crate::router::{ProviderRole, RoleAssignment};
@@ -206,7 +206,7 @@ mod tests {
     }
 
     fn roles() -> RoleAssignment {
-        RoleAssignment::primary_expansion("marginalia", ["searxng".to_string()])
+        RoleAssignment::primary_expansion("marginalia", ["expansion_source".to_string()])
     }
 
     #[test]
@@ -234,8 +234,8 @@ mod tests {
     #[test]
     fn full_overlap() {
         let set = [
-            deduped("https://a.example/1", &["marginalia", "searxng"]),
-            deduped("https://b.example/2", &["marginalia", "searxng"]),
+            deduped("https://a.example/1", &["marginalia", "expansion_source"]),
+            deduped("https://b.example/2", &["marginalia", "expansion_source"]),
         ];
         let m = compute_complementarity_metrics(&set, &roles()).unwrap();
         assert_eq!(m.found_primary, 2);

@@ -59,6 +59,35 @@ impl HttpRequest {
     }
 }
 
+/// Redacted rendering, so the obvious way to log a request is also the safe
+/// one.
+///
+/// A request carries the URL — which for some providers holds the API key as a
+/// query parameter — *and* the header values that authenticate the operator.
+/// A derived `Debug` would publish both the moment someone wrote
+/// `tracing::warn!(?request, ...)`, which is why this struct deliberately has
+/// no `#[derive(Debug)]`: this hand-written impl prints the same URL
+/// `sanitized_url` produces and the header *names* only, and the raw values
+/// stay reachable solely through the fields the transport needs to send them.
+impl std::fmt::Debug for HttpRequest {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("HttpRequest")
+            .field("url", &self.sanitized_url())
+            .field(
+                "headers",
+                &self
+                    .headers
+                    .iter()
+                    .map(|(name, _)| name.as_str())
+                    .collect::<Vec<_>>(),
+            )
+            .field("timeout_ms", &self.timeout_ms)
+            .field("body_bytes", &self.body.as_ref().map(Vec::len))
+            .finish()
+    }
+}
+
 #[derive(Clone, Debug)]
 pub struct HttpResponse {
     pub status: u16,
@@ -97,7 +126,8 @@ impl HttpTransport for ReqwestTransport {
         // parameters already stripped: this is the only form of the URL that
         // may reach a log line, never the raw request URL or the transport
         // error's own `Display`, which reqwest renders with the request URL
-        // (and any query string, e.g. Mojeek's `api_key`) embedded in it.
+        // (and any query string, e.g. a provider API key passed as a query
+        // parameter) embedded in it.
         let sanitized_url = request.sanitized_url();
         let mut builder = match request.body {
             Some(body) => self.client.post(request.url).body(body),
@@ -187,6 +217,21 @@ mod tests {
     use super::*;
     use tokio::io::{AsyncReadExt, AsyncWriteExt};
 
+    /// Logging a whole request must not be able to publish the credential in
+    /// its URL or the one in its `Authorization` header.
+    #[test]
+    fn debug_rendering_redacts_url_secrets_and_header_values() {
+        let request = HttpRequest::get(
+            Url::parse("https://example.com/search?api_key=super-secret&q=rust").unwrap(),
+            vec![("authorization".into(), "Bearer super-secret".into())],
+            10,
+        );
+        let rendered = format!("{request:?}");
+        assert!(!rendered.contains("super-secret"), "{rendered}");
+        assert!(rendered.contains("authorization"), "{rendered}");
+        assert!(rendered.contains("rust"), "{rendered}");
+    }
+
     #[test]
     fn sanitizes_secret_query_parameters() {
         let request = HttpRequest::get(
@@ -205,9 +250,9 @@ mod tests {
     /// returned error string never carries the query string either way.
     #[tokio::test]
     async fn connection_refused_is_classified_as_connect_and_never_leaks_the_query_secret() {
-        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
-        let address = listener.local_addr().unwrap();
-        drop(listener); // nothing listens on `address` anymore: refused.
+        // Same helper as `fetch`: no `bind`/`drop` race, the address is already
+        // proven to refuse.
+        let address = crate::test_support::refused_loopback_address().await;
 
         let client = reqwest::Client::new();
         let error = client

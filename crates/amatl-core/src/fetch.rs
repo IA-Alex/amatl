@@ -175,7 +175,7 @@ impl<R: DnsResolver> SafeFetcher<R> {
                 audit_ssrf_rejection("dns_answer", code);
                 FetchError::AddressBlocked
             })?;
-            let client = self.client_for(host, &addresses)?;
+            let client = self.client_for(host, &addresses, request.timeout_ms)?;
 
             let response = tokio::time::timeout_at(
                 deadline,
@@ -211,19 +211,34 @@ impl<R: DnsResolver> SafeFetcher<R> {
         &self,
         host: &str,
         addresses: &[SocketAddr],
+        timeout_ms: u64,
     ) -> Result<reqwest::Client, FetchError> {
         let mut sorted_addresses = addresses.to_vec();
         sorted_addresses.sort_unstable();
         sorted_addresses.dedup();
-        let key = format!("{host}|{sorted_addresses:?}");
+        // The timeout is part of the key: two requests to the same host with
+        // different deadlines must not share one client, or a long-timeout
+        // request would poison a short-timeout one (and vice versa).
+        let key = format!("{host}|{timeout_ms}|{sorted_addresses:?}");
         if let Some(client) = self.lock_clients().get(&key).cloned() {
             return Ok(client);
         }
+        // A client-level timeout is the real bound on body reads: the external
+        // `timeout_at` in `fetch_inner` wraps the whole future, but a caller
+        // that ever invokes `fetch` with a large `timeout_ms` (e.g. a robots
+        // fetch) would otherwise leave a slow origin free to dribble bytes for
+        // that whole window. Connect and read timeouts bound the phases below
+        // the wall clock, and `read_timeout` in particular catches a connection
+        // that completes TLS and headers then stalls mid-body.
+        let timeout = Duration::from_millis(timeout_ms.max(1));
         let client = reqwest::Client::builder()
             .redirect(reqwest::redirect::Policy::none())
             .min_tls_version(reqwest::tls::Version::TLS_1_2)
             .no_proxy()
             .referer(false)
+            .timeout(timeout)
+            .connect_timeout(timeout)
+            .read_timeout(timeout)
             .resolve_to_addrs(host, &sorted_addresses)
             .build()
             .map_err(|error| {
@@ -236,7 +251,12 @@ impl<R: DnsResolver> SafeFetcher<R> {
             })?;
         let mut clients = self.lock_clients();
         if clients.len() >= 64 {
-            clients.clear();
+            // Evict one entry instead of dropping every pinned client: a
+            // wide-host workload must not force a rebuild of all 64 on the
+            // next fetch.
+            if let Some(oldest) = clients.keys().next().cloned() {
+                clients.remove(&oldest);
+            }
         }
         clients.insert(key, client.clone());
         Ok(client)
@@ -460,8 +480,12 @@ mod client_cache_tests {
     fn reuses_pinned_client_for_the_same_host_and_dns_answer() {
         let fetcher = SafeFetcher::default();
         let addresses = ["93.184.216.34:443".parse().unwrap()];
-        fetcher.client_for("example.com", &addresses).unwrap();
-        fetcher.client_for("example.com", &addresses).unwrap();
+        fetcher
+            .client_for("example.com", &addresses, 5_000)
+            .unwrap();
+        fetcher
+            .client_for("example.com", &addresses, 5_000)
+            .unwrap();
         assert_eq!(
             fetcher
                 .clients
@@ -469,6 +493,28 @@ mod client_cache_tests {
                 .unwrap_or_else(|error| error.into_inner())
                 .len(),
             1
+        );
+    }
+
+    #[test]
+    fn a_different_timeout_gets_its_own_pinned_client() {
+        // The timeout is part of the cache key: a long-timeout request must not
+        // share (and so poison) the client a short-timeout request would use.
+        let fetcher = SafeFetcher::default();
+        let addresses = ["93.184.216.34:443".parse().unwrap()];
+        fetcher
+            .client_for("example.com", &addresses, 1_000)
+            .unwrap();
+        fetcher
+            .client_for("example.com", &addresses, 9_000)
+            .unwrap();
+        assert_eq!(
+            fetcher
+                .clients
+                .lock()
+                .unwrap_or_else(|error| error.into_inner())
+                .len(),
+            2
         );
     }
 }
@@ -526,15 +572,31 @@ mod byte_limit_tests {
 mod transport_error_classification_tests {
     use super::*;
 
+    /// The helper used by the two transport-classification tests. It lives in
+    /// `crate::test_support` because `providers::http` needs the same one, and a
+    /// second copy would be a second thing to keep honest.
+    use crate::test_support::refused_loopback_address;
+
+    /// The helper above is the thing under test elsewhere, so it cannot be the
+    /// flaky part: 200 consecutive attempts must all yield a real refusal.
+    #[tokio::test]
+    async fn refused_loopback_address_is_stable() {
+        for _ in 0..200 {
+            let address = refused_loopback_address().await;
+            let error = tokio::net::TcpStream::connect(address).await.unwrap_err();
+            assert_eq!(error.kind(), std::io::ErrorKind::ConnectionRefused);
+        }
+    }
+
     /// Mirrors `providers::http`'s equivalent test: a refused connection is
     /// still reported as the single public `FetchError::Network`, but the
     /// internal classifier used for the `outbound fetch failed` log line
     /// distinguishes it from a timeout or a body-read failure.
     #[tokio::test]
     async fn classifies_a_refused_connection_as_connect() {
-        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
-        let address = listener.local_addr().unwrap();
-        drop(listener); // nothing listens on `address` anymore: refused.
+        // No `bind`/`drop` race: the address is only returned once the kernel
+        // has actually refused a connection to it.
+        let address = refused_loopback_address().await;
 
         let error = reqwest::Client::new()
             .get(format!("http://{address}/"))

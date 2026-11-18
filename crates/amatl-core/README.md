@@ -33,7 +33,7 @@ fuera de los crates de superficie (`amatl-cli`, `amatl-server`, etc.).
 | `operational` | Métricas operativas. |
 | `planning` | Construcción de planes de búsqueda por proveedor. |
 | `progressive` | Resultados progresivos. |
-| `providers` | Adaptadores de proveedores (Brave, Marginalia, Mojeek, SearXNG) y registro. |
+| `providers` | Adaptadores de proveedores (Marginalia) y registro. |
 | `query` | Parsing de consultas. |
 | `ranking` / `ranking_v2` | Ranking de resultados. |
 | `render` | Renderizado de respuestas. |

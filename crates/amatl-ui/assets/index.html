@@ -1,25 +1,35 @@
 <!doctype html>
-<html lang="es">
+<!-- The fallback copy below is English because `en` is the catalog's default
+     locale. app.js replaces it with the visitor's selected locale before the
+     page becomes interactive. -->
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light dark">
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
-    <title>AMATL — Búsqueda y evidencia</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
+    <title data-i18n="pageTitle">AMATL — Search and evidence</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
     <script src="/i18n.js" defer></script>
+    <script src="/client.js" defer></script>
+    <script src="/store.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#results">Ir a resultados</a>
+    <a class="skip-link" href="#results" data-i18n="skipToResults">Skip to results</a>
     <header class="masthead">
-      <a class="brand" href="/" aria-label="AMATL, inicio">
+      <a class="brand" href="/" aria-label="AMATL, home">
         <img class="brand-icon" src="/brand-icon.png" alt="" width="71" height="120">
         <span>AMATL</span>
       </a>
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro">
+      <label class="sr-only" for="ui-language" data-i18n="uiLanguageLabel">Interface language</label>
+      <select id="ui-language" class="ui-language">
+        <option value="en" data-i18n="uiLanguageNameEn">English</option>
+        <option value="es" data-i18n="uiLanguageNameEs">Español</option>
+      </select>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme" data-i18n-aria-label="themeToggleToLight">
         <svg class="icon-sun is-active" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <g fill="currentColor">
             <polygon points="12,1.2 13.6,5.6 10.4,5.6"/>
@@ -41,46 +51,85 @@
 
     <main class="shell">
       <section class="search-panel" aria-labelledby="search-heading">
-        <h1 id="search-heading">¿Qué necesitas encontrar?</h1>
-        <form id="search-form" action="/search" method="post" role="search">
+        <h1 id="search-heading" data-i18n="searchHeading">Let's search</h1>
+        <form id="search-form" action="/search" method="post" role="search" novalidate>
           <div class="search-row">
-            <label class="sr-only" for="query">Consulta</label>
-            <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…">
-            <div class="search-actions" aria-label="Tipo de búsqueda">
-              <button id="search-button" type="submit" data-mode="search">Buscar</button>
-              <button id="deep-button" class="secondary-action" type="submit" data-mode="deep">Analizar evidencia</button>
-              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
+            <label class="sr-only" for="query" data-i18n="queryLabel">Query</label>
+            <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Search documents, code, or sources…" data-i18n-placeholder="searchPlaceholder">
+            <div class="search-actions" aria-label="Search type" data-i18n-aria-label="searchActionsLabel">
+              <button id="search-button" type="submit" data-mode="search" disabled aria-disabled="true" data-i18n="searchButton">Search</button>
+              <button id="deep-button" class="secondary-action" type="submit" data-mode="deep" aria-describedby="search-mode-help" data-i18n="deepButton">Analyze evidence</button>
+              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true" aria-describedby="search-mode-help" data-i18n="answerButton">AI summary</button>
             </div>
+            <p id="search-mode-help" class="field-help search-mode-help" data-i18n="searchModeHelp">Search returns ranked results quickly. Analyze evidence fetches documents and verifies quoted fragments. AI summary is an optional server feature.</p>
           </div>
-          <div class="deep-options">
-            <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
-            <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
+          <!-- Hidden until the server reports the strategist configured and
+               usable: with no endpoint/model there is nothing to enable, and
+               a dead checkbox under the search box is noise. Same gating the
+               source selector already uses (`hidden` + reveal on state). -->
+          <div class="model-options" id="model-options" hidden>
+              <label class="model-toggle-row">
+              <input type="checkbox" id="strategist-enabled-toggle" disabled>
+              <span id="strategist-toggle-label" data-i18n="strategistToggleLabel">Búsqueda con modelo</span>
+            </label>
+            <p id="strategist-toggle-status" class="field-help" hidden></p>
           </div>
-          <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
-            <summary id="filters-summary">Filtros y acceso</summary>
+            <summary id="filters-summary" data-i18n="filtersLabel">Opciones y filtros</summary>
+            <div class="deep-options">
+              <label for="deep-max-fetches" data-i18n="deepMaxFetchesLabel">Máximo de recuperaciones para Deep (opcional)</label>
+              <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor" data-i18n-placeholder="deepMaxFetchesPlaceholder">
+            </div>
+            <div class="credential-actions" id="credential-actions">
+              <div class="credential-group" id="marginalia-credential-group">
+              <button id="marginalia-key-button" class="secondary-action" type="button">Insertar clave Marginalia</button>
+              <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>Eliminar clave</button>
+                <p id="marginalia-status" class="field-help" hidden></p>
+              </div>
+            </div>
+            <p id="answer-hint" class="field-help" hidden></p>
             <div class="filter-grid">
               <div>
-                <label for="language">Idioma</label>
-                <input id="language" name="lang" maxlength="16" placeholder="es">
+                <label for="language" data-i18n="resultLanguageLabel">Idioma de resultados</label>
+                <input id="language" name="lang" maxlength="16" placeholder="es" list="language-codes" aria-describedby="language-help">
+                <datalist id="language-codes">
+                  <option value="es"></option>
+                  <option value="en"></option>
+                  <option value="pt"></option>
+                  <option value="fr"></option>
+                  <option value="de"></option>
+                  <option value="it"></option>
+                </datalist>
+                <p id="language-help" class="field-help" data-i18n="languageHelp">Filtra los resultados por idioma (código de dos letras, por ejemplo es o en).</p>
               </div>
               <div>
-                <label for="region">Región</label>
+                <label for="region" data-i18n="regionLabel">Región</label>
                 <input id="region" name="region" maxlength="32" placeholder="MX">
               </div>
               <div>
-                <label for="file-type">Tipo de archivo</label>
+                <label for="file-type" data-i18n="fileTypeLabel">Tipo de archivo</label>
                 <select id="file-type" name="filetype">
-                  <option value="">Cualquiera</option>
+                  <option value="" data-i18n="fileTypeAny">Cualquiera</option>
                   <option value="pdf">PDF</option>
                   <option value="html">HTML</option>
-                  <option value="txt">Texto</option>
+                  <option value="txt" data-i18n="fileTypeText">Texto</option>
                 </select>
               </div>
+            </div>
+          </details>
+          <!-- The server token is not a query filter, so it lives in its own
+               disclosure as a sibling of the filter panel instead of between
+               "Result language" and "File type": as one of the filter-grid cells
+               it read as a way to narrow the search, which it never was. It
+               stays inside the form (same ids, still kept in memory the same
+               way) so nothing about its behavior changed, only its grouping. -->
+          <details class="filters access-filters">
+            <summary id="access-summary" data-i18n="accessLabel">Acceso al servidor</summary>
+            <div class="filter-grid">
               <div>
-                <label for="local-token">Token de acceso</label>
-                <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" placeholder="Token del servidor">
-                <p id="token-help" class="field-help">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
+                <label for="local-token" data-i18n="tokenLabel">Token de acceso</label>
+                <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" data-i18n-placeholder="tokenPlaceholder" placeholder="Token del servidor">
+                <p id="token-help" class="field-help" data-i18n="tokenHelp">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
               </div>
             </div>
           </details>
@@ -89,42 +138,44 @@
 
       <section class="result-area" aria-labelledby="result-heading">
         <div class="result-header">
-          <h2 id="result-heading">Resultados</h2>
+          <h2 id="result-heading" data-i18n="resultsHeading">Resultados</h2>
           <p id="status" class="status" role="status" aria-live="polite">Escribe una consulta para comenzar.</p>
         </div>
         <div id="loading" class="loading" hidden aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
-        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true">Cancelar</button>
+        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true" data-i18n="cancel">Cancelar</button>
         <div id="answer-card" class="answer-card" hidden>
           <p id="answer-text" class="answer-text"></p>
           <p id="answer-meta" class="answer-meta"></p>
         </div>
-        <ol id="results" class="results" tabindex="-1"></ol>
-        <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
-          <button id="previous" type="button">Anterior</button>
+        <ol id="results" class="results" tabindex="-1" aria-labelledby="result-heading"></ol>
+        <p id="results-empty" class="empty-note" hidden></p>
+        <nav id="pagination" class="pagination" aria-label="Páginas de resultados" data-i18n-aria-label="paginationLabel" hidden>
+          <button id="previous" type="button" data-i18n="previous">Anterior</button>
           <span id="page-label"></span>
-          <button id="next" type="button">Siguiente</button>
+          <button id="next" type="button" data-i18n="next">Siguiente</button>
         </nav>
       </section>
 
       <aside class="side-panels">
         <section class="provider-status" aria-labelledby="provider-heading" hidden>
-          <h2 id="provider-heading">Estado de fuentes</h2>
+          <h2 id="provider-heading" data-i18n="providerHeading">Estado de fuentes</h2>
           <ul id="provider-list" class="provider-list" role="list"></ul>
           <p id="provider-status-text" class="status"></p>
         </section>
 
         <section class="service-state" aria-labelledby="service-heading" hidden>
-          <h2 id="service-heading">Estado del servicio</h2>
+          <h2 id="service-heading" data-i18n="serviceHeading">Estado del servicio</h2>
           <p id="service-summary" class="status" role="status" aria-live="polite"></p>
+          <p id="service-mode" class="field-help" hidden></p>
           <ul id="service-indicators" class="indicator-list" role="list"></ul>
           <details id="answer-config" class="answer-config" hidden>
-            <summary id="answer-config-summary">Configuración de IA</summary>
+            <summary id="answer-config-summary" data-i18n="answerConfigLabel">Configuración de IA</summary>
             <dl id="answer-config-body" class="answer-config-body"></dl>
             <label class="answer-toggle-row">
               <input type="checkbox" id="answer-enabled-toggle">
-              <span id="answer-toggle-label">Activar función</span>
+              <span id="answer-toggle-label" data-i18n="answerToggleLabel">Activar función</span>
             </label>
             <p id="answer-toggle-status" class="field-help" hidden></p>
           </details>
@@ -132,21 +183,26 @@
 
         <section class="history-panel" aria-labelledby="history-heading" hidden>
           <div class="panel-header">
-            <h2 id="history-heading">Historial de búsquedas</h2>
-            <button id="history-purge" type="button" class="ghost-action">Borrar historial</button>
+          <h2 id="history-heading" data-i18n="historyHeading">Historial de búsquedas</h2>
+          <button id="history-purge" type="button" class="ghost-action" data-i18n="historyPurge">Borrar historial</button>
           </div>
-          <ol id="history-list" class="history-list"></ol>
+          <div class="panel-scroll">
+            <ol id="history-list" class="history-list"></ol>
+          </div>
           <p id="history-empty" class="empty-note" hidden></p>
+          <p id="history-panel-status" class="field-help" role="status"></p>
         </section>
 
         <section class="saved-panel" aria-labelledby="saved-heading" hidden>
-          <h2 id="saved-heading">Documentos guardados</h2>
+          <h2 id="saved-heading" data-i18n="savedHeading">Documentos guardados</h2>
           <ol id="saved-list" class="saved-list"></ol>
           <p id="saved-empty" class="empty-note" hidden></p>
+          <p id="saved-panel-status" class="field-help" role="status"></p>
         </section>
 
         <section class="clients-panel" aria-labelledby="clients-heading" hidden>
           <h2 id="clients-heading">Clientes y tokens</h2>
+          <p id="client-panel-status" class="field-help" role="status"></p>
           <ul id="client-list" class="client-list" role="list"></ul>
           <p id="client-list-empty" class="empty-note" hidden></p>
           <details id="client-create">
@@ -202,7 +258,7 @@
           <span class="document-status"></span>
         </div>
         <p class="document-meta"></p>
-        <section class="evidence-panel" aria-label="Fragmentos de evidencia">
+          <section class="evidence-panel" aria-label="Fragmentos de evidencia">
           <div class="evidence-heading">
             <h4>Fragmentos de evidencia</h4>
             <span class="fragment-count"></span>
@@ -211,6 +267,7 @@
           <ol class="evidence-fragments"></ol>
         </section>
         <div class="document-actions">
+          <p class="document-save-status" role="status" hidden></p>
           <button type="button" class="save-document ghost-action">Guardar</button>
         </div>
         <details class="provenance">
@@ -257,7 +314,7 @@
         <blockquote></blockquote>
         <div class="fragment-footer">
           <div class="fragment-signals" aria-label="Señales observadas"></div>
-          <span class="fragment-verification" data-state="pending">Verificando…</span>
+      <span class="fragment-verification" data-state="pending">Verificando…</span>
         </div>
         <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
@@ -269,7 +326,21 @@
       <p class="token-dialog-id"><strong id="client-token-id"></strong></p>
       <label class="sr-only" for="client-token-value">Token</label>
       <input id="client-token-value" type="text" readonly>
+      <p id="client-token-status" class="field-help" role="status" hidden></p>
+      <button type="button" id="client-token-copy" class="secondary-action" data-i18n="clientTokenCopy">Copiar</button>
       <button type="button" id="client-token-close">Cerrar</button>
+    </dialog>
+
+    <dialog id="marginalia-dialog" class="token-dialog" aria-labelledby="marginalia-dialog-heading">
+      <form id="marginalia-form" method="dialog">
+        <h2 id="marginalia-dialog-heading">Key de Marginalia</h2>
+        <p id="marginalia-dialog-help" class="field-help">Pega la API key privada de Marginalia. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
+        <label class="sr-only" for="marginalia-key">API key de Marginalia</label>
+        <input id="marginalia-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="marginalia-…">
+        <p id="marginalia-key-error" class="field-help" hidden></p>
+        <button type="submit" id="marginalia-save">Guardar y verificar</button>
+        <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
+      </form>
     </dialog>
   </body>
 </html>

@@ -34,8 +34,7 @@ jobs:
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Ranking v2 quality gate
         run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
-      - run: cargo audit
-      - run: cargo deny check
+      - run: ./scripts/security-gate.sh --expected-ignore RUSTSEC-2026-0459 --expected-ignore RUSTSEC-2026-0543
       - name: Verify minimum supported Rust version
         run: |
           rustup toolchain install 1.88.0 --profile minimal
@@ -292,59 +291,3 @@ jobs:
           gh release upload "$GITHUB_REF_NAME" dist/*
           --clobber
 
-  windows:
-    needs: quality
-    runs-on: windows-latest
-    timeout-minutes: 45
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-      - uses: dtolnay/rust-toolchain@stable
-      - uses: Swatinem/rust-cache@v2
-      - name: Validate release version
-        id: version
-        shell: bash
-        run: |
-          package_version="$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "amatl-cli") | .version')"
-          test -n "$package_version"
-          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
-      - name: Build Windows binary
-        run: cargo build --locked --release -p amatl-cli
-      - name: Verify Windows binary
-        shell: bash
-        env:
-          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
-        run: |
-          binary="target/release/amatl.exe"
-          file "$binary" || true
-          "$binary" --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
-      - name: Package Windows archive
-        shell: bash
-        env:
-          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
-        run: |
-          archive_root="amatl-${PACKAGE_VERSION}-x86_64-pc-windows-msvc"
-          mkdir -p "dist/$archive_root"
-          cp "target/release/amatl.exe" "dist/$archive_root/amatl.exe"
-          cp README.md LICENSE-MIT LICENSE-APACHE "dist/$archive_root/"
-          cd dist
-          zip -r "$archive_root.zip" "$archive_root"
-          rm -r "$archive_root"
-          sha256sum "$archive_root.zip" > "SHA256SUMS-windows"
-      - uses: actions/upload-artifact@v6
-        with:
-          name: amatl-${{ steps.version.outputs.package_version }}-x86_64-pc-windows-msvc
-          retention-days: 30
-          path: dist/*
-          if-no-files-found: error
-      - name: Publish prerelease from annotated tag
-        if: github.ref_type == 'tag'
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: >-
-          gh release upload "$GITHUB_REF_NAME" dist/*
-          --clobber

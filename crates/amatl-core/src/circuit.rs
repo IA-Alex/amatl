@@ -94,6 +94,11 @@ struct CircuitRecord {
     consecutive_failures: u32,
     opened_at: Option<i64>,
     open_until: Option<i64>,
+    /// When the single half-open probe was claimed, so concurrent callers
+    /// cannot all stampede a source that just came out of cooldown. A claim
+    /// older than the cooldown is treated as stale and reclaimed, so an
+    /// admitted-but-never-recorded probe cannot wedge the breaker forever.
+    probe_started_at: Option<i64>,
 }
 
 /// Circuit breaker shared by every surface of one service instance.
@@ -135,6 +140,7 @@ impl ProviderCircuit {
                                 consecutive_failures: row.consecutive_failures,
                                 opened_at: row.opened_at,
                                 open_until: row.open_until,
+                                probe_started_at: None,
                             },
                         )
                     })
@@ -166,9 +172,78 @@ impl ProviderCircuit {
         }
     }
 
-    /// Whether a call to `provider` may be attempted now.
+    /// Whether a call to `provider` may be attempted now, *without* claiming
+    /// the half-open probe.
+    ///
+    /// This is a pure query: it reports whether the source is admissible
+    /// (closed, or half-open with no probe currently in flight). Claiming the
+    /// probe is a separate, deliberate step ([`Self::claim_probe`]) taken only
+    /// when the source is actually about to be called — see that method for why
+    /// the split matters.
     pub fn allows_call(&self, provider: &str, now: i64) -> bool {
-        self.state(provider, now).allows_call()
+        match self.state(provider, now) {
+            CircuitState::Closed => true,
+            CircuitState::Open => false,
+            CircuitState::HalfOpen => {
+                let Ok(records) = self.records.lock() else {
+                    // A poisoned lock must not admit a stampede; refuse.
+                    return false;
+                };
+                match records.get(provider).and_then(|r| r.probe_started_at) {
+                    Some(started) => {
+                        // A claim older than the cooldown is stale (the probe
+                        // was admitted but never recorded); treat it as free.
+                        now.saturating_sub(started) >= self.policy.open_seconds as i64
+                    }
+                    None => true,
+                }
+            }
+        }
+    }
+
+    /// Claim the single half-open probe for `provider` at `now`.
+    ///
+    /// Returns `true` when the caller now owns the probe and may call the
+    /// source, `false` when another caller already holds it or the source is
+    /// open. Call this **immediately before** the call it authorizes, not at
+    /// selection time: a claim that is never followed by a recorded outcome
+    /// (because the router did not ultimately select the source) would
+    /// otherwise wedge a healthy provider out of service for the cooldown.
+    pub fn claim_probe(&self, provider: &str, now: i64) -> bool {
+        if !self.policy.enabled {
+            return true;
+        }
+        let Ok(mut records) = self.records.lock() else {
+            return false;
+        };
+        match records.get(provider).and_then(|r| r.open_until) {
+            None => true,                        // Closed: no probe needed.
+            Some(until) if now < until => false, // Still open.
+            Some(_) => {
+                // Half-open: admit exactly one probe, reclaiming a stale one.
+                let record = records.entry(provider.to_owned()).or_default();
+                let active = record.probe_started_at.is_some_and(|started| {
+                    now.saturating_sub(started) < self.policy.open_seconds as i64
+                });
+                if active {
+                    false
+                } else {
+                    record.probe_started_at = Some(now);
+                    true
+                }
+            }
+        }
+    }
+
+    /// Release a probe claim without recording an outcome, for a provider that
+    /// was admitted but never actually called. Keeps [`Self::claim_probe`]
+    /// symmetric so an unused claim cannot wedge the source.
+    pub fn release_probe(&self, provider: &str) {
+        if let Ok(mut records) = self.records.lock() {
+            if let Some(record) = records.get_mut(provider) {
+                record.probe_started_at = None;
+            }
+        }
     }
 
     /// Record one call outcome, opening or closing the circuit as needed.
@@ -181,6 +256,8 @@ impl ProviderCircuit {
                 return;
             };
             let record = records.entry(provider.to_owned()).or_default();
+            // The probe (if any) is complete; release the half-open claim.
+            record.probe_started_at = None;
             if success {
                 *record = CircuitRecord::default();
             } else {
@@ -261,26 +338,73 @@ mod tests {
     #[tokio::test]
     async fn opens_after_consecutive_failures_and_recovers_after_the_cooldown() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("brave", false, 1_000).await;
-        assert_eq!(breaker.state("brave", 1_000), CircuitState::Closed);
-        breaker.record("brave", false, 1_001).await;
-        assert_eq!(breaker.state("brave", 1_001), CircuitState::Open);
-        assert!(!breaker.allows_call("brave", 1_010));
+        breaker.record("marginalia", false, 1_000).await;
+        assert_eq!(breaker.state("marginalia", 1_000), CircuitState::Closed);
+        breaker.record("marginalia", false, 1_001).await;
+        assert_eq!(breaker.state("marginalia", 1_001), CircuitState::Open);
+        assert!(!breaker.allows_call("marginalia", 1_010));
         // The cooldown expires into a single probe, not straight back to closed.
-        assert_eq!(breaker.state("brave", 1_031), CircuitState::HalfOpen);
-        assert!(breaker.allows_call("brave", 1_031));
-        breaker.record("brave", true, 1_032).await;
-        assert_eq!(breaker.state("brave", 1_032), CircuitState::Closed);
+        assert_eq!(breaker.state("marginalia", 1_031), CircuitState::HalfOpen);
+        assert!(breaker.allows_call("marginalia", 1_031));
+        breaker.record("marginalia", true, 1_032).await;
+        assert_eq!(breaker.state("marginalia", 1_032), CircuitState::Closed);
     }
 
     #[tokio::test]
     async fn a_failed_probe_reopens_the_circuit() {
         let breaker = ProviderCircuit::new(policy());
-        breaker.record("mojeek", false, 10).await;
-        breaker.record("mojeek", false, 11).await;
-        assert_eq!(breaker.state("mojeek", 41), CircuitState::HalfOpen);
-        breaker.record("mojeek", false, 41).await;
-        assert_eq!(breaker.state("mojeek", 42), CircuitState::Open);
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
+        breaker.record("marginalia", false, 41).await;
+        assert_eq!(breaker.state("marginalia", 42), CircuitState::Open);
+    }
+
+    #[tokio::test]
+    async fn only_one_half_open_probe_is_admitted_at_a_time() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
+        // The first caller claims the probe; a concurrent caller is refused.
+        assert!(breaker.claim_probe("marginalia", 41));
+        assert!(!breaker.claim_probe("marginalia", 41));
+        // A pure admissibility check also reports "no" while the probe is held.
+        assert!(!breaker.allows_call("marginalia", 41));
+        // Completing the probe releases the claim and reopens the circuit.
+        breaker.record("marginalia", false, 41).await;
+        assert_eq!(breaker.state("marginalia", 42), CircuitState::Open);
+        // After the next cooldown a fresh probe is admitted.
+        assert_eq!(breaker.state("marginalia", 72), CircuitState::HalfOpen);
+        assert!(breaker.claim_probe("marginalia", 72));
+    }
+
+    #[tokio::test]
+    async fn a_stale_probe_claim_is_reclaimed() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        // Claim at 41, then never record: the claim must not wedge forever.
+        assert!(breaker.claim_probe("marginalia", 41));
+        assert!(!breaker.claim_probe("marginalia", 50));
+        // Past the cooldown the claim is stale and can be reclaimed.
+        assert!(breaker.claim_probe("marginalia", 41 + 30));
+    }
+
+    #[tokio::test]
+    async fn releasing_an_unused_probe_frees_the_source() {
+        let breaker = ProviderCircuit::new(policy());
+        breaker.record("marginalia", false, 10).await;
+        breaker.record("marginalia", false, 11).await;
+        assert_eq!(breaker.state("marginalia", 41), CircuitState::HalfOpen);
+        // A search admits and claims the probe…
+        assert!(breaker.claim_probe("marginalia", 41));
+        // …but never actually calls the source, so it releases the claim.
+        breaker.release_probe("marginalia");
+        // The very next search may probe immediately, instead of being wedged
+        // out for the whole cooldown by a claim that produced no outcome.
+        assert!(breaker.allows_call("marginalia", 41));
+        assert!(breaker.claim_probe("marginalia", 41));
     }
 
     #[tokio::test]
@@ -290,10 +414,10 @@ mod tests {
             ..policy()
         });
         for tick in 0..10 {
-            breaker.record("brave", false, tick).await;
+            breaker.record("marginalia", false, tick).await;
         }
-        assert_eq!(breaker.state("brave", 10), CircuitState::Closed);
-        assert!(breaker.allows_call("brave", 10));
+        assert_eq!(breaker.state("marginalia", 10), CircuitState::Closed);
+        assert!(breaker.allows_call("marginalia", 10));
     }
 
     #[test]
@@ -327,17 +451,17 @@ mod tests {
             .await
             .unwrap();
         let breaker = ProviderCircuit::restored(policy(), Some(storage.clone())).await;
-        breaker.record("brave", false, 5_000).await;
-        breaker.record("brave", false, 5_001).await;
-        assert_eq!(breaker.state("brave", 5_002), CircuitState::Open);
+        breaker.record("marginalia", false, 5_000).await;
+        breaker.record("marginalia", false, 5_001).await;
+        assert_eq!(breaker.state("marginalia", 5_002), CircuitState::Open);
 
         let restarted = ProviderCircuit::restored(policy(), Some(storage.clone())).await;
-        assert_eq!(restarted.state("brave", 5_002), CircuitState::Open);
+        assert_eq!(restarted.state("marginalia", 5_002), CircuitState::Open);
         assert_eq!(restarted.snapshots(5_002)[0].consecutive_failures, 2);
 
         restarted.reset().await;
         let cleared = ProviderCircuit::restored(policy(), Some(storage)).await;
-        assert_eq!(cleared.state("brave", 5_002), CircuitState::Closed);
+        assert_eq!(cleared.state("marginalia", 5_002), CircuitState::Closed);
         let _ = std::fs::remove_file(path);
     }
 }

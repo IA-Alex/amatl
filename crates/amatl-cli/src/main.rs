@@ -921,9 +921,30 @@ async fn provider_canary(
         .search(query, ServiceSurface::cli())
         .await?;
     if !canary_response_is_usable(&execution.response, &provider) {
+        // Parity with `search`: a canary that reached the provider and got an
+        // unusable outcome is a contract failure, so it carries the codes the
+        // response already holds. Without this, a 429, a 503, a timeout and a
+        // malformed body all degenerated into the same bare message with no
+        // `error_code`, even though the governance refusals above print one.
+        let codes = canary_error_codes(&execution.response);
+        if !codes.is_empty() {
+            eprintln!("error_code={}", codes.join(","));
+        }
         anyhow::bail!("provider canary failed without a usable {provider} response");
     }
     print_search(execution.response, json)
+}
+
+/// The catalog codes a canary response carries, in the order it reports them.
+///
+/// Shared with the `search` command's failure path so both surfaces name the
+/// same code for the same upstream outcome.
+fn canary_error_codes(response: &SearchResponse) -> Vec<String> {
+    response
+        .errors
+        .iter()
+        .map(|error| error.code.clone())
+        .collect()
 }
 
 /// A network canary validates a provider only when it returned at least one
@@ -967,6 +988,58 @@ mod canary_tests {
             false,
             1,
         ));
+    }
+
+    fn response_with_errors(errors: Vec<amatl_core::CompositeError>) -> SearchResponse {
+        SearchResponse {
+            schema_version: "1".into(),
+            query: "rust".into(),
+            status: amatl_core::SearchStatus::Failure,
+            results: vec![],
+            providers_used: vec![],
+            providers_failed: vec!["expansion_source".into()],
+            providers_partial: vec![],
+            errors,
+            degradations: vec![],
+            elapsed_ms: 0,
+            complementarity: None,
+            total_results: None,
+            page: None,
+            page_size: None,
+        }
+    }
+
+    /// Regression for the canary losing its catalog code: a response that
+    /// reached the provider and failed must expose the same `error_code` the
+    /// `search` surface prints. Before this, every post-network failure (429,
+    /// 503, timeout, malformed body) collapsed into a bare message with no
+    /// code, so an operator could not tell them apart.
+    #[test]
+    fn canary_failure_carries_the_provider_error_codes() {
+        for (kind_code, recoverable) in [
+            ("provider_rate_limit", true),
+            ("provider_unavailable", true),
+            ("provider_timeout", true),
+            ("provider_invalid_response", false),
+        ] {
+            let response = response_with_errors(vec![amatl_core::CompositeError {
+                code: kind_code.into(),
+                message: "upstream failure".into(),
+                providers: vec!["expansion_source".into()],
+                recoverable,
+            }]);
+            assert!(!canary_response_is_usable(&response, "expansion_source"));
+            assert_eq!(canary_error_codes(&response), vec![kind_code.to_owned()]);
+        }
+    }
+
+    /// A contract failure with no per-provider error (the empty-result-set
+    /// case) yields no code rather than a fabricated one.
+    #[test]
+    fn canary_failure_without_provider_errors_yields_no_code() {
+        let response = response_with_errors(vec![]);
+        assert!(!canary_response_is_usable(&response, "expansion_source"));
+        assert!(canary_error_codes(&response).is_empty());
     }
 }
 

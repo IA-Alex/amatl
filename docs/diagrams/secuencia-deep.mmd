@@ -1,0 +1,33 @@
+%% Diagrama de secuencia UML — POST /deep (frontiera única de fetch de red)
+%% Fuentes: crates/amatl-core/src/deep.rs (DeepOrchestrator), fetch.rs (SafeFetcher),
+%% extract.rs, evidence.rs, document_cache.rs; crates/amatl-server/src/routes.rs.
+sequenceDiagram
+    autonumber
+    actor C as Cliente
+    participant MW as security_middleware
+    participant D as DeepOrchestrator<br/>(deep.rs)
+    participant SF as SafeFetcher<br/>(fetch.rs)
+    participant E as extract / render<br/>(extract.rs, render.rs)
+    participant EV as evidence (evidence_v2)
+    participant DC as document_cache
+
+    C->>MW: POST /deep {query | targets seleccionados}
+    Note over MW: igual que /search: auth, scope, rate, límites<br/>413 body_too_large pre-check + DefaultBodyLimit
+    MW->>D: deep(con candidatos de Search o selección)
+    Note over D: data_policy gate ANTES de conectar:<br/>profile isolated + egress deny → egress_denied<br/>(sin DNS ni conexión · sin bypass por transporte)
+    D->>D: acotar objetivos (DeepBudget: fetches, bytes, timeout)
+
+    loop Cada objetivo (hasta el cap de Deep)
+        D->>SF: fetch(FetchRequest{url, limits})
+        Note over SF: SSRF: validar URL · resolver DNS y clavar IP (pinning)<br/>· redirects revalidados · headers de salida filtrados<br/>· límites de tiempo/bytes/redirects derivados de config
+        SF->>SF: GET real a la Web pública
+        SF-->>D: FetchResult{final_url, status, content_type, body} o FetchError
+        D->>E: extraer texto/evidencia (Trafilatura opcional, child_process aislado ·<br/>Chromium opcional: recibe DOM, nunca URL)
+        E-->>D: contenido + metadata (proveedores), degradaciones si falla
+        D->>EV: fragmentos evidence_v2 (rangos de bytes, hashes, provenance)
+        D->>DC: guardar documento recuperado
+        D-->>D: discover_links acotado → candidatos hijos (budget)
+    end
+
+    D-->>C: DeepResponse: documentos parciales + degradations (fetch_code/extract_code)<br/>+ evidencia trazable · un fallo parcial conserva lo útil (partial_success)
+    Note over D,DC: Deep es la ÚNICA frontera de fetch de red.<br/>Search no descarga páginas ni expone final_url.<br/>La ingestión de archivos es local y separada (ingest.rs, solo CLI).

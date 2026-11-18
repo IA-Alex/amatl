@@ -2,15 +2,36 @@
 
 ## Fuentes permitidas
 
-Los secretos sólo entran mediante variables de entorno. `BRAVE_API_KEY` y
-`MOJEEK_API_KEY` son los defaults de los adapters; el servidor lee la variable
-nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El archivo
-`amatl.toml` sólo puede contener el **nombre** de la variable, nunca su valor.
+Los secretos entran por dos vías sancionadas, y ninguna otra:
+
+1. **Variables de entorno** (vía por defecto). `MARGINALIA_API_KEY` es el default
+   del único adapter que usa credencial
+   (los proveedores de pago retirados y el agregador autohospedado SearXNG ya no
+   tienen adapter ni variable asociada);
+   el servidor lee la variable
+   nombrada por `server.token_env`, cuyo default es `AMATL_SERVER_TOKEN`. El
+   archivo `amatl.toml` sólo puede contener el **nombre** de la variable, nunca
+   su valor.
+2. **Inyección efímera en memoria** (vía admin explícita). Un operador con
+   scope `admin` puede insertar la key de un provider desde la UI
+   (`POST /providers/{name}/credential`). La key vive sólo en la RAM del
+   proceso, se valida con un canario live antes de aceptarse y se erradica con
+   `DELETE` o al morir el proceso. Ver «Credenciales efímeras de provider».
 
 Queda prohibido incluir tokens, claves, passwords, cookies o cabeceras de
 autorización en código, commits, configuración TOML, fixtures, logs, telemetría,
 mensajes de error o URLs visibles. La caché y SQLite tampoco son almacenes de
 secretos.
+
+`amatl.toml` no guarda secretos, sólo el *nombre* de la variable que los
+contiene, pero sí describe el despliegue; AMATL no impone un modo concreto al
+fichero, así que restringirlo (`chmod 600 amatl.toml`) sigue siendo
+responsabilidad del operador. Lo que sí garantiza es que una escritura
+administrativa no lo relaje: cada toggle hace un reemplazo atómico (fichero
+temporal privado + `rename`) que conserva el modo que el fichero ya tenía, y un
+fichero nuevo se crea `0600`. Antes el `rename` publicaba el modo del temporal,
+de modo que el primer `POST /answer/enabled` devolvía un `0600` al umbral por
+defecto del `umask`.
 
 ## Credenciales de providers
 
@@ -28,6 +49,34 @@ portal del provider si se sospecha exposición. Para una prueba real, el
 cuota o QPM y no certifica autenticación. Estas reglas siguen los principios de
 ciclo de vida, control de acceso y minimización de exposición de la [OWASP
 Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
+
+## Credenciales efímeras de provider
+
+Para una fuente como Marginalia, el operador puede insertar la API key desde la
+UI en vez de exportarla. El diseño es deliberadamente acotado:
+
+- **Entrada:** `POST /providers/{name}/credential` exige scope `admin` y recibe
+  la key en el cuerpo JSON (nunca en la URL). `amatl.toml` no cambia.
+- **Validación previa:** la key se prueba con un canario live antes de
+  comprometerla; una key inválida, vencida o mal emitida se rechaza sin
+  guardarse. Bajo `data_policy` que niega egress, el canario falla cerrado y no
+  se almacena nada.
+- **Almacenamiento:** sólo en RAM del proceso, en un mapa `Zeroizing` que borra
+  el buffer de la key al reemplazarla, al liquidarla o al morir el proceso. No
+  se escribe en disco, TOML, entorno, logs ni auditoría; `/status` y
+  `/providers` exponen únicamente la procedencia (`credential_source`:
+  `none`/`ephemeral`/`environment`), nunca el valor.
+- **Erradicación:** `DELETE /providers/{name}/credential` (idempotente, scope
+  `admin`) la elimina de la memoria y el siguiente Search la ve ausente. La
+  UI sólo habilita «Liquidar» cuando `credential_source = "ephemeral"`: si la
+  key viene de la variable de entorno declarada en `credential_env`, la UI lo
+  indica y no ofrece borrarla, porque no está bajo su control.
+- **Auditoría:** cada inserción, liquidación o rechazo emite un evento
+  (`provider_credential_inserted`/`liquidated`/`rejected`) con la identidad y
+  el provider, nunca la key.
+- **Riesgo residual:** la RAM puede ir a swap y no se usa `mlock`; el `String`
+  transitorio del header de una request en vuelo no se zeroiza. Para
+  aislamiento verificable del entorno, añade sandbox/swap cifrado del host.
 
 ## Token del servidor
 
@@ -48,7 +97,36 @@ Para rotarlo:
 
 AMATL usa un único token activo; no existe periodo de solapamiento ni lista de
 revocación. `no_auth = true` sólo es válido en loopback y es exclusivamente para
-desarrollo.
+desarrollo. El modo se juzga contra la dirección en la que el proceso escucha de
+verdad, no contra el `bind` que declara el fichero: `--bind`/`--port` se aplican
+al arrancar y no se escriben de vuelta, así que una recarga o un
+`PATCH /server/pending-config` que dejaría sin autenticación al listener en uso
+se rechaza (un fichero con `bind = "127.0.0.1"` no puede activar `no_auth` en un
+proceso publicado en `0.0.0.0`).
+
+## Procesos hijos
+
+Trafilatura, `pdftotext` y el harness de Chromium parsean contenido hostil, así
+que un fallo de memoria en cualquiera de ellos es ejecución de código *dentro
+del hijo*. Por defecto un hijo hereda el entorno del padre, que es justo donde
+viven `server.token_env` y el `credential_env` de cada provider: la fuga sería
+silenciosa y convertiría cualquier bug de parser en robo de credenciales.
+
+Por eso ningún spawn del núcleo hereda el entorno. Cada sitio (`extract.rs`,
+`ingest.rs`, `render.rs`) llama a `child_process::scrub_environment`, que vacía
+el entorno y devuelve sólo `PATH`, `HOME`, `TMPDIR`, `LANG`, `LC_ALL` y `TZ`
+—ninguno puede contener un secreto—. Lo que un hijo necesite además se nombra
+explícitamente con `forward_environment` (el renderer reenvía, por ejemplo,
+`AMATL_CHROMIUM_BIN`, `AMATL_CHROMIUM_TASKS_MAX` y el par del bus de usuario de
+systemd), nunca «todo el entorno». Dentro del sandbox, el harness vuelve a
+vaciarlo con `--clearenv` antes de aplicar sus propios `--setenv`.
+
+La prueba no es de convención. `child_process` verifica con una variable canaria
+que un hijo no ve el entorno del padre; `extract.rs` e `ingest.rs` lo verifican
+sobre el camino real de spawn; `deep_phase5.rs` lo verifica sobre
+`ChromiumRenderer::render` con un harness de reemplazo; y el workflow
+`chromium-isolation` lo verifica sobre el harness real con un Chromium de
+reemplazo que vuelca `env` al DOM.
 
 ## Prevención de exposición
 

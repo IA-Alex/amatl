@@ -212,7 +212,7 @@ impl DeepOrchestrator {
                     }
                 }
             }
-            let remaining = match self.budget.reserve_fetch() {
+            let remaining = match self.budget.reserve_fetch(depth > 0) {
                 Ok(value) => value,
                 Err(cause) => {
                     response.degradations.push(degradation(
@@ -272,7 +272,7 @@ impl DeepOrchestrator {
                             | FetchError::AddressBlocked
                             | FetchError::HeaderBlocked
                     ) {
-                        self.budget.release_fetch();
+                        self.budget.release_fetch(depth > 0);
                     }
                     response.errors.push(fetch_error(&candidate.result, &error));
                     response.degradations.push(degradation(

@@ -61,20 +61,20 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   final de Search.
 - **Trazabilidad:** `config.rs:382-411`; `service.rs:101-112`; `storage.rs:58-118`.
 
-## ADR-005 — DuckDuckGo HTML bloqueado por gobernanza
+## ADR-005 — Adaptador HTML bloqueado por gobernanza
 
 - **Fecha:** 2026-08-12
 - **Estado:** Aceptada
 - **Contexto:** Un adapter HTML `best_effort` no implica autorización para
   scraping ni certeza sobre ToS/coste.
-- **Decisión:** DuckDuckGo HTML siempre declara
+- **Decisión:** El adaptador HTML siempre declara
   `provider_pending_explicit_approval` y no ejecuta red hasta una revisión
   verificable y ficha completa.
 - **Consecuencias:** Incluir el nombre en `providers.enabled` no lo activa; su
   ausencia nunca rompe el estado global si hay resultados útiles.
 - **Alternativas descartadas:** habilitación implícita, scraping oportunista o
   asumir permiso por acceso público.
-- **Trazabilidad:** `providers/duckduckgo.rs:8-59`; `service.rs:298,349`.
+- **Trazabilidad:** adaptador HTML retirado (ver ADR-010); `service.rs:298,349`.
 
 ## ADR-006 — Trafilatura como capability opcional
 
@@ -138,18 +138,18 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
 - **Trazabilidad:** `model.rs:7`; `ranking.rs`; `diversity.rs`; `progressive.rs`;
   `ranking_v2.rs:11-128`; corpus `ranking_v2_corpus.json`.
 
-## ADR-010 — Retiro de DuckDuckGo HTML; Marginalia pasa de scaffold a adapter real
+## ADR-010 — Retiro del adaptador HTML; Marginalia pasa de scaffold a adapter real
 
 - **Fecha:** 2026-08-15
 - **Estado:** Aceptada
-- **Contexto:** ADR-005 bloqueaba DuckDuckGo HTML fail-closed a la espera de
-  revisión, pero DuckDuckGo no ofrece API de búsqueda web (sólo Instant
-  Answer, que no devuelve resultados web); el adapter era un stub de 73
+- **Contexto:** ADR-005 bloqueaba el adaptador HTML fail-closed a la espera de
+  revisión, pero no había API de búsqueda web oficial (sólo una Instant
+  Answer API, que no devuelve resultados web); el adapter era un stub de 73
   líneas sin endpoint, cliente HTTP ni parseo que nunca podría aprobar
   gobernanza. Mantenerlo listado era una fuente "en progreso" fantasma.
   Marginalia, por otro lado, sí tiene API de búsqueda oficial y era el
   scaffold señalado como siguiente paso en `CONTINUIDAD.md`.
-- **Decisión:** Se retira `duckduckgo_html` del código (`providers/duckduckgo.rs`
+- **Decisión:** Se retira el adaptador HTML del código (módulo
   eliminado), del `ProviderRegistry`, de `config.rs` y de la documentación de
   gobernanza — no queda como adapter apagado, deja de existir. Se implementa
   `search()` real de Marginalia contra `api2.marginalia-search.com` (el
@@ -163,7 +163,7 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   Marginalia pasa a "aprobable" en `docs/gobernanza-providers.md`, pendiente
   sólo de `reviewer`/`reviewed_at`/`approval_status` (decisión del propietario,
   no de código). SearXNG sigue siendo la única fuente sin credencial.
-- **Alternativas descartadas:** implementar el stub de DuckDuckGo HTML (sin API
+- **Alternativas descartadas:** implementar el stub HTML (sin API
   de búsqueda real, exige scraping sin ToS verificable — contradice la puerta
   de gobernanza); mantener el criterio de routing ciego a coste.
 - **Trazabilidad:** `providers/marginalia.rs`; `router.rs` (penalización por
@@ -455,3 +455,455 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `docs/api/openapi.yaml` (`DeepInput`, `DeepTarget`);
   `crates/amatl-core/tests/deep_phase5.rs`;
   `crates/amatl-server/src/tests.rs`.
+
+## ADR-014 — Credencial efímera de provider en memoria, liquidable y zeroizada
+
+- **Fecha:** 2026-10-12
+- **Estado:** Aceptada
+- **Contexto:** El operador necesitaba insertar la API key de Marginalia desde
+  la UI sin reiniciar el proceso ni editar `amatl.toml`, y poder erradicarla
+  por completo al terminar. El canal `POST /providers/{name}/credential`
+  (admin-scoped, RAM-only) ya existía, pero (a) contradecía `docs/security/
+  secrets.md`, que declaraba «los secretos sólo entran mediante variables de
+  entorno»; (b) `clear_provider_credential` sólo sacaba la entrada del mapa,
+  dejando los bytes de la key en el heap; (c) si el operador también exportaba
+  `credential_env`, «Liquidar» no erradicaba la credencial en uso y la UI lo
+  ocultaba; (d) no había evento de auditoría ni pruebas del control.
+- **Decisión:** Reconocer el canal admin-scoped, no persistente y validado por
+  canario como una fuente de credencial legítima, y cerrar sus huecos:
+  - La key vive en `BTreeMap<String, Zeroizing<String>>` en RAM; `Zeroizing`
+    borra el buffer al reemplazar, liquidar o caer el proceso. `resolved_credential`
+    y `ProviderBuildContext.credential` propagan `Zeroizing`, y los adapters
+    (Marginalia) guardan `Option<Zeroizing<String>>`, de modo que
+    la copia que retiene cada provider se borra al caer. El cuerpo HTTP se
+    deserializa en un `SecretKey` que se zeroiza en `Drop`.
+  - `ProviderSummary`/`SourceStatus` exponen `credential_source`
+    (`none`/`ephemeral`/`environment`) — nunca el valor — para que la UI habilite
+    «Liquidar» sólo cuando puede erradicar algo y explique cuándo la key viene
+    del entorno.
+  - `POST`/`DELETE /providers/{name}/credential` emiten eventos de auditoría
+    (`provider_credential_inserted`/`liquidated`/`rejected`) con identidad y
+    proveedor, sin el secreto.
+  - La inserción sigue validándose con un canario live antes de comprometer, y
+    falla cerrado (`false`) bajo egress denegado.
+- **Superficie:** `crates/amatl-core/src/service.rs` (`CredentialSource`,
+  `ProviderSummary.credential_source`, `SourceStatus.credential_source`,
+  `ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>`);
+  `providers/{registry,marginalia}.rs`; `amatl-server/src/lib.rs`
+  (`SecretKey`, `audit_credential_action`); `docs/api/openapi.yaml`
+  (`CredentialSource`); `amatl-ui/assets/{app.js,i18n.js}`.
+- **Consecuencias:** «Liquidar» erradica la key en memoria de forma efectiva
+  (no queda en el heap tras el `Drop`) y la UI distingue el origen real de la
+  credencial. `credential_source` es aditivo al contrato `schema_version = "1"`.
+  Riesgo residual documentado: la RAM puede ir a swap y no hay `mlock`; el
+  `String` transitorio del header de una request en vuelo no se zeroiza. La
+  key sigue sin persistirse: muere con el proceso; sobrevive a `POST /reload`
+  en-proceso, que es lo deseado.
+- **Alternativas descartadas:** prohibir el canal y exigir siempre variable de
+  entorno (perdería el caso de uso del operador sin ganar una barrera real,
+  porque el entorno del proceso también es legible); no zeroizar y confiar en
+  el `Drop` normal de `String` (deja la key en el heap); exponer la key o su
+  hash en `/status` (filtra material sensible sin necesidad).
+- **Trazabilidad:** `docs/security/secrets.md`; `amatl-server/src/tests.rs`
+  (autorización admin, fail-closed en `isolated`, DELETE idempotente);
+  `service.rs` (semántica set/clear/present, no persistencia en config).
+
+## ADR-015 — Búsqueda con modelo (*strategist*) opcional y apagada por defecto
+
+- **Fecha:** 2026-10-12
+- **Estado:** Aceptada
+- **Contexto:** La invariante «no introducir LLM obligatorio… sin decisión
+  explícita» (`CONTINUIDAD.md`) y ADR-001 (decisión dedicada cuando cambia una
+  API pública) exigen documentar la capacidad que wirea un LLM en el camino de
+  búsqueda. La funcionalidad se implementó y llegó a `main` sin su ADR; esta
+  entrada cierra ese hueco. El strategist nace de la necesidad de mejorar una
+  consulta vaga sin volver obligatorio un modelo: es una segunda ronda
+  *opcional* que propone una query refinada, no una respuesta generada.
+- **Decisión:** `[strategist]` es una sección de configuración independiente
+  (`enabled` —por defecto `false`—, `endpoint`, `model`, `credential_env`,
+  `timeout_ms` —por defecto `800`—). Con ella apagada, `search`/`deep` corren
+  100 % deterministas y el modelo no interviene en absoluto. Con ella
+  encendida y completa:
+  - tras la primera búsqueda, el strategist recibe la consulta original y, si
+    está dentro de `timeout_ms`, devuelve una query refinada;
+  - AMATL la re-parsea y, sólo si normaliza a algo distinto de la consulta ya
+    enviada, ejecuta una segunda ronda con los **mismos providers** sobre un
+    orquestador nuevo (presupuesto propio) y registra el cortacircuito de los
+    providers que usó;
+  - la fusión es **complementaria**: se conserva el conjunto primario tal como
+    quedó rankeado y sólo se anexan resultados nuevos, deduplicando por URL
+    canónica (contra el primario y dentro del refinado). El modelo nunca
+    inventa ni reordena resultados.
+  - **Fail-closed:** `enabled = true` exige egress de red (perfil `standard` +
+    `egress = "governed"`), `endpoint` validado como el de inferencia remota,
+    `model` no vacío y `credential_env` no vacío. Bajo `isolated` (egress
+    denegado) no puede encenderse.
+  - **Interruptor admin:** `POST /strategist/enabled` (`scope admin`) valida un
+    candidato con el flag ya volteado *antes* de escribir, escribe sólo
+    `strategist.enabled` con `toml_edit` (preserva comentarios) y aplica el
+    cambio con el mismo `reload()` atómico, sin reiniciar. La UI lo expone como
+    el toggle «Búsqueda con modelo», visible pero deshabilitado si
+    `endpoint`/`model` no están configurados.
+  - **Privacidad:** el prompt del LLM embebe únicamente el texto de la
+    consulta. `generate_strategy` recibe `&SearchResponse` pero **no usa los
+    resultados** (`_current_results`); no se envían fragmentos ni contenido
+    recuperado — a diferencia de `answer`.
+  - **Gobierno:** la credencial se lee de la variable nombrada en
+    `credential_env` en el momento de la llamada; `/status` reporta
+    `strategist.available` (presencia) sin exponer el valor.
+- **Superficie:** `config/strategist.rs` (`StrategistConfig`,
+  `validate_strategist`); `strategist.rs` (trait `SearchStrategist`,
+  `NoOpStrategist`); `strategist/llm.rs` (`LlmStrategist`); `service.rs`
+  (`search_inner`, `append_complementary`, `StrategistStatus`); `config/mod.rs`
+  (`strategist` field, `set_strategist_enabled`); `amatl-server/src/lib.rs`
+  (`strategist_toggle`, `required_scope`); `amatl-server/src/routes.rs`;
+  `docs/api/openapi.yaml` (`/strategist/enabled`, `StrategistStatus`);
+  `amatl-ui` (toggle); `docs/operacion.md`; `amatl.example.toml`.
+- **Consecuencias:** el comportamiento por defecto no cambia; el LLM sigue
+  siendo opcional y la capacidad determinista de AMATL no depende de él. Coste:
+  con el strategist encendido, una búsqueda puede gastar hasta dos rondas de
+  presupuesto de provider (cada orquestador tiene su propio `Budget`) y añade
+  hasta `timeout_ms` de latencia. El proveedor del modelo es un tercero que
+  recibe el texto de la consulta por diseño — se divulga, no se mitiga; no hay
+  consentimiento por-request más allá del interruptor admin. Riesgo residual:
+  la RAM/proceso del operador y el proveedor externo quedan fuera del control
+  de AMATL.
+- **Punto de revisión (trade-off explícito):** a diferencia de `answer`, el
+  strategist **no** exige `data_policy.inference = "remote_explicit"`: se
+  gobierna por egress + el flag `enabled`. La justificación es que sólo envía
+  la consulta (no contenido recuperado) y que `isolated` ya lo bloquea. Un
+  revisor puede preferir alinear ambos canales bajo `remote_explicit`; se deja
+  registrado como decisión consciente, no como omisión.
+- **Alternativas descartadas:** exigir `remote_explicit` (más fricción para un
+  canal que no envía contenido; queda como punto de revisión); enviar los
+  resultados de la primera ronda al modelo (filtraría contenido recuperado y
+  ampliaría la superficie sin mejorar la propuesta de query); reordenar o
+  reemplazar el conjunto primario con el refinado (rompería el contrato de
+  ranking determinista y la reproducibilidad); usar embeddings locales para
+  «refinar» sin red (no produce operadores de query ni mejora observable, y
+  añadiría un backend pesado que hoy no existe).
+- **Trazabilidad:** `crates/amatl-core/src/strategist.rs`;
+  `crates/amatl-core/src/strategist/llm.rs`;
+  `crates/amatl-core/src/config/strategist.rs`;
+  `crates/amatl-server/src/tests.rs`
+  (`strategist_toggle_flips_the_flag_and_applies_without_restart`,
+  `strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing`);
+  `docs/operacion.md`; `docs/security/threat-model.md`
+  (`Core → inference (strategist)`).
+
+## ADR-016 — Retiro de las fuentes de pago del producto
+
+- **Fecha:** 2026-10-26
+- **Estado:** Aceptada
+- **Contexto:** ADR-010 retiró el adaptador HTML porque su adapter nunca podría
+  aprobar gobernanza, y dejó a las fuentes de pago en un estado intermedio: adapter
+  completo y funcional, pero con `approval_status = "rejected"` fijado por
+  política (no se contratan fuentes de pago) y, además, expuestos en la UI como
+  fuente opcional opt-in (selector, diálogo de key, rutas de credencial). Ese
+  estado es incoherente: el operador ve una fuente seleccionable que el propio
+  producto considera no contratable, y la superficie de credencial de un
+  provider retirado es riesgo sin contrapartida (ADR-014 tuvo que endurecer el
+  ciclo de vida de la key de un adapter que ya no se puede usar). Se cierra la
+  ambigüedad retirándolos de verdad, no apagándolos.
+- **Decisión:** Se retiran las fuentes de pago de extremo a extremo:
+  - **Código:** se eliminan sus módulos de adapter, sus
+    factories y sus entradas en `builtin_provider_records()`.
+    `ProviderRegistry::builtin()` despacha exactamente SearXNG y Marginalia.
+  - **Configuración (segunda puerta):** `RETIRED_PROVIDERS` /
+    `is_retired_provider()` (`config/providers.rs`) y `Config::validate()`
+    rechazan esos nombres **por nombre**, tanto en una tabla declarada
+    `[providers.<nombre>]` como en `providers.enabled`. El
+    error es explícito («retirado por política») en lugar del genérico
+    `unknown enabled provider`, que se leería como una errata. Una configuración
+    antigua falla en el arranque en vez de desplegar una fuente menos en
+    silencio; incluso una config construida a mano que los liste se detiene en el
+    registro (`UnknownProvider`).
+  - **UI:** desaparecen selector, diálogo de key, botones y claves de catálogo;
+    un test impide que vuelvan.
+  - **Documentación y pruebas:** `amatl.toml`, `amatl.example.toml`,
+    `docs/configuracion.md`, `docs/gobernanza-providers.md`,
+    `docs/security/{secrets,threat-model,asvs-checklist}.md` y los suites de
+    CLI/core/servidor/UI se actualizan al inventario real.
+- **Consecuencias:** AMATL publica exactamente **dos fuentes: SearXNG (sin
+  credencial) y Marginalia (con credencial)**; «conectar una fuente de búsqueda
+  real» queda cumplido sin candidatos fantasma. La política de «no se contratan
+  fuentes de pago» pasa de ser un `rejected` por defecto —overrideable en
+  `amatl.toml`— a una puerta dura en el código: reactivar una fuente retirada exige
+  revertir esta ADR (restaurar adapter y quitar el nombre de
+  `RETIRED_PROVIDERS`), no cambiar una ficha. Riesgo residual: algunos nombres
+  siguen apareciendo como **motores upstream de SearXNG** en los fixtures
+  de `providers/searxng.rs` y en la evidencia histórica
+  (`docs/testing/searxng-characterization.md`, `test-results/`); son motores de
+  la instancia SearXNG del operador, no fuentes de AMATL. ADR-014 sigue
+  vigente en su mecanismo (credencial efímera zeroizada), pero su enumeración de
+  adapters se reduce a Marginalia.
+- **Alternativas descartadas:** dejar los adapters apagados con
+  `approval_status = "rejected"` (mantiene el código muerto y la superficie de
+  credencial que ADR-014 tuvo que blindar, y confunde al operador con una fuente
+  seleccionable que no se puede contratar); conservar sólo la comprobación de
+  configuración sin borrar los adapters (un adapter presente se puede reactivar
+  por error al tocar el registry); borrar los nombres del historial
+  (`CHANGELOG.md`, ADRs previas, `CONTINUIDAD.md`) en lugar de anotarlos
+  (destruiría la trazabilidad de por qué se retiraron).
+- **Trazabilidad:** `crates/amatl-core/src/providers/{registry.rs,searxng.rs,marginalia.rs}`;
+  `crates/amatl-core/src/config/providers.rs` (`RETIRED_PROVIDERS:148`,
+  `is_retired_provider`); `crates/amatl-core/src/service.rs`
+  (`validate_provider_canary`, `retired_provider_canary_stops_at_the_registry_door`,
+  y las vistas `/status`, `/ready`);
+  `crates/amatl-ui/src/lib.rs`
+  (`retired_sources_are_not_shipped_in_the_ui`);
+  `crates/amatl-cli/tests/cli.rs`
+  (`provider_canary_rejects_retired_sources_as_configuration_errors`);
+  `crates/amatl-core/src/config/mod.rs`
+  (`retired_providers_are_absent_and_refused_by_validate`,
+  `declaring_a_table_replaces_the_builtin_record_instead_of_merging_it`);
+  `crates/amatl-server/src/tests.rs`
+  (`reload_picks_up_a_new_source_without_restarting`,
+  `source_gauges_count_declared_sources_while_readiness_counts_available_ones`);
+  `docs/gobernanza-providers.md`; `docs/configuracion.md`;
+  `docs/security/secrets.md`; `CHANGELOG.md` (Unreleased → Removed).
+
+## ADR-017 — Plan de salida de `libsqlite3-sys` (RUSTSEC-2026-0459)
+
+- **Fecha:** 2026-11-13
+- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`
+- **Contexto:** La re-auditoría de 2026-11-13 dejó un único advisory abierto en el
+  grafo bloqueado: `libsqlite3-sys 0.30.1` (RUSTSEC-2026-0459, `medium`/6.8,
+  CVE-2026-119375), alcanzado por `sqlx 0.8.6 → sqlx-sqlite → libsqlite3-sys`.
+  El advisory afecta sólo a la fuente SQLite `bundled`, que el workspace sí
+  habilita, y la explotabilidad es **baja**: vector local (`AV:L`, `UI:P`), sin
+  superficie remota —requiere que un tercero menos confiable coloque un fichero
+  de base de datos y su `-wal` donde el operador los abra, y la ruta SQLite de
+  AMATL es local y controlada por el propio operador (`docs/security/supply-chain.md`,
+  «Exploitability: low — no remote surface»). No hay upgrade compatible: el fix
+  es `libsqlite3-sys >= 0.39.0`; `sqlx 0.8.6` lo fija en `^0.30` y `sqlx 0.9.0`
+  (2026-05-21) lo admite en un rango con tope `< 0.38.0`. Por política
+  (`docs/security/supply-chain.md`, `SECURITY.md`) un `ignore` en `deny.toml`
+  exige una ADR escrita y aprobada por `@IA-Alex`; ninguna excepción está
+  pre-aprobada.
+- **Decisión (propuesta):** Cerrar el hallazgo por su **plan de salida**, no por
+  supresión. Se adopta como camino principal la **espera activa al rango de
+  `sqlx`**, con tres hitos verificables. Los hitos se ejecutaron sin `ignore`;
+  la supresión nombrada que rige hoy aparece en la enmienda al final de esta
+  ADR:
+  0. **Fijar la línea auditada (hecho 2026-11-15):** el manifiesto raíz declara
+     `sqlx = "=0.8.6"` en lugar del `0.8` con caret. Un caret admitía cualquier
+     `0.8.x` posterior y cada uno decide el rango de `libsqlite3-sys` **y** el
+     conjunto de features `sqlite` del grafo, así que un `cargo update` podía
+     cambiar la superficie auditada sin que ningún revisor viera un diff de
+     manifiesto. El test offline `sqlx_is_pinned_to_the_audited_line`
+     (`crates/amatl-core/tests/supply_chain_contract.rs`) falla si se afloja el
+     pin o si `Cargo.lock` resuelve otra línea. Es una **barrera, no una
+     remediación**: el advisory sigue abierto.
+  1. **Salir del pin `0.30.1`:** evaluar el salto a `sqlx 0.9.x`, que admite
+     `libsqlite3-sys >=0.30.1, <0.38.0` (tope mayor que `^0.30`, pero todavía
+     por debajo del fix). El bloqueo conocido no es el MSRV sino la
+     **desalineación de features**: en `sqlx 0.9.0` la feature `sqlite` implica
+     `sqlite-bundled`, `sqlite-deserialize`, `sqlite-load-extension` y
+     `sqlite-unlock-notify`, mientras que en `0.8.6` implica sólo
+     `sqlx-sqlite/bundled`. Un salto directo añade `deserialize` y
+     `load-extension` al binario que se distribuye, y la variante
+     `sqlite-unbundled` enlaza el SQLite del sistema (rompe el build musl
+     estático). Es por tanto un cambio de superficie y de empaquetado, no un
+     bump de versión. Uso de `sqlx` acotado a `crates/amatl-core/src/storage.rs`
+     (~74 llamadas): el impacto de adaptación es local, pero **no** cierra el
+     advisory por sí solo.
+  2. **Admitir el fix:** en cuanto una release de `sqlx` incorpore
+     `libsqlite3-sys >= 0.39.0` en su rango, un `cargo update -p libsqlite3-sys`
+     (o `-p sqlx`, con el pin actualizado en el mismo commit) elimina el advisory
+     y el gate vuelve a verde. `libsqlite3-sys 0.39.0`/`0.39.1`/`0.40.0` ya
+     existen (crates.io, 2026-11-15), así que falta sólo la release de `sqlx`
+     que los admita.
+  - **Controles compensatorios mientras esté abierto (ya vigentes):** el gate
+    `cargo audit`/`cargo deny check` permanece **rojo** y bloquea merge; el test
+    offline `tests/supply_chain_contract.rs` mantiene floors para los advisories
+    remediables y **excluye este caso con justificación escrita**; `deny.toml`
+    no tiene allowlist silencioso (`wildcards = "deny"`, registries fijados).
+- **Consecuencias:** El hallazgo queda clasificado como **deuda local acotada**,
+  no como riesgo de producción remoto, y con ruta de cierre explícita y
+  revisable. Si algún hito no llegara en el SLA correspondiente (medium → 60 días
+  de `SECURITY.md`), esta ADR debe convertirse en un waiver temporal **firmado**,
+  con fecha de caducidad y plan de retirada, o resolver el hallazgo por exclusión
+  del grafo. La redacción original («no autoriza ningún `ignore`») queda
+  sustituida por la enmienda siguiente, que sí autoriza uno — acotado, nombrado y
+  con guardas.
+- **Enmienda 2026-11-15 — una excepción acotada, no un waiver.** La decisión
+  anterior dejaba `cargo audit`/`cargo deny check` rojos mientras emitieran **ese**
+  aviso. Un gate que falla en cada corrida por un hallazgo ya analizado deja de
+  distinguir el siguiente, y la política del repo («no hay allowlist silencioso»)
+  se refería a una allowlist **silenciosa**, no a una excepción escrita. Se
+  suprime **un solo ID** (`ignore = ["RUSTSEC-2026-0459"]` en `deny.toml`) bajo
+  cuatro controles que impiden que la supresión crezca o pase inadvertida:
+  1. **Guardas offline** en `supply_chain_contract.rs`: la variante auditada de
+     `libsqlite3-sys` (0.30.1) y el conjunto exacto de IDs suprimidos. Cambia
+     cualquiera de los dos → falla en todos los hosts, sin red.
+  2. **Gate visible**: `scripts/security-gate.sh` imprime los IDs suprimidos en
+     cada corrida y pasa los mismos a `cargo audit`; CI invoca el script con
+     `--expected-ignore`, así que un ID nuevo exige editar el workflow.
+  3. **Herramientas fijadas** (`cargo-audit@0.22.2`, `cargo-deny@0.18.7`, ya
+     fijadas): verificado contra `cargo-deny` 0.18.7 y 0.20.2 que ambos honran
+     `ignore`, y que sin él el gate vuelve a fallar.
+  4. **Documentación**: el modelo de amenaza y la excepción viven en
+     `docs/security/supply-chain.md` («Current exception»).
+  **La excepción caduca con el pin**: al subir a una línea de `sqlx` que admita
+  `libsqlite3-sys >= 0.39.0` se eliminan en el mismo commit el `ignore`, el
+  `--expected-ignore`, la aserción del lockfile y esta enmienda pasa a
+  «ejecutada». Sigue siendo deuda **local acotada**: no se ha demostrado que el
+  advisory se haya explotado, sino que su precondición exige escritura local en
+  el fichero del operador.
+- **Alternativas descartadas:** (a) añadir `ignore` en `deny.toml` sin ADR
+  firmada — prohibido por la política; (b) forzar un `[patch]`/fork de
+  `sqlx-sqlite` para elevar el rango a `>= 0.39.0` — mete un fork no auditado en
+  la cadena de suministro, peor que el propio advisory; (c) migrar de driver
+  SQLite (`rusqlite`, `sqlite3` directo) — reescribe la capa de persistencia por
+  un riesgo local bajo, coste desproporcionado; (d) retirar el escritor de
+  `bundled` por `sqlite-unbundled` — cambia el modelo de enlace y la
+  reproducibilidad del binario sólo para esquivar un advisory que permanece en el
+  grafo de todas formas.
+- **Trazabilidad:** `docs/security/supply-chain.md` («Re-audit 2026-11-13» y
+  «Threat-model note»); `Cargo.toml` (`sqlx = "=0.8.6"`); `deny.toml`;
+  `tests/supply_chain_contract.rs` (`sqlx_is_pinned_to_the_audited_line`);
+  `Cargo.lock` (`libsqlite3-sys 0.30.1`); `crates/amatl-core/src/storage.rs`;
+  `SECURITY.md`.
+
+## ADR-018 — Excepción por `chrono` no mantenido (RUSTSEC-2026-0543)
+
+- **Fecha:** 2026-11-18
+- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`
+- **Contexto:** La base RustSec publicó el 2026-09-14 el advisory
+  **RUSTSEC-2026-0543** («`chrono` is unmaintained», anuncio
+  `chronotope/chrono#1768`), que marca **todas** las versiones de `chrono` como
+  no mantenidas. El `contract-gate` lleva el advisory desde entonces: la corrida
+  de `bf9f7e00` (2026-11-16) era verde y la de `d19d3fd9` (2026-11-18) falla en
+  `scripts/security-gate.sh` con `advisories FAILED` por este único ID. No es una
+  vulnerabilidad (`informational: unmaintained`, sin CVSS ni CVE): es un aviso de
+  mantenimiento del crate.
+  - **Camino en el grafo:** `chrono 0.4.45` llega por dos rutas, ambas de
+    terceros: `rmcp 3.10.0 → chrono` y `schemars 1.2.2 → rmcp 3.10.0 → chrono`.
+    Ningún crate del workspace declara `chrono` directamente. `amatl-core` hace
+    su manejo de fechas con `time` (`time = { version = "0.3", … }` en el
+    manifiesto raíz), no con `chrono`.
+  - **Sin upgrade posible:** el advisory no nombra una release corregida («all
+    versions are affected», «No safe upgrade is available»). No hay a qué subir
+    dentro del grafo bloqueado.
+- **Decisión (propuesta):** Suprimir **un solo ID** adicional
+  (`ignore = ["RUSTSEC-2026-0459", "RUSTSEC-2026-0543"]` en `deny.toml`) bajo los
+  mismos cuatro controles que el ADR-017 estableció para el primero, porque el
+  problema es idéntico en forma: un gate que falla en cada corrida por un hallazgo
+  ya analizado deja de distinguir el siguiente.
+  1. **Guardas offline** en `supply_chain_contract.rs`: el test que fija el
+     conjunto exacto de IDs suprimidos falla en todos los hosts, sin red, si la
+     lista cambia sin actualizar la aserción.
+  2. **Gate visible**: `scripts/security-gate.sh` imprime ambos IDs en cada
+     corrida y pasa los mismos a `cargo audit`; CI invoca el script con
+     `--expected-ignore RUSTSEC-2026-0459 --expected-ignore RUSTSEC-2026-0543`,
+     así que un ID nuevo exige editar los dos workflows.
+  3. **Herramientas fijadas** (`cargo-audit@0.22.2`, `cargo-deny@0.18.7`): ya en
+     vigor por el ADR-017.
+  4. **Documentación**: el modelo de amenaza y la excepción viven en
+     `docs/security/supply-chain.md` («Current exception — RUSTSEC-2026-0543»).
+  - **Barrera frente al siguiente aviso:** la supresión se limita a este ID. Como
+    el advisory no tiene release corregida, **no se puede convertir en un floor**
+    (`supply_chain_contract.rs` documenta por qué); la única salida es que
+    `rmcp`/`schemars` migren a otro crate de fechas, o que `chrono` recupere
+    mantenimiento. `chrono` no tiene ruta de ejecución en AMATL: nada del
+    workspace lo llama, así que no hay superficie que endurecer.
+- **Consecuencias:** El hallazgo queda clasificado como **deuda de mantenimiento
+  de terceros**, no como vulnerabilidad: no hay CVE, no hay impacto de confidencialidad,
+  integridad ni disponibilidad, y el crate no está en ninguna ruta de ejecución
+  propia. El gate vuelve a verde con la supresión **visible** (impresa por el
+  script) y acotada a dos IDs nombrados. Si `@IA-Alex` prefiere no suprimir, la
+  alternativa es dejar el `contract-gate` rojo de forma indefinida por un aviso
+  que ninguna acción del proyecto puede cerrar, lo que anula su señal para el
+  resto del grafo.
+- **Alternativas descartadas:** (a) fijar `chrono` a una versión concreta — el
+  advisory afecta **todas** las versiones, no hay versión sana; (b) forzar
+  `[patch]`/fork — mete un crate no auditado para esquivar un aviso informativo,
+  peor que el propio aviso; (c) sacar `rmcp`/`schemars` del grafo — son
+  dependencias de producción del servidor MCP y del contrato HTTP, coste
+  desproporcionado; (d) dejar el gate rojo sin supresión — confirma el problema
+  que motiva la enmienda del ADR-017 (un gate permanentemente rojo deja de
+  distinguir el siguiente aviso).
+- **Trazabilidad:** `deny.toml`; `.github/workflows/ci.yml` y
+  `.github/workflows/release.yml` (`--expected-ignore`);
+  `crates/amatl-core/tests/supply_chain_contract.rs`;
+  `docs/security/supply-chain.md` («Current exception — RUSTSEC-2026-0543»);
+  `Cargo.lock` (`chrono 0.4.45`, `rmcp 3.10.0`, `schemars 1.2.2`); `SECURITY.md`.
+
+## ADR-019 — Marginalia queda como única fuente; se retira SearXNG
+
+- **Fecha:** 2026-11-18
+- **Estado:** Aceptada
+- **Contexto:** ADR-016 dejó «exactamente dos fuentes: SearXNG (sin credencial) y
+  Marginalia (con credencial)». La decisión del operador es servir **una sola
+  fuente: Marginalia**. SearXNG no aporta un rol que Marginalia no cubra y su
+  presencia obliga a mantener un contrato de instancia autoalojada
+  (`SEARXNG_INSTANCE_URL`, `deploy/searxng/`, un adapter de agregación con motores
+  upstream cuyo comportamiento varía por instancia y por política de cada motor)
+  a cambio de un resultado que el propio producto ya obtiene de Marginalia. Se
+  cierra esa superficie retirando la fuente de verdad, siguiendo el patrón de
+  ADR-016: la coherencia de tener una única fuente declarada, registrada, servida
+  y documentada pesa más que conservar un adapter apagado.
+- **Decisión:** Se retira SearXNG de extremo a extremo:
+  - **Código:** se elimina `crates/amatl-core/src/providers/searxng.rs`, su
+    `SearXngFactory` en `providers/registry.rs`, su re-export en
+    `providers.rs`/`lib.rs` y su entrada en `builtin_provider_records()`
+    (`config/providers.rs`). `ProviderRegistry::builtin()` despacha exactamente
+    Marginalia.
+  - **Configuración (segunda puerta):** al desaparecer su expediente,
+    `Config::validate()` rechaza `searxng` en `providers.enabled` —o en una tabla
+    `[providers.searxng]`— con el error genérico `unknown enabled provider`
+    (el mismo mecanismo vigente tras `45559cb2`, que eliminó la lista nominal
+    `RETIRED_PROVIDERS`). Una configuración antigua falla en el arranque en vez
+    de desplegar con una fuente menos en silencio.
+  - **Rol de expansión:** `ExpansionConfig::default()` deja
+    `expansion_providers` **vacío** en lugar de `["searxng"]`. El rol de
+    expansión exige una segunda fuente y no queda ninguna; `primary_provider`
+    sigue siendo `marginalia`. Declarar y registrar una segunda fuente reactiva
+    el rol sin cambio de esquema.
+  - **UI:** desaparece el selector de fuente (Marginalia / SearXNG / Todas): con
+    una sola fuente sería un control de una opción, así que se elimina en vez de
+    dejarlo inerte. La fila de credencial de Marginalia permanece y se muestra
+    cuando la fuente está habilitada. Un test
+    (`retired_source_selector_is_gone_and_cannot_return`) impide que el selector
+    vuelva.
+  - **Deploy:** se elimina `deploy/searxng/` (el directorio `deploy/` queda
+    vacío). El runbook de operación deja de aplicarlo.
+  - **Documentación y pruebas:** `amatl.example.toml`, `docs/configuracion.md`,
+    `docs/operacion.md`, `docs/gobernanza-providers.md`,
+    `docs/security/{secrets,threat-model}.md`, `docs/README.md`,
+    `crates/amatl-core/README.md` y los suites de CLI/core/servidor/UI se
+    actualizan al inventario real.
+- **Consecuencias:** AMATL publica **una sola fuente: Marginalia**, que exige una
+  key vigente emitida al operador. **AMATL deja de tener una fuente usable sin
+  credencial**: sin `MARGINALIA_API_KEY`, la única vía de resultados es `--mock`
+  (determinista, local). Es una consecuencia aceptada por el operador, no un
+  descuido: el producto ya no promete búsqueda real sin credencial. Riesgo
+  residual: los nombres de motores de SearXNG sobreviven como **evidencia
+  histórica** (fixtures de campañas en `docs/testing/searxng-*.md`,
+  `docs/evaluation/**`, `test-results/`) y ahí se conservan tal cual — son el
+  registro de por qué se tomaron decisiones de fecha/URL, no fuentes de AMATL.
+  El manejo de fechas compactas y de timestamps naive (`normalize.rs`) se
+  conserva: es un contrato ISO 8601 general, no específico de un adapter, y
+  quitarlo cambiaría comportamiento fuera del alcance de este retiro.
+- **Alternativas descartadas:** (a) dejar SearXNG apagado con la ficha en
+  `draft` — mantiene el adapter, `deploy/`, el selector de UI y el contrato de
+  instancia como código muerto reactivable por error, el mismo riesgo que ADR-016
+  descartó para las fuentes de pago; (b) conservar sólo la comprobación de
+  configuración sin borrar el adapter — un adapter presente se reactiva al tocar
+  el registry (`UnknownProvider` como única defensa, insuficiente); (c) borrar
+  los nombres de la evidencia histórica — destruiría la trazabilidad de por qué
+  existe el manejo de fechas y de qué se observó en cada campaña.
+- **Trazabilidad:** `crates/amatl-core/src/providers/registry.rs`
+  (`builtin_registry_exposes_the_shipped_sources`),
+  `crates/amatl-core/src/config/providers.rs`,
+  `crates/amatl-core/src/config/mod.rs`
+  (`unshipped_providers_are_absent_and_refused_by_validate`),
+  `crates/amatl-core/src/config/inference.rs` (`ExpansionConfig`),
+  `crates/amatl-core/src/service.rs` (`marginalia_only_config`),
+  `crates/amatl-core/tests/providers_phase1.rs`,
+  `crates/amatl-ui/src/lib.rs`
+  (`retired_source_selector_is_gone_and_cannot_return`),
+  `crates/amatl-cli/tests/cli.rs`, `docs/gobernanza-providers.md`,
+  `docs/operacion.md`, `amatl.example.toml`; retiro de `deploy/searxng/`.
+
