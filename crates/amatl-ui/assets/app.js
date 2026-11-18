@@ -689,27 +689,6 @@ function reportFailure(error) {
   }
 }
 
-const ERROR_MESSAGE_KEYS = {
-  invalid_request: "errorInvalidRequest",
-  invalid_query: "errorInvalidQuery",
-  unauthorized: "unauthorized",
-  rate_limited: "rateLimited",
-  request_timeout: "timeout",
-  egress_denied: "errorEgressDenied",
-  provider_not_declared: "errorProviderUnavailable",
-  provider_not_registered: "errorProviderUnavailable",
-  provider_not_enabled: "errorProviderUnavailable",
-  provider_not_approved: "errorProviderUnavailable",
-  provider_credential_missing: "errorProviderUnavailable",
-  provider_network_blocked: "errorProviderUnavailable",
-  search_planning_failed: "errorSearchUnavailable",
-  inference_unavailable: "errorSearchUnavailable",
-  ranking_backend_unavailable: "errorSearchUnavailable",
-  storage_unavailable: "errorStorageUnavailable",
-  answer_unavailable: "answerHintMissingCredential",
-  scope_denied: "scopeDenied",
-};
-
 async function run(mode, page) {
   const state = store.get();
   if (state.controller) state.controller.abort();
@@ -907,25 +886,58 @@ function queryValidationError() {
   return null;
 }
 
-function reportValidationError(key) {
-  const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
-  setStatusKey(key, "error");
-  field.setAttribute("aria-invalid", "true");
-  // Open the disclosure that actually holds the offending field: the token's
-  // panel and the filter panel are separate, so a fixed `filtersDetails.open`
-  // would leave a token error focused inside a still-collapsed panel.
-  if (filtersDetails.contains(field)) filtersDetails.open = true;
-  if (accessDetails.contains(field)) accessDetails.open = true;
-  field.focus();
-}
+// ── Dominio: net (clasificación de errores de validación) ────────
+// Encapsula el mapa de códigos y las dos rutinas de validación que lo usan.
+// Retorna las tres porque el arranque registra sus listeners y `reportFailure`
+// (en el núcleo, por su test de contrato) lee el mapa.
+const net = (function () {
+  const ERROR_MESSAGE_KEYS = {
+    invalid_request: "errorInvalidRequest",
+    invalid_query: "errorInvalidQuery",
+    unauthorized: "unauthorized",
+    rate_limited: "rateLimited",
+    request_timeout: "timeout",
+    egress_denied: "errorEgressDenied",
+    provider_not_declared: "errorProviderUnavailable",
+    provider_not_registered: "errorProviderUnavailable",
+    provider_not_enabled: "errorProviderUnavailable",
+    provider_not_approved: "errorProviderUnavailable",
+    provider_credential_missing: "errorProviderUnavailable",
+    provider_network_blocked: "errorProviderUnavailable",
+    search_planning_failed: "errorSearchUnavailable",
+    inference_unavailable: "errorSearchUnavailable",
+    ranking_backend_unavailable: "errorSearchUnavailable",
+    storage_unavailable: "errorStorageUnavailable",
+    answer_unavailable: "answerHintMissingCredential",
+    scope_denied: "scopeDenied",
+  };
 
-function clearValidationError() {
-  queryInput.removeAttribute("aria-invalid");
-  tokenInput.removeAttribute("aria-invalid");
-}
+  function reportValidationError(key) {
+    const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
+    setStatusKey(key, "error");
+    field.setAttribute("aria-invalid", "true");
+    // Open the disclosure that actually holds the offending field: the token's
+    // panel and the filter panel are separate, so a fixed `filtersDetails.open`
+    // would leave a token error focused inside a still-collapsed panel.
+    if (filtersDetails.contains(field)) filtersDetails.open = true;
+    if (accessDetails.contains(field)) accessDetails.open = true;
+    field.focus();
+  }
 
-queryInput.addEventListener("input", clearValidationError);
-tokenInput.addEventListener("input", clearValidationError);
+  function clearValidationError() {
+    queryInput.removeAttribute("aria-invalid");
+    tokenInput.removeAttribute("aria-invalid");
+  }
+
+  return { ERROR_MESSAGE_KEYS, reportValidationError, clearValidationError };
+})();
+
+const ERROR_MESSAGE_KEYS = net.ERROR_MESSAGE_KEYS;
+const reportValidationError = net.reportValidationError;
+const clearValidationError = net.clearValidationError;
+
+// Los listeners viajan al bloque de arranque (regla D3.3); aquí solo se
+// declaran.
 
 function execute(event) {
   event.preventDefault();
@@ -1931,6 +1943,8 @@ async function refreshPanels() {
 
 historyPurgeButton.addEventListener("click", purgeHistory);
 tokenInput.addEventListener("change", refreshPanels);
+queryInput.addEventListener("input", clearValidationError);
+tokenInput.addEventListener("input", clearValidationError);
 refreshPanels();
 
 function applyDeclarativeTranslations() {
