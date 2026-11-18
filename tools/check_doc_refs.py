@@ -157,6 +157,23 @@ CLI_UNIVERSAL_FLAGS = ("config-file", "help", "version")
 # `--flag=value` (the name is captured either way).
 CLI_FLAG = re.compile(r"(?<![\w-])--([a-z][a-z0-9-]*)")
 
+# Flags whose value `clap` parses as an integer (`<LIMIT>`, `<TO>`, …). A guide
+# that writes `--limit veinte` names a real flag on a real subcommand, so the
+# flag check passed, yet the operator cannot run it. `--config-file x.toml` is
+# deliberately absent: its value is any path, and pinning a type there would
+# reject correct documentation.
+CLI_INTEGER_FLAGS = (
+    "limit",
+    "offset",
+    "to",
+    "iterations",
+    "concurrency",
+    "max-fetches",
+)
+
+# `--flag VALUE` or `--flag=VALUE` in an invocation line.
+CLI_FLAG_VALUE = re.compile(r"(?<![\w-])--([a-z][a-z0-9-]*)(?:=(\S+)|(?:\s+(\S+)))?")
+
 # An `amatl …` invocation inside a fenced code block. Leading shell noise is
 # allowed (`$`, a prompt, or `VAR=value` assignments) so the common
 # `AMATL_SERVER_TOKEN=… amatl serve` form still matches. Captures the first bare
@@ -329,6 +346,25 @@ def command_violations():
                         relative,
                         f"{relative}:{number}: amatl {path} --{flag}",
                         f"no such flag: --{flag} on amatl {path}",
+                    )
+                )
+            # Un flag numérico debe llevar un número. `--limit veinte` nombra un
+            # flag real y por eso pasaba el chequeo anterior, pero no es una
+            # instrucción ejecutable.
+            for match in CLI_FLAG_VALUE.finditer(line):
+                flag = match.group(1)
+                value = match.group(2) if match.group(2) is not None else match.group(3)
+                if flag not in CLI_INTEGER_FLAGS:
+                    continue
+                if value is not None and value.lstrip("-").isdigit():
+                    continue
+                shown = f" {value}" if value is not None else ""
+                found.append(
+                    (
+                        relative,
+                        f"{relative}:{number}: amatl {path} --{flag}{shown}",
+                        f"--{flag} on amatl {path} takes an integer"
+                        + ("" if value is not None else ", and none was given"),
                     )
                 )
     return found
