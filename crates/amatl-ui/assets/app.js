@@ -1007,9 +1007,13 @@ async function applyProviderSource(value) {
     providerSelectorStatus.textContent = t("providerSelectorSynced");
     providerSelectorStatus.dataset.state = "success";
   } catch (error) {
-    providerSelectorStatus.textContent = error.message.includes("401")
-      ? t("unauthorized")
-      : t("providerSelectorFailed");
+    // Classification reads the structured `error.status`/`error.code` the
+    // shared client sets (real error bodies carry no status digits in the
+    // message); the message check remains only as a fallback.
+    providerSelectorStatus.textContent =
+      error.status === 401 || error.code === "unauthorized" || error.message.includes("401")
+        ? t("unauthorized")
+        : t("providerSelectorFailed");
     providerSelectorStatus.dataset.state = "error";
     // Revert to the authoritative server state.
     await fetchProviderStatus();
@@ -1489,16 +1493,20 @@ async function saveMarginaliaKey(event) {
   } catch (error) {
     // 401/403 means the operator token lacks admin scope; anything else means
     // the key itself did not pass the live canary (or the source was
-    // unreachable) and nothing was stored.
-    const match = /API Error: (\d+)/.exec(String(error && error.message));
-    const status = match ? Number(match[1]) : 0;
+    // unreachable) and nothing was stored. Classification reads the structured
+    // `error.status`/`error.code` the shared client sets — real error bodies
+    // carry a catalog message with no status digits — and the message check
+    // survives only as a fallback for non-JSON error pages.
+    const status = Number(error && error.status) || 0;
+    const code = error && typeof error.code === "string" ? error.code : "";
+    const message = String(error && error.message);
     marginaliaKeyError.hidden = false;
     // 401 = no valid token was sent (nothing to do with the key); 403 = the
     // token lacks admin scope; anything else = the key failed the live canary.
     marginaliaKeyError.textContent =
-      status === 401
+      status === 401 || code === "unauthorized" || message.includes("401")
         ? t("unauthorized")
-        : status === 403
+        : status === 403 || code === "scope_denied" || message.includes("403")
           ? t("marginaliaFailed")
           : t("marginaliaInvalid");
   } finally {
@@ -1866,6 +1874,14 @@ clientTokenCopy.addEventListener("click", async () => {
   }
 });
 
+// The full MCP tool vocabulary, mirroring the contract-stable constant
+// `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
+// created with the `mcp` scope must be allowlisted for every MCP tool, because
+// `ClientIdentity::allows_tool` matches each call against the client's own
+// allowlist and an empty one denies every tool call while the "MCP" checkbox
+// promises access.
+const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
+
 async function createServerClient(event) {
   event.preventDefault();
   const id = clientIdInput.value.trim();
@@ -1881,7 +1897,10 @@ async function createServerClient(event) {
   const submitButton = clientCreateForm.querySelector("#client-create-submit");
   submitButton.disabled = true;
   try {
-    const body = { id, scopes, tools: [] };
+    // Only an MCP-scoped client gets the tool allowlist; the others keep an
+    // empty vocabulary (their scopes have no MCP surface to authorize).
+    const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
+    const body = { id, scopes, tools };
     if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
     const payload = await globalThis.api.post("/server/clients", body);
     clientCreateForm.reset();
@@ -1895,11 +1914,23 @@ async function createServerClient(event) {
       openClientTokenDialog(payload.id, payload.token);
     }
   } catch (error) {
+    // Classify on the structured fields the shared client sets — `error.status`
+    // (the HTTP status) and `error.code` (the catalog code) — never on digits
+    // inside the message text: real error bodies carry a shared catalog message
+    // with no status numbers in it. The message check survives only as a
+    // fallback for non-JSON error pages.
+    const status = Number(error && error.status) || 0;
+    const code = error && typeof error.code === "string" ? error.code : "";
     const message = String(error && error.message);
     clientCreateError.textContent =
-      message.includes("409")
+      status === 409 || message.includes("409")
         ? t("clientCreateDuplicate")
-        : message.includes("401") || message.includes("403")
+        : status === 401
+          || status === 403
+          || code === "unauthorized"
+          || code === "scope_denied"
+          || message.includes("401")
+          || message.includes("403")
           ? t("unauthorized")
           : t("clientCreateFailed");
     clientCreateError.hidden = false;

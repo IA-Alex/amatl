@@ -561,6 +561,66 @@ mod tests {
         assert!(javascript.contains("error.message.includes(\"504\")"));
     }
 
+    /// BH-01/BH-02 (2026-11-18 audit). Two field defects, both born of the
+    /// same mistake — keying a decision off something other than the structured
+    /// fields the shared client actually exposes:
+    ///
+    /// - BH-01: `createServerClient` always sent `tools: []`, and
+    ///   `ClientIdentity::allows_tool` denies on an empty allowlist, so an
+    ///   "MCP"-scoped client created from the UI could never call a single MCP
+    ///   tool — the checkbox was a dead control.
+    /// - BH-02: the error branches classified 401/403 by scanning the *message
+    ///   text* for status digits. Real error bodies carry a catalog message
+    ///   with no digits (`{"code":"unauthorized",...}`), so the regex never
+    ///   matched and an operator without admin scope was shown "the key was
+    ///   rejected" in the one dialog where a secret is typed.
+    ///
+    /// The asset tests assert string presence, so nothing here executes the JS:
+    /// this locks the two properties the fix introduced, exactly as the audit's
+    /// live probe observed them.
+    #[test]
+    fn mcp_clients_carry_the_tool_vocabulary_and_errors_classify_on_status() {
+        let javascript = text("/app.js");
+        // BH-01: the MCP tool vocabulary is declared once and sent in full for
+        // an MCP-scoped client, so the allowlist is never empty.
+        assert!(
+            javascript.contains(
+                "const MCP_TOOL_NAMES = [\"search\", \"deep_search\", \"fetch\", \"providers\", \"status\", \"answer\"]"
+            ),
+            "the MCP tool vocabulary must mirror the server's MCP_TOOLS constant"
+        );
+        assert!(
+            javascript.contains("scopes.includes(\"mcp\") ? MCP_TOOL_NAMES.slice() : []"),
+            "an MCP-scoped client must be created with the full tool vocabulary"
+        );
+        assert!(
+            !javascript.contains("const body = { id, scopes, tools: [] };"),
+            "the old always-empty allowlist must not come back"
+        );
+        // BH-02: all three error branches read `error.status`/`error.code`
+        // (set by client.js) and keep the message check only as a fallback.
+        assert!(
+            javascript.contains("error.status === 401 || error.code === \"unauthorized\""),
+            "applyProviderSource must classify 401 on the structured fields"
+        );
+        assert!(
+            javascript.contains("const status = Number(error && error.status) || 0;"),
+            "saveMarginaliaKey must read the HTTP status, not parse the message"
+        );
+        assert!(
+            javascript.contains("code === \"scope_denied\""),
+            "saveMarginaliaKey must recognise the catalog's 403 code"
+        );
+        assert!(
+            javascript.contains("status === 409 || message.includes(\"409\")"),
+            "createServerClient must report the duplicate-id catalog case"
+        );
+        assert!(
+            !javascript.contains("/API Error: (\\d+)/"),
+            "no branch may parse the HTTP status out of the message text"
+        );
+    }
+
     #[test]
     fn marginalia_surface_copy_is_catalog_driven() {
         let javascript = text("/app.js");
