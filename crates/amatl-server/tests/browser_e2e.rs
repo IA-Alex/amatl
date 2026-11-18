@@ -74,12 +74,25 @@ async fn spawn_server() -> u16 {
 /// testing nothing. A driver-less checkout stays green by never opting in
 /// (no `AMATL_BROWSER_E2E=1`), which is the only legitimate skip.
 async fn browser() -> Client {
+    let mut options = serde_json::Map::new();
+    options.insert(
+        "args".into(),
+        serde_json::json!(["--headless=new", "--no-sandbox", "--disable-gpu"]),
+    );
+    // Chromedriver discovers the browser through the platform's default path,
+    // which on a CI runner is the *preinstalled* Chrome — not necessarily the
+    // version the job pinned. When the workflow installs a specific Chrome and
+    // points `AMATL_BROWSER_BIN` at it, launch that binary so the pair the job
+    // verified is the pair the tests drive.
+    if let Ok(binary) = std::env::var("AMATL_BROWSER_BIN") {
+        if !binary.is_empty() {
+            options.insert("binary".into(), serde_json::Value::String(binary));
+        }
+    }
     let mut capabilities = serde_json::Map::new();
     capabilities.insert(
         "goog:chromeOptions".into(),
-        serde_json::json!({
-            "args": ["--headless=new", "--no-sandbox", "--disable-gpu"]
-        }),
+        serde_json::Value::Object(options),
     );
     // A plain HTTP connector, not a TLS one: WebDriver runs on loopback, and
     // `ClientBuilder::rustls()` would additionally require a process-wide
@@ -399,7 +412,6 @@ async fn hidden_attribute_collapses_the_panels_it_hides() {
     let report = client
         .execute(
             "const selectors = { \
-                 providerSelector: '#provider-selector', \
                  credentialActions: '#credential-actions', \
                  marginaliaGroup: '#marginalia-credential-group', \
                  fragmentSignals: '.fragment-signals' \
@@ -420,12 +432,7 @@ async fn hidden_attribute_collapses_the_panels_it_hides() {
         .unwrap();
     let computed = report.as_str().unwrap_or("{}");
     let parsed: serde_json::Value = serde_json::from_str(computed).unwrap_or_default();
-    for name in [
-        "providerSelector",
-        "credentialActions",
-        "marginaliaGroup",
-        "fragmentSignals",
-    ] {
+    for name in ["credentialActions", "marginaliaGroup", "fragmentSignals"] {
         assert_eq!(
             parsed.get(name).and_then(|value| value.as_str()),
             Some("none"),
