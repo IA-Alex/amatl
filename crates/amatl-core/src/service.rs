@@ -3154,6 +3154,13 @@ mod tests {
             ProviderRegistry::builtin().with(Arc::new(DisabledWhenNotEnabledFactory)),
         )
         .await;
+        // Marginalia is key-gated, so it only reports `Available` with a
+        // credential present. Inject one through the supported operator path
+        // rather than relying on the host environment, so the test asserts the
+        // same thing on a clean CI runner as on an operator shell.
+        service
+            .set_provider_credential("marginalia", "marginalia-test-key")
+            .unwrap();
         let status = service.status().await.unwrap();
         assert_eq!(
             status.status, "ok",

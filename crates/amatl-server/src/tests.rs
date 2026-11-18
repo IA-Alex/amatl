@@ -50,9 +50,14 @@ async fn marginalia_only_app() -> Router {
     runtime.operational_risk = Some("network dependency".into());
     config.providers.enabled = vec!["marginalia".into()];
     config.validate().unwrap();
-    build_router(AmatlService::new(config, false).await, Some(TOKEN.into()))
-        .await
-        .unwrap()
+    let service = AmatlService::new(config, false).await;
+    // Marginalia is key-gated: it only reports `Available` with a credential.
+    // Inject one through the supported operator path so the test does not depend
+    // on the host environment (a clean CI runner has no MARGINALIA_API_KEY).
+    service
+        .set_provider_credential("marginalia", "marginalia-test-key")
+        .unwrap();
+    build_router(service, Some(TOKEN.into())).await.unwrap()
 }
 
 /// A non-mock service with nothing enabled: no source can be called at all.
