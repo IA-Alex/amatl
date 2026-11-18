@@ -1,5 +1,14 @@
 "use strict";
 
+// ── Estructura del archivo ──────────────────────────────────────
+// Núcleo transversal (SOLO LECTURA para los dominios, declarado primero):
+//   i18n · utilidades · barra de estado · orquestador de refresco · constantes
+// Captura de nodos DOM: 85 `const`, globales, de solo lectura.
+// Dominios (IIFEs, autocontenidos, leen el núcleo, no lo re-declaran):
+//   theme · net · render · search-deep · location · providers · storage-panels · clients
+// Bloque de arranque (al final, en este orden):
+//   refreshPanels() · listeners · DOMContentLoaded
+
 // ── Theme ───────────────────────────────────────────────────────
 const THEME_KEY = "amatl-theme";
 function storedTheme() {
