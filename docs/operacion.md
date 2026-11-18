@@ -428,7 +428,7 @@ no se conocen:
 
 ```bash
 amatl --config-file amatl.toml \
-  provider-canary searxng "rust programming language" --json
+  provider-canary marginalia "rust" --json
 ```
 
 Cada rechazo sale con `exit=1` e imprime `error_code=<código>` en stderr. Para
@@ -447,28 +447,22 @@ distinguir por qué falló, sin leer el texto libre:
 El último renglón es la distinción operativa importante: un fallo del proveedor
 después de la llamada **ya consumió** cuota y quedó registrado en el upstream.
 
-**`SEARXNG_INSTANCE_URL` no pasa por la casilla de credencial.** Para SearXNG la
-variable sólo transporta la URL de la instancia, así que el adapter declara
-`requires_credential() == false` y la preflight no la comprueba. Si falta o está
-vacía, el adapter cae al valor por defecto `http://127.0.0.1:8888`
-(`SearXngFactory::build`) y el canario apunta allí; su resultado dependerá de si
-hay algo escuchando en ese puerto, no de un error de configuración. Comprueba la
-URL exportada antes de leer el veredicto del canario.
-
-Para Marginalia, ejecuta una sola consulta canario y comprueba que el resultado
-incluya `marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`,
-detén reintentos, espera la ventana de cuota y revisa el plan o la key en el
-portal del provider; ese estado no confirma autenticación.
+**Marginalia es la única fuente servida.** El canario comprueba que la ficha
+está aprobada y vigente, que la fuente está registrada y que existe el valor de
+`MARGINALIA_API_KEY`; la presencia de la variable no prueba que la key sea
+válida. Ejecuta una sola consulta canario y comprueba que el resultado incluya
+`marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`, detén
+reintentos, espera la ventana de cuota y revisa el plan o la key en el portal del
+provider; ese estado no confirma autenticación.
 
 En GitHub, el workflow manual `provider-canary` usa el environment homónimo para
 aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML completo
-ya aprobado y, según la fuente elegida, el secreto `MARGINALIA_API_KEY` o
-`SEARXNG_INSTANCE_URL` (SearXNG no requiere credencial, sólo la URL de la
-instancia); nunca se ejecuta en `push` ni en pull requests.
+ya aprobado y el secreto `MARGINALIA_API_KEY`; nunca se ejecuta en `push` ni en
+pull requests.
 
 ### Comprobar que los nombres retirados siguen cerrados
 
-Con el registro reducido a SearXNG y Marginalia (ver ADR-016 y
+Con el registro reducido a Marginalia (ver ADR-016, ADR-019 y
 `docs/gobernanza-providers.md`), el canario sirve además para verificar que
 ningún nombre retirado vuelve por configuración. Los dos casos fallan **antes de
 cualquier intento de red**, con `exit=1` y `error_code=configuration_invalid`:
@@ -483,60 +477,36 @@ $ amatl --config-file retired-declared.toml provider-canary unshipped_source rus
 invalid result policy: unknown enabled provider 'unshipped_source'
 ```
 
-Verificado el 2026-10-26 con una instancia SearXNG viva
-(`SEARXNG_INSTANCE_URL=http://127.0.0.1:8888`) como control positivo:
-`provider-canary searxng rust` devuelve `status: success` con 12 resultados en
-~0,6 s. Los tres mensajes de rechazo son deliberadamente distintos —`provider_not_enabled`
-para una fuente declarada pero no habilitada, `provider_not_approved` para una
-habilitada cuya ficha de gobernanza está incompleta, y el error de política para
-un nombre retirado— y **sólo el `success`** del control positivo generó tráfico;
-los tres rechazos no conectan.
+Verificado el 2026-10-26 con una instancia SearXNG viva como control positivo del
+mecanismo de retiro (la fuente se retiró después; el registro de gobernanza, ver
+`docs/gobernanza-providers.md`). Los tres mensajes de rechazo son deliberadamente
+distintos —`provider_not_enabled` para una fuente declarada pero no habilitada,
+`provider_not_approved` para una habilitada cuya ficha de gobernanza está
+incompleta, y el error de política para un nombre retirado— y **sólo el
+`success`** del control positivo generó tráfico; los tres rechazos no conectan.
 
-### Levantar la instancia SearXNG
+### Canario de Marginalia en un despliegue real
 
-El único requisito de SearXNG que AMATL no puede suplir desde su configuración
-es que la instancia tenga habilitada la **salida JSON**: la imagen oficial trae
-`format: json` deshabilitado y, sin él, el adapter recibe `403` y AMATL reporta
-`provider_invalid_response`.
+La única fuente servida exige una key **genuina, vigente y emitida para el
+operador** por Marginalia. No uses consultas sensibles: el resultado JSON se
+conserva en el log del operador.
 
 ```bash
-deploy/searxng/run.sh 8888          # arranca + verifica la API JSON
-export SEARXNG_INSTANCE_URL=http://127.0.0.1:8888
+export MARGINALIA_API_KEY=...
 # con [data_policy] y la ficha ya configuradas (ver «Canario de provider real»):
-amatl --config-file amatl.toml provider-canary searxng "rust" --json
-deploy/searxng/run.sh stop          # detener
+amatl --config-file amatl.toml provider-canary marginalia "rust" --json
 ```
 
-El script publica `deploy/searxng/settings.yml`, que deshabilita el *rate
-limiter* de SearXNG (bloquea clientes automatizados como el adapter), habilita
-`json` y deshabilita los motores que suelen bloquear tráfico automatizado
-(Google, Bing, Startpage, Qwant), coherente con la guía de operador de
-`docs/gobernanza-providers.md`. Reemplaza `secret_key` antes de exponer la
-instancia más allá de loopback. La ficha de gobernanza del provider sigue
-necesitando aprobación en `amatl.toml`.
-
-Los motores que **no** aparecen en `settings.yml` (`general`, `brave`, …) no se
-desactivan: la lista sólo toca los nombrados, y una consulta general se reparte
-entre todos los motores habilitados por `use_default_settings: true`. Si
-necesitas un conjunto mínimo, deshabilita también los restantes por nombre.
-
-`deploy/` no forma parte de los paquetes `.deb`/`.rpm`: sólo contiene los dos
-ficheros del repositorio. Desde un paquete instalado, este runbook aplica
-únicamente si tienes el repositorio a mano o si reproduces el `docker run` del
-script con tu propio `settings.yml`.
-
-**Nota de motores.** Un `status: partial_success` con resultados es normal: la
-respuesta agrega varios motores y cualquiera de ellos puede informarse en
-`unresponsive_engines`. Solo `failure` sin resultados indica que ningún motor
-respondió.
+La ficha de gobernanza del provider sigue necesitando aprobación en
+`amatl.toml`; un `status: success` con resultados utilizables es la única señal
+de que la key y la cuota funcionan.
 
 En el mismo despliegue, `/ready` responde `200` con `"sources_available":1`,
-`/status` responde `ok` listando **exactamente dos fuentes** (`marginalia`
-`provider_disabled`, `searxng` `available`) sin ninguna mención de los nombres
-retirados, y `/metrics` publica `amatl_sources_declared 2` /
-`amatl_sources_available 1`. Al escribir la tabla `[providers.<nombre>]` hay que
-reescribir la ficha completa: la tabla reemplaza el expediente incorporado entero
-en vez de fusionarse campo a campo (ver `docs/configuracion.md`).
+`/status` responde `ok` listando **exactamente una fuente** (`marginalia`), y
+`/metrics` publica `amatl_sources_declared 1` / `amatl_sources_available 1`. Al
+escribir la tabla `[providers.<nombre>]` hay que reescribir la ficha completa: la
+tabla reemplaza el expediente incorporado entero en vez de fusionarse campo a
+campo (ver `docs/configuracion.md`).
 
 ## SQLite y caché
 

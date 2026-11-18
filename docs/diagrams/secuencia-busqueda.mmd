@@ -1,0 +1,37 @@
+%% Diagrama de secuencia UML — POST /search (flujo visible "buscar")
+%% Fuentes: crates/amatl-server/src/lib.rs (security_middleware, build_router), routes.rs,
+%% crates/amatl-core/src/service.rs, execution.rs (run_pipeline).
+sequenceDiagram
+    autonumber
+    actor C as Cliente (UI / CLI / API)
+    participant MW as security_middleware<br/>(amatl-server)
+    participant R as routes.rs<br/>search_post
+    participant S as AmatlService<br/>(service.rs)
+    participant O as SearchOrchestrator<br/>(execution.rs)
+    participant B as Budget<br/>(budget.rs)
+    participant P as ProviderRegistry<br/>(providers/)
+    participant X as Providers externos
+
+    C->>MW: POST /search {q, page, page_size}<br/>Authorization: Bearer
+    Note over MW: X-Request-ID generado (nunca se refleja el entrante)<br/>Host válido · Origin/CORS · cabeceras 431 · deadline 504<br/>rate limit 429 (clave: peer address, X-Forwarded-For ignorado)<br/>digest del token + expiración 401 · scope 403
+    MW->>R: Request + ClientIdentity
+    R->>S: search(query, surface)
+    Note over S: ExecutionLimits::for_surface(config, surface)<br/>igual estricto que CLI/API · MCP más restrictivo
+    S->>O: search(...)
+    O->>B: crear/reservar presupuesto global (dueño único)
+    par Llamadas a providers en paralelo con retry_jitter
+        O->>P: planificar providers (gobernanza: ninguno activo por defecto)
+        P->>X: llamada con timeout y circuito (circuit.rs)
+        X-->>P: resultados / error tipado
+        P-->>O: ProviderResult + observaciones de telemetría
+    end
+    Note over O: Rondas progresivas (decide_progressive_round)<br/>si el presupuesto lo permite · fallo parcial ≠ error total
+    O->>O: run_pipeline:<br/>normalize → canonicalize → deduplicate<br/>→ rank (ranking_v2 + adjustments/optics) → diversify
+    O-->>S: ParallelSearchOutput + degradations + budget_remaining
+    S-->>R: SearchResponse {status: success | partial_success | failure,<br/>results, providers_used/failed/partial, degradations}
+    R-->>MW: 200 + X-Request-ID
+    MW-->>C: JSON (search nunca descarga páginas ni expone final_url)
+
+    alt Sin SQLite ni caché
+        Note over S: Comportamiento correcto preservado<br/>(los guardados/historial degradan, la búsqueda no)
+    end

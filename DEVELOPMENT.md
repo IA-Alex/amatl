@@ -43,7 +43,7 @@ cargo run -p amatl-cli -- doctor
 
 # Sólo después de aprobación y credencial: canario de un único provider real
 cargo run --release -p amatl-cli -- --config-file amatl.toml \
-  provider-canary searxng "rust programming language" --json
+  provider-canary marginalia "rust programming language" --json
 
 # UI + API + MCP en un listener
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"

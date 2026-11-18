@@ -81,14 +81,14 @@ AMATL.
 | `.data_handling_notes` | string opcional | No vacío requerido |
 | `.operational_risk` | string opcional | No vacío requerido |
 
-Defaults específicos: SearXNG (`searxng-v1`, sin credencial) y Marginalia
-(`marginalia-v1`, `MARGINALIA_API_KEY`) están `draft` con adapter completo y ficha
+Defaults específicos: Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) está
+`draft` con adapter completo y ficha
 aprobable; sólo falta `reviewer`/`reviewed_at`/`approval_status` con identidad
-real. Los adaptadores sin API de búsqueda web disponible y las fuentes de pago
-**se retiraron del producto**: no están declarados en los expedientes incorporados, no están
+real. Los adaptadores sin API de búsqueda web disponible, las fuentes de pago y
+el agregador autohospedado SearXNG **se retiraron del producto**: no están declarados en los expedientes incorporados, no están
 registrados en el `ProviderRegistry`, sus adapters se eliminaron de `providers/`
-y `Config::validate()` rechaza esos nombres de forma explícita
-(`RETIRED_PROVIDERS` en `config/providers.rs:148`), de modo que aparecer en
+y, al desaparecer su expediente, `Config::validate()` rechaza esos nombres
+(`unknown enabled provider`), de modo que aparecer en
 `providers.enabled` o declarar `[providers.<nombre>]` para un nombre retirado es un
 error de configuración, no una fuente omitida en silencio. Antes de elegir
 fuente, consulta la sección «Viabilidad y coste» de
@@ -96,7 +96,7 @@ fuente, consulta la sección «Viabilidad y coste» de
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
 fuente, y la sustitución es **por nombre de fuente, no por campo**. Declarar
-`[providers.searxng]` reemplaza esa ficha pero deja intactas las demás, así que
+`[providers.marginalia]` reemplaza esa ficha pero deja intactas las demás, así que
 ajustar una fuente no elimina las otras; en cambio, dentro de la ficha, la
 tabla **reemplaza** el expediente incorporado completo (el wire struct usa
 `#[serde(default)]`, sin fusión campo a campo): una tabla que sólo traiga

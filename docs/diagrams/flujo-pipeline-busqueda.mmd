@@ -1,0 +1,41 @@
+%% Diagrama de flujo UML-like — Pipeline de resultados y clasificación del estado
+%% Fuentes: crates/amatl-core/src/execution.rs (run_pipeline, decide_progressive_round),
+%% normalize.rs, canonical.rs, dedupe.rs, ranking_v2.rs, diversity.rs, model.rs.
+flowchart TD
+    in["ProviderResult[]<br/>(por provider, con errores/parciales)"]
+
+    subgraph recoleccion["Recolección (SearchOrchestrator)"]
+        plan["Plan de providers (gobernanza + budget)"]
+        par["Llamadas paralelas + retry_jitter<br/>circuito por provider"]
+        rondas{"Rondas progresivas?<br/>decide_progressive_round"}
+        plan --> par --> rondas
+        rondas -->|sí, si queda budget| par
+    end
+
+    subgraph pipeline["run_pipeline (orden real, un solo paso por etapa)"]
+        norm["normalize<br/>+ degradations"]
+        canon["canonicalize<br/>URL/título canónicos"]
+        dedup["deduplicate<br/>(conserva provenance)"]
+        rank["rank (ranking_v2)<br/>+ ranking_adjustments (optics)"]
+        div["diversify<br/>(DiversityPolicyV1 + métricas)"]
+        norm --> canon --> dedup --> rank --> div
+    end
+
+    env["Envelope de salida"]
+    subgraph estado["Estado visible"]
+        ok["success"]
+        partial["partial_success<br/>(fallo parcial conserva resultados útiles)"]
+        fail["failure"]
+    end
+
+    campos["Campos: results, providers_used,<br/>providers_failed, providers_partial, errors (ErrorCode),<br/>degradations, diversity, budget_remaining"]
+
+    in --> plan
+    rondas -->|no| norm
+    div --> env
+    env --> ok & partial & fail
+    env --> campos
+
+    style ok fill:#e8f5e9,stroke:#2e7d32
+    style partial fill:#fff8e1,stroke:#b26a00
+    style fail fill:#fdecea,stroke:#b3261e

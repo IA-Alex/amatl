@@ -94,11 +94,10 @@ empaqueta rutas que salen del crate, así que un `include_str!` de `docs/` rompe
 
 | Documento | Contenido |
 |---|---|
-| [DEVELOPMENT.md](../DEVELOPMENT.md) | Desarrollo y build |
+| [../DEVELOPMENT.md](../DEVELOPMENT.md) | Desarrollo y build |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Contribución (EN) |
 | [contribuir.md](contribuir.md) | Contribución (espejo ES) |
 | [release.md](release.md) | Release y empaquetado Linux |
-| [../deploy/searxng/](../deploy/searxng/) | Instancia SearXNG local para la fuente `searxng` (JSON habilitado) |
 | [benchmarks.md](benchmarks.md) | Benchmarks y quality gates |
 | [testing.md](testing.md) | Estrategia de testing y cobertura |
 | [depuracion.md](depuracion.md) | Depuración local (DebugMCP/codelldb) y la restricción de `ptrace` |
@@ -107,7 +106,7 @@ empaqueta rutas que salen del crate, así que un `include_str!` de `docs/` rompe
 
 | Documento | Contenido |
 |---|---|
-| [testing/](testing/) | Estudios de testing puntuales (relevance, searxng) |
+| [testing/](testing/) | Estudios de testing puntuales (relevance) |
 | [evaluation/](evaluation/) | Estudios de evaluación (protocols, step4e) |
 | [experiments/](experiments/) | Experimentos técnicos (candle, embeddings) |
 
