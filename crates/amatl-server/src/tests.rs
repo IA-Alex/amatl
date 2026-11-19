@@ -2214,6 +2214,7 @@ async fn status_response_matches_the_openapi_service_status_schema() {
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
     let body = json_body(response).await;
+    assert_eq!(body["authentication_required"], true);
 
     let openapi = include_str!("../openapi.yaml").replace('\r', "");
     let schemas = parse_schemas(&openapi);

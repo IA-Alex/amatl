@@ -1,14 +1,16 @@
 # AMATL
 
-AMATL es un buscador generalista multi-fuente, Linux-first, rápido, modular y
-resistente a fallos. Recibe una consulta, elige fuentes dentro de un presupuesto
-global, normaliza, canonicaliza, deduplica y ordena resultados. Su flujo visible
-es `buscar → revisar → abrir`.
+AMATL es un buscador web generalista, Linux-first, rápido, modular y resistente
+a fallos. Recibe una consulta, consulta la fuente disponible, normaliza,
+canonicaliza, deduplica y ordena resultados. Su flujo visible es
+`buscar → revisar → abrir`. La distribución actual sirve Marginalia como única
+fuente real; el registro de providers sigue siendo extensible.
 
-No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
-autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
-ligero; Deep, Trafilatura, Chromium, SQLite, cachés y la síntesis de respuesta
-("Resumen con IA", ver abajo) son opcionales. El renderer de Chromium está
+No es un chatbot, generador de texto, crawler masivo, dashboard analítico ni
+agente autónomo. La búsqueda real requiere una clave de Marginalia; sin ella,
+`--mock` permite probar el flujo localmente. Search permanece ligero; Deep,
+Trafilatura, Chromium, SQLite, cachés y la síntesis de respuesta ("Resumen con
+IA", ver abajo) son opcionales. El renderer de Chromium está
 conectado a través del harness de aislamiento, desactivado por defecto y sin
 ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL, de
 modo que no puede convertirse en una segunda vía de egress.
@@ -128,7 +130,7 @@ par certificado/clave TLS completo.
 
 | Comando | Propósito | Salida/código |
 |---|---|---|
-| `amatl search "consulta" [--json]` | Search multi-provider | 0 en `success`/`partial_success`; 1 en failure/error |
+| `amatl search "consulta" [--json]` | Search con providers habilitados (la distribución actual usa Marginalia) | 0 en `success`/`partial_success`; 1 en failure/error |
 | `amatl deep "consulta" [--json]` | Search + fetch/extracción acotados | 0 si la operación se entrega, incluso con degradaciones; 1 ante error de servicio |
 | `amatl ingest RUTA [--query "consulta"] [--json]` | Ingestión local, despacho documental y Evidence v1/v2 | 0 si extrae evidencia; 1 ante tipo, límite, lectura o extractor fallido |
 | `amatl providers` | Disponibilidad/código de providers | 0 si puede construir el resumen; 1 en error |

@@ -800,7 +800,8 @@ pub struct SearchResponse {
     /// omitted from JSON when absent, existing consumers are unaffected.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub complementarity: Option<ComplementarityMetrics>,
-    /// Total number of results before pagination (server-side count).
+    /// Total before pagination when known. Omitted when a native provider page
+    /// does not expose a total count.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_results: Option<u64>,
     /// Current page number (0-based) when pagination is active.

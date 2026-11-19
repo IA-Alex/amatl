@@ -76,6 +76,7 @@ const MAX_DOCUMENT_BYTES = 8 * 1024 * 1024;
 const MAX_SAVED_PAYLOAD_BYTES = 1024 * 1024;
 const LIST_LIMIT = 20;
 let searchAvailable = false;
+let syntheticSourceMode = false;
 
 // Allowlist mapping a server-reported provider status onto the badge class the
 // stylesheet actually defines. Anything unknown falls back to `unavailable`, so
@@ -97,6 +98,7 @@ const regionInput = document.querySelector("#region");
 const fileTypeInput = document.querySelector("#file-type");
 const tokenInput = document.querySelector("#local-token");
 const searchButton = document.querySelector("#search-button");
+const searchActions = document.querySelector(".search-actions");
 const deepButton = document.querySelector("#deep-button");
 const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
 const answerCard = document.querySelector("#answer-card");
@@ -270,6 +272,7 @@ function queryText() {
 const filtersDetails = document.querySelector("details.filters");
 const filtersSummary = document.querySelector("#filters-summary");
 const accessDetails = document.querySelector("details.access-filters");
+const sourceCredentialsDetails = document.querySelector("details.source-credentials");
 const accessSummary = document.querySelector("#access-summary");
 
 function updateFiltersSummary() {
@@ -882,6 +885,8 @@ function reportValidationError(key) {
   // panel and the filter panel are separate, so a fixed `filtersDetails.open`
   // would leave a token error focused inside a still-collapsed panel.
   if (filtersDetails.contains(field)) filtersDetails.open = true;
+  const evidenceDetails = document.querySelector("details.evidence-options");
+  if (evidenceDetails.contains(field)) evidenceDetails.open = true;
   if (accessDetails.contains(field)) accessDetails.open = true;
   field.focus();
 }
@@ -989,6 +994,12 @@ async function toggleProvider(name, desired, checkbox, reasonNode) {
 
 async function fetchProviderStatus() {
   try {
+    // Synthetic search fixtures are not the configured provider registry.
+    if (syntheticSourceMode) {
+      providerStatus.hidden = true;
+      syncCredentialActions([]);
+      return;
+    }
     // Use centralized client
     const payload = await globalThis.api.get("/providers");
     if (!payload || !Array.isArray(payload.providers)) return;
@@ -1111,6 +1122,16 @@ async function fetchServiceState() {
     // payload carrying no dedicated flag.
     const mockOnly = sources.length > 0
       && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
+    syntheticSourceMode = mockOnly;
+    providerStatus.hidden = mockOnly;
+    sourceCredentialsDetails.hidden = mockOnly;
+    if (mockOnly) syncCredentialActions([]);
+    const authenticationRequired = payload.authentication_required !== false;
+    accessDetails.hidden = !authenticationRequired;
+    if (!authenticationRequired && tokenInput.value) {
+      tokenInput.value = "";
+      updateAccessSummary();
+    }
     serviceMode.hidden = !mockOnly;
     serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
     if (mockOnly) serviceMode.dataset.state = "warning";
@@ -1124,7 +1145,7 @@ async function fetchServiceState() {
     serviceIndicators.replaceChildren();
     serviceIndicators.append(
       indicator(
-        t("sourcesLabel"),
+        t(mockOnly ? "mockSourcesLabel" : "sourcesLabel"),
         `${availableSources}/${sources.length}`,
         availableSources === sources.length && sources.length ? "success" : "partial",
       ),
@@ -1143,6 +1164,9 @@ async function fetchServiceState() {
       indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
     );
     const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
+    const answerRelevant = Boolean(answerStatus.enabled || answerStatus.available);
+    answerButton.hidden = !answerRelevant;
+    searchActions.classList.toggle("answer-mode-hidden", !answerRelevant);
     let answerLabel = t("storageOff");
     let answerState = "partial";
     if (answerStatus.available) {
@@ -1152,19 +1176,17 @@ async function fetchServiceState() {
       answerLabel = t("storageBroken");
       answerState = "error";
     }
-    serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
-    // Always visible, never truly `disabled`: a disabled button gives no
-    // hover/touch feedback and no reason why. This one stays clickable —
-    // execute() intercepts the click and explains instead of submitting.
-    answerButton.classList.toggle("is-unavailable", !answerStatus.available);
-    answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
-    // Lives right by the search buttons, not just in the status panel below the
-    // fold: that panel is easy to miss, and this is the one place an operator
-    // looks when the button they expect is not there. The reason is shown
-    // *before* the click and tied to the control with `aria-describedby`, which
-    // is what docs/ux-ui-spec.md asks of an unavailable button — the previous
-    // version only explained itself after a failed click.
-    if (answerStatus.available) {
+    if (answerRelevant) {
+      serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
+    }
+    // When configured or enabled, keep the mode actionable so a missing
+    // credential can be explained inline. An unused optional feature stays out
+    // of the primary search path.
+    if (!answerRelevant) {
+      answerHint.hidden = true;
+      answerButton.removeAttribute("aria-describedby");
+      answerButton.removeAttribute("title");
+    } else if (answerStatus.available) {
       answerHint.hidden = true;
       answerButton.removeAttribute("aria-describedby");
       answerButton.removeAttribute("title");
@@ -1245,6 +1267,10 @@ async function fetchServiceState() {
     syncMarginaliaFromStatus(payload);
     return payload;
   } catch (_) {
+    syntheticSourceMode = false;
+    providerStatus.hidden = false;
+    sourceCredentialsDetails.hidden = false;
+    accessDetails.hidden = false;
     searchAvailable = false;
     searchButton.disabled = true;
     searchButton.setAttribute("aria-disabled", "true");
@@ -1253,11 +1279,11 @@ async function fetchServiceState() {
     serviceMode.hidden = true;
     answerEnabledToggle.checked = false;
     answerEnabledToggle.disabled = true;
-    // The AI summary button stays visibly unavailable with its reason attached,
-    // even when the service state itself could not be read.
-    answerHint.textContent = t("answerHintUnavailable");
-    answerHint.hidden = false;
-    answerButton.setAttribute("aria-describedby", "answer-hint");
+    // Without a readable service state, do not surface an optional mode with
+    // no reliable availability information.
+    answerButton.hidden = true;
+    answerHint.hidden = true;
+    searchActions.classList.add("answer-mode-hidden");
     // No usable service state (e.g. the admin token is not loaded yet): the
     // model toggle must stay off, but it must not be silently greyed out with
     // no reason — explain the missing authentication so the operator knows the
@@ -1883,8 +1909,8 @@ clientCreateForm.addEventListener("submit", createServerClient);
 // it and hide them otherwise — the same fail-closed convention the fetch
 // functions themselves use.
 async function refreshPanels() {
-  fetchProviderStatus();
   const status = await fetchServiceState();
+  fetchProviderStatus();
   const storage = status && status.storage ? status.storage : {};
   if (storage.enabled && storage.available) {
     fetchHistory();

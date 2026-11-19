@@ -217,6 +217,11 @@ mod tests {
     fn layout_contract_covers_mobile_and_respects_reduced_motion() {
         let css = text("/styles.css");
         assert!(css.contains("@media (max-width: 44rem)"));
+        assert!(css.contains("@media (orientation: landscape)"));
+        assert!(css.contains("#search-form > .model-options { grid-column: 1 / -1; }"));
+        assert!(
+            css.contains(".filters summary { width: fit-content; min-height: var(--control-h);")
+        );
         assert!(css.contains("prefers-reduced-motion: reduce"));
         assert!(css.contains("min-width: 0"));
         assert!(css.contains("overflow-wrap: anywhere"));
@@ -451,6 +456,8 @@ mod tests {
             "cacheLabel",
             "uiLanguageNameEn",
             "uiLanguageNameEs",
+            "strategistToggleLabel",
+            "strategistHelp",
         ] {
             assert!(catalog.contains(key), "missing catalog key: {key}");
         }
@@ -496,6 +503,9 @@ mod tests {
             }
         }
         assert!(html.contains("id=\"search-button\" type=\"submit\" data-mode=\"search\" disabled"));
+        assert!(html.contains("aria-describedby=\"strategist-help strategist-toggle-status\""));
+        assert!(html
+            .contains("id=\"strategist-help\" class=\"field-help\" data-i18n=\"strategistHelp\""));
     }
 
     #[test]
@@ -546,6 +556,8 @@ mod tests {
         let javascript = text("/app.js");
         assert!(html.contains("id=\"search-button\""));
         assert!(javascript.contains("searchButton.disabled = !searchAvailable"));
+        assert!(javascript.contains("answerButton.hidden = !answerRelevant"));
+        assert!(javascript.contains("answer-mode-hidden"));
         assert!(javascript.contains("checkbox.disabled = provider.status !== \"available\""));
         assert!(
             javascript.contains("answerEnabledToggle.disabled = answerStatus.available === false")
@@ -795,10 +807,26 @@ mod tests {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
+        assert!(html.contains("class=\"filters search-filters\""));
+        assert!(html.contains("class=\"filters evidence-options\""));
+        assert!(html.contains("class=\"filters source-credentials\""));
         assert!(html.contains("class=\"filters access-filters\""));
+        assert!(html.contains("id=\"answer-hint\" class=\"field-help\" hidden"));
+        assert!(html.contains("<div class=\"search-guidance\">"));
+        assert!(html.contains("<details class=\"clients-panel\" hidden>"));
+        assert!(html.contains("<details class=\"operator-tools\">"));
+        assert!(html.contains("operatorToolsLabel"));
+        assert!(
+            html.find("id=\"query\"").unwrap() < html.find("class=\"operator-tools\"").unwrap()
+        );
+        assert!(text("/styles.css").contains(".search-guidance { grid-column: 1 / -1;"));
+        assert!(text("/i18n.js").contains("mockSourcesLabel: \"Fuentes de prueba\""));
+        assert!(!html.contains("id=\"answer-button\" class=\"secondary-action is-unavailable\" type=\"submit\" data-mode=\"answer\" disabled"));
         assert!(html.contains("id=\"access-summary\" data-i18n=\"accessLabel\""));
         assert!(html.contains("id=\"local-token\""));
         assert!(catalog.contains("accessLabel:"));
+        assert!(catalog.contains("AMATL_SERVER_TOKEN"));
+        assert!(catalog.contains("openssl rand -hex 32"));
         // The access panel must be a *sibling* of the filter panel, not nested
         // inside it: nesting would leave the token reachable only after opening
         // the filters, which is exactly the grouping confusion this fixed.
@@ -821,12 +849,26 @@ mod tests {
         );
         // The token is absent from the filter summary and drives its own.
         assert!(!javascript.contains("if (tokenInput.value) active.push"));
+        let search_filters = html
+            .split("class=\"filters search-filters\"")
+            .nth(1)
+            .unwrap()
+            .split("</details>")
+            .next()
+            .unwrap();
+        assert!(search_filters.contains("id=\"language\""));
+        assert!(!search_filters.contains("deep-max-fetches"));
+        assert!(!search_filters.contains("marginalia-key-button"));
+        assert!(javascript.contains("authentication_required !== false"));
+        assert!(javascript.contains("providerStatus.hidden = mockOnly"));
         assert!(javascript.contains("function updateAccessSummary"));
         assert!(javascript.contains("updateAccessSummary();"));
         // A token validation error opens the panel that actually holds it.
         assert!(
             javascript.contains("if (accessDetails.contains(field)) accessDetails.open = true;")
         );
+        assert!(javascript
+            .contains("if (evidenceDetails.contains(field)) evidenceDetails.open = true;"));
     }
 
     /// The side panels keep a shared, drift-proof control scale: the checkbox

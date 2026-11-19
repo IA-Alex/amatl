@@ -1834,9 +1834,11 @@ components:
           type: integer
           minimum: 0
           description: >-
-            Zero-based page over the ranked result set. Pagination is
-            server-side: page and page_size must be sent together and the
-            client must not window the returned array again. Ignored by /deep.
+            Zero-based page index. A single pagination-capable provider receives
+            native pagination; otherwise AMATL slices the merged ranked results.
+            If either bound is omitted, page defaults to zero and page_size to the
+            surface maximum. `total_results` may be absent when a native provider
+            cannot determine it from the response. The client must not window the array again. Ignored by /deep.
         page_size:
           type: integer
           minimum: 1
@@ -1993,7 +1995,9 @@ components:
         total_results:
           type: integer
           minimum: 0
-          description: Size of the whole ranked set; present only when the request paginated.
+          description: >-
+            Size of the whole set when known. It is omitted when a native
+            adapter cannot determine a total count from the provider response.
         page: { type: integer, minimum: 0 }
         page_size: { type: integer, minimum: 1, maximum: 100 }
     AnswerSource:
@@ -2400,10 +2404,13 @@ components:
     ServiceStatus:
       type: object
       additionalProperties: false
-      required: [schema_version, status, sources, storage, cache, inference_backend, answer, strategist, data_policy]
+      required: [schema_version, status, authentication_required, sources, storage, cache, inference_backend, answer, strategist, data_policy]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         status: { type: string, enum: [ok, degraded] }
+        authentication_required:
+          type: boolean
+          description: Whether protected HTTP and MCP routes require a bearer token.
         sources:
           type: array
           items: { $ref: '#/components/schemas/SourceStatus' }
