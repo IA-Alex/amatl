@@ -69,6 +69,9 @@ pub struct SearchOrchestrator {
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
     request_id: Option<String>,
+    /// Optional native provider result window for single-source pagination.
+    provider_page: Option<u32>,
+    provider_page_size: Option<u32>,
     /// Process-wide cap on simultaneous outbound provider calls.
     ///
     /// The router bounds how many providers one search may select, but without
@@ -98,6 +101,8 @@ impl SearchOrchestrator {
             routing_trace: vec![],
             last_plan: None,
             request_id: None,
+            provider_page: None,
+            provider_page_size: None,
             egress_gate: None,
         }
     }
@@ -139,6 +144,13 @@ impl SearchOrchestrator {
 
     pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
         self.request_id = request_id;
+        self
+    }
+
+    /// Ask a single pagination-capable provider for its native result window.
+    pub fn with_provider_pagination(mut self, page: Option<u32>, page_size: Option<u32>) -> Self {
+        self.provider_page = page;
+        self.provider_page_size = page_size;
         self
     }
 
@@ -562,6 +574,8 @@ impl SearchOrchestrator {
             let max_retries = self.max_retries;
             let retry_jitter_ms = self.retry_jitter_ms;
             let request_id = self.request_id.clone();
+            let provider_page = self.provider_page;
+            let provider_page_size = self.provider_page_size;
             let provider_span = tracing::info_span!(
                 target: "amatl::providers",
                 "provider_call",
@@ -613,6 +627,8 @@ impl SearchOrchestrator {
                                     &ProviderContext {
                                         timeout_ms,
                                         request_id: request_id.clone(),
+                                        page: provider_page,
+                                        page_size: provider_page_size,
                                     },
                                 ),
                             )

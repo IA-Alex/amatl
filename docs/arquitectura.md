@@ -1,8 +1,9 @@
 # Arquitectura de AMATL
 
-AMATL es un buscador generalista multi-fuente, Linux-first, con flujo visible
-`buscar → revisar → abrir`. Un único núcleo funcional sirve a CLI, UI, API y
-MCP; ninguna superficie replica reglas de negocio.
+AMATL es un buscador web generalista Linux-first. La distribución actual sirve
+Marginalia como única fuente real, aunque `ProviderRegistry` conserva un punto
+de extensión para providers futuros. Un único núcleo funcional sirve a CLI, UI,
+API y MCP; ninguna superficie replica reglas de negocio.
 
 ## Mapa del workspace
 

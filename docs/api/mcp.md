@@ -17,12 +17,20 @@ call.
 
 | Tool | Input | Output | Specific bounds |
 |---|---|---|---|
-| `search` | `{ "query": string, "page"?: integer, "page_size"?: integer }` | `SearchResponse` in `structuredContent`, with `total_results`, `page` and `page_size` when paginated | query 1–2048 bytes; pagination is server-side and `page_size` is clamped to the MCP cap |
+| `search` | `{ "query": string, "page"?: integer, "page_size"?: integer }` | `SearchResponse` in `structuredContent`; `page` and `page_size` are present when paginated, while `total_results` is omitted if AMATL cannot determine a total from the provider response | query 1–2048 bytes; page indexes are zero-based and `page_size` is clamped to the MCP cap |
 | `deep_search` | `{ "query": string }` | `DeepResponse`, including additive `evidence_v2` fragments and provenance | query 1–2048 bytes; MCP surface limits below; at most 8 fragments of 512 bytes per document; honors cancellation and reports progress |
 | `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S) with SafeFetcher SSRF rules; time, byte and redirect limits derived from configuration for the MCP surface |
 | `providers` | no parameters | provider summaries and capabilities | no outbound provider call |
 | `status` | no parameters | service state (sources, storage, caches, inference backend) plus the limits in force for this surface | no outbound provider call; same aggregation as `GET /status` |
 | `answer` | `{ "query": string }` | grounded answer with citations synthesized from Search results | query 1–2048 bytes; needs an operator-configured completion backend, otherwise `inference_unavailable`; scope `answer` (reuses Deep's) |
+
+When the only selected provider supports native pagination, AMATL forwards the
+zero-based page as Marginalia's one-based `page` and uses `page_size` as
+`count`. A missing page defaults to zero; a missing `page_size` defaults to the
+MCP surface maximum. AMATL's adapter does not extract a total count, so
+`total_results` is omitted. Results from that provider page are then ranked by
+AMATL. Native-page requests use the submitted query directly; the optional
+strategist is skipped so refined queries cannot shift page boundaries.
 
 `deep_search` is the long operation. A client that sends
 `notifications/cancelled` stops the wait immediately and receives

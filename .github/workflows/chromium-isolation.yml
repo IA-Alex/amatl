@@ -26,7 +26,15 @@ permissions:
 
 jobs:
   isolated-render:
-    runs-on: ubuntu-latest
+    # Pinned on purpose. `ubuntu-latest` moved to the ubuntu-26.04 image
+    # (release 20261111.82), whose AppArmor policy denies the unprivileged user
+    # namespace Chromium's zygote needs: the gate went red on 2026-11-13, days
+    # after that migration, with nothing in the repository changed. The levers
+    # below relax the sysctl and drop the per-binary profile, which is enough on
+    # 22.04 and is not enough on 26.04. Pin the image that the isolation
+    # contract is known to hold on; moving it is a deliberate change, not a
+    # silent one.
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6

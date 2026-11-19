@@ -219,7 +219,10 @@ h1 {
   line-height: 1.2;
 }
 
-.search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.65rem; }
+.search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.65rem; align-items: start; }
+.search-guidance { grid-column: 1 / -1; min-width: 0; }
+.search-guidance p { max-width: 72ch; }
+.search-guidance #answer-hint { margin-bottom: 0.35rem; color: var(--warning); }
 
 input, select {
   width: 100%;
@@ -336,7 +339,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 }
 .danger-action { border-color: var(--error); color: var(--error); }
 .danger-action:hover { filter: brightness(1.08); }
-.filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
+.filters summary { width: fit-content; min-height: var(--control-h); padding-block: 0.85rem; cursor: pointer; font-size: 0.85rem; }
 .filter-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -350,7 +353,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .filter-grid label { display: block; margin-bottom: 0.4rem; font-size: 0.75rem; }
 .field-help { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
 
-.result-area { min-width: 0; max-width: 58rem; margin-top: clamp(2.5rem, 7vw, 4.25rem); }
+.result-area { min-width: 0; max-width: 58rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
 .result-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .status { margin: 0; color: var(--secondary); font-size: 0.8rem; text-align: right; }
@@ -579,6 +582,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
      row so the two secondary actions pair cleanly underneath instead of
      leaving a lone half-width button and an empty grid cell. */
   .search-actions #search-button { grid-column: 1 / -1; }
+  .search-actions.answer-mode-hidden #deep-button { grid-column: 1 / -1; }
   .filter-grid { grid-template-columns: minmax(0, 1fr); }
   .result-header { display: block; }
   .status { margin-top: 0.4rem; text-align: left; }
@@ -587,6 +591,30 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .document-status, .fragment-verification { display: inline-block; margin-top: 0.5rem; }
   .provenance dl { grid-template-columns: minmax(0, 1fr); }
   .answer-config-body { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (orientation: landscape) and (max-height: 30rem) and (max-width: 54rem) {
+  .masthead { padding-block: 0.5rem; }
+  .shell { padding-top: 0.75rem; padding-bottom: 2rem; }
+  h1 { margin-bottom: 0.75rem; }
+  #search-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+  }
+  #search-form > .search-row,
+  #search-form > .model-options { grid-column: 1 / -1; }
+  #model-options {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.25rem;
+  }
+  #model-options > .field-help { max-width: none; margin-top: 0; }
+  .search-guidance p { max-width: none; }
+  .result-area { margin-top: 0.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -710,12 +738,16 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 }
 
 /* ── Side panels: service state, history and saved documents ─── */
+.operator-tools { margin-top: clamp(1.5rem, 3vw, 2rem); }
+.operator-tools > summary { width: fit-content; min-height: 2.75rem; padding: 0.65rem 0; color: var(--secondary); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.operator-tools[open] > .side-panels { margin-top: 0.5rem; }
+
 .side-panels {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
   gap: clamp(1rem, 2vw, 1.5rem);
   align-items: start;
-  margin-top: clamp(2.5rem, 6vw, 4rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 .service-state,
@@ -734,6 +766,8 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .history-panel[hidden],
 .saved-panel[hidden],
 .clients-panel[hidden] { display: none; }
+.clients-panel > summary { cursor: pointer; font-size: 1rem; font-weight: 650; color: var(--secondary); }
+.clients-panel[open] > :not(summary) { margin-top: 0.8rem; }
 
 /* The search history is the one side panel whose height is driven by data (one
    row per stored query), and an unbounded list made the whole `.side-panels`

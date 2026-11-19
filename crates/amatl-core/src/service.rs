@@ -308,6 +308,10 @@ pub struct SaveDocumentInput {
 ///
 /// This is an operator view: it aggregates what the service already knows
 /// instead of recomputing anything, and it never exposes ranking internals.
+fn authentication_required_default() -> bool {
+    true
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct ServiceStatus {
     pub schema_version: String,
@@ -317,6 +321,9 @@ pub struct ServiceStatus {
     /// Declared-but-disabled sources never degrade this field: they are a
     /// configuration choice, not an incident. They stay visible in `sources`.
     pub status: String,
+    /// Whether protected HTTP and MCP routes require a bearer token.
+    #[serde(default = "authentication_required_default")]
+    pub authentication_required: bool,
     pub sources: Vec<SourceStatus>,
     pub storage: StorageStatus,
     pub cache: CacheStatus,
@@ -883,9 +890,10 @@ impl AmatlService {
 
     /// Search with optional server-side pagination.
     ///
-    /// Every page is served from a full execution, so `page` selects a window
-    /// over the ranked result set and `total_results` always describes the
-    /// whole set. Surfaces must not mix this with client-side windowing.
+    /// A single pagination-capable provider receives the requested page
+    /// natively; otherwise AMATL paginates the merged ranked set locally.
+    /// `total_results` is omitted when a native provider does not report it.
+    /// Surfaces must not mix this with client-side windowing.
     pub async fn search_paginated(
         &self,
         raw_query: String,
@@ -912,6 +920,19 @@ impl AmatlService {
         let selection = self.select_providers()?;
         let refusals = selection.degradations;
         let providers = selection.providers;
+        let requested_pagination = match (page, page_size) {
+            (None, None) => None,
+            (page, page_size) => Some((
+                page.unwrap_or(0),
+                page_size
+                    .unwrap_or(limits.max_page_size)
+                    .clamp(1, limits.max_page_size),
+            )),
+        };
+        // Native pagination selects a source page before AMATL reranks its
+        // results. Mixed-source searches paginate the merged ranking locally.
+        let provider_pagination = requested_pagination
+            .filter(|_| providers.len() == 1 && providers[0].capabilities().pagination);
         // Fresh orchestrator per search: a search mutates its internal budget,
         // so the refined (second) search must run on its own orchestrator with
         // its own budget rather than reusing the first, already-exhausted one.
@@ -936,6 +957,10 @@ impl AmatlService {
             .with_role_assignment(role_assignment_from_config(&self.config))
             .with_telemetry(self.telemetry.clone())
             .with_request_id(surface.request_id.clone())
+            .with_provider_pagination(
+                provider_pagination.map(|(page, _)| page),
+                provider_pagination.map(|(_, page_size)| page_size),
+            )
         };
         let mut orchestrator = build_orchestrator();
         let mut response = orchestrator.search(query.clone(), providers.clone()).await;
@@ -953,7 +978,9 @@ impl AmatlService {
         self.record_circuit_outcomes(&selected_names, &response)
             .await;
 
-        if self.config.strategist.enabled {
+        // A refined query would create a second provider page and make page
+        // boundaries unstable, so native pagination uses the exact user query.
+        if self.config.strategist.enabled && provider_pagination.is_none() {
             if let Ok(Ok(Some(new_query))) = tokio::time::timeout(
                 std::time::Duration::from_millis(self.config.strategist.timeout_ms),
                 self.strategist
@@ -998,31 +1025,24 @@ impl AmatlService {
                 response.status = crate::SearchStatus::PartialSuccess;
             }
         }
-        // Apply server-side pagination when requested. A lone `page` defaults
-        // `page_size` to the surface maximum, and a lone `page_size` defaults
-        // `page` to the first page: otherwise a client that sent one bound
-        // would silently receive the full result set with no pagination
-        // metadata.
-        let (page, page_size) = match (page, page_size) {
-            (None, None) => (None, None),
-            (page, page_size) => (
-                Some(page.unwrap_or(0)),
-                Some(page_size.unwrap_or(limits.max_page_size)),
-            ),
-        };
-        if let (Some(p), Some(ps)) = (page, page_size) {
-            let ps = ps.clamp(1, limits.max_page_size);
-            let total = response.results.len() as u64;
-            let start = (p as usize).saturating_mul(ps as usize);
-            let end = start
-                .saturating_add(ps as usize)
-                .min(response.results.len());
-            response.results = if start < response.results.len() {
-                response.results[start..end].to_vec()
+        if let Some((p, ps)) = requested_pagination {
+            if provider_pagination.is_some() {
+                // The adapter does not extract a total count from this response shape.
+                // Preserve the requested window and leave total_results absent.
+                response.total_results = None;
             } else {
-                vec![]
-            };
-            response.total_results = Some(total);
+                let total = response.results.len() as u64;
+                let start = (p as usize).saturating_mul(ps as usize);
+                let end = start
+                    .saturating_add(ps as usize)
+                    .min(response.results.len());
+                response.results = if start < response.results.len() {
+                    response.results[start..end].to_vec()
+                } else {
+                    vec![]
+                };
+                response.total_results = Some(total);
+            }
             response.page = Some(p);
             response.page_size = Some(ps);
         }
@@ -1778,6 +1798,7 @@ impl AmatlService {
         Ok(ServiceStatus {
             schema_version: SCHEMA_VERSION.into(),
             status: if degraded { "degraded" } else { "ok" }.into(),
+            authentication_required: !self.config.server.no_auth,
             sources,
             storage,
             cache,
@@ -2810,6 +2831,64 @@ mod tests {
         config
     }
 
+    struct PaginationCaptureFactory {
+        seen: Arc<std::sync::Mutex<Vec<(Option<u32>, Option<u32>)>>>,
+    }
+
+    impl ProviderFactory for PaginationCaptureFactory {
+        fn name(&self) -> &str {
+            "custom_archive"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(PaginationCaptureProvider {
+                name: context.name.into(),
+                seen: self.seen.clone(),
+            })
+        }
+    }
+
+    struct PaginationCaptureProvider {
+        name: String,
+        seen: Arc<std::sync::Mutex<Vec<(Option<u32>, Option<u32>)>>>,
+    }
+
+    #[async_trait]
+    impl Provider for PaginationCaptureProvider {
+        fn name(&self) -> &str {
+            &self.name
+        }
+
+        fn capabilities(&self) -> ProviderCapabilities {
+            MockProvider::success(self.name.clone(), vec![]).capabilities()
+        }
+
+        async fn search(
+            &self,
+            _plan: &crate::SearchPlan,
+            context: &crate::ProviderContext,
+        ) -> Result<crate::ProviderResult, crate::ProviderError> {
+            self.seen
+                .lock()
+                .unwrap()
+                .push((context.page, context.page_size));
+            Ok(crate::ProviderResult {
+                schema_version: SCHEMA_VERSION.into(),
+                provider: self.name.clone(),
+                status: crate::ProviderExecutionStatus::Success,
+                results: vec![],
+                accepted_filters: vec![],
+                ignored_filters: vec![],
+                approximated_filters: vec![],
+                errors: vec![],
+            })
+        }
+    }
+
     fn isolated_config() -> Config {
         let mut config = Config::default();
         config.data_policy.profile = crate::SecurityProfile::Isolated;
@@ -2868,6 +2947,23 @@ mod tests {
             .unwrap();
         assert_eq!(result.response.schema_version, SCHEMA_VERSION);
         assert_eq!(result.response.results.len(), 1);
+    }
+
+    #[tokio::test]
+    async fn a_single_pagination_capable_source_receives_the_requested_page() {
+        let seen = Arc::new(std::sync::Mutex::new(Vec::new()));
+        let registry = ProviderRegistry::builtin()
+            .with(Arc::new(PaginationCaptureFactory { seen: seen.clone() }));
+        let service = AmatlService::with_registry(archive_config(), false, registry).await;
+        let execution = service
+            .search_paginated("rust".into(), ServiceSurface::mcp(), Some(2), Some(5))
+            .await
+            .unwrap();
+
+        assert_eq!(seen.lock().unwrap().as_slice(), [(Some(2), Some(5))]);
+        assert_eq!(execution.response.page, Some(2));
+        assert_eq!(execution.response.page_size, Some(5));
+        assert_eq!(execution.response.total_results, None);
     }
 
     #[tokio::test]
@@ -3132,6 +3228,17 @@ mod tests {
             expected,
             "the operator view must name the sources mock search uses"
         );
+    }
+
+    #[tokio::test]
+    async fn status_reports_authentication_requirement_from_server_config() {
+        let mut config = Config::default();
+        let protected = AmatlService::new(config.clone(), true).await;
+        assert!(protected.status().await.unwrap().authentication_required);
+
+        config.server.no_auth = true;
+        let open = AmatlService::new(config, true).await;
+        assert!(!open.status().await.unwrap().authentication_required);
     }
 
     /// D2: readiness must follow the deployment the operator asked for. A source

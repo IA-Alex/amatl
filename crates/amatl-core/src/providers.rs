@@ -22,6 +22,11 @@ pub struct ProviderContext {
     /// local traces and telemetry share one identifier. It is never sent to the
     /// provider.
     pub request_id: Option<String>,
+    /// Zero-based page requested by the caller when the selected provider can
+    /// paginate natively.
+    pub page: Option<u32>,
+    /// Requested result count for native provider pagination.
+    pub page_size: Option<u32>,
 }
 
 impl ProviderContext {
@@ -31,6 +36,8 @@ impl ProviderContext {
         Self {
             timeout_ms,
             request_id: None,
+            page: None,
+            page_size: None,
         }
     }
 }
@@ -119,7 +126,7 @@ impl Provider for MockProvider {
     async fn search(
         &self,
         _plan: &SearchPlan,
-        _context: &ProviderContext,
+        context: &ProviderContext,
     ) -> Result<ProviderResult, ProviderError> {
         self.attempts.fetch_add(1, Ordering::SeqCst);
         let (status, results, errors) = match &self.behavior {
@@ -136,6 +143,18 @@ impl Provider for MockProvider {
                 tokio::time::sleep(Duration::from_millis(*delay_ms)).await;
                 (ProviderExecutionStatus::Success, results.clone(), vec![])
             }
+        };
+        let results = match (context.page, context.page_size) {
+            (Some(page), Some(page_size)) => {
+                let start = (page as usize).saturating_mul(page_size as usize);
+                let end = start.saturating_add(page_size as usize).min(results.len());
+                if start < results.len() {
+                    results[start..end].to_vec()
+                } else {
+                    vec![]
+                }
+            }
+            _ => results,
         };
         Ok(ProviderResult {
             schema_version: SCHEMA_VERSION.into(),

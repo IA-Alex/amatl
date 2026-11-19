@@ -63,7 +63,7 @@ impl MarginaliaProvider {
     fn request(
         &self,
         plan: &SearchPlan,
-        timeout_ms: u64,
+        context: &ProviderContext,
     ) -> Result<(HttpRequest, FilterUse), ProviderError> {
         let key = self.api_key.as_ref().ok_or_else(|| {
             error(
@@ -82,9 +82,13 @@ impl MarginaliaProvider {
         let (query, filters) = translated_query(plan);
         {
             let mut pairs = url.query_pairs_mut();
-            pairs
-                .append_pair("query", &query)
-                .append_pair("count", "20");
+            pairs.append_pair("query", &query).append_pair(
+                "count",
+                &context.page_size.unwrap_or(20).clamp(1, 100).to_string(),
+            );
+            if let Some(page) = context.page {
+                pairs.append_pair("page", &(u64::from(page) + 1).to_string());
+            }
         }
         Ok((
             HttpRequest::get(
@@ -94,7 +98,7 @@ impl MarginaliaProvider {
                     ("cache-control".into(), "no-cache".into()),
                     ("api-key".into(), key.to_string()),
                 ],
-                timeout_ms,
+                context.timeout_ms,
             ),
             filters,
         ))
@@ -151,7 +155,7 @@ impl Provider for MarginaliaProvider {
         plan: &SearchPlan,
         context: &ProviderContext,
     ) -> Result<ProviderResult, ProviderError> {
-        let (request, filters) = self.request(plan, context.timeout_ms)?;
+        let (request, filters) = self.request(plan, context)?;
         let response = self.transport.execute(request).await.map_err(|_| {
             error(
                 ProviderErrorKind::Network,
@@ -444,7 +448,7 @@ mod tests {
         let (request, filters) = provider
             .request(
                 &plan("rust site:docs.rs lang:es region:MX filetype:pdf"),
-                100,
+                &ProviderContext::new(100),
             )
             .unwrap();
         let url = request.url.to_string();
@@ -467,7 +471,9 @@ mod tests {
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
         );
-        let (request, _) = provider.request(&plan("rust"), 100).unwrap();
+        let (request, _) = provider
+            .request(&plan("rust"), &ProviderContext::new(100))
+            .unwrap();
         assert_eq!(request.url.host_str(), Some("api2.marginalia-search.com"));
         assert!(request
             .url
@@ -484,6 +490,27 @@ mod tests {
     }
 
     #[test]
+    fn native_pagination_uses_marginalia_page_and_count_parameters() {
+        let provider = MarginaliaProvider::new(
+            Some(Zeroizing::new("test-key".to_owned())),
+            true,
+            true,
+            Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
+        );
+        let mut context = ProviderContext::new(100);
+        context.page = Some(2);
+        context.page_size = Some(25);
+        let (request, _) = provider.request(&plan("rust"), &context).unwrap();
+        let pairs = request.url.query_pairs().collect::<Vec<_>>();
+        assert!(pairs
+            .iter()
+            .any(|(key, value)| key == "page" && value == "3"));
+        assert!(pairs
+            .iter()
+            .any(|(key, value)| key == "count" && value == "25"));
+    }
+
+    #[test]
     fn credential_is_not_leaked_in_url() {
         let provider = MarginaliaProvider::new(
             Some(Zeroizing::new("top-secret".to_owned())),
@@ -491,7 +518,9 @@ mod tests {
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
         );
-        let (request, _) = provider.request(&plan("rust"), 100).unwrap();
+        let (request, _) = provider
+            .request(&plan("rust"), &ProviderContext::new(100))
+            .unwrap();
         let sanitized = request.sanitized_url().to_string();
         assert!(!sanitized.contains("top-secret"));
     }
@@ -504,7 +533,7 @@ mod tests {
             true,
             Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
         );
-        match provider.request(&plan("rust"), 100) {
+        match provider.request(&plan("rust"), &ProviderContext::new(100)) {
             Err(error) => assert_eq!(error.kind, ProviderErrorKind::Auth),
             Ok(_) => panic!("expected auth error"),
         }

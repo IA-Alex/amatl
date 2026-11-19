@@ -225,7 +225,9 @@ impl Provider for CachedProvider {
         plan: &SearchPlan,
         context: &ProviderContext,
     ) -> Result<ProviderResult, ProviderError> {
-        if self.storage_rights {
+        // Page windows are part of the upstream request but not the cache key.
+        // Do not reuse or store a paged response under the unpaged query key.
+        if self.storage_rights && context.page.is_none() {
             if let Some(result) = self
                 .cache
                 .get(self.name(), &self.adapter_version, plan)
@@ -235,7 +237,7 @@ impl Provider for CachedProvider {
             }
         }
         let result = self.inner.search(plan, context).await?;
-        if self.storage_rights {
+        if self.storage_rights && context.page.is_none() {
             self.cache
                 .put(self.name(), &self.adapter_version, plan, &result)
                 .await;
@@ -346,5 +348,28 @@ mod tests {
         cache.put("p", "v1", &plan(), &result().await).await;
         assert!(cache.get("p", "v1", &plan()).await.is_none());
         assert_eq!(cache.stats().await.entries, 0);
+    }
+
+    #[tokio::test]
+    async fn paged_provider_searches_bypass_the_unpaged_cache_key() {
+        let cache = ProviderSearchCache::new(
+            temporary_storage().await,
+            ProviderSearchCachePolicy {
+                enabled: true,
+                ..Default::default()
+            },
+        );
+        let inner = Arc::new(MockProvider::success("p", vec![]));
+        let cached = CachedProvider::new(inner.clone(), cache, "v1", true);
+        let mut first = ProviderContext::new(100);
+        first.page = Some(0);
+        first.page_size = Some(10);
+        cached.search(&plan(), &first).await.unwrap();
+        let mut second = ProviderContext::new(100);
+        second.page = Some(1);
+        second.page_size = Some(10);
+        cached.search(&plan(), &second).await.unwrap();
+
+        assert_eq!(inner.attempts(), 2);
     }
 }
