@@ -351,16 +351,13 @@ struct ReloadReport {
 struct RequestMetrics {
     search_total: AtomicU64,
     deep_total: AtomicU64,
-    answer_total: AtomicU64,
     search_errors: AtomicU64,
     deep_errors: AtomicU64,
-    answer_errors: AtomicU64,
     rate_limited_total: AtomicU64,
     unauthorized_total: AtomicU64,
     request_timeout_total: AtomicU64,
     search_latency: LatencyWindow,
     deep_latency: LatencyWindow,
-    answer_latency: LatencyWindow,
 }
 
 /// Bounded ring of recent latencies used to publish quantiles without a
@@ -586,25 +583,13 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         "/search" => Some(Scope::Search),
         "/search/batch" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
-        // `PATCH /answer` edits the endpoint/model/limits — a config write,
-        // admin scoped like every other one. `POST /answer` (below) is the
-        // domain call that actually runs a search and synthesizes from it.
-        "/answer" if *method == Method::PATCH => Some(Scope::Admin),
-        // Reuses Deep's scope rather than a dedicated one: like Deep, this
-        // runs a full search and then does more expensive, sensitive work on
-        // top of it (here, an outbound call to a third-party LLM).
-        "/answer" => Some(Scope::Deep),
         "/providers" | "/status" => Some(Scope::Read),
         "/history" | "/saved" if mutating => Some(Scope::Write),
         "/history" | "/saved" => Some(Scope::Read),
         // The audit trail names identities and addresses: operator only.
-        // The answer toggle is admin too, same tier as /reload: it rewrites
-        // the running configuration file, even though the field it touches
-        // is narrow (see `Config::set_answer_enabled`).
-        "/security-events" | "/reload" | "/answer/enabled" | "/strategist/enabled" => {
-            Some(Scope::Admin)
-        }
-        // Same tier and the same reasoning as `/answer/enabled`: it rewrites
+        // `/reload` is admin too: it rewrites the running configuration file.
+        "/security-events" | "/reload" => Some(Scope::Admin),
+        // Same tier and the same reasoning as `/reload`: it rewrites
         // the running configuration file, narrowly (see
         // `Config::set_provider_enabled`).
         _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
@@ -625,8 +610,7 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         // Governs egress, remote inference and the unsandboxed renderer for
         // the whole process — same trust tier as the client registry above.
         "/data-policy" => Some(Scope::Admin),
-        // Same reasoning as `PATCH /answer`: a config write over the
-        // embedding backend and its remote endpoint.
+        // A config write over the embedding backend and its remote endpoint.
         "/inference" => Some(Scope::Admin),
         // Read the search-quality policies freely; only an admin replaces
         // one.
@@ -1116,45 +1100,6 @@ async fn deep_post(
     }
 }
 
-/// Runs a search and synthesizes a grounded, cited answer from it. Mirrors
-/// `search_post`/`deep_post` exactly; the only difference is which service
-/// method it calls. Distinct from both on purpose: `search`/`deep` never
-/// change behavior because this route exists, and this route never runs
-/// unless the caller explicitly hits it.
-async fn answer_post(
-    State(state): State<AppState>,
-    Extension(request_id): Extension<RequestId>,
-    params: Result<Json<SearchParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    if !valid_query(&params.q) {
-        return api_error(ErrorCode::InvalidQuery);
-    }
-    let started = Instant::now();
-    let outcome = state
-        .service()
-        .answer(params.q, ServiceSurface::api(Some(request_id.into_inner())))
-        .await;
-    state
-        .metrics
-        .answer_latency
-        .record(started.elapsed().as_millis() as u64);
-    // Count every request received, not just successful ones.
-    state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
-    match outcome {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => {
-            state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
-            service_error(error)
-        }
-    }
-}
-
 async fn providers(State(state): State<AppState>) -> Response {
     match state.service().provider_summaries() {
         Ok(providers) => Json(ProviderResponse {
@@ -1196,95 +1141,6 @@ impl PageParams {
 /// call. The reload is atomic from a client's point of view: it either swaps a
 /// fully built service or changes nothing and reports why.
 async fn reload(State(state): State<AppState>) -> Response {
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-#[derive(Debug, Deserialize)]
-struct AnswerToggleParams {
-    enabled: bool,
-}
-
-/// Flip `answer.enabled` and nothing else — admin scoped, same trust tier as
-/// `/reload`, which this reuses for the actual apply step.
-///
-/// Validates a would-be config with the flag flipped *before* writing
-/// anything: if turning the feature on would leave `answer` unable to pass
-/// `Config::validate` (missing `endpoint`/`model`, an operator never
-/// finished configuring), this fails closed without ever touching the file
-/// or the credential — a half-written toggle is worse than no toggle.
-async fn answer_toggle(
-    State(state): State<AppState>,
-    params: Result<Json<AnswerToggleParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    candidate.answer.enabled = params.enabled;
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-#[derive(Debug, Deserialize)]
-struct StrategistToggleParams {
-    enabled: bool,
-}
-
-/// Flip `strategist.enabled` and nothing else — admin scoped, same trust tier
-/// as `/answer/enabled` and `/reload`, whose pattern this copies exactly.
-///
-/// Toggling the strategist on wires the LLM into search (a refined second
-/// query complementing the first result set). This is the web button
-/// "search with model": with it off, the LLM does not participate in search
-/// at all and `search`/`deep` stay fully deterministic.
-///
-/// Validates a would-be config with the flag flipped *before* writing: if
-/// turning it on would leave the strategist without a usable `endpoint` /
-/// `model` (an operator never finished configuring it), it fails closed
-/// (`configuration_invalid`) without ever touching the file or the
-/// credential. The credential itself is checked lazily at call time, not
-/// here — presence of the environment variable is surfaced read-only in
-/// `/status` (`strategist.available`).
-async fn strategist_toggle(
-    State(state): State<AppState>,
-    params: Result<Json<StrategistToggleParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    candidate.strategist.enabled = params.enabled;
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_strategist_enabled(&path, params.enabled).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
     match state.clone().reload().await {
         Ok(report) => Json(report).into_response(),
         Err(error) => service_error(error),
@@ -1701,7 +1557,7 @@ struct CreatedServerClient {
 /// Generates a fresh 256-bit token, writes only its SHA-256 digest
 /// (`Config::upsert_server_client` never sees the plaintext), and validates
 /// a candidate config with the new entry applied *before* writing anything,
-/// exactly like `/answer/enabled` and `/providers/{name}/enabled`: a client
+/// exactly like `/providers/{name}/enabled`: a client
 /// that would fail `Config::validate` (duplicate id, no scope, unknown MCP
 /// tool, malformed `expires_at`) never reaches the file.
 async fn create_server_client(
@@ -1951,7 +1807,7 @@ where
 /// (network egress, remote inference, the unsandboxed renderer — see
 /// `DataPolicyConfig::allows_*` and the `isolated` cross-checks in
 /// `Config::validate`), so a candidate is validated in full before anything
-/// is written: e.g. switching to `isolated` while `answer.enabled` is still
+/// is written: e.g. switching to `isolated` while remote inference is still
 /// on fails closed here instead of leaving the file in a state the running
 /// process would then refuse to reload.
 ///
@@ -2012,37 +1868,6 @@ async fn update_inference(
         return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-/// Edit `[answer]`'s endpoint, model and limits — admin scoped. Deliberately
-/// separate from `POST /answer/enabled`: this can never flip the feature on
-/// or off, see [`amatl_core::AnswerConfigPatch`].
-async fn update_answer_fields(
-    State(state): State<AppState>,
-    params: Result<Json<amatl_core::AnswerConfigPatch>, JsonRejection>,
-) -> Response {
-    let Json(patch) = match params {
-        Ok(patch) => patch,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    patch.apply(&mut candidate.answer);
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     match state.clone().reload().await {
@@ -2794,18 +2619,12 @@ async fn metrics(State(state): State<AppState>) -> Response {
          # HELP amatl_deep_requests_total Total deep requests received.\n\
          # TYPE amatl_deep_requests_total counter\n\
          amatl_deep_requests_total {}\n\
-         # HELP amatl_answer_requests_total Total answer requests received.\n\
-         # TYPE amatl_answer_requests_total counter\n\
-         amatl_answer_requests_total {}\n\
          # HELP amatl_search_errors_total Search requests that resulted in error.\n\
          # TYPE amatl_search_errors_total counter\n\
          amatl_search_errors_total {}\n\
          # HELP amatl_deep_errors_total Deep requests that resulted in error.\n\
          # TYPE amatl_deep_errors_total counter\n\
          amatl_deep_errors_total {}\n\
-         # HELP amatl_answer_errors_total Answer requests that resulted in error.\n\
-         # TYPE amatl_answer_errors_total counter\n\
-         amatl_answer_errors_total {}\n\
          # HELP amatl_rate_limited_total Requests rejected by rate limiter.\n\
          # TYPE amatl_rate_limited_total counter\n\
          amatl_rate_limited_total {}\n\
@@ -2817,17 +2636,14 @@ async fn metrics(State(state): State<AppState>) -> Response {
          amatl_request_timeout_total {}\n",
         m.search_total.load(Ordering::Relaxed),
         m.deep_total.load(Ordering::Relaxed),
-        m.answer_total.load(Ordering::Relaxed),
         m.search_errors.load(Ordering::Relaxed),
         m.deep_errors.load(Ordering::Relaxed),
-        m.answer_errors.load(Ordering::Relaxed),
         m.rate_limited_total.load(Ordering::Relaxed),
         m.unauthorized_total.load(Ordering::Relaxed),
         m.request_timeout_total.load(Ordering::Relaxed),
     );
     body.push_str(&latency_metrics("search", &m.search_latency));
     body.push_str(&latency_metrics("deep", &m.deep_latency));
-    body.push_str(&latency_metrics("answer", &m.answer_latency));
     let service = state.service();
     body.push_str(&source_metrics(&service));
     body.push_str(&cache_metrics(&service).await);

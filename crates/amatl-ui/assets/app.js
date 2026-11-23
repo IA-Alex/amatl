@@ -101,19 +101,6 @@ const searchButton = document.querySelector("#search-button");
 const searchActions = document.querySelector(".search-actions");
 const deepButton = document.querySelector("#deep-button");
 const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
-const answerCard = document.querySelector("#answer-card");
-const answerTextNode = document.querySelector("#answer-text");
-const answerMetaNode = document.querySelector("#answer-meta");
-const answerButton = document.querySelector("#answer-button");
-const answerHint = document.querySelector("#answer-hint");
-const answerConfig = document.querySelector("#answer-config");
-const answerConfigBody = document.querySelector("#answer-config-body");
-const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
-const answerToggleStatus = document.querySelector("#answer-toggle-status");
-const modelOptions = document.querySelector("#model-options");
-const strategistEnabledToggle = document.querySelector("#strategist-enabled-toggle");
-const strategistToggleStatus = document.querySelector("#strategist-toggle-status");
-const strategistToggleLabel = document.querySelector("#strategist-toggle-label");
 const resultHeading = document.querySelector("#result-heading");
 const statusNode = document.querySelector("#status");
 const loadingNode = document.querySelector("#loading");
@@ -315,7 +302,7 @@ function searchMetadata(result) {
   return values.join(" · ");
 }
 
-function renderSearchResult(result, citationIndex) {
+function renderSearchResult(result) {
   const url = safeHttpUrl(result.canonical_url);
   if (!url || result.status !== "visible") return;
   const state = store.get();
@@ -356,11 +343,6 @@ function renderSearchResult(result, citationIndex) {
   const meta = fragment.querySelector(".result-meta");
   meta.textContent = searchMetadata(result);
   meta.hidden = !meta.textContent;
-  if (state.mode === "answer" && Number.isInteger(citationIndex)) {
-    const badge = fragment.querySelector(".result-index");
-    badge.textContent = `[${citationIndex}]`;
-    badge.hidden = false;
-  }
   resultsNode.append(fragment);
 }
 
@@ -556,17 +538,6 @@ function renderDeepDocument(item) {
   resultsNode.append(fragment);
 }
 
-function renderAnswerCard(answer) {
-  if (!answer || typeof answer.text !== "string") {
-    answerCard.hidden = true;
-    return;
-  }
-  answerTextNode.textContent = answer.text;
-  const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
-  answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
-  answerCard.hidden = false;
-}
-
 function render(state) {
   // While a request is in flight the committed view stays on screen: results
   // are only replaced once a payload has been accepted, so a failed, cancelled
@@ -574,15 +545,8 @@ function render(state) {
   if (state.pending) return;
   resultsNode.replaceChildren();
   resultsEmpty.hidden = state.mode !== "search" || state.items.length > 0;
-  if (state.mode !== "answer") answerCard.hidden = true;
   if (state.mode === "deep") {
     for (const item of state.items) renderDeepDocument(item);
-    paginationNode.hidden = true;
-    return;
-  }
-  if (state.mode === "answer") {
-    renderAnswerCard(state.answer);
-    state.items.forEach((result, i) => renderSearchResult(result, i + 1));
     paginationNode.hidden = true;
     return;
   }
@@ -627,15 +591,6 @@ function validatePayload(payload, mode) {
   if (!payload || payload.schema_version !== "1") return false;
   if (mode === "deep") {
     return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
-  }
-  if (mode === "answer") {
-    return (
-      payload.answer
-      && typeof payload.answer.text === "string"
-      && Array.isArray(payload.answer.citations)
-      && payload.search
-      && Array.isArray(payload.search.results)
-    );
   }
   return Array.isArray(payload.results);
 }
@@ -684,7 +639,6 @@ const ERROR_MESSAGE_KEYS = {
   inference_unavailable: "errorSearchUnavailable",
   ranking_backend_unavailable: "errorSearchUnavailable",
   storage_unavailable: "errorStorageUnavailable",
-  answer_unavailable: "answerHintMissingCredential",
   scope_denied: "scopeDenied",
 };
 
@@ -706,16 +660,14 @@ async function run(mode, page) {
 
   resultHeading.textContent = mode === "deep"
     ? t("evidenceHeading")
-    : mode === "answer"
-      ? t("answerHeading")
-      : t("resultsHeading");
+    : t("resultsHeading");
   setBusy(true, mode);
   setStatusKey(
-    mode === "deep" ? "analyzing" : mode === "answer" ? "answerGenerating" : "searching",
+    mode === "deep" ? "analyzing" : "searching",
     "loading",
   );
   try {
-    const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
+    const endpoint = mode === "deep" ? "/deep" : "/search";
     const body = { q: queryText() };
     if (mode === "deep") {
       if (selectedTargets.length) body.targets = selectedTargets;
@@ -752,18 +704,6 @@ async function run(mode, page) {
           "success",
         );
       }
-    } else if (mode === "answer") {
-      store.update({
-        pending: false,
-        mode,
-        page: 0,
-        items: payload.search.results,
-        answer: payload.answer,
-      });
-      renderStatus(
-        () => `${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`,
-        "success",
-      );
     } else {
       const items = payload.results;
       const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
@@ -922,24 +862,14 @@ tokenInput.addEventListener("input", clearValidationError);
 
 function execute(event) {
   event.preventDefault();
-  if (requestedModeIsUnavailable(event.submitter)) {
-    // The reason is already visible next to the button; repeating it in the
-    // status region keeps the click from being a dead end.
-    renderStatus(() => answerHint.textContent || t("answerHintUnavailable"), "error");
-    return;
-  }
   const invalid = queryValidationError();
   if (invalid) {
     reportValidationError(invalid);
     return;
   }
   const requested = event.submitter?.dataset.mode;
-  const mode = requested === "deep" || requested === "answer" ? requested : "search";
+  const mode = requested === "deep" ? requested : "search";
   run(mode, 0);
-}
-
-function requestedModeIsUnavailable(submitter) {
-  return submitter === answerButton && answerButton.classList.contains("is-unavailable");
 }
 
 form.addEventListener("submit", execute);
@@ -1187,95 +1117,6 @@ async function fetchServiceState() {
     serviceIndicators.append(
       indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
     );
-    const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
-    const answerRelevant = Boolean(answerStatus.enabled || answerStatus.available);
-    answerButton.hidden = !answerRelevant;
-    searchActions.classList.toggle("answer-mode-hidden", !answerRelevant);
-    let answerLabel = t("storageOff");
-    let answerState = "partial";
-    if (answerStatus.available) {
-      answerLabel = t("storageOn");
-      answerState = "success";
-    } else if (answerStatus.enabled) {
-      answerLabel = t("storageBroken");
-      answerState = "error";
-    }
-    if (answerRelevant) {
-      serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
-    }
-    // When configured or enabled, keep the mode actionable so a missing
-    // credential can be explained inline. An unused optional feature stays out
-    // of the primary search path.
-    if (!answerRelevant) {
-      answerHint.hidden = true;
-      answerButton.removeAttribute("aria-describedby");
-      answerButton.removeAttribute("title");
-    } else if (answerStatus.available) {
-      answerHint.hidden = true;
-      answerButton.removeAttribute("aria-describedby");
-      answerButton.removeAttribute("title");
-    } else {
-      answerHint.textContent = answerStatus.enabled
-        ? t("answerHintMissingCredential")
-        : t("answerHintUnconfigured");
-      answerHint.hidden = false;
-      answerButton.setAttribute("aria-describedby", "answer-hint");
-      answerButton.setAttribute("title", answerHint.textContent);
-    }
-    if (answerStatus.configured) {
-      answerConfigBody.replaceChildren();
-      answerConfigBody.append(
-        configRow(t("answerConfigStateLabel"), answerLabel),
-        configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
-        configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
-      );
-      answerConfig.hidden = false;
-      answerEnabledToggle.checked = Boolean(answerStatus.enabled);
-      answerEnabledToggle.disabled = answerStatus.available === false;
-    } else {
-      answerConfig.hidden = true;
-    }
-    const strategistStatus =
-      payload.strategist && typeof payload.strategist === "object" ? payload.strategist : {};
-    if (strategistStatus.configured && strategistStatus.available !== false) {
-      strategistEnabledToggle.checked = Boolean(strategistStatus.enabled);
-      strategistEnabledToggle.disabled = false;
-      if (modelOptions) modelOptions.hidden = false;
-    } else {
-      // No endpoint/model configured: the toggle has nothing to enable, so keep
-      // it off and disabled. The reason goes in the help line below it, not in
-      // the label — a control keeps a short label and states carry the sentence
-      // (`strategistToggleLabel` is applied declaratively and is no longer
-      // overwritten with a whole unavailability sentence).
-      strategistEnabledToggle.checked = false;
-      strategistEnabledToggle.disabled = true;
-      // Nothing to enable means nothing to show: hide the whole row so the
-      // search box is not preceded by a dead control. It reappears as soon as
-      // the server reports the strategist configured and usable.
-      if (modelOptions) modelOptions.hidden = true;
-    }
-    // Configured and switched on, but no usable credential: the toggle flips a
-    // real flag, yet the model will not actually run. Say so instead of leaving
-    // an operator to assume search is being refined — the same fail-loudly
-    // pattern `answerHint` uses for the AI summary button.
-    const strategistUnavailable =
-      strategistStatus.configured && strategistStatus.enabled && !strategistStatus.available;
-    if (strategistUnavailable) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistHintMissingCredential");
-    } else if (strategistStatus.available === false) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnavailable");
-    } else if (!strategistStatus.configured) {
-      strategistToggleStatus.hidden = false;
-      strategistToggleStatus.textContent = t("strategistUnconfigured");
-    } else {
-      strategistToggleStatus.hidden = true;
-      strategistToggleStatus.textContent = "";
-    }
-    strategistEnabledToggle.title = strategistStatus.available === false
-      ? t("strategistUnavailable")
-      : "";
     const degraded = payload.status !== "ok";
     // "Service operating normally" beside "Local storage Disabled" read as a
     // contradiction and made the 503 on save look like a bug: when persistence
@@ -1301,57 +1142,9 @@ async function fetchServiceState() {
     searchButton.title = t("searchUnavailable");
     servicePanel.hidden = true;
     serviceMode.hidden = true;
-    answerEnabledToggle.checked = false;
-    answerEnabledToggle.disabled = true;
-    // Without a readable service state, do not surface an optional mode with
-    // no reliable availability information.
-    answerButton.hidden = true;
-    answerHint.hidden = true;
-    searchActions.classList.add("answer-mode-hidden");
-    // No usable service state (e.g. the admin token is not loaded yet): the
-    // model toggle must stay off, but it must not be silently greyed out with
-    // no reason — explain the missing authentication so the operator knows the
-    // toggle is gated on the admin token, not broken.
-    strategistEnabledToggle.checked = false;
-    strategistEnabledToggle.disabled = true;
-    strategistToggleStatus.hidden = false;
-    strategistToggleStatus.textContent = t("unauthorized");
-    // Without a readable service state the row has nothing to offer either;
-    // hide it so the search box is not preceded by a dead control.
-    if (modelOptions) modelOptions.hidden = true;
     return null;
   }
 }
-
-async function toggleAnswer() {
-  await toggleEnabled({
-    endpoint: "/answer/enabled",
-    desired: answerEnabledToggle.checked,
-    checkbox: answerEnabledToggle,
-    statusNode: answerToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "answerToggleFailed",
-  });
-}
-
-answerEnabledToggle.addEventListener("change", toggleAnswer);
-
-// ── Search with model (strategist) toggle ───────────────────────
-// Controls whether the LLM participates in search. When off (the default)
-// search/deep keep running fully deterministic; when on, the strategist
-// proposes a refined query that AMATL runs to complement the first results.
-async function toggleStrategist() {
-  await toggleEnabled({
-    endpoint: "/strategist/enabled",
-    desired: strategistEnabledToggle.checked,
-    checkbox: strategistEnabledToggle,
-    statusNode: strategistToggleStatus,
-    refresh: fetchServiceState,
-    failKey: "strategistToggleFailed",
-  });
-}
-
-strategistEnabledToggle.addEventListener("change", toggleStrategist);
 
 // ── Marginalia API key (option A) ───────────────────────────────
 // Operator credential management: a key is inserted into the process's RAM
@@ -1838,7 +1631,7 @@ clientTokenCopy.addEventListener("click", async () => {
 // `ClientIdentity::allows_tool` matches each call against the client's own
 // allowlist and an empty one denies every tool call while the "MCP" checkbox
 // promises access.
-const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status", "answer"];
+const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status"];
 
 async function createServerClient(event) {
   event.preventDefault();

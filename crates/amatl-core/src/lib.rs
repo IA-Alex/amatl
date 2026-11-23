@@ -1,6 +1,5 @@
 //! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API/MCP.
 
-pub mod answer;
 pub mod audit;
 pub mod budget;
 pub mod cache;
@@ -41,13 +40,11 @@ pub mod router;
 pub mod security;
 pub mod service;
 pub mod storage;
-pub mod strategist;
 pub mod telemetry;
 #[cfg(test)]
 mod test_support;
 mod text;
 
-pub use answer::{Answer, AnswerError, AnswerSource, CompletionBackend, RemoteCompletionBackend};
 pub use audit::{
     SecurityAudit, SecurityEventInput, AUDIT_DEFAULT_RETENTION_DAYS, AUDIT_MAX_RETENTION_DAYS,
 };
@@ -60,7 +57,7 @@ pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit}
 pub use classify::classify;
 pub use complementarity::compute_complementarity_metrics;
 pub use config::{
-    AnswerConfig, AnswerConfigPatch, ApprovalStatus, Config, ConfigError, DataPolicyConfig,
+    ApprovalStatus, Config, ConfigError, DataPolicyConfig,
     DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExpansionConfig,
     ExpansionMode, ExtractorConfigPatch, InferenceConfig, InferenceConfigPatch, InferenceMode,
     OpticsConfig, OpticsConfigPatch, PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig,
@@ -148,8 +145,8 @@ pub use router::{
     RoleAssignment, StaticRouter,
 };
 pub use service::{
-    validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
-    AnswerStatus, CacheStatus, CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits,
+    validate_provider_canary, validate_provider_canary_with, AmatlService,
+    CacheStatus, CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits,
     ProviderCanaryError, ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput,
     SearchExecution, ServiceError, ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus,
     StorageStatus,

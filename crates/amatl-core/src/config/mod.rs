@@ -16,7 +16,6 @@ mod persistence;
 mod providers;
 mod ranking;
 mod server;
-mod strategist;
 mod telemetry;
 
 pub use data_policy::*;
@@ -27,7 +26,6 @@ pub use persistence::*;
 pub use providers::*;
 pub use ranking::*;
 pub use server::*;
-pub use strategist::*;
 pub use telemetry::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -40,8 +38,6 @@ pub struct Config {
     pub schema_version: String,
     pub data_policy: DataPolicyConfig,
     pub inference: InferenceConfig,
-    pub answer: AnswerConfig,
-    pub strategist: StrategistConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -191,7 +187,6 @@ impl Default for Config {
             schema_version: crate::SCHEMA_VERSION.to_string(),
             data_policy: DataPolicyConfig::default(),
             inference: InferenceConfig::default(),
-            answer: AnswerConfig::default(),
             providers: ProviderConfig::default(),
             timeouts: TimeoutConfig::default(),
             budget: BudgetConfig::default(),
@@ -205,7 +200,6 @@ impl Default for Config {
             circuit_breaker: crate::circuit::CircuitPolicy::default(),
             cache: CacheConfig::default(),
             telemetry: TelemetryConfig::default(),
-            strategist: StrategistConfig::default(),
             deep: DeepConfig::default(),
             server: ServerConfig::default(),
         }
@@ -293,7 +287,7 @@ impl Config {
     /// section table if it is absent, and nothing else.
     ///
     /// This is the write primitive every narrow, admin-scoped config
-    /// mutation shares — today that is [`Config::set_answer_enabled`], and it
+    /// mutation shares — the `data_policy` setters today — and it
     /// exists precisely so a future toggle (another scalar field under
     /// `Config`) can reuse the same guarantee without re-deriving it: uses
     /// `toml_edit`, not a struct round-trip through `toml::to_string`,
@@ -401,7 +395,7 @@ impl Config {
     /// the search-quality policies this backs — an admin-scoped caller
     /// fetches the current policy in full, edits it, and sends the whole
     /// object back, so there is no "one field at a time" comment to
-    /// preserve the way there is for `answer.enabled` or a single provider
+    /// preserve the way there is for a single provider
     /// field. The caller is expected to have already validated a candidate
     /// config with this change applied, exactly as with every other setter
     /// here.
@@ -479,8 +473,6 @@ impl Config {
             )));
         }
         self.validate_inference()?;
-        self.validate_answer()?;
-        self.validate_strategist()?;
         self.validate_execution()?;
         self.validate_persistence()?;
         self.validate_ranking_policies()?;
@@ -1129,18 +1121,6 @@ mod tests {
         remote_batch.inference.remote_max_batch = usize::MAX;
         assert!(remote_batch.validate().is_err());
 
-        let mut answer_timeout = Config::default();
-        answer_timeout.answer.timeout_ms = u64::MAX;
-        assert!(answer_timeout.validate().is_err());
-
-        let mut answer_chars = Config::default();
-        answer_chars.answer.max_source_chars = usize::MAX;
-        assert!(answer_chars.validate().is_err());
-
-        let mut answer_tokens = Config::default();
-        answer_tokens.answer.max_answer_tokens = u32::MAX;
-        assert!(answer_tokens.validate().is_err());
-
         let mut purge = Config::default();
         purge.persistence.purge_interval_seconds = u64::MAX;
         assert!(purge.validate().is_err());
@@ -1352,11 +1332,11 @@ mod tests {
         assert_eq!(config.inference.local_cache_capacity, 7);
     }
 
-    /// The one config mutation a running server ever makes to its own file
-    /// touches exactly one key and leaves every comment an operator wrote —
+    /// The narrow config mutations a running server makes to its own file
+    /// touch exactly one key and leave every comment an operator wrote —
     /// including the ones documenting *other* fields — untouched.
     #[test]
-    fn set_answer_enabled_flips_only_that_key_and_keeps_comments() {
+    fn set_scalar_field_flips_only_that_key_and_keeps_comments() {
         let path = std::env::temp_dir().join(format!(
             "amatl-config-toggle-test-{}.toml",
             std::process::id()
@@ -1367,39 +1347,43 @@ mod tests {
              # A comment an operator wrote about something unrelated.\n\
              [server]\n\
              port = 8080\n\n\
-             [answer]\n\
-             enabled = false\n\
-             model = \"deepseek-ai/DeepSeek-V3\"\n",
+             [data_policy]\n\
+             inference = \"disabled\"\n",
         )
         .unwrap();
 
-        Config::set_answer_enabled(&path, true).unwrap();
+        Config::set_data_policy_inference(&path, crate::config::InferenceMode::LocalOnly).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
 
-        assert!(written.contains("enabled = true"));
+        assert!(written.contains("inference = \"local_only\""));
         assert!(written.contains("# A comment an operator wrote about something unrelated."));
-        assert!(written.contains("model = \"deepseek-ai/DeepSeek-V3\""));
         assert!(written.contains("port = 8080"));
         let reparsed = Config::from_toml(&written).unwrap();
-        assert!(reparsed.answer.enabled);
+        assert_eq!(
+            reparsed.data_policy.inference,
+            crate::config::InferenceMode::LocalOnly
+        );
         assert_eq!(reparsed.server.port, 8080);
     }
 
     #[test]
-    fn set_answer_enabled_creates_the_table_when_absent() {
+    fn set_scalar_field_creates_the_table_when_absent() {
         let path = std::env::temp_dir().join(format!(
             "amatl-config-toggle-notable-test-{}.toml",
             std::process::id()
         ));
         std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
 
-        Config::set_answer_enabled(&path, true).unwrap();
+        Config::set_data_policy_inference(&path, crate::config::InferenceMode::LocalOnly).unwrap();
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
 
         let reparsed = Config::from_toml(&written).unwrap();
-        assert!(reparsed.answer.enabled);
+        assert_eq!(
+            reparsed.data_policy.inference,
+            crate::config::InferenceMode::LocalOnly
+        );
     }
 
     /// The atomic replace publishes the temp file's permissions, so a file the
@@ -1415,84 +1399,21 @@ mod tests {
             "amatl-config-mode-test-{}.toml",
             std::process::id()
         ));
-        std::fs::write(&path, "schema_version = \"1\"\n[answer]\nenabled = false\n").unwrap();
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n[data_policy]\ninference = \"disabled\"\n",
+        )
+        .unwrap();
         std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
 
-        Config::set_answer_enabled(&path, true).unwrap();
+        Config::set_data_policy_inference(&path, crate::config::InferenceMode::LocalOnly).unwrap();
 
         let mode = std::fs::metadata(&path).unwrap().permissions().mode() & 0o777;
         let written = std::fs::read_to_string(&path).unwrap();
         std::fs::remove_file(&path).ok();
 
         assert_eq!(mode, 0o600, "the write must keep the operator's mode");
-        assert!(written.contains("enabled = true"));
-    }
-
-    #[test]
-    fn set_strategist_enabled_flips_only_that_key_and_keeps_comments() {
-        let path = std::env::temp_dir().join(format!(
-            "amatl-config-strategist-toggle-test-{}.toml",
-            std::process::id()
-        ));
-        std::fs::write(
-            &path,
-            "schema_version = \"1\"\n\n\
-             # A comment an operator wrote about something unrelated.\n\
-             [server]\n\
-             port = 8080\n\n\
-             [strategist]\n\
-             enabled = false\n\
-             model = \"deepseek-ai/DeepSeek-V3\"\n",
-        )
-        .unwrap();
-
-        Config::set_strategist_enabled(&path, true).unwrap();
-        let written = std::fs::read_to_string(&path).unwrap();
-        std::fs::remove_file(&path).ok();
-
-        assert!(written.contains("enabled = true"));
-        assert!(written.contains("# A comment an operator wrote about something unrelated."));
-        assert!(written.contains("model = \"deepseek-ai/DeepSeek-V3\""));
-        assert!(written.contains("port = 8080"));
-        let reparsed = Config::from_toml(&written).unwrap();
-        assert!(reparsed.strategist.enabled);
-        assert_eq!(reparsed.server.port, 8080);
-    }
-
-    #[test]
-    fn strategist_enabled_requires_endpoint_model_credential_and_egress() {
-        // A default (disabled) strategist validates fine even incomplete.
-        let mut config = Config::default();
-        config.strategist.enabled = true;
-        config.strategist.endpoint = None;
-        // No endpoint -> must fail closed, not silently accept a no-op enable.
-        assert!(config.validate().is_err(), "missing endpoint must fail");
-
-        // With endpoint + model but no credential -> must fail.
-        let mut config = Config::default();
-        config.strategist.enabled = true;
-        config.strategist.endpoint =
-            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
-        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
-        assert!(
-            config.validate().is_err(),
-            "enabled without credential must fail"
-        );
-
-        // Fully configured with network egress -> validates, and does NOT need
-        // remote_explicit (the strategist is a chat call independent of the
-        // ranking-embeddings mode, so `inference` can stay disabled).
-        let mut config = Config::default();
-        config.strategist.enabled = true;
-        config.strategist.endpoint =
-            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
-        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
-        config.strategist.credential_env = Some("AMATL_TEST_KEY".into());
-        assert_eq!(
-            config.data_policy.inference,
-            crate::config::InferenceMode::Disabled
-        );
-        assert!(config.validate().is_ok(), "{:?}", config.validate().err());
+        assert!(written.contains("inference = \"local_only\""));
     }
 
     #[test]
@@ -1589,7 +1510,6 @@ mod tests {
             ReloadKind::Hot
         );
         // A whole other section, rebuilt in full by `reloaded_detached`.
-        assert_eq!(ReloadKind::of("answer", "enabled"), ReloadKind::Hot);
         assert_eq!(ReloadKind::of("providers", "enabled"), ReloadKind::Hot);
         assert_eq!(ReloadKind::of("deep", "max_fetches"), ReloadKind::Hot);
     }
@@ -1843,36 +1763,6 @@ mod tests {
         let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
         std::fs::remove_file(&path).ok();
         assert_eq!(reparsed.inference.remote_endpoint, None);
-    }
-
-    #[test]
-    fn answer_patch_never_touches_enabled() {
-        let path = std::env::temp_dir().join(format!(
-            "amatl-config-answer-patch-test-{}.toml",
-            std::process::id()
-        ));
-        std::fs::write(
-            &path,
-            "schema_version = \"1\"\n\n[answer]\nenabled = true\nmodel = \"old-model\"\n",
-        )
-        .unwrap();
-
-        let patch = AnswerConfigPatch {
-            model: Some("deepseek-ai/DeepSeek-V3".into()),
-            max_sources: Some(4),
-            ..Default::default()
-        };
-        Config::set_answer_fields(&path, &patch).unwrap();
-        let written = std::fs::read_to_string(&path).unwrap();
-        std::fs::remove_file(&path).ok();
-        let reparsed = Config::from_toml(&written).unwrap();
-        assert_eq!(
-            reparsed.answer.model.as_deref(),
-            Some("deepseek-ai/DeepSeek-V3")
-        );
-        assert_eq!(reparsed.answer.max_sources, 4);
-        // `enabled` survives untouched.
-        assert!(reparsed.answer.enabled);
     }
 
     #[test]
@@ -2369,40 +2259,6 @@ mod tests {
         );
         assert_eq!(reloaded.inference.remote_timeout_ms, 3_000);
         assert_eq!(reloaded.inference.remote_max_batch, 8);
-
-        let _ = std::fs::remove_file(&path);
-    }
-
-    #[test]
-    fn mirror_round_trips_every_answer_patch_field() {
-        let path = unique_tmp_path("answer");
-        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
-
-        let patch = AnswerConfigPatch {
-            endpoint: Some("https://answer.test/v1".into()),
-            model: Some("answer-model".into()),
-            credential_env: Some("ANSWER_ENV".into()),
-            timeout_ms: Some(15_000),
-            max_sources: Some(4),
-            max_source_chars: Some(800),
-            max_answer_tokens: Some(500),
-        };
-        Config::set_answer_fields(&path, &patch).unwrap();
-
-        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
-        assert_eq!(
-            reloaded.answer.endpoint.as_deref(),
-            Some("https://answer.test/v1")
-        );
-        assert_eq!(reloaded.answer.model.as_deref(), Some("answer-model"));
-        assert_eq!(
-            reloaded.answer.credential_env.as_deref(),
-            Some("ANSWER_ENV")
-        );
-        assert_eq!(reloaded.answer.timeout_ms, 15_000);
-        assert_eq!(reloaded.answer.max_sources, 4);
-        assert_eq!(reloaded.answer.max_source_chars, 800);
-        assert_eq!(reloaded.answer.max_answer_tokens, 500);
 
         let _ = std::fs::remove_file(&path);
     }

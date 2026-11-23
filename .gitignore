@@ -37,3 +37,6 @@ amatl_logo.png~
 # AUDIT-04: Python bytecode is a build artifact, never source material.
 **/__pycache__/
 *.py[co]
+# A third-party website template dump, unrelated to AMATL and never source
+# material; kept out of history the same way the transient outputs above are.
+/analiza/

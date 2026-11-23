@@ -552,13 +552,12 @@ impl Config {
 /// Tool names the MCP surface exposes, and the vocabulary a client allowlist
 /// may use. Kept here so an unknown name is rejected by configuration
 /// validation instead of silently granting nothing.
-pub const MCP_TOOLS: [&str; 6] = [
+pub const MCP_TOOLS: [&str; 5] = [
     "search",
     "deep_search",
     "fetch",
     "providers",
     "status",
-    "answer",
 ];
 fn is_sha256_hex(value: &str) -> bool {
     value.len() == 64

@@ -330,9 +330,7 @@ mod tests {
             assert!(html.contains(field), "missing UI field: {field}");
         }
         assert!(javascript.contains("payload.schema_version !== \"1\""));
-        assert!(javascript.contains(
-            "mode === \"deep\" ? \"/deep\" : mode === \"answer\" ? \"/answer\" : \"/search\""
-        ));
+        assert!(javascript.contains("mode === \"deep\" ? \"/deep\" : \"/search\""));
         // Transport is centralized in client.js: requests go through the shared
         // client, which owns fetch + POST + JSON + authorization injection.
         assert!(javascript.contains("globalThis.api.post(endpoint"));
@@ -556,14 +554,7 @@ mod tests {
         let javascript = text("/app.js");
         assert!(html.contains("id=\"search-button\""));
         assert!(javascript.contains("searchButton.disabled = !searchAvailable"));
-        assert!(javascript.contains("answerButton.hidden = !answerRelevant"));
-        assert!(javascript.contains("answer-mode-hidden"));
         assert!(javascript.contains("checkbox.disabled = provider.status !== \"available\""));
-        assert!(
-            javascript.contains("answerEnabledToggle.disabled = answerStatus.available === false")
-        );
-        assert!(javascript.contains("strategistStatus.available !== false"));
-        assert!(javascript.contains("strategistEnabledToggle.checked = false"));
         assert!(javascript.contains("error.code"));
         assert!(text("/client.js").contains("payload?.error?.code"));
     }
@@ -629,7 +620,7 @@ mod tests {
         // an MCP-scoped client, so the allowlist is never empty.
         assert!(
             javascript.contains(
-                "const MCP_TOOL_NAMES = [\"search\", \"deep_search\", \"fetch\", \"providers\", \"status\", \"answer\"]"
+                "const MCP_TOOL_NAMES = [\"search\", \"deep_search\", \"fetch\", \"providers\", \"status\"]"
             ),
             "the MCP tool vocabulary must mirror the server's MCP_TOOLS constant"
         );
@@ -700,18 +691,6 @@ mod tests {
         assert!(
             javascript.contains("marginaliaForm.addEventListener(\"submit\", saveMarginaliaKey)")
         );
-    }
-
-    #[test]
-    fn strategist_toggle_reports_an_enabled_but_unavailable_state() {
-        let javascript = text("/app.js");
-        let catalog = text("/i18n.js");
-        // A configured strategist that is switched on without a usable
-        // credential must say so, mirroring the AI-summary `answerHint`.
-        assert!(catalog.contains("strategistHintMissingCredential"));
-        assert!(javascript.contains("t(\"strategistHintMissingCredential\")"));
-        assert!(javascript.contains("strategistToggleStatus.hidden"));
-        assert!(javascript.contains("strategistStatus.configured && strategistStatus.enabled"));
     }
 
     #[test]

@@ -1246,7 +1246,6 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
     assert_eq!(
         names,
         [
-            "answer",
             "deep_search",
             "fetch",
             "providers",
@@ -2197,8 +2196,8 @@ async fn status_reports_sources_storage_and_cache() {
 }
 
 /// Regression for AUDIT H-01: the OpenAPI `ServiceStatus` schema declared
-/// `additionalProperties: false` but omitted `strategist` and `data_policy`,
-/// which the server emits. A client validating `/status` against the published
+/// `additionalProperties: false` but omitted `data_policy`, which the server
+/// emits. A client validating `/status` against the published
 /// contract therefore rejected a response the server considered valid. Nothing
 /// asserted the response shape before, so the schema silently drifted.
 ///
@@ -2580,24 +2579,24 @@ async fn admin_responses_match_their_openapi_schemas() {
     }
 }
 
-/// A toggle uses the shared `ToggleInput` schema, and its success response uses
-/// the typed `ReloadReport` rather than the old generic object (H-03).
+/// A config write returns the typed `ReloadReport` rather than the old generic
+/// object (H-03).
 #[tokio::test]
 async fn toggle_response_matches_the_openapi_reload_report_schema() {
-    // A reloadable app flips a real flag and returns ReloadReport; the default
-    // test app has no configuration file and would fail closed with 500.
+    // A reloadable app edits a real setting and returns ReloadReport; the
+    // default test app has no configuration file and would fail closed with 500.
     let base = "schema_version = \"1\"\n\n\
-                [strategist]\nenabled = false\n\
-                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
-                model = \"deepseek-ai/DeepSeek-V3\"\n\
-                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://embeddings.example/v1\"\n\
+                remote_model = \"text-embeddings\"\n\
+                remote_timeout_ms = 5000\n";
     let (app, path) = reloadable_app(base).await;
     let response = app
         .oneshot(
-            authorized("/strategist/enabled")
-                .method(Method::POST)
+            authorized("/inference")
+                .method(Method::PATCH)
                 .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(r#"{"enabled":true}"#))
+                .body(Body::from(r#"{"remote_timeout_ms":6000}"#))
                 .unwrap(),
         )
         .await
@@ -2636,8 +2635,6 @@ fn required_scope_covers_every_registered_route() {
         (Method::POST, "/search", Some("Search")),
         (Method::GET, "/search/batch", Some("Search")),
         (Method::POST, "/deep", Some("Deep")),
-        (Method::POST, "/answer", Some("Deep")),
-        (Method::PATCH, "/answer", Some("Admin")),
         (Method::GET, "/providers", Some("Read")),
         (Method::GET, "/status", Some("Read")),
         (Method::GET, "/history", Some("Read")),
@@ -2647,8 +2644,6 @@ fn required_scope_covers_every_registered_route() {
         (Method::POST, "/saved", Some("Write")),
         (Method::DELETE, "/saved/{id}", Some("Write")),
         (Method::POST, "/reload", Some("Admin")),
-        (Method::POST, "/answer/enabled", Some("Admin")),
-        (Method::POST, "/strategist/enabled", Some("Admin")),
         (Method::POST, "/providers/{name}/enabled", Some("Admin")),
         (Method::POST, "/providers/{name}/credential", Some("Admin")),
         (
@@ -3174,167 +3169,6 @@ async fn pending_server_patch_cannot_weaken_the_effective_listener() {
     // Nothing was staged for the next restart either.
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(!on_disk.contains("no_auth"));
-    let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn answer_toggle_requires_the_bearer_token() {
-    let response = app()
-        .await
-        .oneshot(
-            request("/answer/enabled")
-                .method(Method::POST)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"enabled": true}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
-}
-
-#[tokio::test]
-async fn answer_toggle_flips_the_flag_and_applies_without_restart() {
-    let base = "schema_version = \"1\"\n\n\
-                [data_policy]\ninference = \"remote_explicit\"\n\n\
-                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
-                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
-                [answer]\nenabled = false\n\
-                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
-                model = \"deepseek-ai/DeepSeek-V3\"\n\
-                credential_env = \"AMATL_TEST_ANSWER_KEY\"\n";
-    let (app, path) = reloadable_app(base).await;
-
-    let response = app
-        .clone()
-        .oneshot(
-            authorized("/answer/enabled")
-                .method(Method::POST)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"enabled": true}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::OK);
-
-    // Persisted: a fresh read of the file (not just the in-memory service)
-    // shows the flag flipped.
-    let on_disk = std::fs::read_to_string(&path).unwrap();
-    assert!(on_disk.contains("enabled = true"));
-    // Untouched: the toggle never wrote near the credential or model.
-    assert!(on_disk.contains("credential_env = \"AMATL_TEST_ANSWER_KEY\""));
-    assert!(on_disk.contains("model = \"deepseek-ai/DeepSeek-V3\""));
-
-    let status = json_body(
-        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
-            .await
-            .unwrap(),
-    )
-    .await;
-    assert_eq!(status["answer"]["enabled"], true);
-    // Model/endpoint were already on disk before the toggle — configured
-    // reflects that regardless of enabled, so this was already true.
-    assert_eq!(status["answer"]["configured"], true);
-    let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn answer_toggle_refuses_to_enable_an_incomplete_config_without_writing() {
-    // No endpoint/model: enabling this would fail Config::validate.
-    let base = "schema_version = \"1\"\n\n\
-                [data_policy]\ninference = \"remote_explicit\"\n\n\
-                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
-                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
-                [answer]\nenabled = false\n";
-    let (app, path) = reloadable_app(base).await;
-
-    let response = app
-        .oneshot(
-            authorized("/answer/enabled")
-                .method(Method::POST)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"enabled": true}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
-    assert_eq!(
-        json_body(response).await["error"]["code"],
-        "config_rejected"
-    );
-    // Fails closed before ever writing: the file on disk is untouched.
-    let on_disk = std::fs::read_to_string(&path).unwrap();
-    assert!(on_disk.contains("enabled = false"));
-    let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn strategist_toggle_flips_the_flag_and_applies_without_restart() {
-    let base = "schema_version = \"1\"\n\n\
-                [strategist]\nenabled = false\n\
-                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
-                model = \"deepseek-ai/DeepSeek-V3\"\n\
-                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
-    let (app, path) = reloadable_app(base).await;
-
-    let response = app
-        .clone()
-        .oneshot(
-            authorized("/strategist/enabled")
-                .method(Method::POST)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"enabled": true}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::OK);
-
-    // Persisted: a fresh read of the file shows the flag flipped, and the
-    // toggle never wrote near the credential or model.
-    let on_disk = std::fs::read_to_string(&path).unwrap();
-    assert!(on_disk.contains("enabled = true"));
-    assert!(on_disk.contains("credential_env = \"AMATL_TEST_STRATEGIST_KEY\""));
-    assert!(on_disk.contains("model = \"deepseek-ai/DeepSeek-V3\""));
-
-    let status = json_body(
-        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
-            .await
-            .unwrap(),
-    )
-    .await;
-    assert_eq!(status["strategist"]["enabled"], true);
-    assert_eq!(status["strategist"]["configured"], true);
-    let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing() {
-    // No endpoint/model: enabling this would fail Config::validate.
-    let base = "schema_version = \"1\"\n\n\
-                [strategist]\nenabled = false\n";
-    let (app, path) = reloadable_app(base).await;
-
-    let response = app
-        .oneshot(
-            authorized("/strategist/enabled")
-                .method(Method::POST)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"enabled": true}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
-    assert_eq!(
-        json_body(response).await["error"]["code"],
-        "config_rejected"
-    );
-    // Fails closed before ever writing: the file on disk is untouched.
-    let on_disk = std::fs::read_to_string(&path).unwrap();
-    assert!(on_disk.contains("enabled = false"));
     let _ = std::fs::remove_file(path);
 }
 
@@ -4517,7 +4351,7 @@ async fn mutating_methods_do_not_inherit_the_public_surface_exemption() {
     }
 }
 
-// ── Provider governance ficha, inference and answer advanced fields ───
+// ── Provider governance ficha and inference advanced fields ───
 
 #[tokio::test]
 async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_name() {
@@ -4677,64 +4511,6 @@ async fn update_inference_refuses_clearing_the_endpoint_out_from_under_remote_ex
     let on_disk = std::fs::read_to_string(&path).unwrap();
     assert!(on_disk.contains("https://old.example/embeddings"));
     let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn update_answer_fields_never_touches_enabled() {
-    let base = "schema_version = \"1\"\n\n\
-                [data_policy]\ninference = \"remote_explicit\"\n\n\
-                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
-                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
-                [answer]\nenabled = true\n\
-                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
-                model = \"old-model\"\n\
-                credential_env = \"AMATL_TEST_ANSWER_KEY\"\n";
-    let (app, path) = reloadable_app(base).await;
-
-    let response = app
-        .clone()
-        .oneshot(
-            authorized("/answer")
-                .method(Method::PATCH)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(
-                    json!({"model": "deepseek-ai/DeepSeek-V3", "max_sources": 4}).to_string(),
-                ))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::OK);
-
-    let status = json_body(
-        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
-            .await
-            .unwrap(),
-    )
-    .await;
-    assert_eq!(status["answer"]["enabled"], true);
-    assert_eq!(status["answer"]["model"], "deepseek-ai/DeepSeek-V3");
-
-    let on_disk = std::fs::read_to_string(&path).unwrap();
-    assert!(on_disk.contains("enabled = true"));
-    assert!(on_disk.contains("max_sources = 4"));
-    let _ = std::fs::remove_file(path);
-}
-
-#[tokio::test]
-async fn update_answer_fields_requires_the_admin_scope() {
-    let scoped = scoped_app().await;
-    let response = scoped
-        .oneshot(
-            as_client("/answer", SEARCH_ONLY_TOKEN)
-                .method(Method::PATCH)
-                .header(CONTENT_TYPE, "application/json")
-                .body(Body::from(json!({"max_sources": 4}).to_string()))
-                .unwrap(),
-        )
-        .await
-        .unwrap();
-    assert_eq!(response.status(), StatusCode::FORBIDDEN);
 }
 
 // ── Search-quality policies ────────────────────────────────────────────

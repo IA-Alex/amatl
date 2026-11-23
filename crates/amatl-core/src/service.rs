@@ -4,13 +4,13 @@ use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
 use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
-    parse_query, Answer, AnswerError, Budget, CachedProvider, CanonicalUrl, ChromiumRenderer,
-    CompletionBackend, Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest,
+    parse_query, Budget, CachedProvider, CanonicalUrl, ChromiumRenderer,
+    Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest,
     DeepResponse, DocumentCache, DocumentCachePolicy, ErrorCode, FallbackExtractor, GapAnalyzer,
     InMemoryTelemetry, InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider,
     ProviderAvailability, ProviderBuildContext, ProviderCapabilities, ProviderItem,
     ProviderRegistry, ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query,
-    Rank, RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, RoleAssignment,
+    Rank, RankingV2Engine, RendererPool, ReqwestTransport, RoleAssignment,
     SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchResult,
     SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
@@ -176,16 +176,6 @@ pub struct DeepTarget {
     pub provider: String,
 }
 
-/// Output of [`AmatlService::answer`]: the search AMATL ran plus the grounded
-/// synthesis on top of it, kept separate on purpose so a caller always has
-/// the raw results even when it only wants the summary.
-#[derive(Clone, Debug, Serialize)]
-pub struct AnswerResult {
-    pub schema_version: String,
-    pub answer: Answer,
-    pub search: SearchResponse,
-}
-
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum ProviderSurfaceStatus {
@@ -254,8 +244,6 @@ pub enum ServiceError {
     StorageUnavailable,
     #[error("request payload is invalid")]
     InvalidInput,
-    #[error("answer synthesis backend is unavailable or its response was not grounded")]
-    AnswerUnavailable,
 }
 
 impl ServiceError {
@@ -271,7 +259,6 @@ impl ServiceError {
             Self::InferenceUnavailable => ErrorCode::InferenceUnavailable,
             Self::StorageUnavailable => ErrorCode::StorageUnavailable,
             Self::InvalidInput => ErrorCode::InvalidRequest,
-            Self::AnswerUnavailable => ErrorCode::AnswerUnavailable,
         }
     }
 }
@@ -328,19 +315,10 @@ pub struct ServiceStatus {
     pub storage: StorageStatus,
     pub cache: CacheStatus,
     pub inference_backend: Option<String>,
-    /// Read-only view of the answer-synthesis configuration: never the
-    /// credential, only what a settings screen needs to explain *why* the
-    /// feature is or isn't available right now.
-    pub answer: AnswerStatus,
-    /// Read-only view of the search-strategist configuration: whether the LLM
-    /// is allowed to participate in search (refining the query between
-    /// rounds). Never the credential — only what a settings screen needs to
-    /// explain why the "search with model" toggle is or isn't usable.
-    pub strategist: StrategistStatus,
     /// Read-only view of `data_policy` — the profile, egress and inference
     /// gate every other capability in this status checks against. Exposed
-    /// so a settings screen can explain *why* a source, remote embedding or
-    /// `answer` call is unavailable instead of just reporting that it is.
+    /// so a settings screen can explain *why* a source or remote embedding
+    /// call is unavailable instead of just reporting that it is.
     pub data_policy: DataPolicyStatus,
 }
 
@@ -349,58 +327,6 @@ pub struct DataPolicyStatus {
     pub profile: crate::config::SecurityProfile,
     pub egress: crate::config::EgressPolicy,
     pub inference: crate::config::InferenceMode,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-pub struct AnswerStatus {
-    /// `answer.enabled` in configuration — the operator's on/off intent,
-    /// exactly what the web toggle flips. Independent of `configured`: an
-    /// operator can turn this off without erasing `endpoint`/`model`, and a
-    /// settings screen needs to keep showing those to make the toggle mean
-    /// anything when it's off.
-    pub enabled: bool,
-    /// Whether `endpoint` and `model` are both present, regardless of
-    /// `enabled` — "is there a real configuration on disk to toggle",
-    /// answered even while it's switched off.
-    pub configured: bool,
-    /// Whether a call to `answer()` will actually work right now: `enabled`
-    /// AND `configured` AND the credential was present in the environment
-    /// at startup. A UI should gate the feature on this, not on `enabled` or
-    /// `configured` alone.
-    pub available: bool,
-    /// Shown whenever set on disk, independent of `enabled` — see the field
-    /// doc on `enabled` for why.
-    pub model: Option<String>,
-    pub endpoint: Option<String>,
-}
-
-/// Read-only status of the search strategist — the optional LLM that, when
-/// enabled, participates in a search by proposing a refined query that AMATL
-/// then runs to complement the first result set (see `service.rs`:
-/// `search_inner` and the `[strategist]` config section).
-///
-/// Mirrors [`AnswerStatus`]: it reports the operator's on/off intent, whether
-/// there is a real model/endpoint configured, and whether a call would
-/// actually work right now (enabled + configured + credential present). It
-/// never exposes the credential.
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-pub struct StrategistStatus {
-    /// `strategist.enabled` in configuration — exactly what the web toggle
-    /// flips. Independent of `configured`: an operator can turn it off
-    /// without erasing `endpoint`/`model`, and the settings screen needs to
-    /// keep showing those for the toggle to mean anything when it's off.
-    pub enabled: bool,
-    /// Whether `endpoint` and `model` are both present, regardless of
-    /// `enabled` — "is there a real configuration on disk to toggle".
-    pub configured: bool,
-    /// Whether calling the strategist would work right now: `enabled` AND
-    /// `configured` AND the credential environment variable was present.
-    pub available: bool,
-    /// Model identifier, shown whenever set on disk, independent of
-    /// `enabled`.
-    pub model: Option<String>,
-    /// Endpoint, shown whenever set on disk, independent of `enabled`.
-    pub endpoint: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -481,11 +407,6 @@ pub struct AmatlService {
     transport: Option<Arc<dyn crate::HttpTransport>>,
     fetcher: Arc<dyn crate::Fetcher>,
     inference: Option<InferenceRuntime>,
-    /// Governed answer-synthesis backend; `None` whenever `answer.enabled` is
-    /// false or its configuration/credential is unavailable, in which case
-    /// [`AmatlService::answer`] fails closed with `AnswerUnavailable` instead
-    /// of falling back to anything.
-    answer_backend: Option<Arc<dyn CompletionBackend>>,
     mock: bool,
     /// Renderer pool created once at startup and reused across deep requests.
     renderer_pool: RendererPool,
@@ -500,7 +421,6 @@ pub struct AmatlService {
     egress_gate: Arc<tokio::sync::Semaphore>,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
-    strategist: Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
     /// Parsed operator Optics document (`[ranking.optics]`). Loaded and parsed
     /// exactly once here -- on first build and again on every `reloaded()`,
     /// which rebuilds the whole service -- never per search. `None` when
@@ -682,24 +602,6 @@ impl AmatlService {
                 None
             }
         };
-        let answer_backend: Option<Arc<dyn CompletionBackend>> = if config.answer.enabled {
-            match transport.clone() {
-                Some(transport) => match RemoteCompletionBackend::new(&config.answer, transport) {
-                    Ok(backend) => Some(Arc::new(backend) as Arc<dyn CompletionBackend>),
-                    Err(error) => {
-                        tracing::warn!(
-                            target: "amatl::answer",
-                            error = %error,
-                            "answer synthesis backend is unavailable; answer() will fail closed"
-                        );
-                        None
-                    }
-                },
-                None => None,
-            }
-        } else {
-            None
-        };
         let renderer = Arc::new(ChromiumRenderer::detect(&config.deep.renderer));
         let renderer_pool =
             RendererPool::new(renderer, config.deep.renderer.max_browser_calls as usize);
@@ -713,7 +615,6 @@ impl AmatlService {
             transport,
             fetcher,
             inference,
-            answer_backend,
             optics,
             mock,
             renderer_pool,
@@ -724,22 +625,6 @@ impl AmatlService {
             )),
             audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
             ephemeral_credentials: Arc::new(RwLock::new(BTreeMap::new())),
-            strategist: if config.strategist.enabled {
-                match crate::strategist::llm::LlmStrategist::new(config.strategist.clone()) {
-                    Ok(strategist) => Arc::new(strategist)
-                        as Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
-                    Err(error) => {
-                        tracing::warn!(
-                            target: "amatl::strategist",
-                            error = %error,
-                            "strategist backend is unavailable; falling back to no-op"
-                        );
-                        Arc::new(crate::strategist::NoOpStrategist)
-                    }
-                }
-            } else {
-                Arc::new(crate::strategist::NoOpStrategist)
-            },
             _maintenance_cancel: reuse_maintenance,
         }
     }
@@ -795,8 +680,8 @@ impl AmatlService {
     ///
     /// The reload reuses the running service's connection pool rather than
     /// reopening SQLite (see [`Self::reloaded`]), so the `Send`-bound rationale
-    /// here applies to the rest of the rebuild (registry, inference runtime,
-    /// strategist); the storage handle is simply moved across.
+    /// here applies to the rest of the rebuild (registry, inference runtime);
+    /// the storage handle is simply moved across.
     pub async fn reloaded_detached(self, config: Config) -> Result<Self, ServiceError> {
         let handle = tokio::runtime::Handle::current();
         tokio::task::spawn_blocking(move || handle.block_on(self.reloaded(config)))
@@ -941,8 +826,8 @@ impl AmatlService {
                 && matches!(providers[0].availability(), ProviderAvailability::Available)
         });
         // Fresh orchestrator per search: a search mutates its internal budget,
-        // so the refined (second) search must run on its own orchestrator with
-        // its own budget rather than reusing the first, already-exhausted one.
+        // so each search runs on its own orchestrator with its own budget
+        // rather than reusing an already-exhausted one.
         let build_orchestrator = || {
             SearchOrchestrator::new(
                 Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
@@ -972,53 +857,12 @@ impl AmatlService {
         let mut orchestrator = build_orchestrator();
         let mut response = orchestrator.search(query.clone(), providers.clone()).await;
         // Names admitted into this round, for releasing unused probe claims.
-        // Computed once; both the primary and the refined round draw from the
-        // same selection.
         let selected_names: Vec<String> = providers
             .iter()
             .map(|provider| provider.name().to_string())
             .collect();
-        // Record the primary round's outcomes now, before the refined round can
-        // merge its own providers into `response`. Recording after the merge
-        // would double-count the refined round's failures and open the breaker
-        // faster than `failure_threshold` promises.
         self.record_circuit_outcomes(&selected_names, &response)
             .await;
-
-        // A refined query would create a second provider page and make page
-        // boundaries unstable, so native pagination uses the exact user query.
-        if self.config.strategist.enabled && provider_pagination.is_none() {
-            if let Ok(Ok(Some(new_query))) = tokio::time::timeout(
-                std::time::Duration::from_millis(self.config.strategist.timeout_ms),
-                self.strategist
-                    .generate_strategy(&query.raw_query, &response),
-            )
-            .await
-            {
-                if let Ok(refined_query) = crate::parse_query(new_query) {
-                    // The refined query is a different, narrower query. If it
-                    // normalizes to the same query the user already sent, the
-                    // follow-up would add nothing: skip the redundant search.
-                    if refined_query.normalized_query != query.normalized_query {
-                        let mut refined_orchestrator = build_orchestrator();
-                        let refined_response =
-                            refined_orchestrator.search(refined_query, providers).await;
-                        // Record the refined round's outcomes against its own,
-                        // un-merged response — once, not again after the merge.
-                        self.record_circuit_outcomes(&selected_names, &refined_response)
-                            .await;
-                        // Complement, never re-order: keep the original set as
-                        // ranked and append only results the original search did
-                        // not already return, deduplicating by canonical URL
-                        // (both against the original set and within the refined
-                        // set itself). The refined round's provenance is merged
-                        // too, so a refined round that recovered from a primary
-                        // failure is not reported as `Failure`.
-                        Self::merge_refined_response(&mut response, refined_response);
-                    }
-                }
-            }
-        }
 
         if !refusals.is_empty() {
             response.degradations.extend(refusals);
@@ -1061,113 +905,6 @@ impl AmatlService {
             query,
             plan,
             response,
-        })
-    }
-
-    /// Append results from a refined (second) search to the primary result set,
-    /// keeping the primary set as-ranked and adding only hits the primary
-    /// search did not already return — deduplicating by canonical URL both
-    /// against the primary set and within the refined set itself.
-    ///
-    /// `refined` is consumed. The primary set is mutated in place.
-    fn append_complementary(primary: &mut Vec<SearchResult>, refined: Vec<SearchResult>) {
-        let mut seen: BTreeSet<CanonicalUrl> = primary
-            .iter()
-            .map(|result| result.canonical_url.clone())
-            .collect();
-        primary.extend(
-            refined
-                .into_iter()
-                .filter(|result| seen.insert(result.canonical_url.clone())),
-        );
-    }
-
-    /// Fold a refined (strategist) response into `primary`: append its
-    /// complementary results, merge its provenance, and recompute `status`
-    /// from the combined set. Without this a refined round that recovered from
-    /// a primary failure would leave `status: failure` alongside real results,
-    /// and consumers keying off `status` would discard them.
-    fn merge_refined_response(primary: &mut SearchResponse, refined: SearchResponse) {
-        let SearchResponse {
-            providers_used,
-            providers_failed,
-            providers_partial,
-            errors,
-            degradations,
-            results,
-            ..
-        } = refined;
-        Self::append_complementary(&mut primary.results, results);
-        for provider in providers_used {
-            if !primary.providers_used.contains(&provider) {
-                primary.providers_used.push(provider);
-            }
-        }
-        for provider in providers_failed {
-            if !primary.providers_failed.contains(&provider) {
-                primary.providers_failed.push(provider);
-            }
-        }
-        for provider in providers_partial {
-            if !primary.providers_partial.contains(&provider) {
-                primary.providers_partial.push(provider);
-            }
-        }
-        primary.errors.extend(errors);
-        primary.degradations.extend(degradations);
-        // Recompute status from the combined result set, mirroring the rule the
-        // orchestrator applies before the strategist runs.
-        if primary.results.is_empty() {
-            primary.status = crate::SearchStatus::Failure;
-        } else {
-            // A `no_usable_results` error from a primary round that the refined
-            // round recovered from is now stale.
-            primary
-                .errors
-                .retain(|error| error.code != "no_usable_results");
-            primary.status = if primary.degradations.is_empty()
-                && primary.providers_failed.is_empty()
-                && primary.providers_partial.is_empty()
-            {
-                crate::SearchStatus::Success
-            } else {
-                crate::SearchStatus::PartialSuccess
-            };
-        }
-    }
-
-    /// Run a search and synthesize a grounded, cited answer from its results.
-    ///
-    /// Distinct from [`Self::search`] on purpose: this is the only surface
-    /// that calls out to an LLM, and only when `answer.enabled` in
-    /// configuration explicitly turns it on. `search`/`deep` never change
-    /// behavior because this exists. See [`crate::answer`] for the grounding
-    /// contract enforced on the model's response.
-    pub async fn answer(
-        &self,
-        raw_query: String,
-        surface: ServiceSurface,
-    ) -> Result<AnswerResult, ServiceError> {
-        let backend = self
-            .answer_backend
-            .as_ref()
-            .ok_or(ServiceError::AnswerUnavailable)?;
-        let search = self
-            .search_inner(raw_query.clone(), surface.clone(), None, None)
-            .await?;
-        self.record_history(&search, 0, surface).await;
-        let sources = crate::answer::build_sources(
-            &search.response.results,
-            self.config.answer.max_sources,
-            self.config.answer.max_source_chars,
-        );
-        let answer = crate::answer::synthesize(backend.as_ref(), &raw_query, sources)
-            .await
-            .map_err(|_: AnswerError| ServiceError::AnswerUnavailable)?;
-        Ok(AnswerResult {
-            schema_version: SCHEMA_VERSION.into(),
-            answer,
-            search: search.response,
         })
     }
 
@@ -1820,30 +1557,6 @@ impl AmatlService {
             storage,
             cache,
             inference_backend: self.inference_backend().map(str::to_owned),
-            answer: AnswerStatus {
-                enabled: self.config.answer.enabled,
-                configured: self.config.answer.endpoint.is_some()
-                    && self.config.answer.model.is_some(),
-                available: self.answer_backend.is_some(),
-                model: self.config.answer.model.clone(),
-                endpoint: self.config.answer.endpoint.clone(),
-            },
-            strategist: StrategistStatus {
-                enabled: self.config.strategist.enabled,
-                configured: self.config.strategist.endpoint.is_some()
-                    && self.config.strategist.model.is_some(),
-                available: self.config.strategist.enabled
-                    && self.config.strategist.endpoint.is_some()
-                    && self.config.strategist.model.is_some()
-                    && self
-                        .config
-                        .strategist
-                        .credential_env
-                        .as_ref()
-                        .is_some_and(|name| std::env::var_os(name).is_some_and(|v| !v.is_empty())),
-                model: self.config.strategist.model.clone(),
-                endpoint: self.config.strategist.endpoint.clone(),
-            },
             data_policy: DataPolicyStatus {
                 profile: self.config.data_policy.profile,
                 egress: self.config.data_policy.egress,
@@ -2538,49 +2251,6 @@ mod tests {
         assert_eq!(
             validate_deep_fetch_cap(Some(0), 10),
             Err(ServiceError::InvalidInput)
-        );
-    }
-
-    #[test]
-    fn append_complementary_dedupes_and_preserves_primary_order() {
-        use crate::{CanonicalUrl, OriginalUrl, Rank, ResultStatus, SearchResult};
-        use url::Url;
-        let result = |index: u32, host: &str, path: &str| SearchResult {
-            schema_version: SCHEMA_VERSION.into(),
-            rank: Rank::new(index).unwrap(),
-            title: None,
-            original_url: OriginalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
-            canonical_url: CanonicalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
-            domain: host.to_owned(),
-            snippet: None,
-            providers: vec!["mock".into()],
-            published_at: None,
-            status: ResultStatus::Visible,
-        };
-        // Primary set, already ranked.
-        let mut primary = vec![result(1, "a.example", "one"), result(2, "b.example", "two")];
-        // Refined set: one duplicate of the primary, one duplicate within the
-        // refined set itself, and one genuinely new result.
-        let refined = vec![
-            result(1, "a.example", "one"),
-            result(9, "c.example", "new-a"),
-            result(9, "c.example", "new-a"),
-            result(9, "d.example", "new-b"),
-        ];
-        AmatlService::append_complementary(&mut primary, refined);
-        let urls = primary
-            .iter()
-            .map(|item| item.canonical_url.0.as_str().to_owned())
-            .collect::<Vec<_>>();
-        assert_eq!(
-            urls,
-            [
-                "http://a.example/one",
-                "http://b.example/two",
-                "http://c.example/new-a",
-                "http://d.example/new-b",
-            ],
-            "primary order is preserved, duplicates are dropped, new hits are appended"
         );
     }
 
