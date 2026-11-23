@@ -390,15 +390,32 @@ impl Config {
         Ok(())
     }
     /// Provider-search and document cache limits.
+    ///
+    /// Bounded in both directions, like `validate_deep`: these values are
+    /// written to the file and bound into SQL as `i64`, so a value near
+    /// `u64::MAX` would wrap negative on the cast (`u64::MAX as i64 == -1`),
+    /// silently emptying the cache or making it never hit. The ceilings stay
+    /// far below `i64::MAX`, and the document cache's `ttl_seconds +
+    /// stale_while_revalidate_seconds` sum also stays far from wrapping.
     pub(super) fn validate_cache(&self) -> Result<(), ConfigError> {
-        if self.cache.provider_search.ttl_seconds == 0
-            || self.cache.provider_search.max_entries == 0
-            || self.cache.provider_search.max_bytes == 0
-            || self.cache.document.ttl_seconds == 0
-            || self.cache.document.max_entries == 0
-            || self.cache.document.max_bytes == 0
+        let search = &self.cache.provider_search;
+        let document = &self.cache.document;
+        let bounded = |ttl_seconds: u64, max_entries: u64, max_bytes: u64| {
+            (1..=31_536_000).contains(&ttl_seconds)          // 1s ..= 1 year
+                && (1..=10_000_000).contains(&max_entries)
+                && (1..=4 * 1024 * 1024 * 1024).contains(&max_bytes)
+        };
+        if !bounded(search.ttl_seconds, search.max_entries, search.max_bytes)
+            || !bounded(
+                document.ttl_seconds,
+                document.max_entries,
+                document.max_bytes,
+            )
+            || document.stale_while_revalidate_seconds > 31_536_000
         {
-            return Err(ConfigError::Policy("cache limits must be positive".into()));
+            return Err(ConfigError::Policy(
+                "cache limits must be positive and within their documented bounds".into(),
+            ));
         }
         Ok(())
     }

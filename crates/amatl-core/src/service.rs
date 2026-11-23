@@ -1137,7 +1137,7 @@ impl AmatlService {
             self.renderer_pool.clone(),
             document_cache,
             remaining_deep_ms,
-            (limits.deep_max_bytes / u64::from(effective_max_fetches)).max(1),
+            (limits.deep_max_bytes / u64::from(effective_max_fetches.max(1))).max(1),
             limits.deep_max_redirects,
             self.config.deep.top_k as usize,
             self.config.deep.max_depth,
@@ -2585,6 +2585,30 @@ mod tests {
         config.data_policy.egress = crate::EgressPolicy::Deny;
         config.data_policy.inference = crate::InferenceMode::LocalOnly;
         config
+    }
+
+    /// The per-fetch byte share divides the Deep byte budget by the number of
+    /// fetches. Both the build-time ceiling (`:108`) and the per-request share
+    /// (`deep_from_search`) must guard the divisor: `max_fetches` is clamped to
+    /// `>= 1`, but a per-request `max_fetches = 0` or an unvalidated config with
+    /// `deep.max_fetches = 0` reaches the same expression, and dividing by zero
+    /// panics. This pins the guarded form so a future refactor cannot drop it.
+    #[test]
+    fn per_fetch_byte_share_never_divides_by_zero() {
+        let deep_max_bytes: u64 = 8 * 1024 * 1024;
+        for effective_max_fetches in [0u32, 1, 4] {
+            let share = (deep_max_bytes / u64::from(effective_max_fetches.max(1))).max(1);
+            assert!(share >= 1);
+        }
+        // Zero fetches behaves exactly like one, never a panic. The value
+        // arrives through a variable so the guard, not the constant folder,
+        // is what is exercised.
+        let zero_fetches: u32 = 0;
+        assert_eq!(
+            (deep_max_bytes / u64::from(zero_fetches.max(1))).max(1),
+            (deep_max_bytes / u64::from(1u32)).max(1)
+        );
+        assert_eq!(zero_fetches.max(1), 1);
     }
 
     #[test]

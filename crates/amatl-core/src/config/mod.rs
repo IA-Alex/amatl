@@ -1168,6 +1168,36 @@ mod tests {
         let mut rate_limit = Config::default();
         rate_limit.server.rate_limit_per_minute = u32::MAX;
         assert!(rate_limit.validate().is_err());
+
+        // Cache limits were only checked `!= 0`, so a near-`u64::MAX` value
+        // passed validation and then wrapped to `-1` on the `as i64` bind,
+        // silently emptying the cache (bytes/entries) or disabling hits (TTL).
+        let mut cache_ttl = Config::default();
+        cache_ttl.cache.provider_search.ttl_seconds = u64::MAX;
+        assert!(cache_ttl.validate().is_err());
+
+        let mut cache_entries = Config::default();
+        cache_entries.cache.document.max_entries = u64::MAX;
+        assert!(cache_entries.validate().is_err());
+
+        let mut cache_bytes = Config::default();
+        cache_bytes.cache.provider_search.max_bytes = u64::MAX;
+        assert!(cache_bytes.validate().is_err());
+
+        let mut cache_stale = Config::default();
+        cache_stale.cache.document.stale_while_revalidate_seconds = u64::MAX;
+        assert!(cache_stale.validate().is_err());
+
+        // The document cache's TTL and stale window are summed before the
+        // `as i64` cast; each alone must stay within a bound that keeps the sum
+        // from wrapping.
+        let mut cache_sum = Config::default();
+        cache_sum.cache.document.ttl_seconds = 31_536_000;
+        cache_sum.cache.document.stale_while_revalidate_seconds = 31_536_000;
+        assert!(cache_sum.validate().is_ok());
+
+        // The shipped defaults must still validate.
+        assert!(Config::default().validate().is_ok());
     }
 
     #[test]
