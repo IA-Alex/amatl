@@ -6103,3 +6103,29 @@ async fn mock_deployments_disagree_between_ready_and_the_source_gauges() {
     assert_eq!(gauge("amatl_sources_declared"), 1.0);
     assert_eq!(gauge("amatl_sources_available"), 0.0);
 }
+
+/// The UI's MCP tool vocabulary (`MCP_TOOL_NAMES` in `app.js`) must mirror the
+/// server's `MCP_TOOLS` exactly. `ClientIdentity::allows_tool` validates every
+/// allowlisted name against `MCP_TOOLS` at `Config::validate` time, so a UI list
+/// that carries a name the server does not know makes *every* MCP-scoped client
+/// created from the web UI fail with `ConfigRejected` — the exact regression
+/// that slipped through when a tool was retired on the server but left in the
+/// asset. Deriving the expected literal from `MCP_TOOLS` here means the two can
+/// no longer drift independently in CI.
+#[test]
+fn ui_mcp_tool_vocabulary_mirrors_the_server_constant() {
+    let asset = amatl_ui::asset("/app.js").expect("app.js is a shipped asset");
+    let javascript = std::str::from_utf8(asset.body).expect("app.js is valid UTF-8");
+    let expected = format!(
+        "const MCP_TOOL_NAMES = [{}];",
+        MCP_TOOLS
+            .iter()
+            .map(|tool| format!("\"{tool}\""))
+            .collect::<Vec<_>>()
+            .join(", ")
+    );
+    assert!(
+        javascript.contains(&expected),
+        "app.js MCP_TOOL_NAMES drifted from MCP_TOOLS; expected to find:\n{expected}"
+    );
+}

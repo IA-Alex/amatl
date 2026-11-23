@@ -512,8 +512,16 @@ impl SqliteStorage {
 
     pub async fn health(&self) -> Result<StorageHealth, StorageError> {
         let maintenance = self.maintenance.lock().await.clone();
+        // `diagnose_filesystem` does synchronous `statvfs`/`metadata`/`open` on
+        // the database path. Running it on an async worker would block that
+        // worker for the whole probe — and `/status` polls this on every call —
+        // so move it to the blocking pool, like the other Send-unsafe file work
+        // in this module.
+        let path = self.path.clone();
         let (free_space, total_space, disk_usage, readable, writable, file_size, wal_size, fs_err) =
-            diagnose_filesystem(&self.path);
+            tokio::task::spawn_blocking(move || diagnose_filesystem(&path))
+                .await
+                .map_err(|_| StorageError::Operation)?;
 
         Ok(StorageHealth {
             path: self.path.clone(),
@@ -633,37 +641,48 @@ impl SqliteStorage {
         // Verify the backup is a valid SQLite database.
         quarantine_if_header_is_invalid(backup_path)?;
 
-        // Create a safety backup of the current file if it exists.
-        if path.exists() {
-            let safety_path = path.with_extension(format!(
-                "pre-restore-{}.sqlite3",
-                SystemTime::now()
-                    .duration_since(UNIX_EPOCH)
-                    .map_or(0, |d| d.as_secs())
-            ));
-            // Copy the WAL sibling too: in WAL mode the newest commits live in
-            // `<db>-wal`, so a main-file-only copy can silently miss them and
-            // leave the operator without the writes they were protecting.
-            std::fs::copy(path, &safety_path).map_err(|_| StorageError::Operation)?;
-            let wal = PathBuf::from(format!("{}-wal", path.display()));
-            if wal.exists() {
-                let safety_wal = PathBuf::from(format!("{}-wal", safety_path.display()));
-                let _ = std::fs::copy(&wal, &safety_wal);
+        // Create a safety backup of the current file if it exists, then swap in
+        // the backup. The copies move whole database files (potentially large),
+        // so they run on the blocking pool instead of stalling an async worker.
+        let path_owned = path.to_path_buf();
+        let backup_owned = backup_path.to_path_buf();
+        tokio::task::spawn_blocking(move || -> Result<(), StorageError> {
+            let path = path_owned.as_path();
+            let backup_path = backup_owned.as_path();
+            if path.exists() {
+                let safety_path = path.with_extension(format!(
+                    "pre-restore-{}.sqlite3",
+                    SystemTime::now()
+                        .duration_since(UNIX_EPOCH)
+                        .map_or(0, |d| d.as_secs())
+                ));
+                // Copy the WAL sibling too: in WAL mode the newest commits live in
+                // `<db>-wal`, so a main-file-only copy can silently miss them and
+                // leave the operator without the writes they were protecting.
+                std::fs::copy(path, &safety_path).map_err(|_| StorageError::Operation)?;
+                let wal = PathBuf::from(format!("{}-wal", path.display()));
+                if wal.exists() {
+                    let safety_wal = PathBuf::from(format!("{}-wal", safety_path.display()));
+                    let _ = std::fs::copy(&wal, &safety_wal);
+                }
+                // Bound the recovery points like every other backup kind.
+                Self::rotate_backups(
+                    &backup_directory(path, None),
+                    &database_stem(path),
+                    u32::MAX,
+                );
             }
-            // Bound the recovery points like every other backup kind.
-            Self::rotate_backups(
-                &backup_directory(path, None),
-                &database_stem(path),
-                u32::MAX,
-            );
-        }
 
-        // Replace the database file with the backup, then drop any stale WAL
-        // siblings so the reopened database cannot attempt recovery against the
-        // freshly copied main file.
-        std::fs::copy(backup_path, path).map_err(|_| StorageError::Operation)?;
-        let _ = std::fs::remove_file(PathBuf::from(format!("{}-wal", path.display())));
-        let _ = std::fs::remove_file(PathBuf::from(format!("{}-shm", path.display())));
+            // Replace the database file with the backup, then drop any stale WAL
+            // siblings so the reopened database cannot attempt recovery against the
+            // freshly copied main file.
+            std::fs::copy(backup_path, path).map_err(|_| StorageError::Operation)?;
+            let _ = std::fs::remove_file(PathBuf::from(format!("{}-wal", path.display())));
+            let _ = std::fs::remove_file(PathBuf::from(format!("{}-shm", path.display())));
+            Ok(())
+        })
+        .await
+        .map_err(|_| StorageError::Operation)??;
 
         // Open with the restored file, preserving the configured locking mode.
         Self::open(path, locking_mode).await

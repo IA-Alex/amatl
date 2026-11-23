@@ -1690,12 +1690,22 @@ impl AmatlService {
         name: &str,
         runtime: &ProviderRuntimeConfig,
     ) -> Option<Zeroizing<String>> {
-        if let Ok(guard) = self.ephemeral_credentials.read() {
-            if let Some(value) = guard.get(name) {
-                if !value.is_empty() {
-                    return Some(value.clone());
+        match self.ephemeral_credentials.read() {
+            Ok(guard) => {
+                if let Some(value) = guard.get(name) {
+                    if !value.is_empty() {
+                        return Some(value.clone());
+                    }
                 }
             }
+            // A poisoned lock must not silently drop an operator-injected key
+            // and fall back to the env var: log it so the degradation is
+            // visible instead of a quiet credential switch.
+            Err(_) => tracing::error!(
+                target: "amatl::credentials",
+                provider = %name,
+                "ephemeral credential lock poisoned; falling back to the environment credential"
+            ),
         }
         credential(runtime)
     }
@@ -1722,10 +1732,17 @@ impl AmatlService {
         if value.is_empty() || value.len() > 512 {
             return Err(ServiceError::InvalidInput);
         }
-        self.ephemeral_credentials
-            .write()
-            .map_err(|_| ServiceError::ProviderNotRegistered(name.into()))?
-            .insert(name.to_string(), Zeroizing::new(value.to_owned()));
+        // A poisoned lock is an internal fault, not a missing provider: the
+        // provider is registered. Report it as a service fault (500) instead of
+        // mislabelling it `ProviderNotRegistered`, and log the real cause.
+        let mut guard = self.ephemeral_credentials.write().map_err(|_| {
+            tracing::error!(
+                target: "amatl::credentials",
+                "ephemeral credential lock poisoned; refusing to write"
+            );
+            ServiceError::Configuration
+        })?;
+        guard.insert(name.to_string(), Zeroizing::new(value.to_owned()));
         Ok(())
     }
 
@@ -1823,6 +1840,12 @@ impl AmatlService {
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
         let now = now_unix();
         let mut selection = ProviderSelection::default();
+        // Resolve every declaration first. A provider named in config but
+        // absent from the registry (or not declared) fails the whole round; doing
+        // it before any `claim_probe` means a failure cannot leave a half-open
+        // probe claimed for a source the round never got to record, which would
+        // wedge that source for a full cooldown (see `record_circuit_outcomes`).
+        let mut resolved = Vec::with_capacity(self.config.providers.enabled.len());
         for name in &self.config.providers.enabled {
             let runtime = self
                 .config
@@ -1833,6 +1856,9 @@ impl AmatlService {
                 .registry
                 .get(name)
                 .ok_or_else(|| ServiceError::ProviderNotRegistered(name.clone()))?;
+            resolved.push((name, runtime, factory));
+        }
+        for (name, runtime, factory) in resolved {
             if !runtime.approved() {
                 selection.degradations.push(crate::Degradation {
                     code: ErrorCode::ProviderNotApproved.as_str().into(),
@@ -2906,9 +2932,13 @@ mod tests {
     #[tokio::test]
     async fn ephemeral_credential_rejects_unregistered_empty_and_oversized_values() {
         let service = AmatlService::new(Config::default(), false).await;
-        assert!(service
-            .set_provider_credential("not_registered", "k")
-            .is_err());
+        // An unregistered provider is a registry fault, not a lock fault: the
+        // specific `ProviderNotRegistered` variant must survive here so it is
+        // never conflated with an internal write failure.
+        assert_eq!(
+            service.set_provider_credential("not_registered", "k"),
+            Err(ServiceError::ProviderNotRegistered("not_registered".into()))
+        );
         assert!(service.set_provider_credential("marginalia", "").is_err());
         assert!(service
             .set_provider_credential("marginalia", &"x".repeat(513))
