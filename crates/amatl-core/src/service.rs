@@ -931,8 +931,15 @@ impl AmatlService {
         };
         // Native pagination selects a source page before AMATL reranks its
         // results. Mixed-source searches paginate the merged ranking locally.
-        let provider_pagination = requested_pagination
-            .filter(|_| providers.len() == 1 && providers[0].capabilities().pagination);
+        // The capability alone is not enough: a provider that reports
+        // `pagination` but is not `Available` (e.g. a missing credential) never
+        // runs, so forwarding the page would emit `page`/`page_size` metadata
+        // for a search that called nothing and must not skip the local window.
+        let provider_pagination = requested_pagination.filter(|_| {
+            providers.len() == 1
+                && providers[0].capabilities().pagination
+                && matches!(providers[0].availability(), ProviderAvailability::Available)
+        });
         // Fresh orchestrator per search: a search mutates its internal budget,
         // so the refined (second) search must run on its own orchestrator with
         // its own budget rather than reusing the first, already-exhausted one.
@@ -1499,11 +1506,21 @@ impl AmatlService {
             ServiceSurfaceKind::Api => "api",
             ServiceSurfaceKind::Mcp => "mcp",
         };
-        let total_results = execution
-            .response
-            .total_results
-            .map(|value| value as i64)
-            .unwrap_or(execution.response.results.len() as i64);
+        // A native provider page does not report a total, so `total_results` is
+        // absent while `page`/`page_size` are present. Persisting the page
+        // length here would claim a whole-set size that AMATL never knew; store
+        // the `-1` "unknown" sentinel instead so the operator view can tell a
+        // real count apart from an unreported one.
+        let total_results =
+            if execution.response.total_results.is_none() && execution.response.page.is_some() {
+                -1
+            } else {
+                execution
+                    .response
+                    .total_results
+                    .map(|value| value as i64)
+                    .unwrap_or(execution.response.results.len() as i64)
+            };
         if storage
             .search_history_insert(
                 &execution.query.normalized_query,
@@ -2831,8 +2848,11 @@ mod tests {
         config
     }
 
+    /// Page windows a capture provider recorded, one per `search` call.
+    type SeenPages = Arc<std::sync::Mutex<Vec<(Option<u32>, Option<u32>)>>>;
+
     struct PaginationCaptureFactory {
-        seen: Arc<std::sync::Mutex<Vec<(Option<u32>, Option<u32>)>>>,
+        seen: SeenPages,
     }
 
     impl ProviderFactory for PaginationCaptureFactory {
@@ -2854,7 +2874,7 @@ mod tests {
 
     struct PaginationCaptureProvider {
         name: String,
-        seen: Arc<std::sync::Mutex<Vec<(Option<u32>, Option<u32>)>>>,
+        seen: SeenPages,
     }
 
     #[async_trait]
@@ -2964,6 +2984,138 @@ mod tests {
         assert_eq!(execution.response.page, Some(2));
         assert_eq!(execution.response.page_size, Some(5));
         assert_eq!(execution.response.total_results, None);
+    }
+
+    /// BH-003: an enabled source that reports `pagination` but is `Unavailable`
+    /// (its credential is missing) never reaches a provider call. Forwarding the
+    /// page would emit `page`/`page_size` for a search that called nothing and
+    /// would skip the local window, so native pagination must stay off.
+    struct UnavailablePaginationFactory {
+        seen: SeenPages,
+    }
+
+    impl ProviderFactory for UnavailablePaginationFactory {
+        fn name(&self) -> &str {
+            "custom_archive"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(UnavailablePaginationProvider {
+                name: context.name.into(),
+                seen: self.seen.clone(),
+            })
+        }
+    }
+
+    struct UnavailablePaginationProvider {
+        name: String,
+        seen: SeenPages,
+    }
+
+    #[async_trait]
+    impl Provider for UnavailablePaginationProvider {
+        fn name(&self) -> &str {
+            &self.name
+        }
+
+        fn capabilities(&self) -> ProviderCapabilities {
+            // Pagination-capable on paper, exactly like a credential-less
+            // Marginalia, but never available this run.
+            MockProvider::success(self.name.clone(), vec![]).capabilities()
+        }
+
+        fn availability(&self) -> ProviderAvailability {
+            ProviderAvailability::Unavailable {
+                code: "provider_credential_missing".into(),
+                message: "the source credential is unavailable".into(),
+            }
+        }
+
+        async fn search(
+            &self,
+            _plan: &crate::SearchPlan,
+            context: &crate::ProviderContext,
+        ) -> Result<crate::ProviderResult, crate::ProviderError> {
+            self.seen
+                .lock()
+                .unwrap()
+                .push((context.page, context.page_size));
+            Ok(crate::ProviderResult {
+                schema_version: SCHEMA_VERSION.into(),
+                provider: self.name.clone(),
+                status: crate::ProviderExecutionStatus::Success,
+                results: vec![],
+                accepted_filters: vec![],
+                ignored_filters: vec![],
+                approximated_filters: vec![],
+                errors: vec![],
+            })
+        }
+    }
+
+    #[tokio::test]
+    async fn an_unavailable_pagination_capable_source_never_receives_a_native_page() {
+        let seen = Arc::new(std::sync::Mutex::new(Vec::new()));
+        let registry = ProviderRegistry::builtin().with(Arc::new(UnavailablePaginationFactory {
+            seen: seen.clone(),
+        }));
+        let service = AmatlService::with_registry(archive_config(), false, registry).await;
+        let execution = service
+            .search_paginated("rust".into(), ServiceSurface::api(None), Some(0), Some(5))
+            .await
+            .unwrap();
+
+        // The source never ran, so it saw no page window.
+        assert!(seen.lock().unwrap().is_empty());
+        // The local branch still owns page metadata (not a native page).
+        assert_eq!(execution.response.page, Some(0));
+        assert_eq!(execution.response.page_size, Some(5));
+        // A locally paginated search always knows the whole-set size.
+        assert_eq!(execution.response.total_results, Some(0));
+    }
+
+    /// BH-002: a native page omits `total_results`, so history must not persist
+    /// the page length as a whole-set size. It stores the `-1` unknown sentinel,
+    /// which the operator views (CLI/UI) render without a count.
+    #[tokio::test]
+    async fn native_page_history_stores_the_unknown_total_sentinel() {
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!("amatl-history-native-{nonce}.sqlite3"));
+        let mut config = archive_config();
+        config.persistence.enabled = true;
+        config.persistence.history_enabled = true;
+        config.persistence.path = path.display().to_string();
+
+        let seen = Arc::new(std::sync::Mutex::new(Vec::new()));
+        let registry = ProviderRegistry::builtin()
+            .with(Arc::new(PaginationCaptureFactory { seen: seen.clone() }));
+        let service = AmatlService::with_registry(config, false, registry).await;
+
+        // Native pagination: the sole available source is pagination-capable.
+        service
+            .search_paginated("rust".into(), ServiceSurface::api(None), Some(0), Some(5))
+            .await
+            .unwrap();
+
+        let history = service.history(10, 0).await.unwrap();
+        let entry = history
+            .first()
+            .expect("a search history entry was recorded");
+        assert_eq!(
+            entry.total_results, -1,
+            "a native page must record the unknown-total sentinel, not the page length"
+        );
+
+        drop(service);
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(format!("{}.lock", path.display()));
     }
 
     #[tokio::test]

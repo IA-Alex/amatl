@@ -653,9 +653,16 @@ async fn history_command(command: HistoryCommand, config: &Config) -> anyhow::Re
                 println!("history: empty");
             } else {
                 for entry in entries {
+                    // `-1` marks a stored total AMATL never knew (native
+                    // provider page): show it as unknown rather than a count.
+                    let total = if entry.total_results < 0 {
+                        "unknown".to_string()
+                    } else {
+                        format!("{} results", entry.total_results)
+                    };
                     println!(
-                        "{}\t{}\t{} results\t{}",
-                        entry.id, entry.surface, entry.total_results, entry.raw_query
+                        "{}\t{}\t{}\t{}",
+                        entry.id, entry.surface, total, entry.raw_query
                     );
                 }
             }

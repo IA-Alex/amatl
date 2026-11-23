@@ -587,10 +587,18 @@ function render(state) {
     return;
   }
   for (const result of state.items) renderSearchResult(result);
-  paginationNode.hidden = state.totalPages <= 1;
-  pageLabel.textContent = `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`;
+  // With an unknown total, show the paginator whenever a further page may
+  // exist; with a known total, only when there is more than one page.
+  paginationNode.hidden = state.knownTotal
+    ? state.totalPages <= 1
+    : !state.hasMore && state.page === 0;
+  pageLabel.textContent = state.knownTotal
+    ? `${t("pageOf")} ${state.page + 1} ${t("of")} ${state.totalPages}`
+    : `${t("pageOf")} ${state.page + 1}`;
   previousButton.disabled = state.page === 0;
-  nextButton.disabled = state.page + 1 >= state.totalPages;
+  nextButton.disabled = state.knownTotal
+    ? state.page + 1 >= state.totalPages
+    : !state.hasMore;
 }
 
 function deepItems(payload) {
@@ -761,10 +769,16 @@ async function run(mode, page) {
       const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
         ? payload.page_size
         : PAGE_SIZE;
-      const totalResults = typeof payload.total_results === "number"
-        ? payload.total_results
-        : items.length;
-      
+      // A native provider page omits `total_results`; the page length is then
+      // not a whole-set size. Track both the known-total case and, when the
+      // total is unknown, whether the page came back full (so a next page may
+      // exist) instead of collapsing to a single page.
+      const knownTotal = typeof payload.total_results === "number";
+      const totalResults = knownTotal ? payload.total_results : items.length;
+      const hasMore = knownTotal
+        ? false
+        : items.length >= pageSize;
+
       const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
 
       store.update({
@@ -772,8 +786,12 @@ async function run(mode, page) {
         mode,
         items,
         totalResults,
+        knownTotal,
+        hasMore,
         page: currentPage,
-        totalPages: Math.max(1, Math.ceil(totalResults / pageSize))
+        totalPages: knownTotal
+          ? Math.max(1, Math.ceil(totalResults / pageSize))
+          : currentPage + (hasMore ? 2 : 1)
       });
       
       if (!items.length) {
@@ -783,6 +801,9 @@ async function run(mode, page) {
         setStatusKey("noResults", "empty");
       } else if (payload.status === "partial_success") {
         renderStatus(() => countLabel(items.length, "partialResults"), "partial");
+      } else if (!knownTotal) {
+        // The whole-set size is unknown: report this page only.
+        renderStatus(() => countLabel(items.length, "resultsCount"), "success");
       } else {
         renderStatus(
           () => `${items.length} ${t("of")} ${totalResults} ${t(pluralKey("resultsCount", totalResults))}`,
@@ -940,7 +961,10 @@ previousButton.addEventListener("click", () => {
 });
 nextButton.addEventListener("click", () => {
   const state = store.get();
-  if (state.page + 1 < state.totalPages) run("search", state.page + 1);
+  const canAdvance = state.knownTotal
+    ? state.page + 1 < state.totalPages
+    : state.hasMore;
+  if (canAdvance) run("search", state.page + 1);
 });
 
 // ── Source availability ─────────────────────────────────────────
@@ -1471,7 +1495,11 @@ function historyLabel(entry) {
   // "1 resultado." instead of "1 resultados." — the singular key exists in every
   // locale and the same helper already drives the results header and per-surface
   // status lines, so the two views of one number cannot disagree.
-  if (Number.isSafeInteger(entry.total_results)) parts.push(countLabel(entry.total_results, "resultsCount"));
+  // `-1` is the server's "total never known" sentinel (a native provider page
+  // omits the whole-set size). Show no count rather than "-1 results".
+  if (Number.isSafeInteger(entry.total_results) && entry.total_results >= 0) {
+    parts.push(countLabel(entry.total_results, "resultsCount"));
+  }
   if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
     parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
   }

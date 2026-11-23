@@ -789,15 +789,44 @@ mod tests {
         assert!(catalog.contains("resultsCount:"));
         assert!(catalog.contains("resultsCountOne:"));
         // The history label selects between them instead of hardcoding the
-        // plural, so the two views of one number cannot disagree.
+        // plural, so the two views of one number cannot disagree. It skips the
+        // `-1` "total never known" sentinel so an unreported count is not
+        // rendered as "-1 results".
         assert!(
             javascript.contains("countLabel(entry.total_results, \"resultsCount\")"),
             "historyLabel must pluralize through countLabel"
         );
         assert!(
+            javascript.contains("entry.total_results >= 0"),
+            "historyLabel must skip the unknown-total sentinel"
+        );
+        assert!(
             !javascript.contains("${entry.total_results} ${t(\"resultsCount\")}"),
             "historyLabel still bypasses pluralization"
         );
+    }
+
+    /// A native provider page omits `total_results`, so the page length is not
+    /// a whole-set size. The UI must keep paging forward (a full page implies a
+    /// further page may exist) instead of collapsing to a single page and
+    /// hiding the paginator (BH-001).
+    #[test]
+    fn unknown_total_keeps_pagination_reachable() {
+        let javascript = text("/app.js");
+        let store = text("/store.js");
+        // The store tracks the two facts the render needs.
+        assert!(store.contains("knownTotal"));
+        assert!(store.contains("hasMore"));
+        // The payload handler distinguishes a known total from a page length.
+        assert!(
+            javascript.contains("const knownTotal = typeof payload.total_results === \"number\"")
+        );
+        assert!(javascript.contains("items.length >= pageSize"));
+        // The render shows the paginator and enables Next when more may exist.
+        assert!(javascript.contains("state.knownTotal"));
+        assert!(javascript.contains("state.hasMore"));
+        // The Next handler advances when the total is unknown but more may exist.
+        assert!(javascript.contains("const canAdvance = state.knownTotal"));
     }
 
     /// The token field is a credential, not a query filter: it lives in its own
