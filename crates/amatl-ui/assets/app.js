@@ -1776,11 +1776,8 @@ function applyTranslations() {
   document.querySelector("#search-heading").textContent = t("searchHeading");
   document.querySelector("#search-button").textContent = t("searchButton");
   document.querySelector("#deep-button").textContent = t("deepButton");
-  document.querySelector("#answer-button").textContent = t("answerButton");
   document.querySelector("label[for='deep-max-fetches']").textContent = t("deepMaxFetchesLabel");
   deepMaxFetchesInput.placeholder = t("deepMaxFetchesPlaceholder");
-  document.querySelector("#answer-config-summary").textContent = t("answerConfigLabel");
-  document.querySelector("#answer-toggle-label").textContent = t("answerToggleLabel");
   document.querySelector("#previous").textContent = t("previous");
   document.querySelector("#next").textContent = t("next");
   document.querySelector("#cancel-button").textContent = t("cancel");

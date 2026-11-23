@@ -59,24 +59,10 @@
             <div class="search-actions" aria-label="Search type" data-i18n-aria-label="searchActionsLabel">
               <button id="search-button" type="submit" data-mode="search" disabled aria-disabled="true" data-i18n="searchButton">Search</button>
               <button id="deep-button" class="secondary-action" type="submit" data-mode="deep" aria-describedby="search-mode-help" data-i18n="deepButton">Analyze evidence</button>
-              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true" aria-describedby="answer-hint" data-i18n="answerButton" hidden>AI summary</button>
             </div>
             <div class="search-guidance">
-              <p id="answer-hint" class="field-help" hidden></p>
               <p id="search-mode-help" class="field-help" data-i18n="searchModeHelp">Search ranks results from the active source. Analyze evidence fetches pages and verifies excerpts.</p>
             </div>
-          </div>
-          <!-- Hidden until the server reports the strategist configured and
-               usable: with no endpoint/model there is nothing to enable, and
-               a dead checkbox under the search box is noise. Same gating the
-               source selector already uses (`hidden` + reveal on state). -->
-          <div class="model-options" id="model-options" hidden>
-              <label class="model-toggle-row">
-              <input type="checkbox" id="strategist-enabled-toggle" aria-describedby="strategist-help strategist-toggle-status" disabled>
-              <span id="strategist-toggle-label" data-i18n="strategistToggleLabel">Añadir consulta con modelo (opcional)</span>
-            </label>
-            <p id="strategist-help" class="field-help" data-i18n="strategistHelp">El modelo propone otra consulta; ambas usan la fuente activa.</p>
-            <p id="strategist-toggle-status" class="field-help" hidden></p>
           </div>
           <details class="filters search-filters">
             <summary id="filters-summary" data-i18n="filtersLabel">Search filters</summary>
@@ -139,10 +125,6 @@
           <span></span><span></span><span></span>
         </div>
         <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true" data-i18n="cancel">Cancelar</button>
-        <div id="answer-card" class="answer-card" hidden>
-          <p id="answer-text" class="answer-text"></p>
-          <p id="answer-meta" class="answer-meta"></p>
-        </div>
         <ol id="results" class="results" tabindex="-1" aria-labelledby="result-heading"></ol>
         <p id="results-empty" class="empty-note" hidden></p>
         <nav id="pagination" class="pagination" aria-label="Páginas de resultados" data-i18n-aria-label="paginationLabel" hidden>
@@ -166,15 +148,6 @@
           <p id="service-summary" class="status" role="status" aria-live="polite"></p>
           <p id="service-mode" class="field-help" hidden></p>
           <ul id="service-indicators" class="indicator-list" role="list"></ul>
-          <details id="answer-config" class="answer-config" hidden>
-            <summary id="answer-config-summary" data-i18n="answerConfigLabel">Configuración de IA</summary>
-            <dl id="answer-config-body" class="answer-config-body"></dl>
-            <label class="answer-toggle-row">
-              <input type="checkbox" id="answer-enabled-toggle">
-              <span id="answer-toggle-label" data-i18n="answerToggleLabel">Activar función</span>
-            </label>
-            <p id="answer-toggle-status" class="field-help" hidden></p>
-          </details>
         </section>
 
         <section class="history-panel" aria-labelledby="history-heading" hidden>

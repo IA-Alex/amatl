@@ -9,19 +9,14 @@ fuente real; el registro de providers sigue siendo extensible.
 No es un chatbot, generador de texto, crawler masivo, dashboard analítico ni
 agente autónomo. La búsqueda real requiere una clave de Marginalia; sin ella,
 `--mock` permite probar el flujo localmente. Search permanece ligero; Deep,
-Trafilatura, Chromium, SQLite, cachés y la síntesis de respuesta ("Resumen con
-IA", ver abajo) son opcionales. El renderer de Chromium está
-conectado a través del harness de aislamiento, desactivado por defecto y sin
-ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL, de
-modo que no puede convertirse en una segunda vía de egress.
+Trafilatura, Chromium, SQLite, cachés y la inferencia remota de embeddings para
+el ranking ("`[inference]`", ver abajo) son opcionales. El renderer de Chromium
+está conectado a través del harness de aislamiento, desactivado por defecto y
+sin ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL,
+de modo que no puede convertirse en una segunda vía de egress.
 
-Sobre resultados de Search, AMATL puede sintetizar opcionalmente una respuesta
-citada por número de fuente (`[1]`, `[2]`…) usando un modelo remoto configurado
-explícitamente por el operador (`data_policy.inference = "remote_explicit"` y
-`[answer]`). Sigue sin ser obligatorio: apagado por defecto, exige credencial
-propia por variable de entorno y un interruptor con scope `admin` permite
-activarlo/desactivarlo desde la UI sin reiniciar el proceso ni tocar el resto
-de `amatl.toml`. Ver [docs/resumen-con-ia.md](docs/resumen-con-ia.md).
+AMATL no genera texto: Search y Deep devuelven resultados y evidencia
+verificable, nunca una respuesta redactada por un modelo.
 
 ## Invariantes visibles
 

@@ -172,6 +172,12 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
 
 ## ADR-011 — Síntesis de respuesta opcional ("Resumen con IA") sobre resultados de Search
 
+> **Retirado (2026-11-22).** El propietario retiró esta capacidad por completo:
+> `answer.rs`, la sección `[answer]`, las rutas `/answer*`, la tool MCP `answer`
+> y el doc `docs/resumen-con-ia.md` ya no existen. Este ADR queda como registro
+> histórico de la decisión y de su razonamiento, no como descripción del
+> sistema vigente.
+
 - **Fecha:** 2026-08-16
 - **Estado:** Aceptada
 - **Contexto:** `plan_amatl.md` y `fase_a_contratos.md` prohíben introducir un
@@ -509,6 +515,11 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `service.rs` (semántica set/clear/present, no persistencia en config).
 
 ## ADR-015 — Búsqueda con modelo (*strategist*) opcional y apagada por defecto
+
+> **Retirado (2026-11-22).** El propietario retiró esta capacidad junto con la
+> de ADR-011: `strategist.rs`, `strategist/llm.rs`, `config/strategist.rs`, la
+> sección `[strategist]`, la ruta `/strategist/enabled` y el toggle de UI ya no
+> existen. Este ADR queda como registro histórico de la decisión.
 
 - **Fecha:** 2026-10-12
 - **Estado:** Aceptada

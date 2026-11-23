@@ -1153,9 +1153,9 @@ struct ProviderToggleParams {
 }
 
 /// Add or remove one name from `providers.enabled` — admin scoped, same
-/// trust tier as `/answer/enabled` and `/reload`, whose pattern this copies
-/// exactly (validate a candidate config first, write only the narrow field,
-/// then apply through the same atomic reload).
+/// trust tier as `/reload`, whose pattern this copies exactly (validate a
+/// candidate config first, write only the narrow field, then apply through
+/// the same atomic reload).
 ///
 /// This never writes or touches a provider's governance ficha
 /// (`approval_status`, `reviewer`, `reviewed_at`, …). Enabling a name whose

@@ -302,56 +302,6 @@ Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
   a gastar presupuesto redescubriendo la caída. `amatl db circuits` lo muestra y
   `--reset` lo cierra.
 
-### Activar o desactivar Resumen con IA
-
-`POST /answer/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) reutiliza
-exactamente este mismo mecanismo de recarga en caliente: escribe sólo la
-clave `answer.enabled` en el archivo de configuración con `toml_edit`
-(preserva comentarios y el resto del archivo), valida una configuración
-candidata con el flag ya volteado *antes* de escribir nada, y aplica el
-cambio con el mismo `reload` atómico de arriba. Activar la función con
-`answer.endpoint`/`answer.model` incompletos falla cerrado
-(`configuration_invalid`) sin tocar el archivo ni el servicio en ejecución.
-Es la única vía soportada para operar el interruptor en caliente; editar
-`answer.enabled` a mano en el archivo sigue funcionando, pero exige el mismo
-`POST /reload` o `SIGHUP` de cualquier otro cambio manual. El botón `Resumen
-con IA` en la UI web llama a esta misma ruta. Detalle completo del feature en
-`docs/resumen-con-ia.md`.
-
-### Activar o desactivar la búsqueda con modelo (strategist)
-
-`POST /strategist/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) opera
-el mismo patrón exacto que `/answer/enabled`: valida un candidato con el flag
-ya volteado *antes* de escribir, escribe sólo `strategist.enabled` en el
-archivo con `toml_edit` (preserva comentarios) y aplica el cambio con el mismo
-`reload()` atómico sin reiniciar.
-
-Este toggle controla si **el LLM participa en la búsqueda**. Con él apagado
-(el default) `search`/`deep` corren 100% determinísticos — el modelo no
-interviene en absoluto. Con él encendido, el strategist analiza los resultados
-de la primera búsqueda y propone una query refinada que AMATL ejecuta contra
-los providers reales y fusiona por URL canónica (complementa, nunca reordena y
-nunca inventa resultados). El botón `Búsqueda con modelo` en la UI web llama a
-esta misma ruta.
-
-Encenderlo exige una config real y **falla cerrado** si no la hay: `Config`
-rechaza `strategist.enabled = true` sin `endpoint`, `model` y `credential_env`
-válidos, y sin egress de red (perfil standard + `egress = "governed"`). El
-strategist es una capacidad LLM independiente de los embeddings de ranking que
-gobierna `[data_policy].inference`, así que **no requiere** cambiar
-`inference` a `remote_explicit`. La credencial se lee de la variable nombrada
-en `credential_env` en el momento de la llamada; su presencia se reporta en
-`/status` (`strategist.available`) sin exponer el valor.
-
-```toml
-[strategist]
-enabled = false
-endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
-model = "deepseek-ai/DeepSeek-V3"
-credential_env = "DEEPINFRA_API_KEY"
-timeout_ms = 800
-```
-
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición
@@ -359,11 +309,11 @@ Prometheus 0.0.4:
 
 | Métrica | Tipo | Significado |
 |---|---|---|
-| `amatl_search_requests_total`, `amatl_deep_requests_total`, `amatl_answer_requests_total` | counter | solicitudes recibidas por superficie |
-| `amatl_search_errors_total`, `amatl_deep_errors_total`, `amatl_answer_errors_total` | counter | solicitudes que terminaron en error, incluida `answer_unavailable` (sin cita válida o backend no disponible) |
+| `amatl_search_requests_total`, `amatl_deep_requests_total` | counter | solicitudes recibidas por superficie |
+| `amatl_search_errors_total`, `amatl_deep_errors_total` | counter | solicitudes que terminaron en error |
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
-| `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
-| `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
+| `amatl_search_latency_ms`, `amatl_deep_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
+| `amatl_search_latency_samples`, `amatl_deep_latency_samples` | gauge | muestras retenidas en la ventana |
 | `amatl_sources_declared` | gauge | fuentes que declara el despliegue, **incluidas** las deshabilitadas |
 | `amatl_sources_available` | gauge | fuentes declaradas con superficie `available`; es la misma cantidad que `sources_available` en `/ready` |
 | `amatl_sources_circuit_open` | gauge | fuentes declaradas en cooldown de circuito |

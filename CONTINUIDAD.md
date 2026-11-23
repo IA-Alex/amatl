@@ -185,6 +185,9 @@ trabajo nuevos, todos en `amatl-core`/`amatl-server`/`amatl-ui` y su
 documentación, ninguno cambia `schema_version` ni las invariantes de Search:
 
 1. **"Resumen con IA" (síntesis de respuesta, nuevo módulo `answer.rs`).**
+   *— Retirado el 2026-11-22: `answer.rs`, la sección `[answer]`, las rutas
+   `/answer*` y la tool MCP `answer` ya no existen; se conserva el párrafo
+   como registro histórico. —*
    Sintetiza una respuesta en español citando `[n]` sólo sobre índices de
    fuente reales (`extract_citations` valida, `strip_invalid_citations`
    elimina marcadores fabricados del texto visible de forma segura en UTF-8);

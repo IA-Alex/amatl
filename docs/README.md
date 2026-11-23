@@ -57,7 +57,6 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 | [configuracion.md](configuracion.md) | Referencia de configuración (`amatl.toml`) |
 | [operacion.md](operacion.md) | Operación del servicio: arranque, recarga, TLS, observabilidad |
 | [gobernanza-providers.md](gobernanza-providers.md) | Aprobación y gobernanza de providers |
-| [resumen-con-ia.md](resumen-con-ia.md) | Sintetización `answer` ("Resumen con IA") |
 | [identidad-visual.md](identidad-visual.md) | Tokens visuales e identidad de marca |
 | [ux-ui-spec.md](ux-ui-spec.md) | Especificación UX/UI y [wireframe](ux-wireframe.svg) |
 

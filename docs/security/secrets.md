@@ -30,8 +30,8 @@ responsabilidad del operador. Lo que sí garantiza es que una escritura
 administrativa no lo relaje: cada toggle hace un reemplazo atómico (fichero
 temporal privado + `rename`) que conserva el modo que el fichero ya tenía, y un
 fichero nuevo se crea `0600`. Antes el `rename` publicaba el modo del temporal,
-de modo que el primer `POST /answer/enabled` devolvía un `0600` al umbral por
-defecto del `umask`.
+de modo que la primera escritura administrativa de un toggle devolvía un `0600`
+al umbral por defecto del `umask`.
 
 ## Credenciales de providers
 

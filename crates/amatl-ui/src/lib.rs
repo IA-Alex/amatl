@@ -126,7 +126,6 @@ mod tests {
         // The ids the UI audits grep for, so a rename cannot pass silently.
         let index = text("/");
         for id in [
-            "id=\"model-options\"",
             "id=\"local-token\"",
             "id=\"access-summary\"",
         ] {
@@ -218,7 +217,6 @@ mod tests {
         let css = text("/styles.css");
         assert!(css.contains("@media (max-width: 44rem)"));
         assert!(css.contains("@media (orientation: landscape)"));
-        assert!(css.contains("#search-form > .model-options { grid-column: 1 / -1; }"));
         assert!(
             css.contains(".filters summary { width: fit-content; min-height: var(--control-h);")
         );
@@ -341,7 +339,7 @@ mod tests {
         assert!(javascript.contains("body.page = store.get().page"));
         assert!(javascript.contains("headers.Authorization"));
         assert!(!javascript.contains("searchParams"));
-        // Search/deep/answer routing is POST-only; GET exists for the local
+        // Search/deep routing is POST-only; GET exists for the local
         // read panels (status/history/saved) and is never used for retrieval.
         assert!(!javascript.contains("globalThis.api.get(endpoint"));
         // Pagination is server-side only: no local windowing of the result set.
@@ -454,8 +452,6 @@ mod tests {
             "cacheLabel",
             "uiLanguageNameEn",
             "uiLanguageNameEs",
-            "strategistToggleLabel",
-            "strategistHelp",
         ] {
             assert!(catalog.contains(key), "missing catalog key: {key}");
         }
@@ -501,9 +497,6 @@ mod tests {
             }
         }
         assert!(html.contains("id=\"search-button\" type=\"submit\" data-mode=\"search\" disabled"));
-        assert!(html.contains("aria-describedby=\"strategist-help strategist-toggle-status\""));
-        assert!(html
-            .contains("id=\"strategist-help\" class=\"field-help\" data-i18n=\"strategistHelp\""));
     }
 
     #[test]
@@ -819,7 +812,6 @@ mod tests {
         assert!(html.contains("class=\"filters evidence-options\""));
         assert!(html.contains("class=\"filters source-credentials\""));
         assert!(html.contains("class=\"filters access-filters\""));
-        assert!(html.contains("id=\"answer-hint\" class=\"field-help\" hidden"));
         assert!(html.contains("<div class=\"search-guidance\">"));
         assert!(html.contains("<details class=\"clients-panel\" hidden>"));
         assert!(html.contains("<details class=\"operator-tools\">"));
@@ -829,7 +821,8 @@ mod tests {
         );
         assert!(text("/styles.css").contains(".search-guidance { grid-column: 1 / -1;"));
         assert!(text("/i18n.js").contains("mockSourcesLabel: \"Fuentes de prueba\""));
-        assert!(!html.contains("id=\"answer-button\" class=\"secondary-action is-unavailable\" type=\"submit\" data-mode=\"answer\" disabled"));
+        assert!(!html.contains("answer"));
+        assert!(!html.contains("strategist"));
         assert!(html.contains("id=\"access-summary\" data-i18n=\"accessLabel\""));
         assert!(html.contains("id=\"local-token\""));
         assert!(catalog.contains("accessLabel:"));

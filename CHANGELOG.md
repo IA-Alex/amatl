@@ -296,6 +296,22 @@ adapter/extractor versions are independent axes as well.
 
 ### Removed
 
+- The optional answer-synthesis (`answer`) and search-strategist (`strategist`)
+  chat capabilities, retired end to end. The modules (`amatl-core/src/answer.rs`,
+  `strategist.rs`, `strategist/llm.rs`, `config/strategist.rs`) are gone, and so
+  are the `[answer]`/`[strategist]` configuration sections, the `Config` fields
+  and their validate-before-write toggles, the `POST /answer`, `PATCH /answer`
+  and `POST /answer/enabled`/`/strategist/enabled` routes, the `answer` MCP tool
+  (the surface now exposes **five** tools), the `answer`/`strategist` read-only
+  blocks in `/status`, the `amatl_answer_*` metrics and the
+  `answer_unavailable` error code. AMATL's Search and Deep stay fully
+  deterministic and unchanged; the optional remote *embedding* backend
+  (`[inference]`) is untouched. The web UI follows: the "AI summary" button, the
+  answer card, the AI-configuration panel and the "search with model" toggle are
+  removed from the markup, styles, message catalog and docs, and the UI's MCP
+  tool vocabulary drops `answer` so a client created with the `mcp` scope
+  validates again (`MCP_TOOL_NAMES` mirrors `MCP_TOOLS`). `docs/resumen-con-ia.md`
+  is deleted.
 - Brave as a shipped source: the adapter module (`providers/brave.rs`), its
   registry factory, its built-in governance record and the UI credential
   affordance are gone, so `brave` in `providers.enabled` now fails configuration

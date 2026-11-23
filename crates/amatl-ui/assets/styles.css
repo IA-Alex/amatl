@@ -222,7 +222,6 @@ h1 {
 .search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.65rem; align-items: start; }
 .search-guidance { grid-column: 1 / -1; min-width: 0; }
 .search-guidance p { max-width: 72ch; }
-.search-guidance #answer-hint { margin-bottom: 0.35rem; color: var(--warning); }
 
 input, select {
   width: 100%;
@@ -256,15 +255,8 @@ button:disabled { cursor: not-allowed; filter: grayscale(0.6); opacity: 0.55; }
 .secondary-action { border-color: var(--border); background: var(--surface); color: var(--text); }
 button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 
-/* Looks muted like :disabled (same grayscale/opacity), but stays a real,
-   clickable, focusable button — a genuinely disabled element can't be
-   hovered on touch and gives no reason why. Clicking it explains what is
-   missing instead of firing a request that would just fail. */
-.secondary-action.is-unavailable { filter: grayscale(0.6); opacity: 0.55; }
-.secondary-action.is-unavailable:hover { filter: grayscale(0.4) brightness(1.05); }
-
-/* Matches the [n] citation markers in .answer-text so a source can be found
-   by eye, not just trusted blindly. */
+/* Matches the [n] citation markers so a source can be found by eye, not just
+   trusted blindly. */
 .result-index {
   display: inline-block;
   margin-right: 0.4rem;
@@ -316,8 +308,8 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .deep-options label { font-size: 0.75rem; }
 .deep-options input { width: 11rem; max-width: 100%; }
 /* Operator credential management (option A): its own secondary row, mirroring
-   the rhythm (spacing/font/gap) of .deep-options/.model-options so it reads as
-   one more configuration row without competing with the search axis. */
+   the rhythm (spacing/font/gap) of .deep-options so it reads as one more
+   configuration row without competing with the search axis. */
 .credential-actions {
   display: flex;
   align-items: center;
@@ -373,20 +365,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .field-help[data-state="error"] { color: var(--error); }
 
 #results-empty { margin-top: 1rem; }
-
-/* Sits above the raw results, never in place of them — search/deep results
-   always render below unchanged; this is an additional, clearly separate
-   layer, not a replacement view. */
-.answer-card {
-  min-width: 0;
-  margin-top: 1.2rem;
-  padding: 1.1rem 1.2rem;
-  border: 0.0625rem solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-}
-.answer-text { margin: 0; color: var(--text); line-height: 1.6; overflow-wrap: anywhere; }
-.answer-meta { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.75rem; }
 
 .results { min-width: 0; margin: 1rem 0 0; padding: 0; list-style: none; }
 /* The blanket `min-height: 0` used to strip the minimum from every control in a
@@ -487,64 +465,9 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .provenance dt { color: var(--muted); font-size: 0.68rem; }
 .provenance dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
 
-/* Read-only — matches .provenance's disclosure/definition-list treatment so
-   it reads as the same kind of "more detail, collapsed by default" control,
-   not a new visual pattern. */
-.answer-config { margin-top: 0.8rem; color: var(--secondary); }
-.answer-config summary { width: fit-content; cursor: pointer; font-size: 0.8rem; }
-.answer-config-body {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin: 0.75rem 0 0;
-  padding: 0.9rem;
-  border: 0.0625rem solid var(--border);
-  border-radius: var(--radius-md);
-}
-.answer-config-body div { min-width: 0; }
-.answer-config-body dt { color: var(--muted); font-size: 0.68rem; }
-.answer-config-body dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
-
-.answer-toggle-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  color: var(--secondary);
-  cursor: pointer;
-  width: fit-content;
-}
-.answer-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
-/* Shared checkbox look and disabled dimming with `.provider-toggle` below —
-   the two toggles must not drift (they were already diverging: the provider
-   one had lost the disabled opacity). The cursor differs on purpose:
-   `not-allowed` for the permanently-disabled answer toggle (not configured),
-   `wait` for the provider toggle's transient in-flight state. */
-.answer-toggle-row input:disabled,
+/* The provider toggle's transient in-flight state dims while it waits for the
+   server to confirm the change. */
 .provider-toggle input:disabled { opacity: 0.55; }
-.answer-toggle-row input:disabled { cursor: not-allowed; }
-/* Search-with-model (strategist) toggle — a search-level control, styled like
-   the answer toggle so the two checkbox switches stay visually consistent. */
-.model-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-top: 0.7rem;
-  align-items: flex-start;
-}
-.model-toggle-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--secondary);
-  cursor: pointer;
-  width: fit-content;
-}
-.model-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
-.model-toggle-row input:disabled { opacity: 0.55; cursor: not-allowed; }
-.model-options .field-help { margin: 0; }
 .provenance a { color: var(--accent); }
 
 .loading { display: flex; gap: 0.35rem; margin: 2rem 0; }
@@ -578,11 +501,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .search-row { grid-template-columns: minmax(0, 1fr); }
   .search-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .search-actions button { padding-inline: 0.6rem; }
-  /* Three actions over two columns: give the primary search action the full
-     row so the two secondary actions pair cleanly underneath instead of
-     leaving a lone half-width button and an empty grid cell. */
-  .search-actions #search-button { grid-column: 1 / -1; }
-  .search-actions.answer-mode-hidden #deep-button { grid-column: 1 / -1; }
   .filter-grid { grid-template-columns: minmax(0, 1fr); }
   .result-header { display: block; }
   .status { margin-top: 0.4rem; text-align: left; }
@@ -590,7 +508,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .document-header, .fragment-footer { display: block; }
   .document-status, .fragment-verification { display: inline-block; margin-top: 0.5rem; }
   .provenance dl { grid-template-columns: minmax(0, 1fr); }
-  .answer-config-body { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (orientation: landscape) and (max-height: 30rem) and (max-width: 54rem) {
@@ -603,16 +520,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
     column-gap: 0.75rem;
     row-gap: 0.25rem;
   }
-  #search-form > .search-row,
-  #search-form > .model-options { grid-column: 1 / -1; }
-  #model-options {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    column-gap: 0.75rem;
-    align-items: center;
-    margin-top: 0.25rem;
-  }
-  #model-options > .field-help { max-width: none; margin-top: 0; }
+  #search-form > .search-row { grid-column: 1 / -1; }
   .search-guidance p { max-width: none; }
   .result-area { margin-top: 0.5rem; }
 }
