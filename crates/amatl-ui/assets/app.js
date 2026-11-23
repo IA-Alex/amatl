@@ -77,6 +77,10 @@ const MAX_SAVED_PAYLOAD_BYTES = 1024 * 1024;
 const LIST_LIMIT = 20;
 let searchAvailable = false;
 let syntheticSourceMode = false;
+// Whether `/status` last reported usable local persistence. When it is false,
+// saving a document can only answer 503, so the Save control is disabled up
+// front instead of offering a click the server already refuses.
+let storageReady = false;
 
 // Allowlist mapping a server-reported provider status onto the badge class the
 // stylesheet actually defines. Anything unknown falls back to `unavailable`, so
@@ -533,6 +537,11 @@ function renderDeepDocument(item) {
 
   const saveButton = fragment.querySelector(".save-document");
   saveButton.textContent = t("savedAction");
+  // With persistence off (or unknown) the save can only 503, and the reason is
+  // already on screen in the service panel, so the control is disabled instead
+  // of offering a click that cannot succeed.
+  saveButton.disabled = !storageReady;
+  saveButton.title = storageReady ? "" : t("savedFailedStorage");
   saveButton.addEventListener("click", () => saveDocument(documentValue, provenance, saveButton));
 
   resultsNode.append(fragment);
@@ -656,7 +665,10 @@ async function run(mode, page) {
   store.update({ controller, pending: true, page: mode === "deep" ? 0 : page });
 
   const selectedTargets = mode === "deep" ? store.get().selectedTargets.slice() : [];
-  if (mode === "search") store.update({ selectedTargets: [] });
+  // A new search rebuilds the result set, so a Deep selection only stays valid if
+  // its URL is still present. The selection is reconciled against the payload
+  // once it commits (see below) instead of being dropped here: refining a query
+  // then re-searching used to silently lose every checkbox the operator had set.
 
   resultHeading.textContent = mode === "deep"
     ? t("evidenceHeading")
@@ -721,6 +733,19 @@ async function run(mode, page) {
 
       const currentPage = typeof payload.page === "number" ? payload.page : store.get().page;
 
+      // Keep only the Deep selections whose canonical URL survived the new result
+      // set: the checkboxes the operator already ticked stay ticked when the
+      // result is still there, and a stale URL is dropped instead of pointing at
+      // something no longer on screen.
+      const visibleUrls = new Set(
+        items
+          .map((result) => safeHttpUrl(result.canonical_url)?.href)
+          .filter((href) => typeof href === "string"),
+      );
+      const survivingTargets = store
+        .get()
+        .selectedTargets.filter((target) => visibleUrls.has(target.url));
+
       store.update({
         pending: false,
         mode,
@@ -729,6 +754,7 @@ async function run(mode, page) {
         knownTotal,
         hasMore,
         page: currentPage,
+        selectedTargets: survivingTargets,
         totalPages: knownTotal
           ? Math.max(1, Math.ceil(totalResults / pageSize))
           : currentPage + (hasMore ? 2 : 1)
@@ -1096,6 +1122,9 @@ async function fetchServiceState() {
     if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
     const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
     const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
+    // Only a healthy persistence turns saving on; anything else (off, broken,
+    // unreachable) means `/saved` answers 503, so the Save control is disabled.
+    storageReady = Boolean(storage.enabled && storage.available);
     serviceIndicators.replaceChildren();
     serviceIndicators.append(
       indicator(
@@ -1133,6 +1162,9 @@ async function fetchServiceState() {
     return payload;
   } catch (_) {
     syntheticSourceMode = false;
+    // No authoritative `/status` means no evidence persistence is usable: fail
+    // closed so a Save click is not offered against an unknown backend.
+    storageReady = false;
     providerStatus.hidden = false;
     sourceCredentialsDetails.hidden = false;
     accessDetails.hidden = false;
@@ -1557,6 +1589,10 @@ function renderClientRow(client) {
   rotate.type = "button";
   rotate.className = "ghost-action";
   rotate.textContent = t("clientRotate");
+  // The consequence is stated at the control, not only inside the dialog it
+  // opens: "rotate" reads as "show me another", while the old token actually
+  // stops working. The title carries the same warning the dialog repeats.
+  rotate.title = t("clientRotateConfirm");
   rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
   const remove = document.createElement("button");
   remove.type = "button";
@@ -1591,7 +1627,11 @@ async function fetchServerClients() {
 // The one place the plaintext token is ever visible: it never leaves this
 // dialog, never touches `localStorage`, and the field is cleared the moment
 // the operator closes it (see `client-token-close`'s listener below).
+// `tokenCopied` records whether the operator confirmed they have the secret, so
+// an accidental close can ask before it becomes unrecoverable (see below).
+let tokenCopied = false;
 function openClientTokenDialog(id, token) {
+  tokenCopied = false;
   clientTokenId.textContent = id;
   clientTokenValue.value = token;
   clientTokenDialog.showModal();
@@ -1599,13 +1639,39 @@ function openClientTokenDialog(id, token) {
   clientTokenValue.select();
 }
 
-clientTokenClose.addEventListener("click", () => clientTokenDialog.close());
+// Closing discards a secret that can never be shown again — the only recovery is
+// rotating it, which invalidates the one just created. So a close that would
+// destroy an uncopied token asks first, the same way `Rotar`/`Eliminar` already
+// confirm their irreversible effect instead of letting one stray Escape lose the
+// credential. Once copied (or once the field is already empty) the close is free.
+function closeClientTokenDialog() {
+  if (clientTokenValue.value && !tokenCopied && !globalThis.confirm(t("clientTokenCloseConfirm"))) {
+    return;
+  }
+  clientTokenDialog.close();
+}
+
+clientTokenClose.addEventListener("click", closeClientTokenDialog);
+
+// Escape fires `cancel` before the dialog closes; re-route it through the guard
+// so a native dismissal cannot bypass the confirmation.
+clientTokenDialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeClientTokenDialog();
+});
+
+// A backdrop click closes the dialog like a native modal, but it must honour the
+// same guard rather than discard an uncopied token silently.
+clientTokenDialog.addEventListener("click", (event) => {
+  if (event.target === clientTokenDialog) closeClientTokenDialog();
+});
 
 // The token is single-use: clear it whenever the dialog closes, not only when
-// the Close button is pressed, so Escape or a backdrop click cannot leave a live
+// the Close button is pressed, so a backdrop click cannot leave a live
 // credential sitting in the DOM.
 clientTokenDialog.addEventListener("close", () => {
   clientTokenValue.value = "";
+  tokenCopied = false;
   setInlineStatus(clientTokenStatus, "", null);
 });
 
@@ -1615,6 +1681,8 @@ clientTokenCopy.addEventListener("click", async () => {
   try {
     if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
     await navigator.clipboard.writeText(token);
+    // A confirmed copy makes the close free: the operator already has the secret.
+    tokenCopied = true;
     setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
   } catch (_) {
     // No clipboard access (insecure context, denied permission): leave the token
