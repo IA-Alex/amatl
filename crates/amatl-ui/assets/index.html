@@ -133,75 +133,6 @@
           <button id="next" type="button" data-i18n="next">Siguiente</button>
         </nav>
       </section>
-
-      <details class="operator-tools">
-        <summary data-i18n="operatorToolsLabel">Operación y administración</summary>
-        <aside class="side-panels">
-        <section class="provider-status" aria-labelledby="provider-heading" hidden>
-          <h2 id="provider-heading" data-i18n="providerHeading">Estado de fuentes</h2>
-          <ul id="provider-list" class="provider-list" role="list"></ul>
-          <p id="provider-status-text" class="status"></p>
-        </section>
-
-        <section class="service-state" aria-labelledby="service-heading" hidden>
-          <h2 id="service-heading" data-i18n="serviceHeading">Estado del servicio</h2>
-          <p id="service-summary" class="status" role="status" aria-live="polite"></p>
-          <p id="service-mode" class="field-help" hidden></p>
-          <ul id="service-indicators" class="indicator-list" role="list"></ul>
-        </section>
-
-        <section class="history-panel" aria-labelledby="history-heading" hidden>
-          <div class="panel-header">
-          <h2 id="history-heading" data-i18n="historyHeading">Historial de búsquedas</h2>
-          <button id="history-purge" type="button" class="ghost-action" data-i18n="historyPurge">Borrar historial</button>
-          </div>
-          <div class="panel-scroll">
-            <ol id="history-list" class="history-list"></ol>
-          </div>
-          <p id="history-empty" class="empty-note" hidden></p>
-          <p id="history-panel-status" class="field-help" role="status"></p>
-        </section>
-
-        <section class="saved-panel" aria-labelledby="saved-heading" hidden>
-          <h2 id="saved-heading" data-i18n="savedHeading">Documentos guardados</h2>
-          <ol id="saved-list" class="saved-list"></ol>
-          <p id="saved-empty" class="empty-note" hidden></p>
-          <p id="saved-panel-status" class="field-help" role="status"></p>
-        </section>
-
-        <details class="clients-panel" hidden>
-          <summary id="clients-heading">Administrar clientes y tokens</summary>
-          <p id="client-panel-status" class="field-help" role="status"></p>
-          <ul id="client-list" class="client-list" role="list"></ul>
-          <p id="client-list-empty" class="empty-note" hidden></p>
-          <details id="client-create">
-            <summary id="client-create-summary">Nuevo cliente</summary>
-            <form id="client-create-form">
-              <div>
-                <label for="client-id">Identificador</label>
-                <input id="client-id" name="id" required maxlength="64" pattern="[a-z0-9_]+" autocomplete="off" placeholder="dashboard">
-                <p id="client-id-help" class="field-help">Minúsculas, números y guión bajo.</p>
-              </div>
-              <fieldset id="client-scopes" class="client-scopes">
-                <legend id="client-scopes-legend">Capacidades</legend>
-                <label class="scope-option"><input type="checkbox" name="scope" value="search"><span>Search</span></label>
-                <label class="scope-option"><input type="checkbox" name="scope" value="deep"><span>Deep</span></label>
-                <label class="scope-option"><input type="checkbox" name="scope" value="read"><span>Lectura</span></label>
-                <label class="scope-option"><input type="checkbox" name="scope" value="write"><span>Escritura</span></label>
-                <label class="scope-option"><input type="checkbox" name="scope" value="admin"><span>Administración</span></label>
-                <label class="scope-option"><input type="checkbox" name="scope" value="mcp"><span>MCP</span></label>
-              </fieldset>
-              <div>
-                <label for="client-expires">Expira (opcional)</label>
-                <input id="client-expires" type="date">
-              </div>
-              <button type="submit" id="client-create-submit">Crear cliente</button>
-              <p id="client-create-error" class="field-help" role="alert" hidden></p>
-            </form>
-          </details>
-        </details>
-        </aside>
-      </details>
     </main>
 
     <template id="result-template">
@@ -256,29 +187,6 @@
       </li>
     </template>
 
-    <template id="history-template">
-      <li class="history-item">
-        <div class="history-body">
-          <p class="history-query"></p>
-          <p class="history-meta"></p>
-        </div>
-        <div class="history-actions">
-          <button type="button" class="history-reuse ghost-action"></button>
-          <button type="button" class="history-delete ghost-action"></button>
-        </div>
-      </li>
-    </template>
-
-    <template id="saved-template">
-      <li class="saved-item">
-        <div class="saved-body">
-          <h3><a class="saved-title" rel="noopener noreferrer"></a></h3>
-          <p class="saved-meta"></p>
-        </div>
-        <button type="button" class="saved-delete ghost-action"></button>
-      </li>
-    </template>
-
     <template id="fragment-template">
       <li class="evidence-fragment">
         <blockquote></blockquote>
@@ -289,17 +197,6 @@
         <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
     </template>
-
-    <dialog id="client-token-dialog" class="token-dialog" aria-labelledby="client-token-heading">
-      <h2 id="client-token-heading">Token generado</h2>
-      <p id="client-token-warning">Cópialo ahora — no volverá a mostrarse.</p>
-      <p class="token-dialog-id"><strong id="client-token-id"></strong></p>
-      <label class="sr-only" for="client-token-value">Token</label>
-      <input id="client-token-value" type="text" readonly>
-      <p id="client-token-status" class="field-help" role="status" hidden></p>
-      <button type="button" id="client-token-copy" class="secondary-action" data-i18n="clientTokenCopy">Copiar</button>
-      <button type="button" id="client-token-close">Cerrar</button>
-    </dialog>
 
     <dialog id="marginalia-dialog" class="token-dialog" aria-labelledby="marginalia-dialog-heading">
       <form id="marginalia-form" method="dialog">
@@ -315,7 +212,7 @@
           <option value="86400000">24 horas</option>
           <option value="0">No caduca (hasta cerrar AMATL)</option>
         </select>
-        <p id="marginalia-key-error" class="field-help" hidden></p>
+        <p id="marginalia-key-error" class="field-help" role="alert" hidden></p>
         <button type="submit" id="marginalia-save">Guardar y verificar</button>
         <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
       </form>

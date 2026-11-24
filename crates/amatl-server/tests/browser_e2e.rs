@@ -342,7 +342,7 @@ async fn synthetic_mode_hides_real_provider_controls_and_no_auth_token_field() {
     for _ in 0..100 {
         state = client
             .execute(
-                "return JSON.stringify({ready: !document.querySelector('.service-state').hidden, accessHidden: document.querySelector('.access-filters').hidden, providersHidden: document.querySelector('.provider-status').hidden, credentialsHidden: document.querySelector('.source-credentials').hidden, queryWidth: document.querySelector('#query').getBoundingClientRect().width, clientsCollapsed: !document.querySelector('.clients-panel').open, operatorToolsCollapsed: !document.querySelector('.operator-tools').open, answerDisabled: document.querySelector('#answer-button').disabled, answerHidden: document.querySelector('#answer-button').hidden, answerHintHidden: document.querySelector('#answer-hint').hidden});",
+                "return JSON.stringify({ready: document.querySelector('.operator-tools') === null, accessHidden: document.querySelector('.access-filters').hidden, credentialsHidden: document.querySelector('.source-credentials').hidden, queryWidth: document.querySelector('#query').getBoundingClientRect().width, answerDisabled: document.querySelector('#answer-button').disabled, answerHidden: document.querySelector('#answer-button').hidden, answerHintHidden: document.querySelector('#answer-hint').hidden});",
                 vec![],
             )
             .await
@@ -361,11 +361,8 @@ async fn synthetic_mode_hides_real_provider_controls_and_no_auth_token_field() {
     };
     assert_eq!(parsed["ready"], true);
     assert_eq!(parsed["accessHidden"], true);
-    assert_eq!(parsed["providersHidden"], true);
     assert_eq!(parsed["credentialsHidden"], true);
     assert!(parsed["queryWidth"].as_f64().unwrap() > 200.0);
-    assert_eq!(parsed["clientsCollapsed"], true);
-    assert_eq!(parsed["operatorToolsCollapsed"], true);
     assert_eq!(parsed["answerDisabled"], false);
     assert_eq!(parsed["answerHidden"], true);
     assert_eq!(parsed["answerHintHidden"], true);

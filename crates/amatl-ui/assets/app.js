@@ -74,18 +74,12 @@ const MAX_FRAGMENTS = 8;
 const MAX_FRAGMENT_BYTES = 512;
 const MAX_DOCUMENT_BYTES = 8 * 1024 * 1024;
 const MAX_SAVED_PAYLOAD_BYTES = 1024 * 1024;
-const LIST_LIMIT = 20;
 let searchAvailable = false;
 let syntheticSourceMode = false;
 // Whether `/status` last reported usable local persistence. When it is false,
 // saving a document can only answer 503, so the Save control is disabled up
 // front instead of offering a click the server already refuses.
 let storageReady = false;
-
-// Allowlist mapping a server-reported provider status onto the badge class the
-// stylesheet actually defines. Anything unknown falls back to `unavailable`, so
-// an unexpected status string can never inject extra class tokens.
-const PROVIDER_STATUS_CLASSES = { available: "available", unavailable: "unavailable" };
 
 // Setup auth helper for the global api client
 globalThis.authHeaders = (extra) => {
@@ -231,16 +225,6 @@ function setStatusKey(key, status) {
 // Re-applies the current message after the locale changed.
 function rerenderStatus() {
   if (statusRenderer) renderStatus(statusRenderer, statusState);
-}
-
-// One live region per surface: `#status` narrates the search flow, so the
-// result of a panel action is announced where it happened instead of
-// overwriting — and being overwritten by — unrelated messages. The key is kept
-// on the node so a locale switch can re-render the message in place.
-function announce(node, key, state) {
-  node.dataset.i18nKey = key;
-  node.textContent = t(key);
-  node.dataset.state = state;
 }
 
 function addOperator(parts, name, value) {
@@ -868,6 +852,13 @@ function reportValidationError(key) {
   const field = key === "errorTokenTooShort" ? tokenInput : queryInput;
   setStatusKey(key, "error");
   field.setAttribute("aria-invalid", "true");
+  // The message lives in the `#status` live region, so associate it with the
+  // offending field: a screen reader must hear *why* the field is invalid, not
+  // only that it is. `tokenInput` keeps its own helper text in the list.
+  field.setAttribute(
+    "aria-describedby",
+    field === tokenInput ? "token-help status" : "status",
+  );
   // Open the disclosure that actually holds the offending field: the token's
   // panel and the filter panel are separate, so a fixed `filtersDetails.open`
   // would leave a token error focused inside a still-collapsed panel.
@@ -879,8 +870,16 @@ function reportValidationError(key) {
 }
 
 function clearValidationError() {
-  queryInput.removeAttribute("aria-invalid");
-  tokenInput.removeAttribute("aria-invalid");
+  if (queryInput.hasAttribute("aria-invalid")) {
+    queryInput.removeAttribute("aria-invalid");
+    queryInput.removeAttribute("aria-describedby");
+  }
+  if (tokenInput.hasAttribute("aria-invalid")) {
+    tokenInput.removeAttribute("aria-invalid");
+    // Restore the token field's own helper binding (its `aria-describedby` in
+    // the markup is `token-help`).
+    tokenInput.setAttribute("aria-describedby", "token-help");
+  }
 }
 
 queryInput.addEventListener("input", clearValidationError);
@@ -924,126 +923,28 @@ nextButton.addEventListener("click", () => {
 });
 
 // ── Source availability ─────────────────────────────────────────
-const providerStatus = document.querySelector(".provider-status");
-const providerList = document.querySelector("#provider-list");
-const providerStatusText = document.querySelector("#provider-status-text");
-
-const PROVIDER_REASON_KEYS = {
-  provider_not_approved: "providerReasonNotApproved",
-  provider_disabled: "providerReasonDisabled",
-  provider_credential_missing: "providerReasonCredentialMissing",
-  credential_missing: "providerReasonCredentialMissing",
-  provider_circuit_open: "providerReasonCircuitOpen",
-  egress_denied: "providerReasonEgressDenied",
-};
-
-function providerReason(code) {
-  const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
-  return t(key ?? "providerReasonUnknown");
-}
-
-async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
-  checkbox.disabled = true;
-  if (statusNode) statusNode.hidden = true;
-  try {
-    // Centralized API client used here
-    await globalThis.api.post(endpoint, { enabled: desired });
-    await refresh();
-  } catch (error) {
-    checkbox.checked = !desired;
-    checkbox.disabled = false;
-    if (statusNode) statusNode.hidden = false;
-    statusNode.textContent = ERROR_MESSAGE_KEYS[error.code]
-      ? t(ERROR_MESSAGE_KEYS[error.code])
-      : error.status === 401 || error.message.includes("401")
-        ? t("unauthorized")
-        : t(failKey);
-  }
-}
-
-async function toggleProvider(name, desired, checkbox, reasonNode) {
-  await toggleEnabled({
-    endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
-    desired,
-    checkbox,
-    statusNode: reasonNode,
-    refresh: fetchProviderStatus,
-    failKey: "providerToggleFailed",
-  });
-}
-
+// The source-availability and service-state panels were removed from the UI;
+// the operator-tools surface is gone. `fetchProviderStatus` is kept only for
+// its side effect: it drives the Marginalia credential row in the search panel
+// from the authoritative `/providers` registry.
 async function fetchProviderStatus() {
   try {
     // Synthetic search fixtures are not the configured provider registry.
     if (syntheticSourceMode) {
-      providerStatus.hidden = true;
       syncCredentialActions([]);
       return;
     }
     // Use centralized client
     const payload = await globalThis.api.get("/providers");
     if (!payload || !Array.isArray(payload.providers)) return;
-    providerList.replaceChildren();
-    let unavailable = 0;
     const enabledList = [];
     for (const provider of payload.providers) {
-      const item = document.createElement("li");
-      item.className = "provider-item";
-      const row = document.createElement("div");
-      row.className = "provider-item-row";
-      const name = document.createElement("span");
-      name.className = "provider-name";
-      name.textContent = provider.name;
-      const badge = document.createElement("span");
-      // `provider.status` is a server string; map it through an allowlist so a
-      // value outside the known vocabulary cannot inject arbitrary class tokens
-      // (the CSS only styles `--available` / `--unavailable`).
-      const statusClass = PROVIDER_STATUS_CLASSES[provider.status] || PROVIDER_STATUS_CLASSES.unavailable;
-      badge.className = `provider-badge provider-badge--${statusClass}`;
-      badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
-      if (provider.code) badge.title = provider.code;
-      const toggleLabel = document.createElement("label");
-      toggleLabel.className = "provider-toggle";
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = Boolean(provider.enabled);
-      checkbox.disabled = provider.status !== "available";
-      checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
-      const toggleText = document.createElement("span");
-      toggleText.textContent = t("providerToggleLabel");
-      toggleLabel.append(checkbox, toggleText);
-      row.append(name, badge, toggleLabel);
-      item.append(row);
-      const reason = document.createElement("span");
-      reason.className = "provider-reason";
-      if (provider.status !== "available") {
-        reason.textContent = providerReason(provider.code);
-        unavailable += 1;
-      } else {
-        reason.hidden = true;
-      }
-      item.append(reason);
-      checkbox.addEventListener("change", () =>
-        toggleProvider(provider.name, checkbox.checked, checkbox, reason),
-      );
-      providerList.append(item);
       if (provider.enabled) enabledList.push(provider.name);
     }
-    providerStatus.hidden = false;
     // The credential row follows `providers.enabled`: Marginalia is the only
     // shipped source and always takes a key, so an enabled Marginalia reveals
     // its key controls.
     syncCredentialActions(enabledList);
-    if (unavailable === 0) {
-      providerStatusText.textContent = t("allAvailable");
-      providerStatusText.dataset.state = "success";
-    } else if (unavailable < payload.providers.length) {
-      providerStatusText.textContent = countLabel(unavailable, "someUnavailable");
-      providerStatusText.dataset.state = "partial";
-    } else {
-      providerStatusText.textContent = t("noneAvailable");
-      providerStatusText.dataset.state = "error";
-    }
   } catch (_) {
     // Without provider state (e.g. no token yet) the credential row must not
     // claim any source is ready to take a key: hide it until we have an
@@ -1053,44 +954,13 @@ async function fetchProviderStatus() {
 }
 
 // ── Service state ───────────────────────────────────────────────
-const servicePanel = document.querySelector(".service-state");
-const serviceSummary = document.querySelector("#service-summary");
-const serviceIndicators = document.querySelector("#service-indicators");
-const serviceMode = document.querySelector("#service-mode");
-
-function indicator(label, value, indicatorState) {
-  const item = document.createElement("li");
-  item.className = "indicator";
-  const name = document.createElement("span");
-  name.className = "indicator-label";
-  name.textContent = label;
-  const reading = document.createElement("span");
-  reading.className = "indicator-value";
-  reading.dataset.state = indicatorState;
-  reading.textContent = value;
-  item.append(name, reading);
-  return item;
-}
-
-function configRow(label, value) {
-  const wrapper = document.createElement("div");
-  const dt = document.createElement("dt");
-  dt.textContent = label;
-  const dd = document.createElement("dd");
-  dd.textContent = value;
-  wrapper.append(dt, dd);
-  return wrapper;
-}
-
-function percentage(value) {
-  return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
-}
-
+// The service-state panel was removed; `/status` is still the authoritative
+// source for the search flow's own state (whether search is usable, whether
+// evidence persistence is healthy, whether authentication is required).
 async function fetchServiceState() {
   try {
     const payload = await globalThis.api.get("/status");
     if (!payload || payload.schema_version !== "1") {
-      servicePanel.hidden = true;
       return null;
     }
     const sources = Array.isArray(payload.sources) ? payload.sources : [];
@@ -1103,7 +973,6 @@ async function fetchServiceState() {
     const mockOnly = sources.length > 0
       && sources.every((source) => /^mock-[a-z0-9]+$/.test(String(source.name || "")));
     syntheticSourceMode = mockOnly;
-    providerStatus.hidden = mockOnly;
     sourceCredentialsDetails.hidden = mockOnly;
     if (mockOnly) syncCredentialActions([]);
     const authenticationRequired = payload.authentication_required !== false;
@@ -1112,52 +981,15 @@ async function fetchServiceState() {
       tokenInput.value = "";
       updateAccessSummary();
     }
-    serviceMode.hidden = !mockOnly;
-    serviceMode.textContent = mockOnly ? t("mockModeBadge") : "";
-    if (mockOnly) serviceMode.dataset.state = "warning";
     searchAvailable = availableSources > 0;
     searchButton.disabled = !searchAvailable;
     searchButton.setAttribute("aria-disabled", String(!searchAvailable));
     searchButton.title = searchAvailable ? "" : t("searchUnavailable");
     if (!searchAvailable) setStatusKey("errorSearchUnavailable", "error");
     const storage = payload.storage && typeof payload.storage === "object" ? payload.storage : {};
-    const cache = payload.cache && typeof payload.cache === "object" ? payload.cache : {};
     // Only a healthy persistence turns saving on; anything else (off, broken,
     // unreachable) means `/saved` answers 503, so the Save control is disabled.
     storageReady = Boolean(storage.enabled && storage.available);
-    serviceIndicators.replaceChildren();
-    serviceIndicators.append(
-      indicator(
-        t(mockOnly ? "mockSourcesLabel" : "sourcesLabel"),
-        `${availableSources}/${sources.length}`,
-        availableSources === sources.length && sources.length ? "success" : "partial",
-      ),
-    );
-    let storageLabel = t("storageOff");
-    let storageState = "partial";
-    if (storage.enabled && storage.available) {
-      storageLabel = t("storageOn");
-      storageState = "success";
-    } else if (storage.enabled) {
-      storageLabel = t("storageBroken");
-      storageState = "error";
-    }
-    serviceIndicators.append(indicator(t("storageLabel"), storageLabel, storageState));
-    serviceIndicators.append(
-      indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
-    );
-    const degraded = payload.status !== "ok";
-    // "Service operating normally" beside "Local storage Disabled" read as a
-    // contradiction and made the 503 on save look like a bug: when persistence
-    // is off, say what that costs instead of claiming everything is fine.
-    const storageOff = !storage.enabled;
-    serviceSummary.textContent = storageOff
-      ? t("serviceOkStorageOff")
-      : degraded
-        ? t("serviceDegraded")
-        : t("serviceOk");
-    serviceSummary.dataset.state = storageOff || degraded ? "partial" : "success";
-    servicePanel.hidden = false;
     syncMarginaliaFromStatus(payload);
     return payload;
   } catch (_) {
@@ -1165,15 +997,12 @@ async function fetchServiceState() {
     // No authoritative `/status` means no evidence persistence is usable: fail
     // closed so a Save click is not offered against an unknown backend.
     storageReady = false;
-    providerStatus.hidden = false;
     sourceCredentialsDetails.hidden = false;
     accessDetails.hidden = false;
     searchAvailable = false;
     searchButton.disabled = true;
     searchButton.setAttribute("aria-disabled", "true");
     searchButton.title = t("searchUnavailable");
-    servicePanel.hidden = true;
-    serviceMode.hidden = true;
     return null;
   }
 }
@@ -1255,6 +1084,7 @@ function syncMarginaliaFromStatus(payload) {
 
 function openMarginaliaDialog() {
   marginaliaKeyInput.value = "";
+  marginaliaKeyInput.removeAttribute("aria-invalid");
   marginaliaKeyError.hidden = true;
   marginaliaDialog.showModal();
   marginaliaKeyInput.focus();
@@ -1273,6 +1103,7 @@ async function saveMarginaliaKey(event) {
   if (!key) {
     marginaliaKeyError.hidden = false;
     marginaliaKeyError.textContent = t("marginaliaEmpty");
+    marginaliaKeyInput.setAttribute("aria-invalid", "true");
     return;
   }
   marginaliaSave.disabled = true;
@@ -1301,6 +1132,7 @@ async function saveMarginaliaKey(event) {
     const code = error && typeof error.code === "string" ? error.code : "";
     const message = String(error && error.message);
     marginaliaKeyError.hidden = false;
+    marginaliaKeyInput.setAttribute("aria-invalid", "true");
     // 401 = no valid token was sent (nothing to do with the key); 403 = the
     // token lacks admin scope; anything else = the key failed the live canary.
     marginaliaKeyError.textContent =
@@ -1328,128 +1160,12 @@ marginaliaClearButton.addEventListener("click", async () => {
 });
 
 // ── History ─────────────────────────────────────────────────────
-const historyPanel = document.querySelector(".history-panel");
-const historyList = document.querySelector("#history-list");
-const historyEmpty = document.querySelector("#history-empty");
-const historyTemplate = document.querySelector("#history-template");
-const historyPurgeButton = document.querySelector("#history-purge");
-const historyPanelStatus = document.querySelector("#history-panel-status");
-
-function historyLabel(entry) {
-  const parts = [];
-  // `countLabel` (not a bare `t("resultsCount")`) so a single-result entry reads
-  // "1 resultado." instead of "1 resultados." — the singular key exists in every
-  // locale and the same helper already drives the results header and per-surface
-  // status lines, so the two views of one number cannot disagree.
-  // `-1` is the server's "total never known" sentinel (a native provider page
-  // omits the whole-set size). Show no count rather than "-1 results".
-  if (Number.isSafeInteger(entry.total_results) && entry.total_results >= 0) {
-    parts.push(countLabel(entry.total_results, "resultsCount"));
-  }
-  if (Number.isSafeInteger(entry.created_at) && entry.created_at > 0) {
-    parts.push(new Date(entry.created_at * 1000).toLocaleString(LANG));
-  }
-  return parts.join(" · ");
-}
-
-async function fetchHistory() {
-  try {
-    const payload = await globalThis.api.get(`/history?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.entries)) {
-      historyPanel.hidden = true;
-      return;
-    }
-    historyList.replaceChildren();
-    for (const entry of payload.entries.slice(0, LIST_LIMIT)) {
-      if (!entry || !Number.isSafeInteger(entry.id)) continue;
-      const item = historyTemplate.content.cloneNode(true);
-      item.querySelector(".history-query").textContent = boundedText(entry.raw_query, 300);
-      item.querySelector(".history-meta").textContent = historyLabel(entry);
-      const reuse = item.querySelector(".history-reuse");
-      reuse.textContent = t("historyReuse");
-      reuse.addEventListener("click", () => {
-        queryInput.value = boundedText(entry.raw_query, 2048);
-        queryInput.focus();
-      });
-      const remove = item.querySelector(".history-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteHistoryEntry(entry.id));
-      historyList.append(item);
-    }
-    historyEmpty.hidden = historyList.childElementCount > 0;
-    historyEmpty.textContent = t("historyEmpty");
-    historyPanel.hidden = false;
-  } catch (_) {
-    historyPanel.hidden = true;
-  }
-}
-
-async function deleteHistoryEntry(id) {
-  try {
-    await globalThis.api.delete(`/history/${id}`);
-    announce(historyPanelStatus, "historyDeleted", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
-  }
-}
-
-async function purgeHistory() {
-  try {
-    await globalThis.api.delete("/history");
-    announce(historyPanelStatus, "historyPurged", "success");
-    await fetchHistory();
-  } catch (_) {
-    announce(historyPanelStatus, "genericError", "error");
-  }
-}
+// The search-history panel was removed; queries are no longer listed or
+// purged from this surface.
 
 // ── Saved documents ─────────────────────────────────────────────
-const savedPanel = document.querySelector(".saved-panel");
-const savedList = document.querySelector("#saved-list");
-const savedEmpty = document.querySelector("#saved-empty");
-const savedTemplate = document.querySelector("#saved-template");
-const savedPanelStatus = document.querySelector("#saved-panel-status");
-
-async function fetchSavedDocuments() {
-  try {
-    const payload = await globalThis.api.get(`/saved?limit=${LIST_LIMIT}`);
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.documents)) {
-      savedPanel.hidden = true;
-      return;
-    }
-    savedList.replaceChildren();
-    for (const saved of payload.documents.slice(0, LIST_LIMIT)) {
-      if (!saved || !Number.isSafeInteger(saved.id)) continue;
-      const url = safeHttpUrl(saved.canonical_url);
-      const item = savedTemplate.content.cloneNode(true);
-      const link = item.querySelector(".saved-title");
-      link.textContent = boundedText(saved.title, 300) || (url ? url.hostname : t("noUrl"));
-      if (url) link.href = url.href;
-      else link.removeAttribute("href");
-      item.querySelector(".saved-meta").textContent = boundedText(saved.snippet, 200);
-      const remove = item.querySelector(".saved-delete");
-      remove.textContent = t("historyDelete");
-      remove.addEventListener("click", () => deleteSavedDocument(saved.id));
-      savedList.append(item);
-    }
-    savedEmpty.hidden = savedList.childElementCount > 0;
-    savedEmpty.textContent = t("savedEmpty");
-    savedPanel.hidden = false;
-  } catch (_) {
-    savedPanel.hidden = true;
-  }
-}
-
-async function deleteSavedDocument(id) {
-  try {
-    await globalThis.api.delete(`/saved/${id}`);
-    announce(savedPanelStatus, "savedDeleted", "success");
-    await fetchSavedDocuments();
-  } catch (_) {
-    announce(savedPanelStatus, "genericError", "error");
-  }
-}
+// The saved-documents list was removed. Saving one Deep document from the
+// results view still works; the collection is no longer enumerated here.
 
 // ── Saved document creation ─────────────────────────────────────
 // Persists one Deep document as a bounded whitelist of small fields. The
@@ -1530,7 +1246,6 @@ async function saveDocument(documentValue, provenance, button) {
     setStatusKey("savedDone", "success");
     button.textContent = t("savedActionDone");
     setInlineStatus(inline, "savedDone", "success");
-    await fetchSavedDocuments();
   } catch (error) {
     // The button stays usable and now says what it does: the operator can save
     // again the moment storage is back, and the reason sits next to the editor
@@ -1543,296 +1258,16 @@ async function saveDocument(documentValue, provenance, button) {
   }
 }
 
-// ── Server clients (admin) ──────────────────────────────────────
-// Only reachable with an Admin-scoped token; `fetchServerClients` hides the
-// whole panel on anything but a successful `200`, the same fail-closed
-// convention `fetchServiceState`/`fetchSavedDocuments` already use — a
-// non-admin credential simply never sees this section, rather than seeing
-// it and hitting a wall of 403s.
-const clientsPanel = document.querySelector(".clients-panel");
-const clientList = document.querySelector("#client-list");
-const clientListEmpty = document.querySelector("#client-list-empty");
-const clientCreateDetails = document.querySelector("#client-create");
-const clientCreateForm = document.querySelector("#client-create-form");
-const clientIdInput = document.querySelector("#client-id");
-const clientExpiresInput = document.querySelector("#client-expires");
-const clientCreateError = document.querySelector("#client-create-error");
-const clientTokenDialog = document.querySelector("#client-token-dialog");
-const clientTokenId = document.querySelector("#client-token-id");
-const clientTokenValue = document.querySelector("#client-token-value");
-const clientTokenClose = document.querySelector("#client-token-close");
-const clientTokenCopy = document.querySelector("#client-token-copy");
-const clientTokenStatus = document.querySelector("#client-token-status");
-const clientPanelStatus = document.querySelector("#client-panel-status");
-
-const SCOPE_LABEL_KEYS = {
-  search: "scopeSearch",
-  deep: "scopeDeep",
-  read: "scopeRead",
-  write: "scopeWrite",
-  admin: "scopeAdmin",
-  mcp: "scopeMcp",
-};
-
-function scopeLabel(scope) {
-  const key = SCOPE_LABEL_KEYS[scope];
-  return key ? t(key) : scope;
-}
-
-function renderClientRow(client) {
-  const item = document.createElement("li");
-  item.className = "client-item";
-  const row = document.createElement("div");
-  row.className = "client-item-row";
-  const id = document.createElement("span");
-  id.className = "client-id";
-  id.textContent = client.id;
-  const scopes = document.createElement("span");
-  scopes.className = "client-scopes-value";
-  const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
-  scopes.textContent = scopeList.length
-    ? scopeList.map(scopeLabel).join(", ")
-    : t("clientScopesEmpty");
-  row.append(id, scopes);
-  item.append(row);
-
-  const meta = document.createElement("p");
-  meta.className = "client-meta";
-  meta.textContent =
-    typeof client.expires_at === "string" && client.expires_at
-      ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
-      : t("clientNeverExpires");
-  item.append(meta);
-
-  const actions = document.createElement("div");
-  actions.className = "client-actions";
-  const rotate = document.createElement("button");
-  rotate.type = "button";
-  rotate.className = "ghost-action";
-  rotate.textContent = t("clientRotate");
-  // The consequence is stated at the control, not only inside the dialog it
-  // opens: "rotate" reads as "show me another", while the old token actually
-  // stops working. The title carries the same warning the dialog repeats.
-  rotate.title = t("clientRotateConfirm");
-  rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
-  const remove = document.createElement("button");
-  remove.type = "button";
-  remove.className = "ghost-action";
-  remove.textContent = t("clientDelete");
-  remove.addEventListener("click", () => deleteServerClient(client.id, remove));
-  actions.append(rotate, remove);
-  item.append(actions);
-  return item;
-}
-
-async function fetchServerClients() {
-  try {
-    const payload = await globalThis.api.get("/server/clients");
-    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
-      clientsPanel.hidden = true;
-      return;
-    }
-    clientList.replaceChildren();
-    for (const client of payload.clients) {
-      if (!client || typeof client.id !== "string") continue;
-      clientList.append(renderClientRow(client));
-    }
-    clientListEmpty.hidden = clientList.childElementCount > 0;
-    clientListEmpty.textContent = t("clientsEmpty");
-    clientsPanel.hidden = false;
-  } catch (_) {
-    clientsPanel.hidden = true;
-  }
-}
-
-// The one place the plaintext token is ever visible: it never leaves this
-// dialog, never touches `localStorage`, and the field is cleared the moment
-// the operator closes it (see `client-token-close`'s listener below).
-// `tokenCopied` records whether the operator confirmed they have the secret, so
-// an accidental close can ask before it becomes unrecoverable (see below).
-let tokenCopied = false;
-function openClientTokenDialog(id, token) {
-  tokenCopied = false;
-  clientTokenId.textContent = id;
-  clientTokenValue.value = token;
-  clientTokenDialog.showModal();
-  clientTokenValue.focus();
-  clientTokenValue.select();
-}
-
-// Closing discards a secret that can never be shown again — the only recovery is
-// rotating it, which invalidates the one just created. So a close that would
-// destroy an uncopied token asks first, the same way `Rotar`/`Eliminar` already
-// confirm their irreversible effect instead of letting one stray Escape lose the
-// credential. Once copied (or once the field is already empty) the close is free.
-function closeClientTokenDialog() {
-  if (clientTokenValue.value && !tokenCopied && !globalThis.confirm(t("clientTokenCloseConfirm"))) {
-    return;
-  }
-  clientTokenDialog.close();
-}
-
-clientTokenClose.addEventListener("click", closeClientTokenDialog);
-
-// Escape fires `cancel` before the dialog closes; re-route it through the guard
-// so a native dismissal cannot bypass the confirmation.
-clientTokenDialog.addEventListener("cancel", (event) => {
-  event.preventDefault();
-  closeClientTokenDialog();
-});
-
-// A backdrop click closes the dialog like a native modal, but it must honour the
-// same guard rather than discard an uncopied token silently.
-clientTokenDialog.addEventListener("click", (event) => {
-  if (event.target === clientTokenDialog) closeClientTokenDialog();
-});
-
-// The token is single-use: clear it whenever the dialog closes, not only when
-// the Close button is pressed, so a backdrop click cannot leave a live
-// credential sitting in the DOM.
-clientTokenDialog.addEventListener("close", () => {
-  clientTokenValue.value = "";
-  tokenCopied = false;
-  setInlineStatus(clientTokenStatus, "", null);
-});
-
-clientTokenCopy.addEventListener("click", async () => {
-  const token = clientTokenValue.value;
-  if (!token) return;
-  try {
-    if (!navigator.clipboard?.writeText) throw new Error("clipboard_unavailable");
-    await navigator.clipboard.writeText(token);
-    // A confirmed copy makes the close free: the operator already has the secret.
-    tokenCopied = true;
-    setInlineStatus(clientTokenStatus, "clientTokenCopied", "success");
-  } catch (_) {
-    // No clipboard access (insecure context, denied permission): leave the token
-    // selected so the operator can copy it by hand, and say so.
-    clientTokenValue.focus();
-    clientTokenValue.select();
-    setInlineStatus(clientTokenStatus, "clientTokenCopyFailed", "error");
-  }
-});
-
-// The full MCP tool vocabulary, mirroring the contract-stable constant
-// `MCP_TOOLS` in amatl-core `config::server` (see docs/api/mcp.md): a client
-// created with the `mcp` scope must be allowlisted for every MCP tool, because
-// `ClientIdentity::allows_tool` matches each call against the client's own
-// allowlist and an empty one denies every tool call while the "MCP" checkbox
-// promises access.
-const MCP_TOOL_NAMES = ["search", "deep_search", "fetch", "providers", "status"];
-
-async function createServerClient(event) {
-  event.preventDefault();
-  const id = clientIdInput.value.trim();
-  const scopes = Array.from(
-    clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
-  ).map((input) => input.value);
-  clientCreateError.hidden = true;
-  if (!id || scopes.length === 0) {
-    clientCreateError.textContent = t("clientCreateMissingFields");
-    clientCreateError.hidden = false;
-    return;
-  }
-  const submitButton = clientCreateForm.querySelector("#client-create-submit");
-  submitButton.disabled = true;
-  try {
-    // Only an MCP-scoped client gets the tool allowlist; the others keep an
-    // empty vocabulary (their scopes have no MCP surface to authorize).
-    const tools = scopes.includes("mcp") ? MCP_TOOL_NAMES.slice() : [];
-    const body = { id, scopes, tools };
-    if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
-    const payload = await globalThis.api.post("/server/clients", body);
-    clientCreateForm.reset();
-    clientCreateDetails.open = false;
-    await fetchServerClients();
-    // Announced in the panel it happened in, not in the search flow's status
-    // region: the token dialog opens next and the operator needs to know the
-    // client really exists before copying a one-time secret.
-    announce(clientPanelStatus, "clientCreated", "success");
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
-    }
-  } catch (error) {
-    // Classify on the structured fields the shared client sets — `error.status`
-    // (the HTTP status) and `error.code` (the catalog code) — never on digits
-    // inside the message text: real error bodies carry a shared catalog message
-    // with no status numbers in it. The message check survives only as a
-    // fallback for non-JSON error pages.
-    const status = Number(error && error.status) || 0;
-    const code = error && typeof error.code === "string" ? error.code : "";
-    const message = String(error && error.message);
-    clientCreateError.textContent =
-      status === 409 || message.includes("409")
-        ? t("clientCreateDuplicate")
-        : status === 401
-          || status === 403
-          || code === "unauthorized"
-          || code === "scope_denied"
-          || message.includes("401")
-          || message.includes("403")
-          ? t("unauthorized")
-          : t("clientCreateFailed");
-    clientCreateError.hidden = false;
-  } finally {
-    submitButton.disabled = false;
-  }
-}
-
-async function deleteServerClient(id, button) {
-  if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
-  button.disabled = true;
-  try {
-    await globalThis.api.delete(`/server/clients/${encodeURIComponent(id)}`);
-    announce(clientPanelStatus, "clientDeleted", "success");
-    await fetchServerClients();
-  } catch (_) {
-    announce(clientPanelStatus, "clientDeleteFailed", "error");
-    button.disabled = false;
-  }
-}
-
-async function rotateServerClient(id, button) {
-  if (!globalThis.confirm(t("clientRotateConfirm"))) return;
-  button.disabled = true;
-  try {
-    const payload = await globalThis.api.post(
-      `/server/clients/${encodeURIComponent(id)}/rotate`,
-      {},
-    );
-    await fetchServerClients();
-    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
-      openClientTokenDialog(payload.id, payload.token);
-    }
-  } catch (_) {
-    announce(clientPanelStatus, "clientRotateFailed", "error");
-    button.disabled = false;
-  }
-}
-
-clientCreateForm.addEventListener("submit", createServerClient);
-
-// The storage-backed panels are only meaningful when persistence is on and
-// healthy: with storage disabled (or unreachable) `/history` and `/saved`
-// answer `503`, so requesting them on every refresh is pure noise. `/status`
-// already reports the authoritative `storage` block, so gate the two panels on
-// it and hide them otherwise — the same fail-closed convention the fetch
-// functions themselves use.
+// ── Refresh ─────────────────────────────────────────────────────
+// `/status` is the authoritative source for the search flow's own state
+// (search usability, evidence persistence, authentication) and for the
+// Marginalia credential row. It is refreshed whenever the operator token
+// changes, so a credential entered later takes effect without a reload.
 async function refreshPanels() {
-  const status = await fetchServiceState();
+  await fetchServiceState();
   fetchProviderStatus();
-  const storage = status && status.storage ? status.storage : {};
-  if (storage.enabled && storage.available) {
-    fetchHistory();
-    fetchSavedDocuments();
-  } else {
-    historyPanel.hidden = true;
-    savedPanel.hidden = true;
-  }
-  fetchServerClients();
 }
 
-historyPurgeButton.addEventListener("click", purgeHistory);
 tokenInput.addEventListener("change", refreshPanels);
 refreshPanels();
 
@@ -1873,11 +1308,6 @@ function applyTranslations() {
   document.querySelector(".skip-link").textContent = t("skipToResults");
   document.querySelector(".brand").setAttribute("aria-label", t("brandLabel"));
   document.querySelector("#result-heading").textContent = t("resultsHeading");
-  document.querySelector("#provider-heading").textContent = t("providerHeading");
-  document.querySelector("#service-heading").textContent = t("serviceHeading");
-  document.querySelector("#history-heading").textContent = t("historyHeading");
-  document.querySelector("#history-purge").textContent = t("historyPurge");
-  document.querySelector("#saved-heading").textContent = t("savedHeading");
   queryInput.placeholder = t("searchPlaceholder");
   document.querySelector("#filters-summary").textContent = t("filtersLabel");
   document.querySelector("label[for='language']").textContent = t("resultLanguageLabel");
@@ -1886,20 +1316,6 @@ function applyTranslations() {
   document.querySelector("#file-type option[value='']").textContent = t("fileTypeAny");
   document.querySelector("label[for='local-token']").textContent = t("tokenLabel");
   document.querySelector("#token-help").textContent = t("tokenHelp");
-  document.querySelector("#clients-heading").textContent = t("clientsHeading");
-  document.querySelector("#client-create-summary").textContent = t("clientCreateLabel");
-  document.querySelector("label[for='client-id']").textContent = t("clientIdLabel");
-  document.querySelector("#client-id-help").textContent = t("clientIdHelp");
-  document.querySelector("#client-scopes-legend").textContent = t("clientScopesLabel");
-  document.querySelector("label[for='client-expires']").textContent = t("clientExpiresLabel");
-  document.querySelector("#client-create-submit").textContent = t("clientCreateSubmit");
-  for (const option of document.querySelectorAll("#client-scopes .scope-option")) {
-    const input = option.querySelector("input");
-    option.querySelector("span").textContent = scopeLabel(input.value);
-  }
-  document.querySelector("#client-token-heading").textContent = t("clientTokenHeading");
-  document.querySelector("#client-token-warning").textContent = t("clientTokenWarning");
-  document.querySelector("#client-token-close").textContent = t("clientTokenClose");
   // The Marginalia provider-credential surface: button labels and the whole
   // dialog resolve through the catalog too, so a non-Spanish locale never shows
   // a half-translated window (the dialog is the one place a secret is typed).
