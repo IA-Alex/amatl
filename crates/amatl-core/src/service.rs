@@ -1327,6 +1327,14 @@ impl AmatlService {
             .map_err(|_| ServiceError::StorageUnavailable)
     }
 
+    /// Fetch one saved document by its row id, independent of age.
+    pub async fn saved_document(&self, id: i64) -> Result<Option<SavedDocument>, ServiceError> {
+        self.storage_or_error()?
+            .saved_document_get_by_id(id)
+            .await
+            .map_err(|_| ServiceError::StorageUnavailable)
+    }
+
     /// Persist one document for cross-session reuse.
     ///
     /// The input is validated before it reaches SQLite: the URL must be

@@ -1866,6 +1866,39 @@ impl SqliteStorage {
         }))
     }
 
+    /// Fetch a single saved document by its row id, regardless of how old it
+    /// is. `saved_document_list` only ever returns a window, so a caller that
+    /// has an id in hand (CLI `saved show`) must not search that window: an id
+    /// older than the newest page would be reported as missing.
+    pub async fn saved_document_get_by_id(
+        &self,
+        id: i64,
+    ) -> Result<Option<SavedDocument>, StorageError> {
+        let row = sqlx::query(
+            "SELECT id, canonical_url, title, snippet, content_hash, extractor_version,
+                    payload, size_bytes, saved_at, source_query, tags
+             FROM saved_documents
+             WHERE id = ?",
+        )
+        .bind(id)
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(row.map(|row| SavedDocument {
+            id: row.get("id"),
+            canonical_url: row.get("canonical_url"),
+            title: row.get("title"),
+            snippet: row.get("snippet"),
+            content_hash: row.get("content_hash"),
+            extractor_version: row.get("extractor_version"),
+            payload: row.get("payload"),
+            size_bytes: row.get("size_bytes"),
+            saved_at: row.get("saved_at"),
+            source_query: row.get("source_query"),
+            tags: row.get("tags"),
+        }))
+    }
+
     /// List saved documents, newest first.
     pub async fn saved_document_list(
         &self,
@@ -2602,6 +2635,57 @@ mod tests {
             .is_none());
         storage.pool.close().await;
         let _ = std::fs::remove_file(path("saved-crud"));
+    }
+
+    #[tokio::test]
+    async fn saved_document_get_by_id_reaches_older_rows() {
+        let storage = SqliteStorage::open(
+            path("saved-by-id"),
+            crate::config::SqliteLockingMode::Normal,
+        )
+        .await
+        .unwrap();
+        // Insert more documents than a single `saved_document_list` window
+        // returns, so the oldest id falls outside the newest-first window.
+        let mut first = 0;
+        for index in 0..205 {
+            let id = storage
+                .saved_document_put(
+                    &format!("https://example.com/doc-{index}"),
+                    Some("title"),
+                    None,
+                    &format!("hash-{index}"),
+                    "extractor-v1",
+                    &format!("payload-{index}"),
+                    None,
+                    "",
+                )
+                .await
+                .unwrap();
+            if index == 0 {
+                first = id;
+            }
+        }
+        // The window cannot see the first document...
+        let window = storage.saved_document_list(200, 0).await.unwrap();
+        assert!(
+            !window.iter().any(|document| document.id == first),
+            "the oldest document must fall outside the 200-row window"
+        );
+        // ...but the by-id lookup finds it, independent of age.
+        let document = storage
+            .saved_document_get_by_id(first)
+            .await
+            .unwrap()
+            .expect("an old id must still resolve");
+        assert_eq!(document.payload, "payload-0");
+        assert!(storage
+            .saved_document_get_by_id(i64::MAX)
+            .await
+            .unwrap()
+            .is_none());
+        storage.pool.close().await;
+        let _ = std::fs::remove_file(path("saved-by-id"));
     }
 
     #[tokio::test]

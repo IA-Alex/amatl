@@ -705,10 +705,8 @@ async fn saved_command(command: SavedCommand, config: &Config) -> anyhow::Result
         }
         SavedCommand::Show { id } => {
             let document = service
-                .saved_documents(200, 0)
+                .saved_document(id)
                 .await?
-                .into_iter()
-                .find(|document| document.id == id)
                 .ok_or_else(|| anyhow::anyhow!("no saved document with id {id}"))?;
             println!("{}", document.payload);
         }
