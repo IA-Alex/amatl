@@ -2523,4 +2523,34 @@ mod tests {
 
         let _ = std::fs::remove_file(&path);
     }
+
+    #[test]
+    fn data_policy_rejects_unknown_keys_instead_of_silently_keeping_defaults() {
+        // Regression: `DataPolicyConfig` derived `Deserialize` with only
+        // `#[serde(default)]`, so serde skipped every key it did not know.
+        // A typo such as `profil = "isolated"` (or `egres`, `infernce`) parsed
+        // *successfully*, the field kept its permissive default
+        // (`Standard`/`Governed`/`Disabled` = network egress allowed), and the
+        // operator ran a policy far weaker than the file appeared to request.
+        // The table now denies unknown keys, so the typo fails closed at load.
+        for toml in [
+            "[data_policy]\nprofil = \"isolated\"\n",
+            "[data_policy]\nprofile = \"isolated\"\negres = \"deny\"\n",
+            "[data_policy]\nprofile = \"isolated\"\negress = \"deny\"\ninference = \"disabled\"\nextra = 1\n",
+        ] {
+            assert!(
+                Config::from_toml(toml).is_err(),
+                "an unknown [data_policy] key must be rejected: {toml:?}"
+            );
+        }
+
+        // The three declared keys still parse, and the effective policy is the
+        // restrictive one the document asked for — not a default.
+        let config = Config::from_toml(
+            "[data_policy]\nprofile = \"isolated\"\negress = \"deny\"\ninference = \"disabled\"\n",
+        )
+        .unwrap();
+        assert_eq!(config.data_policy.profile, SecurityProfile::Isolated);
+        assert!(!config.data_policy.allows_network_egress());
+    }
 }
