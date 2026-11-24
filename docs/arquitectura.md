@@ -2,8 +2,8 @@
 
 AMATL es un buscador web generalista Linux-first. La distribución actual sirve
 Marginalia como única fuente real, aunque `ProviderRegistry` conserva un punto
-de extensión para providers futuros. Un único núcleo funcional sirve a CLI, UI,
-API y MCP; ninguna superficie replica reglas de negocio.
+de extensión para providers futuros. Un único núcleo funcional sirve a CLI, UI
+y API; ninguna superficie replica reglas de negocio.
 
 ## Mapa del workspace
 
@@ -69,7 +69,7 @@ score usado por Ranking v2/Gap y Evidence v2 lo proyecta sin recalibrarlo. Ver
 
 La ingestión local tiene un ciclo independiente y no simula un resultado de
 Search: `ruta explícita → detector → extractor por tipo → Document → Evidence
-v1/v2`. Sólo la CLI expone esta capacidad. API y MCP no aceptan rutas locales,
+v1/v2`. Sólo la CLI expone esta capacidad. La API no acepta rutas locales,
 por lo que un cliente de red no puede usar AMATL como lector del filesystem.
 
 ## Ownership y ejecución
@@ -93,10 +93,9 @@ locales que dependen de esa persistencia opcional —`history`, `saved_documents
 `save_document` y sus borrados— y `status`, que agrega disponibilidad de
 fuentes, salud de la persistencia y efectividad de cachés sin recalcular nada.
 Cuando la persistencia no está disponible esas operaciones fallan cerradas con
-`storage_unavailable`; búsqueda y Deep siguen funcionando. CLI, handlers Axum y MCP
-delegan en ellas; MCP no crea su propio fetcher. `ServiceSurface` selecciona
-límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
-fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
+`storage_unavailable`; búsqueda y Deep siguen funcionando. CLI y handlers Axum
+delegan en ellas. `ServiceSurface` etiqueta el origen de la llamada para la
+traza; los límites provienen de la configuración. La UI usa exclusivamente el
 contrato HTTP público y envía Search y Deep mediante POST JSON; el token sólo se
 coloca en `Authorization` y no se serializa como control del formulario. Al
 mostrar Deep, correlaciona Evidence v2 por `document_id`, limita documentos y
@@ -127,9 +126,8 @@ métodos de lectura (`GET`/`HEAD`): un método mutante sobre una de esas rutas n
 hereda la exención, porque la decisión se toma antes del enrutado y un
 `POST /health` futuro debe fallar cerrado, no publicarse sin credencial. La
 identidad autenticada viaja en las
-extensiones de la solicitud y llega hasta las herramientas MCP, que aplican su
-propia lista por herramienta. Los rechazos se registran y, con persistencia, se
-guardan en `security_events`.
+extensiones de la solicitud y queda disponible para los handlers. Los rechazos
+se registran y, con persistencia, se guardan en `security_events`.
 
 La correlación de solicitud es transversal: el borde HTTP genera el
 `request_id`, `ServiceSurface` lo transporta al core y desde ahí llega a cada
@@ -139,7 +137,7 @@ etiqueta la traza local.
 
 El comando CLI `ingest` invoca `LocalIngestor` del mismo core sin pasar por el
 servidor. Esta excepción de transporte es intencional: mantiene el acceso a
-archivos fuera de HTTP/MCP y no crea lógica de evidencia en la CLI.
+archivos fuera de HTTP y no crea lógica de evidencia en la CLI.
 
 Antes de construir capacidades de red, `data_policy` resuelve el perfil
 efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza

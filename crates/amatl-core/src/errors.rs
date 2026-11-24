@@ -1,4 +1,4 @@
-//! Shared error-code catalog for every AMATL surface (CLI, API, MCP, UI).
+//! Shared error-code catalog for every AMATL surface (CLI, API, UI).
 //!
 //! Surfaces must never invent their own wire codes: they translate a domain
 //! error into an [`ErrorCode`] and render it with the catalog's stable string,
@@ -149,7 +149,7 @@ impl ErrorCode {
         }
     }
 
-    /// HTTP status used by transport surfaces. MCP tools ignore it.
+    /// HTTP status used by transport surfaces.
     pub const fn http_status(self) -> u16 {
         match self {
             Self::InvalidRequest | Self::InvalidQuery | Self::InvalidUrl | Self::InvalidHost => 400,
@@ -163,8 +163,7 @@ impl ErrorCode {
             | Self::ScopeDenied => 403,
             Self::NotFound => 404,
             Self::Conflict => 409,
-            // 499 is the conventional "client closed request"; MCP renders it
-            // as a tool error rather than a transport status.
+            // 499 is the conventional "client closed request".
             Self::RequestCancelled => 499,
             Self::BodyTooLarge => 413,
             Self::HeadersTooLarge => 431,

@@ -1,6 +1,6 @@
 # HTTP security baseline
 
-The Axum server hosts UI, REST-like JSON endpoints, and MCP Streamable HTTP on
+The Axum server hosts UI and REST-like JSON endpoints on
 one listener. Defaults below come from `ServerConfig::default`
 (`config/server.rs:121-141`) and are validated before router construction.
 
@@ -47,7 +47,7 @@ max-age=31536000; includeSubDomains` (`amatl-ui/src/lib.rs:39-53`,
 
 ## Authentication and exposure matrix
 
-Protected: `/search`, `/deep`, `/providers`, `/mcp` and descendants. Public and
+Protected: `/search`, `/deep`, `/providers` and descendants. Public and
 read-only: `/health`, `/ready`, `/metrics` and the static UI assets. The
 exemption is declared per path *and* method in `required_scope`
 (`amatl-server/src/lib.rs:557-642`), so a mutating method on one of those paths
@@ -142,7 +142,7 @@ Tests cover hardened public health, bearer enforcement, the simple and
 protected Host/Origin/CORS matrix, rate and body limits, secret-safe security
 events, real socket-IP separation, TCP, conflicting HTTP message boundaries,
 trusted/untrusted TLS certificates, aggregate header rejection, handler timeout
-cancellation, unique request IDs and correlated MCP SSRF rejection
+cancellation and unique request IDs
 (`amatl-server/src/tests.rs`). The
 provider transport also rejects an untrusted certificate without exposing its
 credential (`providers/http.rs`). Remaining environmental gaps are connection

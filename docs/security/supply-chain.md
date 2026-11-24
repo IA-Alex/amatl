@@ -89,7 +89,7 @@ own scoping is what decides the exposure, and it is narrow on four counts:
 - **Local writes only, before the open.** The crafted pair must exist at the path
   the process opens; the advisory requires `AV:L` and `UI:P`. A remote attacker
   has no route: AMATL accepts no database path, no upload and no `.sqlite3`/`-wal`
-  pair over HTTP, MCP or the CLI.
+  pair over HTTP or the CLI.
 - **WAL must be enabled *and* written by the attacker.** The bug is a WAL page
   size that differs from the database's. AMATL does open the store with
   `journal_mode = WAL` (`crates/amatl-core/src/storage.rs`), so the precondition
@@ -154,35 +154,21 @@ is deliberately narrow:
 
 Adding a second ID to that list is a policy change, not maintenance: it needs its
 own ADR and its own threat model, and CI fails until its `--expected-ignore`
-argument matches. That is exactly what `ADR-018` did on 2026-11-18 for the second
-exception recorded below.
+argument matches. `ADR-018` recorded a second exception on 2026-11-18 for
+RUSTSEC-2026-0543; that exception has since been **closed by exclusion** (see
+below) and the suppressed set is back to a single ID.
 
-### Current exception — RUSTSEC-2026-0543
+### Closed exception — RUSTSEC-2026-0543 (removed with MCP)
 
-The workspace also suppresses **RUSTSEC-2026-0543** (`chrono` is unmaintained;
-every version is affected), published 2026-09-14, reached only through
-`rmcp 3.10.0` and `schemars 1.2.2 → rmcp → chrono`. It is an **unmaintained**
-notice, not a vulnerability: no CVE, no CVSS vector, no confidentiality,
-integrity or availability impact. The exception is deliberately narrow:
-
-- **Advisory and path:** RUSTSEC-2026-0543, `chrono 0.4.45`, reached via
-  `amatl-server → rmcp → chrono` and `amatl-server → rmcp → schemars → chrono`.
-  No crate in the workspace declares `chrono` directly; AMATL's own date handling
-  uses `time`.
-- **Exploitability:** none in AMATL. The advisory carries no vulnerability, and
-  no AMATL code path executes `chrono`; it is a transitive, third-party
-  maintenance notice. There is no surface to harden and nothing for an attacker
-  to reach.
-- **Compensating controls:** the offline assertion on the suppressed set
-  (`supply_chain_contract.rs`), `scripts/security-gate.sh` printing both
-  suppressed IDs on every CI run, and both scanners pinned to exact versions.
-- **Owner:** `@IA-Alex`.
-- **Expiration and removal:** `ADR-018` is the plan. The exception lapses when
-  `rmcp`/`schemars` depend on a maintained date crate (or `chrono` resumes
-  maintenance), at which point the `ignore` entry, the CI `--expected-ignore`
-  argument and the offline assertion are removed together. There is no fix to
-  wait for inside the graph, so this is a `chrono`-side or `rmcp`-side event, not
-  a `cargo update`.
+The workspace used to suppress **RUSTSEC-2026-0543** (`chrono` is unmaintained).
+It was reached only through `rmcp → chrono` and `rmcp → schemars → chrono`, and
+no crate in the workspace declares `chrono` directly. When the MCP surface was
+retired, `rmcp` — and with it `schemars` and `chrono` — left the dependency
+graph, so the advisory no longer matches any package. The `ignore` entry in
+`deny.toml`, the CI `--expected-ignore` argument and the offline assertion on the
+suppressed set were removed together, exactly as `ADR-018` planned. `ADR-018`
+stays as the historical record of the exception; it is superseded by this
+removal for the state of the graph.
 
 ## Findings closed by exclusion
 

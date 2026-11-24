@@ -22,7 +22,7 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 | `deep`, `deep.extractor`, `deep.renderer`, `cache.document` | 5 | enriquecimiento |
 | `deep.ranking_v2` | 6 | ranking Deep sujeto a benchmark |
 | `deep.gaps` | 7 | déficits y SubQuery |
-| `server` | 9 | UI/API/MCP y exposición |
+| `server` | 9 | UI/API y exposición |
 
 ## Política de datos, egress e inferencia
 
@@ -42,7 +42,7 @@ inference = "local_only" # usar "disabled" si no habrá inferencia
 ```
 
 `isolated` exige bind loopback, prohíbe `remote_explicit`, providers habilitados
-y renderer, y cierra provider canaries, Deep/MCP fetch y transporte de providers
+y renderer, y cierra provider canaries, Deep fetch y transporte de providers
 con `egress_denied`. Search y los mocks deterministas siguen funcionando; Deep
 conserva su contrato y registra degradación cuando no puede recuperar un
 documento. La extracción/ranking/evidencia locales y una inferencia local futura
@@ -54,7 +54,7 @@ usar inferencia remota; esa integración deberá consultar
 incompatible con `remote_explicit` y con cualquier provider habilitado.
 
 La política es un control de aplicación. No sustituye firewall, namespace de
-red, sandbox del extractor ni la comprobación de que el cliente MCP/LLM sea
+red, sandbox del extractor ni la comprobación de que el cliente sea
 local: un cliente cloud podría haber recibido la consulta antes de invocar
 AMATL.
 
@@ -213,8 +213,7 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 | `server.clients[].id` | string | Identidad estable, minúsculas/dígitos/guion bajo; aparece en la auditoría, nunca es secreto |
 | `server.clients[].token_env` \| `token_sha256` | string | Exactamente uno; el secreto vive en el entorno o sólo como digest hex de 64 caracteres |
 | `server.clients[].expires_at` | fecha ISO / vacío | `YYYY-MM-DD`; a partir del día siguiente la credencial se rechaza |
-| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`, `mcp`; una credencial sin scopes se rechaza en validación |
-| `server.clients[].tools` | lista / vacía | Herramientas MCP permitidas; vacía significa sin acceso MCP. Exige el scope `mcp` |
+| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`; una credencial sin scopes se rechaza en validación |
 | `deep.respect_robots` | bool / `true` | Consulta `robots.txt` sólo para enlaces descubiertos por el crawl |
 | `deep.robots_timeout_ms` | u64 / 3000 | 100..=30000 por recuperación de `robots.txt` |
 | `deep.robots_max_bytes` | u64 / 524288 | 1024..=1048576 por recuperación de `robots.txt` |
@@ -310,7 +309,7 @@ disponibles.
 | `.policy.difficult_minimum_terms` | 4 | >0 |
 | `.policy.max_subqueries` | 2 | >0; el hard limit de ejecución sigue siendo 2 |
 
-## Servidor HTTP/UI/MCP
+## Servidor HTTP/UI
 
 | Clave | Tipo/default | Rango/relación |
 |---|---:|---|
@@ -338,5 +337,4 @@ de rangos válidos pesos, thresholds, timeouts, concurrencia, cuotas y tamaños 
 evidencia reproducible; no cambia por sí sola `schema_version`.
 
 No calibres para ocultar un error de diseño ni relajes SSRF/exposición remota.
-Registra baseline, candidato, corpus/carga, entorno, métricas y decisión. MCP
-aplica caps adicionales aunque el TOML configure valores mayores.
+Registra baseline, candidato, corpus/carga, entorno, métricas y decisión.

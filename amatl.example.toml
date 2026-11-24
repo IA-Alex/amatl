@@ -123,22 +123,19 @@ locking_mode = "normal"
 
 # Credenciales con nombre. El secreto nunca vive aquí: declara la variable de
 # entorno que lo contiene o el digest SHA-256 del token. Cada cliente lleva sus
-# scopes HTTP y su lista explícita de herramientas MCP; sin `tools` no puede
-# usar MCP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
+# scopes HTTP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
 # reiniciar. Sin ningún `[[server.clients]]`, el token global de
 # `server.token_env` sigue funcionando como cliente `default` con todo.
 # [[server.clients]]
 # id = "reader"
 # token_env = "AMATL_TOKEN_READER"
-# scopes = ["search", "read", "mcp"]
-# tools = ["search", "status"]
+# scopes = ["search", "read"]
 # expires_at = "2026-12-31"
 #
 # [[server.clients]]
 # id = "operator"
 # token_sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
-# scopes = ["search", "deep", "read", "write", "admin", "mcp"]
-# tools = ["search", "deep_search", "fetch", "providers", "status"]
+# scopes = ["search", "deep", "read", "write", "admin"]
 
 # Persistent provider circuit breaker: consecutive failures stop calling a
 # source until its cooldown expires. State survives restarts when persistence

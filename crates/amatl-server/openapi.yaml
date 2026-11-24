@@ -9,7 +9,7 @@ info:
     inbound value is never trusted or echoed.
 
     Errors are deliberately not RFC 7807 problem documents. Every surface (CLI,
-    API, MCP, UI) renders the shared code catalog in amatl-core/src/errors.rs,
+    API, UI) renders the shared code catalog in amatl-core/src/errors.rs,
     so the wire shape is ErrorResponse with a stable snake_case code. Adding a
     code is a compatible change; renaming or removing one is not.
 
@@ -845,7 +845,7 @@ components:
       scheme: bearer
       description: >-
         Local bearer token of at least 32 bytes. Each configured credential has
-        its own scopes (search, deep, read, write, admin, mcp) and optional
+        its own scopes (search, deep, read, write, admin) and optional
         expiry; a valid token without the route's scope receives 403
         `scope_denied`.
   parameters:
@@ -1353,10 +1353,6 @@ components:
         scopes:
           type: array
           items: { $ref: '#/components/schemas/Scope' }
-        tools:
-          type: array
-          items: { type: string }
-          default: []
         expires_at: { type: [string, 'null'] }
     ServerClientUpdateInput:
       type: object
@@ -1368,9 +1364,6 @@ components:
         scopes:
           type: [array, 'null']
           items: { $ref: '#/components/schemas/Scope' }
-        tools:
-          type: [array, 'null']
-          items: { type: string }
         expires_at: { type: [string, 'null'] }
     ServerPendingConfigPatch:
       type: object
@@ -1408,7 +1401,7 @@ components:
       enum: [disabled, local_only, remote_explicit]
     Scope:
       type: string
-      enum: [search, deep, read, write, admin, mcp]
+      enum: [search, deep, read, write, admin]
     SqliteLockingMode:
       type: string
       enum: [normal, exclusive]
@@ -1461,11 +1454,10 @@ components:
     ServerClientSummary:
       type: object
       additionalProperties: false
-      required: [id, scopes, tools, expires_at, credential_kind]
+      required: [id, scopes, expires_at, credential_kind]
       properties:
         id: { type: string }
         scopes: { type: array, items: { $ref: '#/components/schemas/Scope' } }
-        tools: { type: array, items: { type: string } }
         expires_at: { type: [string, 'null'] }
         credential_kind: { type: string, enum: [token_env, token_sha256] }
     ServerClientList:
@@ -2204,7 +2196,7 @@ components:
         status: { type: string, enum: [ok, degraded] }
         authentication_required:
           type: boolean
-          description: Whether protected HTTP and MCP routes require a bearer token.
+          description: Whether protected HTTP routes require a bearer token.
         sources:
           type: array
           items: { $ref: '#/components/schemas/SourceStatus' }
@@ -2256,7 +2248,7 @@ components:
         total_results: { type: integer, minimum: 0 }
         deep_fetches: { type: integer, minimum: 0 }
         created_at: { type: integer, description: Unix seconds }
-        surface: { type: string, enum: [cli, api, mcp] }
+        surface: { type: string, enum: [cli, api] }
     HistoryResponse:
       type: object
       additionalProperties: false

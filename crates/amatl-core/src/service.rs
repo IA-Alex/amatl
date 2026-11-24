@@ -24,8 +24,8 @@ use zeroize::Zeroizing;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ServiceSurface {
     pub kind: ServiceSurfaceKind,
-    /// Correlates this invocation with the originating HTTP request, CLI
-    /// invocation, or MCP session so traces can be reconstructed end-to-end.
+    /// Correlates this invocation with the originating HTTP request or CLI
+    /// invocation so traces can be reconstructed end-to-end.
     pub request_id: Option<String>,
 }
 
@@ -33,7 +33,6 @@ pub struct ServiceSurface {
 pub enum ServiceSurfaceKind {
     Cli,
     Api,
-    Mcp,
 }
 
 impl ServiceSurface {
@@ -47,18 +46,6 @@ impl ServiceSurface {
     pub fn api(request_id: Option<String>) -> Self {
         Self {
             kind: ServiceSurfaceKind::Api,
-            request_id,
-        }
-    }
-
-    pub fn mcp() -> Self {
-        Self::mcp_with_request_id(None)
-    }
-
-    /// MCP surface correlated with the tool call that produced it.
-    pub fn mcp_with_request_id(request_id: Option<String>) -> Self {
-        Self {
-            kind: ServiceSurfaceKind::Mcp,
             request_id,
         }
     }
@@ -84,16 +71,15 @@ pub struct ExecutionLimits {
     /// distinct from the standalone single-URL fetch above).
     pub deep_max_redirects: u32,
     /// Browser-render budget a surface may spend on one Deep request. The
-    /// unsandboxed renderer is the most expensive resource Deep can touch, so a
-    /// constrained surface (MCP) must not inherit the CLI's allowance.
+    /// unsandboxed renderer is the most expensive resource Deep can touch.
     pub deep_max_browser_calls: u32,
     /// Largest page a surface may request in one search.
     pub max_page_size: u32,
 }
 
 impl ExecutionLimits {
-    pub fn for_surface(config: &Config, surface: ServiceSurface) -> Self {
-        let base = Self {
+    pub fn for_surface(config: &Config, _surface: ServiceSurface) -> Self {
+        Self {
             max_provider_calls: config.budget.max_provider_calls,
             provider_timeout_ms: config.timeouts.provider_ms,
             search_timeout_ms: config.timeouts.global_ms,
@@ -111,25 +97,6 @@ impl ExecutionLimits {
             deep_max_redirects: config.deep.max_redirects,
             deep_max_browser_calls: config.deep.renderer.max_browser_calls,
             max_page_size: 100,
-        };
-        match surface.kind {
-            ServiceSurfaceKind::Cli | ServiceSurfaceKind::Api => base,
-            ServiceSurfaceKind::Mcp => Self {
-                max_provider_calls: base.max_provider_calls.min(2),
-                provider_timeout_ms: base.provider_timeout_ms.min(2_500),
-                search_timeout_ms: base.search_timeout_ms.min(5_000),
-                deep_max_fetches: base.deep_max_fetches.min(3),
-                deep_max_bytes: base.deep_max_bytes.min(2 * 1024 * 1024),
-                deep_timeout_ms: base.deep_timeout_ms.min(10_000),
-                deep_max_subqueries: base.deep_max_subqueries.min(1),
-                deep_max_subquery_cost: base.deep_max_subquery_cost.min(1),
-                fetch_timeout_ms: base.fetch_timeout_ms.min(3_000),
-                fetch_max_bytes: base.fetch_max_bytes.min(256 * 1024),
-                fetch_max_redirects: base.fetch_max_redirects.min(2),
-                deep_max_redirects: base.deep_max_redirects.min(2),
-                deep_max_browser_calls: base.deep_max_browser_calls.min(1),
-                max_page_size: base.max_page_size.min(25),
-            },
         }
     }
 }
@@ -254,7 +221,7 @@ pub struct ProviderSummary {
 
 /// Domain failures a surface can receive from the service.
 ///
-/// Every variant maps to exactly one [`ErrorCode`], so CLI, API and MCP report
+/// Every variant maps to exactly one [`ErrorCode`], so CLI and API report
 /// the same cause with the same wire identifier instead of collapsing distinct
 /// failures into one generic code.
 #[derive(Clone, Debug, Error, PartialEq, Eq)]
@@ -341,7 +308,7 @@ pub struct ServiceStatus {
     /// Declared-but-disabled sources never degrade this field: they are a
     /// configuration choice, not an incident. They stay visible in `sources`.
     pub status: String,
-    /// Whether protected HTTP and MCP routes require a bearer token.
+    /// Whether protected HTTP routes require a bearer token.
     #[serde(default = "authentication_required_default")]
     pub authentication_required: bool,
     pub sources: Vec<SourceStatus>,
@@ -1280,7 +1247,6 @@ impl AmatlService {
         let surface_name = match surface.kind {
             ServiceSurfaceKind::Cli => "cli",
             ServiceSurfaceKind::Api => "api",
-            ServiceSurfaceKind::Mcp => "mcp",
         };
         // A native provider page does not report a total, so `total_results` is
         // absent while `page`/`page_size` are present. Persisting the page
@@ -2735,39 +2701,12 @@ mod tests {
         assert_eq!(zero_fetches.max(1), 1);
     }
 
-    #[test]
-    fn mcp_default_limits_are_strictly_below_cli_for_expensive_work() {
-        let config = Config::default();
-        let cli = ExecutionLimits::for_surface(&config, ServiceSurface::cli());
-        let mcp = ExecutionLimits::for_surface(&config, ServiceSurface::mcp());
-        assert!(mcp.max_provider_calls <= cli.max_provider_calls);
-        assert!(mcp.search_timeout_ms < cli.search_timeout_ms);
-        assert!(mcp.deep_max_fetches < cli.deep_max_fetches);
-        assert!(mcp.deep_max_bytes < cli.deep_max_bytes);
-        assert!(mcp.deep_max_subqueries < cli.deep_max_subqueries);
-        // The Deep-scoped per-fetch and renderer ceilings must tighten too; they
-        // are read by `deep_from_search`, not just advertised.
-        assert!(mcp.deep_max_redirects <= cli.deep_max_redirects);
-        assert!(mcp.deep_max_browser_calls < cli.deep_max_browser_calls);
-    }
-
     #[tokio::test]
     async fn deep_uses_the_surface_redirect_and_browser_ceilings() {
-        // A Deep run must honor the surface's per-fetch ceilings, not the raw
-        // CLI-scale config: the same config on MCP and CLI yields different
-        // Deep limits, and the service consumes the surface value.
+        // A Deep run must honor the surface's per-fetch ceilings. Both surfaces
+        // now share the configured limits, so the service consumes the value as
+        // `ExecutionLimits::for_surface` derives it.
         let config = Config::default();
-        let mcp = ExecutionLimits::for_surface(&config, ServiceSurface::mcp());
-        assert_eq!(
-            mcp.deep_max_redirects,
-            config.deep.max_redirects.min(2),
-            "MCP deep redirects are clamped"
-        );
-        assert_eq!(
-            mcp.deep_max_browser_calls,
-            config.deep.renderer.max_browser_calls.min(1),
-            "MCP browser calls are clamped"
-        );
         let cli = ExecutionLimits::for_surface(&config, ServiceSurface::cli());
         assert_eq!(cli.deep_max_redirects, config.deep.max_redirects);
         assert_eq!(
@@ -2794,7 +2733,7 @@ mod tests {
             .with(Arc::new(PaginationCaptureFactory { seen: seen.clone() }));
         let service = AmatlService::with_registry(archive_config(), false, registry).await;
         let execution = service
-            .search_paginated("rust".into(), ServiceSurface::mcp(), Some(2), Some(5))
+            .search_paginated("rust".into(), ServiceSurface::api(None), Some(2), Some(5))
             .await
             .unwrap();
 

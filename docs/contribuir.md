@@ -23,7 +23,7 @@ Todo cambio compila, mantiene la lógica en el core, no expone secretos, actuali
 documentación y pasa el gate. Provider, Canonicalization, Deduplication, Budget,
 ranking, Fetcher, extractor, router y Normalization requieren contratos de
 entrada válida/degradada, error tipado, parcial cuando aplique, invariantes y
-Budget agotado. API/MCP/UI/storage/Deep/seguridad requieren además sus pruebas de
+Budget agotado. API/UI/storage/Deep/seguridad requieren además sus pruebas de
 integración.
 
 ```bash

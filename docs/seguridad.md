@@ -18,7 +18,7 @@ responsable; el SLA por severidad cubre acuse, triage, corrección y escalación
 
 ## Alcance
 
-Incluye workspace Rust, configuración, CLI, UI, API, MCP, adapters, Budget,
+Incluye workspace Rust, configuración, CLI, UI, API, adapters, Budget,
 persistencia, Deep, SSRF, DNS rebinding, redirects, agotamiento, secretos,
 autenticación y cadena de suministro. Excluye la infraestructura y servicios de
 terceros. Chromium no es una capacidad activa: permanece bloqueado hasta contar

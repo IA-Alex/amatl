@@ -1,11 +1,10 @@
-//! Hardened HTTP API, UI hosting and MCP Streamable HTTP surface for AMATL.
+//! Hardened HTTP API and UI hosting for AMATL.
 
-mod mcp;
 mod routes;
 
 use amatl_core::{
     AmatlService, ConfigError, DeepTarget, ErrorCode, Scope, ServiceError, ServiceSurface,
-    MCP_TOOLS, SCHEMA_VERSION,
+    SCHEMA_VERSION,
 };
 use amatl_ui::{asset, security_headers};
 use axum::{
@@ -26,9 +25,6 @@ use axum::{
     Json, Router,
 };
 use rand::RngCore;
-use rmcp::transport::streamable_http_server::{
-    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
-};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
@@ -426,15 +422,13 @@ struct AuthorizedClient {
     digest: [u8; 32],
     expires_at: Option<String>,
     scopes: Vec<Scope>,
-    tools: Vec<String>,
 }
 
-/// Identity of the caller, attached to the request for handlers, the MCP
-/// surface and audit events.
+/// Identity of the caller, attached to the request for handlers and audit
+/// events.
 #[derive(Clone, Debug)]
 pub(crate) struct ClientIdentity {
     pub(crate) id: String,
-    pub(crate) tools: Vec<String>,
 }
 
 impl ClientIdentity {
@@ -443,12 +437,7 @@ impl ClientIdentity {
     fn unauthenticated() -> Self {
         Self {
             id: "anonymous".into(),
-            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
         }
-    }
-
-    pub(crate) fn allows_tool(&self, tool: &str) -> bool {
-        self.tools.iter().any(|allowed| allowed == tool)
     }
 }
 
@@ -476,7 +465,6 @@ fn resolve_clients(
             digest,
             expires_at: None,
             scopes: Scope::ALL.to_vec(),
-            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
         });
     }
     for declared in &server.clients {
@@ -518,7 +506,6 @@ fn resolve_clients(
             digest,
             expires_at: declared.expires_at.clone(),
             scopes: declared.scopes.clone(),
-            tools: declared.tools.clone(),
         });
     }
     if clients.is_empty() {
@@ -628,8 +615,6 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         "/deep/limits" if *method == Method::PATCH => Some(Scope::Admin),
         "/deep/limits" => Some(Scope::Read),
         "/deep/extractor" | "/deep/renderer" => Some(Scope::Admin),
-        "/mcp" => Some(Scope::Mcp),
-        _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
         // `/history/{id}` and `/saved/{id}` only ever delete.
         _ if path.starts_with("/history/") || path.starts_with("/saved/") => Some(Scope::Write),
         // Fail closed: every route the router registers must declare its
@@ -781,28 +766,8 @@ pub async fn build_router_with_reload(
         rate_limit_per_minute: server.rate_limit_per_minute,
         https,
     });
-    let mcp_config = StreamableHttpServerConfig::default()
-        .with_legacy_session_mode(false)
-        .with_json_response(true)
-        .with_sse_keep_alive(None)
-        .with_allowed_hosts(server.allowed_hosts.clone())
-        .with_allowed_origins(allowed_origins.clone())
-        .with_max_request_body_bytes(server.max_body_bytes)
-        .with_stateless_protocol_metadata_required(true);
-    // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
     let handle: ServiceHandle = Arc::new(RwLock::new(service));
-    // Shared metrics so `/metrics` reports MCP tool traffic too.
     let metrics = Arc::new(RequestMetrics::default());
-    let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
-        StreamableHttpService::new(
-            {
-                let handle = handle.clone();
-                let metrics = metrics.clone();
-                move || Ok(mcp::McpSurface::new(handle.clone(), metrics.clone()))
-            },
-            Default::default(),
-            mcp_config,
-        );
     let state = AppState {
         service: handle,
         config_path,
@@ -823,7 +788,6 @@ pub async fn build_router_with_reload(
         state: state.clone(),
     };
     let router = routes::register_public_routes(Router::new())
-        .nest_service("/mcp", mcp_service)
         // Apply the request concurrency limit to the work-bearing routes only,
         // then merge the probes so they stay reachable while the limit is
         // saturated (see `register_probe_routes`).
@@ -1139,7 +1103,7 @@ impl PageParams {
     /// Window for the local panels (`/history`, `/saved`): bounded to 200/off.
     ///
     /// Note: this is deliberately a *different* limit from `/search`'s
-    /// `max_page_size` (100, or 25 under MCP). These are local read surfaces,
+    /// `max_page_size` (100). These are local read surfaces,
     /// not the retrieval hot path, so a more generous cap is acceptable — the
     /// two contracts are not intended to match.
     fn window(&self) -> (u32, u32) {
@@ -1538,7 +1502,6 @@ async fn update_provider_record(
 struct ServerClientSummary {
     id: String,
     scopes: Vec<Scope>,
-    tools: Vec<String>,
     expires_at: Option<String>,
     credential_kind: &'static str,
 }
@@ -1548,7 +1511,6 @@ impl From<&amatl_core::ServerClient> for ServerClientSummary {
         Self {
             id: client.id.clone(),
             scopes: client.scopes.clone(),
-            tools: client.tools.clone(),
             expires_at: client.expires_at.clone(),
             credential_kind: if client.token_env.is_some() {
                 "token_env"
@@ -1579,8 +1541,6 @@ struct CreateServerClientParams {
     id: String,
     scopes: Vec<Scope>,
     #[serde(default)]
-    tools: Vec<String>,
-    #[serde(default)]
     expires_at: Option<String>,
 }
 
@@ -1606,8 +1566,8 @@ struct CreatedServerClient {
 /// (`Config::upsert_server_client` never sees the plaintext), and validates
 /// a candidate config with the new entry applied *before* writing anything,
 /// exactly like `/providers/{name}/enabled`: a client
-/// that would fail `Config::validate` (duplicate id, no scope, unknown MCP
-/// tool, malformed `expires_at`) never reaches the file.
+/// that would fail `Config::validate` (duplicate id, no scope, malformed
+/// `expires_at`) never reaches the file.
 async fn create_server_client(
     State(state): State<AppState>,
     params: Result<Json<CreateServerClientParams>, JsonRejection>,
@@ -1629,7 +1589,6 @@ async fn create_server_client(
         token_sha256: Some(digest_to_hex(token_digest(&token))),
         expires_at: params.expires_at,
         scopes: params.scopes,
-        tools: params.tools,
     };
     // Reject a duplicate id instead of silently replacing the existing entry:
     // a replace would mint a new credential and the reload below would stop
@@ -1670,7 +1629,6 @@ async fn create_server_client(
 #[derive(Debug, Deserialize)]
 struct UpdateServerClientParams {
     scopes: Option<Vec<Scope>>,
-    tools: Option<Vec<String>>,
     /// Present-and-null clears the expiry; absent leaves it unchanged.
     #[serde(default, deserialize_with = "deserialize_optional_field")]
     expires_at: Option<Option<String>>,
@@ -1713,7 +1671,6 @@ async fn update_server_client(
         token_sha256: existing.token_sha256,
         expires_at: params.expires_at.unwrap_or(existing.expires_at),
         scopes: params.scopes.unwrap_or(existing.scopes),
-        tools: params.tools.unwrap_or(existing.tools),
     };
     for client in &mut candidate.server.clients {
         if client.id == id {
@@ -2941,7 +2898,6 @@ async fn security_middleware(
                 }
                 identity = ClientIdentity {
                     id: client.id.clone(),
-                    tools: client.tools.clone(),
                 };
             }
             Authentication::Expired(id) => {
@@ -2985,8 +2941,6 @@ async fn security_middleware(
         .extensions_mut()
         .insert(RequestId(request_id.clone()));
     let client_id = identity.id.clone();
-    // MCP tools read this back out of `http::request::Parts` to enforce their
-    // own per-tool policy.
     request.extensions_mut().insert(identity);
     let request_span = tracing::info_span!(
         target: "amatl::http",

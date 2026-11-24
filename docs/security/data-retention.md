@@ -70,7 +70,7 @@ documento original; los hashes facilitan verificación e identidad, no cifrado.
 `amatl ingest --json` incluye una URI `file:` absoluta y puede incluir el cuerpo
 completo extraído. No adjuntes esa salida a tickets o logs sin revisar ruta y
 contenido. La ingestión no escribe el documento en SQLite y no está expuesta en
-API/MCP.
+API.
 
 ## Datos que no deben almacenarse
 

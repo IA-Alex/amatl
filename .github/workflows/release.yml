@@ -34,7 +34,7 @@ jobs:
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - name: Ranking v2 quality gate
         run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
-      - run: ./scripts/security-gate.sh --expected-ignore RUSTSEC-2026-0459 --expected-ignore RUSTSEC-2026-0543
+      - run: ./scripts/security-gate.sh --expected-ignore RUSTSEC-2026-0459
       - name: Verify minimum supported Rust version
         run: |
           rustup toolchain install 1.88.0 --profile minimal

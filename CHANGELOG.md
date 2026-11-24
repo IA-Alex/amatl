@@ -296,6 +296,19 @@ adapter/extractor versions are independent axes as well.
 
 ### Removed
 
+- The MCP surface, retired end to end. `amatl-server/src/mcp.rs` is gone, along
+  with the `/mcp` mount and its scope arms, `ServiceSurfaceKind::Mcp`,
+  `Scope::Mcp`, `MCP_TOOLS`, the per-credential `tools` allowlist
+  (`ServerClient.tools`, the `POST`/`PATCH /server/clients` fields and the
+  `ServerClientSummary` output), and the `amatl mcp serve` CLI subcommand. The
+  `rmcp` dependency and the MCP-only `schemars`/`chrono` crates leave the
+  workspace, so the `RUSTSEC-2026-0543` suppression is closed by exclusion
+  (`deny.toml`, both workflows' `--expected-ignore`, and the supply-chain
+  contract assertion); `RUSTSEC-2026-0459` remains the single suppression.
+  `docs/api/mcp.md` and `docs/diagrams/secuencia-mcp.*` are deleted and the
+  related docs, OpenAPI, tests and C4 diagrams updated. Search, Deep, ingestion,
+  persistence and the `[inference]` embedding backend are untouched; the
+  surfaces are now CLI, UI and API HTTP. See ADR-020.
 - The optional answer-synthesis (`answer`) and search-strategist (`strategist`)
   chat capabilities, retired end to end. The modules (`amatl-core/src/answer.rs`,
   `strategist.rs`, `strategist/llm.rs`, `config/strategist.rs`) are gone, and so

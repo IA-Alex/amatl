@@ -8,8 +8,8 @@ repository.workspace = true
 homepage.workspace = true
 documentation.workspace = true
 readme = "../../README.md"
-description = "HTTP + MCP server for the Amatl multi-source search engine"
-keywords = ["search", "metasearch", "server", "mcp"]
+description = "HTTP server for the Amatl multi-source search engine"
+keywords = ["search", "metasearch", "server"]
 categories = ["web-programming::http-server"]
 
 [dependencies]
@@ -20,7 +20,6 @@ axum-server.workspace = true
 http.workspace = true
 hyper-util.workspace = true
 rand.workspace = true
-rmcp.workspace = true
 serde.workspace = true
 sha2.workspace = true
 serde_json.workspace = true

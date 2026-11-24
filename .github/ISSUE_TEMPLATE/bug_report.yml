@@ -17,7 +17,7 @@ body:
     id: surface
     attributes:
       label: Surface
-      options: [CLI, UI, HTTP API, MCP, Search core, Deep, Provider, SQLite/cache]
+      options: [CLI, UI, HTTP API, Search core, Deep, Provider, SQLite/cache]
     validations:
       required: true
   - type: textarea

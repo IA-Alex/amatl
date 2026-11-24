@@ -190,7 +190,7 @@ mod logging_tests {
             let span = tracing::info_span!("http_request", request_id = "request-123");
             let _entered = span.enter();
             let dependency_span = tracing::error_span!(
-                target: "rmcp::service",
+                target: "hyper::proto",
                 "serve_inner",
                 arguments = secret
             );
@@ -224,8 +224,8 @@ mod logging_tests {
             .contains("request-123"));
         assert!(trusted_log_target("amatl::security"));
         assert!(trusted_log_target("amatl_core::service"));
-        assert!(!trusted_log_target("rmcp::service"));
         assert!(!trusted_log_target("hyper::proto"));
+        assert!(!trusted_log_target("h2::server"));
     }
 
     #[test]
@@ -249,12 +249,12 @@ mod logging_tests {
             let request = tracing::error_span!("http_request", request_id = "request-456");
             let _request_entered = request.enter();
             let dependency = tracing::error_span!(
-                target: "rmcp::service",
+                target: "hyper::proto",
                 "serve_inner",
                 arguments = secret
             );
             let _dependency_entered = dependency.enter();
-            tracing::warn!(target: "rmcp::service", message = secret);
+            tracing::warn!(target: "hyper::proto", message = secret);
             tracing::warn!(target: "amatl::security", security_event = "test_event");
         });
 
@@ -267,7 +267,7 @@ mod logging_tests {
         .unwrap();
         assert!(output.contains("test_event"), "{output}");
         assert!(output.contains("request-456"), "{output}");
-        assert!(!output.contains("rmcp"), "{output}");
+        assert!(!output.contains("hyper::proto"), "{output}");
         assert!(!output.contains(secret), "{output}");
     }
 }
@@ -349,21 +349,16 @@ enum Command {
         #[command(subcommand)]
         command: DbCommand,
     },
-    /// Serve the UI, REST API and MCP surface on one listener.
+    /// Serve the UI and REST API on one listener.
     Serve {
         #[command(flatten)]
         listener: ListenerArgs,
         #[arg(long, hide = true)]
         mock: bool,
     },
-    /// MCP surface commands.
-    Mcp {
-        #[command(subcommand)]
-        command: McpCommand,
-    },
 }
 
-/// Listener overrides shared by `serve` and `mcp serve`.
+/// Listener overrides shared by `serve`.
 ///
 /// They override the configuration file for this process only; nothing is
 /// written back, so a temporary port never becomes permanent state.
@@ -378,17 +373,6 @@ struct ListenerArgs {
     /// Print one JSON object describing the listener before serving.
     #[arg(long)]
     json: bool,
-}
-
-#[derive(Subcommand)]
-enum McpCommand {
-    /// Serve MCP over Streamable HTTP on the shared listener.
-    Serve {
-        #[command(flatten)]
-        listener: ListenerArgs,
-        #[arg(long, hide = true)]
-        mock: bool,
-    },
 }
 
 #[derive(Subcommand)]
@@ -477,8 +461,8 @@ async fn main() -> anyhow::Result<()> {
 /// Print the shared catalog code for a failure, when the cause carries one.
 ///
 /// The CLI keeps its human message, but an operator or a script comparing
-/// behavior across surfaces gets the same stable identifier the API and MCP
-/// return, on stderr and separate from JSON output on stdout.
+/// behavior across surfaces gets the same stable identifier the API
+/// returns, on stderr and separate from JSON output on stdout.
 fn report_error_code(error: &anyhow::Error) {
     let code = error
         .downcast_ref::<amatl_core::ServiceError>()
@@ -588,13 +572,10 @@ async fn run() -> anyhow::Result<()> {
         Command::Serve { listener, mock } => {
             serve_command(config, listener, mock, cli.config_file).await
         }
-        Command::Mcp {
-            command: McpCommand::Serve { listener, mock },
-        } => serve_command(config, listener, mock, cli.config_file).await,
     }
 }
 
-/// Start the shared listener that serves UI, REST and MCP.
+/// Start the shared listener that serves UI and REST.
 async fn serve_command(
     mut config: Config,
     listener: ListenerArgs,
@@ -620,7 +601,7 @@ async fn serve_command(
                 "authenticated": !config.server.no_auth,
                 "config_file": config_file.display().to_string(),
                 "reload": ["POST /reload", "SIGHUP"],
-                "surfaces": ["ui", "rest", "mcp"],
+                "surfaces": ["ui", "rest"],
             })
         );
     }
@@ -1106,7 +1087,7 @@ fn doctor_credentials(config: &Config) {
             _ => false,
         };
         println!(
-            "  {}: ready={} expires={} scopes={} tools={}",
+            "  {}: ready={} expires={} scopes={}",
             client.id,
             ready,
             client.expires_at.as_deref().unwrap_or("never"),
@@ -1116,11 +1097,6 @@ fn doctor_credentials(config: &Config) {
                 .map(|scope| scope.as_str())
                 .collect::<Vec<_>>()
                 .join(","),
-            if client.tools.is_empty() {
-                "none".to_string()
-            } else {
-                client.tools.join(",")
-            }
         );
     }
 }

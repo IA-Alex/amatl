@@ -5,7 +5,7 @@ Describe the outcome and why it is needed.
 ## Contract impact
 
 - [ ] `plan_amatl.md` and `fase_a_contratos.md` are unchanged, or this is an explicitly approved dedicated contract proposal.
-- [ ] Rust, JSON, SQLite, CLI, logs, API and MCP names remain consistent.
+- [ ] Rust, JSON, SQLite, CLI, logs and API names remain consistent.
 - [ ] `schema_version`, SemVer, adapter/extractor versions and migrations are treated independently.
 - [ ] Product logic remains in `amatl-core`; surfaces do not duplicate it.
 - [ ] Budget ownership and Search/Deep boundaries remain intact.

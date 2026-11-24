@@ -1,7 +1,7 @@
-// Soak / load test: sustained concurrent MCP + HTTP traffic.
+// Soak / load test: sustained concurrent HTTP traffic.
 //
-// Exercises the full Axum stack (TCP, routing, middleware, rate limiting,
-// MCP Streamable HTTP) under controlled concurrency for a fixed duration.
+// Exercises the full Axum stack (TCP, routing, middleware, rate limiting)
+// under controlled concurrency for a fixed duration.
 // Reports p50/p95/p99 latency, throughput, error rate and peak RSS.
 //
 // Run with:
@@ -11,14 +11,11 @@
 
 use amatl_core::AmatlService;
 use amatl_server::serve;
-use serde_json::json;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 use tokio::io::AsyncReadExt;
 use tokio::net::TcpStream;
 
-/// MCP protocol version this surface speaks; must match `mcp::McpSurface`.
-const MCP_PROTOCOL_VERSION: &str = "2026-07-28";
 const DURATION_SECS: u64 = 15;
 const CONCURRENCY: usize = 16;
 const WARMUP_SECS: u64 = 2;
@@ -178,67 +175,16 @@ async fn http_get(port: u16, path: &str) -> (bool, u64) {
     (result.unwrap_or(false), elapsed)
 }
 
-async fn mcp_list_tools(port: u16) -> (bool, u64) {
-    let start = Instant::now();
-    // The MCP surface negotiates a protocol version. Omitting the
-    // `mcp-protocol-version` header and the `_meta` block makes the server
-    // reject every call, which is exactly what happened while this test was
-    // `#[ignore]`d and never executed: it reported a steady 33% error rate,
-    // one third being precisely the share of MCP requests below.
-    let body = json!({
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "tools/list",
-        "params": {
-            "_meta": {
-                "io.modelcontextprotocol/protocolVersion": MCP_PROTOCOL_VERSION,
-                "io.modelcontextprotocol/clientInfo": {
-                    "name": "amatl-soak",
-                    "version": "1"
-                },
-                "io.modelcontextprotocol/clientCapabilities": {}
-            }
-        }
-    });
-    let body_str = body.to_string();
-    let result: Result<bool, std::io::Error> = async {
-        let mut stream = TcpStream::connect(("127.0.0.1", port)).await?;
-        let request = format!(
-            "POST /mcp HTTP/1.1\r\n\
-             Host: localhost:{port}\r\n\
-             Content-Type: application/json\r\n\
-             Accept: application/json, text/event-stream\r\n\
-             mcp-protocol-version: {MCP_PROTOCOL_VERSION}\r\n\
-             mcp-method: tools/list\r\n\
-             Content-Length: {}\r\n\
-             Connection: close\r\n\
-             \r\n\
-             {body_str}",
-            body_str.len(),
-        );
-        tokio::io::AsyncWriteExt::write_all(&mut stream, request.as_bytes()).await?;
-        let mut response = Vec::new();
-        tokio::time::timeout(Duration::from_secs(5), stream.read_to_end(&mut response))
-            .await
-            .map_err(|_| std::io::Error::new(std::io::ErrorKind::TimedOut, "timeout"))??;
-        let text = String::from_utf8_lossy(&response);
-        Ok(text.contains("200 OK") && text.contains("\"tools\""))
-    }
-    .await;
-    let elapsed = start.elapsed().as_micros() as u64;
-    (result.unwrap_or(false), elapsed)
-}
-
 #[tokio::test(flavor = "multi_thread", worker_threads = 4)]
 #[ignore = "soak test: run with --ignored"]
-async fn sustained_concurrent_mcp_and_http_traffic() {
+async fn sustained_concurrent_http_traffic() {
     let port = spawn_server().await;
 
     // Warmup
     let warmup_deadline = Instant::now() + Duration::from_secs(WARMUP_SECS);
     while Instant::now() < warmup_deadline {
         let _ = http_get(port, "/health").await;
-        let _ = mcp_list_tools(port).await;
+        let _ = http_get(port, "/search?q=rust%20async").await;
     }
 
     let stats = Arc::new(tokio::sync::Mutex::new(Stats::default()));
@@ -251,7 +197,7 @@ async fn sustained_concurrent_mcp_and_http_traffic() {
             let mut counter = 0u64;
             while Instant::now() < deadline {
                 let (ok, latency) = if counter.is_multiple_of(3) {
-                    mcp_list_tools(port).await
+                    http_get(port, "/search?q=rust%20async").await
                 } else {
                     http_get(port, "/health").await
                 };

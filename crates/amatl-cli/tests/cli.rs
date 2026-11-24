@@ -220,16 +220,11 @@ fn provider_canary_rejects_unshipped_sources_as_configuration_errors() {
 
 #[test]
 fn phase_nine_server_commands_are_exposed_without_binding_on_help() {
-    for arguments in [
-        ["serve", "--help"].as_slice(),
-        ["mcp", "serve", "--help"].as_slice(),
-    ] {
-        let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
-            .args(arguments)
-            .output()
-            .expect("server help should run");
-        assert!(output.status.success());
-    }
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["serve", "--help"])
+        .output()
+        .expect("server help should run");
+    assert!(output.status.success());
 }
 
 #[test]

@@ -1,12 +1,12 @@
 # SSRF and outbound URL controls
 
-AMATL applies the same `SafeFetcher` to Deep and the MCP `fetch` tool. Provider
+AMATL applies `SafeFetcher` to Deep. Provider
 API clients are separate adapters with fixed endpoints; this document describes
 user/result-controlled outbound URLs.
 
 Before URL validation, the central data policy selects the network
 implementation. `profile = "isolated"` (valid only with `egress = "deny"`)
-installs a denied fetcher/transport, so Deep, MCP fetch, providers and canaries
+installs a denied fetcher/transport, so Deep, providers and canaries
 fail before DNS or connection. `SafeFetcher` is constructed only when effective
 egress is governed.
 
@@ -62,23 +62,22 @@ IPv6 blocks (`security.rs:66-77`): loopback `::1`, unspecified `::`, multicast
 - A single absolute deadline covers DNS, redirects, and body transfer
   (`fetch.rs:98-120`).
 - Deep defaults: 20 MiB global bytes, 10 fetches, five redirects, 10 crawl URLs,
-  depth one, 20 s (`config/deep_config.rs:60-80`). MCP `fetch`: 256 KiB, two redirects,
-  three seconds (`amatl-server/src/mcp.rs:60-72`).
+  depth one, 20 s (`config/deep_config.rs:60-80`).
 
 ## Verification and gaps
 
 Every rejected initial URL, redirect URL/location, or DNS answer emits an
 `amatl::security` event containing only `security_event=ssrf_blocked`, stage and
 stable reason. It deliberately omits URL, hostname, query and resolved
-addresses. When the fetch originates in HTTP/MCP, the surrounding
+addresses. When the fetch originates in HTTP, the surrounding
 `http_request` span supplies the same `request_id` returned as `X-Request-ID`.
 Third-party tracing targets are excluded from CLI/server output to prevent an
-upstream library from copying full MCP arguments into logs.
+upstream library from copying full arguments into logs.
 
 Tests prove rejection before DNS, rejection of mixed public/private DNS answers,
 private ranges including IPv4-mapped IPv6, sensitive headers, and a redirect to
-a private literal, and end-to-end MCP correlation without URL/token logging
-(`security.rs`, `fetch.rs`, `amatl-server/src/tests.rs`). Property tests exercise
+a private literal (`security.rs`, `fetch.rs`, `amatl-server/src/tests.rs`).
+Property tests exercise
 URL parsing/canonicalization (`tests/properties.rs`).
 
 Residual gaps: there is no live rebinding integration fixture, no enforced

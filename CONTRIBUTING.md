@@ -41,7 +41,7 @@ error, partial result where applicable, invariants, and exhausted Budget:
 - router: recommendation only, availability, exploration and fallback;
 - normalization: field provenance, defaults, invalid URL and degradation.
 
-Changes to API, MCP, UI, storage, Deep or security also require their existing
+Changes to API, UI, storage, Deep or security also require their existing
 integration/security tests. New providers require the complete governance sheet
 in [`docs/gobernanza-providers.md`](docs/gobernanza-providers.md) before network
 code.

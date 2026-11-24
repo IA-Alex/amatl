@@ -1,4 +1,4 @@
-//! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API/MCP.
+//! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API.
 
 pub mod audit;
 pub mod budget;
@@ -62,7 +62,7 @@ pub use config::{
     InferenceConfig, InferenceConfigPatch, InferenceMode, OpticsConfig, OpticsConfigPatch,
     PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig, RankingConfig, ReloadKind,
     RendererConfig, RendererConfigPatch, Scope, SecurityProfile, ServerClient, ServerConfig,
-    ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
+    ServerConfigPatch, TelemetryConfigPatch, TlsConfig,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};

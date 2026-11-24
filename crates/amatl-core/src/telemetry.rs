@@ -61,7 +61,7 @@ pub struct TelemetryObservation {
     pub diversity: f64,
     pub cost_units: u64,
     /// Correlates this observation with the originating HTTP request, CLI
-    /// invocation, or MCP session so traces can be reconstructed end-to-end.
+    /// invocation so traces can be reconstructed end-to-end.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request_id: Option<String>,
 }

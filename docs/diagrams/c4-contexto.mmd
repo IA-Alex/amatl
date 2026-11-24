@@ -1,12 +1,11 @@
 %% C4 Nivel 1 — Contexto de AMATL (UML-like, C4)
-%% Fuente: README.md, docs/arquitectura.md, memorias Serena (core, server/http-mcp) y código de crates/.
+%% Fuente: README.md, docs/arquitectura.md, memorias Serena (core, server) y código de crates/.
 %% Renderizar con Mermaid (mmdc o visor de GitHub/GitLab).
 flowchart LR
     usuario["Usuario<br/>[Persona]<br/>Navegador: buscar → revisar → abrir"]
     operador["Operador<br/>[Persona]<br/>CLI, config, gobernanza de providers"]
-    cliente_mcp["Cliente MCP<br/>[Software]<br/>App LLM / agente con bearer token"]
 
-    amatl["AMATL<br/>[Sistema]<br/>Buscador multi-fuente, Linux-first.<br/>Un core sirve CLI, UI, API y MCP."]
+    amatl["AMATL<br/>[Sistema]<br/>Buscador multi-fuente, Linux-first.<br/>Un core sirve CLI, UI y API."]
 
     proveedores["Proveedores de búsqueda<br/>[Sistema externo]<br/>SearXNG, Marginalia, custom archives<br/>(ninguno activo por defecto)"]
     web_publica["Web pública<br/>[Sistema externo]<br/>Solo Deep hace fetch de red"]
@@ -16,7 +15,6 @@ flowchart LR
 
     usuario -->|Búsqueda, Deep, guardados vía UI/API| amatl
     operador -->|CLI: search, deep, config, providers, cache, doctor, serve| amatl
-    cliente_mcp -->|MCP Streamable HTTP: search, deep_search, fetch, providers, status, answer| amatl
 
     amatl -->|Consultas de búsqueda dentro del Budget| proveedores
     amatl -->|Deep fetch por SafeFetcher · frontera única de egress| web_publica
@@ -26,6 +24,6 @@ flowchart LR
     classDef ext fill:#eef4ff,stroke:#4563a8,color:#12203c
     classDef sys fill:#e8f5e9,stroke:#2e7d32,color:#10321a
     classDef person fill:#fff4e0,stroke:#b26a00,color:#3c2400
-    class usuario,operador,cliente_mcp person
+    class usuario,operador person
     class amatl sys
     class proveedores,web_publica,completado,local_optional ext

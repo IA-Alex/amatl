@@ -14,8 +14,7 @@
 3. El default escucha `127.0.0.1:8080`. `amatl serve --bind` y `--port` lo
    sobrescriben sólo para ese proceso, y `--json` imprime una línea con el
    listener efectivo (bind, puerto, TLS, autenticación, archivo de
-   configuración y superficies) antes de escuchar; `amatl mcp serve` acepta las
-   mismas opciones. Para bind no-loopback configura rutas
+   configuración y superficies) antes de escuchar. Para bind no-loopback configura rutas
    reales a certificado y clave TLS, conserva `no_auth = false`, restringe
    hosts/origins y ajusta firewall. La configuración rechaza bind remoto sin TLS
    y token.
@@ -91,10 +90,10 @@ enabled = []
 Después ejecuta `amatl config` o `amatl doctor` y confirma
 `network_egress_allowed = false` y `remote_inference_allowed = false`. El
 arranque falla si se combina con bind no-loopback, renderer, provider real o
-inferencia remota. Los intentos directos por Deep/MCP fallan con
+inferencia remota. Los intentos directos por Deep fallan con
 `egress_denied`; no necesitan ni deben recibir credenciales.
 
-Para aislamiento del ejercicio completo, ejecuta también el cliente MCP y toda
+Para aislamiento del ejercicio completo, ejecuta también toda
 inferencia en el mismo entorno local, corta egress en firewall/container y
 revisa el ejecutable extractor. La política de AMATL no controla procesos
 terceros ni puede recuperar una consulta que ya fue enviada a un servicio cloud.
@@ -106,7 +105,7 @@ soporta dos tokens simultáneos.
 ## Ingestión local
 
 La ingestión acepta un archivo regular explícito y nunca está disponible desde
-el listener HTTP/MCP:
+el listener HTTP:
 
 ```bash
 amatl ingest ./evidencia.md --query "hallazgos críticos" --json
@@ -195,7 +194,7 @@ divergencia está fijada por
 cambiar el valor de una métrica publicada, y es una decisión del propietario, no
 un arreglo de documentación.
 
-`GET /status` y la herramienta MCP `status` reportan además el estado de
+`GET /status` reporta además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
 comprueba SQLite/migración si procede, reporta telemetría y muestra preparación
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
@@ -215,7 +214,7 @@ adentro: cada llamada saliente a un provider (`amatl::providers`) y cada fetch
 del pipeline Deep (`amatl::fetch`) se ejecuta dentro de un span que lo declara,
 de modo que una sola búsqueda en logs reconstruye la solicitud completa. El
 identificador nunca se envía al provider ni al origen remoto: sólo etiqueta la
-traza local. Las superficies MCP generan el suyo por llamada a herramienta.
+traza local.
 
 `GET /status` (con bearer) resume el estado operativo en JSON: disponibilidad y
 valor observado por fuente, estado de la persistencia local —versión de
@@ -236,7 +235,6 @@ de un solo operador. Declarar clientes con nombre reparte capacidad:
 | `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
 | `write` | escritura y borrado en `/history` y `/saved` |
 | `admin` | `/reload`, `/security-events` |
-| `mcp` | la superficie `/mcp`; `tools` la acota herramienta por herramienta |
 
 El secreto nunca se escribe en configuración: se declara `token_env` (variable
 de entorno) o `token_sha256` (digest). La comparación es sobre digests y en
@@ -246,10 +244,7 @@ tiempo constante, así que una fuga del archivo no entrega una credencial usable
 de rate limit **no** se reinicia con la recarga.
 
 Un token sin capacidad para una ruta recibe `403 scope_denied`, distinto de
-`401 unauthorized`; ambos quedan en la auditoría. En MCP, cada herramienta
-comprueba la lista `tools` de la identidad autenticada —no un encabezado del
-cliente— así que puedes conceder `search` y negar `fetch`, que es la más
-sensible, sin apagar el egress para todos.
+`401 unauthorized`; ambos quedan en la auditoría.
 
 ### Bitácora de seguridad
 
@@ -286,8 +281,8 @@ intercambia; las solicitudes en curso terminan con la configuración con la que
 empezaron y la siguiente ya usa la nueva. Una configuración inválida se rechaza
 antes de reemplazar nada y el servicio en ejecución queda intacto. La respuesta
 enumera fuentes declaradas, habilitadas y registradas, y el backend de
-inferencia resultante. La superficie MCP comparte el mismo handle, así que
-también ve la recarga.
+inferencia resultante. Todas las superficies comparten el mismo handle, así que
+también ven la recarga.
 
 Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
 
@@ -558,8 +553,7 @@ rate limit HTTP de AMATL es distinto y devuelve 429 con `Retry-After: 60`.
 
 Revisa degradación/stop reason (`provider_limit`, `time_exhausted`,
 `deadline_near`, fetch/bytes/redirects/cost/subquery). No reintentes en loop.
-Ajusta sólo valores válidos con evidencia de benchmark y conserva límites MCP
-más estrictos.
+Ajusta sólo valores válidos con evidencia de benchmark.
 
 ### SQLite degradado o corrupto
 

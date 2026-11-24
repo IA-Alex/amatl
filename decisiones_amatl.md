@@ -434,8 +434,9 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
     sintética va vacía con `debug_reasons = ["selected_search_targets"]`: no
     se invoca router, providers ni ranking.
   Superficie: `POST /deep` acepta `DeepInput` (`q`, `targets?`,
-  `max_fetches?`) — `GET /deep` sin cambios; MCP `deep` expone `max_fetches`;
-  CLI `amatl deep --max-fetches N` usa `deep_with_fetch_cap`. `data_policy`
+  `max_fetches?`) — `GET /deep` sin cambios; CLI `amatl deep --max-fetches N`
+  usa `deep_with_fetch_cap`. (El MCP `deep` que esta ADR nombra se retiró por
+  completo en ADR-020; hoy el cap por request vive en HTTP y CLI.) `data_policy`
   sigue gobernando todo egress: el tope reduce fetches, nunca los habilita, y
   la ruta de adquisición (Fetcher/Budget/robots) es la misma. Los secretos
   siguen sólo por variable de entorno.
@@ -780,7 +781,10 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
 ## ADR-018 — Excepción por `chrono` no mantenido (RUSTSEC-2026-0543)
 
 - **Fecha:** 2026-11-18
-- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`
+- **Estado:** Propuesta — pendiente de firma de `@IA-Alex`; **cerrada por
+  exclusión** el 2026-11-24 (ADR-020): al retirar `rmcp` del grafo, `chrono`
+  dejó de estar presente y la excepción ya no aplica. Se conserva como registro
+  histórico de la decisión.
 - **Contexto:** La base RustSec publicó el 2026-09-14 el advisory
   **RUSTSEC-2026-0543** («`chrono` is unmaintained», anuncio
   `chronotope/chrono#1768`), que marca **todas** las versiones de `chrono` como
@@ -918,3 +922,80 @@ NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any 
   `crates/amatl-cli/tests/cli.rs`, `docs/gobernanza-providers.md`,
   `docs/operacion.md`, `amatl.example.toml`; retiro de `deploy/searxng/`.
 
+
+## ADR-020 — Retiro de la superficie MCP y de la dependencia `rmcp`
+
+- **Fecha:** 2026-11-24
+- **Estado:** Aceptada
+- **Contexto:** ADR-015 ya había retirado el modelo de *strategist* y ADR-016 el
+  resumen con IA: AMATL no genera texto y su contrato es evidencia verificable,
+  no una respuesta redactada por un modelo. La superficie MCP, sin embargo,
+  seguía existiendo como canal por el que un cliente externo (típicamente una app
+  LLM o un agente) invocaba `search`, `deep_search`, `fetch`, `providers` y
+  `status`. Con la IA generativa ya fuera del producto, MCP quedaba como el único
+  punto donde AMATL aceptaba ser parte de una pipeline de IA, y conservarlo
+  obligaba a mantener `amatl-server/src/mcp.rs`, la dependencia de producción
+  `rmcp`, un scope `Scope::Mcp` con lista de herramientas por credencial, una
+  tabla de límites específica de superficie y su documentación y pruebas de
+  contrato. El operador decide cerrar esa superficie: lo coherente con «no es un
+  chatbot, no genera texto, se usa por CLI/UI/API» es no exponer un protocolo
+  pensado para asistentes. Se retira siguiendo el mismo patrón de retiro íntegro
+  de ADR-016/ADR-019: no dejar código muerto reactivable por error.
+- **Decisión:** Se retira MCP de extremo a extremo, sin alterar Search, Deep,
+  ingestión, persistencia ni los límites de configuración:
+  - **Código:** se elimina `crates/amatl-server/src/mcp.rs` y su `mod mcp`, el
+    montaje `.nest_service("/mcp", …)` con `StreamableHttpService`/
+    `LocalSessionManager`, y los brazos de scope `/mcp` y `/mcp/*`.
+  - **Core:** desaparecen `ServiceSurfaceKind::Mcp`, `ServiceSurface::mcp()` y
+    `mcp_with_request_id()`, el scope `Scope::Mcp`, `MCP_TOOLS` y el campo
+    `tools` de `ServerClient` (la lista por herramienta solo servía a MCP).
+    `ExecutionLimits::for_surface` deja de aplicar caps específicos de MCP; CLI y
+    API comparten la configuración, como antes del canal MCP.
+  - **CLI:** se elimina el subcomando `amatl mcp serve` y la superficie MCP del
+    log de arranque (`surfaces: ["ui", "rest"]`).
+  - **Contratos y API de clientes:** `POST /server/clients` y
+    `PATCH /server/clients/{id}` dejan de aceptar `tools`, y
+    `ServerClientSummary` deja de exponerlos. El scope `mcp` desaparece del enum
+    OpenAPI.
+  - **Dependencias:** se elimina `rmcp` del manifiesto raíz y de
+    `amatl-server`. Con él salen del grafo `schemars` y `chrono`, de modo que
+    **RUSTSEC-2026-0543 queda cerrado por exclusión**: se retiran su entrada
+    `ignore` de `deny.toml`, el argumento `--expected-ignore` de ambos workflows
+    y la aserción correspondiente en `supply_chain_contract.rs` (ADR-018 pasa a
+    ser el registro histórico de una excepción ya resuelta). `RUSTSEC-2026-0459`
+    (`libsqlite3-sys`) permanece como única supresión vigente.
+  - **Documentación y pruebas:** se elimina `docs/api/mcp.md` y
+    `docs/diagrams/secuencia-mcp.*`; se actualizan README, `docs/README.md`,
+    `docs/{arquitectura,configuracion,operacion,testing,glosario,contribuir,
+    seguridad,ingestion-local}.md`, `docs/security/*` y los diagramas C4. Se
+    retiran las pruebas de contrato MCP de `amatl-server/src/tests.rs`, el helper
+    `json_body_opt` y la mitad MCP del soak (`tests/soak.rs` pasa a tráfico HTTP
+    concurrente), y se ajusta `amatl-cli/tests/cli.rs`.
+- **Consecuencias:** AMATL sirve **CLI, UI y API HTTP** sobre un único core; no
+  hay superficie para asistentes ni protocolo JSON-RPC. El proceso deja de
+  compilar `rmcp`/`schemars`/`chrono`, con menos superficie de dependencia y una
+  supresión de advisory menos. La postura de producto queda explícita: quien
+  quiera consultar AMATL desde un agente debe integrarse contra la API HTTP,
+  aceptando el modelo de confianza de un cliente de red, en vez de contar con un
+  canal dedicado. Riesgo residual: clientes que ya hablaran MCP dejan de conectar
+  (`/mcp` responde 404 vía el fallback de assets para una identidad admin); es el
+  efecto buscado del retiro.
+- **Alternativas descartadas:** (a) dejar `/mcp` montado y sin documentar —
+  mantiene `rmcp`, el scope y el código como superficie muerta reactivable, el
+  mismo riesgo que ADR-016/ADR-019 rechazaron; (b) conservar MCP pero sin la tool
+  `answer` — ya es el estado actual y no resuelve la incoherencia de fondo (MCP
+  existe para asistentes de IA); (c) borrar también `[inference]` — fuera de
+  alcance: la inferencia de *embeddings* no genera texto, solo puntúa similitud
+  para el ranking, y retirarla alteraría el pipeline de relevancia.
+- **Trazabilidad:** `crates/amatl-server/src/lib.rs (mount, required_scope,
+  ClientIdentity, resolve_clients, create/update_server_client)`;
+  `crates/amatl-core/src/{service,errors,telemetry,fetch}.rs`;
+  `crates/amatl-core/src/config/server.rs (Scope, ServerClient, validate)`;
+  `crates/amatl-cli/src/main.rs`; `Cargo.toml`, `crates/amatl-server/Cargo.toml`,
+  `deny.toml`; `.github/workflows/{ci,release}.yml`;
+  `crates/amatl-core/tests/supply_chain_contract.rs`;
+  `crates/amatl-server/src/tests.rs`, `crates/amatl-server/tests/soak.rs`,
+  `crates/amatl-cli/tests/cli.rs`; `crates/amatl-server/openapi.yaml`;
+  `docs/` (portal, arquitectura, configuración, operación, testing, seguridad y
+  diagramas). Supersede el estado de grafo de ADR-018; complementa ADR-015 y
+  ADR-016 (retiro de IA generativa).

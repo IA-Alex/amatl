@@ -19,7 +19,7 @@ pub struct FetchRequest {
     pub max_redirects: u32,
     pub headers: BTreeMap<String, String>,
     /// Correlates this outbound fetch with the originating HTTP request, CLI
-    /// invocation or MCP session. It never travels on the wire; it only tags
+    /// invocation. It never travels on the wire; it only tags
     /// the local trace so a fetch can be tied back to the request that caused
     /// it.
     pub request_id: Option<String>,

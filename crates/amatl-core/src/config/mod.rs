@@ -1551,7 +1551,6 @@ mod tests {
             token_sha256: Some("a".repeat(64)),
             expires_at: None,
             scopes: vec![Scope::Read, Scope::Search],
-            tools: vec![],
         }
     }
 

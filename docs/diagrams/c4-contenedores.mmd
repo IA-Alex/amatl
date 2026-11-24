@@ -1,5 +1,5 @@
 %% C4 Nivel 2 — Contenedores de AMATL (UML-like, C4)
-%% Fuente: mapa de crates (lib.rs de cada crate), memorias Serena (core, server/http-mcp, ui/frontend).
+%% Fuente: mapa de crates (lib.rs de cada crate), memorias Serena (core, server, ui/frontend).
 flowchart TB
     subgraph externos["Externos"]
         proveedores["Proveedores de búsqueda<br/>[HTTP APIs]"]
@@ -7,10 +7,10 @@ flowchart TB
         completado["Completado remoto opcional<br/>[API de inferencia]"]
     end
 
-    subgraph amatl["AMATL (un solo listener serve = UI + API + MCP)"]
+    subgraph amatl["AMATL (un solo listener serve = UI + API)"]
         cli["amatl-cli<br/>[Binario Rust]<br/>search · deep · config · providers<br/>cache · doctor · serve · benchmark"]
         ui["amatl-ui<br/>[Assets estáticos embebidos]<br/>JS vanilla, CSP estricta,<br/>i18n es/en, paginación server-side"]
-        server["amatl-server<br/>[Axum, Rust]<br/>routes.rs: rutas HTTP/JSON<br/>mcp.rs: MCP Streamable HTTP<br/>security_middleware: Host/Origin,<br/>bearer digest, scopes, rate, límites"]
+        server["amatl-server<br/>[Axum, Rust]<br/>routes.rs: rutas HTTP/JSON<br/>security_middleware: Host/Origin,<br/>bearer digest, scopes, rate, límites"]
 
         subgraph core["amatl-core — única lógica de producto"]
             orchestr["service / execution<br/>[SearchOrchestrator]<br/>Dueño único del Budget y deadline"]
@@ -27,7 +27,7 @@ flowchart TB
         storage["storage / cache / document_cache<br/>[SQLite sqlx + cachés]<br/>Sin SQLite, Search sigue correcto"]
     end
 
-    operador_ext["Operador / Cliente MCP / Navegador"]
+    operador_ext["Operador / Navegador"]
 
     operador_ext --> cli
     operador_ext --> ui

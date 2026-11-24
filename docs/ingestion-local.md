@@ -2,7 +2,7 @@
 
 `amatl ingest` convierte un archivo local explícito en `Document`, Evidence v1
 y Evidence v2. No ejecuta Search, no consulta providers, no requiere LLM y no
-está disponible por UI, HTTP o MCP.
+está disponible por UI, HTTP.
 
 ```bash
 amatl ingest ./informe.md --query "controles de seguridad" --json

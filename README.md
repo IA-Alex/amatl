@@ -20,14 +20,14 @@ verificable, nunca una respuesta redactada por un modelo.
 
 ## Invariantes visibles
 
-- Un solo core sirve a CLI, UI, API y MCP.
+- Un solo core sirve a CLI, UI y API.
 - Un fallo parcial conserva resultados útiles y se identifica como
   `partial_success`.
 - El orquestador es el único dueño del Budget y deadline globales.
 - Search no descarga páginas ni expone `final_url`; Deep es la única frontera de
   fetch de red. La ingestión de archivos permanece local y separada.
 - La política `data_policy` gobierna toda salida de red. El perfil `isolated`
-  bloquea providers, Deep fetch, MCP fetch, canarios e inferencia remota antes
+  bloquea providers, Deep fetch, canarios e inferencia remota antes
   de conectar; no elimina los motores deterministas de extracción/evidencia ni
   hace obligatorio un LLM.
 - Los secretos se leen de variables de entorno, nunca de `amatl.toml`.
@@ -84,7 +84,7 @@ inference = "local_only" # o "disabled"
 del proceso AMATL; añade firewall/sandbox del host y usa sólo clientes locales
 si necesitas aislamiento verificable de todo el entorno.
 
-Servidor UI/API/MCP en loopback:
+Servidor UI/API en loopback:
 
 ```bash
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
@@ -129,8 +129,7 @@ par certificado/clave TLS completo.
 | `amatl cache [--purge]` | Estadísticas o purga de ambas cachés | 0; storage deshabilitado se informa, no es error |
 | `amatl doctor` | Diagnóstico local completo | 0 si ejecuta; estados degradados se imprimen |
 | `amatl benchmark ranking-v2 [--json]` | Gate de calidad Ranking v2 | 0 si pasa; 1 si no pasa o componente inválido |
-| `amatl serve` | UI + API + MCP | proceso de larga vida; 1 si config/token/TLS/listener fallan |
-| `amatl mcp serve` | Alias del mismo servidor compartido | igual que `serve` |
+| `amatl serve` | UI + API | proceso de larga vida; 1 si config/token/TLS/listener fallan |
 
 Clap devuelve 2 ante uso sintáctico incorrecto. `--config-file RUTA` es global y
 usa `amatl.toml` por defecto. Logs humanos van a stderr en TTY y JSON estructurado
@@ -144,7 +143,7 @@ al redirigir; controla detalle con `RUST_LOG`.
   [CONTINUIDAD.md](CONTINUIDAD.md).
 - Seguridad (raw entry que GitHub muestra en inglés):
   [política](SECURITY.md); guías de seguridad en el [portal](docs/README.md).
-- Contratos: [OpenAPI](crates/amatl-server/openapi.yaml) y [MCP](docs/api/mcp.md).
+- Contratos: [OpenAPI](crates/amatl-server/openapi.yaml).
 - Comunidad: [código de conducta](CODE_OF_CONDUCT.md) (EN) y
   [espejo en español](docs/codigo-de-conducta.md).
 
