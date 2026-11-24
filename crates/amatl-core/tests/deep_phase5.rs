@@ -781,3 +781,307 @@ async fn rendered_pages_cannot_reach_the_network() {
         "the fetch never resolved, so isolation was not exercised: {dom}"
     );
 }
+
+/// A fetcher that records the fragmentless path of every URL it is asked for,
+/// so a test can count how many times one HTTP resource is actually fetched.
+struct FragmentRecordingFetcher {
+    seen: Arc<std::sync::Mutex<Vec<String>>>,
+}
+
+#[async_trait]
+impl Fetcher for FragmentRecordingFetcher {
+    async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        let url = request.url.clone();
+        // Record the resource identity: scheme + host + path + query, with the
+        // fragment dropped. That is what "fetching this resource" means.
+        let mut identity = url.clone();
+        identity.set_fragment(None);
+        self.seen.lock().unwrap().push(identity.to_string());
+        let body = if url.path() == "/article" {
+            // Three fragments of the *same* resource. A correct crawl treats
+            // them as one target and fetches `/article` once.
+            "<html><a href='/article#a'>a</a><a href='/article#b'>b</a><a href='/article#c'>c</a></html>"
+                .to_owned()
+        } else {
+            "<html><p>discovered</p></html>".to_owned()
+        };
+        Ok(FetchResult {
+            final_url: amatl_core::FinalUrl(url),
+            status: 200,
+            headers_safe: BTreeMap::new(),
+            content_type: Some("text/html".into()),
+            size: body.len() as u64,
+            body: body.into_bytes(),
+            redirect_chain: vec![],
+            retrieved_at: "2026-08-14T00:00:00Z".into(),
+        })
+    }
+}
+
+#[tokio::test]
+async fn fragments_of_one_resource_are_not_crawled_as_separate_entries() {
+    // Regression: `discover_links` returned URLs *with* their fragment, and the
+    // `visited` set was keyed on that fragment-bearing string, while
+    // `child_result` stripped the fragment. Three anchors `#a`/`#b`/`#c` on one
+    // page therefore became three distinct `visited` keys and three queued
+    // children that all resolved to the same fragmentless URL — so the origin
+    // was fetched three times and three fetch/crawl/byte budget units were
+    // spent on one resource. Deduplication now keys on the resource identity.
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let mut deep = crawling_orchestrator(Arc::new(FragmentRecordingFetcher { seen: seen.clone() }))
+        .with_robots(amatl_core::RobotsCache::new(
+            Arc::new(FragmentRecordingFetcher {
+                seen: Arc::new(std::sync::Mutex::new(vec![])),
+            }),
+            1_000,
+            64 * 1024,
+        ));
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+
+    let seen = seen.lock().unwrap().clone();
+    let article_fetches = seen.iter().filter(|url| url.ends_with("/article")).count();
+    assert_eq!(
+        article_fetches, 1,
+        "one resource with three fragment links must be fetched once: {seen:?}"
+    );
+    // The three fragment links all name the seed resource, which is already
+    // visited, so the crawl adds no second Document: exactly one resource was
+    // processed, not one per fragment.
+    assert_eq!(output.documents.len(), 1, "{:?}", output.degradations);
+}
+
+/// A fetcher that records the `timeout_ms` it was handed for the deepest link.
+struct TimeoutRecordingFetcher {
+    seen: Arc<std::sync::Mutex<Vec<(String, u64)>>>,
+}
+
+#[async_trait]
+impl Fetcher for TimeoutRecordingFetcher {
+    async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        let url = request.url.clone();
+        self.seen
+            .lock()
+            .unwrap()
+            .push((url.to_string(), request.timeout_ms));
+        let body = if url.path() == "/robots.txt" {
+            // A long, but still accepted, crawl delay: the next discovered link
+            // must wait for it, shrinking the time left before the deadline.
+            "User-agent: *\nCrawl-delay: 1\n".to_owned()
+        } else if url.path() == "/article" {
+            "<html><a href='/deeper'>deeper</a></html>".to_owned()
+        } else {
+            "<html><p>discovered</p></html>".to_owned()
+        };
+        Ok(FetchResult {
+            final_url: amatl_core::FinalUrl(url),
+            status: 200,
+            headers_safe: BTreeMap::new(),
+            content_type: Some("text/html".into()),
+            size: body.len() as u64,
+            body: body.into_bytes(),
+            redirect_chain: vec![],
+            retrieved_at: "2026-08-14T00:00:00Z".into(),
+        })
+    }
+}
+
+#[tokio::test]
+async fn fetch_timeout_reflects_the_time_left_after_a_crawl_delay() {
+    // Regression: `fetch_timeout` was computed from the `now` sampled at the
+    // *top* of the loop iteration, before the robots `crawl_delay` sleep. After
+    // the sleep the deadline was closer than that stale `now` implied, so the
+    // fetch was granted more timeout than actually remained and the network
+    // request could outlive the global Deep deadline. The timeout is now
+    // recomputed from the current instant.
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let mut deep = crawling_orchestrator(Arc::new(TimeoutRecordingFetcher { seen: seen.clone() }))
+        .with_robots(amatl_core::RobotsCache::new(
+            Arc::new(TimeoutRecordingFetcher {
+                seen: Arc::new(std::sync::Mutex::new(vec![])),
+            }),
+            1_000,
+            64 * 1024,
+        ));
+    let _ = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+
+    let seen = seen.lock().unwrap().clone();
+    let seed_timeout = seen
+        .iter()
+        .find(|(url, _)| url.ends_with("/article"))
+        .map(|(_, timeout)| *timeout)
+        .expect("the seed URL was fetched");
+    let deeper_timeout = seen
+        .iter()
+        .find(|(url, _)| url.ends_with("/deeper"))
+        .map(|(_, timeout)| *timeout)
+        .expect("the discovered link was fetched");
+    // The budget is 5s. The discovered fetch happens after a ~1s crawl delay,
+    // so it must be granted strictly less timeout than the deadline allows:
+    // it can never be handed more than the time that actually remains.
+    assert!(
+        deeper_timeout < seed_timeout,
+        "a fetch after a crawl delay must not inherit the pre-delay timeout: seed={seed_timeout} deeper={deeper_timeout}"
+    );
+    assert!(
+        deeper_timeout <= 5_000,
+        "the per-fetch timeout may never exceed the budgeted deadline: {deeper_timeout}"
+    );
+}
+
+/// A fetcher that always fails with a fixed error, so a test can drive the Deep
+/// error path and observe how the redirect budget is charged.
+struct FailingFetcher(FetchError);
+
+#[async_trait]
+impl Fetcher for FailingFetcher {
+    async fn fetch(&self, _: FetchRequest) -> Result<FetchResult, FetchError> {
+        Err(self.0.clone())
+    }
+}
+
+fn deep_with_budget(fetch: FetchError) -> DeepOrchestrator {
+    DeepOrchestrator::new(
+        // fetches=4, bytes=100_000, redirects=5, browser=1, crawl=4, deadline=5s
+        DeepBudget::new(4, 100_000, 5, 1, 4, 5_000).with_gap_limits(0, 0),
+        Arc::new(FailingFetcher(fetch)),
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        5_000,
+        100_000,
+        5,
+        // top_k = 2 so the concurrency test can enqueue two candidates.
+        2,
+        0,
+    )
+}
+
+#[tokio::test]
+async fn a_fetch_that_failed_after_redirects_still_charges_its_redirects() {
+    // Regression (B5): a fetch that follows redirects and then fails used to
+    // drop the count entirely, because only the success path charged
+    // `redirect_chain`. An origin could therefore walk an attacker-controlled
+    // redirect chain, make the final hop fail, and repeat — spending real
+    // network redirects while `remaining_redirects` never moved. The error now
+    // carries the followed count and Deep debits it.
+    let mut deep = deep_with_budget(FetchError::AfterRedirects {
+        followed: 3,
+        cause: Box::new(FetchError::Timeout),
+    });
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 5);
+    let _ = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    assert_eq!(
+        deep.budget_snapshot().remaining_redirects,
+        2,
+        "the three redirects followed before the failure must be charged"
+    );
+}
+
+#[tokio::test]
+async fn a_fetch_that_failed_before_any_redirect_charges_nothing() {
+    // The mirror case: an error with no redirects followed must not touch the
+    // redirect budget (no conservative "charge max_redirects" heuristic).
+    let mut deep = deep_with_budget(FetchError::Timeout);
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 5);
+    let _ = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 5);
+}
+
+#[tokio::test]
+async fn a_failed_fetch_keeps_the_degradation_code_of_its_underlying_cause() {
+    // Wrapping must not collapse classification: a blocked destination reached
+    // *after* redirects still reports `fetch_blocked`, not a generic
+    // "after redirects" code.
+    let mut deep = deep_with_budget(FetchError::AfterRedirects {
+        followed: 2,
+        cause: Box::new(FetchError::AddressBlocked),
+    });
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    assert!(
+        output
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "fetch_blocked"),
+        "{:?}",
+        output.degradations
+    );
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 3);
+}
+
+#[tokio::test]
+async fn reaching_the_redirect_limit_after_a_redirect_charges_only_the_followed_ones() {
+    // `RedirectLimit` is raised when a redirect response is *received but not
+    // followed*; the redirects already taken were pushed onto the chain and must
+    // be charged, while the rejected one is not. Here three were followed.
+    let mut deep = deep_with_budget(FetchError::AfterRedirects {
+        followed: 3,
+        cause: Box::new(FetchError::RedirectLimit),
+    });
+    let _ = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 2);
+}
+
+#[tokio::test]
+async fn concurrent_failed_fetches_respect_the_aggregate_redirect_budget() {
+    // Two candidates, each erroring after 3 redirects, against a redirect budget
+    // of 5: the aggregate must never go negative, and the second charge is
+    // rejected (charging 0) rather than wrapping the counter.
+    let mut deep = deep_with_budget(FetchError::AfterRedirects {
+        followed: 3,
+        cause: Box::new(FetchError::Network),
+    });
+    let output = deep
+        .enrich(request(vec![
+            DeepCandidate {
+                result: result(),
+                storage_rights: false,
+            },
+            DeepCandidate {
+                result: SearchResult {
+                    canonical_url: CanonicalUrl(Url::parse("https://example.com/second").unwrap()),
+                    original_url: OriginalUrl(Url::parse("https://example.com/second").unwrap()),
+                    ..result()
+                },
+                storage_rights: false,
+            },
+        ]))
+        .await;
+    // Both fetches fail before producing a Document.
+    assert!(output.documents.is_empty());
+    // The first charge takes 5 -> 2; the second saturates 2 -> 0 rather than
+    // underflowing, so the aggregate never exceeds its limit.
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 0);
+}
