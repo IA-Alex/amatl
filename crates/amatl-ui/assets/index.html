@@ -307,6 +307,14 @@
         <p id="marginalia-dialog-help" class="field-help">Pega la API key privada de Marginalia. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
         <label class="sr-only" for="marginalia-key">API key de Marginalia</label>
         <input id="marginalia-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="marginalia-…">
+        <label class="field-label" for="marginalia-ttl">Caducidad de la key en memoria</label>
+        <select id="marginalia-ttl">
+          <option value="3600000">1 hora</option>
+          <option value="28800000" selected>8 horas</option>
+          <option value="43200000">12 horas</option>
+          <option value="86400000">24 horas</option>
+          <option value="0">No caduca (hasta cerrar AMATL)</option>
+        </select>
         <p id="marginalia-key-error" class="field-help" hidden></p>
         <button type="submit" id="marginalia-save">Guardar y verificar</button>
         <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>

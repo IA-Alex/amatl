@@ -1189,6 +1189,7 @@ const marginaliaStatus = document.querySelector("#marginalia-status");
 const marginaliaDialog = document.querySelector("#marginalia-dialog");
 const marginaliaForm = document.querySelector("#marginalia-form");
 const marginaliaKeyInput = document.querySelector("#marginalia-key");
+const marginaliaTtlInput = document.querySelector("#marginalia-ttl");
 const marginaliaKeyError = document.querySelector("#marginalia-key-error");
 const marginaliaSave = document.querySelector("#marginalia-save");
 const marginaliaCancel = document.querySelector("#marginalia-cancel");
@@ -1214,7 +1215,18 @@ function marginaliaCredentialSource(sources) {
   return entry && typeof entry.credential_source === "string" ? entry.credential_source : "none";
 }
 
-function updateMarginaliaUi(source) {
+// Human, coarse expiry label from a remaining-milliseconds value. Rounds up to
+// the next unit so a key never reads as "0 min" while still usable, and returns
+// null for the "never expires" sentinel the server omits.
+function formatRemaining(ms) {
+  if (!Number.isFinite(ms) || ms <= 0) return null;
+  const minutes = Math.ceil(ms / 60000);
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.ceil(minutes / 60);
+  return `${hours} h`;
+}
+
+function updateMarginaliaUi(source, expiresInMs) {
   // Only an in-memory key can be liquidated from here: a key read from the
   // environment variable is out of this surface's reach, so "liquidate" stays
   // disabled and the status says where the key actually comes from.
@@ -1222,7 +1234,10 @@ function updateMarginaliaUi(source) {
   marginaliaStatus.hidden = false;
   if (source === "ephemeral") {
     marginaliaStatus.dataset.state = "success";
-    marginaliaStatus.textContent = t("marginaliaStatusPresent");
+    const remaining = formatRemaining(Number(expiresInMs));
+    marginaliaStatus.textContent = remaining
+      ? `${t("marginaliaStatusPresent")} · ${t("marginaliaExpiresIn")} ${remaining}`
+      : t("marginaliaStatusPresent");
   } else if (source === "environment") {
     marginaliaStatus.dataset.state = "partial";
     marginaliaStatus.textContent = t("marginaliaStatusEnvironment");
@@ -1263,10 +1278,16 @@ async function saveMarginaliaKey(event) {
   marginaliaSave.disabled = true;
   marginaliaKeyError.hidden = true;
   try {
-    const report = await globalThis.api.post("/providers/marginalia/credential", { key });
+    const ttlMs = Number(marginaliaTtlInput && marginaliaTtlInput.value);
+    const body = { key };
+    if (Number.isFinite(ttlMs) && ttlMs >= 0) body.ttl_ms = ttlMs;
+    const report = await globalThis.api.post("/providers/marginalia/credential", body);
     marginaliaDialog.close();
     marginaliaKeyInput.value = "";
-    updateMarginaliaUi(report && report.available ? "ephemeral" : "none");
+    updateMarginaliaUi(
+      report && report.available ? "ephemeral" : "none",
+      report && report.expires_in_ms,
+    );
     setStatusKey("marginaliaSaved", "success");
     fetchServiceState();
   } catch (error) {
@@ -1887,6 +1908,7 @@ function applyTranslations() {
   document.querySelector("#marginalia-dialog-heading").textContent = t("marginaliaDialogHeading");
   document.querySelector("#marginalia-dialog-help").textContent = t("marginaliaDialogHelp");
   document.querySelector("label[for='marginalia-key']").textContent = t("marginaliaApiKeyLabel");
+  document.querySelector("label[for='marginalia-ttl']").textContent = t("marginaliaTtlLabel");
   marginaliaKeyInput.placeholder = t("marginaliaKeyPlaceholder");
   document.querySelector("#marginalia-save").textContent = t("marginaliaSave");
   document.querySelector("#marginalia-cancel").textContent = t("marginaliaCancel");

@@ -201,6 +201,39 @@ pub enum CredentialSource {
     Environment,
 }
 
+/// An operator-supplied provider credential held only in RAM.
+///
+/// The value is `Zeroizing`, so dropping the entry wipes its bytes from the
+/// heap. `expires_at` is an absolute instant computed once at write time; a
+/// `None` value never expires (the `ttl_ms = 0` opt-out). Expiry is evaluated
+/// lazily on every read rather than by a timer, so a key that outlives its TTL
+/// is never handed to a provider even if no background task ran.
+#[derive(Debug)]
+struct EphemeralCredential {
+    value: Zeroizing<String>,
+    expires_at: Option<std::time::Instant>,
+}
+
+impl EphemeralCredential {
+    fn new(value: &str, ttl: Option<std::time::Duration>) -> Self {
+        Self {
+            value: Zeroizing::new(value.to_owned()),
+            expires_at: ttl.map(|ttl| std::time::Instant::now() + ttl),
+        }
+    }
+
+    /// Whether the credential has outlived its TTL at `now`.
+    fn is_expired(&self, now: std::time::Instant) -> bool {
+        self.expires_at.is_some_and(|deadline| now >= deadline)
+    }
+
+    /// Milliseconds remaining before expiry, or `None` when it never expires.
+    fn remaining_ms(&self, now: std::time::Instant) -> Option<u64> {
+        self.expires_at
+            .map(|deadline| deadline.saturating_duration_since(now).as_millis() as u64)
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct ProviderSummary {
     pub schema_version: String,
@@ -436,7 +469,13 @@ pub struct AmatlService {
     /// service rebuild, and survive `reloaded()` by being shared in. Values are
     /// `Zeroizing` so replacing or liquidating a key wipes its bytes from the
     /// heap instead of leaving them for the allocator to reuse.
-    ephemeral_credentials: Arc<RwLock<BTreeMap<String, Zeroizing<String>>>>,
+    ///
+    /// Each entry also carries an expiry instant. Lazy expiry is enforced on
+    /// every read (`resolved_credential`/`ephemeral_credential_present`): once
+    /// `expires_at` passes, the entry is dropped (and its bytes wiped) instead
+    /// of being handed to a provider. `None` means "no expiry", which only the
+    /// `ttl_ms = 0` opt-out produces.
+    ephemeral_credentials: Arc<RwLock<BTreeMap<String, EphemeralCredential>>>,
     /// Stops the background maintenance task when the service is dropped.
     ///
     /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
@@ -1698,11 +1737,23 @@ impl AmatlService {
         name: &str,
         runtime: &ProviderRuntimeConfig,
     ) -> Option<Zeroizing<String>> {
-        match self.ephemeral_credentials.read() {
-            Ok(guard) => {
-                if let Some(value) = guard.get(name) {
-                    if !value.is_empty() {
-                        return Some(value.clone());
+        let now = std::time::Instant::now();
+        match self.ephemeral_credentials.write() {
+            Ok(mut guard) => {
+                if let Some(entry) = guard.get(name) {
+                    if entry.is_expired(now) {
+                        // Lazy expiry: drop the entry here so an outlived key is
+                        // wiped (its bytes `Zeroizing`) and never used, even
+                        // without a background sweep. Fall through to the env
+                        // credential so a configured fallback still applies.
+                        tracing::warn!(
+                            target: "amatl::credentials",
+                            provider = %name,
+                            "ephemeral credential expired; it was discarded before use"
+                        );
+                        drop(guard.remove(name));
+                    } else if !entry.value.is_empty() {
+                        return Some(entry.value.clone());
                     }
                 }
             }
@@ -1718,27 +1769,66 @@ impl AmatlService {
         credential(runtime)
     }
 
-    /// Whether an operator has injected an in-memory credential for `name`.
-    /// Read-only; never exposes the secret, only its presence — and it checks
-    /// presence without cloning the key.
+    /// Whether an operator has injected an in-memory, still-valid credential
+    /// for `name`. Read-only; never exposes the secret, only its presence. A
+    /// key past its TTL counts as absent and is dropped.
     pub fn ephemeral_credential_present(&self, name: &str) -> bool {
-        self.ephemeral_credentials
-            .read()
-            .map(|guard| guard.get(name).is_some_and(|value| !value.is_empty()))
-            .unwrap_or(false)
+        self.ephemeral_credential_remaining_ms(name).is_some()
+    }
+
+    /// Milliseconds until the ephemeral credential for `name` expires, or
+    /// `None` when there is no valid ephemeral credential (absent, empty or
+    /// already expired). A key with a TTL reports the remaining time; a key
+    /// with no TTL reports the `u64::MAX` sentinel meaning "present, never
+    /// expires". Either way a `Some` always maps to a live key that may be
+    /// used. Expired entries are dropped as a side effect.
+    pub fn ephemeral_credential_remaining_ms(&self, name: &str) -> Option<u64> {
+        let now = std::time::Instant::now();
+        let Ok(mut guard) = self.ephemeral_credentials.write() else {
+            return None;
+        };
+        let entry = guard.get(name)?;
+        if entry.is_expired(now) {
+            tracing::warn!(
+                target: "amatl::credentials",
+                provider = %name,
+                "ephemeral credential expired; it was discarded on inspection"
+            );
+            drop(guard.remove(name));
+            return None;
+        }
+        if entry.value.is_empty() {
+            return None;
+        }
+        // A live key with a TTL reports its remaining time; one without a TTL
+        // has no finite remaining time, so it reports the `u64::MAX` sentinel
+        // that both presence checks and the wire layer read as "never expires".
+        Some(entry.remaining_ms(now).unwrap_or(u64::MAX))
     }
 
     /// Set an operator-supplied provider credential in memory only.
     ///
     /// Nothing is written to disk, to `amatl.toml`, the environment, or logs:
     /// the value lives in RAM and dies with the process. A generous upper bound
-    /// rejects a runaway value; an empty value is rejected too.
-    pub fn set_provider_credential(&self, name: &str, value: &str) -> Result<(), ServiceError> {
+    /// rejects a runaway value; an empty value is rejected too. `ttl` is the
+    /// lifetime after which the key expires on its own (lazy, on next read);
+    /// `None` means it never expires and only disappears when the process does.
+    pub fn set_provider_credential(
+        &self,
+        name: &str,
+        value: &str,
+        ttl: Option<std::time::Duration>,
+    ) -> Result<(), ServiceError> {
         if self.registry.get(name).is_none() {
             return Err(ServiceError::ProviderNotRegistered(name.into()));
         }
         if value.is_empty() || value.len() > 512 {
             return Err(ServiceError::InvalidInput);
+        }
+        if let Some(ttl) = ttl {
+            if ttl.is_zero() {
+                return Err(ServiceError::InvalidInput);
+            }
         }
         // A poisoned lock is an internal fault, not a missing provider: the
         // provider is registered. Report it as a service fault (500) instead of
@@ -1750,7 +1840,7 @@ impl AmatlService {
             );
             ServiceError::Configuration
         })?;
-        guard.insert(name.to_string(), Zeroizing::new(value.to_owned()));
+        guard.insert(name.to_string(), EphemeralCredential::new(value, ttl));
         Ok(())
     }
 
@@ -1802,7 +1892,7 @@ impl AmatlService {
         .await
         .map_err(|_| ServiceError::Configuration)?;
         service
-            .set_provider_credential(&name, &value)
+            .set_provider_credential(&name, &value, None)
             .map_err(|_| ServiceError::ProviderNotRegistered(name.clone()))?;
         let execution = service.search(query.clone(), ServiceSurface::cli()).await?;
         let used = execution
@@ -2913,7 +3003,7 @@ mod tests {
         assert!(!service.ephemeral_credential_present("marginalia"));
 
         service
-            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
             .unwrap();
         assert!(service.ephemeral_credential_present("marginalia"));
 
@@ -2926,10 +3016,57 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn ephemeral_credential_expires_lazily_at_its_ttl() {
+        let service = AmatlService::new(Config::default(), false).await;
+        // A live key with a short TTL is present with time remaining...
+        service
+            .set_provider_credential(
+                "marginalia",
+                "marginalia-secret-key",
+                Some(std::time::Duration::from_secs(3600)),
+            )
+            .unwrap();
+        assert!(service.ephemeral_credential_present("marginalia"));
+        assert!(service
+            .ephemeral_credential_remaining_ms("marginalia")
+            .is_some_and(|remaining| remaining > 0));
+
+        // ...and a key past its TTL is treated as absent and dropped on read,
+        // without waiting for any background task.
+        service
+            .set_provider_credential(
+                "marginalia",
+                "marginalia-secret-key",
+                Some(std::time::Duration::from_millis(1)),
+            )
+            .unwrap();
+        tokio::time::sleep(std::time::Duration::from_millis(10)).await;
+        assert!(!service.ephemeral_credential_present("marginalia"));
+        assert!(service
+            .ephemeral_credential_remaining_ms("marginalia")
+            .is_none());
+    }
+
+    #[tokio::test]
+    async fn ephemeral_credential_without_ttl_never_expires() {
+        let service = AmatlService::new(Config::default(), false).await;
+        service
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
+            .unwrap();
+        // The `None` TTL is the "no expiry" opt-out: presence survives reads and
+        // the remaining-time sentinel marks it as never expiring.
+        assert!(service.ephemeral_credential_present("marginalia"));
+        assert_eq!(
+            service.ephemeral_credential_remaining_ms("marginalia"),
+            Some(u64::MAX)
+        );
+    }
+
+    #[tokio::test]
     async fn ephemeral_credential_is_never_serialized_into_the_config() {
         let service = AmatlService::new(Config::default(), false).await;
         service
-            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
             .unwrap();
         // The key must never reach a serialized form of the configuration — the
         // same shape a config file or a `/config` view would carry.
@@ -2944,12 +3081,14 @@ mod tests {
         // specific `ProviderNotRegistered` variant must survive here so it is
         // never conflated with an internal write failure.
         assert_eq!(
-            service.set_provider_credential("not_registered", "k"),
+            service.set_provider_credential("not_registered", "k", None),
             Err(ServiceError::ProviderNotRegistered("not_registered".into()))
         );
-        assert!(service.set_provider_credential("marginalia", "").is_err());
         assert!(service
-            .set_provider_credential("marginalia", &"x".repeat(513))
+            .set_provider_credential("marginalia", "", None)
+            .is_err());
+        assert!(service
+            .set_provider_credential("marginalia", &"x".repeat(513), None)
             .is_err());
         // None of the rejected values were committed.
         assert!(!service.ephemeral_credential_present("marginalia"));
@@ -2959,7 +3098,7 @@ mod tests {
     async fn ephemeral_credential_survives_reload_without_a_restart() {
         let service = AmatlService::new(Config::default(), false).await;
         service
-            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
             .unwrap();
         let reloaded = service.reloaded(Config::default()).await.unwrap();
         assert!(reloaded.ephemeral_credential_present("marginalia"));
@@ -2990,7 +3129,7 @@ mod tests {
         assert_eq!(source(&service), CredentialSource::None);
 
         service
-            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
             .unwrap();
         assert_eq!(source(&service), CredentialSource::Ephemeral);
     }
@@ -3063,7 +3202,7 @@ mod tests {
     async fn status_sources_expose_credential_provenance_but_not_the_value() {
         let service = AmatlService::new(Config::default(), false).await;
         service
-            .set_provider_credential("marginalia", "marginalia-secret-key")
+            .set_provider_credential("marginalia", "marginalia-secret-key", None)
             .unwrap();
         let status = service.status().await.unwrap();
         let marginalia = status
@@ -3150,7 +3289,7 @@ mod tests {
         // rather than relying on the host environment, so the test asserts the
         // same thing on a clean CI runner as on an operator shell.
         service
-            .set_provider_credential("marginalia", "marginalia-test-key")
+            .set_provider_credential("marginalia", "marginalia-test-key", None)
             .unwrap();
         let status = service.status().await.unwrap();
         assert_eq!(

@@ -1198,6 +1198,14 @@ async fn provider_toggle(
     }
 }
 
+/// Default lifetime for an operator-injected provider credential when the
+/// caller omits `ttl_ms`. Twelve hours keeps a scarce key (e.g. the single
+/// Marginalia credential) resident for a working session but not indefinitely;
+/// a caller that wants longer, or none at all, says so explicitly with
+/// `ttl_ms`. The value lives only in RAM regardless.
+const DEFAULT_CREDENTIAL_TTL: Option<std::time::Duration> =
+    Some(std::time::Duration::from_secs(12 * 60 * 60));
+
 /// Body of `POST /providers/{name}/credential`: the operator-supplied key.
 ///
 /// The key is wrapped so its heap allocation is wiped when the deserialized
@@ -1205,6 +1213,14 @@ async fn provider_toggle(
 #[derive(Deserialize)]
 struct ProviderCredentialParams {
     key: SecretKey,
+    /// Optional lifetime for the in-memory key, in milliseconds. Omitted (or
+    /// `null`) uses the service default; the value `0` opts out of expiry
+    /// entirely so the key lives until the process does. A positive value
+    /// makes the key expire on its own, lazily, on the next read past its
+    /// deadline — useful for a scarce credential an operator does not want to
+    /// leave resident indefinitely.
+    #[serde(default)]
+    ttl_ms: Option<u64>,
 }
 
 /// A secret string that zeroizes its buffer on drop.
@@ -1236,6 +1252,10 @@ struct ProviderCredentialReport {
     set: bool,
     /// Whether the source is usable right now with the current credential.
     available: bool,
+    /// Milliseconds until the in-memory key expires, or `null` when it never
+    /// expires (operator opted out with `ttl_ms = 0`) or no key is held. Lets
+    /// the UI show a countdown and re-prompts before the key quietly lapses.
+    expires_in_ms: Option<u64>,
 }
 
 /// Insert (or replace) an operator-supplied provider credential in memory
@@ -1277,7 +1297,16 @@ async fn provider_credential_put(
         );
         return api_error(ErrorCode::InvalidRequest);
     }
-    if service.set_provider_credential(&name, &params.key).is_err() {
+    // `ttl_ms` semantics: omitted → service default; `0` → no expiry.
+    let ttl = match params.ttl_ms {
+        None => DEFAULT_CREDENTIAL_TTL,
+        Some(0) => None,
+        Some(ms) => Some(std::time::Duration::from_millis(ms)),
+    };
+    if service
+        .set_provider_credential(&name, &params.key, ttl)
+        .is_err()
+    {
         audit_credential_action(
             &state,
             "provider_credential_rejected",
@@ -1294,12 +1323,15 @@ async fn provider_credential_put(
         &identity.id,
         &name,
     );
-    let available = service.ephemeral_credential_present(&name);
+    let remaining = service.ephemeral_credential_remaining_ms(&name);
     Json(ProviderCredentialReport {
         schema_version: SCHEMA_VERSION.into(),
         name,
         set: true,
-        available,
+        available: remaining.is_some(),
+        // `u64::MAX` is the "present, never expires" sentinel; present it as
+        // `None` so the wire never carries a meaningless magic number.
+        expires_in_ms: remaining.filter(|value| *value != u64::MAX),
     })
     .into_response()
 }
@@ -1341,6 +1373,7 @@ async fn provider_credential_delete(
         name,
         set: false,
         available: false,
+        expires_in_ms: None,
     })
     .into_response()
 }

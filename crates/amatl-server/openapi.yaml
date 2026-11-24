@@ -1214,6 +1214,14 @@ components:
           type: string
           minLength: 1
           description: Provider credential value; zeroized server-side.
+        ttl_ms:
+          type: [integer, 'null']
+          format: uint64
+          minimum: 0
+          description: >-
+            In-memory lifetime in milliseconds after which the key expires
+            lazily on the next read. Omitted uses the server default; `0` opts
+            out of expiry so the key lives until the process stops.
     ProviderRecordInput:
       type: object
       additionalProperties: false
@@ -1408,12 +1416,18 @@ components:
     ProviderCredentialReport:
       type: object
       additionalProperties: false
-      required: [schema_version, name, set, available]
+      required: [schema_version, name, set, available, expires_in_ms]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         name: { type: string }
         set: { type: boolean }
         available: { type: boolean }
+        expires_in_ms:
+          type: [integer, 'null']
+          format: uint64
+          description: >-
+            Milliseconds until the in-memory key expires, or null when it never
+            expires or no key is held.
     ProviderRecordReport:
       type: object
       additionalProperties: false

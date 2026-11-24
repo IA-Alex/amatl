@@ -55,7 +55,7 @@ async fn marginalia_only_app() -> Router {
     // Inject one through the supported operator path so the test does not depend
     // on the host environment (a clean CI runner has no MARGINALIA_API_KEY).
     service
-        .set_provider_credential("marginalia", "marginalia-test-key")
+        .set_provider_credential("marginalia", "marginalia-test-key", None)
         .unwrap();
     build_router(service, Some(TOKEN.into())).await.unwrap()
 }

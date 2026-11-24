@@ -163,6 +163,8 @@ globalThis.AMATL_LOCALES = {
       marginaliaFailed: "No se pudo guardar la clave. Verifica que tu credencial tenga permiso de administrador.",
       marginaliaClearedFailed: "No se pudo eliminar la clave. Verifica que tu credencial tenga permiso de administrador.",
       marginaliaStatusPresent: "Clave de Marginalia activa en memoria.",
+      marginaliaExpiresIn: "caduca en",
+      marginaliaTtlLabel: "Caducidad de la clave en memoria",
       marginaliaStatusAbsent: "Sin clave de Marginalia en memoria.",
       marginaliaStatusEnvironment: "Marginalia usa una clave de la variable de entorno: no se puede eliminar desde aquí.",
       // History panel
@@ -377,6 +379,8 @@ globalThis.AMATL_LOCALES = {
       marginaliaFailed: "Could not save the key. Check that your credential has admin scope.",
       marginaliaClearedFailed: "Could not remove the key. Check that your credential has admin scope.",
       marginaliaStatusPresent: "Marginalia key active in memory.",
+      marginaliaExpiresIn: "expires in",
+      marginaliaTtlLabel: "In-memory key expiry",
       marginaliaStatusAbsent: "No Marginalia key in memory.",
       marginaliaStatusEnvironment: "Marginalia uses a key from the environment variable: it cannot be removed from here.",
       // History panel
