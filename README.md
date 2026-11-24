@@ -100,15 +100,10 @@ curl -X POST 'http://127.0.0.1:8080/search' \
   --data '{"q":"rust"}'
 ```
 
-La UI ofrece `Buscar`, `Analizar evidencia` y, si el operador activó la síntesis
-de respuesta, `Resumen con IA`. Las tres acciones usan POST JSON para que la
-consulta no aparezca en URL, historial o access logs. Deep presenta cada
-documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
-comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. `Resumen con
-IA` sólo cita índices de fuente que existen en los resultados devueltos; el
-botón permanece visible pero deshabilitado cuando la función está apagada o le
-falta credencial en el servidor, para que el operador siempre pueda descubrir
-y accionar el interruptor de administrador que la enciende. El token viaja
+La UI ofrece `Buscar` y `Analizar evidencia`. Ambas acciones usan POST JSON
+para que la consulta no aparezca en URL, historial o access logs. Deep presenta
+cada documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
+comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. El token viaja
 únicamente en `Authorization`, nunca como campo del formulario ni como query
 parameter. La ingestión local continúa siendo exclusiva de CLI. La cabecera
 incluye un selector de tema claro/oscuro que respeta la preferencia del

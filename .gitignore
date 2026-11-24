@@ -40,3 +40,6 @@ amatl_logo.png~
 # A third-party website template dump, unrelated to AMATL and never source
 # material; kept out of history the same way the transient outputs above are.
 /analiza/
+# Playwright MCP session scratch: local browser-automation state, regenerated on
+# demand and never source material.
+/.playwright-mcp/
