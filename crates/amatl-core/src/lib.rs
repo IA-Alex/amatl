@@ -57,12 +57,12 @@ pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit}
 pub use classify::classify;
 pub use complementarity::compute_complementarity_metrics;
 pub use config::{
-    ApprovalStatus, Config, ConfigError, DataPolicyConfig,
-    DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExpansionConfig,
-    ExpansionMode, ExtractorConfigPatch, InferenceConfig, InferenceConfigPatch, InferenceMode,
-    OpticsConfig, OpticsConfigPatch, PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig,
-    RankingConfig, ReloadKind, RendererConfig, RendererConfigPatch, Scope, SecurityProfile,
-    ServerClient, ServerConfig, ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
+    ApprovalStatus, Config, ConfigError, DataPolicyConfig, DataPolicyConfigPatch, DeepConfigPatch,
+    EgressPolicy, ExecutionConfig, ExpansionConfig, ExpansionMode, ExtractorConfigPatch,
+    InferenceConfig, InferenceConfigPatch, InferenceMode, OpticsConfig, OpticsConfigPatch,
+    PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig, RankingConfig, ReloadKind,
+    RendererConfig, RendererConfigPatch, Scope, SecurityProfile, ServerClient, ServerConfig,
+    ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -145,11 +145,10 @@ pub use router::{
     RoleAssignment, StaticRouter,
 };
 pub use service::{
-    validate_provider_canary, validate_provider_canary_with, AmatlService,
-    CacheStatus, CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits,
-    ProviderCanaryError, ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput,
-    SearchExecution, ServiceError, ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus,
-    StorageStatus,
+    validate_provider_canary, validate_provider_canary_with, AmatlService, CacheStatus,
+    CredentialSource, DataPolicyStatus, DeepTarget, ExecutionLimits, ProviderCanaryError,
+    ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError,
+    ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,

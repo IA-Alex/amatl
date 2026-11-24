@@ -336,6 +336,14 @@ adapter/extractor versions are independent axes as well.
 - Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
   transport surfaces live in `amatl-server`.
 
+### Removals planned for 1.0
+
+- The deprecated `local_model_batch` alias for the `[inference]`
+  `local_cache_capacity` key, kept only so configs written against rc.1 still
+  parse. Tracked here so it cannot outlive the 1.0 boundary; the `TODO(1.0)`
+  markers in `crates/amatl-core/src/config/inference.rs` and `config/mod.rs`
+  point back to this entry.
+
 ### Fixed
 
 - `crates/amatl-core/Cargo.toml` declared `readme = "../../README.md"`, a path

@@ -1245,14 +1245,7 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
         .collect::<std::collections::BTreeSet<_>>();
     assert_eq!(
         names,
-        [
-            "deep_search",
-            "fetch",
-            "providers",
-            "search",
-            "status"
-        ]
-        .into()
+        ["deep_search", "fetch", "providers", "search", "status"].into()
     );
     // Local file ingestion is deliberately CLI-only: an MCP listener must not
     // become a remote file reader.

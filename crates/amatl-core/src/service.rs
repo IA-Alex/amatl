@@ -4,15 +4,15 @@ use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
 use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
-    parse_query, Budget, CachedProvider, CanonicalUrl, ChromiumRenderer,
-    Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest,
-    DeepResponse, DocumentCache, DocumentCachePolicy, ErrorCode, FallbackExtractor, GapAnalyzer,
-    InMemoryTelemetry, InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider,
-    ProviderAvailability, ProviderBuildContext, ProviderCapabilities, ProviderItem,
-    ProviderRegistry, ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query,
-    Rank, RankingV2Engine, RendererPool, ReqwestTransport, RoleAssignment,
-    SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchResult,
-    SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
+    parse_query, Budget, CachedProvider, CanonicalUrl, ChromiumRenderer, Config, DeepBudget,
+    DeepCandidate, DeepOrchestrator, DeepRequest, DeepResponse, DocumentCache, DocumentCachePolicy,
+    ErrorCode, FallbackExtractor, GapAnalyzer, InMemoryTelemetry, InferenceRuntime, MockProvider,
+    NativeHtmlExtractor, Provider, ProviderAvailability, ProviderBuildContext,
+    ProviderCapabilities, ProviderItem, ProviderRegistry, ProviderRuntimeConfig,
+    ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank, RankingV2Engine, RendererPool,
+    ReqwestTransport, RoleAssignment, SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse,
+    SearchResult, SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor,
+    SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};

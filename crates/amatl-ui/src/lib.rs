@@ -125,10 +125,7 @@ mod tests {
         }
         // The ids the UI audits grep for, so a rename cannot pass silently.
         let index = text("/");
-        for id in [
-            "id=\"local-token\"",
-            "id=\"access-summary\"",
-        ] {
+        for id in ["id=\"local-token\"", "id=\"access-summary\""] {
             assert!(
                 index.contains(id),
                 "index.html no longer carries {id}: UI audit citations in `audit/` \

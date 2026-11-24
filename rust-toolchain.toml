@@ -1,0 +1,12 @@
+# Pin the default toolchain so `cargo fmt --check` is deterministic.
+#
+# Without this file the gate runs against whatever `stable` resolves to on the
+# host (CI's `dtolnay/rust-toolchain@stable`, or the operator's local rustup),
+# so a rustfmt release that re-wraps a literal can turn the gate red on a tree
+# nobody edited. `stable` here means "latest stable", the same channel the
+# workflows already install, so this pins the *resolution* rather than freezing
+# a version: local and CI agree, and the MSRV job in `.github/workflows/ci.yml`
+# keeps its explicit `+1.88.0` check. Bumping this is a reviewed change.
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy"]
