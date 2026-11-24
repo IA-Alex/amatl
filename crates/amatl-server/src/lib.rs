@@ -755,6 +755,21 @@ pub async fn build_router_with_reload(
     let effective_port = server.port;
     let https = server.tls.cert_path.is_some();
     let clients = resolve_clients(service.config(), explicit_token.clone())?;
+    // `no_auth` is loopback-only and unconditionally enforced by
+    // `Config::validate`, so this is not an unsafe start — but it *is* an
+    // unauthenticated one: every local process that reaches the socket is
+    // treated as an admin. Surface it on the startup path the operator actually
+    // watches (the log), not only in a separate `doctor` run, so the weaker
+    // posture is never a silent default.
+    if server.no_auth {
+        tracing::warn!(
+            target: "amatl::http",
+            security_event = "server_no_auth",
+            bind = %server.bind,
+            port = server.port,
+            "HTTP server started without authentication (no_auth, loopback only): any local process reaching this socket has full admin scope"
+        );
+    }
     let allowed_origins = effective_origins(service.config(), https);
     let security = Arc::new(SecurityState {
         clients,

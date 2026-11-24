@@ -698,6 +698,59 @@ async fn rejected_requests_emit_secret_safe_security_events() {
 }
 
 #[tokio::test]
+async fn no_auth_startup_emits_a_security_warning() {
+    let _serialized = security_log_guard().await;
+    let captured = security_logs();
+    captured
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .clear();
+    let mut config = amatl_core::Config::default();
+    config.server.no_auth = true;
+    // A commented-lookalike secret must never appear even here: the warning is
+    // about the posture, never about any credential.
+    let _router = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    let logs = String::from_utf8(
+        captured
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone(),
+    )
+    .unwrap();
+    assert!(logs.contains("amatl::http"), "{logs}");
+    assert!(logs.contains("security_event=\"server_no_auth\""), "{logs}");
+    assert!(!logs.contains(TOKEN), "{logs}");
+}
+
+#[tokio::test]
+async fn authenticated_startup_does_not_emit_the_no_auth_warning() {
+    let _serialized = security_log_guard().await;
+    let captured = security_logs();
+    captured
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .clear();
+    // The default config keeps authentication on, so the warning must stay
+    // silent: it exists to flag the *weaker* posture, not to be background noise.
+    let _router = build_router(
+        AmatlService::new(amatl_core::Config::default(), true).await,
+        Some(TOKEN.into()),
+    )
+    .await
+    .unwrap();
+    let logs = String::from_utf8(
+        captured
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone(),
+    )
+    .unwrap();
+    assert!(!logs.contains("security_event=\"server_no_auth\""), "{logs}");
+}
+
+#[tokio::test]
 async fn mcp_ssrf_rejection_is_correlated_without_logging_the_url() {
     let _serialized = security_log_guard().await;
     let captured = security_logs();
