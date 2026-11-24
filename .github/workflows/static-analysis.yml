@@ -22,6 +22,12 @@ name: static-analysis
 # test-rich checkout. They run with `continue-on-error: true` and publish a
 # summary instead of failing the job.
 #
+# Rust coverage (`cargo llvm-cov`, job `coverage`) is advisory too, and by
+# design has no minimum threshold: it reports which crates and modules are
+# thinly exercised so the work can be prioritised by risk. A low percentage
+# never blocks the pipeline; an instrumentation or execution failure is
+# surfaced in the summary rather than hidden.
+#
 # ast-grep is deliberately absent: without a project ruleset it can only produce
 # the same style noise ruff already reports. It stays a local/agent tool until
 # someone writes rules for this codebase.
@@ -120,6 +126,44 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
           # Last command decides the exit code, so this is the gate.
           python3 tools/check_doc_refs.py
+
+  coverage:
+    name: Rust coverage (informative)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools-preview
+      - uses: Swatinem/rust-cache@v2
+      - name: Install cargo-llvm-cov
+        run: cargo install cargo-llvm-cov --locked
+      # Informative only: no threshold, no `--fail-under-*`, and
+      # `continue-on-error` so a low number never blocks the pipeline. The
+      # summary is the deliverable — it names which crates are thinly covered so
+      # the work can be prioritised by risk, not by a percentage target. A real
+      # instrumentation or execution failure is reported in the summary rather
+      # than being hidden, but it still does not gate.
+      - name: Measure workspace coverage
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          {
+            echo '### Rust coverage (cargo-llvm-cov, informative)'
+            echo
+            echo 'No minimum threshold: this reports coverage so thinly-tested'
+            echo 'areas can be found. A low number is not a failure.'
+            echo
+            echo '```'
+            cargo llvm-cov --workspace --all-targets --locked --summary-only || true
+            echo '```'
+            echo
+            echo 'Excluded by design: the opt-in integration suites'
+            echo '(`AMATL_CHROMIUM_INTEGRATION`, Trafilatura) and the `--ignored`'
+            echo 'soak tests do not run here, so their targets read as uncovered.'
+          } >> "$GITHUB_STEP_SUMMARY"
+          cargo llvm-cov --workspace --all-targets --locked --summary-only
 
   semgrep:
     name: Semgrep (advisory)
