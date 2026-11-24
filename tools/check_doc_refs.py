@@ -110,7 +110,6 @@ CLI_SUBCOMMANDS = {
         "circuits",
     ),
     "serve": (),
-    "mcp": ("serve",),
 }
 
 # The long flags each command declares, keyed by the same path the invocation
@@ -146,8 +145,6 @@ CLI_FLAGS = {
     "db security-events": ("limit", "offset", "json"),
     "db circuits": ("reset", "json"),
     "serve": ("bind", "port", "json"),
-    "mcp": (),
-    "mcp serve": ("bind", "port", "json"),
 }
 
 # Long flags that clap provides on every command, so citing them is never rot.
@@ -226,6 +223,12 @@ FROZEN = {
         "docs/security/hallazgos-2026-10-26.md",
         "crates/amatl-core/src/providers/searxng.rs:391",
     ),
+    # The same 2026-10-26 report records that `docs/api/` conserved `mcp.md`.
+    # ADR-020 later retired the MCP surface end to end and deleted that file, so
+    # the citation is dead — but it states what was true when the report was
+    # written, and rewriting it would falsify the record. The report's own
+    # sentence is preserved verbatim; ADR-020 is the record of the removal.
+    ("docs/security/hallazgos-2026-10-26.md", "mcp.md"),
 }
 
 
