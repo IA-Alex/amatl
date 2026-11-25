@@ -229,7 +229,7 @@ impl DeepOrchestrator {
                 .remaining_redirects
                 .min(self.max_redirects);
             let fetch_timeout = deadline
-                .saturating_duration_since(now)
+                .saturating_duration_since(tokio::time::Instant::now())
                 .as_millis()
                 .min(u128::from(self.timeout_ms)) as u64;
             let revalidation_document = match &self.cache {
@@ -265,8 +265,20 @@ impl DeepOrchestrator {
             let fetched = match fetch {
                 Ok(value) => value,
                 Err(error) => {
+                    // A fetch that failed may still have followed redirects; the
+                    // success path charges them via `redirect_chain`, so the
+                    // error path must charge the ones carried on the error or a
+                    // peer could walk redirect chains that never touch the
+                    // aggregate redirect budget. Security errors keep their
+                    // existing `release_fetch` behaviour, and classification
+                    // always reads the underlying cause.
+                    let followed = error.followed_redirects();
+                    if followed > 0 {
+                        self.budget.charge_redirects(followed);
+                    }
+                    let cause = error.cause();
                     if matches!(
-                        error,
+                        cause,
                         FetchError::EgressDenied
                             | FetchError::BlockedUrl(_)
                             | FetchError::AddressBlocked
@@ -436,7 +448,17 @@ impl DeepOrchestrator {
                 metadata,
             };
             if depth < self.max_depth {
-                for link in discover_links(&fetched.body, &document.final_url) {
+                for mut link in discover_links(&fetched.body, &document.final_url) {
+                    // Deduplicate on the *resource* identity, not the fragment
+                    // identity. `#a`, `#b` and `#c` on one page name the same
+                    // HTTP resource, but the crawl queue would otherwise hold
+                    // three entries for it and fetch the origin three times.
+                    // `child_result` already drops the fragment, so keying
+                    // `visited` on it too unifies the two identity rules that
+                    // previously disagreed. A fragment is navigation, never a
+                    // distinct resource, so nothing is lost by collapsing it
+                    // here.
+                    link.set_fragment(None);
                     if visited.insert(link.as_str().to_owned()) {
                         let child = child_result(&candidate.result, link);
                         original_ranks.insert(search_result_id(&child), child.rank);
@@ -616,7 +638,9 @@ fn degradation(code: &str, message: &str) -> Degradation {
     }
 }
 fn fetch_code(error: &FetchError) -> &'static str {
-    match error {
+    // Classification reads the underlying cause, so a fetch that failed after
+    // following redirects keeps the same code it would carry without them.
+    match error.cause() {
         FetchError::EgressDenied => "egress_denied",
         FetchError::BlockedUrl(_) | FetchError::AddressBlocked => "fetch_blocked",
         FetchError::ByteLimit => "byte_limit",

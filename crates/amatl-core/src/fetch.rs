@@ -19,7 +19,7 @@ pub struct FetchRequest {
     pub max_redirects: u32,
     pub headers: BTreeMap<String, String>,
     /// Correlates this outbound fetch with the originating HTTP request, CLI
-    /// invocation or MCP session. It never travels on the wire; it only tags
+    /// invocation. It never travels on the wire; it only tags
     /// the local trace so a fetch can be tied back to the request that caused
     /// it.
     pub request_id: Option<String>,
@@ -59,6 +59,49 @@ pub enum FetchError {
     Timeout,
     #[error("network request failed")]
     Network,
+    /// A fetch that already followed `followed` redirect(s) then failed.
+    ///
+    /// The redirects a fetch actually follows are charged to the caller's
+    /// redirect budget on the *success* path via
+    /// [`FetchResult::redirect_chain`]. Without this carrier, an error after a
+    /// redirect loses that count and the redirects consume no budget — so a
+    /// peer can walk an attacker-controlled redirect chain, force the final hop
+    /// to fail, and repeat, spending real network redirects while the aggregate
+    /// `remaining_redirects` never moves.
+    ///
+    /// `followed` counts only redirects that were *received and taken*: a
+    /// redirect response rejected before it is followed (`RedirectLimit`,
+    /// `InvalidRedirect`, or a blocked destination on the next hop) is not
+    /// counted, matching the success path (`redirect_chain`). The `cause` is the
+    /// underlying error, kept so callers can still classify it.
+    #[error("fetch failed after {followed} redirect(s): {cause}")]
+    AfterRedirects {
+        followed: u32,
+        cause: Box<FetchError>,
+    },
+}
+
+impl FetchError {
+    /// The redirects this fetch followed before failing, or `0` for an error
+    /// that happened before (or without) any redirect.
+    pub fn followed_redirects(&self) -> u32 {
+        match self {
+            FetchError::AfterRedirects { followed, .. } => *followed,
+            _ => 0,
+        }
+    }
+
+    /// The underlying error, with any `AfterRedirects` carrier peeled away.
+    ///
+    /// Classification (degradation codes, security-error matching) must read
+    /// the cause, not the carrier, so a fetch that failed after a redirect
+    /// keeps the same code it would have had without one.
+    pub fn cause(&self) -> &FetchError {
+        match self {
+            FetchError::AfterRedirects { cause, .. } => cause.cause(),
+            other => other,
+        }
+    }
 }
 
 #[async_trait]
@@ -151,45 +194,96 @@ impl<R: DnsResolver> SafeFetcher<R> {
 
     async fn fetch_inner(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
         validate_headers(&request.headers)?;
+        match self.fetch_following_redirects(request).await {
+            Ok(result) => Ok(result),
+            Err((error, followed)) => {
+                if followed == 0 {
+                    Err(error)
+                } else {
+                    // Charge the redirects actually followed to the caller: Deep
+                    // reads this off the error and debits its redirect budget,
+                    // which the success path does via `redirect_chain`.
+                    Err(FetchError::AfterRedirects {
+                        followed,
+                        cause: Box::new(error),
+                    })
+                }
+            }
+        }
+    }
+
+    /// The redirect-following loop, returning the error *together with* the
+    /// number of redirects already followed when it failed, so the caller can
+    /// account for them even on the error path.
+    async fn fetch_following_redirects(
+        &self,
+        request: FetchRequest,
+    ) -> Result<FetchResult, (FetchError, u32)> {
         let deadline = tokio::time::Instant::now() + Duration::from_millis(request.timeout_ms);
         let mut current = request.url;
         let mut redirects = Vec::new();
+        // A helper so every early return carries `redirects.len()` as the
+        // followed count without repeating it at each `?`.
+        macro_rules! fail {
+            ($error:expr) => {
+                return Err(($error, redirects.len() as u32))
+            };
+        }
         loop {
             let url_stage = if redirects.is_empty() {
                 "initial_url"
             } else {
                 "redirect_url"
             };
-            validate_deep_url(&current).map_err(|code| blocked_url(url_stage, code))?;
-            let host = current
-                .host_str()
-                .ok_or_else(|| blocked_url(url_stage, "missing_host"))?;
-            let port = current
-                .port_or_known_default()
-                .ok_or_else(|| blocked_url(url_stage, "missing_port"))?;
-            let addresses = tokio::time::timeout_at(deadline, self.resolver.resolve(host, port))
-                .await
-                .map_err(|_| FetchError::Timeout)??;
+            if let Err(code) = validate_deep_url(&current) {
+                fail!(blocked_url(url_stage, code));
+            }
+            let Some(host) = current.host_str() else {
+                fail!(blocked_url(url_stage, "missing_host"));
+            };
+            let Some(port) = current.port_or_known_default() else {
+                fail!(blocked_url(url_stage, "missing_port"));
+            };
+            let addresses =
+                match tokio::time::timeout_at(deadline, self.resolver.resolve(host, port)).await {
+                    Ok(Ok(addresses)) => addresses,
+                    Ok(Err(error)) => fail!(error),
+                    Err(_) => fail!(FetchError::Timeout),
+                };
             let ips: Vec<IpAddr> = addresses.iter().map(|value| value.ip()).collect();
-            validate_resolved_addresses(&ips).map_err(|code| {
+            if let Err(code) = validate_resolved_addresses(&ips) {
                 audit_ssrf_rejection("dns_answer", code);
-                FetchError::AddressBlocked
-            })?;
-            let client = self.client_for(host, &addresses, request.timeout_ms)?;
+                fail!(FetchError::AddressBlocked);
+            }
+            let client = match self.client_for(host, &addresses, request.timeout_ms) {
+                Ok(client) => client,
+                Err(error) => fail!(error),
+            };
 
-            let response = tokio::time::timeout_at(
+            let response = match tokio::time::timeout_at(
                 deadline,
                 execute_pinned(&client, &current, &request.headers, request.max_bytes),
             )
             .await
-            .map_err(|_| FetchError::Timeout)??;
+            {
+                Ok(Ok(response)) => response,
+                Ok(Err(error)) => fail!(error),
+                Err(_) => fail!(FetchError::Timeout),
+            };
 
             if is_redirect(response.status) {
                 if redirects.len() as u32 >= request.max_redirects {
-                    return Err(FetchError::RedirectLimit);
+                    // The redirect that tripped the limit was received but not
+                    // followed, so it is not among the counted redirects.
+                    fail!(FetchError::RedirectLimit);
                 }
-                let location = response.location.ok_or(FetchError::InvalidRedirect)?;
-                let next = validate_redirect(&current, &location)?;
+                let Some(location) = response.location else {
+                    fail!(FetchError::InvalidRedirect);
+                };
+                let next = match validate_redirect(&current, &location) {
+                    Ok(next) => next,
+                    Err(error) => fail!(error),
+                };
                 redirects.push(current);
                 current = next;
                 continue;
@@ -738,5 +832,46 @@ mod tests {
                 Err(FetchError::BlockedUrl(_))
             ));
         }
+    }
+
+    #[test]
+    fn followed_redirects_and_cause_read_through_the_after_redirects_carrier() {
+        // A bare error followed no redirects and is its own cause.
+        assert_eq!(FetchError::Timeout.followed_redirects(), 0);
+        assert_eq!(FetchError::Timeout.cause(), &FetchError::Timeout);
+
+        // The carrier reports the count and peels down to the real cause, so
+        // classification (degradation codes, security matching) sees the cause,
+        // not the wrapper.
+        let carried = FetchError::AfterRedirects {
+            followed: 3,
+            cause: Box::new(FetchError::Timeout),
+        };
+        assert_eq!(carried.followed_redirects(), 3);
+        assert_eq!(carried.cause(), &FetchError::Timeout);
+
+        // Nesting (a carrier around a carrier) still resolves to the innermost
+        // cause and reports the inner count — the shape a resolver error wrapped
+        // twice would take.
+        let nested = FetchError::AfterRedirects {
+            followed: 2,
+            cause: Box::new(FetchError::AfterRedirects {
+                followed: 1,
+                cause: Box::new(FetchError::Network),
+            }),
+        };
+        assert_eq!(nested.cause(), &FetchError::Network);
+        assert_eq!(nested.followed_redirects(), 2);
+        // A zero-follow carrier is never produced by the fetcher, but if it were,
+        // it must still read through to the cause rather than route to a
+        // "followed 0 redirects" bucket.
+        assert_eq!(
+            FetchError::AfterRedirects {
+                followed: 0,
+                cause: Box::new(FetchError::ByteLimit),
+            }
+            .cause(),
+            &FetchError::ByteLimit
+        );
     }
 }

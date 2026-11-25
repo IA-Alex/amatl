@@ -18,9 +18,11 @@ next, genuinely new advisory arrives in a wall of expected noise.
 ### Rules the suppression has to keep obeying
 
 1. **Each ID named.** `deny.toml` suppresses the advisories written down here, one
-   by one (`RUSTSEC-2026-0459`, `RUSTSEC-2026-0543`). Adding another needs a new
-   ADR and a threat model, and CI's `--expected-ignore` list must change in the
-   same commit.
+   by one (`RUSTSEC-2026-0459`). Adding another needs a new ADR and a threat
+   model, and CI's `--expected-ignore` list must change in the same commit.
+   (`RUSTSEC-2026-0543` was a second entry until the MCP surface was retired and
+   `chrono` left the graph; it has been removed and its `deny.toml` entry, CI
+   argument and lockfile assertion came out with it.)
 2. **Offline guard.** `crates/amatl-core/tests/supply_chain_contract.rs`
    (`the_audited_sqlite_binding_and_its_suppression_are_still_the_ones_reviewed`)
    fails if the locked `libsqlite3-sys` moves or the suppressed set grows, so a

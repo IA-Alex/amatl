@@ -1,0 +1,164 @@
+{
+  "audit": {
+    "skill": "architecture-audit-fullstack",
+    "date": "2026-11-23",
+    "repo": "/home/alonso/amatl",
+    "head": "7c5e5560b29430c8ec2073c8b4fd2d4367ca3a28",
+    "working_tree": "clean (solo .playwright-mcp/ sin rastrear)",
+    "mode": "read-only"
+  },
+  "stack": {
+    "language": "Rust (edition 2021, MSRV 1.88)",
+    "workspace_crates": ["amatl-core", "amatl-cli", "amatl-server", "amatl-ui"],
+    "core": "buscador metasearch multi-fuente (Marginalia como unica fuente real)",
+    "server": "HTTP/JSON (axum) + MCP Streamable HTTP",
+    "ui": "assets vanilla JS (app.js 1904 LOC) + plantillas",
+    "storage": "SQLite (sqlx)",
+    "version": "0.1.0-rc.1",
+    "loc": {
+      "core_src": 34015,
+      "server_src": 10001,
+      "cli_src": 1522,
+      "ui_src": 895,
+      "tests_total_loc": 6580,
+      "assets_ui_loc": 3729
+    },
+    "tests": {
+      "total": 699,
+      "core": 492,
+      "server": 153,
+      "ui": 29,
+      "cli": 25
+    }
+  },
+  "verification_commands": [
+    {"cmd": "cargo fmt --all -- --check", "exit": 1, "result": "FALLA: 8 archivos con diffs cosmeticos"},
+    {"cmd": "cargo clippy --workspace --all-targets --all-features --locked -- -D warnings", "exit": 0, "result": "OK"},
+    {"cmd": "grep -rn 'amatl_server|amatl_ui|amatl_cli' crates/amatl-core/src", "result": "sin resultados: core no depende de capas superiores"},
+    {"cmd": "grep -rn 'llvm-cov|tarpaulin|coverage' .github scripts Cargo.toml", "result": "sin resultados: sin tooling de cobertura"}
+  ],
+  "severity_summary": {"critical": 0, "high": 2, "medium": 3, "low": 4},
+  "strengths": [
+    "Direccion de dependencias limpia (core <- server/ui/cli); sin ciclos",
+    "Contrato OpenAPI con test-guard bidireccional contra el router",
+    "19 ADRs en decisiones_amatl.md con plan de salida por advisory",
+    "Diagramas C4 y de secuencia (docs/diagrams/)",
+    "unsafe_code = 'forbid' a nivel workspace",
+    "Solo 10 unwrap/expect en codigo de produccion; 0 en service.rs/storage.rs",
+    "CI amplia: MSRV, macOS, soak, browser-e2e anclado, trafilatura, CodeQL de invariantes",
+    "Higiene de repo: .gitignore razonado por AUDIT-xx; sin DBs/logs/secretos rastreados",
+    "Catalogo de errores compartido (errors.rs) entre CLI/API/MCP",
+    "docs/testing.md: matriz de cobertura por area (25 filas)"
+  ],
+  "findings": [
+    {
+      "id": "ARQ-001",
+      "severity": "ALTO",
+      "category": "Calidad / CI",
+      "title": "cargo fmt --check falla en cada push; sin rust-toolchain.toml",
+      "description": "El gate contract-gate ejecuta 'cargo fmt --all -- --check' como primer paso y sale con exit 1 sobre arbol limpio. Los diffs son cosmeticos (rustfmt 1.10 colapsa literales/use-groups/arrays mult-ilinea). No hay rust-toolchain.toml, asi que CI (@stable) y local derivan de forma independiente.",
+      "evidence": {
+        "files_affected": [
+          "crates/amatl-core/src/config/server.rs:552",
+          "crates/amatl-core/src/lib.rs:57",
+          "crates/amatl-core/src/lib.rs:145",
+          "crates/amatl-core/src/service.rs:4",
+          "crates/amatl-server/src/mcp.rs:151",
+          "crates/amatl-server/src/mcp.rs:185",
+          "crates/amatl-server/src/tests.rs:1245",
+          "crates/amatl-ui/src/lib.rs:125"
+        ],
+        "root_cause": "ausencia de rust-toolchain.toml; rustfmt local 1.10.0-stable (2026-09-28)",
+        "last_touched_line": "commit baseline 51c6d342 (2026-08-12)",
+        "diff_nature": "cosmetico, sin cambio semantico"
+      },
+      "impact": "Gate rojo permanente bloquea cada PR; el rojo deja de portar senal; resultado depende de la fecha de ejecucion"
+    },
+    {
+      "id": "ARQ-002",
+      "severity": "ALTO",
+      "category": "Arquitectura",
+      "title": "AmatlService es un God Object (impl de ~1540 lineas)",
+      "description": "service.rs (3648 LOC) tiene un unico impl AmatlService de las lineas 466-2008 que agrupa busqueda, deep, persistencia, credenciales, canarios, gobierno de providers, cache, historial, saved y estado. amatl-server/src/lib.rs (3369 LOC) replica el patron.",
+      "evidence": {
+        "service_rs_loc": 3648,
+        "impl_range": "466-2008 (~1540 lineas)",
+        "server_lib_loc": 3369
+      },
+      "impact": "Viola SRP a nivel de tipo; encarece revision y test-first; punto de acoplamiento mas probable de regresiones cruzadas"
+    },
+    {
+      "id": "ARQ-003",
+      "severity": "MEDIO",
+      "category": "Testing",
+      "title": "Sin metrica de cobertura de codigo en CI",
+      "description": "Cobertura declarada por area en docs/testing.md pero sin medicion automatizada ni umbral. Cli (25 tests) y ui (29 tests) en el limite bajo.",
+      "evidence": {"grep": "llvm-cov/tarpaulin/coverage -> sin resultados", "tests_total": 699},
+      "impact": "Meta de 70% no verificable; deuda real no cuantificada en ui/cli"
+    },
+    {
+      "id": "ARQ-004",
+      "severity": "MEDIO",
+      "category": "Arquitectura",
+      "title": "config/mod.rs a 2527 LOC sin descomposicion completa",
+      "description": "config/mod.rs concentra el tipo Config y la validacion mutable TOML; ya hay 10 submodulos pero el nucleo no esta descompuesto.",
+      "evidence": {"config_mod_loc": 2527, "impl_config_range": "271-616", "prod_unwraps": 1},
+      "impact": "Segundo mayor modulo; mezcla ensamblado del tipo con validacion/patch"
+    },
+    {
+      "id": "ARQ-005",
+      "severity": "MEDIO",
+      "category": "Coherencia documental",
+      "title": "Se declara un gate verde que hoy esta rojo",
+      "description": "audit/cierre-hallazgos-2026-11-18.md:83 afirma 'cargo fmt --all -- --check | ok (exit 0)' pero hoy sale 1. Mismo antipatron ya corregido para cargo audit.",
+      "evidence": {"file": "audit/cierre-hallazgos-2026-11-18.md:83", "actual_exit": 1},
+      "impact": "Erosiona la confianza en el resto del reporte de cierre; doc no refleja realidad"
+    },
+    {
+      "id": "ARQ-006",
+      "severity": "BAJO",
+      "category": "Higiene de repositorio",
+      "title": "Artefactos de evaluacion de 3-5 MB rastreados",
+      "description": "docs/evaluation/independent-relevance/ rastrea JSON de hasta 5.2MB; tracker-domains.txt 1.6MB; .git 41MB.",
+      "evidence": {"largest": "docs/evaluation/independent-relevance/v6/execution/raw-capture.json (5.2M)", "git_size": "41M", "tracked_files": 8050},
+      "impact": "Clones y diffs mas costosos; parece intencional para reproducibilidad"
+    },
+    {
+      "id": "ARQ-007",
+      "severity": "BAJO",
+      "category": "Manejo de errores",
+      "title": "lock_probe.rs con unwrap en produccion",
+      "description": "Binario auxiliar crates/amatl-core/src/bin/lock_probe.rs tiene 1 unwrap fuera de cfg(test).",
+      "evidence": {"file": "crates/amatl-core/src/bin/lock_probe.rs"},
+      "impact": "Puede abortar con panic en lugar de mensaje accionable en diagnostico operativo"
+    },
+    {
+      "id": "ARQ-008",
+      "severity": "BAJO",
+      "category": "Estandares de versionado",
+      "title": "13/300 commits fuera de Conventional Commits",
+      "description": "Mayoria son tipos propios aceptables (security:, release:); algunos como 'Repository hygiene audit: ...' son prosa libre.",
+      "evidence": {"non_conventional_in_last_300": 13},
+      "impact": "Disciplina SemVer alta; solo la forma del mensaje es inconsistente"
+    },
+    {
+      "id": "ARQ-009",
+      "severity": "BAJO",
+      "category": "Deuda tecnica",
+      "title": "TODOs de version 1.0 sin tracking formal",
+      "description": "3 TODOs acotados al retiro del alias local_model_batch, sin issue/ADR/CHANGELOG que los rastree.",
+      "evidence": ["crates/amatl-core/src/config/inference.rs:34", "crates/amatl-core/src/config/inference.rs:94", "crates/amatl-core/src/config/mod.rs:1358"],
+      "impact": "Riesgo bajo de sobrevivir a 1.0 sin recordatorio"
+    }
+  ],
+  "roadmap": [
+    {"task": "ARQ-001: crear rust-toolchain.toml (channel 1.88.0), reformatear 8 archivos, fijar runner", "severity": "ALTO", "effort": "XS", "dependencies": []},
+    {"task": "ARQ-002: descomponer impl AmatlService por concern (service/ y handlers/); conservar API publica", "severity": "ALTO", "effort": "L", "dependencies": ["ARQ-001"]},
+    {"task": "ARQ-005: sincronizar docs de gates tras arreglar fmt", "severity": "MEDIO", "effort": "XS", "dependencies": ["ARQ-001"]},
+    {"task": "ARQ-003: anadir cargo-llvm-cov a CI con umbral inicial informativo", "severity": "MEDIO", "effort": "M", "dependencies": ["ARQ-001"]},
+    {"task": "ARQ-004: extraer config/validate.rs y config/patch.rs", "severity": "MEDIO", "effort": "S", "dependencies": ["ARQ-002"]},
+    {"task": "ARQ-006: decidir estrategia de artefactos pesados (rastrear/LFS/regenerar) via ADR corto", "severity": "BAJO", "effort": "S", "dependencies": []},
+    {"task": "ARQ-007/008/009: pulido (unwrap lock_probe, commitlint opcional, seccion Removals en CHANGELOG)", "severity": "BAJO", "effort": "XS", "dependencies": []}
+  ],
+  "conclusion": "Proyecto arquitectonicamente sano. Bloqueos reales: gate de formato rojo sin pin de toolchain (ARQ-001) y God Object en service.rs (ARQ-002). Sin hallazgos criticos de seguridad ni corrupcion de datos."
+}

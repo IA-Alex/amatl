@@ -80,10 +80,17 @@ una auditoría nueva: la evidencia se tomó en el estado reparado.
 |---|---|---|
 | Enfocadas | `cargo test -p amatl-ui -p amatl-core --lib --locked` | 27 + 389 ok |
 | Básicas | `cargo build --workspace --locked` | ok |
-| Básicas | `cargo fmt --all -- --check` | ok (exit 0) |
+| Básicas | `cargo fmt --all -- --check` | ok (exit 0)¹ |
 | Amplia | `cargo test --workspace --locked` | **706 tests, 0 fallos** |
 | Flujo | `amatl providers` | `marginalia available` |
 | Flujo | `amatl search "rust" --mock` | `status: success` |
+
+¹ Este resultado es **dependiente de la versión de rustfmt**. El código se escribió
+bajo un rustfmt anterior; al actualizarse `stable` (rustfmt `1.10.0`, 2026-09-28)
+el mismo árbol pasó a fallar el gate por re-wrapping cosmético. Corregido el
+2026-11-23 (`audit/auditoria-arquitectura-2026-11-23.md`, ARQ-001): el árbol se
+reformateó y se añadió `rust-toolchain.toml` para que la resolución del toolchain
+sea la misma en local y en CI.
 
 - **Baseline** previo a editar: `cargo test -p amatl-ui` → 27/27 ok. No apareció
   ningún fallo nuevo; no se atribuye nada al entorno.

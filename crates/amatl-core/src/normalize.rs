@@ -131,17 +131,19 @@ fn clean_field(
 }
 
 fn clean_text(value: &str) -> Option<String> {
-    if value.contains(['\0', '\u{fffd}'])
-        || value
+    // Decode entity references *before* validating, so a numeric entity such as
+    // `&#27;` (ESC), `&#0;` (NUL) or `&#xfffd;` (U+FFFD) cannot smuggle a
+    // character past the control-character check below: the decoded form is
+    // what reaches the terminal, the JSON payload and the UI.
+    let decoded = decode_html_entities(value);
+    if decoded.contains(['\0', '\u{fffd}'])
+        || decoded
             .chars()
             .any(|character| character.is_control() && !character.is_whitespace())
     {
         return None;
     }
-    let clean = decode_html_entities(value)
-        .split_whitespace()
-        .collect::<Vec<_>>()
-        .join(" ");
+    let clean = decoded.split_whitespace().collect::<Vec<_>>().join(" ");
     (!clean.is_empty()).then_some(clean)
 }
 
@@ -279,6 +281,40 @@ mod tests {
             "2026-02-30"
         );
         assert_eq!(items[0].degradations.len(), 2);
+    }
+
+    #[test]
+    fn entity_decoded_control_characters_are_rejected_not_smuggled() {
+        // Regression: `clean_text` used to validate the *raw* text and decode
+        // entities afterwards, so a numeric entity could reintroduce a control
+        // character the check had just rejected. `&#27;` (ESC), `&#0;` (NUL)
+        // and `&#xfffd;` (U+FFFD) must now fail closed.
+        for hostile in [
+            "SAFE&#27;&#91;&#51;&#49;&#109;PWNED", // ESC [ 3 1 m
+            "&#x1b;ESC",
+            "cero&#0;fin",
+            "x&#xfffd;y",
+        ] {
+            let mut value = item("https://example.com");
+            value.title = Some(hostile.into());
+            value.snippet = Some(hostile.into());
+            let (items, _) = normalize(&[provider(vec![value])]);
+            assert_eq!(items.len(), 1);
+            assert!(
+                items[0].title.is_none(),
+                "entity-decoded title must be dropped: {hostile:?}"
+            );
+            assert!(
+                items[0].snippet.is_none(),
+                "entity-decoded snippet must be dropped: {hostile:?}"
+            );
+        }
+        // The normal benign entity is still decoded, proving the reorder did
+        // not disable entity handling.
+        let mut benign = item("https://example.com");
+        benign.title = Some("valid &amp; title".into());
+        let (items, _) = normalize(&[provider(vec![benign])]);
+        assert_eq!(items[0].title.as_deref(), Some("valid & title"));
     }
 
     #[test]

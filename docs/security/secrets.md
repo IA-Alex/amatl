@@ -30,8 +30,8 @@ responsabilidad del operador. Lo que sí garantiza es que una escritura
 administrativa no lo relaje: cada toggle hace un reemplazo atómico (fichero
 temporal privado + `rename`) que conserva el modo que el fichero ya tenía, y un
 fichero nuevo se crea `0600`. Antes el `rename` publicaba el modo del temporal,
-de modo que el primer `POST /answer/enabled` devolvía un `0600` al umbral por
-defecto del `umask`.
+de modo que la primera escritura administrativa de un toggle devolvía un `0600`
+al umbral por defecto del `umask`.
 
 ## Credenciales de providers
 
@@ -135,7 +135,7 @@ tienen una vista que sustituye valores de `api_key`, `key` y `token` por
 `[redacted]` (`providers/http.rs:12-29`). SafeFetcher sólo permite `accept`,
 `accept-language` y `user-agent`, por lo que no puede reenviar Authorization o
 Cookie (`fetch.rs:221-230`). Los errores HTTP publican códigos fijos y no detalles
-internos (`amatl-server/src/lib.rs:517-535`).
+internos (`amatl-server/src/lib.rs:3326-3355 (service_error, service_error_code, api_error)`).
 
 El formateador JSON sustituye por `[redacted]` los campos con nombres sensibles
 y serializa saltos de línea dentro de una sola entrada. Los eventos HTTP de
@@ -146,7 +146,7 @@ secreto dentro de un campo con nombre no sensible o de un mensaje libre; la
 revisión de código sigue siendo obligatoria.
 
 El proceso sólo publica eventos cuyos targets pertenecen a AMATL. Los targets
-de `rmcp`, `hyper`, `reqwest` y otras dependencias se descartan incluso con un
+de `hyper`, `reqwest` y otras dependencias se descartan incluso con un
 `RUST_LOG` amplio, ya que no están bajo el contrato de redacción y pueden
 contener argumentos. Los eventos SSRF omiten URL, host, query y direcciones; el
 `request_id` generado por el servidor permite correlacionarlos sin esos datos.

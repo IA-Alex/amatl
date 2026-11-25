@@ -10,7 +10,6 @@ bug-hunter → api-developer → UML del 2026-11-18 (`audit/informe-2026-11-18.m
 | `c4-contenedores.mmd` | C4 L2 (contenedores) | Cómo se reparte la responsabilidad entre crates y storage |
 | `secuencia-busqueda.mmd` | Secuencia UML | Recorrido completo de `POST /search` (middleware → orquestador → providers → pipeline) |
 | `secuencia-deep.mmd` | Secuencia UML | Deep: única frontera de fetch de red (SafeFetcher, evidence_v2) |
-| `secuencia-mcp.mmd` | Secuencia UML | Llamada MCP: identidad autenticada, allowlist de tools, caps `for_surface` |
 | `flujo-pipeline-busqueda.mmd` | Flujo UML-like | Orden real de `run_pipeline` y estados `success/partial_success/failure` |
 
 ## Notaciones y decisiones
@@ -32,7 +31,7 @@ derivado: el `.mmd` es la fuente.
 
 ## Mantenimiento
 
-- Al cambiar una ruta pública, el flujo Deep/MCP o el pipeline, actualizar aquí y
+- Al cambiar una ruta pública o el flujo Deep, actualizar aquí y
   el informe de auditoría correspondiente en `audit/`.
 - Los guards del contrato (tests de `amatl-server/src/tests.rs`) protegen el
   inventario de rutas y el catálogo de errores; los diagramas se revisan a mano

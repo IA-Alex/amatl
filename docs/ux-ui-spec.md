@@ -16,8 +16,8 @@ comparar fuentes y verificar la procedencia de fragmentos. Su tarea crítica es:
 
 El diseño debe privilegiar trazabilidad y lectura escaneable sobre densidad
 decorativa. La acción primaria es **Buscar**; **Analizar evidencia** es una
-acción avanzada; **Resumen con IA** sólo aparece disponible cuando el servicio
-está configurado.
+acción avanzada. AMATL no genera texto: no existe síntesis de respuesta ni
+ninguna acción que redacte por el operador.
 
 ## Flujo principal
 
@@ -86,10 +86,9 @@ consistencia visual, disclosure para detalles técnicos y soporte responsive.
 
 Riesgos a validar:
 
-- Tres acciones juntas pueden aumentar la indecisión; mantener una sola acción
-  primaria y explicar el beneficio de cada modo.
-- El botón **Resumen con IA** puede parecer roto si el motivo de indisponibilidad
-  no está visible antes del foco.
+- Dos acciones juntas (Buscar / Analizar evidencia) pueden aumentar la
+  indecisión; mantener una sola acción primaria y explicar el beneficio de cada
+  modo.
 - Los paneles administrativos (clientes/tokens) compiten con la búsqueda si se
   muestran simultáneamente; deberían agruparse bajo un contexto de operación.
 - En móvil, dos columnas de acciones reducen el ancho de las etiquetas; probar

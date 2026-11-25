@@ -3,7 +3,7 @@
 ## Toolchain
 
 El workspace usa Rust 2021 y fija `rust-version = "1.88"`, el mayor MSRV del
-grafo actual (`rmcp`, `time` y macros relacionadas). CI verifica tanto `stable`
+grafo actual (`time` y macros relacionadas). CI verifica tanto `stable`
 como un job explícito con Rust 1.88. La línea base local fue verificada con
 `rustc/cargo 1.97.1`.
 
@@ -19,7 +19,7 @@ hasta disponer de un bridge CDP que conserve el ownership de `SafeFetcher`.
 crates/amatl-core/    contratos, pipeline, providers, Search y Deep
 crates/amatl-cli/     binario amatl y adaptación de salida
 crates/amatl-ui/      assets estáticos embebidos y headers
-crates/amatl-server/  Axum API/UI/MCP y hardening HTTP
+crates/amatl-server/  Axum API/UI y hardening HTTP
 docs/                 arquitectura, contratos, operación y seguridad
 .github/              CI y plantillas de colaboración
 ```
@@ -45,14 +45,13 @@ cargo run -p amatl-cli -- doctor
 cargo run --release -p amatl-cli -- --config-file amatl.toml \
   provider-canary marginalia "rust programming language" --json
 
-# UI + API + MCP en un listener
+# UI + REST API en un listener
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
 cargo run -p amatl-cli -- serve --mock
 ```
 
-`amatl mcp serve` arranca el mismo servidor; MCP vive en `/mcp`, no en otro
-daemon. Usa `--config-file RUTA` antes o después del subcomando por ser argumento
-global.
+`amatl serve` arranca UI y REST API en el mismo listener. Usa `--config-file RUTA`
+antes o después del subcomando por ser argumento global.
 
 ## Depuración
 

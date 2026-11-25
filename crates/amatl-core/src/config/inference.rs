@@ -153,106 +153,6 @@ impl InferenceConfigPatch {
         }
     }
 }
-/// Governs the optional answer-synthesis step: an LLM completion call that
-/// turns AMATL's own search results into a grounded, cited answer.
-///
-/// Disabled by default, and gated the same way as remote embeddings — it only
-/// takes effect when `data_policy.inference = "remote_explicit"`, since it is
-/// exactly that: a remote model call that leaves the machine. AMATL's search
-/// and deep-fetch stay unaffected either way; this only adds a distinct,
-/// explicitly invoked capability layered on top of results AMATL already
-/// retrieved, never a replacement for them.
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-#[serde(default)]
-pub struct AnswerConfig {
-    pub enabled: bool,
-    /// Chat-completions endpoint, OpenAI-compatible (`{"model":…,
-    /// "messages":[…]}` → `choices[0].message.content`). Must be absolute
-    /// HTTPS, or HTTP on loopback for a self-hosted server, and must not
-    /// embed credentials — validated the same way as
-    /// `inference.remote_endpoint`.
-    pub endpoint: Option<String>,
-    /// Model identifier sent in the completion request body.
-    pub model: Option<String>,
-    /// Environment variable holding the bearer credential. Never written to
-    /// configuration or logs.
-    pub credential_env: Option<String>,
-    /// Deadline for one completion request. Bounded, not open-ended, so
-    /// `answer` never turns into an unbounded wait on top of the search it
-    /// already ran.
-    pub timeout_ms: u64,
-    /// Top-N ranked search results handed to the model as grounding sources.
-    pub max_sources: usize,
-    /// Characters of snippet kept per source before it reaches the prompt.
-    pub max_source_chars: usize,
-    /// Upper bound on the completion response length.
-    pub max_answer_tokens: u32,
-}
-
-impl Default for AnswerConfig {
-    fn default() -> Self {
-        Self {
-            enabled: false,
-            endpoint: None,
-            model: None,
-            credential_env: None,
-            timeout_ms: 20_000,
-            max_sources: 8,
-            max_source_chars: 1_200,
-            max_answer_tokens: 700,
-        }
-    }
-}
-
-/// Every [`AnswerConfig`] field an admin-scoped caller may update in one
-/// request, except `enabled` — that stays the sole responsibility of
-/// [`Config::set_answer_enabled`] (and the web UI's dedicated toggle), so
-/// this patch can never accidentally flip the feature on or off as a side
-/// effect of editing its endpoint or limits.
-///
-/// Same "empty string clears" convention on `endpoint`, `model` and
-/// `credential_env` as [`InferenceConfigPatch`].
-#[derive(Clone, Debug, Default, Deserialize)]
-#[serde(default)]
-pub struct AnswerConfigPatch {
-    pub endpoint: Option<String>,
-    pub model: Option<String>,
-    pub credential_env: Option<String>,
-    pub timeout_ms: Option<u64>,
-    pub max_sources: Option<usize>,
-    pub max_source_chars: Option<usize>,
-    pub max_answer_tokens: Option<u32>,
-}
-
-impl AnswerConfigPatch {
-    /// Apply every field this patch sets to `config`, leaving `enabled` and
-    /// every unset field untouched. Mirrors
-    /// [`Config::set_answer_fields`] exactly; see
-    /// [`InferenceConfigPatch::apply`] for the shared reasoning.
-    pub fn apply(&self, config: &mut AnswerConfig) {
-        if let Some(value) = &self.endpoint {
-            config.endpoint = clearable(value);
-        }
-        if let Some(value) = &self.model {
-            config.model = clearable(value);
-        }
-        if let Some(value) = &self.credential_env {
-            config.credential_env = clearable(value);
-        }
-        if let Some(value) = self.timeout_ms {
-            config.timeout_ms = value;
-        }
-        if let Some(value) = self.max_sources {
-            config.max_sources = value;
-        }
-        if let Some(value) = self.max_source_chars {
-            config.max_source_chars = value;
-        }
-        if let Some(value) = self.max_answer_tokens {
-            config.max_answer_tokens = value;
-        }
-    }
-}
 /// How the router assigns provider roles.
 ///
 /// `Legacy` preserves the pre-STEP-1 behavior exactly: providers are ordered
@@ -315,30 +215,6 @@ impl ExpansionConfig {
 }
 
 impl Config {
-    /// Flip `[answer].enabled` on disk and nothing else.
-    ///
-    /// The only configuration mutation any running AMATL process makes to
-    /// its own file — every other setting is still operator-edited text.
-    /// Kept this narrow on purpose: it exists so the web UI's admin-scoped
-    /// toggle never needs to touch, or even see, `endpoint`/`model`/the
-    /// credential. A thin wrapper over `Config::set_scalar_field`; see
-    /// that function for the write guarantees (comments survive, caller
-    /// validates first).
-    pub fn set_answer_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
-        Self::set_scalar_field(path, "answer", "enabled", enabled)
-    }
-    /// Flip `[strategist].enabled` on disk and nothing else.
-    ///
-    /// The web UI's admin-scoped toggle for **whether the LLM participates in
-    /// search** (refinement of the query between rounds) reuses the exact same
-    /// narrow write primitive as `set_answer_enabled`: only the scalar
-    /// `enabled` field under the `strategist` section is touched, comments
-    /// survive, and the caller must validate a candidate config before writing
-    /// (so turning it on without a usable `endpoint`/`model`/credential fails
-    /// closed and never leaves a half-configured file behind).
-    pub fn set_strategist_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
-        Self::set_scalar_field(path, "strategist", "enabled", enabled)
-    }
     /// Write every field `patch` sets to `[inference]`, and nothing else.
     ///
     /// Same guarantees as `Config::set_scalar_field` (comments survive,
@@ -413,50 +289,6 @@ impl Config {
         Ok(())
     }
 
-    /// Write every field `patch` sets to `[answer]`, and nothing else —
-    /// `enabled` is never touched here (see [`AnswerConfigPatch`]). Same
-    /// guarantees as [`Config::set_inference_fields`].
-    pub fn set_answer_fields(path: &Path, patch: &AnswerConfigPatch) -> Result<(), ConfigError> {
-        let text = std::fs::read_to_string(path)?;
-        let mut document = text
-            .parse::<toml_edit::DocumentMut>()
-            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
-        if document.get("answer").is_none() {
-            document["answer"] = toml_edit::Item::Table(toml_edit::Table::new());
-        }
-        let table = document["answer"]
-            .as_table_mut()
-            .ok_or_else(|| ConfigError::Policy("answer is not a table".into()))?;
-        set_clearable_string(table, "endpoint", patch.endpoint.as_deref());
-        set_clearable_string(table, "model", patch.model.as_deref());
-        set_clearable_string(table, "credential_env", patch.credential_env.as_deref());
-        if let Some(value) = patch.timeout_ms {
-            table.insert(
-                "timeout_ms",
-                toml_edit::value(signed_integer(value, "answer.timeout_ms")?),
-            );
-        }
-        if let Some(value) = patch.max_sources {
-            table.insert(
-                "max_sources",
-                toml_edit::value(signed_integer(value, "answer.max_sources")?),
-            );
-        }
-        if let Some(value) = patch.max_source_chars {
-            table.insert(
-                "max_source_chars",
-                toml_edit::value(signed_integer(value, "answer.max_source_chars")?),
-            );
-        }
-        if let Some(value) = patch.max_answer_tokens {
-            table.insert(
-                "max_answer_tokens",
-                toml_edit::value(signed_integer(value, "answer.max_answer_tokens")?),
-            );
-        }
-        write_config_document(path, &document)?;
-        Ok(())
-    }
     /// Replace `[expansion]` wholesale. The caller must have validated a
     /// candidate config with this change applied first, exactly as with
     /// [`Config::set_search_policy`] — `validate_expansion` cross-checks the
@@ -607,48 +439,6 @@ impl Config {
             return Err(ConfigError::Policy(
                 "expansion.mode = \"primary_expansion\" requires at least one expansion provider"
                     .into(),
-            ));
-        }
-        Ok(())
-    }
-    /// Same governance as `validate_inference`'s remote block, for the same
-    /// reason: `answer` is a second, independent kind of remote model call
-    /// (chat completions, not embeddings), so it gets its own endpoint,
-    /// credential and bounded limits rather than silently reusing
-    /// `inference.remote_*` for a different contract.
-    pub(super) fn validate_answer(&self) -> Result<(), ConfigError> {
-        // Numeric limits are bounded unconditionally, even while the feature
-        // is off: they are still written to the file as an i64, and an
-        // unbounded value would wrap negative on write (see
-        // `validate_inference`). `max_sources` keeps its documented `<= 32`
-        // operating bound; the others get generous ceilings far below
-        // `i64::MAX`.
-        if !(100..=60_000).contains(&self.answer.timeout_ms)
-            || !(1..=32).contains(&self.answer.max_sources)
-            || !(1..=10_000_000).contains(&self.answer.max_source_chars)
-            || !(1..=1_000_000).contains(&self.answer.max_answer_tokens)
-        {
-            return Err(ConfigError::Policy("invalid answer limit".into()));
-        }
-        if !self.answer.enabled {
-            return Ok(());
-        }
-        if !self.data_policy.allows_remote_inference() {
-            return Err(ConfigError::Policy(
-                "answer.enabled requires a standard profile, governed egress and \
-                 data_policy.inference = \"remote_explicit\""
-                    .into(),
-            ));
-        }
-        let endpoint =
-            self.answer.endpoint.as_deref().ok_or_else(|| {
-                ConfigError::Policy("answer.enabled requires answer.endpoint".into())
-            })?;
-        crate::inference::validate_remote_endpoint(endpoint)
-            .map_err(|error| ConfigError::Policy(error.to_string()))?;
-        if self.answer.model.as_deref().is_none_or(str::is_empty) {
-            return Err(ConfigError::Policy(
-                "answer.enabled requires answer.model".into(),
             ));
         }
         Ok(())

@@ -10,16 +10,16 @@ pub struct ServerConfig {
     /// Environment variable holding the single default credential.
     ///
     /// Kept for deployments with one operator: the resulting client is called
-    /// `default` and carries every scope and every MCP tool. Declare
+    /// `default` and carries every scope. Declare
     /// `[[server.clients]]` instead to split capability between callers.
     pub token_env: String,
     pub no_auth: bool,
-    /// Named credentials, each with its own scopes, MCP tool allowlist and
-    /// optional expiry. A request is authorized as exactly one of them.
+    /// Named credentials, each with its own scopes and optional expiry. A
+    /// request is authorized as exactly one of them.
     pub clients: Vec<ServerClient>,
     pub allowed_hosts: Vec<String>,
     pub allowed_origins: Vec<String>,
-    /// Maximum request body size accepted by the HTTP/MCP transport. This must
+    /// Maximum request body size accepted by the HTTP transport. This must
     /// be at least `persistence.saved_document_max_bytes` (plus JSON envelope
     /// overhead) or `POST /saved` will reject a payload the service itself
     /// considers valid with `413 body_too_large`.
@@ -32,7 +32,7 @@ pub struct ServerConfig {
     pub tls: TlsConfig,
 }
 
-/// One named credential accepted by the HTTP and MCP surfaces.
+/// One named credential accepted by the HTTP surface.
 ///
 /// The secret never lives in configuration: declare the environment variable
 /// that holds it, or the SHA-256 digest of the token. Both forms are compared
@@ -51,9 +51,6 @@ pub struct ServerClient {
     pub expires_at: Option<String>,
     /// HTTP capability granted to this client.
     pub scopes: Vec<Scope>,
-    /// MCP tools this client may call. Empty means no MCP access at all: tool
-    /// capability is granted explicitly, never inherited.
-    pub tools: Vec<String>,
 }
 
 /// Capability a route requires from the calling client.
@@ -71,18 +68,15 @@ pub enum Scope {
     Write,
     /// `/reload` and any other administrative action.
     Admin,
-    /// The MCP surface itself. The per-tool allowlist narrows it further.
-    Mcp,
 }
 
 impl Scope {
-    pub const ALL: [Scope; 6] = [
+    pub const ALL: [Scope; 5] = [
         Scope::Search,
         Scope::Deep,
         Scope::Read,
         Scope::Write,
         Scope::Admin,
-        Scope::Mcp,
     ];
 
     pub const fn as_str(self) -> &'static str {
@@ -92,7 +86,6 @@ impl Scope {
             Self::Read => "read",
             Self::Write => "write",
             Self::Admin => "admin",
-            Self::Mcp => "mcp",
         }
     }
 }
@@ -528,38 +521,11 @@ impl Config {
                     )));
                 }
             }
-            if let Some(tool) = client
-                .tools
-                .iter()
-                .find(|tool| !MCP_TOOLS.contains(&tool.as_str()))
-            {
-                return Err(ConfigError::Policy(format!(
-                    "client {} allows unknown MCP tool: {tool}",
-                    client.id
-                )));
-            }
-            if !client.tools.is_empty() && !client.scopes.contains(&Scope::Mcp) {
-                return Err(ConfigError::Policy(format!(
-                    "client {} allows MCP tools without the mcp scope",
-                    client.id
-                )));
-            }
         }
         Ok(())
     }
 }
 
-/// Tool names the MCP surface exposes, and the vocabulary a client allowlist
-/// may use. Kept here so an unknown name is rejected by configuration
-/// validation instead of silently granting nothing.
-pub const MCP_TOOLS: [&str; 6] = [
-    "search",
-    "deep_search",
-    "fetch",
-    "providers",
-    "status",
-    "answer",
-];
 fn is_sha256_hex(value: &str) -> bool {
     value.len() == 64
         && value
@@ -589,10 +555,5 @@ fn server_client_to_table(client: &ServerClient) -> toml_edit::Table {
         scopes.push(scope.as_str());
     }
     table.insert("scopes", toml_edit::value(scopes));
-    let mut tools = toml_edit::Array::new();
-    for tool in &client.tools {
-        tools.push(tool.as_str());
-    }
-    table.insert("tools", toml_edit::value(tools));
     table
 }

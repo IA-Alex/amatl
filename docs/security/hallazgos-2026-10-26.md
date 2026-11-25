@@ -128,7 +128,7 @@ programa) y `docs/security/threat-model.md:95` (`/health`, `/ready` y `/metrics`
 son públicos en la interfaz que el operador publique, y `/metrics` expone
 contadores, latencias y agregados). El disparador de revisión del modelo incorpora
 ya el cambio de entorno de un proceso externo
-(`docs/security/threat-model.md:124`).
+(`docs/security/threat-model.md:110`).
 
 ## C1 — Refutado como bloqueo de release y reparado el 2026-10-27: el `include_str!` del OpenAPI no impide publicar (Baja, empaquetado)
 
@@ -139,7 +139,7 @@ que por eso `cargo publish -p amatl-server` falla hoy, como hallazgo de severida
 Alta de release.
 
 **Por qué era falso.** Las cuatro citas existen, pero `tests.rs` es un módulo de
-pruebas: `crates/amatl-server/src/lib.rs:3537-3538` lo declara con
+pruebas: `crates/amatl-server/src/lib.rs:3368-3369` lo declara con
 `#[cfg(test)] mod tests;`. El `include_str!` vive en código que **no se compila** al
 verificar el paquete, porque esa verificación construye la librería y los binarios,
 no los objetivos de prueba. La evidencia citada (`cargo package -p amatl-server --list

@@ -1,11 +1,10 @@
-//! Hardened HTTP API, UI hosting and MCP Streamable HTTP surface for AMATL.
+//! Hardened HTTP API and UI hosting for AMATL.
 
-mod mcp;
 mod routes;
 
 use amatl_core::{
     AmatlService, ConfigError, DeepTarget, ErrorCode, Scope, ServiceError, ServiceSurface,
-    MCP_TOOLS, SCHEMA_VERSION,
+    SCHEMA_VERSION,
 };
 use amatl_ui::{asset, security_headers};
 use axum::{
@@ -26,9 +25,6 @@ use axum::{
     Json, Router,
 };
 use rand::RngCore;
-use rmcp::transport::streamable_http_server::{
-    session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
-};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
@@ -351,16 +347,13 @@ struct ReloadReport {
 struct RequestMetrics {
     search_total: AtomicU64,
     deep_total: AtomicU64,
-    answer_total: AtomicU64,
     search_errors: AtomicU64,
     deep_errors: AtomicU64,
-    answer_errors: AtomicU64,
     rate_limited_total: AtomicU64,
     unauthorized_total: AtomicU64,
     request_timeout_total: AtomicU64,
     search_latency: LatencyWindow,
     deep_latency: LatencyWindow,
-    answer_latency: LatencyWindow,
 }
 
 /// Bounded ring of recent latencies used to publish quantiles without a
@@ -429,15 +422,13 @@ struct AuthorizedClient {
     digest: [u8; 32],
     expires_at: Option<String>,
     scopes: Vec<Scope>,
-    tools: Vec<String>,
 }
 
-/// Identity of the caller, attached to the request for handlers, the MCP
-/// surface and audit events.
+/// Identity of the caller, attached to the request for handlers and audit
+/// events.
 #[derive(Clone, Debug)]
 pub(crate) struct ClientIdentity {
     pub(crate) id: String,
-    pub(crate) tools: Vec<String>,
 }
 
 impl ClientIdentity {
@@ -446,12 +437,7 @@ impl ClientIdentity {
     fn unauthenticated() -> Self {
         Self {
             id: "anonymous".into(),
-            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
         }
-    }
-
-    pub(crate) fn allows_tool(&self, tool: &str) -> bool {
-        self.tools.iter().any(|allowed| allowed == tool)
     }
 }
 
@@ -479,7 +465,6 @@ fn resolve_clients(
             digest,
             expires_at: None,
             scopes: Scope::ALL.to_vec(),
-            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
         });
     }
     for declared in &server.clients {
@@ -521,7 +506,6 @@ fn resolve_clients(
             digest,
             expires_at: declared.expires_at.clone(),
             scopes: declared.scopes.clone(),
-            tools: declared.tools.clone(),
         });
     }
     if clients.is_empty() {
@@ -586,25 +570,13 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         "/search" => Some(Scope::Search),
         "/search/batch" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
-        // `PATCH /answer` edits the endpoint/model/limits — a config write,
-        // admin scoped like every other one. `POST /answer` (below) is the
-        // domain call that actually runs a search and synthesizes from it.
-        "/answer" if *method == Method::PATCH => Some(Scope::Admin),
-        // Reuses Deep's scope rather than a dedicated one: like Deep, this
-        // runs a full search and then does more expensive, sensitive work on
-        // top of it (here, an outbound call to a third-party LLM).
-        "/answer" => Some(Scope::Deep),
         "/providers" | "/status" => Some(Scope::Read),
         "/history" | "/saved" if mutating => Some(Scope::Write),
         "/history" | "/saved" => Some(Scope::Read),
         // The audit trail names identities and addresses: operator only.
-        // The answer toggle is admin too, same tier as /reload: it rewrites
-        // the running configuration file, even though the field it touches
-        // is narrow (see `Config::set_answer_enabled`).
-        "/security-events" | "/reload" | "/answer/enabled" | "/strategist/enabled" => {
-            Some(Scope::Admin)
-        }
-        // Same tier and the same reasoning as `/answer/enabled`: it rewrites
+        // `/reload` is admin too: it rewrites the running configuration file.
+        "/security-events" | "/reload" => Some(Scope::Admin),
+        // Same tier and the same reasoning as `/reload`: it rewrites
         // the running configuration file, narrowly (see
         // `Config::set_provider_enabled`).
         _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
@@ -625,8 +597,7 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         // Governs egress, remote inference and the unsandboxed renderer for
         // the whole process — same trust tier as the client registry above.
         "/data-policy" => Some(Scope::Admin),
-        // Same reasoning as `PATCH /answer`: a config write over the
-        // embedding backend and its remote endpoint.
+        // A config write over the embedding backend and its remote endpoint.
         "/inference" => Some(Scope::Admin),
         // Read the search-quality policies freely; only an admin replaces
         // one.
@@ -644,8 +615,6 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         "/deep/limits" if *method == Method::PATCH => Some(Scope::Admin),
         "/deep/limits" => Some(Scope::Read),
         "/deep/extractor" | "/deep/renderer" => Some(Scope::Admin),
-        "/mcp" => Some(Scope::Mcp),
-        _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
         // `/history/{id}` and `/saved/{id}` only ever delete.
         _ if path.starts_with("/history/") || path.starts_with("/saved/") => Some(Scope::Write),
         // Fail closed: every route the router registers must declare its
@@ -771,6 +740,21 @@ pub async fn build_router_with_reload(
     let effective_port = server.port;
     let https = server.tls.cert_path.is_some();
     let clients = resolve_clients(service.config(), explicit_token.clone())?;
+    // `no_auth` is loopback-only and unconditionally enforced by
+    // `Config::validate`, so this is not an unsafe start — but it *is* an
+    // unauthenticated one: every local process that reaches the socket is
+    // treated as an admin. Surface it on the startup path the operator actually
+    // watches (the log), not only in a separate `doctor` run, so the weaker
+    // posture is never a silent default.
+    if server.no_auth {
+        tracing::warn!(
+            target: "amatl::http",
+            security_event = "server_no_auth",
+            bind = %server.bind,
+            port = server.port,
+            "HTTP server started without authentication (no_auth, loopback only): any local process reaching this socket has full admin scope"
+        );
+    }
     let allowed_origins = effective_origins(service.config(), https);
     let security = Arc::new(SecurityState {
         clients,
@@ -782,28 +766,8 @@ pub async fn build_router_with_reload(
         rate_limit_per_minute: server.rate_limit_per_minute,
         https,
     });
-    let mcp_config = StreamableHttpServerConfig::default()
-        .with_legacy_session_mode(false)
-        .with_json_response(true)
-        .with_sse_keep_alive(None)
-        .with_allowed_hosts(server.allowed_hosts.clone())
-        .with_allowed_origins(allowed_origins.clone())
-        .with_max_request_body_bytes(server.max_body_bytes)
-        .with_stateless_protocol_metadata_required(true);
-    // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
     let handle: ServiceHandle = Arc::new(RwLock::new(service));
-    // Shared metrics so `/metrics` reports MCP tool traffic too.
     let metrics = Arc::new(RequestMetrics::default());
-    let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
-        StreamableHttpService::new(
-            {
-                let handle = handle.clone();
-                let metrics = metrics.clone();
-                move || Ok(mcp::McpSurface::new(handle.clone(), metrics.clone()))
-            },
-            Default::default(),
-            mcp_config,
-        );
     let state = AppState {
         service: handle,
         config_path,
@@ -824,7 +788,6 @@ pub async fn build_router_with_reload(
         state: state.clone(),
     };
     let router = routes::register_public_routes(Router::new())
-        .nest_service("/mcp", mcp_service)
         // Apply the request concurrency limit to the work-bearing routes only,
         // then merge the probes so they stay reachable while the limit is
         // saturated (see `register_probe_routes`).
@@ -1116,45 +1079,6 @@ async fn deep_post(
     }
 }
 
-/// Runs a search and synthesizes a grounded, cited answer from it. Mirrors
-/// `search_post`/`deep_post` exactly; the only difference is which service
-/// method it calls. Distinct from both on purpose: `search`/`deep` never
-/// change behavior because this route exists, and this route never runs
-/// unless the caller explicitly hits it.
-async fn answer_post(
-    State(state): State<AppState>,
-    Extension(request_id): Extension<RequestId>,
-    params: Result<Json<SearchParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    if !valid_query(&params.q) {
-        return api_error(ErrorCode::InvalidQuery);
-    }
-    let started = Instant::now();
-    let outcome = state
-        .service()
-        .answer(params.q, ServiceSurface::api(Some(request_id.into_inner())))
-        .await;
-    state
-        .metrics
-        .answer_latency
-        .record(started.elapsed().as_millis() as u64);
-    // Count every request received, not just successful ones.
-    state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
-    match outcome {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => {
-            state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
-            service_error(error)
-        }
-    }
-}
-
 async fn providers(State(state): State<AppState>) -> Response {
     match state.service().provider_summaries() {
         Ok(providers) => Json(ProviderResponse {
@@ -1179,7 +1103,7 @@ impl PageParams {
     /// Window for the local panels (`/history`, `/saved`): bounded to 200/off.
     ///
     /// Note: this is deliberately a *different* limit from `/search`'s
-    /// `max_page_size` (100, or 25 under MCP). These are local read surfaces,
+    /// `max_page_size` (100). These are local read surfaces,
     /// not the retrieval hot path, so a more generous cap is acceptable — the
     /// two contracts are not intended to match.
     fn window(&self) -> (u32, u32) {
@@ -1203,103 +1127,14 @@ async fn reload(State(state): State<AppState>) -> Response {
 }
 
 #[derive(Debug, Deserialize)]
-struct AnswerToggleParams {
-    enabled: bool,
-}
-
-/// Flip `answer.enabled` and nothing else — admin scoped, same trust tier as
-/// `/reload`, which this reuses for the actual apply step.
-///
-/// Validates a would-be config with the flag flipped *before* writing
-/// anything: if turning the feature on would leave `answer` unable to pass
-/// `Config::validate` (missing `endpoint`/`model`, an operator never
-/// finished configuring), this fails closed without ever touching the file
-/// or the credential — a half-written toggle is worse than no toggle.
-async fn answer_toggle(
-    State(state): State<AppState>,
-    params: Result<Json<AnswerToggleParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    candidate.answer.enabled = params.enabled;
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-#[derive(Debug, Deserialize)]
-struct StrategistToggleParams {
-    enabled: bool,
-}
-
-/// Flip `strategist.enabled` and nothing else — admin scoped, same trust tier
-/// as `/answer/enabled` and `/reload`, whose pattern this copies exactly.
-///
-/// Toggling the strategist on wires the LLM into search (a refined second
-/// query complementing the first result set). This is the web button
-/// "search with model": with it off, the LLM does not participate in search
-/// at all and `search`/`deep` stay fully deterministic.
-///
-/// Validates a would-be config with the flag flipped *before* writing: if
-/// turning it on would leave the strategist without a usable `endpoint` /
-/// `model` (an operator never finished configuring it), it fails closed
-/// (`configuration_invalid`) without ever touching the file or the
-/// credential. The credential itself is checked lazily at call time, not
-/// here — presence of the environment variable is surfaced read-only in
-/// `/status` (`strategist.available`).
-async fn strategist_toggle(
-    State(state): State<AppState>,
-    params: Result<Json<StrategistToggleParams>, JsonRejection>,
-) -> Response {
-    let Json(params) = match params {
-        Ok(params) => params,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    candidate.strategist.enabled = params.enabled;
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_strategist_enabled(&path, params.enabled).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-#[derive(Debug, Deserialize)]
 struct ProviderToggleParams {
     enabled: bool,
 }
 
 /// Add or remove one name from `providers.enabled` — admin scoped, same
-/// trust tier as `/answer/enabled` and `/reload`, whose pattern this copies
-/// exactly (validate a candidate config first, write only the narrow field,
-/// then apply through the same atomic reload).
+/// trust tier as `/reload`, whose pattern this copies exactly (validate a
+/// candidate config first, write only the narrow field, then apply through
+/// the same atomic reload).
 ///
 /// This never writes or touches a provider's governance ficha
 /// (`approval_status`, `reviewer`, `reviewed_at`, …). Enabling a name whose
@@ -1342,6 +1177,14 @@ async fn provider_toggle(
     }
 }
 
+/// Default lifetime for an operator-injected provider credential when the
+/// caller omits `ttl_ms`. Twelve hours keeps a scarce key (e.g. the single
+/// Marginalia credential) resident for a working session but not indefinitely;
+/// a caller that wants longer, or none at all, says so explicitly with
+/// `ttl_ms`. The value lives only in RAM regardless.
+const DEFAULT_CREDENTIAL_TTL: Option<std::time::Duration> =
+    Some(std::time::Duration::from_secs(12 * 60 * 60));
+
 /// Body of `POST /providers/{name}/credential`: the operator-supplied key.
 ///
 /// The key is wrapped so its heap allocation is wiped when the deserialized
@@ -1349,6 +1192,14 @@ async fn provider_toggle(
 #[derive(Deserialize)]
 struct ProviderCredentialParams {
     key: SecretKey,
+    /// Optional lifetime for the in-memory key, in milliseconds. Omitted (or
+    /// `null`) uses the service default; the value `0` opts out of expiry
+    /// entirely so the key lives until the process does. A positive value
+    /// makes the key expire on its own, lazily, on the next read past its
+    /// deadline — useful for a scarce credential an operator does not want to
+    /// leave resident indefinitely.
+    #[serde(default)]
+    ttl_ms: Option<u64>,
 }
 
 /// A secret string that zeroizes its buffer on drop.
@@ -1380,6 +1231,10 @@ struct ProviderCredentialReport {
     set: bool,
     /// Whether the source is usable right now with the current credential.
     available: bool,
+    /// Milliseconds until the in-memory key expires, or `null` when it never
+    /// expires (operator opted out with `ttl_ms = 0`) or no key is held. Lets
+    /// the UI show a countdown and re-prompts before the key quietly lapses.
+    expires_in_ms: Option<u64>,
 }
 
 /// Insert (or replace) an operator-supplied provider credential in memory
@@ -1421,7 +1276,16 @@ async fn provider_credential_put(
         );
         return api_error(ErrorCode::InvalidRequest);
     }
-    if service.set_provider_credential(&name, &params.key).is_err() {
+    // `ttl_ms` semantics: omitted → service default; `0` → no expiry.
+    let ttl = match params.ttl_ms {
+        None => DEFAULT_CREDENTIAL_TTL,
+        Some(0) => None,
+        Some(ms) => Some(std::time::Duration::from_millis(ms)),
+    };
+    if service
+        .set_provider_credential(&name, &params.key, ttl)
+        .is_err()
+    {
         audit_credential_action(
             &state,
             "provider_credential_rejected",
@@ -1438,12 +1302,15 @@ async fn provider_credential_put(
         &identity.id,
         &name,
     );
-    let available = service.ephemeral_credential_present(&name);
+    let remaining = service.ephemeral_credential_remaining_ms(&name);
     Json(ProviderCredentialReport {
         schema_version: SCHEMA_VERSION.into(),
         name,
         set: true,
-        available,
+        available: remaining.is_some(),
+        // `u64::MAX` is the "present, never expires" sentinel; present it as
+        // `None` so the wire never carries a meaningless magic number.
+        expires_in_ms: remaining.filter(|value| *value != u64::MAX),
     })
     .into_response()
 }
@@ -1485,6 +1352,7 @@ async fn provider_credential_delete(
         name,
         set: false,
         available: false,
+        expires_in_ms: None,
     })
     .into_response()
 }
@@ -1634,7 +1502,6 @@ async fn update_provider_record(
 struct ServerClientSummary {
     id: String,
     scopes: Vec<Scope>,
-    tools: Vec<String>,
     expires_at: Option<String>,
     credential_kind: &'static str,
 }
@@ -1644,7 +1511,6 @@ impl From<&amatl_core::ServerClient> for ServerClientSummary {
         Self {
             id: client.id.clone(),
             scopes: client.scopes.clone(),
-            tools: client.tools.clone(),
             expires_at: client.expires_at.clone(),
             credential_kind: if client.token_env.is_some() {
                 "token_env"
@@ -1675,8 +1541,6 @@ struct CreateServerClientParams {
     id: String,
     scopes: Vec<Scope>,
     #[serde(default)]
-    tools: Vec<String>,
-    #[serde(default)]
     expires_at: Option<String>,
 }
 
@@ -1701,9 +1565,9 @@ struct CreatedServerClient {
 /// Generates a fresh 256-bit token, writes only its SHA-256 digest
 /// (`Config::upsert_server_client` never sees the plaintext), and validates
 /// a candidate config with the new entry applied *before* writing anything,
-/// exactly like `/answer/enabled` and `/providers/{name}/enabled`: a client
-/// that would fail `Config::validate` (duplicate id, no scope, unknown MCP
-/// tool, malformed `expires_at`) never reaches the file.
+/// exactly like `/providers/{name}/enabled`: a client
+/// that would fail `Config::validate` (duplicate id, no scope, malformed
+/// `expires_at`) never reaches the file.
 async fn create_server_client(
     State(state): State<AppState>,
     params: Result<Json<CreateServerClientParams>, JsonRejection>,
@@ -1725,7 +1589,6 @@ async fn create_server_client(
         token_sha256: Some(digest_to_hex(token_digest(&token))),
         expires_at: params.expires_at,
         scopes: params.scopes,
-        tools: params.tools,
     };
     // Reject a duplicate id instead of silently replacing the existing entry:
     // a replace would mint a new credential and the reload below would stop
@@ -1766,7 +1629,6 @@ async fn create_server_client(
 #[derive(Debug, Deserialize)]
 struct UpdateServerClientParams {
     scopes: Option<Vec<Scope>>,
-    tools: Option<Vec<String>>,
     /// Present-and-null clears the expiry; absent leaves it unchanged.
     #[serde(default, deserialize_with = "deserialize_optional_field")]
     expires_at: Option<Option<String>>,
@@ -1809,7 +1671,6 @@ async fn update_server_client(
         token_sha256: existing.token_sha256,
         expires_at: params.expires_at.unwrap_or(existing.expires_at),
         scopes: params.scopes.unwrap_or(existing.scopes),
-        tools: params.tools.unwrap_or(existing.tools),
     };
     for client in &mut candidate.server.clients {
         if client.id == id {
@@ -1951,7 +1812,7 @@ where
 /// (network egress, remote inference, the unsandboxed renderer — see
 /// `DataPolicyConfig::allows_*` and the `isolated` cross-checks in
 /// `Config::validate`), so a candidate is validated in full before anything
-/// is written: e.g. switching to `isolated` while `answer.enabled` is still
+/// is written: e.g. switching to `isolated` while remote inference is still
 /// on fails closed here instead of leaving the file in a state the running
 /// process would then refuse to reload.
 ///
@@ -2012,37 +1873,6 @@ async fn update_inference(
         return api_error(ErrorCode::ConfigRejected);
     }
     if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    }
-    match state.clone().reload().await {
-        Ok(report) => Json(report).into_response(),
-        Err(error) => service_error(error),
-    }
-}
-
-/// Edit `[answer]`'s endpoint, model and limits — admin scoped. Deliberately
-/// separate from `POST /answer/enabled`: this can never flip the feature on
-/// or off, see [`amatl_core::AnswerConfigPatch`].
-async fn update_answer_fields(
-    State(state): State<AppState>,
-    params: Result<Json<amatl_core::AnswerConfigPatch>, JsonRejection>,
-) -> Response {
-    let Json(patch) = match params {
-        Ok(patch) => patch,
-        Err(rejection) => {
-            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
-        }
-    };
-    let _config_guard = state.config_write_lock.lock().await;
-    let Some(path) = state.config_path.clone() else {
-        return api_error(ErrorCode::ConfigurationInvalid);
-    };
-    let mut candidate = state.service().config().clone();
-    patch.apply(&mut candidate.answer);
-    if candidate.validate().is_err() {
-        return api_error(ErrorCode::ConfigRejected);
-    }
-    if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
         return api_error(ErrorCode::ConfigurationInvalid);
     }
     match state.clone().reload().await {
@@ -2794,18 +2624,12 @@ async fn metrics(State(state): State<AppState>) -> Response {
          # HELP amatl_deep_requests_total Total deep requests received.\n\
          # TYPE amatl_deep_requests_total counter\n\
          amatl_deep_requests_total {}\n\
-         # HELP amatl_answer_requests_total Total answer requests received.\n\
-         # TYPE amatl_answer_requests_total counter\n\
-         amatl_answer_requests_total {}\n\
          # HELP amatl_search_errors_total Search requests that resulted in error.\n\
          # TYPE amatl_search_errors_total counter\n\
          amatl_search_errors_total {}\n\
          # HELP amatl_deep_errors_total Deep requests that resulted in error.\n\
          # TYPE amatl_deep_errors_total counter\n\
          amatl_deep_errors_total {}\n\
-         # HELP amatl_answer_errors_total Answer requests that resulted in error.\n\
-         # TYPE amatl_answer_errors_total counter\n\
-         amatl_answer_errors_total {}\n\
          # HELP amatl_rate_limited_total Requests rejected by rate limiter.\n\
          # TYPE amatl_rate_limited_total counter\n\
          amatl_rate_limited_total {}\n\
@@ -2817,17 +2641,14 @@ async fn metrics(State(state): State<AppState>) -> Response {
          amatl_request_timeout_total {}\n",
         m.search_total.load(Ordering::Relaxed),
         m.deep_total.load(Ordering::Relaxed),
-        m.answer_total.load(Ordering::Relaxed),
         m.search_errors.load(Ordering::Relaxed),
         m.deep_errors.load(Ordering::Relaxed),
-        m.answer_errors.load(Ordering::Relaxed),
         m.rate_limited_total.load(Ordering::Relaxed),
         m.unauthorized_total.load(Ordering::Relaxed),
         m.request_timeout_total.load(Ordering::Relaxed),
     );
     body.push_str(&latency_metrics("search", &m.search_latency));
     body.push_str(&latency_metrics("deep", &m.deep_latency));
-    body.push_str(&latency_metrics("answer", &m.answer_latency));
     let service = state.service();
     body.push_str(&source_metrics(&service));
     body.push_str(&cache_metrics(&service).await);
@@ -3077,7 +2898,6 @@ async fn security_middleware(
                 }
                 identity = ClientIdentity {
                     id: client.id.clone(),
-                    tools: client.tools.clone(),
                 };
             }
             Authentication::Expired(id) => {
@@ -3121,8 +2941,6 @@ async fn security_middleware(
         .extensions_mut()
         .insert(RequestId(request_id.clone()));
     let client_id = identity.id.clone();
-    // MCP tools read this back out of `http::request::Parts` to enforce their
-    // own per-tool policy.
     request.extensions_mut().insert(identity);
     let request_span = tracing::info_span!(
         target: "amatl::http",

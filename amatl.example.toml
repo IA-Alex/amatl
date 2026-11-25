@@ -70,41 +70,11 @@ reranker_prior_weight = 0.5
 # remote_timeout_ms = 5000
 # remote_max_batch = 32
 
-# Answer synthesis: an optional, explicit layer on top of Search. `search`/
-# `deep` are unaffected either way — this only adds a distinct capability a
-# caller invokes on purpose (HTTP /answer, MCP tool `answer`) that turns
-# AMATL's own ranked results into a short, cited answer. The model only ever
-# sees the sources AMATL retrieved; it is instructed to cite every claim and
-# say plainly when the sources don't answer the question, never to fill the
-# gap from its own knowledge. Requires data_policy.inference =
-# "remote_explicit" (same gate as the remote embeddings backend above),
-# because this is another remote model call that leaves the machine.
-# [answer]
-# enabled = true
-# Example: DeepInfra's OpenAI-compatible chat completions endpoint.
-# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
-# model = "deepseek-ai/DeepSeek-V3"
-# credential_env = "DEEPINFRA_API_KEY"
-# timeout_ms = 20000
-# max_sources = 8
-# max_source_chars = 1200
-# max_answer_tokens = 700
-
-# ── Búsqueda con modelo (strategist) ─────────────────────────────
-# Optional. With it enabled, after the first search the LLM proposes a refined
-# query that AMATL runs as a second round against the same providers and merges
-# (by canonical URL, never re-ordering and never inventing results) with the
-# first set. Off by default: search/deep stay fully deterministic and the model
-# does not participate at all. Unlike [answer], it does not require
-# data_policy.inference = "remote_explicit": it only sends the query text (never
-# retrieved content), so it is gated by network egress plus this flag. Enabling
-# it requires a real endpoint, model and credential_env, or it fails closed.
-# [strategist]
-# enabled = false
-# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
-# model = "deepseek-ai/DeepSeek-V3"
-# credential_env = "DEEPINFRA_API_KEY"
-# timeout_ms = 800
+# Answer synthesis and search strategist (retired 2026-11-22, commit 8f3fd080).
+# AMATL no longer synthesizes text or lets a model participate in search: `search`
+# and `deep` are fully deterministic and no LLM capability exists. The former
+# `[answer]` and `[strategist]` tables were removed here so this example cannot
+# imply a capability that is gone.
 
 [timeouts]
 provider_ms = 3000
@@ -153,22 +123,19 @@ locking_mode = "normal"
 
 # Credenciales con nombre. El secreto nunca vive aquí: declara la variable de
 # entorno que lo contiene o el digest SHA-256 del token. Cada cliente lleva sus
-# scopes HTTP y su lista explícita de herramientas MCP; sin `tools` no puede
-# usar MCP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
+# scopes HTTP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
 # reiniciar. Sin ningún `[[server.clients]]`, el token global de
 # `server.token_env` sigue funcionando como cliente `default` con todo.
 # [[server.clients]]
 # id = "reader"
 # token_env = "AMATL_TOKEN_READER"
-# scopes = ["search", "read", "mcp"]
-# tools = ["search", "status"]
+# scopes = ["search", "read"]
 # expires_at = "2026-12-31"
 #
 # [[server.clients]]
 # id = "operator"
 # token_sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
-# scopes = ["search", "deep", "read", "write", "admin", "mcp"]
-# tools = ["search", "deep_search", "fetch", "providers", "status"]
+# scopes = ["search", "deep", "read", "write", "admin"]
 
 # Persistent provider circuit breaker: consecutive failures stop calling a
 # source until its cooldown expires. State survives restarts when persistence

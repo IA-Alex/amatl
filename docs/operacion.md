@@ -14,8 +14,7 @@
 3. El default escucha `127.0.0.1:8080`. `amatl serve --bind` y `--port` lo
    sobrescriben sólo para ese proceso, y `--json` imprime una línea con el
    listener efectivo (bind, puerto, TLS, autenticación, archivo de
-   configuración y superficies) antes de escuchar; `amatl mcp serve` acepta las
-   mismas opciones. Para bind no-loopback configura rutas
+   configuración y superficies) antes de escuchar. Para bind no-loopback configura rutas
    reales a certificado y clave TLS, conserva `no_auth = false`, restringe
    hosts/origins y ajusta firewall. La configuración rechaza bind remoto sin TLS
    y token.
@@ -91,10 +90,10 @@ enabled = []
 Después ejecuta `amatl config` o `amatl doctor` y confirma
 `network_egress_allowed = false` y `remote_inference_allowed = false`. El
 arranque falla si se combina con bind no-loopback, renderer, provider real o
-inferencia remota. Los intentos directos por Deep/MCP fallan con
+inferencia remota. Los intentos directos por Deep fallan con
 `egress_denied`; no necesitan ni deben recibir credenciales.
 
-Para aislamiento del ejercicio completo, ejecuta también el cliente MCP y toda
+Para aislamiento del ejercicio completo, ejecuta también toda
 inferencia en el mismo entorno local, corta egress en firewall/container y
 revisa el ejecutable extractor. La política de AMATL no controla procesos
 terceros ni puede recuperar una consulta que ya fue enviada a un servicio cloud.
@@ -106,7 +105,7 @@ soporta dos tokens simultáneos.
 ## Ingestión local
 
 La ingestión acepta un archivo regular explícito y nunca está disponible desde
-el listener HTTP/MCP:
+el listener HTTP:
 
 ```bash
 amatl ingest ./evidencia.md --query "hallazgos críticos" --json
@@ -195,13 +194,13 @@ divergencia está fijada por
 cambiar el valor de una métrica publicada, y es una decisión del propietario, no
 un arreglo de documentación.
 
-`GET /status` y la herramienta MCP `status` reportan además el estado de
+`GET /status` reporta además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
 comprueba SQLite/migración si procede, reporta telemetría y muestra preparación
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
 reporte; el operador debe leer cada línea.
 
-La CLI usa el mismo catálogo de códigos que API y MCP: ante un fallo con código
+La CLI usa el mismo catálogo de códigos que la API: ante un fallo con código
 imprime `error_code=<código> message=<mensaje>` en stderr, y ante una búsqueda
 con `status = failure` imprime los códigos compuestos que ya trae la respuesta
 (`no_available_provider`, `no_usable_results`). stdout conserva sólo la salida
@@ -215,7 +214,7 @@ adentro: cada llamada saliente a un provider (`amatl::providers`) y cada fetch
 del pipeline Deep (`amatl::fetch`) se ejecuta dentro de un span que lo declara,
 de modo que una sola búsqueda en logs reconstruye la solicitud completa. El
 identificador nunca se envía al provider ni al origen remoto: sólo etiqueta la
-traza local. Las superficies MCP generan el suyo por llamada a herramienta.
+traza local.
 
 `GET /status` (con bearer) resume el estado operativo en JSON: disponibilidad y
 valor observado por fuente, estado de la persistencia local —versión de
@@ -236,7 +235,6 @@ de un solo operador. Declarar clientes con nombre reparte capacidad:
 | `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
 | `write` | escritura y borrado en `/history` y `/saved` |
 | `admin` | `/reload`, `/security-events` |
-| `mcp` | la superficie `/mcp`; `tools` la acota herramienta por herramienta |
 
 El secreto nunca se escribe en configuración: se declara `token_env` (variable
 de entorno) o `token_sha256` (digest). La comparación es sobre digests y en
@@ -246,10 +244,7 @@ tiempo constante, así que una fuga del archivo no entrega una credencial usable
 de rate limit **no** se reinicia con la recarga.
 
 Un token sin capacidad para una ruta recibe `403 scope_denied`, distinto de
-`401 unauthorized`; ambos quedan en la auditoría. En MCP, cada herramienta
-comprueba la lista `tools` de la identidad autenticada —no un encabezado del
-cliente— así que puedes conceder `search` y negar `fetch`, que es la más
-sensible, sin apagar el egress para todos.
+`401 unauthorized`; ambos quedan en la auditoría.
 
 ### Bitácora de seguridad
 
@@ -286,8 +281,8 @@ intercambia; las solicitudes en curso terminan con la configuración con la que
 empezaron y la siguiente ya usa la nueva. Una configuración inválida se rechaza
 antes de reemplazar nada y el servicio en ejecución queda intacto. La respuesta
 enumera fuentes declaradas, habilitadas y registradas, y el backend de
-inferencia resultante. La superficie MCP comparte el mismo handle, así que
-también ve la recarga.
+inferencia resultante. Todas las superficies comparten el mismo handle, así que
+también ven la recarga.
 
 Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
 
@@ -302,56 +297,6 @@ Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
   a gastar presupuesto redescubriendo la caída. `amatl db circuits` lo muestra y
   `--reset` lo cierra.
 
-### Activar o desactivar Resumen con IA
-
-`POST /answer/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) reutiliza
-exactamente este mismo mecanismo de recarga en caliente: escribe sólo la
-clave `answer.enabled` en el archivo de configuración con `toml_edit`
-(preserva comentarios y el resto del archivo), valida una configuración
-candidata con el flag ya volteado *antes* de escribir nada, y aplica el
-cambio con el mismo `reload` atómico de arriba. Activar la función con
-`answer.endpoint`/`answer.model` incompletos falla cerrado
-(`configuration_invalid`) sin tocar el archivo ni el servicio en ejecución.
-Es la única vía soportada para operar el interruptor en caliente; editar
-`answer.enabled` a mano en el archivo sigue funcionando, pero exige el mismo
-`POST /reload` o `SIGHUP` de cualquier otro cambio manual. El botón `Resumen
-con IA` en la UI web llama a esta misma ruta. Detalle completo del feature en
-`docs/resumen-con-ia.md`.
-
-### Activar o desactivar la búsqueda con modelo (strategist)
-
-`POST /strategist/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) opera
-el mismo patrón exacto que `/answer/enabled`: valida un candidato con el flag
-ya volteado *antes* de escribir, escribe sólo `strategist.enabled` en el
-archivo con `toml_edit` (preserva comentarios) y aplica el cambio con el mismo
-`reload()` atómico sin reiniciar.
-
-Este toggle controla si **el LLM participa en la búsqueda**. Con él apagado
-(el default) `search`/`deep` corren 100% determinísticos — el modelo no
-interviene en absoluto. Con él encendido, el strategist analiza los resultados
-de la primera búsqueda y propone una query refinada que AMATL ejecuta contra
-los providers reales y fusiona por URL canónica (complementa, nunca reordena y
-nunca inventa resultados). El botón `Búsqueda con modelo` en la UI web llama a
-esta misma ruta.
-
-Encenderlo exige una config real y **falla cerrado** si no la hay: `Config`
-rechaza `strategist.enabled = true` sin `endpoint`, `model` y `credential_env`
-válidos, y sin egress de red (perfil standard + `egress = "governed"`). El
-strategist es una capacidad LLM independiente de los embeddings de ranking que
-gobierna `[data_policy].inference`, así que **no requiere** cambiar
-`inference` a `remote_explicit`. La credencial se lee de la variable nombrada
-en `credential_env` en el momento de la llamada; su presencia se reporta en
-`/status` (`strategist.available`) sin exponer el valor.
-
-```toml
-[strategist]
-enabled = false
-endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
-model = "deepseek-ai/DeepSeek-V3"
-credential_env = "DEEPINFRA_API_KEY"
-timeout_ms = 800
-```
-
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición
@@ -359,11 +304,11 @@ Prometheus 0.0.4:
 
 | Métrica | Tipo | Significado |
 |---|---|---|
-| `amatl_search_requests_total`, `amatl_deep_requests_total`, `amatl_answer_requests_total` | counter | solicitudes recibidas por superficie |
-| `amatl_search_errors_total`, `amatl_deep_errors_total`, `amatl_answer_errors_total` | counter | solicitudes que terminaron en error, incluida `answer_unavailable` (sin cita válida o backend no disponible) |
+| `amatl_search_requests_total`, `amatl_deep_requests_total` | counter | solicitudes recibidas por superficie |
+| `amatl_search_errors_total`, `amatl_deep_errors_total` | counter | solicitudes que terminaron en error |
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
-| `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
-| `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
+| `amatl_search_latency_ms`, `amatl_deep_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
+| `amatl_search_latency_samples`, `amatl_deep_latency_samples` | gauge | muestras retenidas en la ventana |
 | `amatl_sources_declared` | gauge | fuentes que declara el despliegue, **incluidas** las deshabilitadas |
 | `amatl_sources_available` | gauge | fuentes declaradas con superficie `available`; es la misma cantidad que `sources_available` en `/ready` |
 | `amatl_sources_circuit_open` | gauge | fuentes declaradas en cooldown de circuito |
@@ -608,8 +553,7 @@ rate limit HTTP de AMATL es distinto y devuelve 429 con `Retry-After: 60`.
 
 Revisa degradación/stop reason (`provider_limit`, `time_exhausted`,
 `deadline_near`, fetch/bytes/redirects/cost/subquery). No reintentes en loop.
-Ajusta sólo valores válidos con evidencia de benchmark y conserva límites MCP
-más estrictos.
+Ajusta sólo valores válidos con evidencia de benchmark.
 
 ### SQLite degradado o corrupto
 

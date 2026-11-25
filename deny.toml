@@ -1,21 +1,17 @@
 [advisories]
 version = 2
 yanked = "warn"
-# Two advisories are suppressed, each by ID, and the reason for each lives in
-# three places a reviewer can check: the ADR (`decisiones_amatl.md`) owns the
-# exit plan, `docs/security/supply-chain.md` states the threat model, and
+# One advisory is suppressed by ID, and the reason lives in three places a
+# reviewer can check: the ADR (`decisiones_amatl.md`) owns the exit plan,
+# `docs/security/supply-chain.md` states the threat model, and
 # `scripts/security-gate.sh` re-derives this list on every CI run so a
 # suppression cannot grow without being seen.
 #
 # - RUSTSEC-2026-0459 (`libsqlite3-sys` via C SQLite, patched in `>=0.39.0`),
 #   reachable by no released `sqlx`. See `ADR-017`.
-# - RUSTSEC-2026-0543 (`chrono` is unmaintained; every version is affected),
-#   reached only through `rmcp` and `schemars`, and used by neither AMATL code
-#   path (AMATL's own date handling goes through `time`). There is no upgrade to
-#   take: the advisory names no fixed release. See `ADR-018`.
 #
 # Every other advisory must keep failing the gate.
-ignore = ["RUSTSEC-2026-0459", "RUSTSEC-2026-0543"]
+ignore = ["RUSTSEC-2026-0459"]
 
 [licenses]
 version = 2

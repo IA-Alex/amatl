@@ -327,6 +327,50 @@ async fn the_layout_holds_at_a_narrow_viewport() {
 }
 
 #[tokio::test]
+async fn synthetic_mode_hides_real_provider_controls_and_no_auth_token_field() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let client = browser().await;
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    let mut state = serde_json::Value::Null;
+    for _ in 0..100 {
+        state = client
+            .execute(
+                "return JSON.stringify({ready: document.querySelector('.operator-tools') === null, accessHidden: document.querySelector('.access-filters').hidden, credentialsHidden: document.querySelector('.source-credentials').hidden, queryWidth: document.querySelector('#query').getBoundingClientRect().width, answerDisabled: document.querySelector('#answer-button').disabled, answerHidden: document.querySelector('#answer-button').hidden, answerHintHidden: document.querySelector('#answer-hint').hidden});",
+                vec![],
+            )
+            .await
+            .unwrap();
+        let parsed: serde_json::Value = serde_json::from_str(state.as_str().unwrap()).unwrap();
+        if parsed["ready"] == true {
+            state = parsed;
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(50)).await;
+    }
+    let parsed = if state.is_string() {
+        serde_json::from_str::<serde_json::Value>(state.as_str().unwrap()).unwrap()
+    } else {
+        state
+    };
+    assert_eq!(parsed["ready"], true);
+    assert_eq!(parsed["accessHidden"], true);
+    assert_eq!(parsed["credentialsHidden"], true);
+    assert!(parsed["queryWidth"].as_f64().unwrap() > 200.0);
+    assert_eq!(parsed["answerDisabled"], false);
+    assert_eq!(parsed["answerHidden"], true);
+    assert_eq!(parsed["answerHintHidden"], true);
+
+    client.close().await.unwrap();
+}
+
+#[tokio::test]
 async fn switching_interface_language_updates_language_and_primary_copy() {
     if !enabled() {
         return;
@@ -362,7 +406,7 @@ async fn switching_interface_language_updates_language_and_primary_copy() {
         .text()
         .await
         .unwrap();
-    assert_eq!(heading, "Busquemos");
+    assert_eq!(heading, "Busca y verifica fuentes");
 
     let mode_help = client
         .find(Locator::Id("search-mode-help"))

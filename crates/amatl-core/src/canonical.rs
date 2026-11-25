@@ -227,6 +227,36 @@ mod tests {
         assert!(second.transformations.is_empty());
     }
 
+    /// H01 boundary (known limitation, intentionally not "fixed" here).
+    ///
+    /// The v1 canonicalization is deliberately non-semantic: it applies only
+    /// structure-preserving rewrites (scheme/host case, default port, tracking
+    /// parameters, percent-hex). Folding the scheme (`http`↔`https`) or the
+    /// `www.` alias is a *document-identity* decision, not a syntactic one, and
+    /// is out of scope for v1 (`docs/gobernanza-providers.md`, decisiones
+    /// «CANONICALIZATION_FALSE_COLLAPSE_RISK=LOW`).
+    ///
+    /// Consequence observed live: when the provider returns the same document
+    /// once per scheme (`http://host/path` and `https://host/path`), both keep
+    /// distinct canonical URLs and `deduplicate` — which groups on the full
+    /// canonical URL — keeps both, so the surface can show two apparently
+    /// identical rows. This test pins the boundary so an authorized change to
+    /// document-identity folding becomes a visible, deliberate edit.
+    #[test]
+    fn scheme_and_www_alias_are_preserved_not_folded() {
+        let http = canonicalize(normalized("http://www.example.com/path"));
+        let https = canonicalize(normalized("https://www.example.com/path"));
+        assert_ne!(http.canonical_url, https.canonical_url);
+        assert_eq!(http.canonical_url.0.scheme(), "http");
+        assert_eq!(https.canonical_url.0.scheme(), "https");
+
+        let www = canonicalize(normalized("https://www.example.com/path"));
+        let bare = canonicalize(normalized("https://example.com/path"));
+        assert_ne!(www.canonical_url, bare.canonical_url);
+        assert_eq!(www.canonical_url.0.host_str(), Some("www.example.com"));
+        assert_eq!(bare.canonical_url.0.host_str(), Some("example.com"));
+    }
+
     #[test]
     fn malformed_percent_escape_is_preserved_and_degraded() {
         let result = canonicalize(normalized("https://example.com/a%zz"));

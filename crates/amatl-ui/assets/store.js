@@ -39,6 +39,12 @@ globalThis.store = createStore({
   page: 0,
   totalPages: 1,
   totalResults: 0,
+  // Whether `totalResults` is a real whole-set size. A native provider page
+  // omits it, so the UI must not treat the page length as a total.
+  knownTotal: true,
+  // Whether a further page may exist when the total is unknown: true when the
+  // last page came back full, so the operator can keep paging forward.
+  hasMore: false,
   controller: null,
   answer: null,
   selectedTargets: [],

@@ -114,6 +114,20 @@ impl DeepBudget {
         Ok(())
     }
 
+    /// Charge redirects that a fetch *followed before failing*.
+    ///
+    /// The success path charges redirects through [`Self::consume_fetch`], which
+    /// rejects an over-charge. The error path cannot reject — the redirects were
+    /// really spent and the fetch is already over — so this saturates instead:
+    /// the counter never underflows, and a fetch that somehow followed more
+    /// redirects than the budget still held brings it to exactly zero rather
+    /// than silently leaving the surplus unaccounted. Returning `()` rather than
+    /// a `Result` says plainly that nothing downstream can act on a shortfall.
+    pub fn charge_redirects(&mut self, redirects: u32) {
+        self.snapshot.remaining_redirects =
+            self.snapshot.remaining_redirects.saturating_sub(redirects);
+    }
+
     pub fn reserve_browser(&mut self) -> Result<(), BudgetExhaustionCause> {
         if self.snapshot.remaining_browser_calls == 0 {
             return Err(BudgetExhaustionCause::BrowserLimit);
@@ -251,6 +265,19 @@ mod tests {
         // Releasing a crawl restores exactly one crawl URL.
         budget.release_fetch(true);
         assert_eq!(budget.snapshot().remaining_crawl_urls, 1);
+    }
+
+    #[test]
+    fn charge_redirects_saturates_and_never_underflows() {
+        let mut budget = DeepBudget::new(1, 10, 5, 1, 1, 100);
+        budget.charge_redirects(3);
+        assert_eq!(budget.snapshot().remaining_redirects, 2);
+        // More redirects than remain brings the counter to exactly zero, not a
+        // wrapped near-`u32::MAX` value.
+        budget.charge_redirects(9);
+        assert_eq!(budget.snapshot().remaining_redirects, 0);
+        budget.charge_redirects(1);
+        assert_eq!(budget.snapshot().remaining_redirects, 0);
     }
 
     #[test]

@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "skill": "architecture-audit-fullstack",
+    "repository": "amatl",
+    "audit_date": "2026-11-24",
+    "branch": "fix/chromium-sandbox-path",
+    "head": "56cb6ef0",
+    "mode": "READ-ONLY",
+    "workspace_files": 8053,
+    "loc_production_rust": 46420,
+    "loc_ui_assets": 3729,
+    "loc_integration_tests": 6580,
+    "crates": ["amatl-core", "amatl-cli", "amatl-ui", "amatl-server"],
+    "tests_total": 699,
+    "tests_by_crate": { "amatl-core": 492, "amatl-server": 153, "amatl-cli": 25, "amatl-ui": 29 },
+    "prior_audit": "audit/auditoria-arquitectura-2026-11-23.md",
+    "notes": "Focus on findings the 2026-11-23 run missed; re-verifies ARQ-001 closed. No remote CI executed."
+  },
+  "summary": {
+    "by_severity": { "critical": 0, "high": 2, "medium": 3, "low": 3 },
+    "top_risks": [
+      "ARQ-010: doc-refs gate RED (16 dead file:line citations in security docs)",
+      "ARQ-011: stale line citations in security docs after lib.rs shrank",
+      "ARQ-002: AmatlService God Object impl of 1541 lines (open, pre-existing)"
+    ]
+  },
+  "live_verification": [
+    { "command": "cargo fmt --all -- --check", "result": "exit 0" },
+    { "command": "python3 tools/check_doc_refs.py", "result": "exit 1 (16 dead references)" },
+    { "command": "ruff check tools/", "result": "All checks passed" },
+    { "command": "grep ignore deny.toml", "result": "RUSTSEC-2026-0459, RUSTSEC-2026-0543 (2, ADR-backed)" }
+  ],
+  "findings": [
+    {
+      "id": "ARQ-010",
+      "severity": "high",
+      "category": "CI / Documentation coherence",
+      "title": "The doc-refs gate exits red: 16 dead file:line citations",
+      "description": "tools/check_doc_refs.py exits 1 on a clean tree. static-analysis.yml job doc-refs runs it as a blocking step on any push/PR touching crates/**, docs/**, README.md or SECURITY.md.",
+      "evidence": [
+        "python3 tools/check_doc_refs.py -> 16 dead reference(s), exit 1",
+        ".github/workflows/static-analysis.yml:122 (blocking run, line 118 is --list || true diagnostic)",
+        "crates/amatl-server/src/lib.rs is 3369 lines; all 16 citations reference ranges >= 3385",
+        "None of the 16 (doc,path) pairs are in FROZEN (only 8 frozen pairs, all external/historical)"
+      ],
+      "why_it_matters": "Permanent red gate for virtually any product PR; the blocking gate loses signal, same anti-pattern the repo already fixed for cargo fmt and cargo audit.",
+      "repair_status": "REPAIRED 2026-11-24 (software-repair-engineer): all 16 citations re-anchored to current lines with symbol names; gate now exits 0",
+      "affected_files": [
+        "docs/security/asvs-checklist.md (6)",
+        "docs/security/http-hardening.md (5)",
+        "docs/security/threat-model.md (3)",
+        "docs/security/hallazgos-2026-10-26.md (2)"
+      ],
+      "root_cause_commit": "44b44e64 (retire answer/strategist surface shrank lib.rs by ~170 lines)"
+    },
+    {
+      "id": "ARQ-011",
+      "severity": "high",
+      "category": "Documentation coherence (docs<->code)",
+      "title": "Security-doc line citations are stale; referenced controls still exist",
+      "description": "The dead references point to valid files with obsolete line ranges, not missing code. Cited controls exist at new line numbers.",
+      "evidence": [
+        "http-hardening.md:56 cites lib.rs:3385-3394 (constant-time compare) -> real fn constant_time_eq at lib.rs:3206",
+        "http-hardening.md:46 cites lib.rs:3474-3492 (CORS) -> real fn cors_layer at lib.rs:3305",
+        "http-hardening.md:40 cites lib.rs:3396-3416 (Host) -> real fn valid_host at lib.rs:3217",
+        "http-hardening.md unmodified since 2026-10-26; retirement commit is 2026-11-22"
+      ],
+      "why_it_matters": "Security documentation is the audit evidence for controls; an auditor following the citation reaches a wrong line/EOF instead of the control.",
+      "repair_status": "REPAIRED 2026-11-24: citations re-anchored, including content-drifted refs (secured, metrics, status, health, api_error, query rejection)",
+      "affected_files": [
+        "docs/security/http-hardening.md",
+        "docs/security/threat-model.md",
+        "docs/security/asvs-checklist.md",
+        "docs/security/hallazgos-2026-10-26.md"
+      ]
+    },
+    {
+      "id": "ARQ-002",
+      "severity": "high",
+      "category": "Architecture / SOLID (SRP)",
+      "title": "AmatlService is a God Object: single impl of 1541 lines",
+      "description": "crates/amatl-core/src/service.rs:466-2006 is one impl AmatlService covering search, batch, pagination, deep, persistence, credentials, canaries, provider governance, cache, history, saved and status.",
+      "evidence": [
+        "measured impl block: 1541 lines (466-2006)",
+        "service.rs is 3648 LOC total",
+        "amatl-server/src/lib.rs (3369 LOC) replicates the pattern: ~45 handlers + AppState + auth + ratelimit + metrics"
+      ],
+      "why_it_matters": "SRP violation at type level; highest cross-regression surface; existing config/ sub-module precedent was not applied to service.",
+      "status": "open (pre-existing; unchanged since 2026-11-23)"
+    },
+    {
+      "id": "ARQ-003",
+      "severity": "medium",
+      "category": "Testing / CI",
+      "title": "No automated code-coverage metric despite a 70% goal",
+      "description": "699 tests exist and docs/testing.md declares a 25-row capability matrix, but no line coverage measurement or threshold runs in CI.",
+      "evidence": [
+        "grep -rn 'llvm-cov|tarpaulin|coverage' .github/ scripts/ Cargo.toml -> no results",
+        "asymmetric granularity: core 492 tests / server 153 / cli 25 / ui 29"
+      ],
+      "why_it_matters": "Without a reproducible number the real debt cannot be shown; UI (1904-line app.js) and CLI are at the low end."
+    },
+    {
+      "id": "ARQ-004",
+      "severity": "medium",
+      "category": "Documentation / Module size",
+      "title": "config/mod.rs at 2527 LOC without full decomposition",
+      "description": "The root Config type, its assembly and free validation functions concentrate in config/mod.rs though 10 sibling sub-modules already exist.",
+      "evidence": [
+        "wc -l config/mod.rs -> 2527",
+        "single production .expect at config/mod.rs:358 (locally justified)"
+      ],
+      "why_it_matters": "Second largest module; natural candidate for config/validate.rs and config/patch.rs."
+    },
+    {
+      "id": "ARQ-012",
+      "severity": "medium",
+      "category": "Testing / UI contract",
+      "title": "UI contract validation depends on opt-in browser assets not covered by Rust tests",
+      "description": "Presentation logic lives in ~2500 lines of vanilla JS embedded via include_bytes!; the 29 Rust tests cover the host, not the JS behavior, whose primary check is the opt-in browser-e2e suite.",
+      "evidence": [
+        "app.js 1904 / i18n.js 443 / styles.css 955 lines",
+        "browser_e2e.rs only runs with AMATL_BROWSER_E2E=1; CI job exists but a driver-less checkout stays green"
+      ],
+      "why_it_matters": "Large surface with primary verification outside the default gate; docs+CLI have coherence tests, the JS<->API contract does not."
+    },
+    {
+      "id": "ARQ-006",
+      "severity": "low",
+      "category": "Repository hygiene",
+      "title": "Tracked evaluation artifacts of 3-5 MB; .git at 41 MB",
+      "description": "docs/evaluation/independent-relevance tracks several multi-MB JSON and a 1.6 MB tracker-domains.txt.",
+      "evidence": [
+        "raw-capture.json 5.2M; frozen-query-universe.json 3.7M; two candidate-universe.json 3.7M each",
+        "git ls-files -> 8053; du -sh .git -> 41M"
+      ],
+      "why_it_matters": "Heavier clones/diffs; appears intentional for reproducibility, so add a short ADR decision."
+    },
+    {
+      "id": "ARQ-008",
+      "severity": "low",
+      "category": "Versioning",
+      "title": "A few commits outside Conventional Commits",
+      "description": "Some messages in the last 300 are free prose; the repo otherwise follows a disciplined conventional scheme with security:/release:/ci: types.",
+      "evidence": ["git log --oneline -300 | grep -vE conventional-prefix-regex"],
+      "why_it_matters": "Message form only; low."
+    },
+    {
+      "id": "ARQ-009",
+      "severity": "low",
+      "category": "Technical debt",
+      "title": "Three TODO(1.0) alias-removal markers without formal tracking",
+      "description": "local_model_batch alias removal TODOs lack an ADR; prior run added a CHANGELOG 'Removals planned for 1.0' section.",
+      "evidence": [
+        "config/inference.rs:34",
+        "config/inference.rs:94",
+        "config/mod.rs:1358"
+      ],
+      "why_it_matters": "Well-scoped but could survive to 1.0; very low.",
+      "repair_status": "VERIFIED 2026-11-24: the 3 TODO(1.0) are already tracked in CHANGELOG 'Removals planned for 1.0'; no change needed."
+    }
+  ],
+  "strengths_verified": [
+    "Dependency DAG: core does not import server/ui/cli; server->core+ui; cli->core+server",
+    "Fail-closed required_scope by method+path; public exemption limited to GET|HEAD",
+    "Constant-time credential comparison (SHA-256 digests), config_write_lock serializes config writes",
+    "OpenAPI<->router coherence enforced by test guards",
+    "19 ADRs; 9 security docs; C4 + sequence diagrams",
+    "Secrets from env only; amatl.toml/.env/sqlite/logs not tracked",
+    "deny.toml suppresses exactly 2 advisories, each ADR-backed and re-derived each run",
+    "~6 unwrap/expect in production non-test code",
+    "Numbered SQLite migrations 0001-0008 with downgrade/ and MIGRATION_VERSION=8"
+  ],
+  "roadmap": [
+    {
+      "task": 1,
+      "findings": ["ARQ-010", "ARQ-011"],
+      "title": "Re-anchor security-doc line citations",
+      "severity": "high",
+      "effort": "S",
+      "dependencies": [],
+      "problem": "16 dead file:line citations; doc-refs gate red",
+      "solution": [
+        "Update citations to current lines (constant_time_eq:3206, valid_host:3217, valid_origin:3238, cors_layer:3305, required_scope:557, token_digest:530, security_middleware:2805)",
+        "Verify python3 tools/check_doc_refs.py exits 0",
+        "Optionally FROZEN only the dated record hallazgos-2026-10-26.md, never the living docs"
+      ],
+      "files": ["docs/security/threat-model.md", "docs/security/http-hardening.md", "docs/security/asvs-checklist.md", "docs/security/hallazgos-2026-10-26.md"]
+    },
+    {
+      "task": 2,
+      "findings": ["ARQ-010"],
+      "title": "Anchor the symbol, not just the line (drift prevention)",
+      "severity": "high",
+      "effort": "S",
+      "dependencies": [1],
+      "problem": "Next lib.rs prune will re-rot citations; checker cannot see semantic drift",
+      "solution": [
+        "Cite symbol after the line e.g. lib.rs:3217 (fn valid_host)",
+        "Optionally extend tools/check_doc_refs.py to assert the token appears on the cited line"
+      ],
+      "files": ["docs/security/*", "tools/check_doc_refs.py"]
+    },
+    {
+      "task": 3,
+      "findings": ["ARQ-002"],
+      "title": "Decompose impl AmatlService by concern",
+      "severity": "high",
+      "effort": "L",
+      "dependencies": [1],
+      "problem": "1541-line impl in service.rs:466-2006",
+      "solution": [
+        "Strangler: split into service/{search,deep,providers,storage,credentials}.rs with partial impl blocks",
+        "Preserve public struct + signatures and lib.rs re-exports",
+        "Repeat for amatl-server/src/lib.rs (handlers/, auth.rs, ratelimit.rs)",
+        "cargo test --workspace --locked after each extraction"
+      ],
+      "files": ["crates/amatl-core/src/service.rs", "crates/amatl-server/src/lib.rs"],
+      "success_criteria": "no file > 1500 LOC; largest impl < 500 LOC"
+    },
+    {
+      "task": 4,
+      "findings": ["ARQ-004"],
+      "title": "Extract validation from config/mod.rs",
+      "severity": "medium",
+      "effort": "S",
+      "dependencies": [3],
+      "problem": "config/mod.rs 2527 LOC",
+      "solution": ["Move free validation fns to config/validate.rs and patch helpers to config/patch.rs; keep Config and re-exports in mod.rs"],
+      "files": ["crates/amatl-core/src/config/mod.rs", "crates/amatl-core/src/config/validate.rs", "crates/amatl-core/src/config/patch.rs"]
+    },
+    {
+      "task": 5,
+      "findings": ["ARQ-003"],
+      "title": "Add code coverage to CI",
+      "severity": "medium",
+      "effort": "M",
+      "dependencies": [1],
+      "problem": "No coverage metric despite 70% goal",
+      "solution": [
+        "Add cargo-llvm-cov job (per-PR or nightly)",
+        "Publish summary with informative (non-blocking) threshold first",
+        "Then freeze blocking threshold and record the number in docs/testing.md"
+      ],
+      "files": [".github/workflows/ci.yml", "docs/testing.md"]
+    },
+    {
+      "task": 6,
+      "findings": ["ARQ-012"],
+      "title": "Cover the JS<->API contract",
+      "severity": "medium",
+      "effort": "M",
+      "dependencies": [],
+      "problem": "1904-line app.js has no default-gate verification",
+      "solution": [
+        "Keep browser-e2e fail-closed and add a non-browser payload-contract smoke test (validatePayload vs API shapes), or document the end-to-end-only coverage explicitly"
+      ],
+      "files": ["crates/amatl-ui/assets/app.js", "crates/amatl-server/tests/browser_e2e.rs", "docs/testing.md"]
+    },
+    {
+      "task": 7,
+      "findings": ["ARQ-006"],
+      "title": "Decide heavy-artifact strategy",
+      "severity": "low",
+      "effort": "S",
+      "dependencies": [],
+      "problem": "3-5 MB JSON tracked; .git 41 MB",
+      "solution": ["Short ADR: track / Git LFS / regenerate; document the justification under docs/evaluation/"],
+      "files": ["docs/evaluation/*"]
+    },
+    {
+      "task": 8,
+      "findings": ["ARQ-008", "ARQ-009"],
+      "title": "Polish",
+      "severity": "low",
+      "effort": "XS",
+      "dependencies": [],
+      "problem": "Minor commit-message and TODO tracking gaps",
+      "solution": ["Optional commitlint hook", "Confirm the 3 TODO(1.0) appear in CHANGELOG Removals planned for 1.0"],
+      "files": ["CHANGELOG.md"]
+    }
+  ],
+  "methodology": {
+    "executed": [
+      "cargo fmt --all -- --check",
+      "python3 tools/check_doc_refs.py (and --list)",
+      "ruff check tools/",
+      "inspection of .github/workflows/*, deny.toml, scripts/security-gate.sh",
+      "crate dependency graph (grep + Cargo.toml)",
+      "test and unwrap/expect counting with test-module masking"
+    ],
+    "not_executed": [
+      "remote GitHub Actions workflows",
+      "opt-in suites: browser-e2e, soak, trafilatura-integration",
+      "full cargo test --workspace in this run"
+    ],
+    "limitations": "Findings rest on reproducible local commands and config/doc inspection; no remote CI results are claimed."
+  }
+}

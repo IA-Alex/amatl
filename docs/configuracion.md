@@ -22,8 +22,7 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 | `deep`, `deep.extractor`, `deep.renderer`, `cache.document` | 5 | enriquecimiento |
 | `deep.ranking_v2` | 6 | ranking Deep sujeto a benchmark |
 | `deep.gaps` | 7 | déficits y SubQuery |
-| `server` | 9 | UI/API/MCP y exposición |
-| `answer` | ADR-011, opcional | síntesis de respuesta citada sobre resultados de Search; no forma parte de las fases 0–9 del golden template |
+| `server` | 9 | UI/API y exposición |
 
 ## Política de datos, egress e inferencia
 
@@ -43,7 +42,7 @@ inference = "local_only" # usar "disabled" si no habrá inferencia
 ```
 
 `isolated` exige bind loopback, prohíbe `remote_explicit`, providers habilitados
-y renderer, y cierra provider canaries, Deep/MCP fetch y transporte de providers
+y renderer, y cierra provider canaries, Deep fetch y transporte de providers
 con `egress_denied`. Search y los mocks deterministas siguen funcionando; Deep
 conserva su contrato y registra degradación cuando no puede recuperar un
 documento. La extracción/ranking/evidencia locales y una inferencia local futura
@@ -55,7 +54,7 @@ usar inferencia remota; esa integración deberá consultar
 incompatible con `remote_explicit` y con cualquier provider habilitado.
 
 La política es un control de aplicación. No sustituye firewall, namespace de
-red, sandbox del extractor ni la comprobación de que el cliente MCP/LLM sea
+red, sandbox del extractor ni la comprobación de que el cliente sea
 local: un cliente cloud podría haber recibido la consulta antes de invocar
 AMATL.
 
@@ -139,35 +138,6 @@ caché documental queda namespaced por `backend@dimensiones`, de modo que las
 entradas del espacio anterior dejan de coincidir en vez de reutilizarse en
 silencio.
 
-## Respuesta con IA (`answer`)
-
-Síntesis opcional, apagada por defecto: toma los resultados que Search ya
-obtuvo y pide a un modelo remoto una respuesta corta citando `[n]` sólo sobre
-esas fuentes. No es un backend de embeddings ni comparte contrato con
-`[inference]` — es una llamada de *chat completions* independiente, con su
-propio endpoint, credencial y límites. Detalle completo, incluidos los tres
-campos de estado (`enabled`/`configured`/`available`) y el interruptor
-administrable, en `docs/resumen-con-ia.md`.
-
-| Clave | Tipo/default | Validez y efecto |
-|---|---|---|
-| `answer.enabled` | bool / `false` | El interruptor del operador. Con `true`, el resto de esta tabla se valida; `POST /answer/enabled` (scope `admin`) es la única vía soportada para cambiarlo en caliente, y valida antes de escribir |
-| `answer.endpoint` | string / vacío | Obligatorio si `enabled = true`; URL absoluta https, o http sólo en loopback, sin credenciales embebidas — misma validación que `inference.remote_endpoint` |
-| `answer.model` | string / vacío | Obligatorio si `enabled = true`; identificador enviado en el cuerpo de la solicitud |
-| `answer.credential_env` | string / vacío | Variable de entorno con el bearer; el valor nunca se escribe en configuración ni en logs |
-| `answer.timeout_ms` | u64 / `20000` | 100..=60000 por llamada |
-| `answer.max_sources` | usize / `8` | 1..=32 resultados de Search entregados al modelo como fuentes citables |
-| `answer.max_source_chars` | usize / `1200` | >0; recorte de snippet por fuente antes de entrar al prompt |
-| `answer.max_answer_tokens` | u32 / `700` | >0; cota superior de la respuesta generada |
-
-`answer.enabled = true` exige `data_policy.inference = "remote_explicit"`
-(perfil `standard`, `egress = "governed"`) — el mismo candado que ya usa el
-backend de embeddings remoto, pero evaluado por separado: activar uno no
-activa el otro. Cada cita `[n]` en la respuesta se valida contra los índices
-reales de fuente después de la llamada; una cita a una fuente que no existe
-se elimina del texto visible, no sólo del conteo, y una respuesta sin
-ninguna cita válida se rechaza (`answer_unavailable`) en vez de mostrarse.
-
 ## Search, ejecución y Budget
 
 | Clave | Tipo/default | Rango validado |
@@ -243,8 +213,7 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 | `server.clients[].id` | string | Identidad estable, minúsculas/dígitos/guion bajo; aparece en la auditoría, nunca es secreto |
 | `server.clients[].token_env` \| `token_sha256` | string | Exactamente uno; el secreto vive en el entorno o sólo como digest hex de 64 caracteres |
 | `server.clients[].expires_at` | fecha ISO / vacío | `YYYY-MM-DD`; a partir del día siguiente la credencial se rechaza |
-| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`, `mcp`; una credencial sin scopes se rechaza en validación |
-| `server.clients[].tools` | lista / vacía | Herramientas MCP permitidas; vacía significa sin acceso MCP. Exige el scope `mcp` |
+| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`; una credencial sin scopes se rechaza en validación |
 | `deep.respect_robots` | bool / `true` | Consulta `robots.txt` sólo para enlaces descubiertos por el crawl |
 | `deep.robots_timeout_ms` | u64 / 3000 | 100..=30000 por recuperación de `robots.txt` |
 | `deep.robots_max_bytes` | u64 / 524288 | 1024..=1048576 por recuperación de `robots.txt` |
@@ -340,7 +309,7 @@ disponibles.
 | `.policy.difficult_minimum_terms` | 4 | >0 |
 | `.policy.max_subqueries` | 2 | >0; el hard limit de ejecución sigue siendo 2 |
 
-## Servidor HTTP/UI/MCP
+## Servidor HTTP/UI
 
 | Clave | Tipo/default | Rango/relación |
 |---|---:|---|
@@ -368,5 +337,4 @@ de rangos válidos pesos, thresholds, timeouts, concurrencia, cuotas y tamaños 
 evidencia reproducible; no cambia por sí sola `schema_version`.
 
 No calibres para ocultar un error de diseño ni relajes SSRF/exposición remota.
-Registra baseline, candidato, corpus/carga, entorno, métricas y decisión. MCP
-aplica caps adicionales aunque el TOML configure valores mayores.
+Registra baseline, candidato, corpus/carga, entorno, métricas y decisión.

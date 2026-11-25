@@ -1,36 +1,33 @@
 # AMATL
 
-AMATL es un buscador generalista multi-fuente, Linux-first, rápido, modular y
-resistente a fallos. Recibe una consulta, elige fuentes dentro de un presupuesto
-global, normaliza, canonicaliza, deduplica y ordena resultados. Su flujo visible
-es `buscar → revisar → abrir`.
+AMATL es un buscador web generalista, Linux-first, rápido, modular y resistente
+a fallos. Recibe una consulta, consulta la fuente disponible, normaliza,
+canonicaliza, deduplica y ordena resultados. Su flujo visible es
+`buscar → revisar → abrir`. La distribución actual sirve Marginalia como única
+fuente real; el registro de providers sigue siendo extensible.
 
-No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
-autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
-ligero; Deep, Trafilatura, Chromium, SQLite, cachés y la síntesis de respuesta
-("Resumen con IA", ver abajo) son opcionales. El renderer de Chromium está
-conectado a través del harness de aislamiento, desactivado por defecto y sin
-ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL, de
-modo que no puede convertirse en una segunda vía de egress.
+No es un chatbot, generador de texto, crawler masivo, dashboard analítico ni
+agente autónomo. La búsqueda real requiere una clave de Marginalia; sin ella,
+`--mock` permite probar el flujo localmente. Search permanece ligero; Deep,
+Trafilatura, Chromium, SQLite, cachés y la inferencia remota de embeddings para
+el ranking ("`[inference]`", ver abajo) son opcionales. El renderer de Chromium
+está conectado a través del harness de aislamiento, desactivado por defecto y
+sin ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL,
+de modo que no puede convertirse en una segunda vía de egress.
 
-Sobre resultados de Search, AMATL puede sintetizar opcionalmente una respuesta
-citada por número de fuente (`[1]`, `[2]`…) usando un modelo remoto configurado
-explícitamente por el operador (`data_policy.inference = "remote_explicit"` y
-`[answer]`). Sigue sin ser obligatorio: apagado por defecto, exige credencial
-propia por variable de entorno y un interruptor con scope `admin` permite
-activarlo/desactivarlo desde la UI sin reiniciar el proceso ni tocar el resto
-de `amatl.toml`. Ver [docs/resumen-con-ia.md](docs/resumen-con-ia.md).
+AMATL no genera texto: Search y Deep devuelven resultados y evidencia
+verificable, nunca una respuesta redactada por un modelo.
 
 ## Invariantes visibles
 
-- Un solo core sirve a CLI, UI, API y MCP.
+- Un solo core sirve a CLI, UI y API.
 - Un fallo parcial conserva resultados útiles y se identifica como
   `partial_success`.
 - El orquestador es el único dueño del Budget y deadline globales.
 - Search no descarga páginas ni expone `final_url`; Deep es la única frontera de
   fetch de red. La ingestión de archivos permanece local y separada.
 - La política `data_policy` gobierna toda salida de red. El perfil `isolated`
-  bloquea providers, Deep fetch, MCP fetch, canarios e inferencia remota antes
+  bloquea providers, Deep fetch, canarios e inferencia remota antes
   de conectar; no elimina los motores deterministas de extracción/evidencia ni
   hace obligatorio un LLM.
 - Los secretos se leen de variables de entorno, nunca de `amatl.toml`.
@@ -87,7 +84,7 @@ inference = "local_only" # o "disabled"
 del proceso AMATL; añade firewall/sandbox del host y usa sólo clientes locales
 si necesitas aislamiento verificable de todo el entorno.
 
-Servidor UI/API/MCP en loopback:
+Servidor UI/API en loopback:
 
 ```bash
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
@@ -103,15 +100,10 @@ curl -X POST 'http://127.0.0.1:8080/search' \
   --data '{"q":"rust"}'
 ```
 
-La UI ofrece `Buscar`, `Analizar evidencia` y, si el operador activó la síntesis
-de respuesta, `Resumen con IA`. Las tres acciones usan POST JSON para que la
-consulta no aparezca en URL, historial o access logs. Deep presenta cada
-documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
-comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. `Resumen con
-IA` sólo cita índices de fuente que existen en los resultados devueltos; el
-botón permanece visible pero deshabilitado cuando la función está apagada o le
-falta credencial en el servidor, para que el operador siempre pueda descubrir
-y accionar el interruptor de administrador que la enciende. El token viaja
+La UI ofrece `Buscar` y `Analizar evidencia`. Ambas acciones usan POST JSON
+para que la consulta no aparezca en URL, historial o access logs. Deep presenta
+cada documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
+comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. El token viaja
 únicamente en `Authorization`, nunca como campo del formulario ni como query
 parameter. La ingestión local continúa siendo exclusiva de CLI. La cabecera
 incluye un selector de tema claro/oscuro que respeta la preferencia del
@@ -128,7 +120,7 @@ par certificado/clave TLS completo.
 
 | Comando | Propósito | Salida/código |
 |---|---|---|
-| `amatl search "consulta" [--json]` | Search multi-provider | 0 en `success`/`partial_success`; 1 en failure/error |
+| `amatl search "consulta" [--json]` | Search con providers habilitados (la distribución actual usa Marginalia) | 0 en `success`/`partial_success`; 1 en failure/error |
 | `amatl deep "consulta" [--json]` | Search + fetch/extracción acotados | 0 si la operación se entrega, incluso con degradaciones; 1 ante error de servicio |
 | `amatl ingest RUTA [--query "consulta"] [--json]` | Ingestión local, despacho documental y Evidence v1/v2 | 0 si extrae evidencia; 1 ante tipo, límite, lectura o extractor fallido |
 | `amatl providers` | Disponibilidad/código de providers | 0 si puede construir el resumen; 1 en error |
@@ -137,8 +129,7 @@ par certificado/clave TLS completo.
 | `amatl cache [--purge]` | Estadísticas o purga de ambas cachés | 0; storage deshabilitado se informa, no es error |
 | `amatl doctor` | Diagnóstico local completo | 0 si ejecuta; estados degradados se imprimen |
 | `amatl benchmark ranking-v2 [--json]` | Gate de calidad Ranking v2 | 0 si pasa; 1 si no pasa o componente inválido |
-| `amatl serve` | UI + API + MCP | proceso de larga vida; 1 si config/token/TLS/listener fallan |
-| `amatl mcp serve` | Alias del mismo servidor compartido | igual que `serve` |
+| `amatl serve` | UI + API | proceso de larga vida; 1 si config/token/TLS/listener fallan |
 
 Clap devuelve 2 ante uso sintáctico incorrecto. `--config-file RUTA` es global y
 usa `amatl.toml` por defecto. Logs humanos van a stderr en TTY y JSON estructurado
@@ -152,7 +143,7 @@ al redirigir; controla detalle con `RUST_LOG`.
   [CONTINUIDAD.md](CONTINUIDAD.md).
 - Seguridad (raw entry que GitHub muestra en inglés):
   [política](SECURITY.md); guías de seguridad en el [portal](docs/README.md).
-- Contratos: [OpenAPI](crates/amatl-server/openapi.yaml) y [MCP](docs/api/mcp.md).
+- Contratos: [OpenAPI](crates/amatl-server/openapi.yaml).
 - Comunidad: [código de conducta](CODE_OF_CONDUCT.md) (EN) y
   [espejo en español](docs/codigo-de-conducta.md).
 

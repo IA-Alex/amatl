@@ -67,9 +67,8 @@ adapter/extractor versions are independent axes as well.
   split were found.
 - `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
   configuration keys.
-- `contract-gate` runs the workspace test suite on macOS in addition to Linux,
-  so the published Tier 2 archives cannot silently rot. Windows was in that
-  matrix until 2026-11-15; see «Removed — the Windows target» above.
+- `contract-gate` runs the workspace test suite on macOS and Windows in addition
+  to Linux, so the published Tier 2 archives cannot silently rot.
 - Governed remote inference: `data_policy.inference = "remote_explicit"` now has
   a real backend (`remote_embeddings_v1`) behind the async `EmbeddingBackend`
   contract, configured by `[inference] remote_endpoint`, `remote_model`,
@@ -215,106 +214,6 @@ adapter/extractor versions are independent axes as well.
   the controls stay in `docs/security/threat-model.md` and
   `docs/security/asvs-checklist.md`, and both `docs/README.md` and
   `docs/seguridad.md` link the report.
-- `GET /ready` adds `sources_usable`: the count of sources whose surface status
-  is `available` **and** whose circuit breaker is not `open` — i.e. the sources
-  that can serve right now. It never exceeds the existing `sources_available`,
-  which stays the surface count the `amatl_sources_available` gauge publishes, so
-  an automation that needs "usable now" can gate on the new field instead of
-  misreading a degraded `503` with `"sources_available":1`. Additive; stays on
-  `schema_version` `"1"`.
-- `docs/security/supply-chain.md` states the RUSTSEC-2026-0459 exploitability
-  explicitly: **low, no remote surface** (local write to the operator's own
-  SQLite file plus its `-wal`), so the red gate reads as bounded local debt
-  awaiting an upstream `sqlx` fix and is not paraphrased as a remotely reachable
-  vulnerability.
-- `ADR-017` (`decisiones_amatl.md`) gains the threat-model statement the review
-  asked for and records a new first milestone: `sqlx` is pinned with `=0.8.6`
-  in the root manifest (it was `0.8` with a caret), because a caret admits every
-  newer `0.8.x` and each one decides the `libsqlite3-sys` range and the `sqlite`
-  feature set of the audited graph. The offline contract test
-  `sqlx_is_pinned_to_the_audited_line` fails if the pin loosens or the lockfile
-  resolves another line. The ADR also corrects its own blocker: `sqlx 0.9.0`
-  does not raise the MSRV above the workspace's `1.88` (it builds on it); what
-  the jump changes is the `sqlite` feature set (`sqlite` implies
-  `sqlite-bundled`/`-deserialize`/`-load-extension`/`-unlock-notify`, and
-  `sqlite-unbundled` links a system SQLite and breaks the static musl build).
-  This is a guardrail, not a remediation: RUSTSEC-2026-0459 stays open; the gate
-  passes because `deny.toml` suppresses that one ID under `ADR-017`'s amendment,
-  with offline guards, a CI `--expected-ignore` list and a printed suppression
-  list around it.
-- The advisory gate is now `scripts/security-gate.sh`: it re-derives the
-  suppressed IDs from `deny.toml`, prints them, and passes the same IDs to
-  `cargo audit` before running `cargo deny check`. Both workflows call it with
-  `--expected-ignore RUSTSEC-2026-0459`, so the suppression set is pinned in CI
-  and a new ID cannot be added by editing `deny.toml` alone. The rule that
-  actually blocked this before — «no silent allowlist» — is now enforced
-  mechanically instead of by leaving every run red.
-- Offline guards grew with it: `supply_chain_contract.rs` asserts the locked
-  `sqlx-sqlite` line, the audited `libsqlite3-sys 0.30.1` and the exact
-  suppression set, so all three fail on any host without the RustSec database.
-- `crates/amatl-ui` asserts that every embedded asset is byte-identical to the
-  file on disk and that the ids the UI audits cite (`#model-options`,
-  `#local-token`, `#access-summary`) are still in `index.html`. Both embed
-  through `include_bytes!`, so the check is exactly the one that makes H-R01's
-  stale-binary class diagnosable instead of a mystery.
-- `docs/security/supply-chain.md` gains a **threat-model note** for
-  RUSTSEC-2026-0459: local-write precondition, WAL enabled by AMATL itself,
-  CVSS v4 blast radius (confidentiality only, `SC:N/SI:N/SA:N`), why linking the
-  system SQLite is not an exit here, and the operational reading of the red gate.
-
-### Removed — SearXNG, leaving Marginalia as the only source (breaking)
-
-- SearXNG is retired from the product end to end (`ADR-019`):
-  `providers/searxng.rs`, its `SearXngFactory` and its entry in
-  `builtin_provider_records()` are gone, so `ProviderRegistry::builtin()`
-  dispatches exactly Marginalia. Removing the record is the second door:
-  `Config::validate()` now rejects `searxng` in `providers.enabled` — or in a
-  `[providers.searxng]` table — with `unknown enabled provider`, so an old
-  configuration fails at startup instead of running one source short.
-- The source selector (Marginalia / SearXNG / All) is removed: with one shipped
-  source it would be a one-option control, so it is deleted rather than left
-  inert, and `retired_source_selector_is_gone_and_cannot_return` keeps it gone.
-  The Marginalia credential row stays.
-- `deploy/searxng/` is removed (the directory `deploy/` is now empty).
-- `ExpansionConfig::default()` ships `expansion_providers = []` instead of
-  `["searxng"]`: the expansion role needs a second source and none ships, so an
-  operator declares and registers one to activate it. `primary_provider` stays
-  `marginalia`.
-- **Consequence:** AMATL no longer has a credential-free source. Without
-  `MARGINALIA_API_KEY` the only path to results is `--mock`; the product no
-  longer promises real search without a credential.
-
-### Removed — the Windows target (breaking)
-
-- Windows is no longer built or published. The `windows` job in `release.yml`
-  (which packaged `amatl-*-x86_64-pc-windows-msvc.zip`) and the `windows-latest`
-  entry of `contract-gate`'s `cross-platform` matrix are removed together, and
-  `docs/release.md` drops Windows from the Tier 2 table and states the
-  withdrawal. AMATL spawns POSIX programs (`/bin/sh`, Trafilatura,
-  `pdftotext`) and its tests assert that contract directly, so the Windows job
-  could only stay green by testing less than the product does — it was failing
-  on `child_process` and `relative_deep_program_paths_are_rejected` for exactly
-  that reason. Dropping only the job would have left an unverified download.
-
-### Fixed
-
-- Two transport-classification tests obtained a "refused" loopback address by
-  binding an ephemeral port, dropping the listener and assuming nothing would
-  take it before the connect. Under the full suite's parallel port usage that
-  window is real: measured 2 failures in 60 runs, and 4 in 160 with only one of
-  the two sites fixed. Both now use `test_support::refused_loopback_address`,
-  which returns an address only after the kernel has actually refused it;
-  160 consecutive full-suite runs are clean. The helper has its own 200-iteration
-  test, because a flaky helper cannot be the basis for a stable one.
-- `is_relative_program_path` (`config/deep_config.rs`) decides whether a
-  configured program would be resolved through the current directory, which is
-  what stops whoever controls the working directory from choosing the binary
-  that runs. It looked only at `MAIN_SEPARATOR`, and neither `.` nor `..`
-  contains one, so both were read as a bare `PATH` name and accepted for
-  `deep.extractor.executable` and `deep.renderer.sandbox_path`. It now works over
-  path components, and `program_path_rule_covers_every_current_directory_shape`
-  builds its cases from `MAIN_SEPARATOR` so they assert something on every host
-  instead of only where `/` is the separator.
 
 ### Changed
 
@@ -358,8 +257,8 @@ adapter/extractor versions are independent axes as well.
 - UI copy moved out of `app.js` into the `/i18n.js` message catalog; adding a
   language means adding one entry with the same keys as `en`.
 - `docs/release.md` states the distribution scope explicitly as Tier 1 (Linux
-  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS archives);
-  everything else is out of scope. Windows left Tier 2 on 2026-11-15.
+  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS, Windows
+  archives); everything else is out of scope.
 - The provider governance record is enforced at call time, not only at startup:
   an enabled source whose approval is incomplete or expired is never built and
   the response carries a `provider_not_approved` degradation naming it.
@@ -394,142 +293,72 @@ adapter/extractor versions are independent axes as well.
   usable source still answers `503`, because it cannot search at all. The
   per-source detail (name, `provider_disabled`, `provider_not_approved`,
   circuit) stays in `/status` behind the `read` scope.
-- `GET /deep` is retired: Deep is a network-retrieval surface and its contract is
-  POST-only, matching what `docs/testing.md`, the UI transport and the CHANGELOG
-  already declared. `get(deep)` leaves the router and the `deepGet` operation
-  leaves `openapi.yaml`, so the OpenAPI inventory and the Axum router stay equal;
-  `GET /deep` now answers `405` and a regression test pins the invariant. `POST
-  /deep` is unchanged.
 
 ### Removed
 
-- The paid sources dropped by operator policy as shipped sources: their adapter
-  modules, registry factories and built-in governance records are gone, so
-  `ProviderRegistry::builtin()` now ships exactly SearXNG and Marginalia.
-  Any other source name in `providers.enabled` now fails configuration
+- The MCP surface, retired end to end. `amatl-server/src/mcp.rs` is gone, along
+  with the `/mcp` mount and its scope arms, `ServiceSurfaceKind::Mcp`,
+  `Scope::Mcp`, `MCP_TOOLS`, the per-credential `tools` allowlist
+  (`ServerClient.tools`, the `POST`/`PATCH /server/clients` fields and the
+  `ServerClientSummary` output), and the `amatl mcp serve` CLI subcommand. The
+  `rmcp` dependency and the MCP-only `schemars`/`chrono` crates leave the
+  workspace, so the `RUSTSEC-2026-0543` suppression is closed by exclusion
+  (`deny.toml`, both workflows' `--expected-ignore`, and the supply-chain
+  contract assertion); `RUSTSEC-2026-0459` remains the single suppression.
+  `docs/api/mcp.md` and `docs/diagrams/secuencia-mcp.*` are deleted and the
+  related docs, OpenAPI, tests and C4 diagrams updated. Search, Deep, ingestion,
+  persistence and the `[inference]` embedding backend are untouched; the
+  surfaces are now CLI, UI and API HTTP. See ADR-020.
+- The optional answer-synthesis (`answer`) and search-strategist (`strategist`)
+  chat capabilities, retired end to end. The modules (`amatl-core/src/answer.rs`,
+  `strategist.rs`, `strategist/llm.rs`, `config/strategist.rs`) are gone, and so
+  are the `[answer]`/`[strategist]` configuration sections, the `Config` fields
+  and their validate-before-write toggles, the `POST /answer`, `PATCH /answer`
+  and `POST /answer/enabled`/`/strategist/enabled` routes, the `answer` MCP tool
+  (the surface now exposes **five** tools), the `answer`/`strategist` read-only
+  blocks in `/status`, the `amatl_answer_*` metrics and the
+  `answer_unavailable` error code. AMATL's Search and Deep stay fully
+  deterministic and unchanged; the optional remote *embedding* backend
+  (`[inference]`) is untouched. The web UI follows: the "AI summary" button, the
+  answer card, the AI-configuration panel and the "search with model" toggle are
+  removed from the markup, styles, message catalog and docs, and the UI's MCP
+  tool vocabulary drops `answer` so a client created with the `mcp` scope
+  validates again (`MCP_TOOL_NAMES` mirrors `MCP_TOOLS`). `docs/resumen-con-ia.md`
+  is deleted.
+- Brave as a shipped source: the adapter module (`providers/brave.rs`), its
+  registry factory, its built-in governance record and the UI credential
+  affordance are gone, so `brave` in `providers.enabled` now fails configuration
   validation and no request can be sent. The credential routes themselves stay —
-  `POST`/`DELETE /providers/{name}/credential` are parameterized by provider and
-  now reject any name the registry does not carry. The canary workflow's
-  provider choices and secrets follow the shipped sources (`searxng`,
-  `marginalia`). Removal is enforced at **two** doors instead of one: beyond the
-  missing adapters, `RETIRED_PROVIDERS` and `is_retired_provider()`
-  (`config/providers.rs`) make `Config::validate()` reject the retired names by
+  `POST`/`DELETE /providers/{name}/credential` are parameterized by provider, not
+  Brave-specific — and now reject `brave` like any other name the registry does
+  not carry. The canary workflow's provider choices and secrets follow the
+  shipped sources (`searxng`, `marginalia`).
+- Mojeek as a shipped source, completing the paid-source policy drop: the
+  adapter module (`providers/mojeek.rs`), its registry factory and its built-in
+  governance record are gone, so `ProviderRegistry::builtin()` now ships exactly
+  SearXNG and Marginalia. Removal is enforced at **two** doors instead of one:
+  beyond the missing adapter, `RETIRED_PROVIDERS` and `is_retired_provider()`
+  (`config/providers.rs`) make `Config::validate()` reject `brave` and `mojeek` by
   name — in a declared `[providers.<name>]` table as well as in
   `providers.enabled` — so a stale configuration fails loudly at startup instead
   of silently shipping one source fewer, and even a hand-built config that lists
   a retired name stops at the registry (`UnknownProvider`). UI selectors, key
-  dialogs, message-catalog keys and the canary workflows no longer mention those
-  names; the only surviving upstream engine names live in the
-  `providers/searxng.rs` fixtures.
+  dialogs, message-catalog keys and the canary workflows no longer mention either
+  name; the only surviving `brave` in the tree is the upstream SearXNG engine
+  name in the `providers/searxng.rs` fixtures.
 - Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
   transport surfaces live in `amatl-server`.
 
+### Removals planned for 1.0
+
+- The deprecated `local_model_batch` alias for the `[inference]`
+  `local_cache_capacity` key, kept only so configs written against rc.1 still
+  parse. Tracked here so it cannot outlive the 1.0 boundary; the `TODO(1.0)`
+  markers in `crates/amatl-core/src/config/inference.rs` and `config/mod.rs`
+  point back to this entry.
+
 ### Fixed
 
-- A malformed `SEARXNG_INSTANCE_URL` (a typo, or a scheme-less `host:port`) was
-  discarded exactly like an unset variable and fell back to the loopback
-  default, so the operator silently queried a different instance and saw only
-  `provider_network` — indistinguishable from "the server is down". URL
-  resolution is now `resolve_searxng_instance_url`, which keeps the documented
-  fallback but warns (target `amatl::providers`, with the provider and the parse
-  error) when a present value cannot be parsed. An unset variable stays silent,
-  because that is a supported state. The fallback itself is unchanged: making
-  `ProviderFactory::build` fail would change the trait for every factory.
-- The operator runbook claimed the canary's refusals — and, by implication, the
-  canary itself — never produce outbound traffic. That is false for the case it
-  matters most in: a canary that ends in `success` **does** call the provider,
-  which is its whole purpose, and a post-call failure (`provider_rate_limit`,
-  `provider_timeout`, …) has already consumed quota. The runbook now states the
-  distinction and adds the two traps that cost an operator the most time: a
-  missing `[data_policy]` leaves egress `deny` so the canary answers
-  `provider_not_approved`, and an `isolated` profile is rejected at config load,
-  so the preflight's `egress_denied` is unreachable from the CLI. It also
-  documents that `SEARXNG_INSTANCE_URL` is not checked by the credential
-  preflight (`requires_credential() == false`) and silently falls back to
-  `127.0.0.1:8888` when unset, and carries the catalog code for each refusal.
-- `deploy/searxng/run.sh` ended by telling the operator to run a canary that
-  could not pass unless `[data_policy]` and a complete approval record already
-  existed. It now says what the canary needs and what
-  `provider_not_approved` means, and the runbook no longer implies `deploy/`
-  ships in the native packages, where it does not.
-- `packaging/amatl.1` documented 6 of the binary's 14 subcommands — `provider-canary`,
-  `benchmark`, `history`, `saved`, `db` and `mcp` were absent from the manual a
-  package installs — and carried no exit-status contract. It now lists the real
-  command set, states the canary's `[data_policy]` requirement, and documents
-  that `partial_success` still exits 0.
-- `published_at` values whose UTC offset is a compact ISO 8601 form (`+02`,
-  `-05`, `-0530`) were dropped and recorded as an `invalid_published_at`
-  degradation, demoting a clean response to `partial_success`. The RFC 3339
-  path required `±HH:MM` and the naive-timestamp path accepts no offset at all,
-  so these fell through both. SearXNG forwards `publishedDate` verbatim, so the
-  values reach `normalize` unfiltered. The offset is preserved — only its
-  rendering is normalized to RFC 3339 — and the UTC-anchoring rule for naive
-  timestamps is unchanged.
-- No test asserted that every route the router registers has an explicit arm in
-  `required_scope`. The fail-closed default kept a forgotten route safe (it
-  fell through to `Admin`, never public), but nothing verified that, so a new
-  route could silently reach the catch-all. A table-driven test now pins the
-  expected scope for every registered operation and fails if the router
-  registers an operation the table does not list — the route-to-guard
-  traceability the connector audit asked for.
-- The recursive OpenAPI conformance guards now also check `enum` membership for
-  scalar response values, so a field pinned to a fixed set of wire values cannot
-  drift to an undeclared one unnoticed. Still dependency-free. This narrows the
-  gap left open when the admin contract was typed; full type and nullability
-  checks would still need a JSON-Schema validator.
-- The regression guards that pin the OpenAPI contract against the live
-  service only compared top-level keys, so a nested drift — a `required` field
-  added under `server.tls`, or a field lost from a `$ref`-referenced record —
-  passed silently. The guards now validate each response recursively against
-  the schema (resolving `$ref`, `properties` and `items`) with no new
-  dependency. Making them recursive immediately exposed two real gaps: the
-  document carried a **duplicate** `ReloadReport` and `CircuitState` definition
-  (the second silently won, hiding the first), and the effective `ReloadReport`
-  schema omitted `clients`, a field `POST /reload` and every toggle already
-  return. Both are fixed and the guards fail when either is perturbed again.
-- The OpenAPI document typed every administrative request body and success
-  response as one intentionally open object (`AdminPayload`,
-  `additionalProperties: true`), so the published contract pinned no field for
-  any of the ~15 admin request bodies or ~29 admin responses: `/inference`,
-  `/data-policy`, `/policies/{name}`, `/persistence`, `/telemetry`, `/deep/*`,
-  `/providers/{name}`, `/server/clients*`, `/server/pending-config`, the boolean
-  toggles and every matching response. Each now carries a concrete schema
-  derived from the Rust patch structs and response types (field names and types,
-  `snake_case` enums, optional-field semantics), and the three boolean toggles
-  share one `ToggleInput` instead of two inline copies plus a generic fallback.
-  A regression test pins every admin GET response and a toggle response against
-  their schema's `required` list, so the contract cannot drift from the handler
-  silently again.
-- The OpenAPI `ServiceStatus` schema declared `additionalProperties: false` but
-  omitted `strategist` and `data_policy`, two fields the server has emitted in
-  `GET /status` since the search-strategist and data-policy surfaces landed. A
-  client validating `/status` against the published contract therefore rejected a
-  response the server considered valid, and the document understated the real
-  response shape. The two fields and their `StrategistStatus`/`DataPolicyStatus`
-  schemas are now declared and required, and a regression test compares the keys
-  of the live `/status` body against the schema's `required` list so the contract
-  cannot drift unnoticed again (`docs/testing.md` also listed five MCP tools while
-  the server exposes six — corrected).
-- The normalization stage discarded every `published_at` reported as a *naive*
-  timestamp (`YYYY-MM-DDTHH:MM:SS`, no offset), which is exactly the shape a live
-  SearXNG instance emits in `publishedDate`. `normalize_date` accepted RFC 3339
-  (offset required) or a bare `YYYY-MM-DD`, so a valid, common date was dropped,
-  preserved only as `reported_published_at_invalid` metadata, and recorded as an
-  `invalid_published_at` degradation that flipped a clean response to
-  `partial_success`. Observed against `searxng/searxng:latest` (2026-11-14):
-  ~11 of 35 results per query lost their date and the whole response degraded.
-  Naive timestamps (with optional fractional seconds) are now anchored to UTC —
-  the same assumption already applied to a bare date — and RFC 3339 offsets are
-  still preserved verbatim.
-- The SearXNG adapter promoted an `answers` entry with a missing or empty `url`
-  as a synthetic result with `url: ""`. The shared `normalize` stage rejects a
-  URL-less item, so one such answer added an `invalid_url` degradation and — with
-  at least one real result present — flipped an otherwise clean single-engine
-  response to `partial_success`. The results path had already been fixed
-  (URL-less items are dropped, matching Marginalia); the answer-promotion path
-  kept the old behavior because the two code paths were written separately. It
-  now drops a URL-less answer for the same reason, so `parse_response` only ever
-  emits openable items.
 - `crates/amatl-core/Cargo.toml` declared `readme = "../../README.md"`, a path
   outside the package, while the crate ships its own
   `crates/amatl-core/README.md`. Cargo resolves that collision in favour of the
@@ -805,10 +634,10 @@ adapter/extractor versions are independent axes as well.
   touches no logic, the tool still answers `12 known-dead, 0 new` with exit 0,
   and the workflow comment now dates the number it quotes so a future drift shows
   up as a stale date instead of a silently false claim.
-- The documents that describe the paid-source retirement cited the deleted
-  adapter modules as their evidence, which the blocking
-  `tools/check_doc_refs.py` gate refuses by design: it reported five dead
-  references and exit 1, so the removal was not shippable
+- The documents that describe the Brave/Mojeek retirement cited the deleted
+  adapter modules as their evidence (`providers/brave.rs`, `providers/mojeek.rs`),
+  which the blocking `tools/check_doc_refs.py` gate refuses by design: it
+  reported five dead references and exit 1, so the removal was not shippable
   while its own documentation pointed at files that no longer exist. Both
   documents now cite what does exist — `RETIRED_PROVIDERS` in
   `config/providers.rs:148`, which is what `Config::validate()` reads — and the
@@ -897,47 +726,6 @@ adapter/extractor versions are independent axes as well.
   `docs/configuracion.md` names the accepted shape of both program paths. The
   `file:line` citations the `providers/http.rs` insertion had displaced were
   re-anchored, and `tools/check_doc_refs.py` stays at `12 known-dead, 0 new`.
-- The SSRF address filter treated IPv4-compatible IPv6 addresses as public.
-  `crates/amatl-core/src/security.rs` unwrapped only the IPv4-mapped form
-  (`::ffff:a.b.c.d`) via `to_ipv4_mapped()`, so `::10.0.0.1`, `::192.168.1.1`,
-  `::169.254.169.254` and `::127.0.0.1` — the deprecated IPv4-compatible form of
-  the same private, metadata and loopback addresses — passed
-  `validate_resolved_addresses` and the fetcher connected to them. `public_v6`
-  now unwraps with `to_ipv4()`, which covers both forms, and NAT64 `64:ff9b::/96`
-  and 6to4 `2002::/16` are rejected as well since each can embed an IPv4
-  destination. Reachable through `POST /deep` targets, whose URL the client
-  supplies; the DNS-resolved-address check was the single barrier. Regression
-  tests cover the compatible form and the transition ranges.
-- `RobotsCache::store` cleared the whole per-origin cache when it reached its
-  64-entry cap, so one origin over the limit forced every other origin to
-  re-fetch its `robots.txt`. It now evicts only the single oldest entry (by
-  `fetched_at`) and leaves the rest in place.
-- The web UI's `restoreFromLocation` called `decodeURIComponent` unguarded on the
-  query string, so a shared link such as `/?q=%` threw `URIError` and aborted the
-  restore. A pair that cannot be decoded is now skipped. The provider badge maps
-  the server-reported `status` through an allowlist (`PROVIDER_STATUS_CLASSES`)
-  instead of interpolating it raw into `className`, so an unexpected value cannot
-  inject arbitrary class tokens.
-- Four advisories that entered the locked graph after the 2026-10-26 measurement
-  are remediated in one pass: `rmcp` 3.1.2 moves to 3.10.0 (RUSTSEC-2026-0457,
-  -0461, -0462), `rustix` 1.1.4 to 1.1.6 (RUSTSEC-2026-0486, `unsound`) and
-  `quinn-udp` 0.5.15 to 0.5.16 (RUSTSEC-2026-0538). The offline supply-chain
-  contract asserts the three new floors. `libsqlite3-sys` RUSTSEC-2026-0459 is
-  recorded as open and not remediable by a compatible upgrade — `sqlx 0.8.6`
-  caps it at `^0.30` and `sqlx 0.9.0` at `<0.38.0` while the fix is `>=0.39.0` —
-  so `cargo audit` and `cargo deny check` stay red on that one advisory until a
-  future `sqlx` release or a signed ADR, and `docs/security/supply-chain.md`
-  states that.
-- The MCP handshake broke after the `rmcp` upgrade. Since SEP-2567 the newest
-  revision AMATL advertises (`2026-07-28`) carries its lifecycle in per-request
-  `_meta` and has no `initialize` handshake, so declaring only that version made
-  every legacy `initialize` fail with `UNSUPPORTED_PROTOCOL_VERSION`.
-  `supported_protocol_versions` now returns `known_up_to(LATEST)`, so an
-  `initialize` client negotiates down to `2025-11-25` (the newest revision with a
-  handshake) while a client speaking the stateless `2026-07-28` revision is
-  served as-is. The two conformance tests were updated to the new contract and
-  the "unsupported version" test now requests a revision newer than every
-  advertised one.
 
 ### Changed
 
@@ -972,7 +760,7 @@ adapter/extractor versions are independent axes as well.
 - Multi-provider Search pipeline with explicit Query, Classification,
   SearchPlan, Budget, Normalization, Canonicalization, Deduplication, ranking,
   Diversity, degradation and telemetry contracts.
-- Governed paid-source adapters; a fail-closed HTML adapter.
+- Governed Brave and Mojeek adapters; fail-closed DuckDuckGo HTML adapter.
 - Optional SQLite provider/document caches and provider telemetry.
 - Bounded Deep fetching, optional Trafilatura extraction, Evidence, Ranking v2,
   Gap analysis and SubQuery expansion; Chromium remains fail-closed.

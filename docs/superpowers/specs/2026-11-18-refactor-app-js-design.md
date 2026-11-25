@@ -160,7 +160,7 @@ Reglas obligatorias del refactor:
 1. **Todo dominio se auto-contiene**: una IIFE solo puede leer símbolos
    **declarados antes** que ella. Nada de capturar `const` declarados después.
 2. **Los `addEventListener` viven en un único bloque de arranque**, al final
-   del archivo (donde hoy están los últimos, `app.js:1899-1901`). No se
+   del archivo (donde hoy están los últimos). No se
    registran listeners dentro de las IIFEs de dominio.
 3. **El orden de los bloques preserva el actual**: núcleo/i18n → DOM →
    constantes → dominios → arranque (`refreshPanels()` + `DOMContentLoaded`).

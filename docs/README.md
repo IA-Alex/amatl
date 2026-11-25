@@ -16,7 +16,7 @@ bajo `docs/` y lo que depende de él, organizado por el rol que juega cada pieza
   `CODE_OF_CONDUCT`) tienen una fuente canónica en inglés y un **espejo traducido
   en español** vinculado bidireccionalmente. Cuando ambos existan, cámbialos
   juntos — no deriven por separado.
-- Los contratos de máquina (`openapi.yaml`, `mcp.md`), los artefactos de testing
+- Los contratos de máquina (`openapi.yaml`), los artefactos de testing
   y los experimentos pueden permanecer en inglés por ser consumidos por
   herramientas/procesos, pero los documentos explicativos de producto van en
   español.
@@ -57,7 +57,6 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 | [configuracion.md](configuracion.md) | Referencia de configuración (`amatl.toml`) |
 | [operacion.md](operacion.md) | Operación del servicio: arranque, recarga, TLS, observabilidad |
 | [gobernanza-providers.md](gobernanza-providers.md) | Aprobación y gobernanza de providers |
-| [resumen-con-ia.md](resumen-con-ia.md) | Sintetización `answer` ("Resumen con IA") |
 | [identidad-visual.md](identidad-visual.md) | Tokens visuales e identidad de marca |
 | [ux-ui-spec.md](ux-ui-spec.md) | Especificación UX/UI y [wireframe](ux-wireframe.svg) |
 
@@ -82,7 +81,6 @@ Definen el *porqué* y el contrato de largo plazo; no son guías operativas.
 | Documento | Contenido |
 |---|---|
 | [crates/amatl-server/openapi.yaml](../crates/amatl-server/openapi.yaml) | Contrato HTTP (OpenAPI) |
-| [api/mcp.md](api/mcp.md) | Model Context Protocol |
 
 El contrato HTTP vive en el crate y no en `docs/` para que el paquete de
 `amatl-server` se pueda probar sin este árbol de documentación: Cargo no

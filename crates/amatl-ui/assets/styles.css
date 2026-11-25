@@ -26,9 +26,8 @@
   --success: #4fae72;
   --warning: #d6a84b;
   --error: #d95c5c;
-  /* Same hue as --error, lightened so text clears WCAG 2 AA against the
-     translucent --error tint used as this element's own background
-     (`.provider-badge--unavailable`); --error itself already clears 4.5:1
+  /* Same hue as --error, lightened so text clears WCAG 2 AA against a
+     translucent --error tint; --error itself already clears 4.5:1
      as plain text on --background/--surface. */
   --error-on-tint: #e07c7c;
   /* ── Sizing scale (accidental-drift guard) ──────────────────────
@@ -43,11 +42,6 @@
   --radius-pill: 999px;  /* status badges */
   --control-h: 2.75rem;  /* primary + secondary buttons, and text inputs */
   --control-h-sm: 2rem;  /* compact row actions (ghost buttons) */
-  /* Checkbox/radio box: a 1rem box inside a 2.75rem control row read as an
-     undersized dot (16px against 44px). 1.25rem keeps the box proportionate to
-     the row while the wrapping <label> still carries the >=24px hit area WCAG
-     2.5.8 measures. One token, so the three toggle/scope rows cannot drift. */
-  --checkbox-size: 1.25rem;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--background);
   color: var(--text);
@@ -140,10 +134,10 @@ button, input, select { box-sizing: border-box; }
 
 button, input, select, summary, a { outline-offset: 0.2rem; }
 
-/* Disclosure summaries are pointer targets as well as text: a 16px-tall label
-   fails WCAG 2.5.8's 24px minimum, so every summary gets a padded hit area
-   (the visible label stays the same size). */
-summary { min-height: 1.5rem; padding-block: 0.2rem; }
+/* Disclosure summaries are pointer targets as well as text, so every summary
+   meets the 44px touch minimum the spec fixes (docs/ux-ui-spec.md): the visible
+   label keeps its size, the padded box supplies the target. */
+summary { min-height: var(--control-h); padding-block: 0.6rem; display: flex; align-items: center; }
 
 :focus-visible { outline: 0.15rem solid var(--cyan); }
 
@@ -219,7 +213,9 @@ h1 {
   line-height: 1.2;
 }
 
-.search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.65rem; }
+.search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.65rem; align-items: start; }
+.search-guidance { grid-column: 1 / -1; min-width: 0; }
+.search-guidance p { max-width: 72ch; }
 
 input, select {
   width: 100%;
@@ -253,15 +249,8 @@ button:disabled { cursor: not-allowed; filter: grayscale(0.6); opacity: 0.55; }
 .secondary-action { border-color: var(--border); background: var(--surface); color: var(--text); }
 button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 
-/* Looks muted like :disabled (same grayscale/opacity), but stays a real,
-   clickable, focusable button — a genuinely disabled element can't be
-   hovered on touch and gives no reason why. Clicking it explains what is
-   missing instead of firing a request that would just fail. */
-.secondary-action.is-unavailable { filter: grayscale(0.6); opacity: 0.55; }
-.secondary-action.is-unavailable:hover { filter: grayscale(0.4) brightness(1.05); }
-
-/* Matches the [n] citation markers in .answer-text so a source can be found
-   by eye, not just trusted blindly. */
+/* Matches the [n] citation markers so a source can be found by eye, not just
+   trusted blindly. */
 .result-index {
   display: inline-block;
   margin-right: 0.4rem;
@@ -290,8 +279,10 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .theme-toggle {
   flex: none;
   min-height: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  /* 44px square: the theme control is a primary masthead target, so it meets
+     the same touch minimum as the search buttons (docs/ux-ui-spec.md). */
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -313,8 +304,8 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .deep-options label { font-size: 0.75rem; }
 .deep-options input { width: 11rem; max-width: 100%; }
 /* Operator credential management (option A): its own secondary row, mirroring
-   the rhythm (spacing/font/gap) of .deep-options/.model-options so it reads as
-   one more configuration row without competing with the search axis. */
+   the rhythm (spacing/font/gap) of .deep-options so it reads as one more
+   configuration row without competing with the search axis. */
 .credential-actions {
   display: flex;
   align-items: center;
@@ -336,7 +327,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 }
 .danger-action { border-color: var(--error); color: var(--error); }
 .danger-action:hover { filter: brightness(1.08); }
-.filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
+.filters summary { width: fit-content; min-height: var(--control-h); padding-block: 0.85rem; cursor: pointer; font-size: 0.85rem; }
 .filter-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -350,7 +341,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .filter-grid label { display: block; margin-bottom: 0.4rem; font-size: 0.75rem; }
 .field-help { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
 
-.result-area { min-width: 0; max-width: 58rem; margin-top: clamp(2.5rem, 7vw, 4.25rem); }
+.result-area { min-width: 0; max-width: 58rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
 .result-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
 h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .status { margin: 0; color: var(--secondary); font-size: 0.8rem; text-align: right; }
@@ -361,9 +352,8 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
    or degraded answer, so "no results" keeps the neutral reading. */
 .status[data-state="empty"] { color: var(--secondary); }
 
-/* Per-surface status lines (`#history-panel-status`, `#saved-panel-status`,
-   `#client-panel-status`, `#service-mode`, `#client-token-status`) carry the
-   same success/partial/error semantics as the global status. */
+/* Per-surface status lines carry the same success/partial/error semantics as
+   the global status. */
 .field-help[data-state="success"] { color: var(--success); }
 .field-help[data-state="partial"] { color: var(--warning); }
 .field-help[data-state="warning"] { color: var(--warning); }
@@ -371,30 +361,17 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 
 #results-empty { margin-top: 1rem; }
 
-/* Sits above the raw results, never in place of them — search/deep results
-   always render below unchanged; this is an additional, clearly separate
-   layer, not a replacement view. */
-.answer-card {
-  min-width: 0;
-  margin-top: 1.2rem;
-  padding: 1.1rem 1.2rem;
-  border: 0.0625rem solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-}
-.answer-text { margin: 0; color: var(--text); line-height: 1.6; overflow-wrap: anywhere; }
-.answer-meta { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.75rem; }
-
 .results { min-width: 0; margin: 1rem 0 0; padding: 0; list-style: none; }
-/* The blanket `min-height: 0` used to strip the minimum from every control in a
-   card, so a target could end up 16px tall. The checkbox keeps a compact box —
-   the ≥24px hit area is the wrapping <label>, which is what WCAG 2.5.8 measures
-   — while the card's buttons and selects go back to the shared scale. */
-.result-card input[type="checkbox"] { min-height: 0; }
+/* The card's checkbox keeps a compact, proportionate box (a 1.25rem box beside
+   the row reads as part of the card, not an oversized blob) while its ≥44px hit
+   area comes from the wrapping `.deep-target-select` label. `min-height: 0`
+   opts the box out of the shared control height so it does not stretch. */
+.result-card input[type="checkbox"] { min-height: 0; width: 1.25rem; height: 1.25rem; margin: 0; }
 .result-card { min-width: 0; padding: 1.2rem 0; border-top: 0.0625rem solid var(--border); }
 .result-card:last-child { border-bottom: 0.0625rem solid var(--border); }
-.deep-target-select { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 1.5rem; padding-block: 0.2rem; color: var(--secondary); font-size: 0.75rem; cursor: pointer; }
-.deep-target-select input { width: auto; }
+/* The "select for Deep" label is the checkbox's real hit area, so it carries the
+   44px touch minimum (docs/ux-ui-spec.md) while the visible row stays compact. */
+.deep-target-select { display: inline-flex; align-items: center; gap: 0.4rem; min-height: var(--control-h); padding-block: 0.2rem; color: var(--secondary); font-size: 0.75rem; cursor: pointer; }
 .result-card h3 { margin: 0.25rem 0 0.45rem; font-size: clamp(1.0625rem, 3vw, 1.125rem); line-height: 1.35; }
 .result-title { display: inline-block; padding-block: 0.15rem; color: var(--accent); text-decoration: none; }
 .result-title:hover { text-decoration: underline; text-underline-offset: 0.2rem; }
@@ -483,65 +460,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .provenance dl div { min-width: 0; }
 .provenance dt { color: var(--muted); font-size: 0.68rem; }
 .provenance dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
-
-/* Read-only — matches .provenance's disclosure/definition-list treatment so
-   it reads as the same kind of "more detail, collapsed by default" control,
-   not a new visual pattern. */
-.answer-config { margin-top: 0.8rem; color: var(--secondary); }
-.answer-config summary { width: fit-content; cursor: pointer; font-size: 0.8rem; }
-.answer-config-body {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin: 0.75rem 0 0;
-  padding: 0.9rem;
-  border: 0.0625rem solid var(--border);
-  border-radius: var(--radius-md);
-}
-.answer-config-body div { min-width: 0; }
-.answer-config-body dt { color: var(--muted); font-size: 0.68rem; }
-.answer-config-body dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
-
-.answer-toggle-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  color: var(--secondary);
-  cursor: pointer;
-  width: fit-content;
-}
-.answer-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
-/* Shared checkbox look and disabled dimming with `.provider-toggle` below —
-   the two toggles must not drift (they were already diverging: the provider
-   one had lost the disabled opacity). The cursor differs on purpose:
-   `not-allowed` for the permanently-disabled answer toggle (not configured),
-   `wait` for the provider toggle's transient in-flight state. */
-.answer-toggle-row input:disabled,
-.provider-toggle input:disabled { opacity: 0.55; }
-.answer-toggle-row input:disabled { cursor: not-allowed; }
-/* Search-with-model (strategist) toggle — a search-level control, styled like
-   the answer toggle so the two checkbox switches stay visually consistent. */
-.model-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-top: 0.7rem;
-  align-items: flex-start;
-}
-.model-toggle-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--secondary);
-  cursor: pointer;
-  width: fit-content;
-}
-.model-toggle-row input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
-.model-toggle-row input:disabled { opacity: 0.55; cursor: not-allowed; }
-.model-options .field-help { margin: 0; }
 .provenance a { color: var(--accent); }
 
 .loading { display: flex; gap: 0.35rem; margin: 2rem 0; }
@@ -575,10 +493,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .search-row { grid-template-columns: minmax(0, 1fr); }
   .search-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .search-actions button { padding-inline: 0.6rem; }
-  /* Three actions over two columns: give the primary search action the full
-     row so the two secondary actions pair cleanly underneath instead of
-     leaving a lone half-width button and an empty grid cell. */
-  .search-actions #search-button { grid-column: 1 / -1; }
   .filter-grid { grid-template-columns: minmax(0, 1fr); }
   .result-header { display: block; }
   .status { margin-top: 0.4rem; text-align: left; }
@@ -586,113 +500,36 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .document-header, .fragment-footer { display: block; }
   .document-status, .fragment-verification { display: inline-block; margin-top: 0.5rem; }
   .provenance dl { grid-template-columns: minmax(0, 1fr); }
-  .answer-config-body { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (orientation: landscape) and (max-height: 30rem) and (max-width: 54rem) {
+  .masthead { padding-block: 0.5rem; }
+  .shell { padding-top: 0.75rem; padding-bottom: 2rem; }
+  h1 { margin-bottom: 0.75rem; }
+  #search-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+  }
+  #search-form > .search-row { grid-column: 1 / -1; }
+  .search-guidance p { max-width: none; }
+  .result-area { margin-top: 0.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 
-/* ── Provider status ─────────────────────────────────────────── */
-/* `margin-top: 0`, matching the other `.side-panels` children below: this panel
-   is a grid cell now, so the inherited `2rem` (from when it was a standalone
-   block under the search form) pushed its top edge 32px below its row-mates and
-   broke the row baseline. The grid `gap` already supplies the separation. */
-.provider-status {
-  margin-top: 0;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-}
-
-.provider-status h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  color: var(--secondary);
-}
-
-.provider-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
-  gap: 0.75rem;
-}
-
-.provider-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  min-height: 4.25rem;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-}
-
-.provider-item-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.provider-name {
-  color: var(--text);
-}
-
-.provider-reason {
-  font-size: 0.75rem;
-  color: var(--secondary);
-}
-
-.provider-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-left: auto;
-  font-size: 0.75rem;
-  color: var(--secondary);
-  cursor: pointer;
-}
-
-.provider-toggle input[type="checkbox"] {
-  accent-color: var(--accent-strong);
-  width: var(--checkbox-size);
-  height: var(--checkbox-size);
-  margin: 0;
-  cursor: pointer;
-}
-
-.provider-toggle input:disabled {
-  cursor: wait;
-}
-
-.provider-badge {
-  font-size: 0.75rem;
-  padding: 0.125rem 0.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-}
-
-.provider-badge--available {
-  background: color-mix(in srgb, var(--success) 20%, transparent);
-  color: var(--success);
-}
-
-.provider-badge--unavailable {
-  background: color-mix(in srgb, var(--error) 20%, transparent);
-  color: var(--error-on-tint);
-}
-
 /* ── Cancel button ──────────────────────────────────────────── */
 .cancel-button {
   display: block;
   margin: 0.75rem auto 0;
-  min-height: var(--control-h-sm);
-  padding: 0.375rem 1rem;
+  /* The cancel action sits on the results surface and is the only escape from a
+     long-running request: it must meet the 44px touch minimum the spec fixes
+     (docs/ux-ui-spec.md), not the compact ghost tier. */
+  min-height: var(--control-h);
+  padding: 0.6rem 1.25rem;
   border: 1px solid var(--error);
   border-radius: var(--radius-md);
   background: transparent;
@@ -707,141 +544,6 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 
 .cancel-button[hidden] {
   display: none;
-}
-
-/* ── Side panels: service state, history and saved documents ─── */
-.side-panels {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: start;
-  margin-top: clamp(2.5rem, 6vw, 4rem);
-}
-
-.service-state,
-.history-panel,
-.saved-panel,
-.clients-panel {
-  margin-top: 0;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  min-width: 0;
-}
-
-.service-state[hidden],
-.history-panel[hidden],
-.saved-panel[hidden],
-.clients-panel[hidden] { display: none; }
-
-/* The search history is the one side panel whose height is driven by data (one
-   row per stored query), and an unbounded list made the whole `.side-panels`
-   grid row as tall as itself, leaving a ~500px void under the shorter panels
-   beside it. Capping the scroll region decouples the panel's height from the
-   entry count: the panel stays a predictable size and the newest entries stay
-   reachable by scrolling inside it. `min-height: 0` lets the flex child shrink
-   below its content so the overflow actually engages. */
-.panel-scroll {
-  max-height: 22rem;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  min-height: 0;
-}
-
-.service-state h2,
-.history-panel h2,
-.saved-panel h2,
-.clients-panel h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1rem;
-  color: var(--secondary);
-}
-
-.panel-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.indicator-list,
-.history-list,
-.saved-list,
-.client-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.indicator {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-}
-
-.indicator-label { color: var(--secondary); }
-.indicator-value { font-weight: 500; color: var(--text); overflow-wrap: anywhere; }
-.indicator-value[data-state="success"] { color: var(--success); }
-.indicator-value[data-state="partial"] { color: var(--warning); }
-.indicator-value[data-state="error"] { color: var(--error); }
-
-.history-item,
-.saved-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
-  min-width: 0;
-}
-
-.history-body,
-.saved-body { min-width: 0; }
-
-.history-query,
-.saved-item h3 {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text);
-  overflow-wrap: anywhere;
-}
-
-.history-meta,
-.saved-meta {
-  margin: 0.15rem 0 0;
-  font-size: 0.75rem;
-  color: var(--secondary);
-  overflow-wrap: anywhere;
-}
-
-.history-actions {
-  display: flex;
-  gap: 0.4rem;
-  flex-shrink: 0;
-}
-
-/* The row actions stay in the DOM (and remain keyboard-reachable/tabbable) but
-   only become visible on hover or when focus enters the row: with one query
-   repeated a dozen times, two always-on buttons per row turned the panel into a
-   wall of identical controls. `opacity` rather than `display` keeps the hit
-   area and the tab order intact; `:focus-within` is what keeps it operable by
-   keyboard. Touch devices have no hover, so the actions are always shown at
-   pointer-coarse widths (see the media query below). */
-.history-item .history-actions {
-  opacity: 0;
-  transition: opacity 0.12s ease;
-}
-.history-item:hover .history-actions,
-.history-item:focus-within .history-actions {
-  opacity: 1;
 }
 
 /* The save result sits next to the button that produced it: the global `#status`
@@ -867,8 +569,11 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .document-save-status[data-state="error"] { color: var(--error); }
 
 .ghost-action {
-  min-height: var(--control-h-sm);
-  padding: 0.2rem 0.6rem;
+  /* Compact tier by geometry, but the box still meets the 44px touch minimum
+     (docs/ux-ui-spec.md): the tighter padding keeps it visually light without
+     shrinking the tap target below it. */
+  min-height: var(--control-h);
+  padding: 0.55rem 0.9rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -885,89 +590,9 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   font-size: 0.8rem;
   color: var(--secondary);
 }
-
-/* Same row shape as .history-item/.saved-item, plus a second line for
-   scopes/expiry and an actions row: a client carries more to show per row
-   (capability + rotate/revoke) than a history or saved entry does. */
-.client-item {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--border);
-  min-width: 0;
-}
-.client-item:last-child { border-bottom: 0; }
-.client-item-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-.client-id {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 0.85rem;
-  color: var(--text);
-  overflow-wrap: anywhere;
-}
-.client-scopes-value {
-  font-size: 0.75rem;
-  color: var(--secondary);
-  overflow-wrap: anywhere;
-}
-.client-meta {
-  margin: 0.2rem 0 0;
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.client-actions {
-  display: flex;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-
-#client-create { margin-top: 0.9rem; color: var(--secondary); }
-#client-create summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
-#client-create-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-  padding: 0.9rem;
-  border: 0.0625rem solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--background);
-}
-#client-create-form label:not(.scope-option) { display: block; margin-bottom: 0.35rem; font-size: 0.75rem; }
-/* The form's own fields use the full control height (docs/ux-ui-spec.md: 44px
-   targets); the scope checkboxes are excluded so their box stays compact and the
-   ≥24px hit area comes from the wrapping label. */
-#client-create-form input:not([type="checkbox"]) { min-height: var(--control-h); }
-
-.client-scopes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-.client-scopes legend { font-size: 0.75rem; margin-bottom: 0.35rem; padding: 0; }
-.scope-option {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  min-height: 1.5rem;
-  padding-block: 0.15rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-.scope-option input { accent-color: var(--accent-strong); width: var(--checkbox-size); height: var(--checkbox-size); margin: 0; }
-
-#client-create-submit { align-self: flex-start; min-height: var(--control-h); padding: 0 0.9rem; }
-#client-create-error { color: var(--error); }
-
-/* One-time credential reveal: native <dialog>, no JS-driven focus trap
-   needed (the browser owns that for top-layer modals), and no CSP
-   allowance beyond what the page already has — it's plain HTML/CSS. */
+/* Native <dialog>, no JS-driven focus trap needed (the browser owns that for
+   top-layer modals), and no CSP allowance beyond what the page already has —
+   it's plain HTML/CSS. */
 .token-dialog {
   width: min(28rem, calc(100% - 2rem));
   padding: 1.25rem;
@@ -978,36 +603,11 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 }
 .token-dialog::backdrop { background: rgb(0 0 0 / 0.55); }
 .token-dialog h2 { margin: 0 0 0.5rem; font-size: 1rem; }
-#client-token-warning { margin: 0 0 0.9rem; color: var(--warning); font-size: 0.8rem; }
-.token-dialog-id { margin: 0 0 0.4rem; font-size: 0.8rem; color: var(--secondary); }
-#client-token-value {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 0.8rem;
-  margin-bottom: 0.9rem;
-}
-/* The one-time token dialog: an explicit copy action plus the result of the
-   copy, so the operator never has to guess whether the secret made it to the
-   clipboard before the dialog is dismissed. */
-#client-token-status { margin: 0 0 0.9rem; color: var(--secondary); font-size: 0.8rem; }
-#client-token-copy { width: 100%; margin-bottom: 0.5rem; }
-#client-token-close { width: 100%; }
 #marginalia-dialog input { width: 100%; margin-bottom: 0.9rem; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.8rem; }
+#marginalia-dialog .field-label { display: block; margin: 0 0 0.35rem; color: var(--secondary); font-size: 0.8rem; }
+#marginalia-dialog select { width: 100%; margin-bottom: 0.9rem; font-size: 0.8rem; }
 #marginalia-dialog .field-help { margin: 0 0 0.9rem; color: var(--secondary); font-size: 0.8rem; }
 #marginalia-key-error { color: var(--error); }
 #marginalia-save, #marginalia-cancel { width: 100%; }
 #marginalia-save { margin-bottom: 0.5rem; }
 #marginalia-cancel { margin-bottom: 0.3rem; }
-
-@media (max-width: 44rem) {
-  .side-panels { grid-template-columns: minmax(0, 1fr); }
-  .history-item, .saved-item { display: block; }
-  .history-actions { margin-top: 0.5rem; }
-  .client-item-row { display: block; }
-}
-
-/* Touch pointers cannot hover, so the hover-revealed history actions would be
-   unreachable on a phone: this is the one place they stay permanently visible,
-   which is also where a per-row tap target is expected. */
-@media (hover: none) {
-  .history-item .history-actions { opacity: 1; }
-}

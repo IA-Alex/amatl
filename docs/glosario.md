@@ -22,7 +22,7 @@ del ciclo de entidades.
 | SubQuery | `SubQuery` | elemento de `subqueries` | — | sólo `--json` | stop/degradation de Deep |
 | URL reportada | `OriginalUrl` | `original_url` | dentro de payloads | no se imprime separada en modo humano | — |
 | URL canónica | `CanonicalUrl` | `canonical_url` | `document_cache.canonical_url` | URL abierta/mostrada en Search | — |
-| URL tras fetch | `FinalUrl` | `final_url`, sólo Deep/Document/MCP fetch | dentro del payload documental | modo humano Deep | — |
+| URL tras fetch | `FinalUrl` | `final_url`, sólo Deep/Document fetch | dentro del payload documental | modo humano Deep | — |
 | Rango | `Rank` | `rank` | dentro de payload | prefijo numérico | — |
 | Score de ranking | `RankingScore` | campos de explicación internos/Deep | — | no visible por defecto | no visible en modo normal |
 | Estado Search | `SearchStatus` | `status`: `success`, `partial_success`, `failure` | — | `status:` y código de proceso | — |

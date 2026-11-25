@@ -1,6 +1,6 @@
 # amatl-core
 
-Núcleo compartido por todas las superficies de AMATL (CLI, UI, API y MCP).
+Núcleo compartido por todas las superficies de AMATL (CLI, UI y API).
 Contiene la lógica de producto: búsqueda, orquestación de proveedores,
 persistencia, seguridad, caché y telemetría. Mantén la lógica de producto
 fuera de los crates de superficie (`amatl-cli`, `amatl-server`, etc.).
@@ -50,7 +50,6 @@ Dependencias principales declaradas en el workspace (`Cargo.toml`):
 
 | Crate | Versión | Uso |
 |-------|---------|-----|
-| `rmcp` | `3.1.2` | Protocolo MCP (server, transporte streamable HTTP). |
 | `sqlx` | `0.8` | Acceso a SQLite (runtime Tokio, feature `sqlite`). |
 | `tokio` | workspace | Runtime asíncrono. |
 | `tracing` | workspace | Logging estructurado. |
@@ -58,12 +57,8 @@ Dependencias principales declaradas en el workspace (`Cargo.toml`):
 | `url` | workspace | Parsing y validación de URLs. |
 | `thiserror` | workspace | Definición de errores. |
 
-### Versiones compatibles de `rmcp` y `sqlx`
+### Versión compatible de `sqlx`
 
-- **`rmcp`**: se requiere `>= 3.1.2`. La API de servidor y el transporte
-  `transport-streamable-http-server` se consideran estables a partir de esa
-  versión. No se garantiza compatibilidad con `3.0.x` ni con `4.x` sin
-  revisión de la API.
 - **`sqlx`**: se requiere `>= 0.8, < 0.9`. Se usa la feature `sqlite` con
   `runtime-tokio` y `default-features = false`. La migración a `0.9` exige
   revisar los tipos de `SqlitePool` y las macros de consulta.

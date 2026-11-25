@@ -9,7 +9,7 @@ info:
     inbound value is never trusted or echoed.
 
     Errors are deliberately not RFC 7807 problem documents. Every surface (CLI,
-    API, MCP, UI) renders the shared code catalog in amatl-core/src/errors.rs,
+    API, UI) renders the shared code catalog in amatl-core/src/errors.rs,
     so the wire shape is ErrorResponse with a stable snake_case code. Adding a
     code is a compatible change; renaming or removing one is not.
 
@@ -142,127 +142,6 @@ paths:
         '403': { $ref: '#/components/responses/Forbidden' }
         '413': { $ref: '#/components/responses/BodyTooLarge' }
         '422': { $ref: '#/components/responses/BadRequest' }
-        '429': { $ref: '#/components/responses/RateLimited' }
-        '431': { $ref: '#/components/responses/HeadersTooLarge' }
-        '500': { $ref: '#/components/responses/ServiceUnavailable' }
-        '504': { $ref: '#/components/responses/RequestTimeout' }
-  /answer:
-    post:
-      operationId: answerPost
-      summary: Run Search and synthesize a grounded, cited answer from it
-      description: >-
-        Runs the same search `/search` would and additionally asks the
-        configured model to answer from those results only, citing `[n]`
-        markers the response validates against real source indices — a
-        citation to a source that was never retrieved is stripped from the
-        visible text, not merely uncounted. Requires
-        `data_policy.inference = "remote_explicit"` and `answer.enabled`;
-        returns `answer_unavailable` otherwise, or when the model's response
-        cited no valid source at all (a refusal, not a best-effort guess).
-        The raw search results are always included alongside the answer, so a
-        caller has them even when it only wants the summary.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/QueryInput'
-      responses:
-        '200':
-          description: Search completed and an answer was synthesized and grounded
-          headers:
-            X-Request-ID: { $ref: '#/components/headers/RequestId' }
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AnswerResult'
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '413': { $ref: '#/components/responses/BodyTooLarge' }
-        '422': { $ref: '#/components/responses/BadRequest' }
-        '429': { $ref: '#/components/responses/RateLimited' }
-        '431': { $ref: '#/components/responses/HeadersTooLarge' }
-        '500': { $ref: '#/components/responses/ServiceUnavailable' }
-        '504': { $ref: '#/components/responses/RequestTimeout' }
-    patch:
-      operationId: answerUpdate
-      summary: Update answer synthesis settings and apply them live
-      description: Admin-scoped partial update of `[answer]`; unset fields are preserved.
-      requestBody: { $ref: '#/components/requestBodies/AnswerPatch' }
-      responses:
-        '200': { $ref: '#/components/responses/ReloadReport' }
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '413': { $ref: '#/components/responses/BodyTooLarge' }
-        '429': { $ref: '#/components/responses/RateLimited' }
-        '431': { $ref: '#/components/responses/HeadersTooLarge' }
-        '500': { $ref: '#/components/responses/ServiceUnavailable' }
-        '504': { $ref: '#/components/responses/RequestTimeout' }
-  /answer/enabled:
-    post:
-      operationId: answerToggle
-      summary: Flip answer.enabled in the configuration file and apply it live
-      description: >-
-        Admin-scoped, same trust tier as `/reload` (which this reuses for the
-        actual apply step). Builds a candidate configuration with the flag
-        flipped and validates it *before* writing anything: turning the
-        feature on when `answer.endpoint`/`answer.model` are still incomplete
-        fails closed with `configuration_invalid` and neither the file nor
-        the running service change. On success, writes only `answer.enabled`
-        to the configuration file with comments and every other key
-        preserved, then reloads the service without a restart.
-      requestBody: { $ref: '#/components/requestBodies/ToggleEnabled' }
-      responses:
-        '200':
-          description: The flag was written and the service reloaded with it applied
-          headers:
-            X-Request-ID: { $ref: '#/components/headers/RequestId' }
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReloadReport'
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '413': { $ref: '#/components/responses/BodyTooLarge' }
-        '429': { $ref: '#/components/responses/RateLimited' }
-        '431': { $ref: '#/components/responses/HeadersTooLarge' }
-        '500': { $ref: '#/components/responses/ServiceUnavailable' }
-        '504': { $ref: '#/components/responses/RequestTimeout' }
-  /strategist/enabled:
-    post:
-      operationId: strategistToggle
-      summary: Flip strategist.enabled to include the LLM in search, applied live
-      description: >-
-        Admin-scoped, same trust tier as `/answer/enabled` and `/reload`
-        (which this reuses for the actual apply step). Controls whether the
-        LLM participates in a search: with it on, the strategist proposes a
-        refined query that AMATL runs to complement the first result set;
-        with it off (the default), search and deep remain fully
-        deterministic and the LLM does not participate at all. Builds a
-        candidate configuration with the flag flipped and validates it
-        *before* writing anything: turning it on when
-        `strategist.endpoint`/`strategist.model` are still incomplete fails
-        closed with `configuration_invalid` and neither the file nor the
-        running service change. On success, writes only `strategist.enabled`
-        to the configuration file with comments and every other key
-        preserved, then reloads the service without a restart.
-      requestBody: { $ref: '#/components/requestBodies/ToggleEnabled' }
-      responses:
-        '200':
-          description: The flag was written and the service reloaded with it applied
-          headers:
-            X-Request-ID: { $ref: '#/components/headers/RequestId' }
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ReloadReport'
-        '400': { $ref: '#/components/responses/BadRequest' }
-        '401': { $ref: '#/components/responses/Unauthorized' }
-        '403': { $ref: '#/components/responses/Forbidden' }
-        '413': { $ref: '#/components/responses/BodyTooLarge' }
         '429': { $ref: '#/components/responses/RateLimited' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
@@ -966,7 +845,7 @@ components:
       scheme: bearer
       description: >-
         Local bearer token of at least 32 bytes. Each configured credential has
-        its own scopes (search, deep, read, write, admin, mcp) and optional
+        its own scopes (search, deep, read, write, admin) and optional
         expiry; a valid token without the route's scope receives 403
         `scope_denied`.
   parameters:
@@ -1024,12 +903,6 @@ components:
         as invalid_request.
       schema: { type: string, minLength: 1, maxLength: 128 }
   requestBodies:
-    ToggleEnabled:
-      required: true
-      description: Feature flag toggle.
-      content:
-        application/json:
-          schema: { $ref: '#/components/schemas/ToggleInput' }
     ProviderToggleEnabled:
       required: true
       description: Provider enable/disable toggle.
@@ -1054,12 +927,6 @@ components:
       content:
         application/json:
           schema: { $ref: '#/components/schemas/InferencePatch' }
-    AnswerPatch:
-      required: true
-      description: Partial answer-synthesis settings.
-      content:
-        application/json:
-          schema: { $ref: '#/components/schemas/AnswerPatch' }
     DataPolicyPatch:
       required: true
       description: Partial data-policy settings.
@@ -1328,13 +1195,6 @@ components:
     # renames except `local_cache_capacity`). Every field is optional: an
     # omitted field retains its current value, and an empty string clears an
     # optional string field (see lib.rs empty-string-clears convention).
-    ToggleInput:
-      type: object
-      additionalProperties: false
-      required: [enabled]
-      description: Flip a boolean feature flag and apply it live.
-      properties:
-        enabled: { type: boolean }
     ProviderToggleInput:
       type: object
       additionalProperties: false
@@ -1354,6 +1214,14 @@ components:
           type: string
           minLength: 1
           description: Provider credential value; zeroized server-side.
+        ttl_ms:
+          type: [integer, 'null']
+          format: uint64
+          minimum: 0
+          description: >-
+            In-memory lifetime in milliseconds after which the key expires
+            lazily on the next read. Omitted uses the server default; `0` opts
+            out of expiry so the key lives until the process stops.
     ProviderRecordInput:
       type: object
       additionalProperties: false
@@ -1476,20 +1344,6 @@ components:
         max_redirects: { type: [integer, 'null'], minimum: 0 }
         sandbox_path: { type: [string, 'null'] }
         max_dom_bytes: { type: [integer, 'null'], minimum: 0 }
-    AnswerPatch:
-      type: object
-      additionalProperties: false
-      description: >-
-        Partial answer-synthesis settings; omitted fields are unchanged.
-        `enabled` is not mutable here — use POST /answer/enabled.
-      properties:
-        endpoint: { type: [string, 'null'] }
-        model: { type: [string, 'null'] }
-        credential_env: { type: [string, 'null'] }
-        timeout_ms: { type: [integer, 'null'], minimum: 0 }
-        max_sources: { type: [integer, 'null'], minimum: 0 }
-        max_source_chars: { type: [integer, 'null'], minimum: 0 }
-        max_answer_tokens: { type: [integer, 'null'], minimum: 0 }
     ServerClientCreateInput:
       type: object
       additionalProperties: false
@@ -1499,10 +1353,6 @@ components:
         scopes:
           type: array
           items: { $ref: '#/components/schemas/Scope' }
-        tools:
-          type: array
-          items: { type: string }
-          default: []
         expires_at: { type: [string, 'null'] }
     ServerClientUpdateInput:
       type: object
@@ -1514,9 +1364,6 @@ components:
         scopes:
           type: [array, 'null']
           items: { $ref: '#/components/schemas/Scope' }
-        tools:
-          type: [array, 'null']
-          items: { type: string }
         expires_at: { type: [string, 'null'] }
     ServerPendingConfigPatch:
       type: object
@@ -1554,7 +1401,7 @@ components:
       enum: [disabled, local_only, remote_explicit]
     Scope:
       type: string
-      enum: [search, deep, read, write, admin, mcp]
+      enum: [search, deep, read, write, admin]
     SqliteLockingMode:
       type: string
       enum: [normal, exclusive]
@@ -1562,12 +1409,18 @@ components:
     ProviderCredentialReport:
       type: object
       additionalProperties: false
-      required: [schema_version, name, set, available]
+      required: [schema_version, name, set, available, expires_in_ms]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         name: { type: string }
         set: { type: boolean }
         available: { type: boolean }
+        expires_in_ms:
+          type: [integer, 'null']
+          format: uint64
+          description: >-
+            Milliseconds until the in-memory key expires, or null when it never
+            expires or no key is held.
     ProviderRecordReport:
       type: object
       additionalProperties: false
@@ -1601,11 +1454,10 @@ components:
     ServerClientSummary:
       type: object
       additionalProperties: false
-      required: [id, scopes, tools, expires_at, credential_kind]
+      required: [id, scopes, expires_at, credential_kind]
       properties:
         id: { type: string }
         scopes: { type: array, items: { $ref: '#/components/schemas/Scope' } }
-        tools: { type: array, items: { type: string } }
         expires_at: { type: [string, 'null'] }
         credential_kind: { type: string, enum: [token_env, token_sha256] }
     ServerClientList:
@@ -1834,9 +1686,11 @@ components:
           type: integer
           minimum: 0
           description: >-
-            Zero-based page over the ranked result set. Pagination is
-            server-side: page and page_size must be sent together and the
-            client must not window the returned array again. Ignored by /deep.
+            Zero-based page index. A single pagination-capable provider receives
+            native pagination; otherwise AMATL slices the merged ranked results.
+            If either bound is omitted, page defaults to zero and page_size to the
+            surface maximum. `total_results` may be absent when a native provider
+            cannot determine it from the response. The client must not window the array again. Ignored by /deep.
         page_size:
           type: integer
           minimum: 1
@@ -1919,7 +1773,7 @@ components:
               description: >-
                 Shared error catalog (amatl-core/src/errors.rs). Every AMATL
                 surface renders the same identifiers.
-              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, conflict, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, config_rejected, inference_unavailable, ranking_backend_unavailable, answer_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, conflict, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, config_rejected, inference_unavailable, ranking_backend_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string
@@ -1993,50 +1847,11 @@ components:
         total_results:
           type: integer
           minimum: 0
-          description: Size of the whole ranked set; present only when the request paginated.
+          description: >-
+            Size of the whole set when known. It is omitted when a native
+            adapter cannot determine a total count from the provider response.
         page: { type: integer, minimum: 0 }
         page_size: { type: integer, minimum: 1, maximum: 100 }
-    AnswerSource:
-      type: object
-      additionalProperties: false
-      required: [index, title, url, snippet]
-      properties:
-        index:
-          type: integer
-          minimum: 1
-          description: 1-based index the model must cite; stable within one response.
-        title: { type: [string, 'null'] }
-        url: { type: string, format: uri }
-        snippet: { type: string }
-    Answer:
-      type: object
-      additionalProperties: false
-      required: [text, citations, sources, model]
-      properties:
-        text:
-          type: string
-          description: >-
-            Citations to sources the response never actually cited are
-            stripped from this text before it is returned, not merely
-            excluded from the `citations` count.
-        citations:
-          type: array
-          description: Source indices the answer actually cited, in order of first mention.
-          items: { type: integer, minimum: 1 }
-        sources:
-          type: array
-          items: { $ref: '#/components/schemas/AnswerSource' }
-        model: { type: string }
-    AnswerResult:
-      type: object
-      additionalProperties: false
-      required: [schema_version, answer, search]
-      properties:
-        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
-        answer: { $ref: '#/components/schemas/Answer' }
-        search:
-          $ref: '#/components/schemas/SearchResponse'
-          description: The same search AMATL ran to ground the answer, kept alongside it.
     FetchMethod:
       type: string
       description: local is emitted by the CLI-only ingestion contract, not by HTTP Deep
@@ -2372,64 +2187,29 @@ components:
         document_hits: { type: integer, minimum: 0 }
         document_misses: { type: integer, minimum: 0 }
         document_hit_rate: { type: number, minimum: 0, maximum: 1 }
-    AnswerStatus:
-      type: object
-      additionalProperties: false
-      required: [enabled, configured, available, model, endpoint]
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            answer.enabled in configuration — the operator's on/off intent,
-            exactly what POST /answer/enabled flips.
-        configured:
-          type: boolean
-          description: >-
-            Whether endpoint and model are both present, regardless of
-            enabled — "is there a real configuration on disk to toggle",
-            answered even while the feature is switched off.
-        available:
-          type: boolean
-          description: >-
-            Whether a call to POST /answer will actually work right now:
-            enabled AND configured AND the credential was present in the
-            environment at startup. A UI should gate the feature on this,
-            not on enabled or configured alone.
-        model: { type: [string, 'null'] }
-        endpoint: { type: [string, 'null'] }
     ServiceStatus:
       type: object
       additionalProperties: false
-      required: [schema_version, status, sources, storage, cache, inference_backend, answer, strategist, data_policy]
+      required: [schema_version, status, authentication_required, sources, storage, cache, inference_backend, data_policy]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         status: { type: string, enum: [ok, degraded] }
+        authentication_required:
+          type: boolean
+          description: Whether protected HTTP routes require a bearer token.
         sources:
           type: array
           items: { $ref: '#/components/schemas/SourceStatus' }
         storage: { $ref: '#/components/schemas/StorageStatus' }
         cache: { $ref: '#/components/schemas/CacheStatus' }
         inference_backend: { type: [string, 'null'] }
-        answer:
-          $ref: '#/components/schemas/AnswerStatus'
-          description: >-
-            Read-only view of the answer-synthesis configuration: never the
-            credential, only what a settings screen needs to explain why the
-            feature is or isn't available right now.
-        strategist:
-          $ref: '#/components/schemas/StrategistStatus'
-          description: >-
-            Read-only view of the search-strategist configuration: whether the
-            optional LLM may participate in a search. Never the credential, only
-            what a settings screen needs to explain why the "search with model"
-            toggle is or isn't usable.
         data_policy:
           $ref: '#/components/schemas/DataPolicyStatus'
           description: >-
             Read-only view of data_policy — the profile, egress and inference
             gate every other capability in this status checks against. Exposed
-            so a settings screen can explain why a source, remote embedding or
-            answer call is unavailable instead of just reporting that it is.
+            so a settings screen can explain why a source or remote embedding
+            call is unavailable instead of just reporting that it is.
     DataPolicyStatus:
       type: object
       additionalProperties: false
@@ -2453,31 +2233,8 @@ components:
           enum: [disabled, local_only, remote_explicit]
           description: >-
             data_policy.inference. `remote_explicit` permits an operator-approved
-            remote embedding/answer endpoint; `local_only` restricts inference to
+            remote embedding endpoint; `local_only` restricts inference to
             an on-device backend.
-    StrategistStatus:
-      type: object
-      additionalProperties: false
-      required: [enabled, configured, available, model, endpoint]
-      properties:
-        enabled:
-          type: boolean
-          description: >-
-            strategist.enabled in configuration — the operator's on/off intent,
-            exactly what POST /strategist/enabled flips.
-        configured:
-          type: boolean
-          description: >-
-            Whether endpoint and model are both present, regardless of enabled —
-            "is there a real configuration on disk to toggle".
-        available:
-          type: boolean
-          description: >-
-            Whether calling the strategist would work right now: enabled AND
-            configured AND the credential environment variable was present. A UI
-            should gate the feature on this, not on enabled or configured alone.
-        model: { type: [string, 'null'] }
-        endpoint: { type: [string, 'null'] }
     SearchHistoryEntry:
       type: object
       additionalProperties: false
@@ -2491,7 +2248,7 @@ components:
         total_results: { type: integer, minimum: 0 }
         deep_fetches: { type: integer, minimum: 0 }
         created_at: { type: integer, description: Unix seconds }
-        surface: { type: string, enum: [cli, api, mcp] }
+        surface: { type: string, enum: [cli, api] }
     HistoryResponse:
       type: object
       additionalProperties: false

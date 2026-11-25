@@ -560,7 +560,13 @@ fn parse_literal_string(bytes: &[u8], start: usize) -> Option<(String, usize)> {
                         if let Some(ch) = char::from_u32(value) {
                             out.push(ch);
                         }
-                        i += count;
+                        // The escape is `\` plus `count` octal digits, so the
+                        // next byte is `i + 1 + count`. Advance there and skip
+                        // the shared `i += 2` below: falling through would step
+                        // one byte too far and silently drop the character that
+                        // follows the escape.
+                        i += 1 + count;
+                        continue;
                     }
                     _ => out.push(next as char),
                 }
@@ -1092,6 +1098,28 @@ mod tests {
         )
         .unwrap();
         assert_eq!(content, "a(b)c\nline\nbreak");
+    }
+
+    #[test]
+    fn pdf_rust_extractor_keeps_the_byte_after_an_octal_escape() {
+        // Regression: the octal arm advanced `count` and then also the shared
+        // `+2`, skipping the byte right after `\ddd`. `\101` is `A`, so
+        // `(A\101BCD) Tj` must decode to `AABCD`, not `AACD`.
+        assert_eq!(
+            extract_pdf_rust(b"stream\nBT (A\\101BCD) Tj ET\nendstream\n").unwrap(),
+            "AABCD"
+        );
+        // A one-digit octal escape at the very end of a string still terminates
+        // cleanly at the closing paren.
+        assert_eq!(
+            extract_pdf_rust(b"stream\nBT (tail\\7) Tj ET\nendstream\n").unwrap(),
+            "tail\u{7}"
+        );
+        // Three digits followed immediately by the closing paren.
+        assert_eq!(
+            extract_pdf_rust(b"stream\nBT (\\101) Tj ET\nendstream\n").unwrap(),
+            "A"
+        );
     }
 
     #[test]

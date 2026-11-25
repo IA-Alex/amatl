@@ -69,6 +69,9 @@ pub struct SearchOrchestrator {
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
     request_id: Option<String>,
+    /// Optional native provider result window for single-source pagination.
+    provider_page: Option<u32>,
+    provider_page_size: Option<u32>,
     /// Process-wide cap on simultaneous outbound provider calls.
     ///
     /// The router bounds how many providers one search may select, but without
@@ -98,6 +101,8 @@ impl SearchOrchestrator {
             routing_trace: vec![],
             last_plan: None,
             request_id: None,
+            provider_page: None,
+            provider_page_size: None,
             egress_gate: None,
         }
     }
@@ -139,6 +144,13 @@ impl SearchOrchestrator {
 
     pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
         self.request_id = request_id;
+        self
+    }
+
+    /// Ask a single pagination-capable provider for its native result window.
+    pub fn with_provider_pagination(mut self, page: Option<u32>, page_size: Option<u32>) -> Self {
+        self.provider_page = page;
+        self.provider_page_size = page_size;
         self
     }
 
@@ -562,6 +574,8 @@ impl SearchOrchestrator {
             let max_retries = self.max_retries;
             let retry_jitter_ms = self.retry_jitter_ms;
             let request_id = self.request_id.clone();
+            let provider_page = self.provider_page;
+            let provider_page_size = self.provider_page_size;
             let provider_span = tracing::info_span!(
                 target: "amatl::providers",
                 "provider_call",
@@ -613,6 +627,8 @@ impl SearchOrchestrator {
                                     &ProviderContext {
                                         timeout_ms,
                                         request_id: request_id.clone(),
+                                        page: provider_page,
+                                        page_size: provider_page_size,
                                     },
                                 ),
                             )
@@ -778,7 +794,10 @@ fn retry_jitter(provider: &str, attempt: u32, maximum_ms: u64) -> u64 {
         .bytes()
         .fold(0_u64, |state, byte| state.rotate_left(5) ^ u64::from(byte));
     let counter = JITTER_COUNTER.fetch_add(1, Ordering::Relaxed);
-    (clock ^ provider_mix ^ u64::from(attempt) ^ counter) % (maximum_ms + 1)
+    // `maximum_ms` is bounded by validation, but a hand-built config could set
+    // it to `u64::MAX`, where `+ 1` would overflow to 0 and panic on `% 0`.
+    // `saturating_add` keeps the modulus non-zero regardless.
+    (clock ^ provider_mix ^ u64::from(attempt) ^ counter) % maximum_ms.saturating_add(1)
 }
 
 #[derive(Default)]
@@ -1134,6 +1153,18 @@ mod tests {
             thumbnail: None,
             metadata: Default::default(),
         }
+    }
+
+    /// `retry_jitter` reduces a hash modulo `maximum_ms + 1`; a hand-built
+    /// config with `retry_jitter_ms = u64::MAX` would overflow that `+ 1` to 0
+    /// and panic on `% 0`. The saturating form keeps the modulus non-zero.
+    #[test]
+    fn retry_jitter_never_panics_on_an_unbounded_maximum() {
+        assert_eq!(retry_jitter("source", 0, 0), 0);
+        // The maximum that overflows `+ 1` must still return without panicking.
+        let _ = retry_jitter("source", 1, u64::MAX);
+        // A bounded maximum keeps the result strictly inside the window.
+        assert!(retry_jitter("source", 2, 25) <= 25);
     }
 
     /// Provider that records the request id it was called with.

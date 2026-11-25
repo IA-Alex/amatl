@@ -125,11 +125,7 @@ mod tests {
         }
         // The ids the UI audits grep for, so a rename cannot pass silently.
         let index = text("/");
-        for id in [
-            "id=\"model-options\"",
-            "id=\"local-token\"",
-            "id=\"access-summary\"",
-        ] {
+        for id in ["id=\"local-token\"", "id=\"access-summary\""] {
             assert!(
                 index.contains(id),
                 "index.html no longer carries {id}: UI audit citations in `audit/` \
@@ -189,6 +185,33 @@ mod tests {
     }
 
     #[test]
+    fn dynamic_error_states_are_announced_and_bound_to_their_field() {
+        // Regression guard: the Marginalia dialog error and the form validation
+        // error are both produced by JS, so without an explicit ARIA binding a
+        // screen-reader user never hears *why* the action failed. The dialog
+        // error must be a live `role="alert"`, and the validation handler must
+        // associate the offending field with the `#status` message region.
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        assert!(
+            html.contains("id=\"marginalia-key-error\"") && html.contains("role=\"alert\""),
+            "the Marginalia key error must be a live role=alert region"
+        );
+        assert!(
+            javascript.contains("marginaliaKeyInput.setAttribute(\"aria-invalid\", \"true\")"),
+            "a rejected Marginalia key must mark the field aria-invalid"
+        );
+        assert!(
+            javascript.contains("marginaliaKeyInput.removeAttribute(\"aria-invalid\")"),
+            "opening the dialog must clear the previous aria-invalid state"
+        );
+        assert!(
+            javascript.contains("? \"token-help status\" : \"status\""),
+            "validation errors must describe the offending field from #status"
+        );
+    }
+
+    #[test]
     fn presentation_keeps_technical_internals_hidden() {
         let surface = format!(
             "{}{}{}",
@@ -217,6 +240,10 @@ mod tests {
     fn layout_contract_covers_mobile_and_respects_reduced_motion() {
         let css = text("/styles.css");
         assert!(css.contains("@media (max-width: 44rem)"));
+        assert!(css.contains("@media (orientation: landscape)"));
+        assert!(
+            css.contains(".filters summary { width: fit-content; min-height: var(--control-h);")
+        );
         assert!(css.contains("prefers-reduced-motion: reduce"));
         assert!(css.contains("min-width: 0"));
         assert!(css.contains("overflow-wrap: anywhere"));
@@ -271,10 +298,41 @@ mod tests {
             })
             .count();
         assert_eq!(stray_radii, 0, "a literal border-radius escaped the scale");
-        // Ghost/compact buttons declare their own (smaller) tier explicitly,
-        // instead of inheriting the base height and looking padded by accident.
+        // Touch targets: the spec fixes a 44px minimum for controls
+        // (docs/ux-ui-spec.md). The compact ghost/cancel/theme controls must
+        // still resolve to that height, not fall to a smaller literal.
         assert!(css.contains(".ghost-action {"));
-        assert!(css.contains("min-height: var(--control-h-sm);"));
+        assert!(css.contains(".cancel-button {"));
+        assert!(css.contains(".theme-toggle {"));
+        for component in [".ghost-action {", ".cancel-button {"] {
+            let body = css
+                .split(component)
+                .nth(1)
+                .unwrap_or_default()
+                .split('}')
+                .next()
+                .unwrap_or_default();
+            assert!(
+                body.contains("min-height: var(--control-h);"),
+                "{component} must meet the 44px touch minimum (--control-h)"
+            );
+        }
+        // Disclosures and the "select for Deep" label are also touch targets:
+        // the base `summary` rule and `.deep-target-select` must resolve to the
+        // 44px tier rather than a 24px literal.
+        for component in ["summary {", ".deep-target-select {"] {
+            let body = css
+                .split(component)
+                .nth(1)
+                .unwrap_or_default()
+                .split('}')
+                .next()
+                .unwrap_or_default();
+            assert!(
+                body.contains("min-height: var(--control-h);"),
+                "{component} must meet the 44px touch minimum (--control-h)"
+            );
+        }
     }
 
     #[test]
@@ -325,9 +383,7 @@ mod tests {
             assert!(html.contains(field), "missing UI field: {field}");
         }
         assert!(javascript.contains("payload.schema_version !== \"1\""));
-        assert!(javascript.contains(
-            "mode === \"deep\" ? \"/deep\" : mode === \"answer\" ? \"/answer\" : \"/search\""
-        ));
+        assert!(javascript.contains("mode === \"deep\" ? \"/deep\" : \"/search\""));
         // Transport is centralized in client.js: requests go through the shared
         // client, which owns fetch + POST + JSON + authorization injection.
         assert!(javascript.contains("globalThis.api.post(endpoint"));
@@ -338,7 +394,7 @@ mod tests {
         assert!(javascript.contains("body.page = store.get().page"));
         assert!(javascript.contains("headers.Authorization"));
         assert!(!javascript.contains("searchParams"));
-        // Search/deep/answer routing is POST-only; GET exists for the local
+        // Search/deep routing is POST-only; GET exists for the local
         // read panels (status/history/saved) and is never used for retrieval.
         assert!(!javascript.contains("globalThis.api.get(endpoint"));
         // Pagination is server-side only: no local windowing of the result set.
@@ -395,22 +451,16 @@ mod tests {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let client = text("/client.js");
-        for id in [
-            "id=\"service-indicators\"",
-            "id=\"history-list\"",
-            "id=\"history-purge\"",
-            "id=\"saved-list\"",
-            "id=\"history-template\"",
-            "id=\"saved-template\"",
-        ] {
-            assert!(html.contains(id), "missing panel element: {id}");
-        }
+        // The operator/admin surface (service state, source status, history,
+        // saved-documents list and client management) was removed; `/status`
+        // remains the authoritative read for the search flow's own state.
+        assert!(!html.contains("operator-tools"));
+        assert!(!html.contains("id=\"history-list\""));
+        assert!(!html.contains("id=\"saved-list\""));
+        assert!(!html.contains("id=\"client-list\""));
         // Local-domain reads go through the shared client; DELETE is defined
         // centrally and never issues a GET for these surfaces.
         assert!(javascript.contains("globalThis.api.get(\"/status\""));
-        assert!(javascript.contains("`/history?limit=${LIST_LIMIT}`"));
-        assert!(javascript.contains("`/saved?limit=${LIST_LIMIT}`"));
-        assert!(!javascript.contains("`/saved?limit=\" +"));
         assert!(client.contains("method: \"DELETE\""));
         // Saved payloads stay bounded and never carry extracted content.
         assert!(javascript.contains("MAX_SAVED_PAYLOAD_BYTES"));
@@ -444,11 +494,10 @@ mod tests {
         assert!(javascript.contains("globalThis.AMATL_LOCALES"));
         assert!(!javascript.contains("const MSG = {"));
         for key in [
-            "historyHeading",
-            "savedHeading",
-            "serviceHeading",
-            "storageLabel",
-            "cacheLabel",
+            "marginaliaSaved",
+            "marginaliaClearedFailed",
+            "savedAction",
+            "savedFailedStorage",
             "uiLanguageNameEn",
             "uiLanguageNameEs",
         ] {
@@ -530,28 +579,12 @@ mod tests {
         assert!(catalog.contains("uiLanguageNameEs: \"Español\""));
     }
 
-    /// The empty-source note must point somewhere. It used to end at
-    /// "Ninguna fuente disponible." -- a dead end that named the problem and
-    /// offered no next step.
-    #[test]
-    fn empty_source_note_says_what_to_do_next() {
-        let catalog = text("/i18n.js");
-        assert!(catalog.contains("Habilita una para poder buscar."));
-        assert!(catalog.contains("Enable one to be able to search."));
-    }
-
     #[test]
     fn unavailable_backend_states_are_fail_closed_in_the_ui() {
         let html = text("/index.html");
         let javascript = text("/app.js");
         assert!(html.contains("id=\"search-button\""));
         assert!(javascript.contains("searchButton.disabled = !searchAvailable"));
-        assert!(javascript.contains("checkbox.disabled = provider.status !== \"available\""));
-        assert!(
-            javascript.contains("answerEnabledToggle.disabled = answerStatus.available === false")
-        );
-        assert!(javascript.contains("strategistStatus.available !== false"));
-        assert!(javascript.contains("strategistEnabledToggle.checked = false"));
         assert!(javascript.contains("error.code"));
         assert!(text("/client.js").contains("payload?.error?.code"));
     }
@@ -593,46 +626,19 @@ mod tests {
         assert!(javascript.contains("error.message.includes(\"504\")"));
     }
 
-    /// BH-01/BH-02 (2026-11-18 audit). Two field defects, both born of the
-    /// same mistake — keying a decision off something other than the structured
-    /// fields the shared client actually exposes:
-    ///
-    /// - BH-01: `createServerClient` always sent `tools: []`, and
-    ///   `ClientIdentity::allows_tool` denies on an empty allowlist, so an
-    ///   "MCP"-scoped client created from the UI could never call a single MCP
-    ///   tool — the checkbox was a dead control.
-    /// - BH-02: the error branches classified 401/403 by scanning the *message
-    ///   text* for status digits. Real error bodies carry a catalog message
-    ///   with no digits (`{"code":"unauthorized",...}`), so the regex never
-    ///   matched and an operator without admin scope was shown "the key was
-    ///   rejected" in the one dialog where a secret is typed.
+    /// BH-02 (2026-11-18 audit). The error branches classified 401/403 by
+    /// scanning the *message text* for status digits. Real error bodies carry a
+    /// catalog message with no digits (`{"code":"unauthorized",...}`), so the
+    /// regex never matched and an operator without admin scope was shown "the
+    /// key was rejected" in the one dialog where a secret is typed.
     ///
     /// The asset tests assert string presence, so nothing here executes the JS:
-    /// this locks the two properties the fix introduced, exactly as the audit's
-    /// live probe observed them.
+    /// this locks the property the fix introduced for the surviving credential
+    /// surface (`saveMarginaliaKey`). The client-admin surface it also covered
+    /// was removed with the operator panel.
     #[test]
-    fn mcp_clients_carry_the_tool_vocabulary_and_errors_classify_on_status() {
+    fn errors_classify_on_status_not_on_message_digits() {
         let javascript = text("/app.js");
-        // BH-01: the MCP tool vocabulary is declared once and sent in full for
-        // an MCP-scoped client, so the allowlist is never empty.
-        assert!(
-            javascript.contains(
-                "const MCP_TOOL_NAMES = [\"search\", \"deep_search\", \"fetch\", \"providers\", \"status\", \"answer\"]"
-            ),
-            "the MCP tool vocabulary must mirror the server's MCP_TOOLS constant"
-        );
-        assert!(
-            javascript.contains("scopes.includes(\"mcp\") ? MCP_TOOL_NAMES.slice() : []"),
-            "an MCP-scoped client must be created with the full tool vocabulary"
-        );
-        assert!(
-            !javascript.contains("const body = { id, scopes, tools: [] };"),
-            "the old always-empty allowlist must not come back"
-        );
-        // BH-02: the remaining error branches read `error.status`/`error.code`
-        // (set by client.js) and keep the message check only as a fallback. The
-        // `applyProviderSource` branch this originally covered is gone with the
-        // retired source selector.
         assert!(
             javascript.contains("const status = Number(error && error.status) || 0;"),
             "saveMarginaliaKey must read the HTTP status, not parse the message"
@@ -640,10 +646,6 @@ mod tests {
         assert!(
             javascript.contains("code === \"scope_denied\""),
             "saveMarginaliaKey must recognise the catalog's 403 code"
-        );
-        assert!(
-            javascript.contains("status === 409 || message.includes(\"409\")"),
-            "createServerClient must report the duplicate-id catalog case"
         );
         assert!(
             !javascript.contains("/API Error: (\\d+)/"),
@@ -691,28 +693,18 @@ mod tests {
     }
 
     #[test]
-    fn strategist_toggle_reports_an_enabled_but_unavailable_state() {
+    fn storage_backed_panels_are_gone_from_the_ui() {
         let javascript = text("/app.js");
-        let catalog = text("/i18n.js");
-        // A configured strategist that is switched on without a usable
-        // credential must say so, mirroring the AI-summary `answerHint`.
-        assert!(catalog.contains("strategistHintMissingCredential"));
-        assert!(javascript.contains("t(\"strategistHintMissingCredential\")"));
-        assert!(javascript.contains("strategistToggleStatus.hidden"));
-        assert!(javascript.contains("strategistStatus.configured && strategistStatus.enabled"));
-    }
-
-    #[test]
-    fn storage_backed_panels_are_gated_on_storage_availability() {
-        let javascript = text("/app.js");
-        // `/history` and `/saved` answer 503 when persistence is off; the panel
-        // refresh must not request them unless `/status` reports storage as on
-        // and healthy, and must hide the panels otherwise.
+        let html = text("/index.html");
+        // The history and saved-documents panels were removed with the
+        // operator surface: `/status` still reports the authoritative storage
+        // block, but nothing enumerates `/history` or `/saved` any more.
         assert!(javascript.contains("async function refreshPanels"));
-        assert!(javascript.contains("const status = await fetchServiceState()"));
-        assert!(javascript.contains("if (storage.enabled && storage.available)"));
-        assert!(javascript.contains("historyPanel.hidden = true"));
-        assert!(javascript.contains("savedPanel.hidden = true"));
+        assert!(javascript.contains("await fetchServiceState()"));
+        assert!(!javascript.contains("`/history?limit="));
+        assert!(!javascript.contains("`/saved?limit="));
+        assert!(!html.contains("id=\"history-list\""));
+        assert!(!html.contains("id=\"saved-list\""));
     }
 
     #[test]
@@ -764,28 +756,53 @@ mod tests {
     /// The history rows render a result count, and a single result must read
     /// "1 resultado."/"1 result.", never the bare plural.
     ///
-    /// Regression guard for a real defect: `historyLabel` called
+    /// Regression guard for a real defect: a per-surface count called
     /// `t("resultsCount")` directly while the results header went through
-    /// `countLabel`/`pluralKey`, so one query showed as "1 of 1 result" above
-    /// and "1 resultados." in the history panel below. The singular keys exist
-    /// in both locales; the fix routes history through the same helper.
+    /// `countLabel`/`pluralKey`, so one item showed as "1 result" in one place
+    /// and "1 results." in another. The singular keys exist in both locales;
+    /// every count routes through the same helper. (The history panel that
+    /// originally exposed this was removed with the operator surface, but the
+    /// results header still depends on the plural-aware path.)
     #[test]
-    fn history_count_uses_the_plural_aware_helper() {
+    fn counts_use_the_plural_aware_helper() {
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
         // The catalog ships both forms in every locale.
         assert!(catalog.contains("resultsCount:"));
         assert!(catalog.contains("resultsCountOne:"));
-        // The history label selects between them instead of hardcoding the
+        // The results header selects between them instead of hardcoding the
         // plural, so the two views of one number cannot disagree.
         assert!(
-            javascript.contains("countLabel(entry.total_results, \"resultsCount\")"),
-            "historyLabel must pluralize through countLabel"
+            javascript.contains("countLabel(items.length, \"resultsCount\")"),
+            "the results count must pluralize through countLabel"
         );
         assert!(
-            !javascript.contains("${entry.total_results} ${t(\"resultsCount\")}"),
-            "historyLabel still bypasses pluralization"
+            javascript.contains("pluralKey("),
+            "the singular/plural selection must live in one helper"
         );
+    }
+
+    /// A native provider page omits `total_results`, so the page length is not
+    /// a whole-set size. The UI must keep paging forward (a full page implies a
+    /// further page may exist) instead of collapsing to a single page and
+    /// hiding the paginator (BH-001).
+    #[test]
+    fn unknown_total_keeps_pagination_reachable() {
+        let javascript = text("/app.js");
+        let store = text("/store.js");
+        // The store tracks the two facts the render needs.
+        assert!(store.contains("knownTotal"));
+        assert!(store.contains("hasMore"));
+        // The payload handler distinguishes a known total from a page length.
+        assert!(
+            javascript.contains("const knownTotal = typeof payload.total_results === \"number\"")
+        );
+        assert!(javascript.contains("items.length >= pageSize"));
+        // The render shows the paginator and enables Next when more may exist.
+        assert!(javascript.contains("state.knownTotal"));
+        assert!(javascript.contains("state.hasMore"));
+        // The Next handler advances when the total is unknown but more may exist.
+        assert!(javascript.contains("const canAdvance = state.knownTotal"));
     }
 
     /// The token field is a credential, not a query filter: it lives in its own
@@ -795,10 +812,21 @@ mod tests {
         let html = text("/index.html");
         let javascript = text("/app.js");
         let catalog = text("/i18n.js");
+        assert!(html.contains("class=\"filters search-filters\""));
+        assert!(html.contains("class=\"filters evidence-options\""));
+        assert!(html.contains("class=\"filters source-credentials\""));
         assert!(html.contains("class=\"filters access-filters\""));
+        assert!(html.contains("<div class=\"search-guidance\">"));
+        assert!(!html.contains("class=\"operator-tools\""));
+        assert!(!html.contains("clients-panel"));
+        assert!(text("/styles.css").contains(".search-guidance { grid-column: 1 / -1;"));
+        assert!(!html.contains("answer"));
+        assert!(!html.contains("strategist"));
         assert!(html.contains("id=\"access-summary\" data-i18n=\"accessLabel\""));
         assert!(html.contains("id=\"local-token\""));
         assert!(catalog.contains("accessLabel:"));
+        assert!(catalog.contains("AMATL_SERVER_TOKEN"));
+        assert!(catalog.contains("openssl rand -hex 32"));
         // The access panel must be a *sibling* of the filter panel, not nested
         // inside it: nesting would leave the token reachable only after opening
         // the filters, which is exactly the grouping confusion this fixed.
@@ -821,32 +849,36 @@ mod tests {
         );
         // The token is absent from the filter summary and drives its own.
         assert!(!javascript.contains("if (tokenInput.value) active.push"));
+        let search_filters = html
+            .split("class=\"filters search-filters\"")
+            .nth(1)
+            .unwrap()
+            .split("</details>")
+            .next()
+            .unwrap();
+        assert!(search_filters.contains("id=\"language\""));
+        assert!(!search_filters.contains("deep-max-fetches"));
+        assert!(!search_filters.contains("marginalia-key-button"));
+        assert!(javascript.contains("authentication_required !== false"));
         assert!(javascript.contains("function updateAccessSummary"));
         assert!(javascript.contains("updateAccessSummary();"));
         // A token validation error opens the panel that actually holds it.
         assert!(
             javascript.contains("if (accessDetails.contains(field)) accessDetails.open = true;")
         );
+        assert!(javascript
+            .contains("if (evidenceDetails.contains(field)) evidenceDetails.open = true;"));
     }
 
-    /// The side panels keep a shared, drift-proof control scale: the checkbox
-    /// box comes from one token so the toggle/scope rows cannot diverge, and
-    /// the history panel's height is decoupled from its entry count.
+    /// The operator/admin panels (side panels, provider status, panel scroll,
+    /// the shared checkbox-size token they alone used) were removed from the
+    /// stylesheet with the surface itself.
     #[test]
-    fn side_panel_sizing_uses_shared_tokens_and_bounds_the_history() {
+    fn operator_panel_styling_is_gone() {
         let css = text("/styles.css");
-        assert!(css.contains("--checkbox-size:"));
-        assert!(css.contains("width: var(--checkbox-size);"));
-        assert!(css.contains("height: var(--checkbox-size);"));
-        assert!(!css.contains("width: 1rem;\n  height: 1rem;"));
-        // The history scroll region bounds the panel height.
-        assert!(css.contains(".panel-scroll {"));
-        assert!(css.contains("max-height: 22rem;"));
-        // The provider panel aligns with its grid siblings instead of carrying
-        // the legacy standalone `margin-top: 2rem`.
-        assert!(
-            !css.contains(".provider-status {\n  margin-top: 2rem;"),
-            "provider-status still carries the legacy standalone margin"
-        );
+        assert!(!css.contains(".side-panels"));
+        assert!(!css.contains(".panel-scroll {"));
+        assert!(!css.contains(".provider-status {"));
+        assert!(!css.contains("--checkbox-size:"));
     }
 }

@@ -1,4 +1,4 @@
-//! Shared error-code catalog for every AMATL surface (CLI, API, MCP, UI).
+//! Shared error-code catalog for every AMATL surface (CLI, API, UI).
 //!
 //! Surfaces must never invent their own wire codes: they translate a domain
 //! error into an [`ErrorCode`] and render it with the catalog's stable string,
@@ -68,9 +68,6 @@ pub enum ErrorCode {
     RankingBackendUnavailable,
     /// Persistent storage is unavailable; degraded operation continues.
     StorageUnavailable,
-    /// Remote answer-synthesis backend is unavailable, failed, or its
-    /// response could not be grounded in the sources it was given.
-    AnswerUnavailable,
     /// Credential is valid but lacks the capability this surface requires.
     ScopeDenied,
     /// Caller cancelled the request before it completed.
@@ -109,7 +106,6 @@ pub const ERROR_CATALOG: &[ErrorCode] = &[
     ErrorCode::InferenceUnavailable,
     ErrorCode::RankingBackendUnavailable,
     ErrorCode::StorageUnavailable,
-    ErrorCode::AnswerUnavailable,
     ErrorCode::ScopeDenied,
     ErrorCode::RequestCancelled,
     ErrorCode::SerializationFailed,
@@ -146,7 +142,6 @@ impl ErrorCode {
             Self::InferenceUnavailable => "inference_unavailable",
             Self::RankingBackendUnavailable => "ranking_backend_unavailable",
             Self::StorageUnavailable => "storage_unavailable",
-            Self::AnswerUnavailable => "answer_unavailable",
             Self::ScopeDenied => "scope_denied",
             Self::RequestCancelled => "request_cancelled",
             Self::SerializationFailed => "serialization_failed",
@@ -154,7 +149,7 @@ impl ErrorCode {
         }
     }
 
-    /// HTTP status used by transport surfaces. MCP tools ignore it.
+    /// HTTP status used by transport surfaces.
     pub const fn http_status(self) -> u16 {
         match self {
             Self::InvalidRequest | Self::InvalidQuery | Self::InvalidUrl | Self::InvalidHost => 400,
@@ -168,8 +163,7 @@ impl ErrorCode {
             | Self::ScopeDenied => 403,
             Self::NotFound => 404,
             Self::Conflict => 409,
-            // 499 is the conventional "client closed request"; MCP renders it
-            // as a tool error rather than a transport status.
+            // 499 is the conventional "client closed request".
             Self::RequestCancelled => 499,
             Self::BodyTooLarge => 413,
             Self::HeadersTooLarge => 431,
@@ -186,7 +180,6 @@ impl ErrorCode {
             | Self::ConfigurationInvalid
             | Self::InferenceUnavailable
             | Self::RankingBackendUnavailable
-            | Self::AnswerUnavailable
             | Self::SerializationFailed
             | Self::InternalError => 500,
         }
@@ -221,9 +214,6 @@ impl ErrorCode {
             Self::InferenceUnavailable => "required inference backend is unavailable",
             Self::RankingBackendUnavailable => "optional ranking backend is unavailable",
             Self::StorageUnavailable => "persistent storage is unavailable",
-            Self::AnswerUnavailable => {
-                "answer synthesis backend is unavailable or its response was not grounded"
-            }
             Self::ScopeDenied => "credential lacks the required capability",
             Self::RequestCancelled => "request was cancelled by the caller",
             Self::SerializationFailed => "response could not be serialized",

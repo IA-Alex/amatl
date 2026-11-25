@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::path::Path;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-#[serde(default)]
+#[serde(default, deny_unknown_fields)]
 pub struct DataPolicyConfig {
     pub profile: SecurityProfile,
     pub egress: EgressPolicy,
@@ -124,8 +124,8 @@ impl Default for DataPolicyConfig {
 impl Config {
     /// Write `[data_policy].profile` and nothing else.
     ///
-    /// A thin wrapper over `Config::set_scalar_field`, same as
-    /// [`Config::set_answer_enabled`]: the caller validates a candidate
+    /// A thin wrapper over `Config::set_scalar_field`, like every other
+    /// per-field setter here: the caller validates a candidate
     /// config first, this only performs the write.
     pub fn set_data_policy_profile(
         path: &Path,
