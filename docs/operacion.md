@@ -200,7 +200,7 @@ comprueba SQLite/migración si procede, reporta telemetría y muestra preparaci�
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
 reporte; el operador debe leer cada línea.
 
-La CLI usa el mismo catálogo de códigos que API y MCP: ante un fallo con código
+La CLI usa el mismo catálogo de códigos que la API: ante un fallo con código
 imprime `error_code=<código> message=<mensaje>` en stderr, y ante una búsqueda
 con `status = failure` imprime los códigos compuestos que ya trae la respuesta
 (`no_available_provider`, `no_usable_results`). stdout conserva sólo la salida
