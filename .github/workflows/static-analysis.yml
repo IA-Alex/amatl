@@ -142,13 +142,23 @@ jobs:
       # Informative only: no threshold, no `--fail-under-*`, and
       # `continue-on-error` so a low number never blocks the pipeline. The
       # summary is the deliverable — it names which crates are thinly covered so
-      # the work can be prioritised by risk, not by a percentage target. A real
-      # instrumentation or execution failure is reported in the summary rather
-      # than being hidden, but it still does not gate.
+      # the work can be prioritised by risk, not by a percentage target.
+      #
+      # A real instrumentation or execution failure stays visible instead of
+      # being masked: `cargo llvm-cov` writes errors to *stderr* and exits
+      # non-zero, so the summary invocation captures `2>&1` (an earlier version
+      # captured stdout only and `|| true`'d it, which left an empty code block
+      # in the summary and hid the error in the job log). The exit status is now
+      # the real one — no `|| true` — and only `continue-on-error` keeps a
+      # failure from gating, so the job's red/green still answers "did the
+      # measurement run?", never "was the number high enough?".
       - name: Measure workspace coverage
         continue-on-error: true
         run: |
           set -euo pipefail
+          status=0
+          cargo llvm-cov --workspace --all-targets --locked --summary-only \
+            > coverage.txt 2>&1 || status=$?
           {
             echo '### Rust coverage (cargo-llvm-cov, informative)'
             echo
@@ -156,14 +166,20 @@ jobs:
             echo 'areas can be found. A low number is not a failure.'
             echo
             echo '```'
-            cargo llvm-cov --workspace --all-targets --locked --summary-only || true
+            cat coverage.txt
             echo '```'
             echo
             echo 'Excluded by design: the opt-in integration suites'
             echo '(`AMATL_CHROMIUM_INTEGRATION`, Trafilatura) and the `--ignored`'
             echo 'soak tests do not run here, so their targets read as uncovered.'
           } >> "$GITHUB_STEP_SUMMARY"
-          cargo llvm-cov --workspace --all-targets --locked --summary-only
+          # Surface a real failure as a red step (still non-blocking thanks to
+          # `continue-on-error`): a measurement that did not run must not be
+          # reported as if it had.
+          if [ "$status" -ne 0 ]; then
+            echo "::error::cargo llvm-cov failed (exit $status); see the job log"
+            exit "$status"
+          fi
 
   semgrep:
     name: Semgrep (advisory)

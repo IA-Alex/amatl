@@ -949,6 +949,37 @@ impl Fetcher for FailingFetcher {
     }
 }
 
+/// A fetcher that records the `max_redirects` it was handed for every request,
+/// then follows (successfully) as many redirects as it was *allowed*, so a test
+/// can prove the cap Deep hands each fetch is derived from the aggregate budget
+/// that remains at that iteration.
+struct MaxRedirectRecordingFetcher {
+    seen: Arc<std::sync::Mutex<Vec<u32>>>,
+}
+
+#[async_trait]
+impl Fetcher for MaxRedirectRecordingFetcher {
+    async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        self.seen.lock().unwrap().push(request.max_redirects);
+        // A hop count equal to what was permitted: the fetch spends its whole
+        // allowance while staying within the contract Deep set for it.
+        let chain: Vec<Url> = (0..request.max_redirects)
+            .map(|hop| Url::parse(&format!("https://example.com/hop-{hop}")).unwrap())
+            .collect();
+        let final_url = chain.last().cloned().unwrap_or_else(|| request.url.clone());
+        Ok(FetchResult {
+            final_url: amatl_core::FinalUrl(final_url),
+            status: 200,
+            headers_safe: BTreeMap::new(),
+            content_type: Some("text/html".into()),
+            body: b"<html><p>body</p></html>".to_vec(),
+            size: 24,
+            redirect_chain: chain,
+            retrieved_at: "2026-08-14T00:00:00Z".into(),
+        })
+    }
+}
+
 fn deep_with_budget(fetch: FetchError) -> DeepOrchestrator {
     DeepOrchestrator::new(
         // fetches=4, bytes=100_000, redirects=5, browser=1, crawl=4, deadline=5s
@@ -1084,4 +1115,194 @@ async fn concurrent_failed_fetches_respect_the_aggregate_redirect_budget() {
     // The first charge takes 5 -> 2; the second saturates 2 -> 0 rather than
     // underflowing, so the aggregate never exceeds its limit.
     assert_eq!(deep.budget_snapshot().remaining_redirects, 0);
+}
+
+#[tokio::test]
+async fn each_fetch_is_capped_by_the_remaining_aggregate_redirect_budget() {
+    // The global-redirect invariant is enforced *before* a fetch runs: Deep
+    // hands every fetch `max_redirects = min(remaining_redirects, configured
+    // cap)`, recomputed at the top of each iteration, so a fetch can never be
+    // authorised to follow more redirects than the aggregate budget still
+    // holds. Two candidates, one shared budget of 5: the first fetch is granted
+    // all 5 and spends them (5 -> 0); the second is then granted 0, so the
+    // aggregate is consumed exactly and never over-issued. This is the property
+    // a concurrent design would have to re-establish under a lock; here it
+    // holds because `enrich` drains the queue sequentially over `&mut self`.
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let mut deep = DeepOrchestrator::new(
+        DeepBudget::new(4, 100_000, 5, 1, 4, 5_000).with_gap_limits(0, 0),
+        Arc::new(MaxRedirectRecordingFetcher { seen: seen.clone() }),
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        5_000,
+        100_000,
+        // Configured per-fetch cap is 5, so the cap that actually binds is the
+        // remaining aggregate budget, not this constant.
+        5,
+        2,
+        0,
+    );
+    let output = deep
+        .enrich(request(vec![
+            DeepCandidate {
+                result: result(),
+                storage_rights: false,
+            },
+            DeepCandidate {
+                result: SearchResult {
+                    canonical_url: CanonicalUrl(Url::parse("https://example.com/second").unwrap()),
+                    original_url: OriginalUrl(Url::parse("https://example.com/second").unwrap()),
+                    ..result()
+                },
+                storage_rights: false,
+            },
+        ]))
+        .await;
+    assert_eq!(output.documents.len(), 2);
+    // Fetches ran in queue order and each was handed the budget that remained
+    // at its turn: the first all 5, the second none.
+    assert_eq!(*seen.lock().unwrap(), vec![5, 0]);
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 0);
+}
+
+#[tokio::test]
+async fn a_successful_chain_and_a_failed_chain_share_one_redirect_budget() {
+    // Mixed outcome: the first candidate succeeds after spending 2 redirects
+    // (charged via `redirect_chain`), the second fails after following 2 more
+    // (charged via `followed_redirects`). Both debits land on one budget: 5 -> 3
+    // -> 1, and the aggregate never exceeds the initial 5.
+    struct MixedFetcher {
+        calls: Arc<std::sync::atomic::AtomicUsize>,
+    }
+    #[async_trait]
+    impl Fetcher for MixedFetcher {
+        async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+            if self.calls.fetch_add(1, Ordering::SeqCst) == 0 {
+                let hop = |n: u32| Url::parse(&format!("https://example.com/ok-{n}")).unwrap();
+                Ok(FetchResult {
+                    final_url: amatl_core::FinalUrl(hop(2)),
+                    status: 200,
+                    headers_safe: BTreeMap::new(),
+                    content_type: Some("text/html".into()),
+                    body: b"<html><p>body</p></html>".to_vec(),
+                    size: 24,
+                    redirect_chain: vec![request.url.clone(), hop(1)],
+                    retrieved_at: "2026-08-14T00:00:00Z".into(),
+                })
+            } else {
+                Err(FetchError::AfterRedirects {
+                    followed: 2,
+                    cause: Box::new(FetchError::Timeout),
+                })
+            }
+        }
+    }
+    let mut deep = DeepOrchestrator::new(
+        DeepBudget::new(4, 100_000, 5, 1, 4, 5_000).with_gap_limits(0, 0),
+        Arc::new(MixedFetcher {
+            calls: Arc::new(std::sync::atomic::AtomicUsize::new(0)),
+        }),
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        5_000,
+        100_000,
+        5,
+        2,
+        0,
+    );
+    let output = deep
+        .enrich(request(vec![
+            DeepCandidate {
+                result: result(),
+                storage_rights: false,
+            },
+            DeepCandidate {
+                result: SearchResult {
+                    canonical_url: CanonicalUrl(Url::parse("https://example.com/second").unwrap()),
+                    original_url: OriginalUrl(Url::parse("https://example.com/second").unwrap()),
+                    ..result()
+                },
+                storage_rights: false,
+            },
+        ]))
+        .await;
+    // The success and the failure each produced their own accounting without
+    // one erasing the other: 5 - 2 (success chain) - 2 (failed chain) = 1.
+    assert_eq!(output.documents.len(), 1);
+    assert_eq!(output.errors.len(), 1);
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 1);
+}
+
+#[tokio::test]
+async fn a_successful_fetch_reporting_more_redirects_than_remain_is_rejected() {
+    // Defence in depth on the success path. `max_redirects` is already capped by
+    // the remaining budget before the fetch runs, so a well-behaved fetcher can
+    // never over-report. If one did anyway, `consume_fetch` must *reject* the
+    // charge (ByteLimit/RedirectLimit) and Deep must drop the result rather than
+    // debit more redirects than remain — the success-path mirror of the error
+    // path's saturating `charge_redirects`. Without this guard a fetcher that
+    // ignored its cap could drive the aggregate redirect spend past the initial
+    // budget.
+    struct OverReportingFetcher;
+    #[async_trait]
+    impl Fetcher for OverReportingFetcher {
+        async fn fetch(&self, _: FetchRequest) -> Result<FetchResult, FetchError> {
+            // Claims a 9-hop chain against a budget that only holds 2.
+            let chain: Vec<Url> = (0..9)
+                .map(|hop| Url::parse(&format!("https://example.com/hop-{hop}")).unwrap())
+                .collect();
+            Ok(FetchResult {
+                final_url: amatl_core::FinalUrl(chain.last().unwrap().clone()),
+                status: 200,
+                headers_safe: BTreeMap::new(),
+                content_type: Some("text/html".into()),
+                body: b"<html><p>body</p></html>".to_vec(),
+                size: 24,
+                redirect_chain: chain,
+                retrieved_at: "2026-08-14T00:00:00Z".into(),
+            })
+        }
+    }
+    let mut deep = DeepOrchestrator::new(
+        // fetches=4, bytes=100_000, redirects=2, browser=1, crawl=4, deadline=5s
+        DeepBudget::new(4, 100_000, 2, 1, 4, 5_000).with_gap_limits(0, 0),
+        Arc::new(OverReportingFetcher),
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        5_000,
+        100_000,
+        9,
+        1,
+        0,
+    );
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    // The over-charge was refused, so no Document was produced and the budget
+    // was not debited past what it held.
+    assert!(output.documents.is_empty());
+    assert!(
+        output
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "redirect_limit"),
+        "{:?}",
+        output.degradations
+    );
+    assert_eq!(deep.budget_snapshot().remaining_redirects, 2);
 }
