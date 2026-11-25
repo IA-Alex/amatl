@@ -121,3 +121,110 @@ async fn real_adapter_rate_limit_uses_bounded_retry_policy() {
         .any(|error| error.message.contains("private")));
     assert!(response.errors.iter().all(|error| error.recoverable));
 }
+
+/// H01 — the provider envelope is deduplicated across the full adapter →
+/// pipeline path. Exact duplicate rows and tracking-parameter variants of one
+/// URL collapse to a single visible result, so the "two identical rows"
+/// symptom can only come from *distinct* canonical URLs (scheme / `www`
+/// aliases), never from a repeated URL or a duplicated pipeline stage.
+#[tokio::test]
+async fn h01_exact_duplicate_rows_collapse_across_the_pipeline() {
+    let transport = Arc::new(FixtureTransport::new(
+        200,
+        BTreeMap::new(),
+        br#"{"results":[
+          {"title":"Search engine components and architecture","url":"https://www.example.org/","description":"same"},
+          {"title":"Search engine components and architecture","url":"https://www.example.org/","description":"same"},
+          {"title":"Search engine components and architecture","url":"https://www.example.org/?utm_source=x","description":"same"}
+        ]}"#,
+    ));
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
+        Some("fixture-token".to_owned().into()),
+        true,
+        true,
+        transport.clone(),
+    ))];
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+        .search(
+            parse_query("open source search engine architecture".into()).unwrap(),
+            providers,
+        )
+        .await;
+    assert_eq!(response.results.len(), 1);
+    assert_eq!(
+        response.results[0].canonical_url.0.as_str(),
+        "https://www.example.org/"
+    );
+    assert_eq!(response.results[0].rank.get(), 1);
+}
+
+/// H02 — AMATL never fabricates or re-assembles snippet text. The provider
+/// `description` reaches the public result verbatim after HTML-entity decoding
+/// and whitespace collapsing only: separators such as `//`, abrupt context
+/// changes or concatenated prose are the provider's own text, so AMATL
+/// documents the provider limit instead of rewriting meaning.
+#[tokio::test]
+async fn h02_snippet_is_provider_text_passed_through_unchanged() {
+    let provider_snippet = "Historia de la computacion // Mexico / Pioneros y maquinas";
+    let body = format!(
+        r#"{{"results":[{{"title":"Historia","url":"https://hist.example/mx","description":"{provider_snippet}"}}]}}"#
+    );
+    let transport = Arc::new(FixtureTransport::new(200, BTreeMap::new(), body.as_bytes()));
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
+        Some("fixture-token".to_owned().into()),
+        true,
+        true,
+        transport.clone(),
+    ))];
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+        .search(
+            parse_query("historia de la computacion en Mexico".into()).unwrap(),
+            providers,
+        )
+        .await;
+    assert_eq!(
+        response.results[0].snippet.as_deref(),
+        Some(provider_snippet),
+        "the snippet must be the provider text, unmodified"
+    );
+}
+
+/// H03 — with a single source, equal title coverage must not reorder the
+/// provider's native ranking. Marginalia's rank order is carried as
+/// `provider_rank`; the reranker only moves results whose query evidence
+/// actually differs, so a same-evidence set keeps the provider order.
+#[tokio::test]
+async fn h03_native_order_survives_when_evidence_is_equal() {
+    let transport = Arc::new(FixtureTransport::new(
+        200,
+        BTreeMap::new(),
+        br#"{"results":[
+          {"title":"alpha beta gamma","url":"https://one.example/a","description":"alpha beta gamma"},
+          {"title":"alpha beta gamma","url":"https://two.example/b","description":"alpha beta gamma"},
+          {"title":"alpha beta gamma","url":"https://three.example/c","description":"alpha beta gamma"}
+        ]}"#,
+    ));
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MarginaliaProvider::new(
+        Some("fixture-token".to_owned().into()),
+        true,
+        true,
+        transport.clone(),
+    ))];
+    let response = SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+        .search(parse_query("alpha beta gamma".into()).unwrap(), providers)
+        .await;
+    let urls: Vec<_> = response
+        .results
+        .iter()
+        .map(|result| result.canonical_url.0.as_str())
+        .collect();
+    assert_eq!(
+        urls,
+        vec![
+            "https://one.example/a",
+            "https://two.example/b",
+            "https://three.example/c"
+        ],
+        "equal evidence must preserve the provider's native order"
+    );
+}

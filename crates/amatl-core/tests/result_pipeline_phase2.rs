@@ -144,3 +144,52 @@ async fn all_invalid_items_produce_typed_failure_not_empty_partial_success() {
         .iter()
         .any(|error| error.code == "no_usable_results"));
 }
+
+/// H04 — an ambiguous single term keeps every legitimate interpretation. AMATL
+/// performs no disambiguation, entity resolution or synonym rewriting: each
+/// distinct document the provider returns for `mercury` (planet, element,
+/// language) survives as its own visible result, so the user can still explore
+/// the senses. Ranking only reorders; it never deletes a sense.
+#[tokio::test]
+async fn h04_ambiguous_term_keeps_every_interpretation() {
+    let values = vec![
+        item(
+            "https://solar.example/mercury-planet",
+            1,
+            Some("Mercury (planet)"),
+        ),
+        item(
+            "https://chem.example/mercury-element",
+            2,
+            Some("Mercury (element)"),
+        ),
+        item(
+            "https://lang.example/mercury-lang",
+            3,
+            Some("Mercury programming language"),
+        ),
+    ];
+    let providers: Vec<Arc<dyn Provider>> = vec![Arc::new(MockProvider::success("p", values))];
+    let response = SearchOrchestrator::new(Budget::new(1, 1_000), 100)
+        .search(parse_query("mercury".into()).unwrap(), providers)
+        .await;
+    let mut urls: Vec<_> = response
+        .results
+        .iter()
+        .map(|result| result.canonical_url.0.as_str())
+        .collect();
+    urls.sort_unstable();
+    assert_eq!(
+        urls,
+        vec![
+            "https://chem.example/mercury-element",
+            "https://lang.example/mercury-lang",
+            "https://solar.example/mercury-planet",
+        ],
+        "every sense must survive; none may be collapsed away"
+    );
+    assert!(response
+        .results
+        .iter()
+        .all(|result| result.status == ResultStatus::Visible));
+}
